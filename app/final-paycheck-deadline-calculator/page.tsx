@@ -27,9 +27,9 @@ const faqs: FaqItem[] = [
       "Often, yes. Many states set a faster deadline when an employer ends the job than when an employee resigns. In California a fired employee must be paid immediately, while someone who quits without notice is paid within 72 hours.",
   },
   {
-    question: "What if my state isn't listed?",
+    question: "What if my state has no specific law?",
     answer:
-      "Several states have no specific final-paycheck statute. In those states, final wages generally follow your employer's normal pay schedule — usually the next regular payday. This tool covers a curated set of states and is being expanded.",
+      "A few states (such as Alabama, Florida, Georgia and Mississippi) have no specific final-paycheck statute. In those states, final wages generally follow your employer's normal pay schedule — usually the next regular payday. This tool covers all 50 states and DC.",
   },
   {
     question: "Does my final paycheck include unused PTO?",

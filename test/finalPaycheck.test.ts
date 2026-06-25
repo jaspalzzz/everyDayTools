@@ -18,22 +18,30 @@ describe("US final paycheck deadline", () => {
     expect(r.notes.some((n) => n.includes("no specific final-paycheck statute"))).toBe(true);
   });
 
-  it("always surfaces the coverage caveat (no silent caps)", () => {
+  it("always tells the user to confirm with their state labor office", () => {
     const r = calcFinalPaycheck({ stateCode: "NY", separationType: "quit" });
-    expect(r.notes.some((n) => n.toLowerCase().includes("curated set"))).toBe(true);
+    expect(r.notes.some((n) => n.toLowerCase().includes("state labor office"))).toBe(true);
+  });
+
+  it("surfaces the demand-triggered caveat for Minnesota", () => {
+    const r = calcFinalPaycheck({ stateCode: "MN", separationType: "fired" });
+    expect(r.headline).toBe("Within 24 hours");
+    expect(r.notes.some((n) => n.toLowerCase().includes("written demand"))).toBe(true);
   });
 
   it("returns invalid for an unknown state", () => {
     expect(calcFinalPaycheck({ stateCode: "ZZ", separationType: "fired" }).valid).toBe(false);
   });
 
-  it("every state has a non-empty rule for both separation types (data integrity)", () => {
+  it("covers all 50 states plus DC with non-empty rules (data integrity)", () => {
+    expect(STATE_FINAL_PAY).toHaveLength(51);
+    const codes = new Set(STATE_FINAL_PAY.map((s) => s.code));
+    expect(codes.size).toBe(51); // no duplicates
     for (const s of STATE_FINAL_PAY) {
       expect(s.code).toHaveLength(2);
-      expect(s.fired.deadline.length).toBeGreaterThan(3);
-      expect(s.quit.deadline.length).toBeGreaterThan(3);
-      expect(s.fired.note.length).toBeGreaterThan(10);
-      expect(s.quit.note.length).toBeGreaterThan(10);
+      expect(s.fired.length).toBeGreaterThan(3);
+      expect(s.quit.length).toBeGreaterThan(3);
+      expect(s.name.length).toBeGreaterThan(3);
     }
   });
 });

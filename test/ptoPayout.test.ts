@@ -28,8 +28,11 @@ describe("US PTO payout", () => {
     expect(calcPtoPayout({ stateCode: "CA", unusedHours: 40, hourlyRate: 0 }).valid).toBe(false);
   });
 
-  it("every state policy has a non-empty note (data integrity)", () => {
+  it("covers all 50 states + DC with valid, non-empty policies (data integrity)", () => {
+    expect(STATE_PTO).toHaveLength(51);
+    expect(new Set(STATE_PTO.map((s) => s.code)).size).toBe(51); // no duplicates
     for (const s of STATE_PTO) {
+      expect(s.code).toHaveLength(2);
       expect(s.note.length).toBeGreaterThan(10);
       expect(["required", "conditional", "no-requirement"]).toContain(s.rule);
     }
