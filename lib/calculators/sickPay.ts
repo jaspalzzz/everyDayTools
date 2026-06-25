@@ -26,14 +26,17 @@ export interface SickPayInput {
   qualifyingDaysPerWeek: number;
   /** Total calendar working days off sick. */
   daysOffSick: number;
-  /** Average gross weekly earnings — required to check LEL eligibility. 0 = not provided. */
+  /**
+   * Average gross weekly earnings. Must be supplied to unlock a valid result —
+   * undefined means the user has not yet entered a value; 0 means entered-as-zero.
+   * Both the LEL eligibility check and the 80%-of-earnings cap require this figure.
+   */
   averageWeeklyEarnings?: number;
 }
 
 export function calcSickPay(input: SickPayInput): CalcResult {
   const qdpw = Math.min(safeNumber(input.qualifyingDaysPerWeek), 7);
   const daysOff = safeNumber(input.daysOffSick);
-  const awe = safeNumber(input.averageWeeklyEarnings ?? 0);
   const C = SSP_CONSTANTS;
 
   if (qdpw <= 0 || daysOff <= 0) {
@@ -46,8 +49,23 @@ export function calcSickPay(input: SickPayInput): CalcResult {
     };
   }
 
-  // If earnings are provided and fall below the LEL, the employee is ineligible.
-  if (awe > 0 && awe < C.lowerEarningsLimit) {
+  // Earnings are required: they gate both the LEL eligibility check and the 80% cap.
+  if (input.averageWeeklyEarnings === undefined) {
+    return {
+      headline: "—",
+      headlineCaption: "Enter your weekly earnings to check eligibility",
+      breakdown: [],
+      notes: [
+        `You must earn at least £${C.lowerEarningsLimit}/wk on average to qualify for SSP. Your earnings also determine whether the 80%-of-earnings cap applies instead of the standard £${C.weeklyRate} rate.`,
+      ],
+      valid: false,
+    };
+  }
+
+  const awe = safeNumber(input.averageWeeklyEarnings);
+
+  // If earnings are below the LEL, the employee is ineligible.
+  if (awe < C.lowerEarningsLimit) {
     return {
       headline: "Not eligible",
       headlineCaption: "Earnings below the Lower Earnings Limit",
@@ -61,7 +79,7 @@ export function calcSickPay(input: SickPayInput): CalcResult {
   }
 
   // SSP weekly rate is the lower of the statutory flat rate or 80% of AWE (2026/27).
-  const earningsCap = awe > 0 ? awe * C.earningsFraction : Infinity;
+  const earningsCap = awe * C.earningsFraction;
   const effectiveWeeklyRate = Math.min(C.weeklyRate, earningsCap);
   const cappedByEarnings = awe > 0 && earningsCap < C.weeklyRate;
 

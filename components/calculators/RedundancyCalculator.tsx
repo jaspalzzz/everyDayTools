@@ -41,7 +41,7 @@ export function RedundancyCalculator() {
           value={weeklyPay}
           onChange={setWeeklyPay}
           prefix="£"
-          hint="Before tax. Capped at £719 for the statutory calculation."
+          hint="Before tax. Capped at £751 for the 2026/27 statutory calculation."
         />
       </form>
 

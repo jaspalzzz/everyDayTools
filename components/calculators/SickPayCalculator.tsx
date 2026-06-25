@@ -15,7 +15,7 @@ export function SickPayCalculator() {
       calcSickPay({
         qualifyingDaysPerWeek: Number(qualifyingDaysPerWeek) || 0,
         daysOffSick: Number(daysOffSick) || 0,
-        averageWeeklyEarnings: weeklyEarnings === "" ? 0 : Number(weeklyEarnings),
+        averageWeeklyEarnings: weeklyEarnings === "" ? undefined : Number(weeklyEarnings),
       }),
     [qualifyingDaysPerWeek, daysOffSick, weeklyEarnings],
   );
@@ -48,7 +48,7 @@ export function SickPayCalculator() {
           onChange={setWeeklyEarnings}
           prefix="£"
           step={10}
-          hint="Optional — checks you earn at least £125/wk to qualify"
+          hint="Required — confirms eligibility (LEL £129/wk) and applies the 80% earnings cap"
         />
       </form>
 

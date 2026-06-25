@@ -41,11 +41,12 @@ export function GardenLeaveCalculator() {
           />
           <NumberField
             id="garden-leave-weeks"
-            label="Garden leave"
+            label="Duration"
             value={weeks}
             onChange={setWeeks}
             suffix="weeks"
             max={104}
+            hint="Length of garden leave in weeks"
           />
         </FieldGrid>
       </form>
