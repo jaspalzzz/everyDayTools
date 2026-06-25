@@ -130,6 +130,18 @@ export const TOOLS: ToolMeta[] = [
     tier: 2,
     related: ["holiday-entitlement-calculator", "redundancy-pay-calculator"],
   },
+  {
+    slug: "final-paycheck-deadline-calculator",
+    name: "Final paycheck deadline calculator",
+    shortName: "Final paycheck deadline",
+    description:
+      "When your employer must pay your final wages after you leave — by US state and whether you quit or were let go.",
+    region: "US",
+    icon: "ti-calendar-due",
+    hero: false,
+    tier: 2,
+    related: ["pto-payout-calculator", "severance-pay-calculator"],
+  },
 ];
 
 export function getTool(slug: string): ToolMeta | undefined {
