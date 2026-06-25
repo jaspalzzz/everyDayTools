@@ -36,6 +36,16 @@ const faqs: FaqItem[] = [
     answer:
       "Yes. Many countries set overtime rules through contracts or collective agreements rather than a fixed legal multiplier. Always check your contract for the overtime rate that applies to you.",
   },
+  {
+    question: "Do some states pay more than 1.5× for overtime?",
+    answer:
+      "Yes. A few states add daily overtime on top of the federal weekly rule. California, for example, pays 1.5× after 8 hours in a day and 2× (double time) after 12. You can model double time here by setting the multiplier to 2.",
+  },
+  {
+    question: "Are salaried employees entitled to overtime?",
+    answer:
+      "It depends on whether they are exempt. A salary alone does not remove overtime rights — non-exempt salaried employees can still be owed overtime, while genuinely exempt roles that meet the FLSA salary and duties tests are not.",
+  },
 ];
 
 export default function Page() {
@@ -68,6 +78,13 @@ export default function Page() {
               overtime multiplier — 1.5 is the US standard, but some contracts pay double time, and
               rules vary by country. The result updates instantly as you type, so you can model
               different weeks without reloading.
+            </p>
+            <p>
+              One thing to watch is how your workweek is defined. Under the FLSA, overtime is
+              calculated per fixed seven-day workweek, not per pay period — so two busy weeks
+              averaged together do not cancel out. A few states also add daily overtime, paying a
+              premium once you pass a set number of hours in a single day regardless of the weekly
+              total, which the multiplier field lets you reflect.
             </p>
             <p>
               The figure shown is gross pay, before tax and deductions. Use the PDF summary to keep
