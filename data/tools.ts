@@ -166,6 +166,54 @@ export const TOOLS: ToolMeta[] = [
     tier: 3,
     related: ["salary-to-hourly-calculator", "take-home-overtime-calculator"],
   },
+  {
+    slug: "pro-rata-salary-calculator",
+    name: "Pro-rata salary calculator",
+    shortName: "Pro-rata salary",
+    description:
+      "Scale a full-time salary to your part-time hours — your pro-rata annual and monthly pay, in seconds.",
+    region: "US/UK/CA/AU",
+    icon: "ti-clock-hour-4",
+    hero: false,
+    tier: 3,
+    related: ["salary-to-hourly-calculator", "holiday-entitlement-calculator"],
+  },
+  {
+    slug: "bonus-tax-calculator",
+    name: "Bonus tax calculator",
+    shortName: "Bonus tax",
+    description:
+      "Estimate your take-home bonus after tax — with the US 22% federal supplemental rate built in.",
+    region: "US/UK/CA/AU",
+    icon: "ti-gift",
+    hero: false,
+    tier: 3,
+    related: ["take-home-overtime-calculator", "pay-rise-calculator"],
+  },
+  {
+    slug: "working-days-calculator",
+    name: "Working days calculator",
+    shortName: "Working days",
+    description:
+      "Count the working days (Mon–Fri) between two dates — useful for notice periods and leave.",
+    region: "US/UK/CA/AU",
+    icon: "ti-calendar-week",
+    hero: false,
+    tier: 3,
+    related: ["notice-period-calculator", "holiday-entitlement-calculator"],
+  },
+  {
+    slug: "garden-leave-calculator",
+    name: "Garden leave calculator",
+    shortName: "Garden leave",
+    description:
+      "Work out your total pay during garden leave from your weekly pay and notice length.",
+    region: "UK",
+    icon: "ti-plant-2",
+    hero: false,
+    tier: 3,
+    related: ["notice-period-calculator", "redundancy-pay-calculator"],
+  },
 ];
 
 export function getTool(slug: string): ToolMeta | undefined {
