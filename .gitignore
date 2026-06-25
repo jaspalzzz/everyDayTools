@@ -6,3 +6,10 @@
 next-env.d.ts
 .DS_Store
 .env*.local
+
+# Playwright
+/test-results
+/playwright-report
+/blob-report
+/playwright/.cache
+.last-run.json

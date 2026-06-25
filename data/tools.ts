@@ -6,6 +6,9 @@
 
 export type Region = "UK" | "US" | "UK/CA" | "US/UK/CA" | "US/UK/CA/AU";
 
+/** Launch tier. Tier 1 = hero launch set; Tier 2 = expansion (added in batches). */
+export type Tier = 1 | 2;
+
 export interface ToolMeta {
   slug: string;
   name: string;
@@ -17,6 +20,8 @@ export interface ToolMeta {
   icon: string;
   /** Marks the high-RPM hero tools. */
   hero: boolean;
+  /** Launch tier (defaults to 1 when omitted). */
+  tier?: Tier;
   /** Slugs of related tools for the internal-link block. */
   related: string[];
 }
@@ -75,6 +80,66 @@ export const TOOLS: ToolMeta[] = [
     region: "US/UK/CA/AU",
     icon: "ti-clock-dollar",
     hero: false,
+    related: ["pto-payout-calculator", "severance-pay-calculator"],
+  },
+  {
+    slug: "salary-to-hourly-calculator",
+    name: "Salary to hourly calculator",
+    shortName: "Salary to hourly",
+    description:
+      "Convert an annual salary into the equivalent hourly, weekly and monthly pay — for any working pattern.",
+    region: "US/UK/CA/AU",
+    icon: "ti-arrows-exchange",
+    hero: false,
+    tier: 2,
+    related: ["take-home-overtime-calculator", "pto-payout-calculator"],
+  },
+  {
+    slug: "holiday-entitlement-calculator",
+    name: "Holiday entitlement calculator",
+    shortName: "Holiday entitlement",
+    description:
+      "Your statutory annual leave under UK law — days per week converted to your 5.6-week entitlement, with accrual to date.",
+    region: "UK",
+    icon: "ti-beach",
+    hero: false,
+    tier: 2,
+    related: ["notice-period-calculator", "redundancy-pay-calculator"],
+  },
+  {
+    slug: "maternity-pay-calculator",
+    name: "Maternity pay calculator",
+    shortName: "Maternity pay",
+    description:
+      "Estimate your UK Statutory Maternity Pay across the 39-week period from your average weekly earnings.",
+    region: "UK",
+    icon: "ti-baby-carriage",
+    hero: false,
+    tier: 2,
+    related: ["holiday-entitlement-calculator", "notice-period-calculator"],
+  },
+  {
+    slug: "statutory-sick-pay-calculator",
+    name: "Statutory sick pay calculator",
+    shortName: "Statutory sick pay",
+    description:
+      "Your UK SSP for time off sick — the weekly rate, the 3 unpaid waiting days and your daily entitlement built in.",
+    region: "UK",
+    icon: "ti-mood-sick",
+    hero: false,
+    tier: 2,
+    related: ["holiday-entitlement-calculator", "redundancy-pay-calculator"],
+  },
+  {
+    slug: "final-paycheck-deadline-calculator",
+    name: "Final paycheck deadline calculator",
+    shortName: "Final paycheck deadline",
+    description:
+      "When your employer must pay your final wages after you leave — by US state and whether you quit or were let go.",
+    region: "US",
+    icon: "ti-calendar-due",
+    hero: false,
+    tier: 2,
     related: ["pto-payout-calculator", "severance-pay-calculator"],
   },
 ];
