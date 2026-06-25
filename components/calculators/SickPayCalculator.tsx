@@ -8,14 +8,16 @@ import { SSP_SOURCE, calcSickPay } from "@/lib/calculators/sickPay";
 export function SickPayCalculator() {
   const [qualifyingDaysPerWeek, setQualifyingDaysPerWeek] = useState<number | "">(5);
   const [daysOffSick, setDaysOffSick] = useState<number | "">(10);
+  const [weeklyEarnings, setWeeklyEarnings] = useState<number | "">("");
 
   const result = useMemo(
     () =>
       calcSickPay({
         qualifyingDaysPerWeek: Number(qualifyingDaysPerWeek) || 0,
         daysOffSick: Number(daysOffSick) || 0,
+        averageWeeklyEarnings: weeklyEarnings === "" ? 0 : Number(weeklyEarnings),
       }),
-    [qualifyingDaysPerWeek, daysOffSick],
+    [qualifyingDaysPerWeek, daysOffSick, weeklyEarnings],
   );
 
   return (
@@ -39,6 +41,15 @@ export function SickPayCalculator() {
             hint="Total working days you have been off"
           />
         </FieldGrid>
+        <NumberField
+          id="weekly-earnings"
+          label="Average weekly earnings (gross)"
+          value={weeklyEarnings}
+          onChange={setWeeklyEarnings}
+          prefix="£"
+          step={10}
+          hint="Optional — checks you earn at least £125/wk to qualify"
+        />
       </form>
 
       <ResultPanel

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ToolLayout } from "@/components/ToolLayout";
 import { OvertimeCalculator } from "@/components/calculators/OvertimeCalculator";
-import { OVERTIME_SOURCE } from "@/lib/calculators/takeHome";
+import { OVERTIME_SOURCE } from "@/lib/calculators/overtime";
 import { getTool } from "@/data/tools";
 import { SITE, faqSchema, jsonLd, webApplicationSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";

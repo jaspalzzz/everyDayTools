@@ -17,7 +17,7 @@ export function WorkingDaysCalculator() {
   useEffect(() => {
     const now = new Date();
     setStartDate(isoDate(now));
-    setEndDate(isoDate(new Date(now.getTime() + 30 * 86_400_000)));
+    setEndDate(isoDate(new Date(now.getFullYear(), now.getMonth(), now.getDate() + 30)));
   }, []);
 
   const result = useMemo(() => calcWorkingDays({ startDate, endDate }), [startDate, endDate]);

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calcOvertime } from "@/lib/calculators/takeHome";
+import { calcOvertime } from "@/lib/calculators/overtime";
 
 describe("overtime pay", () => {
   it("US FLSA: regular + 1.5× overtime ($25, 40 reg, 8 OT)", () => {
@@ -39,8 +39,8 @@ describe("overtime pay", () => {
   it("cites the FLSA for US, generic guidance otherwise", () => {
     const us = calcOvertime({ country: "US", hourlyRate: 20, regularHours: 40, overtimeHours: 0, multiplier: 1.5 });
     const uk = calcOvertime({ country: "UK", hourlyRate: 20, regularHours: 40, overtimeHours: 0, multiplier: 1.5 });
-    expect(us.notes.some((n) => n.includes("FLSA"))).toBe(true);
-    expect(uk.notes.some((n) => n.toLowerCase().includes("contract"))).toBe(true);
+    expect(us.notes.some((n: string) => n.includes("FLSA"))).toBe(true);
+    expect(uk.notes.some((n: string) => n.toLowerCase().includes("contract"))).toBe(true);
   });
 
   it("returns invalid with no rate or hours", () => {

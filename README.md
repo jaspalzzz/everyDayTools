@@ -39,7 +39,7 @@ e2e/                      33 Playwright tests — PDF bytes + live-result contra
 | PTO payout | US — 50 states + DC | `lib/calculators/ptoPayout.ts` |
 | Notice period | UK / CA | `lib/calculators/noticePeriod.ts` |
 | Severance pay | US / UK / CA | `lib/calculators/severance.ts` |
-| Overtime pay | US / UK / CA / AU | `lib/calculators/takeHome.ts` |
+| Overtime pay | US / UK / CA / AU | `lib/calculators/overtime.ts` |
 
 **Tier 2 — expansion**
 

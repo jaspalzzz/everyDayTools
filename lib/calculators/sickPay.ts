@@ -24,11 +24,14 @@ export interface SickPayInput {
   qualifyingDaysPerWeek: number;
   /** Total calendar working days off sick. */
   daysOffSick: number;
+  /** Average gross weekly earnings — required to check LEL eligibility. 0 = not provided. */
+  averageWeeklyEarnings?: number;
 }
 
 export function calcSickPay(input: SickPayInput): CalcResult {
   const qdpw = Math.min(safeNumber(input.qualifyingDaysPerWeek), 7);
   const daysOff = safeNumber(input.daysOffSick);
+  const awe = safeNumber(input.averageWeeklyEarnings ?? 0);
   const C = SSP_CONSTANTS;
 
   if (qdpw <= 0 || daysOff <= 0) {
@@ -37,6 +40,20 @@ export function calcSickPay(input: SickPayInput): CalcResult {
       headlineCaption: "Enter your working days and days off sick",
       breakdown: [],
       notes: ["Enter the days you normally work each week and the working days you have been off sick."],
+      valid: false,
+    };
+  }
+
+  // If earnings are provided and fall below the LEL, the employee is ineligible.
+  if (awe > 0 && awe < C.lowerEarningsLimit) {
+    return {
+      headline: "Not eligible",
+      headlineCaption: "Earnings below the Lower Earnings Limit",
+      breakdown: [],
+      notes: [
+        `To qualify for SSP your average weekly earnings must be at least £${C.lowerEarningsLimit} (${C.taxYear}).`,
+        "If you do not qualify for SSP, check whether your employer offers contractual sick pay.",
+      ],
       valid: false,
     };
   }
@@ -55,9 +72,12 @@ export function calcSickPay(input: SickPayInput): CalcResult {
   notes.push(
     `Based on ${C.taxYear} rate of ${formatCurrency(C.weeklyRate, "UK", { decimals: 2 })} a week, paid for up to 28 weeks.`,
   );
-  notes.push(
-    `You must also earn at least £${C.lowerEarningsLimit} a week on average to qualify. SSP rates change each April.`,
-  );
+  if (awe === 0) {
+    notes.push(
+      `You must earn at least £${C.lowerEarningsLimit} a week on average to qualify — enter your weekly earnings above to check.`,
+    );
+  }
+  notes.push("SSP rates are uprated each April.");
 
   return {
     headline: formatCurrency(total, "UK"),

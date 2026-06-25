@@ -39,9 +39,9 @@ export const UNEMPLOYMENT_STATES: UnemploymentState[] = [
     name: "California",
     divisor: 26,
     minWBA: 40,
-    maxWBA: 450,
+    maxWBA: 1550,
     maxWeeks: 26,
-    effective: "statutory cap (unchanged since 2005)",
+    effective: "effective Jan 1 2024 (CA EDD)",
   },
   {
     code: "TX",

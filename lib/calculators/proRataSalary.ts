@@ -38,6 +38,16 @@ export function calcProRata(input: ProRataInput): CalcResult {
   const monthly = proRata / 12;
   const pct = Math.round(fraction * 1000) / 10;
 
+  const notes: string[] = [
+    "All figures are gross, before tax and deductions.",
+    "Part-time workers are entitled to the same pay and benefits, pro-rata, as comparable full-time staff.",
+  ];
+  if (yourHours > fullHours) {
+    notes.unshift(
+      "Your hours exceed the stated full-time hours — the result is above the full-time salary. Check that both figures are correct.",
+    );
+  }
+
   return {
     headline: formatCurrency(proRata, country),
     headlineCaption: "Your pro-rata annual salary",
@@ -49,10 +59,7 @@ export function calcProRata(input: ProRataInput): CalcResult {
       { label: "Your salary", value: formatCurrency(proRata, country), emphasis: true },
       { label: "Monthly (gross)", value: formatCurrency(monthly, country) },
     ],
-    notes: [
-      "All figures are gross, before tax and deductions.",
-      "Part-time workers are entitled to the same pay and benefits, pro-rata, as comparable full-time staff.",
-    ],
+    notes,
     valid: true,
   };
 }

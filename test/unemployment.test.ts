@@ -3,16 +3,16 @@ import { UNEMPLOYMENT_STATES, calcUnemployment } from "@/lib/calculators/unemplo
 
 describe("US unemployment benefit estimate", () => {
   it("California: wages ÷ 26 within the band", () => {
-    // 5,200 ÷ 26 = $200 (between $40 and $450)
+    // 5,200 ÷ 26 = $200 (between $40 and $1,550)
     const r = calcUnemployment({ stateCode: "CA", highestQuarterWages: 5200 });
     expect(r.valid).toBe(true);
     expect(r.headline).toBe("$200");
   });
 
-  it("California: caps at the $450 maximum", () => {
-    const r = calcUnemployment({ stateCode: "CA", highestQuarterWages: 30000 });
-    expect(r.headline).toBe("$450");
-    expect(r.notes.some((n) => n.includes("limited to"))).toBe(true);
+  it("California: caps at the $1,550 maximum (effective Jan 2024)", () => {
+    const r = calcUnemployment({ stateCode: "CA", highestQuarterWages: 80000 });
+    expect(r.headline).toBe("$1,550");
+    expect(r.notes.some((n: string) => n.includes("limited to"))).toBe(true);
   });
 
   it("California: applies the $40 floor for very low wages", () => {

@@ -22,7 +22,7 @@ export interface NoticeInput {
 
 /** UK statutory: 1 week per complete year between 2 and 12 years, capped at 12. */
 function ukStatutoryWeeks(years: number): number {
-  if (years < 2) return years >= 1 / 52 ? 1 : 0; // 1 week once past one month
+  if (years < 2) return years >= 1 / 12 ? 1 : 0; // 1 week minimum once past 1 month (ERA 1996 s.86)
   return Math.min(years, 12);
 }
 

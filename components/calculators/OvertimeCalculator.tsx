@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { FieldGrid, NumberField, SelectField } from "../fields";
 import { ResultPanel } from "../ResultPanel";
-import { calcOvertime, OVERTIME_SOURCE, type OvertimeCountry } from "@/lib/calculators/takeHome";
+import { calcOvertime, OVERTIME_SOURCE, type OvertimeCountry } from "@/lib/calculators/overtime";
 
 const CURRENCY_PREFIX: Record<OvertimeCountry, string> = {
   US: "$",
