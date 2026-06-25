@@ -6,8 +6,8 @@
 
 export type Region = "UK" | "US" | "UK/CA" | "US/UK/CA" | "US/UK/CA/AU";
 
-/** Launch tier. Tier 1 = hero launch set; Tier 2 = expansion (added in batches). */
-export type Tier = 1 | 2;
+/** Launch tier. Tier 1 = hero launch set; Tier 2 = expansion; Tier 3 = long-tail funnel. */
+export type Tier = 1 | 2 | 3;
 
 export interface ToolMeta {
   slug: string;
@@ -153,6 +153,18 @@ export const TOOLS: ToolMeta[] = [
     hero: false,
     tier: 2,
     related: ["final-paycheck-deadline-calculator", "severance-pay-calculator"],
+  },
+  {
+    slug: "pay-rise-calculator",
+    name: "Pay rise calculator",
+    shortName: "Pay rise",
+    description:
+      "See your new salary after a percentage pay rise — plus the extra you take home each year and month.",
+    region: "US/UK/CA/AU",
+    icon: "ti-trending-up",
+    hero: false,
+    tier: 3,
+    related: ["salary-to-hourly-calculator", "take-home-overtime-calculator"],
   },
 ];
 
