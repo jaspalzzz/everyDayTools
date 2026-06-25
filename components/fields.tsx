@@ -98,6 +98,37 @@ export function SelectField({ id, label, value, onChange, options, hint }: Selec
   );
 }
 
+interface DateFieldProps {
+  id: string;
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  hint?: string;
+}
+
+export function DateField({ id, label, value, onChange, hint }: DateFieldProps) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label htmlFor={id} className="text-sm font-medium text-ink">
+        {label}
+      </label>
+      <input
+        id={id}
+        type="date"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded-md border border-surface-line bg-white px-3 py-2.5 text-sm text-ink outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-50"
+        aria-describedby={hint ? `${id}-hint` : undefined}
+      />
+      {hint && (
+        <p id={`${id}-hint`} className="text-xs text-ink-faint">
+          {hint}
+        </p>
+      )}
+    </div>
+  );
+}
+
 export function FieldGrid({ children }: { children: ReactNode }) {
   return <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">{children}</div>;
 }
