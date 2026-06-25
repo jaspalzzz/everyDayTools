@@ -49,4 +49,18 @@ describe("UK statutory redundancy pay", () => {
     const r = calcRedundancy({ age: -5, yearsOfService: NaN, weeklyPay: -100 });
     expect(r.valid).toBe(false);
   });
+
+  it("mixes age bands correctly across the 41 boundary", () => {
+    // age 43, 3 yrs → years worked at 42 (1.5), 41 (1.5), 40 (1.0) = 4 weeks
+    const r = calcRedundancy({ age: 43, yearsOfService: 3, weeklyPay: 500 });
+    expect(r.breakdown.find((b) => b.label === "Weeks' pay earned")?.value).toBe("4 weeks");
+    expect(r.headline).toBe("£2,000");
+  });
+
+  it("mixes age bands correctly across the 22 boundary", () => {
+    // age 23, 3 yrs → worked at 22 (1.0), 21 (0.5), 20 (0.5) = 2 weeks
+    const r = calcRedundancy({ age: 23, yearsOfService: 3, weeklyPay: 400 });
+    expect(r.breakdown.find((b) => b.label === "Weeks' pay earned")?.value).toBe("2 weeks");
+    expect(r.headline).toBe("£800");
+  });
 });

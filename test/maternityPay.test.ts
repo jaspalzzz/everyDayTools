@@ -30,4 +30,10 @@ describe("UK Statutory Maternity Pay", () => {
   it("returns invalid for zero earnings", () => {
     expect(calcMaternityPay({ averageWeeklyEarnings: 0 }).valid).toBe(false);
   });
+
+  it("treats the Lower Earnings Limit as the inclusive eligibility boundary", () => {
+    // £125 exactly = eligible (not below LEL); £124 = not eligible
+    expect(calcMaternityPay({ averageWeeklyEarnings: 125 }).valid).toBe(true);
+    expect(calcMaternityPay({ averageWeeklyEarnings: 124 }).valid).toBe(false);
+  });
 });

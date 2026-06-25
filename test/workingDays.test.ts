@@ -27,4 +27,21 @@ describe("working days between dates", () => {
     expect(calcWorkingDays({ startDate: "", endDate: "2024-01-01" }).valid).toBe(false);
     expect(calcWorkingDays({ startDate: "2024-13-40", endDate: "2024-01-01" }).valid).toBe(false);
   });
+
+  it("counts correctly across a DST transition (US spring-forward 2024-03-10)", () => {
+    // Fri 03-08, Sat, Sun(03-10 DST), Mon, Tue 03-12 → weekdays: Fri, Mon, Tue = 3
+    const r = calcWorkingDays({ startDate: "2024-03-08", endDate: "2024-03-12" });
+    expect(r.headline).toBe("3 working days");
+    expect(r.breakdown.find((b) => b.label === "Total days")?.value).toBe("5");
+  });
+
+  it("counts a full leap year correctly (2024 = 262 weekdays)", () => {
+    const r = calcWorkingDays({ startDate: "2024-01-01", endDate: "2024-12-31" });
+    expect(r.breakdown.find((b) => b.label === "Total days")?.value).toBe("366");
+    expect(r.headline).toBe("262 working days");
+  });
+
+  it("rejects an absurdly large range instead of hanging", () => {
+    expect(calcWorkingDays({ startDate: "1000-01-01", endDate: "9999-12-31" }).valid).toBe(false);
+  });
 });

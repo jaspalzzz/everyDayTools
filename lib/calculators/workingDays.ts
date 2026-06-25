@@ -50,12 +50,29 @@ export function calcWorkingDays(input: WorkingDaysInput): CalcResult {
     };
   }
 
-  const MS_PER_DAY = 86_400_000;
-  const totalDays = Math.round((end.getTime() - start.getTime()) / MS_PER_DAY) + 1; // inclusive
+  // Guard against pathological ranges (e.g. year 9999) freezing the loop.
+  const approxDays = (end.getTime() - start.getTime()) / 86_400_000;
+  if (approxDays > 366 * 150) {
+    return {
+      headline: "—",
+      headlineCaption: "Date range is too large",
+      breakdown: [],
+      notes: ["Please choose a date range shorter than 150 years."],
+      valid: false,
+    };
+  }
+
+  // Iterate by calendar date (DST-safe): advancing with setDate keeps local
+  // midnight regardless of daylight-saving changes, so getDay() stays correct.
   let workingDays = 0;
-  for (let i = 0; i < totalDays; i++) {
-    const day = new Date(start.getTime() + i * MS_PER_DAY).getDay();
+  let totalDays = 0;
+  const cursor = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  const lastDay = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+  while (cursor <= lastDay) {
+    const day = cursor.getDay();
     if (day !== 0 && day !== 6) workingDays++;
+    totalDays++;
+    cursor.setDate(cursor.getDate() + 1);
   }
   const weekendDays = totalDays - workingDays;
 
