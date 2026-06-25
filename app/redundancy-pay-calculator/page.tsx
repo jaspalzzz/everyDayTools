@@ -36,6 +36,16 @@ const faqs: FaqItem[] = [
     answer:
       "The maximum is 30 weeks' pay (20 years × 1.5 weeks) at the capped weekly rate, giving a statutory maximum of £21,570 from 6 April 2025.",
   },
+  {
+    question: "What counts as a week's pay for redundancy?",
+    answer:
+      "It is your normal gross weekly pay before tax. If your pay varies, an average over the 12 weeks before you were made redundant is used. The figure is then capped at £719 a week for the 2025/26 tax year, even if you earn more.",
+  },
+  {
+    question: "Can I lose my redundancy pay if I am offered another job?",
+    answer:
+      "Possibly. If your employer offers suitable alternative work and you turn it down without good reason, you can lose your statutory redundancy pay. You are entitled to a four-week trial period in the new role before deciding.",
+  },
 ];
 
 export default function Page() {
@@ -73,6 +83,13 @@ export default function Page() {
               one week; and each year under 22 is worth half a week. Because the weekly-pay figure
               is capped, higher earners receive the same statutory amount as someone earning £719 a
               week — though your contract may promise more.
+            </p>
+            <p>
+              Only <strong>continuous employment</strong> counts towards your years of service, and
+              the clock stops on the date your employment ends, not the date you were told. Periods
+              of sickness, maternity or paternity leave usually count, but a genuine break in
+              employment can reset it. If you are unsure of your start date, your contract or your
+              first payslip is the reliable reference.
             </p>
             <p>
               The figures change every April, which is why a maintained tool gives a more reliable

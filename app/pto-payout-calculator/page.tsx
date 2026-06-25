@@ -36,6 +36,16 @@ const faqs: FaqItem[] = [
     answer:
       "It is a policy where unused PTO is forfeited rather than paid out. These policies are legal in some states but banned in others, such as California, where earned vacation cannot be forfeited.",
   },
+  {
+    question: "How do I find my unused PTO balance?",
+    answer:
+      "Your most recent pay stub or your employer's payroll/HR system usually shows your accrued PTO and how much you have used. The difference is your unused balance — the number to enter in this calculator.",
+  },
+  {
+    question: "Does a PTO payout include unused sick leave?",
+    answer:
+      "Usually not. Payout rules generally cover vacation or combined PTO, while separately-accrued sick leave has its own state rules and is often not paid out on separation. Check how your employer classifies the time.",
+  },
 ];
 
 export default function Page() {
@@ -69,6 +79,13 @@ export default function Page() {
               Texas or Florida, what you receive depends on what your employee handbook or offer
               letter says. Reading that policy carefully is the single most useful thing you can do
               before you leave.
+            </p>
+            <p>
+              A third group of states sits in between: they allow an employer to cap accrual or
+              decline a payout, but <em>only</em> where there is a clear written policy the employee
+              agreed to. That is why the wording of your handbook matters so much — an ambiguous or
+              unwritten policy often defaults back to paying out earned time. When the rule is
+              conditional, this tool flags it so you know to read the policy rather than assume.
             </p>
             <p>
               The figure shown is gross — PTO payouts are taxed as supplemental wages. Download the

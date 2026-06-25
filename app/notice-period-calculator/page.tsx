@@ -36,6 +36,16 @@ const faqs: FaqItem[] = [
     answer:
       "Yes. You are normally entitled to your normal pay throughout your notice period, whether you work it or your employer places you on garden leave or pays in lieu of notice.",
   },
+  {
+    question: "What is payment in lieu of notice (PILON)?",
+    answer:
+      "PILON is when your employer pays your notice pay as a lump sum instead of having you work the notice period. It is allowed where your contract provides for it, and the payment is normally taxable as earnings.",
+  },
+  {
+    question: "Can I leave before my notice period ends?",
+    answer:
+      "Only by agreement with your employer. Leaving early without consent can be a breach of contract, though in practice many employers will agree to a shorter notice or waive the remainder. Get any agreement in writing.",
+  },
 ];
 
 export default function Page() {
@@ -68,6 +78,13 @@ export default function Page() {
               up to a ceiling of twelve weeks at twelve years&apos; service. A contract can improve
               on this but can never undercut it. In Canada, provincial employment-standards rules
               set a comparable sliding scale, commonly one week per year up to eight weeks.
+            </p>
+            <p>
+              How the notice is served also matters. Your employer can ask you to work it, place
+              you on <strong>garden leave</strong> — paid, but away from the workplace — or end it
+              early with <strong>payment in lieu of notice</strong>. All three keep you paid for the
+              full period; the difference is whether you attend work and when your employment
+              formally ends, which can affect your continuous-service date for other entitlements.
             </p>
             <p>
               Knowing your correct notice matters whether you are resigning or being let go — it

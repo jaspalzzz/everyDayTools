@@ -36,6 +36,16 @@ const faqs: FaqItem[] = [
     answer:
       "Often, yes — especially where severance is policy-based rather than statutory. Your length of service, the reason for termination and any release of claims are common negotiating points.",
   },
+  {
+    question: "When is severance usually paid?",
+    answer:
+      "Most often as a lump sum on or shortly after your last day, though some agreements pay it in instalments over a few months. The timing is set by the severance agreement, so check the document for the exact schedule.",
+  },
+  {
+    question: "Does accepting severance mean I waive my right to sue?",
+    answer:
+      "Frequently, yes. Severance agreements commonly include a release of claims, meaning that by signing you give up the right to bring certain legal claims against your employer. Because this is a legal waiver, it is worth reviewing carefully before signing.",
+  },
 ];
 
 export default function Page() {
@@ -68,6 +78,13 @@ export default function Page() {
               can adjust it to match an offer you have received. For Canada, the calculator applies
               the federal statutory minimum where it exceeds the policy figure, so you never see a
               number below your legal entitlement.
+            </p>
+            <p>
+              Severance is also separate from any notice you are owed. In a large layoff, US
+              employers may have to give advance notice under the federal WARN Act, and a severance
+              offer is usually tied to a written agreement that releases the employer from future
+              claims. Treat the number this tool produces as your baseline, then weigh it against
+              what you may be giving up by signing.
             </p>
             <p>
               Because severance is so often negotiable, it helps to walk into the conversation with
