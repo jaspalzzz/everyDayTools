@@ -106,6 +106,30 @@ export const TOOLS: ToolMeta[] = [
     tier: 2,
     related: ["notice-period-calculator", "redundancy-pay-calculator"],
   },
+  {
+    slug: "maternity-pay-calculator",
+    name: "Maternity pay calculator",
+    shortName: "Maternity pay",
+    description:
+      "Estimate your UK Statutory Maternity Pay across the 39-week period from your average weekly earnings.",
+    region: "UK",
+    icon: "ti-baby-carriage",
+    hero: false,
+    tier: 2,
+    related: ["holiday-entitlement-calculator", "notice-period-calculator"],
+  },
+  {
+    slug: "statutory-sick-pay-calculator",
+    name: "Statutory sick pay calculator",
+    shortName: "Statutory sick pay",
+    description:
+      "Your UK SSP for time off sick — the weekly rate, the 3 unpaid waiting days and your daily entitlement built in.",
+    region: "UK",
+    icon: "ti-mood-sick",
+    hero: false,
+    tier: 2,
+    related: ["holiday-entitlement-calculator", "redundancy-pay-calculator"],
+  },
 ];
 
 export function getTool(slug: string): ToolMeta | undefined {
