@@ -182,6 +182,24 @@ demand in the niche.
 - `components/calculators/*` — the 16 interactive tools.
 - `components/SiteHeader/SiteFooter/HomeToolList/Faq`.
 
+### The five sections (within the employment vertical)
+
+The site has **one top-level section by design** — employment. Internally it
+organises into five sub-sections. (Other verticals like housing or finance are
+deliberately out of scope; they'd be separate sister-sites, never sections here.)
+
+| Section | Built | Pending |
+|---|---|---|
+| 1 · Termination & exit | 7 | 2 |
+| 2 · Pay & earnings | 5 | 3 |
+| 3 · Leave & time off | 3 | 3 |
+| 4 · Dates & admin | 1 | 2 |
+| 5 · Contractor / self-employed | 0 | 3 |
+| **Total** | **16** | **13** |
+
+Planned roadmap (Tiers 1–3 = 16 tools) is **100% complete**. Against a
+*fully-built* employment hub (~29 tools), coverage is **≈55%**.
+
 ### The 16 tools
 
 **Tier 1 — hero launch set (highest RPM + document output)**
@@ -256,7 +274,21 @@ demand in the niche.
 
 ## 11. What's still down the line
 
-**Depth, not breadth** (the breadth is done):
+**Depth, not breadth** (the breadth is done).
+
+### Pending tools by section (13 — to go from "launch set" to "definitive hub")
+
+- **Pay & earnings (3):** Take-home / net pay (tax + NI/FICA) ← *biggest gap, highest volume*; Pension contribution; Commission / tronc.
+- **Contractor / self-employed (3):** IR35 / W-2 vs 1099; Day-rate ↔ salary; Self-employment tax. ← *entire empty section, high-RPM, low competition.*
+- **Leave & time off (3):** Paternity / adoption pay; Shared parental pay; Holiday carry-over / accrual.
+- **Termination & exit (2):** Settlement agreement; Tribunal / unfair-dismissal award.
+- **Dates & admin (2):** Continuous-service length; Probation end date.
+
+Top priority if expanding: the **take-home / net-pay** tool (it's the highest-volume
+employment search and we currently do gross only) and the **contractor section**
+(empty today, high earner CPC). Both are harder — real tax tables that drift yearly.
+
+### Maintenance & growth
 
 1. **Unemployment → 50 states.** Currently 4 verified states. Needs a dedicated
    sourcing pass for each state's weekly-benefit formula, min/max, and max weeks —
