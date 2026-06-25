@@ -9,13 +9,13 @@ import type { CalcResult, SourceRef } from "../types";
  * the constants below must be maintained each tax year.
  */
 export const REDUNDANCY_CONSTANTS = {
-  /** Maximum week's pay used in the statutory calculation (2025/26). */
-  weeklyPayCap: 719,
+  /** Maximum week's pay used in the statutory calculation (2026/27). */
+  weeklyPayCap: 751,
   /** Only the most recent 20 years of service count. */
   maxYears: 20,
   /** Minimum continuous service to qualify (years). */
   minYears: 2,
-  effectiveFrom: "6 April 2025",
+  effectiveFrom: "6 April 2026",
 } as const;
 
 export const REDUNDANCY_SOURCE: SourceRef = {

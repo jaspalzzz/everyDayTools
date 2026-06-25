@@ -19,7 +19,7 @@ const faqs: FaqItem[] = [
   {
     question: "How much is Statutory Sick Pay?",
     answer:
-      "SSP is £118.75 a week for the 2025/26 tax year, paid for up to 28 weeks. It is paid for the qualifying days you normally work, divided into a daily rate, once your unpaid waiting days have passed.",
+      "SSP is £123.25 a week for the 2026/27 tax year (or 80% of your normal weekly earnings if that is lower), paid for up to 28 weeks. It is paid for the qualifying days you normally work, divided into a daily rate, once your unpaid waiting days have passed.",
   },
   {
     question: "What are SSP waiting days?",
@@ -29,12 +29,12 @@ const faqs: FaqItem[] = [
   {
     question: "Do I qualify for SSP?",
     answer:
-      "You normally qualify if you are classed as an employee, have been off sick for at least 4 days in a row (including non-working days), and earn at least £125 a week on average before tax.",
+      "You normally qualify if you are classed as an employee, have been off sick for at least 4 days in a row (including non-working days), and earn at least £129 a week on average before tax.",
   },
   {
     question: "How is the SSP daily rate worked out?",
     answer:
-      "Divide the weekly rate by the number of days you normally work that week. For someone working 5 days a week, £118.75 ÷ 5 is about £23.75 a day. This calculator does that for your working pattern.",
+      "Divide the effective weekly rate by the number of days you normally work that week. For someone working 5 days a week, £123.25 ÷ 5 is £24.65 a day. If your earnings are low, the 80%-of-earnings cap may apply instead — the calculator handles both cases.",
   },
   {
     question: "How long can SSP be paid for?",
@@ -69,10 +69,11 @@ export default function Page() {
             <p>
               Statutory Sick Pay is the minimum your employer must pay when you are too ill to work,
               provided you meet the qualifying conditions. It is set as a flat{" "}
-              <strong>weekly rate</strong> — £118.75 for the 2025/26 tax year — and paid for the
-              days you would normally have worked, so the practical amount depends on your working
-              pattern. This calculator converts the weekly rate into your daily rate and applies it
-              to the days you have been off.
+              <strong>weekly rate</strong> — £123.25 for the 2026/27 tax year, or 80% of your
+              normal weekly earnings if that is lower — and paid for the days you would normally have
+              worked, so the practical amount depends on your working pattern. This calculator
+              converts the effective weekly rate into your daily rate and applies it to the days you
+              have been off.
             </p>
             <p>
               The part people most often miss is the <strong>three waiting days</strong>. The first
@@ -84,7 +85,7 @@ export default function Page() {
             </p>
             <p>
               To qualify you generally need to be an employee, be off for at least four days in a
-              row, and earn at least £125 a week on average. The figure shown is gross and is taxed
+              row, and earn at least £129 a week on average. The figure shown is gross and is taxed
               like normal pay. Download the PDF summary to keep a clear record of how your sick pay
               was calculated.
             </p>

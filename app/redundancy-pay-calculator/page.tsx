@@ -19,7 +19,7 @@ const faqs: FaqItem[] = [
   {
     question: "How is statutory redundancy pay calculated in the UK?",
     answer:
-      "It is based on your age, your length of service (capped at 20 years) and your weekly pay (capped at £719 from 6 April 2025). You get 0.5 week's pay for each year worked under 22, 1 week for each year aged 22–40, and 1.5 weeks for each year aged 41 or over.",
+      "It is based on your age, your length of service (capped at 20 years) and your weekly pay (capped at £751 from 6 April 2026). You get 0.5 week's pay for each year worked under 22, 1 week for each year aged 22–40, and 1.5 weeks for each year aged 41 or over.",
   },
   {
     question: "Do I qualify for statutory redundancy pay?",
@@ -34,12 +34,12 @@ const faqs: FaqItem[] = [
   {
     question: "What is the maximum statutory redundancy pay?",
     answer:
-      "The maximum is 30 weeks' pay (20 years × 1.5 weeks) at the capped weekly rate, giving a statutory maximum of £21,570 from 6 April 2025.",
+      "The maximum is 30 weeks' pay (20 years × 1.5 weeks) at the capped weekly rate, giving a statutory maximum of £22,530 from 6 April 2026.",
   },
   {
     question: "What counts as a week's pay for redundancy?",
     answer:
-      "It is your normal gross weekly pay before tax. If your pay varies, an average over the 12 weeks before you were made redundant is used. The figure is then capped at £719 a week for the 2025/26 tax year, even if you earn more.",
+      "It is your normal gross weekly pay before tax. If your pay varies, an average over the 12 weeks before you were made redundant is used. The figure is then capped at £751 a week for the 2026/27 tax year, even if you earn more.",
   },
   {
     question: "Can I lose my redundancy pay if I am offered another job?",
@@ -74,14 +74,14 @@ export default function Page() {
               service, you are legally entitled to <strong>statutory redundancy pay</strong>. This
               calculator applies the formula set out in the Employment Rights Act 1996: it counts
               your years of service (up to a maximum of 20), weights each year by your age during
-              that year, and multiplies the total by your weekly pay — capped at £719 for the
-              2025/26 tax year.
+              that year, and multiplies the total by your weekly pay — capped at £751 for the
+              2026/27 tax year.
             </p>
             <p>
               The age weighting is the part most people get wrong. Each full year worked while you
               were 41 or older is worth 1.5 weeks&apos; pay; each year between 22 and 40 is worth
               one week; and each year under 22 is worth half a week. Because the weekly-pay figure
-              is capped, higher earners receive the same statutory amount as someone earning £719 a
+              is capped, higher earners receive the same statutory amount as someone earning £751 a
               week — though your contract may promise more.
             </p>
             <p>

@@ -3,14 +3,14 @@ import { calcMaternityPay } from "@/lib/calculators/maternityPay";
 
 describe("UK Statutory Maternity Pay", () => {
   it("higher earner: 6 weeks at 90%, 33 weeks at the capped standard rate", () => {
-    // AWE £600 → 90% = £540 (> £187.18 cap). total = 6×540 + 33×187.18 = £9,416.94
+    // AWE £600 → 90% = £540 (> £194.32 cap). total = 6×540 + 33×194.32 = £9,652.56
     const r = calcMaternityPay({ averageWeeklyEarnings: 600 });
     expect(r.valid).toBe(true);
-    expect(r.headline).toBe("£9,417");
+    expect(r.headline).toBe("£9,653");
   });
 
   it("lower earner: 90% of pay is used for all 39 weeks when below the cap", () => {
-    // AWE £200 → 90% = £180 (< £187.18). total = 39 × £180 = £7,020
+    // AWE £200 → 90% = £180 (< £194.32). total = 39 × £180 = £7,020
     const r = calcMaternityPay({ averageWeeklyEarnings: 200 });
     expect(r.headline).toBe("£7,020");
   });
@@ -32,8 +32,8 @@ describe("UK Statutory Maternity Pay", () => {
   });
 
   it("treats the Lower Earnings Limit as the inclusive eligibility boundary", () => {
-    // £125 exactly = eligible (not below LEL); £124 = not eligible
-    expect(calcMaternityPay({ averageWeeklyEarnings: 125 }).valid).toBe(true);
-    expect(calcMaternityPay({ averageWeeklyEarnings: 124 }).valid).toBe(false);
+    // £129 exactly = eligible (not below LEL); £128 = not eligible (2026/27)
+    expect(calcMaternityPay({ averageWeeklyEarnings: 129 }).valid).toBe(true);
+    expect(calcMaternityPay({ averageWeeklyEarnings: 128 }).valid).toBe(false);
   });
 });

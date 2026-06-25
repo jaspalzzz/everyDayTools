@@ -12,11 +12,13 @@ export const SSP_SOURCE: SourceRef = {
 };
 
 export const SSP_CONSTANTS = {
-  taxYear: "2025/26",
-  weeklyRate: 118.75,
+  taxYear: "2026/27",
+  weeklyRate: 123.25,
   waitingDays: 3,
   maxWeeks: 28,
-  lowerEarningsLimit: 125,
+  lowerEarningsLimit: 129,
+  /** SSP is capped at 80% of normal weekly earnings (effective 2026/27). */
+  earningsFraction: 0.8,
 } as const;
 
 export interface SickPayInput {
@@ -58,7 +60,12 @@ export function calcSickPay(input: SickPayInput): CalcResult {
     };
   }
 
-  const dailyRate = C.weeklyRate / qdpw;
+  // SSP weekly rate is the lower of the statutory flat rate or 80% of AWE (2026/27).
+  const earningsCap = awe > 0 ? awe * C.earningsFraction : Infinity;
+  const effectiveWeeklyRate = Math.min(C.weeklyRate, earningsCap);
+  const cappedByEarnings = awe > 0 && earningsCap < C.weeklyRate;
+
+  const dailyRate = effectiveWeeklyRate / qdpw;
   const maxPayableDays = C.maxWeeks * qdpw;
   const payableDays = Math.min(Math.max(0, daysOff - C.waitingDays), maxPayableDays);
   const total = payableDays * dailyRate;
@@ -69,12 +76,18 @@ export function calcSickPay(input: SickPayInput): CalcResult {
       "The first 3 qualifying days are unpaid 'waiting days', so no SSP is payable until the 4th day off.",
     );
   }
-  notes.push(
-    `Based on ${C.taxYear} rate of ${formatCurrency(C.weeklyRate, "UK", { decimals: 2 })} a week, paid for up to 28 weeks.`,
-  );
+  if (cappedByEarnings) {
+    notes.push(
+      `Your SSP is capped at 80% of your weekly earnings (${formatCurrency(earningsCap, "UK", { decimals: 2 })}/wk) because that is less than the standard rate of ${formatCurrency(C.weeklyRate, "UK", { decimals: 2 })}.`,
+    );
+  } else {
+    notes.push(
+      `Based on ${C.taxYear} standard rate of ${formatCurrency(C.weeklyRate, "UK", { decimals: 2 })} a week (lower of flat rate or 80% of earnings), paid for up to 28 weeks.`,
+    );
+  }
   if (awe === 0) {
     notes.push(
-      `You must earn at least £${C.lowerEarningsLimit} a week on average to qualify — enter your weekly earnings above to check.`,
+      `You must earn at least £${C.lowerEarningsLimit} a week on average to qualify. Enter your weekly earnings above to check the 80% earnings cap.`,
     );
   }
   notes.push("SSP rates are uprated each April.");
@@ -83,8 +96,14 @@ export function calcSickPay(input: SickPayInput): CalcResult {
     headline: formatCurrency(total, "UK"),
     headlineCaption: "Estimated Statutory Sick Pay",
     breakdown: [
-      { label: "Weekly SSP rate", value: formatCurrency(C.weeklyRate, "UK", { decimals: 2 }) },
-      { label: `Daily rate (${pluralUnit(qdpw, "qualifying day")})`, value: formatCurrency(dailyRate, "UK", { decimals: 2 }) },
+      {
+        label: "Weekly SSP rate",
+        value: formatCurrency(effectiveWeeklyRate, "UK", { decimals: 2 }),
+      },
+      {
+        label: `Daily rate (${pluralUnit(qdpw, "qualifying day")})`,
+        value: formatCurrency(dailyRate, "UK", { decimals: 2 }),
+      },
       { label: "Unpaid waiting days", value: pluralUnit(C.waitingDays, "day") },
       { label: "Days paid", value: pluralUnit(payableDays, "day") },
       { label: "Total SSP", value: formatCurrency(total, "UK"), emphasis: true },

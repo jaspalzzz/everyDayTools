@@ -12,11 +12,11 @@ export const MATERNITY_SOURCE: SourceRef = {
 };
 
 export const SMP_CONSTANTS = {
-  taxYear: "2025/26",
+  taxYear: "2026/27",
   /** Standard weekly rate for weeks 7–39. */
-  standardWeeklyRate: 187.18,
+  standardWeeklyRate: 194.32,
   /** Lower Earnings Limit — minimum average weekly earnings to qualify. */
-  lowerEarningsLimit: 125,
+  lowerEarningsLimit: 129,
   higherRateFraction: 0.9,
   higherRateWeeks: 6,
   totalWeeks: 39,

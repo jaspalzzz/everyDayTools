@@ -9,10 +9,10 @@ describe("UK statutory redundancy pay", () => {
     expect(r.headline).toBe("£3,000");
   });
 
-  it("matches the published statutory maximum (£21,570 for 2025/26)", () => {
+  it("matches the published statutory maximum (£22,530 for 2026/27)", () => {
     const r = calcRedundancy({ age: 61, yearsOfService: 30, weeklyPay: 2000 });
-    // capped at 20 years, all 41+ => 30 weeks × £719 cap
-    expect(r.headline).toBe("£21,570");
+    // capped at 20 years, all 41+ => 30 weeks × £751 cap
+    expect(r.headline).toBe("£22,530");
   });
 
   it("applies the weekly pay cap for high earners", () => {

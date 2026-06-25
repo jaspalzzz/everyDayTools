@@ -19,12 +19,12 @@ const faqs: FaqItem[] = [
   {
     question: "How much is Statutory Maternity Pay?",
     answer:
-      "SMP is paid for up to 39 weeks. For the first 6 weeks you get 90% of your average weekly earnings. For the remaining 33 weeks you get the lower of the standard weekly rate (£187.18 for 2025/26) or 90% of your average weekly earnings.",
+      "SMP is paid for up to 39 weeks. For the first 6 weeks you get 90% of your average weekly earnings. For the remaining 33 weeks you get the lower of the standard weekly rate (£194.32 for 2026/27) or 90% of your average weekly earnings.",
   },
   {
     question: "Do I qualify for SMP?",
     answer:
-      "You normally qualify if you have worked for your employer continuously for at least 26 weeks by the 15th week before your due date, and earn at least £125 a week on average. If you do not qualify, you may be able to claim Maternity Allowance.",
+      "You normally qualify if you have worked for your employer continuously for at least 26 weeks by the 15th week before your due date, and earn at least £129 a week on average. If you do not qualify, you may be able to claim Maternity Allowance.",
   },
   {
     question: "How are my average weekly earnings worked out?",
@@ -75,10 +75,10 @@ export default function Page() {
               to 39 weeks of pay, which this calculator totals for you.
             </p>
             <p>
-              The standard rate is £187.18 a week for the 2025/26 tax year and is uprated every
+              The standard rate is £194.32 a week for the 2026/27 tax year and is uprated every
               April, which is why a maintained tool is more reliable than a remembered figure. To
               qualify you generally need 26 weeks&apos; continuous service by the 15th week before
-              your due date and average earnings of at least £125 a week. If you fall short — for
+              your due date and average earnings of at least £129 a week. If you fall short — for
               example as a recent job changer or a self-employed parent — you may be able to claim
               Maternity Allowance instead.
             </p>
