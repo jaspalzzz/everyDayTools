@@ -142,6 +142,18 @@ export const TOOLS: ToolMeta[] = [
     tier: 2,
     related: ["pto-payout-calculator", "severance-pay-calculator"],
   },
+  {
+    slug: "unemployment-benefit-calculator",
+    name: "Unemployment benefit calculator",
+    shortName: "Unemployment benefit",
+    description:
+      "Estimate your weekly US unemployment benefit and total payout from your highest-quarter wages, by state.",
+    region: "US",
+    icon: "ti-businessplan",
+    hero: false,
+    tier: 2,
+    related: ["final-paycheck-deadline-calculator", "severance-pay-calculator"],
+  },
 ];
 
 export function getTool(slug: string): ToolMeta | undefined {
