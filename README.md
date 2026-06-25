@@ -16,7 +16,7 @@ SEO tool site — **16 tools live across Tiers 1–3**.
 ```
 lib/calculators/*.ts      Pure calculation engines (no UI). Statutory constants live here.
 lib/pdf.ts                Client-side document generator (the workflow moat).
-lib/seo.ts                WebApplication + FAQPage schema helpers. SITE.url = production domain.
+lib/seo.ts                Site metadata, public URL/contact config, schema helpers.
 lib/types.ts              CalcResult contract every engine returns.
 lib/format.ts             Locale-aware currency/number formatting.
 data/tools.ts             Single source of truth: homepage, nav, internal links, sitemap.
@@ -39,14 +39,14 @@ e2e/                      33 Playwright tests — PDF bytes + live-result contra
 | PTO payout | US — 50 states + DC | `lib/calculators/ptoPayout.ts` |
 | Notice period | UK / CA | `lib/calculators/noticePeriod.ts` |
 | Severance pay | US / UK / CA | `lib/calculators/severance.ts` |
-| Overtime pay | US / UK / CA / AU | `lib/calculators/overtime.ts` |
+| Overtime pay | US / UK / CA / AU | `lib/calculators/takeHome.ts` |
 
 **Tier 2 — expansion**
 
 | Tool | Region | Engine |
 |------|--------|--------|
-| Salary → hourly | US / UK / CA | `lib/calculators/salaryToHourly.ts` |
-| Holiday entitlement | UK | `lib/calculators/holiday.ts` |
+| Salary → hourly | US / UK / CA / AU | `lib/calculators/salaryToHourly.ts` |
+| Holiday entitlement | UK | `lib/calculators/holidayAccrual.ts` |
 | Maternity pay (SMP) | UK | `lib/calculators/maternityPay.ts` |
 | Statutory sick pay (SSP) | UK | `lib/calculators/sickPay.ts` |
 | Final paycheck deadline | US — 50 states + DC | `lib/calculators/finalPaycheck.ts` |
@@ -56,10 +56,10 @@ e2e/                      33 Playwright tests — PDF bytes + live-result contra
 
 | Tool | Region | Engine |
 |------|--------|--------|
-| Pay rise | US / UK | `lib/calculators/payRise.ts` |
-| Pro-rata salary | UK / US | `lib/calculators/proRata.ts` |
-| Bonus tax | US | `lib/calculators/bonusTax.ts` |
-| Working days | Global | `lib/calculators/workingDays.ts` |
+| Pay rise | US / UK / CA / AU | `lib/calculators/payRise.ts` |
+| Pro-rata salary | US / UK / CA / AU | `lib/calculators/proRataSalary.ts` |
+| Bonus tax | US / UK / CA / AU | `lib/calculators/bonusTax.ts` |
+| Working days | US / UK / CA / AU | `lib/calculators/workingDays.ts` |
 | Garden leave | UK | `lib/calculators/gardenLeave.ts` |
 
 ## Quality gate
@@ -99,15 +99,16 @@ changes. Key constants to refresh:
 |----------|------|------|
 | `REDUNDANCY_CONSTANTS.weeklyPayCap` | `lib/calculators/redundancy.ts` | Each April |
 | `SMP_CONSTANTS`, `SSP_CONSTANTS` | `lib/calculators/maternityPay.ts`, `sickPay.ts` | Each April |
-| `HOLIDAY_CONSTANTS` | `lib/calculators/holiday.ts` | Each April |
+| `HOLIDAY_CONSTANTS` | `lib/calculators/holidayAccrual.ts` | Each April |
 | `STATE_PTO` rules | `lib/calculators/ptoPayout.ts` | As state laws change |
 | `UNEMPLOYMENT_STATES` caps | `lib/calculators/unemployment.ts` | Each benefit year |
 | US supplemental tax rate | `lib/calculators/bonusTax.ts` | As IRS updates |
 
-## Launch blockers
+## Launch configuration
 
-- [ ] **T0.1** Replace `"https://employmenttools.example"` in `lib/seo.ts` with the real domain
-- [ ] **T0.2** Update contact email addresses in `app/privacy/page.tsx` and `app/terms/page.tsx`
-- [ ] **T0.3** Wire up analytics (`NEXT_PUBLIC_ANALYTICS_ID` env var)
+- `NEXT_PUBLIC_SITE_URL` may override the production URL used for metadata, sitemap,
+  robots, canonicals, and schema. The fallback is `https://employmenttools.com`.
+- Public contact emails live in `lib/seo.ts`.
+- Analytics/Search Console are tracked in [TASKS.md](TASKS.md) under T1.3.
 
 See [TASKS.md](TASKS.md) for the full post-launch roadmap.

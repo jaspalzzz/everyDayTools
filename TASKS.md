@@ -52,11 +52,10 @@ statutory figure with its effective date and source.
 ## TIER 0 — Launch blockers (must ship before indexing / AdSense)
 
 ### T0.1 — Replace placeholder production domain
-- **File:** `lib/seo.ts` line 11 — `url: "https://employmenttools.example"`.
-- **Do:** replace with the real production domain (owner will provide; e.g.
-  `https://employmenttools.com`). This single value propagates to `metadataBase`,
+- **File:** `lib/seo.ts` line 11 — `SITE.url`.
+- **Do:** set the real production domain. This single value propagates to `metadataBase`,
   every canonical URL, sitemap, robots, and schema.
-- **Accept:** `grep -r "employmenttools.example"` returns nothing; built sitemap
+- **Accept:** no placeholder production domain remains; built sitemap
   and a tool page's canonical show the real domain.
 
 ### T0.2 — Privacy policy, terms, and a global disclaimer (AdSense blocker)

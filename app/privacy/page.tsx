@@ -91,10 +91,10 @@ export default function PrivacyPage() {
       <h2>8. Contact</h2>
       <p>
         Questions about this policy? Email us at{" "}
-        <a href="mailto:privacy@employmenttools.example" className="text-brand-600 hover:underline">
-          privacy@employmenttools.example
+        <a href={`mailto:${SITE.privacyEmail}`} className="text-brand-600 hover:underline">
+          {SITE.privacyEmail}
         </a>
-        . (Update this address before launch.)
+        .
       </p>
     </article>
   );

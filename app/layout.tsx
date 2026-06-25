@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: `${SITE.name} — ${SITE.tagline}`,
     description:
       "Free, country-aware employment calculators. Live results, no signup, instant PDF.",
-    images: ["/opengraph-image"],
+    images: ["/twitter-image"],
   },
 };
 

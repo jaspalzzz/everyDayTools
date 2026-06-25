@@ -8,8 +8,11 @@ import type { FaqItem } from "./types";
 
 export const SITE = {
   name: "EmploymentTools",
-  url: "https://employmenttools.example",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://employmenttools.com",
   tagline: "Country-aware employment calculators with instant document output",
+  contactEmail: "hello@employmenttools.com",
+  privacyEmail: "privacy@employmenttools.com",
+  legalEmail: "legal@employmenttools.com",
 } as const;
 
 export function webApplicationSchema(params: {

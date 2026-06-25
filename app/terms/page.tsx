@@ -83,10 +83,10 @@ export default function TermsPage() {
       <h2>9. Contact</h2>
       <p>
         Questions about these terms? Email{" "}
-        <a href="mailto:legal@employmenttools.example" className="text-brand-600 hover:underline">
-          legal@employmenttools.example
+        <a href={`mailto:${SITE.legalEmail}`} className="text-brand-600 hover:underline">
+          {SITE.legalEmail}
         </a>
-        . (Update this address before launch.)
+        .
       </p>
     </article>
   );
