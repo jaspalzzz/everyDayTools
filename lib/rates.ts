@@ -42,6 +42,40 @@ export const UK_SMP = {
   } satisfies SourceRef,
 } as const;
 
+export const UK_SPP = {
+  weeklyRate: UK_SMP.standardWeeklyRate,
+  lowerEarningsLimit: UK_SMP.lowerEarningsLimit,
+  higherRateFraction: UK_SMP.higherRateFraction,
+  maxWeeks: 2,
+  effectiveDate: UK_SMP.effectiveDate,
+  taxYear: UK_SMP.taxYear,
+  source: {
+    label: "GOV.UK — Statutory Paternity Pay and Leave",
+    url: "https://www.gov.uk/paternity-pay-leave/pay",
+  } satisfies SourceRef,
+} as const;
+
+export const UK_SAP = {
+  ...UK_SMP,
+  source: {
+    label: "GOV.UK — Statutory Adoption Pay and Leave",
+    url: "https://www.gov.uk/adoption-pay-leave/pay",
+  } satisfies SourceRef,
+} as const;
+
+export const UK_SHPP = {
+  weeklyRate: UK_SMP.standardWeeklyRate,
+  lowerEarningsLimit: UK_SMP.lowerEarningsLimit,
+  higherRateFraction: UK_SMP.higherRateFraction,
+  maxWeeks: 37,
+  effectiveDate: UK_SMP.effectiveDate,
+  taxYear: UK_SMP.taxYear,
+  source: {
+    label: "GOV.UK — Shared Parental Leave and Pay",
+    url: "https://www.gov.uk/shared-parental-leave-and-pay",
+  } satisfies SourceRef,
+} as const;
+
 export const UK_SSP = {
   weeklyRate: 123.25,
   waitingDays: 3,

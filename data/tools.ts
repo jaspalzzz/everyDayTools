@@ -172,6 +172,42 @@ export const TOOLS: ToolMeta[] = [
     related: ["holiday-entitlement-calculator", "notice-period-calculator"],
   },
   {
+    slug: "paternity-pay-calculator",
+    name: "Paternity pay calculator",
+    shortName: "Paternity pay",
+    description:
+      "Estimate UK Statutory Paternity Pay for 1 or 2 weeks from your average weekly earnings.",
+    region: "UK",
+    icon: "ti-baby-bottle",
+    hero: false,
+    tier: 2,
+    related: ["maternity-pay-calculator", "shared-parental-leave-calculator"],
+  },
+  {
+    slug: "adoption-pay-calculator",
+    name: "Adoption pay calculator",
+    shortName: "Adoption pay",
+    description:
+      "Estimate UK Statutory Adoption Pay across the 39-week period from your average weekly earnings.",
+    region: "UK",
+    icon: "ti-home-heart",
+    hero: false,
+    tier: 2,
+    related: ["maternity-pay-calculator", "shared-parental-leave-calculator"],
+  },
+  {
+    slug: "shared-parental-leave-calculator",
+    name: "Shared parental leave pay calculator",
+    shortName: "Shared parental pay",
+    description:
+      "Estimate UK Statutory Shared Parental Pay for up to 37 payable weeks from average weekly earnings.",
+    region: "UK",
+    icon: "ti-users-group",
+    hero: false,
+    tier: 2,
+    related: ["maternity-pay-calculator", "paternity-pay-calculator"],
+  },
+  {
     slug: "statutory-sick-pay-calculator",
     name: "Statutory sick pay calculator",
     shortName: "Statutory sick pay",

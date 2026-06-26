@@ -31,15 +31,23 @@ describe("US unemployment benefit estimate", () => {
     expect(r.breakdown.find((b) => b.label === "Maximum potential total")?.value).toBe("$3,300");
   });
 
-  it("New York: no floor applied, caps at $869", () => {
-    expect(calcUnemployment({ stateCode: "NY", highestQuarterWages: 2600 }).headline).toBe("$100");
+  it("New York: applies the DOL floor and caps at $869", () => {
+    expect(calcUnemployment({ stateCode: "NY", highestQuarterWages: 2600 }).headline).toBe("$140");
     expect(calcUnemployment({ stateCode: "NY", highestQuarterWages: 40000 }).headline).toBe("$869");
+  });
+
+  it("Massachusetts: divisor 0 returns the capped state maximum estimate", () => {
+    const r = calcUnemployment({ stateCode: "MA", highestQuarterWages: 1000 });
+    expect(r.valid).toBe(true);
+    expect(r.headline).toBe("$1,105");
+    expect(r.breakdown.find((b) => b.label === "Formula")?.value).toBe("State maximum estimate");
+    expect(r.notes.some((n) => n.includes("consult your state agency"))).toBe(true);
   });
 
   it("always surfaces the estimate + coverage caveats", () => {
     const r = calcUnemployment({ stateCode: "CA", highestQuarterWages: 8000 });
     expect(r.notes.some((n) => n.toLowerCase().includes("simplified estimate"))).toBe(true);
-    expect(r.notes.some((n) => n.toLowerCase().includes("curated set"))).toBe(true);
+    expect(r.notes.some((n) => n.toLowerCase().includes("do not include extensions"))).toBe(true);
   });
 
   it("returns invalid for unknown state or zero wages", () => {
@@ -48,12 +56,20 @@ describe("US unemployment benefit estimate", () => {
   });
 
   it("state table is internally consistent (data integrity)", () => {
+    expect(UNEMPLOYMENT_STATES).toHaveLength(51);
+    expect(UNEMPLOYMENT_STATES.map((s) => s.name)).toEqual(
+      [...UNEMPLOYMENT_STATES].map((s) => s.name).sort((a, b) => a.localeCompare(b)),
+    );
+
     for (const s of UNEMPLOYMENT_STATES) {
       expect(s.code).toHaveLength(2);
-      expect(s.divisor).toBeGreaterThan(0);
+      expect(s.divisor).toBeGreaterThanOrEqual(0);
       expect(s.maxWeeks).toBeGreaterThan(0);
       expect(s.maxWBA).toBeGreaterThan(s.minWBA);
       expect(s.effective.length).toBeGreaterThan(5);
+      if (s.divisor === 0) {
+        expect(s.note).toContain("consult your state agency");
+      }
     }
   });
 });

@@ -31,7 +31,9 @@ export function UnemploymentCalculator() {
           label="State"
           value={stateCode}
           onChange={setStateCode}
-          options={UNEMPLOYMENT_STATES.map((s) => ({ value: s.code, label: s.name }))}
+          options={[...UNEMPLOYMENT_STATES]
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((s) => ({ value: s.code, label: s.name }))}
         />
         <NumberField
           id="highest-quarter-wages"
