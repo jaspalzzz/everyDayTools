@@ -1,9 +1,10 @@
-import OgImage, { alt as ogAlt, contentType as ogContentType, size as ogSize } from "./opengraph-image";
+import { homepageOgCard, OG_CONTENT_TYPE, OG_SIZE } from "@/lib/ogImage";
 
-// Pre-render once at build time so the image ships as a static asset (output: export).
 export const dynamic = "force-static";
-export const alt = ogAlt;
-export const size = ogSize;
-export const contentType = ogContentType;
+export const alt = "My Pay Rights — Law-backed pay rights calculators";
+export const size = OG_SIZE;
+export const contentType = OG_CONTENT_TYPE;
 
-export default OgImage;
+export default function TwitterImage() {
+  return homepageOgCard();
+}

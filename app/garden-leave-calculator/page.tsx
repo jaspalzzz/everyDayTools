@@ -8,7 +8,7 @@ import type { FaqItem } from "@/lib/types";
 const tool = getTool("garden-leave-calculator")!;
 const url = `${SITE.url}/${tool.slug}`;
 
-export const metadata = toolMetadata({ title: tool.name, description: tool.description, url });
+export const metadata = toolMetadata({ title: tool.name, description: tool.description, url, slug: tool.slug });
 
 const faqs: FaqItem[] = [
   {

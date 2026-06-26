@@ -103,7 +103,10 @@ export function toolMetadata(params: {
   title: string;
   description: string;
   url: string;
+  /** Slug used to build the per-page OG image path. */
+  slug: string;
 }): Metadata {
+  const ogImageUrl = `/${params.slug}/opengraph-image`;
   return {
     title: params.title,
     description: params.description,
@@ -112,10 +115,12 @@ export function toolMetadata(params: {
       title: params.title,
       description: params.description,
       url: params.url,
+      images: [{ url: ogImageUrl, width: 1200, height: 630 }],
     },
     twitter: {
       title: params.title,
       description: params.description,
+      images: [ogImageUrl],
     },
   };
 }
