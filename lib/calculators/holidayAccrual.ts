@@ -1,28 +1,15 @@
 import { pluralUnit, safeNumber } from "../format";
+import { UK_HOLIDAY } from "../rates";
 import type { CalcResult, SourceRef } from "../types";
 
-/**
- * UK statutory annual leave entitlement. Source: Working Time Regulations 1998 —
- * 5.6 weeks per year, capped at 28 days for those working 5+ days a week.
- */
-export const HOLIDAY_SOURCE: SourceRef = {
-  label: "GOV.UK — Holiday entitlement",
-  url: "https://www.gov.uk/holiday-entitlement-rights",
-};
-
-export const HOLIDAY_CONSTANTS = {
-  statutoryWeeks: 5.6,
-  maxStatutoryDays: 28,
-} as const;
+export const HOLIDAY_SOURCE: SourceRef = UK_HOLIDAY.source;
+export const HOLIDAY_CONSTANTS = UK_HOLIDAY;
 
 export interface HolidayInput {
-  /** Days normally worked per week (1–7). */
   daysPerWeek: number;
-  /** Months into the current leave year worked so far (0–12), for accrual. */
   monthsWorked: number;
 }
 
-/** Round to one decimal place (entitlement is commonly quoted to 0.5 of a day). */
 function round1(n: number): number {
   return Math.round(n * 10) / 10;
 }
@@ -30,6 +17,7 @@ function round1(n: number): number {
 export function calcHolidayAccrual(input: HolidayInput): CalcResult {
   const daysPerWeek = Math.min(safeNumber(input.daysPerWeek), 7);
   const monthsWorked = Math.min(safeNumber(input.monthsWorked, 12), 12);
+  const C = UK_HOLIDAY;
 
   if (daysPerWeek <= 0) {
     return {
@@ -41,10 +29,10 @@ export function calcHolidayAccrual(input: HolidayInput): CalcResult {
     };
   }
 
-  const uncapped = daysPerWeek * HOLIDAY_CONSTANTS.statutoryWeeks;
-  const annual = round1(Math.min(uncapped, HOLIDAY_CONSTANTS.maxStatutoryDays));
+  const uncapped = daysPerWeek * C.statutoryWeeks;
+  const annual = round1(Math.min(uncapped, C.maxStatutoryDays));
   const accrued = round1(annual * (monthsWorked / 12));
-  const capped = uncapped > HOLIDAY_CONSTANTS.maxStatutoryDays;
+  const capped = uncapped > C.maxStatutoryDays;
 
   const notes: string[] = [];
   if (capped) {
@@ -59,7 +47,7 @@ export function calcHolidayAccrual(input: HolidayInput): CalcResult {
     headlineCaption: "Your statutory annual leave entitlement",
     breakdown: [
       { label: "Days worked per week", value: pluralUnit(daysPerWeek, "day") },
-      { label: "Statutory multiplier", value: `${HOLIDAY_CONSTANTS.statutoryWeeks} weeks` },
+      { label: "Statutory multiplier", value: `${C.statutoryWeeks} weeks` },
       { label: "Full-year entitlement", value: pluralUnit(annual, "day"), emphasis: true },
       { label: `Accrued after ${pluralUnit(monthsWorked, "month")}`, value: pluralUnit(accrued, "day") },
     ],

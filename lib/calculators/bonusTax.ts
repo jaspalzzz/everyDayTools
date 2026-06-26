@@ -1,4 +1,5 @@
 import { formatCurrency, safeNumber } from "../format";
+import { US_BONUS } from "../rates";
 import type { CalcResult, CountryCode, SourceRef } from "../types";
 
 /**
@@ -13,7 +14,7 @@ export const BONUS_TAX_SOURCE: SourceRef = {
 };
 
 /** US federal flat supplemental withholding rate (bonuses up to $1M). */
-export const US_SUPPLEMENTAL_RATE = 22;
+export const US_SUPPLEMENTAL_RATE = US_BONUS.supplementalRate * 100;
 
 export interface BonusTaxInput {
   country: CountryCode;

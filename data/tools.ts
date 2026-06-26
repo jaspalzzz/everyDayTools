@@ -40,6 +40,42 @@ export const TOOLS: ToolMeta[] = [
     related: ["salary-to-hourly-calculator", "bonus-tax-calculator", "pay-rise-calculator"],
   },
   {
+    slug: "self-employment-tax-calculator",
+    name: "Self-employment tax calculator",
+    shortName: "SE tax",
+    description:
+      "Estimate your self-employment tax and take-home pay as a sole trader or freelancer — UK Class 2/4 NI or US SE tax (15.3%) calculated in one step.",
+    region: "US/UK/CA",
+    icon: "ti-briefcase",
+    hero: false,
+    tier: 2,
+    related: ["take-home-pay-calculator", "ir35-calculator", "day-rate-calculator"],
+  },
+  {
+    slug: "day-rate-calculator",
+    name: "Day rate calculator",
+    shortName: "Day rate",
+    description:
+      "Convert a contractor day rate to an annual salary equivalent — or find the day rate you need to match your current salary — with a contractor-premium uplift built in.",
+    region: "US/UK/CA",
+    icon: "ti-calendar-dollar",
+    hero: false,
+    tier: 2,
+    related: ["self-employment-tax-calculator", "ir35-calculator", "salary-to-hourly-calculator"],
+  },
+  {
+    slug: "ir35-calculator",
+    name: "IR35 calculator",
+    shortName: "IR35 / 1099 vs W-2",
+    description:
+      "Compare take-home pay inside vs outside IR35 (UK) or as a 1099 contractor vs W-2 employee (US) — tax and NI modelled side by side.",
+    region: "US/UK/CA",
+    icon: "ti-scale",
+    hero: false,
+    tier: 2,
+    related: ["self-employment-tax-calculator", "day-rate-calculator", "take-home-pay-calculator"],
+  },
+  {
     slug: "redundancy-pay-calculator",
     name: "Redundancy pay calculator",
     shortName: "Redundancy pay",

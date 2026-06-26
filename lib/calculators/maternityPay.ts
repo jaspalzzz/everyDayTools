@@ -1,35 +1,17 @@
 import { formatCurrency, safeNumber } from "../format";
+import { UK_SMP } from "../rates";
 import type { CalcResult, SourceRef } from "../types";
 
-/**
- * UK Statutory Maternity Pay (SMP). Source: GOV.UK / Social Security
- * Contributions and Benefits Act 1992. Rates are uprated each April — they
- * live in one place here so a yearly change is a single edit (drift moat).
- */
-export const MATERNITY_SOURCE: SourceRef = {
-  label: "GOV.UK — Statutory Maternity Pay and Leave",
-  url: "https://www.gov.uk/maternity-pay-leave/pay",
-};
-
-export const SMP_CONSTANTS = {
-  taxYear: "2026/27",
-  /** Standard weekly rate for weeks 7–39. */
-  standardWeeklyRate: 194.32,
-  /** Lower Earnings Limit — minimum average weekly earnings to qualify. */
-  lowerEarningsLimit: 129,
-  higherRateFraction: 0.9,
-  higherRateWeeks: 6,
-  totalWeeks: 39,
-} as const;
+export const MATERNITY_SOURCE: SourceRef = UK_SMP.source;
+export const SMP_CONSTANTS = UK_SMP;
 
 export interface MaternityInput {
-  /** Average gross weekly earnings over the relevant period. */
   averageWeeklyEarnings: number;
 }
 
 export function calcMaternityPay(input: MaternityInput): CalcResult {
   const awe = safeNumber(input.averageWeeklyEarnings);
-  const C = SMP_CONSTANTS;
+  const C = UK_SMP;
 
   if (awe <= 0) {
     return {

@@ -1,4 +1,5 @@
 import { formatCurrency, pluralUnit, safeNumber } from "../format";
+import { US_FLSA } from "../rates";
 import type { CalcResult, CountryCode, SourceRef } from "../types";
 
 /**
@@ -47,7 +48,7 @@ export function calcOvertime(input: OvertimeInput): CalcResult {
   // than 40 regular hours, the excess is almost certainly mis-categorised — surface
   // a warning and the corrected figure rather than silently overriding their input
   // (which would be wrong for exempt staff or state daily-overtime rules).
-  const FLSA_WEEKLY_THRESHOLD = 40;
+  const FLSA_WEEKLY_THRESHOLD = US_FLSA.weeklyOvertimeThreshold;
   const usExcessRegular =
     input.country === "US" && regular > FLSA_WEEKLY_THRESHOLD ? regular - FLSA_WEEKLY_THRESHOLD : 0;
 

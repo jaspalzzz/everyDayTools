@@ -1,43 +1,20 @@
 import { formatCurrency, pluralUnit, safeNumber } from "../format";
+import { UK_SSP } from "../rates";
 import type { CalcResult, SourceRef } from "../types";
 
-/**
- * UK Statutory Sick Pay (SSP). Source: GOV.UK. Paid from the 4th qualifying
- * day of sickness (the first 3 are unpaid "waiting days"), for up to 28 weeks.
- * Weekly rate is uprated each April — single-source constant below.
- */
-export const SSP_SOURCE: SourceRef = {
-  label: "GOV.UK — Statutory Sick Pay (SSP)",
-  url: "https://www.gov.uk/statutory-sick-pay",
-};
-
-export const SSP_CONSTANTS = {
-  taxYear: "2026/27",
-  weeklyRate: 123.25,
-  waitingDays: 3,
-  maxWeeks: 28,
-  lowerEarningsLimit: 129,
-  /** SSP is capped at 80% of normal weekly earnings (effective 2026/27). */
-  earningsFraction: 0.8,
-} as const;
+export const SSP_SOURCE: SourceRef = UK_SSP.source;
+export const SSP_CONSTANTS = UK_SSP;
 
 export interface SickPayInput {
-  /** Days normally worked per week (qualifying days), 1–7. */
   qualifyingDaysPerWeek: number;
-  /** Total calendar working days off sick. */
   daysOffSick: number;
-  /**
-   * Average gross weekly earnings. Must be supplied to unlock a valid result —
-   * undefined means the user has not yet entered a value; 0 means entered-as-zero.
-   * Both the LEL eligibility check and the 80%-of-earnings cap require this figure.
-   */
   averageWeeklyEarnings?: number;
 }
 
 export function calcSickPay(input: SickPayInput): CalcResult {
   const qdpw = Math.min(safeNumber(input.qualifyingDaysPerWeek), 7);
   const daysOff = safeNumber(input.daysOffSick);
-  const C = SSP_CONSTANTS;
+  const C = UK_SSP;
 
   if (qdpw <= 0 || daysOff <= 0) {
     return {
@@ -49,7 +26,6 @@ export function calcSickPay(input: SickPayInput): CalcResult {
     };
   }
 
-  // Earnings are required: they gate both the LEL eligibility check and the 80% cap.
   if (input.averageWeeklyEarnings === undefined) {
     return {
       headline: "—",
@@ -64,7 +40,6 @@ export function calcSickPay(input: SickPayInput): CalcResult {
 
   const awe = safeNumber(input.averageWeeklyEarnings);
 
-  // If earnings are below the LEL, the employee is ineligible.
   if (awe < C.lowerEarningsLimit) {
     return {
       headline: "Not eligible",
@@ -78,7 +53,6 @@ export function calcSickPay(input: SickPayInput): CalcResult {
     };
   }
 
-  // SSP weekly rate is the lower of the statutory flat rate or 80% of AWE (2026/27).
   const earningsCap = awe * C.earningsFraction;
   const effectiveWeeklyRate = Math.min(C.weeklyRate, earningsCap);
   const cappedByEarnings = awe > 0 && earningsCap < C.weeklyRate;
@@ -114,14 +88,8 @@ export function calcSickPay(input: SickPayInput): CalcResult {
     headline: formatCurrency(total, "UK"),
     headlineCaption: "Estimated Statutory Sick Pay",
     breakdown: [
-      {
-        label: "Weekly SSP rate",
-        value: formatCurrency(effectiveWeeklyRate, "UK", { decimals: 2 }),
-      },
-      {
-        label: `Daily rate (${pluralUnit(qdpw, "qualifying day")})`,
-        value: formatCurrency(dailyRate, "UK", { decimals: 2 }),
-      },
+      { label: "Weekly SSP rate", value: formatCurrency(effectiveWeeklyRate, "UK", { decimals: 2 }) },
+      { label: `Daily rate (${pluralUnit(qdpw, "qualifying day")})`, value: formatCurrency(dailyRate, "UK", { decimals: 2 }) },
       { label: "Unpaid waiting days", value: pluralUnit(C.waitingDays, "day") },
       { label: "Days paid", value: pluralUnit(payableDays, "day") },
       { label: "Total SSP", value: formatCurrency(total, "UK"), emphasis: true },
