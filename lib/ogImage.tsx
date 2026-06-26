@@ -3,7 +3,8 @@ import { ImageResponse } from "next/og";
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_CONTENT_TYPE = "image/png";
 
-// Inline SVG paths from logo-mark.svg — avoids fs/fetch in edge/static context
+// Inline SVG paths from logo-mark.svg — document + checkmark mark
+// Keep in sync with public/logo-mark.svg
 const LOGO_MARK = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -11,37 +12,16 @@ const LOGO_MARK = (
     height="56"
     viewBox="0 0 96 96"
   >
-    <rect x="9" y="9" width="78" height="78" rx="20" fill="#0C447C" />
-    <path
-      d="M24 65V30l17 21 17-21v35"
-      fill="none"
-      stroke="#FFFFFF"
-      strokeWidth="6.25"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M62 31h8.5a8.5 8.5 0 0 1 0 17H62V31Z"
-      fill="none"
-      stroke="#C7DFF5"
-      strokeWidth="5.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M63 48l12 15"
-      fill="none"
-      stroke="#C7DFF5"
-      strokeWidth="5.5"
-      strokeLinecap="round"
-    />
-    <path
-      d="M25 73h46"
-      fill="none"
-      stroke="#E6F1FB"
-      strokeWidth="3.25"
-      strokeLinecap="round"
-    />
+    {/* Document body */}
+    <path d="M26 14h30l16 16v48H26z" fill="#FFFFFF" />
+    <path d="M56 14v16h16" fill="#E6F1FB" />
+    <path d="M26 14h30l16 16v48H26z" fill="none" stroke="#0C447C" strokeWidth="5" strokeLinejoin="round" />
+    <path d="M56 14v16h16" fill="none" stroke="#0C447C" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+    {/* Text lines */}
+    <path d="M36 35h18M36 47h22M36 59h14" fill="none" stroke="#0C447C" strokeWidth="4" strokeLinecap="round" />
+    {/* Checkmark badge */}
+    <circle cx="67" cy="66" r="16" fill="#185FA5" />
+    <path d="M59 66l6 6 12-14" fill="none" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
