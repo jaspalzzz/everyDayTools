@@ -1,3 +1,4 @@
+import { SITE } from "./seo";
 import type { CalcResult } from "./types";
 
 /**
@@ -57,7 +58,7 @@ export async function generateLetter(result: CalcResult, meta: LetterMeta): Prom
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
   doc.setTextColor(120);
-  doc.text(`Generated ${today} · EmploymentTools`, MARGIN, y);
+  doc.text(`Generated ${today} · ${SITE.name}`, MARGIN, y);
   doc.setTextColor(0);
   y += LINE + 3;
 

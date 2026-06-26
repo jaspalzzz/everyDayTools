@@ -1,0 +1,19 @@
+# Cloudflare Pages headers. Applied at the edge to the static assets in `out/`.
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+
+# Security headers on every response.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net data:; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+
+# The OG/Twitter images are emitted without a file extension, so Cloudflare
+# would serve them as octet-stream. Force image/png so social scrapers accept them.
+/opengraph-image
+  Content-Type: image/png
+
+/twitter-image
+  Content-Type: image/png

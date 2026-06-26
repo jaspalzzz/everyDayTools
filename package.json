@@ -1,8 +1,8 @@
 {
-  "name": "everydaytools",
+  "name": "mypayrights",
   "version": "0.1.0",
   "private": true,
-  "description": "EmploymentTools — country-aware employment calculators with document output",
+  "description": "My Pay Rights — law-backed calculators for pay, leave, and final wages",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

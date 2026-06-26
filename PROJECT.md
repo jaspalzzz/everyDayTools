@@ -1,4 +1,4 @@
-# EmploymentTools — Project Overview
+# My Pay Rights — Project Overview
 
 > A premium, country-aware **employment-calculator** website. One tight vertical,
 > deeply built, where every tool turns a number into a **downloadable document**.
@@ -12,7 +12,7 @@
 
 ## 1. Concept
 
-EmploymentTools is a focused web app that answers high-stakes **money-and-work**
+My Pay Rights is a focused web app that answers high-stakes **money-and-work**
 questions with instant, jurisdiction-aware calculators:
 
 - "What's my redundancy pay?" (UK)

@@ -7,12 +7,12 @@ import type { FaqItem } from "./types";
  */
 
 export const SITE = {
-  name: "EmploymentTools",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://employmenttools.com",
-  tagline: "Country-aware employment calculators with instant document output",
-  contactEmail: "hello@employmenttools.com",
-  privacyEmail: "privacy@employmenttools.com",
-  legalEmail: "legal@employmenttools.com",
+  name: "My Pay Rights",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://mypayrights.com",
+  tagline: "Law-backed calculators for pay, leave, and final wages",
+  contactEmail: "hello@mypayrights.com",
+  privacyEmail: "privacy@mypayrights.com",
+  legalEmail: "legal@mypayrights.com",
 } as const;
 
 export function webApplicationSchema(params: {

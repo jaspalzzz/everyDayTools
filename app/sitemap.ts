@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { TOOLS } from "@/data/tools";
 import { SITE } from "@/lib/seo";
 
+// Generated once at build time for the static export.
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const toolEntries: MetadataRoute.Sitemap = TOOLS.map((tool) => ({
     url: `${SITE.url}/${tool.slug}`,

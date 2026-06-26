@@ -4,7 +4,7 @@ import { SITE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "EmploymentTools builds country-aware employment calculators that turn statutory rules into a clear answer and a downloadable document.",
+    "My Pay Rights builds law-backed employment pay calculators that turn statutory rules into a clear answer and a downloadable document.",
   alternates: { canonical: `${SITE.url}/about` },
 };
 
@@ -13,7 +13,7 @@ export default function AboutPage() {
     <article className="prose-tool mx-auto max-w-2xl px-5 py-10 text-sm leading-relaxed text-ink-soft">
       <h1 className="text-2xl font-medium tracking-tight text-ink">About {SITE.name}</h1>
       <p className="mt-4">
-        {SITE.name} builds focused employment calculators for the moments that matter — being made
+        {SITE.name} builds focused pay rights calculators for the moments that matter — being made
         redundant, leaving a job, working out your notice, or checking your overtime. Each tool has
         the relevant country&apos;s statutory rules built in, updates live as you type, and lets you
         download a dated PDF summary.

@@ -8,7 +8,7 @@ import { SSP_SOURCE, calcSickPay } from "@/lib/calculators/sickPay";
 export function SickPayCalculator() {
   const [qualifyingDaysPerWeek, setQualifyingDaysPerWeek] = useState<number | "">(5);
   const [daysOffSick, setDaysOffSick] = useState<number | "">(10);
-  const [weeklyEarnings, setWeeklyEarnings] = useState<number | "">("");
+  const [weeklyEarnings, setWeeklyEarnings] = useState<number | "">(200);
 
   const result = useMemo(
     () =>

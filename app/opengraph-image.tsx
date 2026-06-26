@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
-export const alt = "EmploymentTools — Country-aware employment calculators";
+// Pre-render once at build time so the image ships as a static asset (output: export).
+export const dynamic = "force-static";
+export const alt = "My Pay Rights — Law-backed pay rights calculators";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -32,7 +33,7 @@ export default function OgImage() {
             }}
           />
           <span style={{ fontSize: "22px", fontWeight: 600, color: "#6b7280" }}>
-            EmploymentTools
+            My Pay Rights
           </span>
         </div>
 
@@ -47,7 +48,7 @@ export default function OgImage() {
             maxWidth: "900px",
           }}
         >
-          Country-aware employment calculators
+          Law-backed pay rights calculators
         </h1>
 
         {/* Tagline */}

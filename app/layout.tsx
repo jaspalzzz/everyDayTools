@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: `%s · ${SITE.name}`,
   },
   description:
-    "Free, country-aware employment calculators — redundancy pay, PTO payout, notice period, severance and overtime. Live results, no signup, instant PDF.",
+    "Free, law-backed pay rights calculators — redundancy pay, PTO payout, notice period, severance and overtime. Live results, no signup, instant PDF.",
   applicationName: SITE.name,
   robots: { index: true, follow: true },
   openGraph: {
@@ -19,14 +19,14 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: `${SITE.name} — ${SITE.tagline}`,
     description:
-      "Free, country-aware employment calculators — redundancy pay, PTO payout, notice period, severance and overtime. Live results, no signup, instant PDF.",
+      "Free, law-backed pay rights calculators — redundancy pay, PTO payout, notice period, severance and overtime. Live results, no signup, instant PDF.",
     images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} — ${SITE.tagline}`,
     description:
-      "Free, country-aware employment calculators. Live results, no signup, instant PDF.",
+      "Free, law-backed pay rights calculators. Live results, no signup, instant PDF.",
     images: ["/twitter-image"],
   },
 };

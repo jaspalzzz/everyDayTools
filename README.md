@@ -1,7 +1,7 @@
-# EmploymentTools
+# My Pay Rights
 
-Country-aware employment calculators with instant document output. Single-vertical
-SEO tool site — **16 tools live across Tiers 1–3**.
+Law-backed calculators for pay, leave, and final wages with instant document output.
+Single-vertical SEO tool site — **16 tools live across Tiers 1–3**.
 
 ## Stack
 
@@ -67,9 +67,9 @@ e2e/                      33 Playwright tests — PDF bytes + live-result contra
 Every push runs:
 
 ```bash
-npm run test        # 100 Vitest unit/component tests
+npm run test        # 104 Vitest unit/component tests
 npm run typecheck   # tsc --noEmit, strict mode
-npm run build       # next build (23 routes)
+npm run build       # static export → out/
 npm run e2e         # 33 Playwright tests
 ```
 
@@ -90,6 +90,38 @@ npm run test       # unit tests
 npm run e2e        # e2e tests (requires built app or dev server)
 ```
 
+## Deployment (Cloudflare Pages — static)
+
+The app is a **pure static export** (`output: "export"` in `next.config.mjs`). `npm run build`
+emits a self-contained `out/` directory of HTML/CSS/JS with no server runtime, hosted free on
+Cloudflare Pages as static assets.
+
+**Cloudflare Pages project settings:**
+
+| Setting | Value |
+|---------|-------|
+| Framework preset | Next.js (Static HTML Export) — or "None" |
+| Build command | `npm run build` |
+| Build output directory | `out` |
+| Node version | 20 (set `NODE_VERSION=20` env var if needed) |
+
+**Environment variable** (Production and Preview):
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://mypayrights.com
+```
+
+This drives metadata, sitemap, robots, canonical URLs, and structured data. If unset, it falls
+back to `https://mypayrights.com`.
+
+**Edge headers** — `public/_headers` is copied to the output root and applied by Cloudflare Pages:
+security headers (CSP, HSTS, `X-Frame-Options`, `nosniff`) on every route, plus a `Content-Type:
+image/png` override for the extension-less `/opengraph-image` and `/twitter-image` files so social
+scrapers accept them.
+
+**Custom domain** — add `mypayrights.com` under the Pages project's *Custom domains* tab; Cloudflare
+provisions the TLS certificate automatically.
+
 ## Maintenance ("drift moat")
 
 Statutory constants change yearly. Review every April (UK budget) and at US benefit-year
@@ -107,7 +139,7 @@ changes. Key constants to refresh:
 ## Launch configuration
 
 - `NEXT_PUBLIC_SITE_URL` may override the production URL used for metadata, sitemap,
-  robots, canonicals, and schema. The fallback is `https://employmenttools.com`.
+  robots, canonicals, and schema. The fallback is `https://mypayrights.com`.
 - Public contact emails live in `lib/seo.ts`.
 - Analytics/Search Console are tracked in [TASKS.md](TASKS.md) under T1.3.
 

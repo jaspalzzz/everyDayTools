@@ -1,4 +1,4 @@
-# EmploymentTools — Task List (handoff for Codex)
+# My Pay Rights — Task List (handoff for Codex)
 
 This is the execution backlog. Tasks are ordered by priority tier. Each task is
 self-contained: what, where (file paths), how, and acceptance criteria. Read
