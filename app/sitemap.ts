@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const toolEntries: MetadataRoute.Sitemap = TOOLS.map((tool) => ({
     url: `${SITE.url}/${tool.slug}`,
     changeFrequency: "monthly",
-    priority: priorityByTier[tool.tier ?? 1],
+    priority: priorityByTier[tool.tier ?? 1] ?? 0.8,
   }));
 
   return [

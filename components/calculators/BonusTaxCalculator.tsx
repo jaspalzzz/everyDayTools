@@ -63,7 +63,7 @@ export function BonusTaxCalculator() {
           effectiveDate: US_BONUS.effectiveDate,
           inputs: [
             { label: "Country", value: COUNTRIES[country].label },
-            { label: "Gross bonus", value: `${country === "US" ? "$" : ""}${(Number(bonusAmount) || 0).toLocaleString()}` },
+            { label: "Gross bonus", value: `${COUNTRIES[country].currency === "GBP" ? "£" : COUNTRIES[country].currency === "USD" ? "$" : ""}${(Number(bonusAmount) || 0).toLocaleString()}` },
             { label: "Deduction rate", value: `${Number(deductionRate) || 0}%` },
           ],
         }}
