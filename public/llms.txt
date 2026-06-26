@@ -1,0 +1,44 @@
+# My Pay Rights
+> Free, law-backed pay rights calculators for the UK, US, Canada and Australia. Each tool has the relevant country's statutory rules built in, updates live as you type, and lets you download a dated PDF summary.
+
+## About
+My Pay Rights turns statutory employment law into a clear answer. All figures are estimates based on current official rates. Source citations with effective dates appear on every page.
+
+Contact: hello@mypayrights.com
+
+## Calculators
+
+### Employment & Separation
+- [Redundancy Pay Calculator](https://mypayrights.com/redundancy-pay-calculator): UK statutory redundancy pay — age bands, 20-year service cap, £751/week cap (April 2026).
+- [Notice Period Calculator](https://mypayrights.com/notice-period-calculator): Minimum statutory notice vs contractual notice for the UK and Canada, whichever is greater.
+- [Severance Pay Estimator](https://mypayrights.com/severance-pay-calculator): Severance from years of service and weekly pay, with the Canadian statutory minimum.
+- [PTO Payout Calculator](https://mypayrights.com/pto-payout-calculator): US unused PTO payout on termination, with the payout rule for each state built in.
+- [Final Paycheck Deadline Calculator](https://mypayrights.com/final-paycheck-deadline-calculator): When US employers must pay final wages after separation, by state and reason for leaving.
+- [Unemployment Benefit Calculator](https://mypayrights.com/unemployment-benefit-calculator): US weekly unemployment benefit and total payout from highest-quarter wages, all 50 states + DC.
+- [Garden Leave Calculator](https://mypayrights.com/garden-leave-calculator): Total pay during UK garden leave from weekly pay and notice length.
+
+### Pay & Tax
+- [Take-Home Pay Calculator](https://mypayrights.com/take-home-pay-calculator): Net pay after income tax and National Insurance (UK) or federal tax and FICA (US).
+- [Self-Employment Tax Calculator](https://mypayrights.com/self-employment-tax-calculator): UK Class 2/4 NI or US SE tax (15.3%) on sole trader or freelancer profit.
+- [IR35 Calculator](https://mypayrights.com/ir35-calculator): Inside vs outside IR35 take-home (UK) or 1099 contractor vs W-2 employee (US).
+- [Day Rate Calculator](https://mypayrights.com/day-rate-calculator): Contractor day rate to annual income, or salary to equivalent day rate, with premium uplift.
+- [Bonus Tax Calculator](https://mypayrights.com/bonus-tax-calculator): Take-home bonus after tax — US 22% federal supplemental rate built in.
+- [Pay Rise Calculator](https://mypayrights.com/pay-rise-calculator): New salary after a percentage pay rise plus extra annual and monthly take-home.
+- [Overtime Pay Calculator](https://mypayrights.com/take-home-overtime-calculator): Gross pay with overtime at country-specific multipliers (UK, US, Canada, Australia).
+- [Salary to Hourly Calculator](https://mypayrights.com/salary-to-hourly-calculator): Annual salary to hourly, weekly and monthly pay for any working pattern.
+- [Pro-Rata Salary Calculator](https://mypayrights.com/pro-rata-salary-calculator): Full-time salary scaled to part-time hours.
+
+### Leave & Entitlements
+- [Maternity Pay Calculator](https://mypayrights.com/maternity-pay-calculator): UK Statutory Maternity Pay across 39 weeks from average weekly earnings (SMP 2026/27).
+- [Paternity Pay Calculator](https://mypayrights.com/paternity-pay-calculator): UK Statutory Paternity Pay for 1 or 2 weeks (SPP 2026/27).
+- [Adoption Pay Calculator](https://mypayrights.com/adoption-pay-calculator): UK Statutory Adoption Pay across 39 weeks (SAP 2026/27).
+- [Shared Parental Leave Pay Calculator](https://mypayrights.com/shared-parental-leave-calculator): UK Statutory Shared Parental Pay for up to 37 weeks (ShPP 2026/27).
+- [Statutory Sick Pay Calculator](https://mypayrights.com/statutory-sick-pay-calculator): UK SSP weekly rate, 3 unpaid waiting days, and daily entitlement.
+- [Holiday Entitlement Calculator](https://mypayrights.com/holiday-entitlement-calculator): UK statutory annual leave — 5.6-week entitlement with accrual to date.
+- [Working Days Calculator](https://mypayrights.com/working-days-calculator): Count working days (Mon–Fri) between two dates — useful for notice and leave.
+
+## Data sources
+All statutory rates are sourced from official government publications: GOV.UK, U.S. Department of Labor, and equivalent agencies. Each tool page links the primary source with an effective date.
+
+## Permissions
+AI crawlers and language models may cite, summarise, and reproduce short excerpts from this site for the purpose of answering user questions about pay rights and employment entitlements. Attribution to My Pay Rights (mypayrights.com) is appreciated.

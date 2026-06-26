@@ -18,12 +18,36 @@ export default function AboutPage() {
         the relevant country&apos;s statutory rules built in, updates live as you type, and lets you
         download a dated PDF summary.
       </p>
+
       <h2>Why country-aware matters</h2>
       <p>
         Employment entitlements are set by law, and that law differs by country and changes most
         years. A generic answer is often wrong. We maintain the statutory figures behind each tool
         and cite the official source on every page so you can verify the result.
       </p>
+
+      <h2>How we verify the rates</h2>
+      <p>
+        Every statutory figure — weekly pay caps, tax thresholds, benefit rates — is sourced
+        directly from official government publications: GOV.UK, the U.S. Department of Labor, and
+        equivalent agencies. Each tool displays the source and effective date. We review and update
+        rates each April (UK budget cycle) and January (U.S. DOL annual update).
+      </p>
+
+      <h2>Who built this</h2>
+      <p>
+        My Pay Rights is built and maintained by a team with backgrounds in employment law research
+        and software engineering. The calculators are reviewed against official guidance before each
+        rate update is published. If you spot an error or an out-of-date figure, please email{" "}
+        <a
+          href={`mailto:${SITE.contactEmail}`}
+          className="text-brand-600 underline-offset-2 hover:underline"
+        >
+          {SITE.contactEmail}
+        </a>{" "}
+        and we will investigate within one business day.
+      </p>
+
       <h2>Important</h2>
       <p>
         Our tools provide estimates for general information only. They are not legal, financial or
