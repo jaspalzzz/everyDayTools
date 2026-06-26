@@ -1,20 +1,15 @@
-import type { Metadata } from "next";
 import { ToolLayout } from "@/components/ToolLayout";
 import { PaternityPayCalculator } from "@/components/calculators/PaternityPayCalculator";
 import { PATERNITY_SOURCE } from "@/lib/calculators/paternityPay";
 import { getTool } from "@/data/tools";
 import { UK_SPP } from "@/lib/rates";
-import { SITE, faqSchema, jsonLd, webApplicationSchema } from "@/lib/seo";
+import { SITE, breadcrumbSchema, faqSchema, jsonLd, toolMetadata, webApplicationSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
 const tool = getTool("paternity-pay-calculator")!;
 const url = `${SITE.url}/${tool.slug}`;
 
-export const metadata: Metadata = {
-  title: tool.name,
-  description: tool.description,
-  alternates: { canonical: url },
-};
+export const metadata = toolMetadata({ title: tool.name, description: tool.description, url });
 
 const faqs: FaqItem[] = [
   {
@@ -39,8 +34,12 @@ export default function Page() {
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(breadcrumbSchema(tool.name, url))}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={jsonLd(
-          webApplicationSchema({ name: tool.name, description: tool.description, url }),
+          webApplicationSchema({ name: tool.name, description: tool.description, url, region: tool.region }),
         )}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(faqs))} />

@@ -1,19 +1,14 @@
-import type { Metadata } from "next";
 import { ToolLayout } from "@/components/ToolLayout";
 import { PayRiseCalculator } from "@/components/calculators/PayRiseCalculator";
 import { PAY_RISE_SOURCE } from "@/lib/calculators/payRise";
 import { getTool } from "@/data/tools";
-import { SITE, faqSchema, jsonLd, webApplicationSchema } from "@/lib/seo";
+import { SITE, breadcrumbSchema, faqSchema, jsonLd, toolMetadata, webApplicationSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
 const tool = getTool("pay-rise-calculator")!;
 const url = `${SITE.url}/${tool.slug}`;
 
-export const metadata: Metadata = {
-  title: tool.name,
-  description: tool.description,
-  alternates: { canonical: url },
-};
+export const metadata = toolMetadata({ title: tool.name, description: tool.description, url });
 
 const faqs: FaqItem[] = [
   {
@@ -53,8 +48,12 @@ export default function Page() {
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(breadcrumbSchema(tool.name, url))}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={jsonLd(
-          webApplicationSchema({ name: tool.name, description: tool.description, url }),
+          webApplicationSchema({ name: tool.name, description: tool.description, url, region: tool.region }),
         )}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(faqs))} />

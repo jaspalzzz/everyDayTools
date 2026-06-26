@@ -1,19 +1,14 @@
-import type { Metadata } from "next";
 import { ToolLayout } from "@/components/ToolLayout";
 import { DayRateCalculator } from "@/components/calculators/DayRateCalculator";
 import { DAY_RATE_SOURCE } from "@/lib/calculators/dayRate";
 import { getTool } from "@/data/tools";
-import { SITE, faqSchema, jsonLd, webApplicationSchema } from "@/lib/seo";
+import { SITE, breadcrumbSchema, faqSchema, jsonLd, toolMetadata, webApplicationSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
 const tool = getTool("day-rate-calculator")!;
 const url = `${SITE.url}/${tool.slug}`;
 
-export const metadata: Metadata = {
-  title: tool.name,
-  description: tool.description,
-  alternates: { canonical: url },
-};
+export const metadata = toolMetadata({ title: tool.name, description: tool.description, url });
 
 const faqs: FaqItem[] = [
   {
@@ -53,8 +48,12 @@ export default function Page() {
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(breadcrumbSchema(tool.name, url))}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={jsonLd(
-          webApplicationSchema({ name: tool.name, description: tool.description, url }),
+          webApplicationSchema({ name: tool.name, description: tool.description, url, region: tool.region }),
         )}
       />
       <script
