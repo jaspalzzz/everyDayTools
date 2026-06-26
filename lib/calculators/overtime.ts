@@ -43,11 +43,26 @@ export function calcOvertime(input: OvertimeInput): CalcResult {
   const otPay = otRate * ot;
   const gross = basePay + otPay;
 
+  // FLSA only mandates overtime past 40 hours/week. If a US user has entered more
+  // than 40 regular hours, the excess is almost certainly mis-categorised — surface
+  // a warning and the corrected figure rather than silently overriding their input
+  // (which would be wrong for exempt staff or state daily-overtime rules).
+  const FLSA_WEEKLY_THRESHOLD = 40;
+  const usExcessRegular =
+    input.country === "US" && regular > FLSA_WEEKLY_THRESHOLD ? regular - FLSA_WEEKLY_THRESHOLD : 0;
+
   const notes: string[] = [];
   if (input.country === "US") {
     notes.push(
       "Under the FLSA, non-exempt employees must receive at least 1.5× their regular rate for hours over 40 in a workweek.",
     );
+    if (usExcessRegular > 0) {
+      const correctedGross =
+        rate * FLSA_WEEKLY_THRESHOLD + otRate * (usExcessRegular + ot);
+      notes.push(
+        `You entered ${pluralUnit(regular, "regular hour")} — ${pluralUnit(usExcessRegular, "hour")} over the 40-hour FLSA threshold. If you are non-exempt, those hours should be paid as overtime: your gross would be ${formatCurrency(correctedGross, input.country)}. Move the excess into "overtime hours" to apply the multiplier.`,
+      );
+    }
   } else {
     notes.push(
       "Overtime rules vary by country and contract. Many employers, not the law, set the overtime multiplier — check your contract.",

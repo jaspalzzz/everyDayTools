@@ -33,6 +33,22 @@ describe("US final paycheck deadline", () => {
     expect(calcFinalPaycheck({ stateCode: "ZZ", separationType: "fired" }).valid).toBe(false);
   });
 
+  // Anchor states: the immediate / same-day final-pay jurisdictions when an employee
+  // is fired. These are the highest-stakes rows (wrong info exposes users to missed
+  // penalty windows), so lock them against accidental edits.
+  it("locks the same-day-when-fired states", () => {
+    for (const code of ["CA", "CO", "MA", "MT"]) {
+      expect(calcFinalPaycheck({ stateCode: code, separationType: "fired" }).headline).toBe(
+        "On your last day",
+      );
+    }
+  });
+
+  it("locks California's 72-hour quit deadline and Texas's 6-day fired deadline", () => {
+    expect(calcFinalPaycheck({ stateCode: "CA", separationType: "quit" }).headline).toBe("Within 72 hours");
+    expect(calcFinalPaycheck({ stateCode: "TX", separationType: "fired" }).headline).toBe("Within 6 days");
+  });
+
   it("covers all 50 states plus DC with non-empty rules (data integrity)", () => {
     expect(STATE_FINAL_PAY).toHaveLength(51);
     const codes = new Set(STATE_FINAL_PAY.map((s) => s.code));

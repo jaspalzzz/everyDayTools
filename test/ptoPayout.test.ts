@@ -28,6 +28,21 @@ describe("US PTO payout", () => {
     expect(calcPtoPayout({ stateCode: "CA", unusedHours: 40, hourlyRate: 0 }).valid).toBe(false);
   });
 
+  // Anchor states: unambiguous, well-documented statutory positions. These lock the
+  // highest-stakes classifications so an accidental edit can't silently flip them.
+  // "required" = earned vacation vests as wages and cannot be forfeited at separation.
+  it("locks the known payout-required states", () => {
+    for (const code of ["CA", "CO", "IL", "MA", "MT", "NE", "ME"]) {
+      expect(STATE_PTO.find((s) => s.code === code)?.rule).toBe("required");
+    }
+  });
+
+  it("locks well-known no-requirement states", () => {
+    for (const code of ["TX", "FL", "GA"]) {
+      expect(STATE_PTO.find((s) => s.code === code)?.rule).toBe("no-requirement");
+    }
+  });
+
   it("covers all 50 states + DC with valid, non-empty policies (data integrity)", () => {
     expect(STATE_PTO).toHaveLength(51);
     expect(new Set(STATE_PTO.map((s) => s.code)).size).toBe(51); // no duplicates

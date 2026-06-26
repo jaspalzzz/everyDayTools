@@ -183,6 +183,26 @@ Three tools, same full pattern each:
 
 ---
 
+## T1.4 · Certify state-law datasets against primary sources
+
+**What:** The PTO-payout (`lib/calculators/ptoPayout.ts`) and final-paycheck
+(`lib/calculators/finalPaycheck.ts`) datasets cover all 50 states + DC but are
+classified mainly from secondary aggregators. Anchor regression tests now lock the
+high-stakes, unambiguous rows (CA/CO/IL/MA/MT/NE/ME payout-required; same-day final
+pay states; CA 72h; TX 6 days) plus data-integrity checks.
+
+**How:** For each remaining state, verify the rule against the **primary source**
+(state statute or state labor-office page), add a per-row `source` URL + `lastVerified`
+date, and extend the anchor tests to assert each certified row. Treat this as a
+legal-accuracy task requiring human sign-off before rows are marked certified — do not
+auto-generate citations.
+
+**Accept:** every state row has a primary-source URL + `lastVerified`; tests assert the
+classification of each certified state; uncertified rows are explicitly flagged in the
+note text (current "confirm with your state labor office" caveat stays until certified).
+
+---
+
 ## Suggested execution order
 
 T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
