@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { FieldGrid, NumberField } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcRedundancy, REDUNDANCY_SOURCE } from "@/lib/calculators/redundancy";
+import { UK_REDUNDANCY } from "@/lib/rates";
 
 export function RedundancyCalculator() {
   const [age, setAge] = useState<number | "">(40);
@@ -52,6 +53,13 @@ export function RedundancyCalculator() {
           intro:
             "This document estimates your statutory redundancy pay under the UK Employment Rights Act 1996, based on the details you entered.",
           source: REDUNDANCY_SOURCE.label,
+          sourceUrl: REDUNDANCY_SOURCE.url,
+          effectiveDate: UK_REDUNDANCY.effectiveDate,
+          inputs: [
+            { label: "Age", value: String(Number(age) || 0) },
+            { label: "Full years of service", value: String(Number(years) || 0) },
+            { label: "Gross weekly pay", value: `£${(Number(weeklyPay) || 0).toLocaleString()}` },
+          ],
         }}
       />
     </div>

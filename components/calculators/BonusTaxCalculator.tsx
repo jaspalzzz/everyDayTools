@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { FieldGrid, NumberField, SelectField } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { BONUS_TAX_SOURCE, US_SUPPLEMENTAL_RATE, calcBonusTax } from "@/lib/calculators/bonusTax";
+import { US_BONUS } from "@/lib/rates";
 import { COUNTRIES, type CountryCode } from "@/lib/types";
 
 export function BonusTaxCalculator() {
@@ -58,6 +59,13 @@ export function BonusTaxCalculator() {
           intro:
             "This document estimates your take-home bonus after the deduction rate you entered.",
           source: BONUS_TAX_SOURCE.label,
+          sourceUrl: BONUS_TAX_SOURCE.url,
+          effectiveDate: US_BONUS.effectiveDate,
+          inputs: [
+            { label: "Country", value: COUNTRIES[country].label },
+            { label: "Gross bonus", value: `${country === "US" ? "$" : ""}${(Number(bonusAmount) || 0).toLocaleString()}` },
+            { label: "Deduction rate", value: `${Number(deductionRate) || 0}%` },
+          ],
         }}
       />
     </div>

@@ -78,6 +78,13 @@ export function SeveranceCalculator() {
           intro:
             "This document estimates severance pay from your years of service and weekly pay, applying any statutory minimum that exceeds the policy figure.",
           source: SEVERANCE_SOURCE.label,
+          sourceUrl: SEVERANCE_SOURCE.url,
+          inputs: [
+            { label: "Country", value: country },
+            { label: "Years of service", value: String(Number(years) || 0) },
+            { label: "Gross weekly pay", value: `${CURRENCY_PREFIX[country]}${(Number(weeklyPay) || 0).toLocaleString()}` },
+            { label: "Weeks per year", value: String(Number(weeksPerYear) || 1) },
+          ],
         }}
       />
     </div>

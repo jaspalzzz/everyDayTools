@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { FieldGrid, NumberField } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { SSP_SOURCE, calcSickPay } from "@/lib/calculators/sickPay";
+import { UK_SSP } from "@/lib/rates";
 
 export function SickPayCalculator() {
   const [qualifyingDaysPerWeek, setQualifyingDaysPerWeek] = useState<number | "">(5);
@@ -59,6 +60,16 @@ export function SickPayCalculator() {
           intro:
             "This document estimates your Statutory Sick Pay, accounting for the 3 unpaid waiting days and the current UK weekly rate.",
           source: SSP_SOURCE.label,
+          sourceUrl: SSP_SOURCE.url,
+          effectiveDate: UK_SSP.effectiveDate,
+          inputs: [
+            { label: "Working days per week", value: String(Number(qualifyingDaysPerWeek) || 0) },
+            { label: "Working days off sick", value: String(Number(daysOffSick) || 0) },
+            {
+              label: "Average weekly earnings",
+              value: `£${(Number(weeklyEarnings) || 0).toLocaleString()}`,
+            },
+          ],
         }}
       />
     </div>

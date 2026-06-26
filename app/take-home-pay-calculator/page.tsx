@@ -3,6 +3,7 @@ import { ToolLayout } from "@/components/ToolLayout";
 import { TakeHomePayCalculator } from "@/components/calculators/TakeHomePayCalculator";
 import { TAKE_HOME_SOURCE_UK } from "@/lib/calculators/takeHomePay";
 import { getTool } from "@/data/tools";
+import { UK_INCOME_TAX } from "@/lib/rates";
 import { SITE, faqSchema, jsonLd, webApplicationSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -65,6 +66,7 @@ export default function Page() {
         tool={tool}
         calculator={<TakeHomePayCalculator />}
         source={TAKE_HOME_SOURCE_UK}
+        verifiedDate={UK_INCOME_TAX.effectiveDate}
         faqs={faqs}
         contentBlock={
           <>

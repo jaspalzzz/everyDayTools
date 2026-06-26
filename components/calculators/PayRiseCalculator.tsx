@@ -57,6 +57,12 @@ export function PayRiseCalculator() {
           intro:
             "This document summarises your new salary after a percentage pay rise, including the increase per year and per month.",
           source: PAY_RISE_SOURCE.label,
+          sourceUrl: PAY_RISE_SOURCE.url,
+          inputs: [
+            { label: "Country", value: COUNTRIES[country].label },
+            { label: "Current salary", value: (Number(currentSalary) || 0).toLocaleString() },
+            { label: "Pay rise", value: `${Number(percentIncrease) || 0}%` },
+          ],
         }}
       />
     </div>

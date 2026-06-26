@@ -98,6 +98,16 @@ export function DayRateCalculator() {
           intro:
             "This document converts between contractor day rate and equivalent annual income based on your inputs.",
           source: DAY_RATE_SOURCE.label,
+          sourceUrl: DAY_RATE_SOURCE.url,
+          inputs: [
+            { label: "Country", value: country === "UK" ? "United Kingdom" : "United States" },
+            { label: "Convert", value: mode === "day-to-annual" ? "Day rate to annual income" : "Annual salary to day rate" },
+            {
+              label: mode === "day-to-annual" ? "Day rate" : "Annual salary",
+              value: `${prefix}${(Number(mode === "day-to-annual" ? dayRate : annualSalary) || 0).toLocaleString()}`,
+            },
+            { label: "Billable days per year", value: String(Number(workingDays) || 0) },
+          ],
         }}
       />
     </div>

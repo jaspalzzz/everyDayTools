@@ -3,6 +3,7 @@ import { ToolLayout } from "@/components/ToolLayout";
 import { ContractorComparisonCalculator } from "@/components/calculators/ContractorComparisonCalculator";
 import { IR35_SOURCE } from "@/lib/calculators/ir35";
 import { getTool } from "@/data/tools";
+import { UK_INCOME_TAX } from "@/lib/rates";
 import { SITE, faqSchema, jsonLd, webApplicationSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -65,6 +66,7 @@ export default function Page() {
         tool={tool}
         calculator={<ContractorComparisonCalculator />}
         source={IR35_SOURCE}
+        verifiedDate={UK_INCOME_TAX.effectiveDate}
         faqs={faqs}
         contentBlock={
           <>

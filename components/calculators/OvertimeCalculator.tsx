@@ -91,6 +91,14 @@ export function OvertimeCalculator() {
           intro:
             "This document breaks down your gross weekly pay, separating regular pay from overtime at your stated multiplier.",
           source: OVERTIME_SOURCE.label,
+          sourceUrl: OVERTIME_SOURCE.url,
+          inputs: [
+            { label: "Country", value: country },
+            { label: "Hourly rate", value: `${CURRENCY_PREFIX[country]}${(Number(rate) || 0).toLocaleString()}` },
+            { label: "Regular hours", value: String(Number(regular) || 0) },
+            { label: "Overtime hours", value: String(Number(ot) || 0) },
+            { label: "Overtime multiplier", value: `${Number(multiplier) || 1.5}x` },
+          ],
         }}
       />
     </div>

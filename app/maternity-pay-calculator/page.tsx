@@ -3,6 +3,7 @@ import { ToolLayout } from "@/components/ToolLayout";
 import { MaternityPayCalculator } from "@/components/calculators/MaternityPayCalculator";
 import { MATERNITY_SOURCE } from "@/lib/calculators/maternityPay";
 import { getTool } from "@/data/tools";
+import { UK_SMP } from "@/lib/rates";
 import { SITE, faqSchema, jsonLd, webApplicationSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -62,6 +63,7 @@ export default function Page() {
         tool={tool}
         calculator={<MaternityPayCalculator />}
         source={MATERNITY_SOURCE}
+        verifiedDate={UK_SMP.effectiveDate}
         faqs={faqs}
         contentBlock={
           <>

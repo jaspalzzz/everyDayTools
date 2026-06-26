@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { FieldGrid, NumberField } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { HOLIDAY_SOURCE, calcHolidayAccrual } from "@/lib/calculators/holidayAccrual";
+import { UK_HOLIDAY } from "@/lib/rates";
 
 export function HolidayEntitlementCalculator() {
   const [daysPerWeek, setDaysPerWeek] = useState<number | "">(5);
@@ -49,6 +50,12 @@ export function HolidayEntitlementCalculator() {
           intro:
             "This document summarises your statutory annual leave entitlement under the UK Working Time Regulations, including the amount accrued so far this leave year.",
           source: HOLIDAY_SOURCE.label,
+          sourceUrl: HOLIDAY_SOURCE.url,
+          effectiveDate: UK_HOLIDAY.effectiveDate,
+          inputs: [
+            { label: "Days worked per week", value: String(Number(daysPerWeek) || 0) },
+            { label: "Months into leave year", value: String(Number(monthsWorked) || 0) },
+          ],
         }}
       />
     </div>

@@ -20,7 +20,7 @@ export interface ToolMeta {
   icon: string;
   /** Marks the high-RPM hero tools. */
   hero: boolean;
-  /** Launch tier (defaults to 1 when omitted). */
+  /** Launch tier. */
   tier?: Tier;
   /** Slugs of related tools for the internal-link block. */
   related: string[];
@@ -56,7 +56,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Day rate calculator",
     shortName: "Day rate",
     description:
-      "Convert a contractor day rate to an annual salary equivalent — or find the day rate you need to match your current salary — with a contractor-premium uplift built in.",
+      "Convert a contractor day rate to annual income, or find the day rate needed to match your salary, with a contractor-premium uplift.",
     region: "US/UK/CA",
     icon: "ti-calendar-dollar",
     hero: false,
@@ -84,6 +84,7 @@ export const TOOLS: ToolMeta[] = [
     region: "UK",
     icon: "ti-file-off",
     hero: true,
+    tier: 1,
     related: ["notice-period-calculator", "severance-pay-calculator"],
   },
   {
@@ -95,6 +96,7 @@ export const TOOLS: ToolMeta[] = [
     region: "US",
     icon: "ti-cash",
     hero: true,
+    tier: 1,
     related: ["severance-pay-calculator", "take-home-overtime-calculator"],
   },
   {
@@ -106,6 +108,7 @@ export const TOOLS: ToolMeta[] = [
     region: "UK/CA",
     icon: "ti-calendar-clock",
     hero: true,
+    tier: 1,
     related: ["redundancy-pay-calculator", "severance-pay-calculator"],
   },
   {
@@ -117,6 +120,7 @@ export const TOOLS: ToolMeta[] = [
     region: "US/UK/CA",
     icon: "ti-cash-banknote",
     hero: true,
+    tier: 1,
     related: ["redundancy-pay-calculator", "pto-payout-calculator"],
   },
   {
@@ -128,6 +132,7 @@ export const TOOLS: ToolMeta[] = [
     region: "US/UK/CA/AU",
     icon: "ti-clock-dollar",
     hero: false,
+    tier: 1,
     related: ["pto-payout-calculator", "severance-pay-calculator"],
   },
   {

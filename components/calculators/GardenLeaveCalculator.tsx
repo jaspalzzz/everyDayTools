@@ -58,6 +58,12 @@ export function GardenLeaveCalculator() {
           intro:
             "This document summarises the total pay you receive during a period of garden leave, based on your weekly pay and notice length.",
           source: GARDEN_LEAVE_SOURCE.label,
+          sourceUrl: GARDEN_LEAVE_SOURCE.url,
+          inputs: [
+            { label: "Country", value: COUNTRIES[country].label },
+            { label: "Weekly pay", value: (Number(weeklyPay) || 0).toLocaleString() },
+            { label: "Duration", value: `${Number(weeks) || 0} weeks` },
+          ],
         }}
       />
     </div>

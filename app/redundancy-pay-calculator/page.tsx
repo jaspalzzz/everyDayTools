@@ -3,6 +3,7 @@ import { ToolLayout } from "@/components/ToolLayout";
 import { RedundancyCalculator } from "@/components/calculators/RedundancyCalculator";
 import { REDUNDANCY_SOURCE } from "@/lib/calculators/redundancy";
 import { getTool } from "@/data/tools";
+import { UK_REDUNDANCY } from "@/lib/rates";
 import { SITE, faqSchema, jsonLd, webApplicationSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -65,6 +66,7 @@ export default function Page() {
         tool={tool}
         calculator={<RedundancyCalculator />}
         source={REDUNDANCY_SOURCE}
+        verifiedDate={UK_REDUNDANCY.effectiveDate}
         faqs={faqs}
         contentBlock={
           <>

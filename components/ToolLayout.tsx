@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Faq } from "./Faq";
+import { SourceBadge } from "./SourceBadge";
 import { relatedTools, type ToolMeta } from "@/data/tools";
 import type { FaqItem, SourceRef } from "@/lib/types";
 
@@ -16,6 +17,7 @@ export function ToolLayout({
   contentBlock,
   faqs,
   source,
+  verifiedDate,
 }: {
   tool: ToolMeta;
   /** The interactive client calculator (inputs + live results). */
@@ -24,6 +26,7 @@ export function ToolLayout({
   contentBlock: ReactNode;
   faqs: FaqItem[];
   source: SourceRef;
+  verifiedDate?: string;
 }) {
   const related = relatedTools(tool.slug);
 
@@ -61,18 +64,7 @@ export function ToolLayout({
 
       <Faq items={faqs} />
 
-      {/* Source link — E-E-A-T trust signal */}
-      <p className="mt-8 text-xs text-ink-faint">
-        Source:{" "}
-        <a
-          href={source.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-brand-600 underline hover:text-brand-800"
-        >
-          {source.label}
-        </a>
-      </p>
+      <SourceBadge source={source} verifiedDate={verifiedDate} />
 
       {/* Internal links to related tools */}
       {related.length > 0 && (

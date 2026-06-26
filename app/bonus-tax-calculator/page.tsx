@@ -3,6 +3,7 @@ import { ToolLayout } from "@/components/ToolLayout";
 import { BonusTaxCalculator } from "@/components/calculators/BonusTaxCalculator";
 import { BONUS_TAX_SOURCE } from "@/lib/calculators/bonusTax";
 import { getTool } from "@/data/tools";
+import { US_BONUS } from "@/lib/rates";
 import { SITE, faqSchema, jsonLd, webApplicationSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -62,6 +63,7 @@ export default function Page() {
         tool={tool}
         calculator={<BonusTaxCalculator />}
         source={BONUS_TAX_SOURCE}
+        verifiedDate={US_BONUS.effectiveDate}
         faqs={faqs}
         contentBlock={
           <>

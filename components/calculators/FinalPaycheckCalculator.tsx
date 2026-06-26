@@ -18,6 +18,7 @@ export function FinalPaycheckCalculator() {
     () => calcFinalPaycheck({ stateCode, separationType }),
     [stateCode, separationType],
   );
+  const state = STATE_FINAL_PAY.find((s) => s.code === stateCode);
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
@@ -48,6 +49,14 @@ export function FinalPaycheckCalculator() {
           intro:
             "This document summarises when your final paycheck is legally due based on your state and how your employment ended.",
           source: FINAL_PAY_SOURCE.label,
+          sourceUrl: FINAL_PAY_SOURCE.url,
+          inputs: [
+            { label: "State", value: state?.name ?? stateCode },
+            {
+              label: "How you left",
+              value: separationType === "fired" ? "Let go / fired" : "Resigned / quit",
+            },
+          ],
         }}
       />
     </div>

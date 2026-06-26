@@ -19,6 +19,7 @@ export function PtoPayoutCalculator() {
       }),
     [stateCode, hours, rate],
   );
+  const state = STATE_PTO.find((s) => s.code === stateCode);
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
@@ -57,6 +58,12 @@ export function PtoPayoutCalculator() {
           intro:
             "This document estimates the gross value of your accrued, unused PTO at separation, with your state's payout rule noted.",
           source: PTO_SOURCE.label,
+          sourceUrl: PTO_SOURCE.url,
+          inputs: [
+            { label: "State", value: state?.name ?? stateCode },
+            { label: "Unused PTO hours", value: String(Number(hours) || 0) },
+            { label: "Hourly rate", value: `$${(Number(rate) || 0).toLocaleString()}` },
+          ],
         }}
       />
     </div>

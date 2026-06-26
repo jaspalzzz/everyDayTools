@@ -66,6 +66,13 @@ export function SalaryToHourlyCalculator() {
           intro:
             "This document converts an annual salary into the equivalent gross hourly, weekly and monthly pay, based on the hours and weeks worked.",
           source: SALARY_HOURLY_SOURCE.label,
+          sourceUrl: SALARY_HOURLY_SOURCE.url,
+          inputs: [
+            { label: "Country", value: COUNTRIES[country].label },
+            { label: "Annual salary", value: (Number(annualSalary) || 0).toLocaleString() },
+            { label: "Hours per week", value: String(Number(hoursPerWeek) || 0) },
+            { label: "Weeks per year", value: String(Number(weeksPerYear) || 0) },
+          ],
         }}
       />
     </div>

@@ -60,6 +60,12 @@ export function NoticePeriodCalculator() {
           intro:
             "This document summarises the minimum notice period you are entitled to, comparing the statutory minimum with your contractual notice.",
           source: NOTICE_SOURCE.label,
+          sourceUrl: NOTICE_SOURCE.url,
+          inputs: [
+            { label: "Country", value: region === "UK" ? "United Kingdom" : "Canada (Ontario baseline)" },
+            { label: "Completed years of service", value: String(Number(years) || 0) },
+            { label: "Contractual notice", value: `${Number(contractual) || 0} weeks` },
+          ],
         }}
       />
     </div>

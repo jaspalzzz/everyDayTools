@@ -3,6 +3,7 @@ import { ToolLayout } from "@/components/ToolLayout";
 import { SelfEmploymentTaxCalculator } from "@/components/calculators/SelfEmploymentTaxCalculator";
 import { SE_TAX_SOURCE_UK } from "@/lib/calculators/selfEmploymentTax";
 import { getTool } from "@/data/tools";
+import { UK_NI_SELF_EMPLOYED } from "@/lib/rates";
 import { SITE, faqSchema, jsonLd, webApplicationSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -65,6 +66,7 @@ export default function Page() {
         tool={tool}
         calculator={<SelfEmploymentTaxCalculator />}
         source={SE_TAX_SOURCE_UK}
+        verifiedDate={UK_NI_SELF_EMPLOYED.effectiveDate}
         faqs={faqs}
         contentBlock={
           <>

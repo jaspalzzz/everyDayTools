@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { NumberField } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { MATERNITY_SOURCE, calcMaternityPay } from "@/lib/calculators/maternityPay";
+import { UK_SMP } from "@/lib/rates";
 
 export function MaternityPayCalculator() {
   const [averageWeeklyEarnings, setAverageWeeklyEarnings] = useState<number | "">(600);
@@ -34,6 +35,14 @@ export function MaternityPayCalculator() {
           intro:
             "This document estimates your Statutory Maternity Pay over the 39-week period, based on your average weekly earnings and the current UK statutory rates.",
           source: MATERNITY_SOURCE.label,
+          sourceUrl: MATERNITY_SOURCE.url,
+          effectiveDate: UK_SMP.effectiveDate,
+          inputs: [
+            {
+              label: "Average gross weekly earnings",
+              value: `£${(Number(averageWeeklyEarnings) || 0).toLocaleString()}`,
+            },
+          ],
         }}
       />
     </div>

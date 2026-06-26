@@ -38,6 +38,11 @@ export function WorkingDaysCalculator() {
           intro:
             "This document counts the working days (Monday to Friday) between two dates, inclusive of both ends.",
           source: WORKING_DAYS_SOURCE.label,
+          sourceUrl: WORKING_DAYS_SOURCE.url,
+          inputs: [
+            { label: "Start date", value: startDate || "Not set" },
+            { label: "End date", value: endDate || "Not set" },
+          ],
         }}
       />
     </div>

@@ -5,11 +5,17 @@ import { SITE } from "@/lib/seo";
 // Generated once at build time for the static export.
 export const dynamic = "force-static";
 
+const priorityByTier = {
+  1: 0.9,
+  2: 0.8,
+  3: 0.7,
+} as const;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const toolEntries: MetadataRoute.Sitemap = TOOLS.map((tool) => ({
     url: `${SITE.url}/${tool.slug}`,
     changeFrequency: "monthly",
-    priority: tool.hero ? 0.9 : 0.7,
+    priority: priorityByTier[tool.tier ?? 1],
   }));
 
   return [

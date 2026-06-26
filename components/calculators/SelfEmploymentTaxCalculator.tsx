@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { FieldGrid, NumberField, SelectField } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcSelfEmploymentTax, seTaxSource } from "@/lib/calculators/selfEmploymentTax";
+import { UK_NI_SELF_EMPLOYED, US_SE_TAX } from "@/lib/rates";
 import type { CountryCode } from "@/lib/types";
 
 const COUNTRY_OPTIONS = [
@@ -21,6 +22,9 @@ export function SelfEmploymentTaxCalculator() {
   );
 
   const prefix = country === "UK" ? "£" : "$";
+  const source = seTaxSource(country);
+  const effectiveDate =
+    country === "UK" ? UK_NI_SELF_EMPLOYED.effectiveDate : US_SE_TAX.effectiveDate;
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
@@ -56,7 +60,13 @@ export function SelfEmploymentTaxCalculator() {
           title: "Self-Employment Tax Estimate",
           intro:
             "This document estimates your tax liability and take-home pay as a self-employed person based on the net profit you entered.",
-          source: seTaxSource(country).label,
+          source: source.label,
+          sourceUrl: source.url,
+          effectiveDate,
+          inputs: [
+            { label: "Country", value: country === "UK" ? "United Kingdom" : "United States" },
+            { label: "Net profit", value: `${prefix}${(Number(netProfit) || 0).toLocaleString()}` },
+          ],
         }}
       />
     </div>

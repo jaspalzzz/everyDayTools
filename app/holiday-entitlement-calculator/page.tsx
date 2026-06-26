@@ -3,6 +3,7 @@ import { ToolLayout } from "@/components/ToolLayout";
 import { HolidayEntitlementCalculator } from "@/components/calculators/HolidayEntitlementCalculator";
 import { HOLIDAY_SOURCE } from "@/lib/calculators/holidayAccrual";
 import { getTool } from "@/data/tools";
+import { UK_HOLIDAY } from "@/lib/rates";
 import { SITE, faqSchema, jsonLd, webApplicationSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -62,6 +63,7 @@ export default function Page() {
         tool={tool}
         calculator={<HolidayEntitlementCalculator />}
         source={HOLIDAY_SOURCE}
+        verifiedDate={UK_HOLIDAY.effectiveDate}
         faqs={faqs}
         contentBlock={
           <>

@@ -3,6 +3,7 @@ import { ToolLayout } from "@/components/ToolLayout";
 import { SickPayCalculator } from "@/components/calculators/SickPayCalculator";
 import { SSP_SOURCE } from "@/lib/calculators/sickPay";
 import { getTool } from "@/data/tools";
+import { UK_SSP } from "@/lib/rates";
 import { SITE, faqSchema, jsonLd, webApplicationSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -62,6 +63,7 @@ export default function Page() {
         tool={tool}
         calculator={<SickPayCalculator />}
         source={SSP_SOURCE}
+        verifiedDate={UK_SSP.effectiveDate}
         faqs={faqs}
         contentBlock={
           <>

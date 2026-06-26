@@ -21,6 +21,7 @@ export function UnemploymentCalculator() {
       }),
     [stateCode, highestQuarterWages],
   );
+  const state = UNEMPLOYMENT_STATES.find((s) => s.code === stateCode);
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
@@ -50,6 +51,15 @@ export function UnemploymentCalculator() {
           intro:
             "This document estimates your weekly unemployment benefit and maximum potential total, based on your highest-quarter wages and your state's benefit rules.",
           source: UNEMPLOYMENT_SOURCE.label,
+          sourceUrl: UNEMPLOYMENT_SOURCE.url,
+          effectiveDate: state?.effective,
+          inputs: [
+            { label: "State", value: state?.name ?? stateCode },
+            {
+              label: "Highest-quarter wages",
+              value: `$${(Number(highestQuarterWages) || 0).toLocaleString()}`,
+            },
+          ],
         }}
       />
     </div>

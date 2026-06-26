@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { FieldGrid, NumberField, SelectField } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcTakeHomePay, takeHomeSource } from "@/lib/calculators/takeHomePay";
+import { UK_INCOME_TAX, US_INCOME_TAX } from "@/lib/rates";
 import type { CountryCode } from "@/lib/types";
 
 const COUNTRY_OPTIONS = [
@@ -25,6 +26,9 @@ export function TakeHomePayCalculator() {
   );
 
   const prefix = country === "UK" ? "£" : "$";
+  const source = takeHomeSource(country);
+  const effectiveDate =
+    country === "UK" ? UK_INCOME_TAX.effectiveDate : US_INCOME_TAX.effectiveDate;
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
@@ -60,7 +64,13 @@ export function TakeHomePayCalculator() {
           title: "Take-Home Pay Estimate",
           intro:
             "This document estimates your annual take-home pay based on the gross salary and country you entered.",
-          source: takeHomeSource(country).label,
+          source: source.label,
+          sourceUrl: source.url,
+          effectiveDate,
+          inputs: [
+            { label: "Country", value: country === "UK" ? "United Kingdom" : "United States" },
+            { label: "Gross annual salary", value: `${prefix}${(Number(grossAnnual) || 0).toLocaleString()}` },
+          ],
         }}
       />
     </div>

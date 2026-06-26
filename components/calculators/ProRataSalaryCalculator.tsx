@@ -67,6 +67,13 @@ export function ProRataSalaryCalculator() {
           intro:
             "This document scales a full-time salary to your part-time hours, showing your pro-rata annual and monthly pay.",
           source: PRO_RATA_SOURCE.label,
+          sourceUrl: PRO_RATA_SOURCE.url,
+          inputs: [
+            { label: "Country", value: COUNTRIES[country].label },
+            { label: "Full-time salary", value: (Number(fullTimeSalary) || 0).toLocaleString() },
+            { label: "Full-time hours", value: String(Number(fullTimeHours) || 0) },
+            { label: "Your hours", value: String(Number(yourHours) || 0) },
+          ],
         }}
       />
     </div>
