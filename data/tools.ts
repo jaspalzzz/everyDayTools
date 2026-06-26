@@ -28,6 +28,18 @@ export interface ToolMeta {
 
 export const TOOLS: ToolMeta[] = [
   {
+    slug: "take-home-pay-calculator",
+    name: "Take-home pay calculator",
+    shortName: "Take-home pay",
+    description:
+      "See exactly how much of your salary you keep after income tax and National Insurance (UK) or federal tax and FICA (US).",
+    region: "US/UK/CA",
+    icon: "ti-wallet",
+    hero: true,
+    tier: 2,
+    related: ["salary-to-hourly-calculator", "bonus-tax-calculator", "pay-rise-calculator"],
+  },
+  {
     slug: "redundancy-pay-calculator",
     name: "Redundancy pay calculator",
     shortName: "Redundancy pay",
