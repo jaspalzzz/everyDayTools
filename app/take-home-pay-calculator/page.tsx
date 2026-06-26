@@ -74,27 +74,32 @@ export default function Page() {
               Your gross salary is what your employer agrees to pay you. Your take-home pay —
               sometimes called net pay — is what actually lands in your bank account after{" "}
               <strong>income tax</strong> and <strong>social insurance contributions</strong> are
-              deducted. This calculator works out that deduction for the UK and US using the
-              current year&apos;s statutory rates.
+              deducted. This calculator works out those deductions for the UK and US using the
+              current year&apos;s statutory rates and shows you both the headline figure and a
+              full breakdown.
             </p>
             <p>
-              For <strong>UK workers</strong>, the calculator applies the 2026/27 income tax
-              bands (20% basic, 40% higher, 45% additional) and Class 1 National Insurance (8%
-              between £12,570 and £50,270; 2% above). It uses the standard personal allowance of
-              £12,570, which tapers above £100,000. Scottish income tax rates differ from the
-              rest of the UK and are not covered here.
+              For <strong>UK employees</strong>, the calculator applies the 2026/27 income tax
+              bands — 20% basic rate (£12,570–£50,270), 40% higher rate (£50,270–£125,140), and
+              45% additional rate above £125,140 — plus Class 1 National Insurance at 8% between
+              £12,570 and £50,270 and 2% on earnings above that. The standard personal allowance
+              of £12,570 is used; it tapers by £1 for every £2 earned above £100,000 and reaches
+              zero at £125,140. Scottish income tax bands differ and are not modelled here.
             </p>
             <p>
-              For <strong>US workers</strong>, the calculator applies 2026 federal income tax
-              brackets for a single filer using the standard deduction ($16,100), plus FICA
-              contributions: Social Security (6.2% up to $176,100) and Medicare (1.45% on all
-              wages). State income tax is not included — it varies from 0% to over 13% depending
-              on where you live.
+              For <strong>US employees</strong>, the calculator uses 2026 federal income tax
+              brackets for a single filer with the standard deduction ($16,100), covering rates
+              from 10% to 37%. FICA contributions are added on top: Social Security at 6.2% up
+              to the wage base ($176,100) and Medicare at 1.45% on all wages, plus the 0.9%
+              Additional Medicare Tax on wages above $200,000. State income tax is not included
+              because it varies from 0% in Texas and Florida to over 13% in California.
             </p>
             <p>
-              Both calculations are estimates. They assume a standard tax code or filing status
-              with no additional deductions, pension contributions, or benefits. Your payslip will
-              reflect your actual circumstances.
+              Both figures are gross-to-net estimates. They assume a standard tax code or filing
+              status with no pension contributions, salary sacrifice, student loan repayments,
+              benefits-in-kind, or other pre-tax deductions. Each of those adjustments will
+              change your actual payslip figure. Use the result as a reliable baseline and compare
+              it against your most recent pay statement to understand what is being deducted.
             </p>
           </>
         }

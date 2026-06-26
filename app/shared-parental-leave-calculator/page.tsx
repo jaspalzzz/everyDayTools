@@ -53,19 +53,34 @@ export default function Page() {
           <>
             <h2>How Statutory Shared Parental Pay is calculated</h2>
             <p>
-              Statutory Shared Parental Pay is paid at a flat statutory rate, unless 90% of your
-              average weekly earnings is lower. The number of payable weeks depends on how much
-              maternity or adoption pay has been ended early and how the parents divide the shared
-              parental leave.
+              Shared Parental Leave (SPL) lets eligible parents split up to 50 weeks of leave and
+              up to 37 weeks of pay between them after a birth or adoption. Statutory Shared
+              Parental Pay (ShPP) is paid at the lower of the statutory weekly rate (£
+              {UK_SHPP.weeklyRate} for {UK_SHPP.taxYear}) or 90% of the claimant&apos;s average weekly
+              earnings (AWE). Both parents can receive ShPP simultaneously if they take leave at the
+              same time — each at their own rate.
             </p>
             <p>
-              The usual maximum is 37 paid weeks. This calculator multiplies your payable weeks by
-              the weekly statutory amount and checks the Lower Earnings Limit. It does not decide
-              whether both parents meet every employment and notice condition.
+              The 37 paid weeks are created by the mother or primary adopter ending their Statutory
+              Maternity Pay or Statutory Adoption Pay early. For every week of SMP/SAP curtailed,
+              one week of ShPP becomes available. The parents can then split those weeks however
+              they choose, in up to three separate blocks each. The total paid weeks cannot exceed
+              the number of SMP/SAP weeks that were given up.
             </p>
             <p>
-              Use the result as a gross statutory estimate, then check your employer&apos;s policy for
-              enhanced shared parental pay or any internal notice rules.
+              To claim ShPP, each parent must individually meet the earnings and employment
+              conditions: 26 weeks&apos; continuous service with their employer by the end of the 15th
+              week before the due date (or matching week for adoption) and average weekly earnings
+              of at least £{UK_SHPP.lowerEarningsLimit} ({UK_SHPP.taxYear}). The other parent must
+              also meet a separate employment and earnings test over the 66 weeks before the due
+              date. Both conditions must be satisfied before ShPP can be paid.
+            </p>
+            <p>
+              ShPP is paid through payroll and is subject to income tax and National Insurance.
+              Employers can reclaim the statutory amount from HMRC. Some employers offer enhanced
+              shared parental pay — often matching enhanced maternity pay — so check your staff
+              handbook. Use this calculator to understand the statutory floor before agreeing a
+              leave plan with your employer.
             </p>
           </>
         }

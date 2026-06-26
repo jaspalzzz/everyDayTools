@@ -39,6 +39,7 @@ export function webApplicationSchema(params: {
     url: params.url,
     applicationCategory: "FinanceApplication",
     operatingSystem: "All",
+    featureList: ["Live results", "PDF download", "No signup required", "Free to use"],
     offers: {
       "@type": "Offer",
       price: "0",

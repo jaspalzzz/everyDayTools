@@ -53,20 +53,33 @@ export default function Page() {
           <>
             <h2>How Statutory Paternity Pay is calculated</h2>
             <p>
-              Statutory Paternity Pay is the minimum weekly payment available during ordinary
-              paternity leave. It is usually paid for either one week or two consecutive weeks. The
-              weekly amount is whichever is lower: the government&apos;s statutory weekly rate or 90%
-              of your average weekly earnings.
+              Statutory Paternity Pay (SPP) is the minimum weekly payment available during ordinary
+              paternity leave. You can take either one week or two consecutive weeks — you cannot
+              split them. The weekly amount is whichever is lower: the government&apos;s statutory
+              weekly rate (£{UK_SPP.weeklyRate} for {UK_SPP.taxYear}) or 90% of your average
+              weekly earnings (AWE) in the relevant calculation period.
             </p>
             <p>
-              To qualify, you generally need to have worked for your employer continuously for 26
-              weeks by the end of the 15th week before the baby is due, earn at least the Lower
-              Earnings Limit, and give the right notice. This calculator checks the earnings part
-              and gives a gross statutory estimate.
+              Your AWE is usually based on your gross earnings in the eight weeks (or two months)
+              before the end of the 15th week before the baby is due — known as the{" "}
+              <strong>qualifying week</strong>. If you are paid monthly, your employer takes two
+              months&apos; gross pay and divides by two to get the weekly figure. Bonus payments and
+              irregular earnings in that period count toward AWE.
             </p>
             <p>
-              Some employers offer enhanced paternity pay. If your contract or staff handbook gives
-              a better amount, use this result as the statutory floor rather than the full package.
+              To qualify for SPP you normally need: 26 weeks&apos; continuous employment with the same
+              employer by the end of the qualifying week; average weekly earnings of at least the
+              Lower Earnings Limit (£{UK_SPP.lowerEarningsLimit} per week for {UK_SPP.taxYear});
+              and you must give your employer the correct notice — usually by the end of the 15th
+              week before the expected week of childbirth. You must also be the biological father,
+              the mother&apos;s spouse or partner, or the child&apos;s adopter.
+            </p>
+            <p>
+              Paternity leave must be taken within 52 weeks of the birth. SPP is paid via your
+              normal payroll in the same way as your salary — income tax and National Insurance are
+              deducted. Employers can reclaim most of the statutory amount from HMRC. Many employers
+              offer enhanced paternity pay above the statutory minimum; use this calculator&apos;s
+              result as the legal floor when comparing your contract.
             </p>
           </>
         }

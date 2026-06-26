@@ -53,20 +53,33 @@ export default function Page() {
           <>
             <h2>How Statutory Adoption Pay is calculated</h2>
             <p>
-              Statutory Adoption Pay follows the same payment shape as Statutory Maternity Pay. For
-              the first six weeks, the statutory amount is 90% of your average weekly earnings. For
-              the remaining 33 weeks, the weekly amount is capped at the lower of the statutory rate
-              or 90% of your earnings.
+              Statutory Adoption Pay (SAP) mirrors the payment structure of Statutory Maternity Pay.
+              For the first six weeks you receive 90% of your average weekly earnings (AWE) with no
+              cap. For the remaining 33 weeks the weekly amount is the lower of the statutory rate
+              (£{UK_SAP.standardWeeklyRate} for {UK_SAP.taxYear}) or 90% of your AWE. The total
+              entitlement covers up to 39 weeks.
             </p>
             <p>
-              The earnings threshold is the Lower Earnings Limit. You also normally need continuous
-              employment by the matching week and must provide the required notice and evidence to
-              your employer. This calculator checks the earnings arithmetic and totals the statutory
-              gross amount.
+              Your AWE is based on your gross earnings in the eight weeks (or two months) up to and
+              including the week you are matched with a child — the <strong>matching week</strong>.
+              To qualify, you normally need 26 weeks&apos; continuous employment with the same employer
+              by the matching week, average weekly earnings of at least £{UK_SAP.lowerEarningsLimit}{" "}
+              ({UK_SAP.taxYear}), and you must give your employer written notice with the matching
+              certificate as evidence. Only one adopter in a couple can claim SAP; the other may be
+              able to claim Statutory Paternity Pay or take Shared Parental Leave instead.
             </p>
             <p>
-              Adoption policies can be enhanced by employers, so compare the statutory estimate with
-              your contract or staff handbook before making financial plans.
+              SAP is paid through your regular payroll, so income tax and National Insurance are
+              deducted in the usual way. Employers reclaim most of the statutory amount from HMRC.
+              Adoption leave can start from the date of placement (or up to 14 days before, for UK
+              adoptions). If you are adopting from overseas, the rules on when leave can begin
+              differ slightly — check GOV.UK for the current guidance.
+            </p>
+            <p>
+              Many employers offer enhanced adoption pay that matches or exceeds enhanced maternity
+              pay. Your contract or staff handbook should specify the enhanced rate and any service
+              or return-to-work conditions. Use this calculator&apos;s result as the statutory minimum
+              when planning your finances.
             </p>
           </>
         }
