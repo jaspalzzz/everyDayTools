@@ -10,7 +10,16 @@ export const metadata: Metadata = {
   title: "UK Employment Pay Calculators — Statutory Rates 2026/27",
   description:
     "Free UK employment calculators covering redundancy pay, maternity pay, notice periods, sick pay and more. All built on the current 2026/27 statutory rates from GOV.UK.",
-  alternates: { canonical: url },
+  alternates: {
+    canonical: url,
+    languages: {
+      "en-GB": url,
+      "en-US": `${SITE.url}/us`,
+      "en-CA": `${SITE.url}/ca`,
+      "en-AU": `${SITE.url}/au`,
+      "x-default": SITE.url,
+    },
+  },
   openGraph: {
     title: "UK Employment Pay Calculators — Statutory Rates 2026/27",
     description:

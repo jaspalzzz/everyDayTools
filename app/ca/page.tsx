@@ -10,7 +10,16 @@ export const metadata: Metadata = {
   title: "Canada Employment Pay Calculators — Federal & Provincial Rules 2026",
   description:
     "Free Canadian employment calculators covering notice periods, severance pay, take-home pay and overtime. Federal Canada Labour Code and provincial standards applied.",
-  alternates: { canonical: url },
+  alternates: {
+    canonical: url,
+    languages: {
+      "en-CA": url,
+      "en-GB": `${SITE.url}/uk`,
+      "en-US": `${SITE.url}/us`,
+      "en-AU": `${SITE.url}/au`,
+      "x-default": SITE.url,
+    },
+  },
   openGraph: {
     title: "Canada Employment Pay Calculators — Federal & Provincial Rules 2026",
     description:

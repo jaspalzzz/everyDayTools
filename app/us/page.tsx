@@ -10,7 +10,16 @@ export const metadata: Metadata = {
   title: "US Employment Pay Calculators — Federal & State Rules 2026",
   description:
     "Free US employment calculators: PTO payout by state, final paycheck deadlines, unemployment benefit, overtime pay and more. Federal and state law built in.",
-  alternates: { canonical: url },
+  alternates: {
+    canonical: url,
+    languages: {
+      "en-US": url,
+      "en-GB": `${SITE.url}/uk`,
+      "en-CA": `${SITE.url}/ca`,
+      "en-AU": `${SITE.url}/au`,
+      "x-default": SITE.url,
+    },
+  },
   openGraph: {
     title: "US Employment Pay Calculators — Federal & State Rules 2026",
     description:

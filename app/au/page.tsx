@@ -10,7 +10,16 @@ export const metadata: Metadata = {
   title: "Australia Employment Pay Calculators — Fair Work Act 2026",
   description:
     "Free Australian employment calculators for overtime pay, salary conversion and more. Built on the Fair Work Act 2009 and National Employment Standards.",
-  alternates: { canonical: url },
+  alternates: {
+    canonical: url,
+    languages: {
+      "en-AU": url,
+      "en-GB": `${SITE.url}/uk`,
+      "en-US": `${SITE.url}/us`,
+      "en-CA": `${SITE.url}/ca`,
+      "x-default": SITE.url,
+    },
+  },
   openGraph: {
     title: "Australia Employment Pay Calculators — Fair Work Act 2026",
     description:

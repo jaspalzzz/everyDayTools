@@ -1,0 +1,7 @@
+# Cloudflare Pages redirects.
+# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Enforce non-www as the canonical domain.
+# Both versions of the site return 200 without this, causing Google to see
+# duplicate pages and split link equity between www and non-www.
+https://www.mypayrights.com/* https://mypayrights.com/:splat 301
