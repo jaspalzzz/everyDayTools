@@ -15,92 +15,92 @@ const TRUST = [
 
 export function HeroResultCard() {
   return (
-    <div className="relative hidden lg:block">
-      {/* Decorative blob — layered organic SVG */}
-      <div aria-hidden="true" className="pointer-events-none absolute -right-10 -top-8 -z-10 h-[420px] w-[420px]">
-        <svg viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-full">
-          <defs>
-            <radialGradient id="blobGrad1" cx="45%" cy="40%" r="55%">
-              <stop offset="0%" stopColor="#C7DCFA" />
-              <stop offset="100%" stopColor="#E8F2FD" stopOpacity="0.4" />
-            </radialGradient>
-            <radialGradient id="blobGrad2" cx="55%" cy="55%" r="50%">
-              <stop offset="0%" stopColor="#D6E8FB" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#EEF5FD" stopOpacity="0.2" />
-            </radialGradient>
-          </defs>
-          {/* Outer organic blob */}
-          <path
-            d="M340 180C340 270 280 360 195 370C110 380 40 310 30 220C20 130 80 40 175 30C270 20 340 90 340 180Z"
-            fill="url(#blobGrad1)"
-          />
-          {/* Inner blob — slightly rotated for depth */}
-          <path
-            d="M300 190C300 260 250 330 180 335C110 340 60 275 55 205C50 135 105 65 175 60C245 55 300 120 300 190Z"
-            fill="url(#blobGrad2)"
-          />
-          {/* Dot grid texture — top-right quadrant */}
-          {[0,1,2,3,4].map(row =>
-            [0,1,2,3,4].map(col => (
-              <circle
-                key={`${row}-${col}`}
-                cx={260 + col * 18}
-                cy={48 + row * 18}
-                r="2"
-                fill="#185FA5"
-                fillOpacity="0.12"
-              />
-            ))
-          )}
-        </svg>
-      </div>
+    <div className="relative hidden min-h-[420px] w-full lg:flex lg:items-center lg:justify-center">
 
-      <div className="flex items-start gap-4">
+      {/* Cloud blob — explicit absolute fill behind everything */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 580 440"
+        xmlns="http://www.w3.org/2000/svg"
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        preserveAspectRatio="xMidYMid slice"
+      >
+        <defs>
+          <radialGradient id="cg1" cx="48%" cy="46%" r="52%">
+            <stop offset="0%" stopColor="#BFD7F7" stopOpacity="1" />
+            <stop offset="60%" stopColor="#D4E8FB" stopOpacity="0.75" />
+            <stop offset="100%" stopColor="#EBF4FD" stopOpacity="0.2" />
+          </radialGradient>
+        </defs>
+
+        {/* Organic cloud path spanning most of the viewBox */}
+        <path
+          d="M 85 220
+             C 60 130, 100 30, 200 18
+             C 250 10, 290 45, 330 25
+             C 375 5, 430 20, 465 65
+             C 510 120, 530 190, 520 255
+             C 510 330, 465 400, 390 425
+             C 320 448, 240 442, 170 420
+             C 100 398, 105 305, 85 220 Z"
+          fill="url(#cg1)"
+        />
+
+        {/* Dot grid — top-left area of blob */}
+        {[0,1,2,3,4,5,6,7].map(row =>
+          [0,1,2,3,4,5,6].map(col => (
+            <circle
+              key={`${row}-${col}`}
+              cx={78 + col * 20}
+              cy={55 + row * 20}
+              r={2.2}
+              fill="#2563EB"
+              fillOpacity={0.15}
+            />
+          ))
+        )}
+      </svg>
+
+      {/* Floating content — card + trust cards */}
+      <div className="relative z-10 flex items-start gap-3 px-12 py-8">
+
         {/* Result card */}
-        <div className="relative min-w-[260px] flex-1 rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_8px_32px_-4px_rgba(24,95,165,0.12),0_2px_8px_-1px_rgba(0,0,0,0.04)]">
-          <p className="mb-3 text-[12px] text-ink-soft">Your estimated entitlement</p>
+        <div className="relative w-[262px] shrink-0 rounded-2xl border border-white/80 bg-white p-6 shadow-[0_16px_48px_-8px_rgba(24,95,165,0.16),0_4px_16px_-2px_rgba(0,0,0,0.06)]">
+          <p className="mb-2 text-[12px] text-slate-500">Your estimated entitlement</p>
 
-          <div className="mb-5 flex items-center gap-3">
-            <span className="text-[2rem] font-extrabold tracking-tight text-ink">£8,420.00</span>
-            <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-600">
-              Estimate
-            </span>
+          <div className="mb-4 flex items-center gap-2.5">
+            <span className="text-[1.9rem] font-extrabold tracking-tight text-ink">£8,420.00</span>
+            <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-600">Estimate</span>
           </div>
 
           <dl>
             {ROWS.map((row) => (
-              <div
-                key={row.label}
-                className="flex items-center justify-between border-t border-dashed border-slate-100 py-2.5 text-[13px]"
-              >
-                <dt className="font-semibold text-ink">{row.label}</dt>
-                <dd className="text-ink-soft">{row.value}</dd>
+              <div key={row.label} className="flex items-center justify-between border-t border-dashed border-slate-100 py-2.5 text-[13px]">
+                <dt className="font-semibold text-slate-800">{row.label}</dt>
+                <dd className="text-slate-500">{row.value}</dd>
               </div>
             ))}
           </dl>
 
-          {/* Shield badge — overlaps bottom-left corner */}
-          <div className="absolute -bottom-4 -left-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-600 shadow-[0_4px_16px_rgba(24,95,165,0.35)]">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          {/* Blue shield — floats below-left of card */}
+          <div className="absolute -bottom-5 -left-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-600 shadow-[0_8px_24px_rgba(24,95,165,0.45)]">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               <path d="M9 11l2 2 4-4" />
             </svg>
           </div>
         </div>
 
-        {/* Trust cards stacked */}
-        <div className="flex flex-col gap-2.5 pt-2">
+        {/* Trust mini-cards */}
+        <div className="flex flex-col gap-2 pt-3">
           {TRUST.map((t) => (
-            <div
-              key={t.title}
-              className="flex items-center gap-2.5 rounded-xl border border-slate-100 bg-white px-3.5 py-2.5 shadow-sm"
-            >
+            <div key={t.title} className="flex items-center gap-2.5 rounded-xl border border-white/90 bg-white px-3.5 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
               <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${t.iconBg}`}>
                 <TablerIcon name={t.icon} size={16} aria-hidden="true" className={t.iconColor} />
               </span>
               <div>
                 <p className="text-[12px] font-bold text-ink">{t.title}</p>
-                <p className="text-[10px] text-ink-soft">{t.sub}</p>
+                <p className="text-[10px] text-slate-500">{t.sub}</p>
               </div>
             </div>
           ))}

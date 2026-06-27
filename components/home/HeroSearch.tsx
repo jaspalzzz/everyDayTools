@@ -72,7 +72,7 @@ export function HeroSearch() {
         <button
           type="submit"
           aria-label="Search"
-          className="mr-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-600 text-white transition-colors hover:bg-brand-800"
+          className="mr-1.5 flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-lg bg-brand-600 text-white transition-colors hover:bg-brand-800"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <circle cx="11" cy="11" r="8" />
