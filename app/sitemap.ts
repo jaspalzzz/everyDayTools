@@ -3,6 +3,7 @@ import { TOOLS } from "@/data/tools";
 import { GUIDES } from "@/data/guides";
 import { US_STATES } from "@/data/usStates";
 import { CA_PROVINCES } from "@/data/caProvinces";
+import { COMPARISONS } from "@/data/comparisons";
 import { SITE } from "@/lib/seo";
 
 // Generated once at build time for the static export.
@@ -42,6 +43,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: `${p.verifiedYear}-01-01`,
   }));
 
+  const compareEntries: MetadataRoute.Sitemap = COMPARISONS.map((c) => ({
+    url: `${SITE.url}/compare/${c.slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+    lastModified: c.dateModified,
+  }));
+
   return [
     { url: SITE.url, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE.url}/uk`, changeFrequency: "monthly", priority: 0.9 },
@@ -49,6 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/ca`, changeFrequency: "monthly", priority: 0.85 },
     { url: `${SITE.url}/au`, changeFrequency: "monthly", priority: 0.85 },
     { url: `${SITE.url}/guides`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE.url}/compare`, changeFrequency: "monthly", priority: 0.85 },
     ...guideEntries,
     { url: `${SITE.url}/situations/made-redundant-uk`, changeFrequency: "monthly", priority: 0.88 },
     { url: `${SITE.url}/methodology`, changeFrequency: "yearly", priority: 0.6 },
@@ -60,5 +69,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...toolEntries,
     ...stateEntries,
     ...provinceEntries,
+    ...compareEntries,
   ];
 }
