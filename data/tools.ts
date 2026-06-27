@@ -414,6 +414,19 @@ export const TOOLS: ToolMeta[] = [
     category: "leaving-job",
     related: ["notice-period-calculator", "employer-redundancy-cost-calculator"],
   },
+  {
+    slug: "payslip-analyser",
+    name: "Payslip deduction analyser",
+    shortName: "Payslip analyser",
+    description:
+      "Enter your UK payslip figures and get a plain-English explanation of every deduction — income tax, NI, pension, student loan, salary sacrifice — plus a reconciliation check.",
+    region: "UK",
+    icon: "ti-file-description",
+    hero: false,
+    tier: 2,
+    category: "pay-tax",
+    related: ["take-home-pay-calculator", "statutory-sick-pay-calculator"],
+  },
 ];
 
 export function getTool(slug: string): ToolMeta | undefined {

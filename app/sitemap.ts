@@ -3,8 +3,10 @@ import { TOOLS } from "@/data/tools";
 import { GUIDES } from "@/data/guides";
 import { US_STATES } from "@/data/usStates";
 import { CA_PROVINCES } from "@/data/caProvinces";
+import { AU_STATES } from "@/data/auStates";
 import { COMPARISONS } from "@/data/comparisons";
 import { FAQS } from "@/data/faqs";
+import { BLOG_POSTS } from "@/data/blogPosts";
 import { SITE } from "@/lib/seo";
 
 // Generated once at build time for the static export.
@@ -65,6 +67,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: f.dateModified,
   }));
 
+  const auStateEntries: MetadataRoute.Sitemap = AU_STATES.map((s) => ({
+    url: `${SITE.url}/au/states/${s.slug}`,
+    changeFrequency: "yearly" as const,
+    priority: 0.75,
+    lastModified: `${s.verifiedYear}-01-01`,
+  }));
+
+  const blogEntries: MetadataRoute.Sitemap = BLOG_POSTS.map((p) => ({
+    url: `${SITE.url}/blog/${p.slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.82,
+    lastModified: p.dateModified,
+  }));
+
   const compareEntries: MetadataRoute.Sitemap = COMPARISONS.map((c) => ({
     url: `${SITE.url}/compare/${c.slug}`,
     changeFrequency: "monthly" as const,
@@ -87,6 +103,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/situations/leaving-job-uk`, changeFrequency: "monthly", priority: 0.88 },
     { url: `${SITE.url}/situations/employer-not-paying`, changeFrequency: "monthly", priority: 0.88 },
     { url: `${SITE.url}/tupe-wizard`, changeFrequency: "monthly", priority: 0.88 },
+    { url: `${SITE.url}/payslip-analyser`, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${SITE.url}/blog`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE.url}/methodology`, changeFrequency: "yearly", priority: 0.6 },
     { url: `${SITE.url}/editorial-policy`, changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE.url}/about`, changeFrequency: "yearly", priority: 0.4 },
@@ -96,7 +114,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...toolEntries,
     ...stateEntries,
     ...provinceEntries,
+    ...auStateEntries,
     ...compareEntries,
     ...faqEntries,
+    ...blogEntries,
   ];
 }

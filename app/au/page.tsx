@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TOOLS, CATEGORY_META, type ToolCategory } from "@/data/tools";
+import { AU_STATES } from "@/data/auStates";
 import { SITE } from "@/lib/seo";
 import { TablerIcon } from "@/components/TablerIcon";
 
@@ -127,6 +128,27 @@ export default function AUPage() {
             );
           })}
         </div>
+
+        {/* State/territory browse */}
+        <section className="mt-12 border-t border-surface-line pt-8">
+          <h2 className="mb-1 text-sm font-semibold text-ink">Browse by state or territory</h2>
+          <p className="mb-4 text-xs text-ink-faint">Minimum wage, long service leave, and workers compensation by jurisdiction.</p>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {AU_STATES.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/au/states/${s.slug}`}
+                className="group flex items-center justify-between rounded-lg border border-surface-line px-3 py-2.5 text-sm transition-colors hover:border-brand-600 hover:bg-brand-50"
+              >
+                <span>
+                  <span className="font-semibold text-ink group-hover:text-brand-700">{s.code}</span>
+                  <span className="ml-1 text-ink-faint text-xs">{s.lslQualifyingYears}yr LSL</span>
+                </span>
+                <span className="text-ink-faint group-hover:text-brand-600">→</span>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <section className="prose-tool mt-12 max-w-2xl border-t border-surface-line pt-8 text-sm leading-relaxed text-ink-soft">
           <h2>The National Employment Standards</h2>
