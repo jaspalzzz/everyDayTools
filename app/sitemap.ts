@@ -30,12 +30,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: priorityByTier[tool.tier ?? 1] ?? 0.8,
   }));
 
-  const stateEntries: MetadataRoute.Sitemap = US_STATES.map((s) => ({
-    url: `${SITE.url}/us/states/${s.slug}`,
-    changeFrequency: "yearly" as const,
-    priority: 0.75,
-    lastModified: `${s.verifiedYear}-01-01`,
-  }));
+  const stateEntries: MetadataRoute.Sitemap = US_STATES.flatMap((s) => [
+    {
+      url: `${SITE.url}/us/states/${s.slug}`,
+      changeFrequency: "yearly" as const,
+      priority: 0.75,
+      lastModified: `${s.verifiedYear}-01-01`,
+    },
+    {
+      url: `${SITE.url}/us/states/${s.slug}/final-paycheck`,
+      changeFrequency: "yearly" as const,
+      priority: 0.72,
+      lastModified: `${s.verifiedYear}-01-01`,
+    },
+    {
+      url: `${SITE.url}/us/states/${s.slug}/minimum-wage`,
+      changeFrequency: "yearly" as const,
+      priority: 0.72,
+      lastModified: `${s.verifiedYear}-01-01`,
+    },
+  ]);
 
   const provinceEntries: MetadataRoute.Sitemap = CA_PROVINCES.map((p) => ({
     url: `${SITE.url}/ca/provinces/${p.slug}`,
@@ -72,6 +86,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/situations/unfair-dismissal-uk`, changeFrequency: "monthly", priority: 0.88 },
     { url: `${SITE.url}/situations/leaving-job-uk`, changeFrequency: "monthly", priority: 0.88 },
     { url: `${SITE.url}/situations/employer-not-paying`, changeFrequency: "monthly", priority: 0.88 },
+    { url: `${SITE.url}/tupe-wizard`, changeFrequency: "monthly", priority: 0.88 },
     { url: `${SITE.url}/methodology`, changeFrequency: "yearly", priority: 0.6 },
     { url: `${SITE.url}/editorial-policy`, changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE.url}/about`, changeFrequency: "yearly", priority: 0.4 },

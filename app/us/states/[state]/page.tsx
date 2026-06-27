@@ -206,6 +206,35 @@ export default async function StatePage({ params }: Props) {
           </div>
         </section>
 
+        {/* Sub-page deep dives */}
+        <section className="mb-10">
+          <h2 className="mb-3 text-sm font-semibold text-ink">Deep dives</h2>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Link
+              href={`/us/states/${s.slug}/final-paycheck`}
+              className="group rounded-xl border border-surface-line p-4 transition-colors hover:border-brand-600 hover:bg-brand-50"
+            >
+              <p className="font-semibold text-ink group-hover:text-brand-700">
+                {s.name} final paycheck law →
+              </p>
+              <p className="mt-1 text-sm text-ink-soft">
+                Deadlines if fired or resigned, what must be included, and penalties.
+              </p>
+            </Link>
+            <Link
+              href={`/us/states/${s.slug}/minimum-wage`}
+              className="group rounded-xl border border-surface-line p-4 transition-colors hover:border-brand-600 hover:bg-brand-50"
+            >
+              <p className="font-semibold text-ink group-hover:text-brand-700">
+                {s.name} minimum wage →
+              </p>
+              <p className="mt-1 text-sm text-ink-soft">
+                Current rate, tipped employee rules, and how to report violations.
+              </p>
+            </Link>
+          </div>
+        </section>
+
         {/* FAQs */}
         <section aria-labelledby="faq-heading" className="mb-10">
           <h2 id="faq-heading" className="mb-5 text-base font-semibold text-ink">
