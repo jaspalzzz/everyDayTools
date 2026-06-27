@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { CountryFlag } from "@/components/CountryFlag";
 
 const COUNTRIES = [
   { code: "UK", label: "UK" },
@@ -10,76 +9,93 @@ const COUNTRIES = [
   { code: "AU", label: "Australia" },
 ] as const;
 
-export function HeroSearch() {
-  const [active, setActive] = useState("UK");
-  const [query, setQuery] = useState("");
+const QUICK_LINKS = [
+  { label: "Unpaid wages", href: "/unpaid-wages-calculator" },
+  { label: "Redundancy pay", href: "/redundancy-pay-calculator" },
+  { label: "Notice period", href: "/notice-period-calculator" },
+  { label: "Final paycheck", href: "/final-paycheck-calculator" },
+  { label: "Holiday pay", href: "/holiday-entitlement-calculator" },
+] as const;
 
-  function goToList() {
+export function HeroSearch() {
+  const [active, setActive] = useState<"UK" | "US" | "CA" | "AU">("UK");
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
     const el = document.getElementById("all-calculators");
     if (el) el.scrollIntoView({ behavior: "smooth" });
   }
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    goToList();
-  }
-
   return (
-    <div>
-      {/* Country tabs — flat, no container */}
-      <div className="mb-5 flex items-center gap-0.5">
+    <div
+      className="overflow-hidden rounded-lg border bg-white"
+      style={{ borderColor: "#cdddeb", boxShadow: "0 10px 28px rgba(16,32,51,.08)" }}
+      aria-label="Start a pay rights check"
+    >
+      {/* Country tabs */}
+      <div className="grid grid-cols-4 border-b" style={{ background: "#f8fbff", borderColor: "#e7edf3" }}>
         {COUNTRIES.map((c) => (
           <button
             key={c.code}
             type="button"
-            onClick={() => { setActive(c.code); goToList(); }}
-            className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-[13px] font-medium transition-colors ${
-              active === c.code
-                ? "bg-surface-muted text-ink"
-                : "text-ink-soft hover:bg-surface-muted hover:text-ink"
-            }`}
+            onClick={() => setActive(c.code)}
+            style={{
+              borderRight: "1px solid #e7edf3",
+              borderBottom: active === c.code ? "3px solid #1769e0" : "3px solid transparent",
+              background: active === c.code ? "#ffffff" : "transparent",
+              color: active === c.code ? "#16324f" : "#52616f",
+            }}
+            className="min-h-[46px] px-2 text-[13px] font-bold transition-colors last:border-r-0"
           >
-            <CountryFlag country={c.code} size={16} />
             {c.label}
-            {c.code === "AU" && (
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-ink-faint">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            )}
           </button>
         ))}
       </div>
 
-      {/* Search bar */}
-      <form
-        onSubmit={handleSubmit}
-        className="flex h-[52px] max-w-[480px] items-center overflow-hidden rounded-xl border border-surface-line bg-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-shadow focus-within:border-brand-300 focus-within:shadow-[0_2px_12px_rgba(23,105,224,0.12)]"
-      >
-        <span className="flex shrink-0 items-center pl-4 text-ink-faint">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-        </span>
+      {/* Finder row */}
+      <form onSubmit={handleSubmit} className="grid gap-2.5 p-4" style={{ gridTemplateColumns: "170px 1fr 54px" }}>
+        <select
+          aria-label="Country"
+          className="min-h-[52px] rounded-lg border px-3.5 text-[13px] font-medium text-ink outline-none"
+          style={{ borderColor: "#d8e2ec" }}
+          value={active}
+          onChange={(e) => setActive(e.target.value as typeof active)}
+        >
+          <option value="UK">United Kingdom</option>
+          <option value="US">United States</option>
+          <option value="CA">Canada</option>
+          <option value="AU">Australia</option>
+        </select>
         <input
           type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder='Search calculators... e.g. "redundancy" or "overtime"'
-          aria-label="Search calculators"
-          className="flex-1 bg-transparent px-3 py-0 text-[13.5px] text-ink outline-none placeholder:text-ink-faint"
+          aria-label="Search calculator"
+          placeholder='Describe your issue: unpaid wages, notice pay, redundancy'
+          className="min-h-[52px] rounded-lg border px-3.5 text-[13px] text-ink outline-none placeholder:text-[#8795a3]"
+          style={{ borderColor: "#d8e2ec" }}
         />
         <button
           type="submit"
-          aria-label="Search"
-          className="flex h-full w-[52px] shrink-0 items-center justify-center rounded-r-xl bg-brand-600 text-white transition-colors hover:bg-brand-800"
+          aria-label="Find calculator"
+          className="flex min-h-[52px] w-[54px] items-center justify-center rounded-lg text-white text-lg font-bold transition-colors"
+          style={{ background: "#1769e0", boxShadow: "0 10px 20px rgba(23,105,224,.22)" }}
         >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
+          →
         </button>
       </form>
+
+      {/* Quick links */}
+      <div className="flex flex-wrap gap-2 px-4 pb-4">
+        {QUICK_LINKS.map((q) => (
+          <a
+            key={q.label}
+            href={q.href}
+            className="rounded-full border px-2.5 py-[7px] text-[12px] font-bold text-ink-soft transition-colors hover:border-brand-300 hover:text-ink"
+            style={{ borderColor: "#cfe0f1", background: "#f7fbff" }}
+          >
+            {q.label}
+          </a>
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,95 +1,134 @@
 import Link from "next/link";
 import { TablerIcon } from "@/components/TablerIcon";
 
-const POPULAR = [
+const TOOLS = [
   {
-    title: "Redundancy Pay",
-    desc: "Statutory redundancy pay based on age, pay, and service length.",
-    cta: "Estimate redundancy pay",
-    icon: "ti-briefcase",
+    icon: "R",
+    title: "Redundancy pay calculator",
+    desc: "Estimate statutory or common redundancy pay based on country rules.",
     href: "/redundancy-pay-calculator",
-    countries: "UK · AU",
   },
   {
-    title: "Notice Period",
-    desc: "Find your minimum notice period and what you're owed if cut short.",
-    cta: "Check notice pay",
-    icon: "ti-file-text",
+    icon: "N",
+    title: "Notice pay calculator",
+    desc: "Check what notice pay may be owed after resignation or dismissal.",
     href: "/notice-period-calculator",
-    countries: "UK · US · CA · AU",
   },
   {
-    title: "Holiday Pay",
-    desc: "Calculate holiday entitlement and unpaid holiday on termination.",
-    cta: "Calculate holiday pay",
-    icon: "ti-calendar-week",
+    icon: "H",
+    title: "Holiday pay calculator",
+    desc: "Calculate accrued holiday, unused leave and holiday entitlement.",
     href: "/holiday-entitlement-calculator",
-    countries: "UK · AU",
   },
   {
-    title: "Settlement Agreement",
-    desc: "Estimate the value of a settlement offer before you sign.",
-    cta: "Value my settlement",
-    icon: "ti-file-certificate",
-    href: "/settlement-agreement-calculator",
-    countries: "UK",
+    icon: "F",
+    title: "Final paycheck deadline calculator",
+    desc: "Find when your final wage payment should be made.",
+    href: "/final-paycheck-calculator",
   },
-  {
-    title: "Employment Tribunal",
-    desc: "Estimate compensation for unfair dismissal or wrongful termination.",
-    cta: "Estimate tribunal award",
-    icon: "ti-gavel",
-    href: "/tribunal-compensation-calculator",
-    countries: "UK · US",
-  },
-  {
-    title: "PTO Payout",
-    desc: "Find out what your employer must pay for unused leave at exit.",
-    cta: "Calculate PTO payout",
-    icon: "ti-cash",
-    href: "/pto-payout-calculator",
-    countries: "US · CA · AU",
-  },
+] as const;
+
+const RIGHTS_ITEMS = [
+  "Country-aware estimates",
+  "Private calculation flow",
+  "Clear assumptions and next steps",
+  "Practical payroll language",
 ] as const;
 
 export function PopularCalculators() {
   return (
-    <section aria-labelledby="popular-heading" className="mt-6">
-      <div className="mb-5 flex items-start justify-between gap-4">
-        <div>
-          <h2 id="popular-heading" className="text-[1.375rem] font-bold tracking-tight text-ink">
-            Most used calculators
-          </h2>
-          <p className="mt-1 text-[13px] text-ink-soft">The tools people reach for most when dealing with a pay or employment issue.</p>
-        </div>
-        <Link href="#all-calculators" className="hidden shrink-0 items-center gap-1 text-[13px] font-semibold text-brand-600 sm:inline-flex">
-          View all
-          <TablerIcon name="ti-arrow-right" size={13} aria-hidden="true" />
-        </Link>
-      </div>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {POPULAR.map((tool) => (
-          <Link
-            key={tool.title}
-            href={tool.href}
-            className="group flex flex-col rounded-xl border border-surface-line bg-white p-4 transition-all hover:border-brand-600 hover:shadow-[0_2px_12px_rgba(23,105,224,0.10)]"
-          >
-            <div className="mb-3 flex items-start justify-between">
-              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
-                <TablerIcon name={tool.icon} size={20} aria-hidden="true" />
-              </span>
-              <span className="rounded-full border border-surface-line px-2 py-0.5 text-[10px] font-medium text-ink-faint">
-                {tool.countries}
-              </span>
-            </div>
-            <h3 className="mb-1 text-[14px] font-bold text-ink">{tool.title}</h3>
-            <p className="mb-3 flex-grow text-[12px] leading-relaxed text-ink-soft">{tool.desc}</p>
-            <span className="inline-flex items-center gap-1 text-[12.5px] font-semibold text-brand-600 transition-all group-hover:gap-1.5">
-              {tool.cta}
-              <TablerIcon name="ti-arrow-right" size={13} aria-hidden="true" />
+    <section aria-labelledby="popular-title">
+      <div
+        className="grid gap-6 lg:grid-cols-2"
+        style={{ alignItems: "start" }}
+      >
+        {/* Left: featured tool list */}
+        <div
+          className="overflow-hidden rounded-lg border bg-white"
+          style={{ borderColor: "#c6d8ea", boxShadow: "0 10px 28px rgba(16,32,51,.08)" }}
+        >
+          <div className="flex items-center justify-between gap-4 border-b p-5" style={{ borderColor: "#e7edf3" }}>
+            <h2 id="popular-title" className="text-[1.375rem] font-bold text-ink">
+              Most used calculators
+            </h2>
+            <span
+              className="rounded-full px-2.5 py-1.5 text-[12px] font-bold whitespace-nowrap"
+              style={{ background: "#e9f7f1", color: "#16835b" }}
+            >
+              Current rules
             </span>
+          </div>
+
+          <div>
+            {TOOLS.map((tool) => (
+              <Link
+                key={tool.title}
+                href={tool.href}
+                className="group flex min-h-[86px] items-center gap-3.5 border-b px-5 py-3.5 transition-colors last:border-b-0 hover:bg-[#f5f9fe]"
+                style={{ borderColor: "#e7edf3" }}
+              >
+                <span
+                  className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-lg text-[15px] font-black"
+                  style={{ background: "#eaf3ff", color: "#1769e0" }}
+                >
+                  {tool.icon}
+                </span>
+                <span className="flex-1 min-w-0">
+                  <strong className="block text-[15px] font-bold text-ink group-hover:text-brand-600">{tool.title}</strong>
+                  <p className="mt-0.5 text-[13px] text-ink-soft">{tool.desc}</p>
+                </span>
+                <span
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-bold text-[#1769e0]"
+                  style={{ background: "#eaf3ff" }}
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Right: navy rights panel */}
+        <aside
+          className="relative min-h-full overflow-hidden rounded-lg p-7 text-white"
+          style={{ background: "#16324f" }}
+        >
+          {/* Decorative circle */}
+          <div
+            className="pointer-events-none absolute -right-[120px] -top-[120px] h-[280px] w-[280px] rounded-full"
+            style={{ background: "rgba(255,255,255,.08)" }}
+          />
+
+          <h2 className="relative mb-3 text-[1.875rem] font-bold leading-[1.1]">
+            Built for pay questions that feel urgent.
+          </h2>
+          <p className="relative mb-5 text-[15px] leading-[1.62]" style={{ color: "#dce8f4" }}>
+            Employment pay issues are rarely abstract. The design should guide people quickly, privately and without making legal language feel heavier than it needs to be.
+          </p>
+
+          <ul className="relative mb-6 flex flex-col gap-2.5">
+            {RIGHTS_ITEMS.map((item) => (
+              <li key={item} className="flex items-center gap-2.5 text-[14px] font-bold" style={{ color: "#f5fbff" }}>
+                <span
+                  className="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full text-[13px] font-black text-white"
+                  style={{ background: "rgba(22,131,91,.95)" }}
+                >
+                  ✓
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <Link
+            href="/#all-calculators"
+            className="relative inline-flex min-h-[48px] items-center justify-center rounded-lg bg-white px-5 text-[14px] font-bold transition-opacity hover:opacity-90"
+            style={{ color: "#16324f" }}
+          >
+            Start a private check
           </Link>
-        ))}
+        </aside>
       </div>
     </section>
   );

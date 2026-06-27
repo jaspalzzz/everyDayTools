@@ -1,69 +1,85 @@
 import Link from "next/link";
-import { TablerIcon } from "@/components/TablerIcon";
 
 const SITUATIONS = [
   {
-    title: "I've been made redundant",
-    sub: "Calculate statutory redundancy pay, notice, and final wages",
-    icon: "ti-briefcase",
-    href: "#cat-leaving-job",
+    icon: "£",
+    title: "I left or lost my job",
+    desc: "Final pay, notice, redundancy, severance and termination payments.",
+    cta: "Check final pay",
+    href: "/redundancy-pay-calculator",
   },
   {
-    title: "My employer isn't paying me",
-    sub: "Unpaid wages, withheld pay, unlawful deductions",
-    icon: "ti-cash",
-    href: "#cat-pay-tax",
+    icon: "$",
+    title: "I was not paid correctly",
+    desc: "Missing wages, overtime, commission, deductions and payslip issues.",
+    cta: "Find wage tools",
+    href: "/unpaid-wages-calculator",
   },
   {
-    title: "I'm going on parental leave",
-    sub: "Maternity, paternity, shared parental pay entitlements",
-    icon: "ti-users",
-    href: "#cat-parental-leave",
+    icon: "+",
+    title: "I am sick or on leave",
+    desc: "Sick pay, holiday pay, maternity pay and workplace absence rules.",
+    cta: "Check leave pay",
+    href: "/holiday-entitlement-calculator",
   },
   {
-    title: "I'm leaving my job",
-    sub: "Notice period, garden leave, PILON, final paycheck",
-    icon: "ti-door-exit",
-    href: "#cat-leaving-job",
+    icon: "↔",
+    title: "My hours changed",
+    desc: "Salary to hourly, working days, overtime rates and take-home checks.",
+    cta: "Review hours",
+    href: "/overtime-pay-calculator",
   },
   {
-    title: "I was unfairly dismissed",
-    sub: "Tribunal compensation, wrongful dismissal, settlement",
-    icon: "ti-gavel",
-    href: "/tribunal-compensation-calculator",
-  },
-  {
-    title: "I need sick or holiday pay",
-    sub: "SSP, annual leave entitlement, carry-over rights",
-    icon: "ti-gift",
-    href: "#cat-benefits",
+    icon: "?",
+    title: "I do not know what to use",
+    desc: "Answer a few questions and get matched to the right calculator.",
+    cta: "Start matcher",
+    href: "/#all-calculators",
   },
 ] as const;
 
 export function BrowseBySituation() {
   return (
-    <section aria-labelledby="situation-heading" className="mt-6">
-      <div className="mb-5">
-        <h2 id="situation-heading" className="text-[1.375rem] font-bold tracking-tight text-ink">
-          What&apos;s your situation?
-        </h2>
-        <p className="mt-1 text-[13px] text-ink-soft">Pick what applies to you — we&apos;ll show the most relevant calculators.</p>
+    <section aria-labelledby="situation-title">
+      <div className="mb-5 flex items-end justify-between gap-6">
+        <div>
+          <h2 id="situation-title" className="text-[1.625rem] font-bold leading-tight text-ink">
+            Start with what happened
+          </h2>
+          <p className="mt-2 text-[15px] text-ink-soft">
+            Pay-rights questions are easier when they begin with the real-life situation, not a legal term.
+          </p>
+        </div>
+        <Link
+          href="/#all-calculators"
+          className="hidden shrink-0 text-[14px] font-bold hover:underline sm:block"
+          style={{ color: "#0f56bd" }}
+        >
+          View all situations →
+        </Link>
       </div>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+
+      <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-3 lg:grid-cols-5">
         {SITUATIONS.map((s) => (
           <Link
             key={s.title}
             href={s.href}
-            className="group flex items-start gap-3.5 rounded-xl border border-surface-line bg-white px-4 py-3.5 transition-all hover:border-brand-600 hover:shadow-[0_2px_12px_rgba(23,105,224,0.10)]"
+            className="group flex min-h-[166px] flex-col justify-between rounded-lg border bg-white p-4 transition-shadow hover:shadow-md"
+            style={{ borderColor: "#d8e2ec", boxShadow: "0 1px 0 rgba(16,32,51,.02)" }}
           >
-            <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
-              <TablerIcon name={s.icon} size={18} aria-hidden="true" />
+            <span
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-base font-black"
+              style={{ background: "#eaf3ff", color: "#1769e0" }}
+            >
+              {s.icon}
             </span>
-            <span className="min-w-0 flex-1">
-              <span className="block text-[13.5px] font-semibold text-ink group-hover:text-brand-600">{s.title}</span>
-              <span className="mt-0.5 block text-[12px] leading-snug text-ink-soft">{s.sub}</span>
-            </span>
-            <TablerIcon name="ti-arrow-right" size={15} aria-hidden="true" className="mt-1 shrink-0 text-ink-faint transition-transform group-hover:translate-x-0.5 group-hover:text-brand-600" />
+            <div>
+              <strong className="block text-[15px] font-bold leading-snug text-ink">{s.title}</strong>
+              <p className="mb-3.5 mt-2 text-[13px] leading-snug text-ink-soft">{s.desc}</p>
+              <span className="text-[13px] font-bold" style={{ color: "#0f56bd" }}>
+                {s.cta} →
+              </span>
+            </div>
           </Link>
         ))}
       </div>
