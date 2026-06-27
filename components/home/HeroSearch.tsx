@@ -26,21 +26,21 @@ export function HeroSearch() {
 
   return (
     <div>
-      {/* Country tabs */}
-      <div className="mb-5 flex items-center gap-1 rounded-xl border border-surface-line bg-white p-1 shadow-sm w-fit">
-        {COUNTRIES.map((c) => (
+      {/* Country selector — same language as header nav */}
+      <div className="mb-5 flex items-center gap-1">
+        {COUNTRIES.map((c, i) => (
           <button
             key={c.code}
             type="button"
             onClick={() => { setActive(c.code); goToList(); }}
-            className={`flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-[13px] font-semibold transition-all ${
+            className={`group flex items-center gap-2 rounded-lg px-3.5 py-2.5 text-[13px] font-semibold transition-all ${
               active === c.code
-                ? "bg-brand-600 text-white shadow-sm"
-                : "text-ink-soft hover:bg-surface-muted hover:text-ink"
+                ? "bg-white text-ink shadow-[0_1px_4px_rgba(0,0,0,0.10)] ring-1 ring-surface-line"
+                : "text-ink-soft hover:bg-white/70 hover:text-ink"
             }`}
           >
             <CountryFlag country={c.code} size={16} />
-            {c.label}
+            <span className={active === c.code ? "text-brand-700" : ""}>{c.label}</span>
           </button>
         ))}
       </div>
@@ -48,7 +48,7 @@ export function HeroSearch() {
       {/* Search bar */}
       <form
         onSubmit={handleSubmit}
-        className="flex max-w-[520px] overflow-hidden rounded-xl border border-surface-line bg-white shadow-[0_4px_16px_rgba(24,95,165,0.08)] focus-within:border-brand-600 focus-within:ring-4 focus-within:ring-brand-50"
+        className="flex max-w-[520px] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-shadow focus-within:shadow-[0_2px_16px_rgba(24,95,165,0.14)] focus-within:border-brand-400"
       >
         <input
           type="search"
