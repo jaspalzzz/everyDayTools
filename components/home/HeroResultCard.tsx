@@ -16,11 +16,44 @@ const TRUST = [
 export function HeroResultCard() {
   return (
     <div className="relative hidden lg:block">
-      {/* Decorative blob */}
-      <div
-        aria-hidden="true"
-        className="absolute right-0 top-1/2 -z-10 h-[340px] w-[340px] -translate-y-1/2 translate-x-8 rounded-full bg-[#DDE8F8] opacity-70 blur-[2px]"
-      />
+      {/* Decorative blob — layered organic SVG */}
+      <div aria-hidden="true" className="pointer-events-none absolute -right-10 -top-8 -z-10 h-[420px] w-[420px]">
+        <svg viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-full">
+          <defs>
+            <radialGradient id="blobGrad1" cx="45%" cy="40%" r="55%">
+              <stop offset="0%" stopColor="#C7DCFA" />
+              <stop offset="100%" stopColor="#E8F2FD" stopOpacity="0.4" />
+            </radialGradient>
+            <radialGradient id="blobGrad2" cx="55%" cy="55%" r="50%">
+              <stop offset="0%" stopColor="#D6E8FB" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#EEF5FD" stopOpacity="0.2" />
+            </radialGradient>
+          </defs>
+          {/* Outer organic blob */}
+          <path
+            d="M340 180C340 270 280 360 195 370C110 380 40 310 30 220C20 130 80 40 175 30C270 20 340 90 340 180Z"
+            fill="url(#blobGrad1)"
+          />
+          {/* Inner blob — slightly rotated for depth */}
+          <path
+            d="M300 190C300 260 250 330 180 335C110 340 60 275 55 205C50 135 105 65 175 60C245 55 300 120 300 190Z"
+            fill="url(#blobGrad2)"
+          />
+          {/* Dot grid texture — top-right quadrant */}
+          {[0,1,2,3,4].map(row =>
+            [0,1,2,3,4].map(col => (
+              <circle
+                key={`${row}-${col}`}
+                cx={260 + col * 18}
+                cy={48 + row * 18}
+                r="2"
+                fill="#185FA5"
+                fillOpacity="0.12"
+              />
+            ))
+          )}
+        </svg>
+      </div>
 
       <div className="flex items-start gap-4">
         {/* Result card */}
