@@ -9,8 +9,8 @@ import { RedundancyEligibilityGate } from "./RedundancyEligibilityGate";
 import { readUrlParamsOnMount, writeUrlParams } from "@/hooks/useUrlSync";
 import { formatCurrency } from "@/lib/format";
 
-export function RedundancyCalculator() {
-  const [eligible, setEligible] = useState(false);
+export function RedundancyCalculator({ startEligible = false }: { startEligible?: boolean }) {
+  const [eligible, setEligible] = useState(startEligible);
   const [age, setAge] = useState<number | "">(40);
   const [years, setYears] = useState<number | "">(6);
   const [weeklyPay, setWeeklyPay] = useState<number | "">(500);

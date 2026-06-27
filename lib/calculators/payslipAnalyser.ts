@@ -54,14 +54,14 @@ const LABEL_MAP: { pattern: RegExp; category: DeductionCategory; isPreTax: boole
     pattern: /income.?tax|paye|tax$/i,
     category: "income-tax",
     isPreTax: false,
-    explanation: "Income tax deducted through PAYE (Pay As You Earn). HMRC calculates the amount using your tax code. The standard code for 2025/26 is 1257L, giving a Personal Allowance of £12,570. Check your payslip's tax code is correct — an emergency code (W1, M1, or OT) means HMRC has not yet sent your employer your correct code.",
+    explanation: "Income tax deducted through PAYE (Pay As You Earn). HMRC calculates the amount using your tax code. The standard code for 2026/27 is 1257L, giving a Personal Allowance of £12,570. Check your payslip's tax code is correct — an emergency code (W1, M1, or OT) means HMRC has not yet sent your employer your correct code.",
     guideUrl: "https://www.gov.uk/income-tax-rates",
   },
   {
     pattern: /national.?ins|n\.?i\.?c?|employee.?ni/i,
     category: "national-insurance",
     isPreTax: false,
-    explanation: "Employee National Insurance Contributions (NICs). For 2025/26, Class 1 employee NICs are charged at 8% on earnings between the Primary Threshold (£12,570/yr) and the Upper Earnings Limit (£50,270/yr), and 2% above the UEL. Check the rate on your payslip — anything above 8% on main earnings may be an error.",
+    explanation: "Employee National Insurance Contributions (NICs). For 2026/27, Class 1 employee NICs are charged at 8% on earnings between the Primary Threshold (£12,570/yr) and the Upper Earnings Limit (£50,270/yr), and 2% above the UEL. Check the rate on your payslip — anything above 8% on main earnings may be an error.",
     guideUrl: "https://www.gov.uk/national-insurance/how-much-you-pay",
   },
   {
@@ -161,7 +161,7 @@ export function analysePayslip(inputs: PayslipInputs): PayslipAnalysis {
     if (actualRate > expectedRate + 0.03) {
       alerts.push({
         severity: "warning",
-        message: `Your NI deduction (£${niDeduction.amount.toFixed(2)}) appears higher than expected for a gross of £${grossPay.toFixed(2)}. The standard 2025/26 employee NI rate is 8%. Contact your payroll team to check your NI category letter.`,
+        message: `Your NI deduction (£${niDeduction.amount.toFixed(2)}) appears higher than expected for a gross of £${grossPay.toFixed(2)}. The standard 2026/27 employee NI rate is 8%. Contact your payroll team to check your NI category letter.`,
       });
     }
   }

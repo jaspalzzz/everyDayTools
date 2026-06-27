@@ -102,10 +102,10 @@ export const FAQS: FaqPageMeta[] = [
   {
     slug: "what-is-the-redundancy-pay-cap",
     question: "What is the redundancy pay cap in the UK?",
-    shortAnswer: "The weekly pay cap for statutory redundancy pay is £643 for 2026/27. The maximum you can receive is £22,530 (20 years × £643 × 1.5 age multiplier).",
+    shortAnswer: "The weekly pay cap for statutory redundancy pay is £751 for 2026/27. The maximum you can receive is £22,530 (20 years × £751 × 1.5 age multiplier).",
     answer: [
-      "Statutory redundancy pay in the UK is subject to two caps. First, the weekly pay cap — your actual weekly pay is capped at £643 (for the tax year 2026/27; this figure is reviewed each April). Even if you earn £2,000 per week, only £643 is used in the redundancy pay calculation. Second, the years of service cap — a maximum of 20 years is counted, regardless of how long you have actually worked for the employer.",
-      "The formula is: complete years of service (up to 20) × weekly pay (up to £643) × age multiplier (0.5 for under-22 service years, 1 for 22–40, 1.5 for 41 and over). The absolute maximum statutory payment is therefore £22,530: 20 years × £643 × 1.5. This maximum applies to someone who is 61+ with 20 or more years of service all worked aged 41 or over.",
+      "Statutory redundancy pay in the UK is subject to two caps. First, the weekly pay cap — your actual weekly pay is capped at £751 (for the tax year 2026/27; this figure is reviewed each April). Even if you earn £2,000 per week, only £751 is used in the redundancy pay calculation. Second, the years of service cap — a maximum of 20 years is counted, regardless of how long you have actually worked for the employer.",
+      "The formula is: complete years of service (up to 20) × weekly pay (up to £751) × age multiplier (0.5 for under-22 service years, 1 for 22–40, 1.5 for 41 and over). The absolute maximum statutory payment is therefore £22,530: 20 years × £751 × 1.5. This maximum applies to someone who is 61+ with 20 or more years of service all worked aged 41 or over.",
       "Enhanced redundancy schemes paid by employers are not subject to these statutory caps — they can use your actual salary and count more years of service. Enhanced payments above the statutory amount can still benefit from the £30,000 tax-free threshold on total termination payments.",
     ],
     country: "UK",
@@ -182,9 +182,9 @@ export const FAQS: FaqPageMeta[] = [
   {
     slug: "how-is-a-weeks-pay-calculated-for-redundancy",
     question: "How is a week's pay calculated for redundancy purposes?",
-    shortAnswer: "A week's pay is your normal weekly wage, capped at £643 for 2026/27. For variable pay, it's averaged over the 12 weeks before the notice date.",
+    shortAnswer: "A week's pay is your normal weekly wage, capped at £751 from 6 April 2026. For variable pay, it's averaged over the 12 weeks before the notice date.",
     answer: [
-      "For employees with fixed hours and fixed pay, a week's pay is straightforward: it is your gross weekly wage — but capped at £643 for the tax year 2026/27. The cap is reviewed by the government each April in line with inflation. If you earn £800 per week, only £643 is used in the calculation.",
+      "For employees with fixed hours and fixed pay, a week's pay is straightforward: it is your gross weekly wage — but capped at £751 for the tax year 2026/27. The cap is reviewed by the government each April in line with inflation. If you earn £800 per week, only £751 is used in the calculation.",
       "For employees with variable pay — where pay varies depending on hours worked, commission, or other variable elements — a week's pay is calculated as the average of the 12 weeks' pay actually paid in the 12 weeks before the notice was given (or the effective date of termination if no notice was given). Weeks in which no pay was received (for example, unpaid leave) are ignored and an earlier week is substituted to make up the 12-week period.",
       "For employees with no fixed working hours (zero-hours or irregular hours), the average is taken over the 12 weeks before the calculation date. Overtime and commission that are guaranteed and regularly paid may be included; purely discretionary bonuses that are not regular are generally excluded. For part-time workers, a week's pay reflects actual part-time earnings, not a full-time equivalent.",
     ],
@@ -474,9 +474,9 @@ export const FAQS: FaqPageMeta[] = [
   {
     slug: "what-is-minimum-wage-uk-2026",
     question: "What is the minimum wage in the UK in 2026?",
-    shortAnswer: "The National Living Wage for workers aged 21+ is £12.21/hr from April 2025. Workers aged 18–20 get £10.00/hr, and under-18s get £7.55/hr.",
+    shortAnswer: "The National Living Wage for workers aged 21+ is £12.71/hr from April 2026. Workers aged 18–20 get £10.85/hr, and 16–17-year-olds and apprentices get £8.00/hr.",
     answer: [
-      "The UK National Minimum Wage and National Living Wage rates from 1 April 2025 are: National Living Wage (aged 21+): £12.21/hr; Age 18–20: £10.00/hr; Age 16–17 and apprentices: £7.55/hr. The National Living Wage replaced the adult minimum wage for workers aged 23+ in 2016, and was extended to those aged 21+ from April 2024. These rates apply across England, Scotland, Wales, and Northern Ireland — there is no regional variation in the statutory minimum.",
+      "The UK National Minimum Wage and National Living Wage rates from 1 April 2026 are: National Living Wage (aged 21+): £12.71/hr; Age 18–20: £10.85/hr; Age 16–17 and apprentices: £8.00/hr. The National Living Wage replaced the adult minimum wage for workers aged 23+ in 2016, and was extended to those aged 21+ from April 2024. These rates apply across England, Scotland, Wales, and Northern Ireland — there is no regional variation in the statutory minimum.",
       "Your employer must pay you at least the minimum wage for every hour worked, including overtime. Minimum wage applies to most workers — employees, agency workers, and casual workers — but not to the genuinely self-employed. Common unlawful deductions that bring effective pay below minimum wage include: charging for uniforms, making deductions for tools, or making you work unpaid for activities like travel between sites, changing into workwear, or mandatory training.",
       "If you believe you are being paid below minimum wage, you can report it to HMRC (who enforce the NMW) via the helpline (0800 917 2368) or online at gov.uk. HMRC can investigate, require your employer to pay arrears going back 6 years, and impose financial penalties. You can also bring a civil claim in the Employment Tribunal. There is no minimum service period — minimum wage applies from day one.",
     ],

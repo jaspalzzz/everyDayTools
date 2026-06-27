@@ -155,7 +155,7 @@ export default function UKMaternityPayGuide() {
                 <li className="list-decimal">
                   <strong className="text-ink">Average earnings at or above the Lower Earnings Limit</strong>{" "}
                   — your average weekly earnings in the eight weeks before the qualifying week must
-                  be at least £125/week (the Lower Earnings Limit for 2026/27).
+                  be at least £129/week (the Lower Earnings Limit for 2026/27).
                 </li>
                 <li className="list-decimal">
                   <strong className="text-ink">Still pregnant at the 11th week</strong> or have

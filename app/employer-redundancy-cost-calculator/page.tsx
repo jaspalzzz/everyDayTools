@@ -25,7 +25,7 @@ const faqs: FaqItem[] = [
   {
     question: "What is the statutory formula for redundancy pay?",
     answer:
-      "Statutory redundancy pay = complete years of service (up to 20) × weekly pay (capped at £643 for 2025/26) × age multiplier. The multiplier is 0.5 per year worked under age 22, 1 per year aged 22–40, and 1.5 per year aged 41 or over. The maximum payment is £22,530.",
+      "Statutory redundancy pay = complete years of service (up to 20) × weekly pay (capped at £751 from 6 April 2026) × age multiplier. The multiplier is 0.5 per year worked under age 22, 1 per year aged 22–40, and 1.5 per year aged 41 or over. The maximum payment is £22,530.",
   },
   {
     question: "Can I offer enhanced redundancy pay instead?",
@@ -52,7 +52,7 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(faqs))} />
       <ToolLayout
         tool={tool}
-        calculator={<RedundancyCalculator />}
+        calculator={<RedundancyCalculator startEligible />}
         source={REDUNDANCY_SOURCE}
         verifiedDate={UK_REDUNDANCY.effectiveDate}
         faqs={faqs}
@@ -63,7 +63,7 @@ export default function Page() {
               When you make an employee redundant with 2 or more years' continuous service, you are
               legally required to pay <strong>statutory redundancy pay</strong> under the Employment
               Rights Act 1996. This calculator applies the statutory formula: service years (up to 20)
-              × weekly pay (capped at £643 for 2025/26) × age multiplier. The maximum statutory
+              × weekly pay (capped at £751 from 6 April 2026) × age multiplier. The maximum statutory
               payment is £22,530.
             </p>
             <p>

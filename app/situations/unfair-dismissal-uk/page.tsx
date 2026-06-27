@@ -107,7 +107,7 @@ const CHECKLIST = [
 const FAQS = [
   {
     q: "How much compensation can I get for unfair dismissal?",
-    a: "Unfair dismissal compensation has two parts. The basic award is calculated in the same way as statutory redundancy pay: up to £22,530 based on age, years of service, and weekly pay (capped at £643/week for 2026/27). The compensatory award reflects your actual financial loss — lost earnings, pension, and benefits — up to a cap of £115,115 or 52 weeks' actual pay, whichever is lower. Tribunals can reduce both awards if you contributed to your dismissal or failed to mitigate your losses.",
+    a: "Unfair dismissal compensation has two parts. The basic award is calculated in the same way as statutory redundancy pay: up to £22,530 based on age, years of service, and weekly pay (capped at £751/week for 2026/27). The compensatory award reflects your actual financial loss — lost earnings, pension, and benefits — up to a cap of £115,115 or 52 weeks' actual pay, whichever is lower. Tribunals can reduce both awards if you contributed to your dismissal or failed to mitigate your losses.",
   },
   {
     q: "What is the 3-month time limit and can it be extended?",

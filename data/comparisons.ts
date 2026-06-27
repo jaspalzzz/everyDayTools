@@ -150,7 +150,7 @@ export const COMPARISONS: ComparisonMeta[] = [
     rows: [
       { aspect: "Definition", a: "Your role is no longer required — the business ceases, the workplace closes, or the need for employees doing your type of work diminishes", b: "Your employer ends your employment for a reason relating to you personally — conduct, capability, or another substantial reason" },
       { aspect: "Qualifying period for pay", a: "2 years' continuous employment for statutory redundancy pay", b: "2 years for unfair dismissal; wrongful dismissal available from day one" },
-      { aspect: "Redundancy pay", a: "Statutory: up to £22,530 based on age, service, and weekly pay (capped at £643). Contract may provide more.", b: "None. Redundancy pay is only owed on genuine redundancy." },
+      { aspect: "Redundancy pay", a: "Statutory: up to £22,530 based on age, service, and weekly pay (capped at £751). Contract may provide more.", b: "None. Redundancy pay is only owed on genuine redundancy." },
       { aspect: "Notice entitlement", a: "Full statutory or contractual notice (or PILON) is owed in addition to redundancy pay", b: "Full statutory or contractual notice owed, unless gross misconduct justifies summary dismissal" },
       { aspect: "Consultation requirement", a: "Individual consultation required; 45-day collective consultation if 100+ redundancies", b: "Depends on reason: capability requires support and warnings; conduct requires disciplinary procedure (ACAS Code)" },
       { aspect: "Tax treatment", a: "Redundancy pay up to £30,000 is tax-free. Amounts above £30,000 are taxable.", b: "No tax-free element for dismissal compensation (unless part of a settlement agreement)" },
@@ -170,7 +170,7 @@ export const COMPARISONS: ComparisonMeta[] = [
       },
       {
         q: "Is redundancy pay taxable?",
-        a: "Statutory redundancy pay is tax-free up to £30,000 in total (combined with any other termination payments). The weekly pay used to calculate it is also subject to the £643/week cap. Contractual redundancy pay above the statutory minimum is also tax-free up to the £30,000 threshold. Amounts above £30,000 are subject to income tax (but not National Insurance).",
+        a: "Statutory redundancy pay is tax-free up to £30,000 in total (combined with any other termination payments). The weekly pay used to calculate it is also subject to the £751/week cap. Contractual redundancy pay above the statutory minimum is also tax-free up to the £30,000 threshold. Amounts above £30,000 are subject to income tax (but not National Insurance).",
       },
       {
         q: "Can I be dismissed for redundancy if I'm on sick leave or maternity leave?",
@@ -203,10 +203,10 @@ export const COMPARISONS: ComparisonMeta[] = [
     rows: [
       { aspect: "Source", a: "Employment Rights Act 1996 (ERA 1996 s.162)", b: "Employment contract, collective agreement, staff handbook, or employer discretion" },
       { aspect: "Qualifying service", a: "2 years' continuous employment", b: "Often 1 year or from day one (depends on employer scheme)" },
-      { aspect: "Weekly pay cap (2026/27)", a: "£643 per week maximum", b: "Uncapped — employer may use actual salary or a higher cap" },
+      { aspect: "Weekly pay cap (2026/27)", a: "£751 per week maximum", b: "Uncapped — employer may use actual salary or a higher cap" },
       { aspect: "Maximum years counted", a: "20 years", b: "Often higher — some schemes count all years of service" },
       { aspect: "Age multiplier", a: "Under 22: 0.5 week per year; 22–40: 1 week per year; 41+: 1.5 weeks per year", b: "Varies — many employers use a flat 1 or 1.5 week per year regardless of age" },
-      { aspect: "Maximum statutory pay (2026/27)", a: "£22,530 (20 years × £643 × 1.5 for 41+ age bracket)", b: "No upper limit — can be significantly higher" },
+      { aspect: "Maximum statutory pay (2026/27)", a: "£22,530 (20 years × £751 × 1.5 for 41+ age bracket)", b: "No upper limit — can be significantly higher" },
       { aspect: "Tax treatment", a: "First £30,000 of total termination payment is tax-free", b: "First £30,000 of total termination payment is tax-free (statutory + enhanced combined)" },
       { aspect: "If employer refuses to pay", a: "Can claim at Employment Tribunal within 6 months of termination", b: "Can claim breach of contract at Employment Tribunal or county court" },
     ],
@@ -215,7 +215,7 @@ export const COMPARISONS: ComparisonMeta[] = [
     faqs: [
       {
         q: "How is statutory redundancy pay calculated?",
-        a: "Statutory redundancy pay = number of complete years of continuous employment (up to 20) × weekly pay (capped at £643 for 2026/27) × age multiplier (0.5 for under-22 service years, 1 for 22–40 service years, 1.5 for 41+ service years). The maximum is £22,530. Use the government's redundancy pay calculator or ours to get the exact figure.",
+        a: "Statutory redundancy pay = number of complete years of continuous employment (up to 20) × weekly pay (capped at £751 from 6 April 2026) × age multiplier (0.5 for under-22 service years, 1 for 22–40 service years, 1.5 for 41+ service years). The maximum is £22,530. Use the government's redundancy pay calculator or ours to get the exact figure.",
       },
       {
         q: "What is the £30,000 tax-free threshold?",
@@ -520,7 +520,7 @@ export const COMPARISONS: ComparisonMeta[] = [
       { aspect: "Definition", a: "A statutory payment owed under ERA 1996 when employment ends by reason of redundancy", b: "An umbrella term for any payment made on termination — may include notice pay, redundancy pay, holiday pay, and ex gratia payments" },
       { aspect: "Legal basis", a: "Mandatory under ERA 1996 s.135 — employer has no discretion to refuse if conditions are met", b: "Contractual or negotiated — depends on what the employer agrees to pay (or the contract requires)" },
       { aspect: "Qualifying condition", a: "2 years' continuous employment; genuine redundancy", b: "As agreed — may be available from day one if the contract provides it" },
-      { aspect: "Calculation", a: "Statutory formula: age × years × weekly pay (capped at £643); maximum £22,530", b: "Depends on the exit agreement — may be a multiple of salary, a fixed sum, or a formula" },
+      { aspect: "Calculation", a: "Statutory formula: age × years × weekly pay (capped at £751); maximum £22,530", b: "Depends on the exit agreement — may be a multiple of salary, a fixed sum, or a formula" },
       { aspect: "Tax treatment", a: "Tax-free up to £30,000 (combined with other qualifying termination payments)", b: "Notice pay is fully taxable. Redundancy and ex gratia elements are tax-free up to £30,000 combined. Amounts above £30,000 are taxed." },
       { aspect: "Can employer refuse?", a: "No — withholding statutory redundancy pay is unlawful; can claim at tribunal within 6 months", b: "If contractual: no — breach of contract claim available. If discretionary: employer has more latitude, but consistent past practice creates expectations." },
       { aspect: "Typical components", a: "Statutory formula payment only", b: "Notice pay (PILON) + statutory redundancy pay + enhanced redundancy + ex gratia + accrued holiday + benefits buyout" },

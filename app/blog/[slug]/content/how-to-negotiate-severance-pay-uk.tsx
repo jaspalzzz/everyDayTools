@@ -6,7 +6,7 @@ export default function HowToNegotiateSeverancePayUk() {
       <h2>Why statutory redundancy pay is just the starting point</h2>
       <p>
         Statutory redundancy pay is calculated using a fixed formula — your age, service, and a weekly
-        pay cap of £643 (2025/26). For most employees it is a relatively modest sum. The good news is
+        pay cap of £751 (2026/27). For most employees it is a relatively modest sum. The good news is
         that statutory pay is a legal minimum, not a market rate. Many employers routinely pay more —
         and most will negotiate if approached correctly.
       </p>
@@ -20,7 +20,7 @@ export default function HowToNegotiateSeverancePayUk() {
       <h2>Know your statutory minimum first</h2>
       <p>
         Before any negotiation, calculate your exact statutory entitlement. Use the formula: complete
-        service years × weekly pay (capped at £643) × age multiplier (0.5/1.0/1.5). This is your
+        service years × weekly pay (capped at £751) × age multiplier (0.5/1.0/1.5). This is your
         absolute floor — anything below this figure is unlawful, so your employer cannot credibly
         offer less.
       </p>
@@ -44,7 +44,7 @@ export default function HowToNegotiateSeverancePayUk() {
       </p>
       <ul>
         <li><strong>Uncapped service years</strong> — using actual years rather than the 20-year statutory cap</li>
-        <li><strong>Actual weekly pay</strong> — using your real salary rather than the £643 cap</li>
+        <li><strong>Actual weekly pay</strong> — using your real salary rather than the £751 cap</li>
         <li><strong>Higher multiplier</strong> — e.g. 2 weeks per year rather than the statutory 1 or 1.5</li>
         <li><strong>Ex gratia payment</strong> — a lump sum paid purely as goodwill, not tied to the formula</li>
         <li><strong>Notice pay in full</strong> — paying PILON at your actual contractual rate including benefits</li>

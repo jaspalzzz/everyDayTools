@@ -111,7 +111,7 @@ export const BLOG_POSTS: BlogPost[] = [
     description:
       "Everything pregnant employees in the UK need to know about Statutory Maternity Pay — the 39-week entitlement, qualifying conditions, the 90% first-6-weeks rule, and how enhanced (occupational) maternity pay works.",
     excerpt:
-      "UK Statutory Maternity Pay pays 90% of average earnings for 6 weeks, then £184.03/week (or 90% if lower) for up to 33 more weeks. Here is how to qualify and what to expect week by week.",
+      "UK Statutory Maternity Pay pays 90% of average earnings for 6 weeks, then £194.32/week (or 90% if lower) for up to 33 more weeks. Here is how to qualify and what to expect week by week.",
     region: "UK",
     category: "parental-leave",
     datePublished: "2026-06-27",
@@ -154,7 +154,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "uk-sick-pay-rights-2026",
     title: "UK Sick Pay Rights 2026: SSP, Qualifying Days, and What Your Employer Must Pay",
     description:
-      "Statutory Sick Pay is £116.75/week from day 4 of illness — but many workers don't know when it starts, how long it lasts, or what to do when it runs out. This guide covers all of it.",
+      "Statutory Sick Pay is £123.25/week from day 4 of illness — but many workers don't know when it starts, how long it lasts, or what to do when it runs out. This guide covers all of it.",
     excerpt:
       "Everything UK workers need to know about Statutory Sick Pay in 2026: eligibility, waiting days, the 28-week maximum, enhanced sick pay, and what happens when SSP ends.",
     region: "UK",

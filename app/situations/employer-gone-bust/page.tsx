@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const claims = [
   { label: "Unpaid wages", cap: "8 weeks, up to £800/week", detail: "Any wages owed in the 8 weeks before the insolvency date. The weekly cap matches the statutory redundancy pay cap." },
-  { label: "Statutory redundancy pay", cap: "Up to £22,530", detail: "Based on age, weekly pay (capped at £643/week in 2025/26), and years of service. Same formula as a normal redundancy — 2+ years' service required." },
+  { label: "Statutory redundancy pay", cap: "Up to £22,530", detail: "Based on age, weekly pay (capped at £751/week in 2026/27), and years of service. Same formula as a normal redundancy — 2+ years' service required." },
   { label: "Pay in lieu of notice (PILON)", cap: "Up to 12 weeks at capped rate", detail: "Your statutory minimum notice entitlement (1 week per year up to 12 weeks). Contractual notice above the statutory minimum cannot be recovered from the NIF." },
   { label: "Unpaid holiday pay", cap: "Up to 6 weeks", detail: "Any accrued but untaken holiday pay during your last 12 months of employment, up to 6 weeks." },
   { label: "Outstanding pension contributions", cap: "Employer contributions only", detail: "Employer contributions to your occupational pension that should have been paid in the 12 months before insolvency. Personal contributions are not covered." },
@@ -143,7 +143,7 @@ export default function EmployerGoneBust() {
               </tbody>
             </table>
           </div>
-          <p className="mt-2 text-xs text-ink-faint">Weekly pay is capped at £643/week for 2025/26 for redundancy and notice pay calculations.</p>
+          <p className="mt-2 text-xs text-ink-faint">Weekly pay is capped at £751/week for 2026/27 for redundancy and notice pay calculations.</p>
         </section>
 
         {/* Steps */}

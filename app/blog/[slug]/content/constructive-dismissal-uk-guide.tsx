@@ -137,12 +137,12 @@ export default function Content() {
       <ul>
         <li>
           <strong>Basic award</strong>: Calculated identically to statutory redundancy pay (based on age,
-          years of service, and weekly pay capped at £643/week). Maximum: £22,530 for 2025/26.
+          years of service, and weekly pay capped at £751/week). Maximum: £22,530 for 2026/27.
         </li>
         <li>
           <strong>Compensatory award</strong>: Your actual financial losses — lost earnings from resignation
           to finding a new job, any difference in salary in a new lower-paid role, pension losses.
-          Capped at the lower of 52 weeks&apos; pay or £115,115 for 2025/26.
+          Capped at the lower of 52 weeks&apos; pay or £115,115 for 2026/27.
         </li>
       </ul>
       <p>

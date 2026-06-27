@@ -83,8 +83,8 @@ export default function UKPage() {
           </p>
           <div className="mt-5 rounded-lg border border-surface-line bg-surface-muted px-4 py-3 text-xs leading-relaxed text-ink-faint">
             <strong className="text-ink">Key 2026/27 rates:</strong> Statutory Redundancy Pay cap £751/week ·
-            SMP/SPP/SAP/ShPP £194.32/week · SSP £118.75/week · National Living Wage £12.21/hour ·
-            Lower Earnings Limit £125/week
+            SMP/SPP/SAP/ShPP £194.32/week · SSP £123.25/week · National Living Wage £12.71/hour ·
+            Lower Earnings Limit £129/week
           </div>
         </div>
 

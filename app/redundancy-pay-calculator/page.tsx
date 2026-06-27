@@ -63,7 +63,7 @@ export default function Page() {
       />
       <ToolLayout
         tool={tool}
-        calculator={<RedundancyCalculator />}
+        calculator={<RedundancyCalculator startEligible />}
         source={REDUNDANCY_SOURCE}
         verifiedDate={UK_REDUNDANCY.effectiveDate}
         faqs={faqs}

@@ -2,6 +2,8 @@
 
 import { useState, useMemo } from "react";
 import { analysePayslip, type DeductionLine } from "@/lib/calculators/payslipAnalyser";
+import { ResultPanel } from "@/components/ResultPanel";
+import type { CalcResult } from "@/lib/types";
 
 const CATEGORY_LABELS: Record<string, string> = {
   "income-tax": "Income Tax",
@@ -81,6 +83,30 @@ export function PayslipAnalyser() {
   }, [grossPay, netPay, deductions]);
 
   const f = (n: number) => `£${n.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+  const result: CalcResult = useMemo(
+    () => ({
+      headline: f(parseFloat(netPay) || 0),
+      headlineCaption: analysis.reconciliationOk
+        ? "Net pay reconciles with listed deductions"
+        : "Net pay check based on the figures entered",
+      breakdown: [
+        { label: "Gross pay", value: f(parseFloat(grossPay) || 0) },
+        { label: "Net pay", value: f(parseFloat(netPay) || 0), emphasis: true },
+        { label: "Listed deductions", value: f(analysis.totalDeductions) },
+        { label: "Gross minus net", value: f(analysis.impliedDeductions) },
+        { label: "Taxable pay estimate", value: f(analysis.taxablePayEstimate) },
+      ],
+      notes: [
+        analysis.reconciliationOk
+          ? "The listed deductions reconcile with gross minus net pay within £1."
+          : "The listed deductions do not fully reconcile with gross minus net pay; check whether a deduction is missing or a figure has been entered differently from the payslip.",
+        "This analyser explains common UK deduction labels and does not replace payroll, HMRC, or employment-law advice.",
+      ],
+      valid: (parseFloat(grossPay) || 0) > 0 && (parseFloat(netPay) || 0) >= 0,
+    }),
+    [analysis, grossPay, netPay],
+  );
 
   return (
     <div className="space-y-8">
@@ -175,6 +201,23 @@ export function PayslipAnalyser() {
           </div>
         ))}
       </div>
+
+      <ResultPanel
+        result={result}
+        letterMeta={{
+          title: "Payslip Deduction Analysis",
+          intro:
+            "This document summarises the payslip figures entered, reconciles gross pay against net pay and listed deductions, and explains common UK deduction categories.",
+          source: "GOV.UK — Payslips",
+          sourceUrl: "https://www.gov.uk/payslips",
+          effectiveDate: "2026-04-06",
+          inputs: [
+            { label: "Gross pay", value: f(parseFloat(grossPay) || 0) },
+            { label: "Net pay", value: f(parseFloat(netPay) || 0) },
+            { label: "Listed deductions", value: f(analysis.totalDeductions) },
+          ],
+        }}
+      />
 
       {/* Deduction explanations */}
       {analysis.deductionsByCategory.length > 0 && (

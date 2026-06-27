@@ -17,13 +17,13 @@ export default function Content() {
         Code Notice&quot; or on your payslip.
       </p>
       <p>
-        The most common tax code for most workers in the 2025/26 tax year is <strong>1257L</strong>.
+        The most common tax code for most workers in the 2026/27 tax year is <strong>1257L</strong>.
         This breaks down as:
       </p>
       <ul>
         <li>
           <strong>1257</strong>: The number indicates your personal allowance divided by 10. 1257 × 10 =
-          £12,570 — the standard personal allowance for 2025/26.
+          £12,570 — the standard personal allowance for 2026/27.
         </li>
         <li>
           <strong>L</strong>: The letter indicates you are entitled to the standard personal allowance.

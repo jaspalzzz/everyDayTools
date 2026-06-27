@@ -20,7 +20,7 @@ const faqs: FaqItem[] = [
   {
     question: "How is take-home pay calculated in the US?",
     answer:
-      "Federal income tax is applied to your adjusted gross income (gross minus the standard deduction) using seven progressive brackets ranging from 10% to 37%. You also pay FICA: Social Security at 6.2% up to the wage base ($176,100 in 2026) and Medicare at 1.45% on all wages. This estimate does not include state income tax, which varies significantly by state.",
+      "Federal income tax is applied to your adjusted gross income (gross minus the standard deduction) using seven progressive brackets ranging from 10% to 37%. You also pay FICA: Social Security at 6.2% up to the wage base ($184,500 in 2026) and Medicare at 1.45% on all wages. This estimate does not include state income tax, which varies significantly by state.",
   },
   {
     question: "What is the personal allowance in the UK?",
@@ -90,7 +90,7 @@ export default function Page() {
               For <strong>US employees</strong>, the calculator uses 2026 federal income tax
               brackets for a single filer with the standard deduction ($16,100), covering rates
               from 10% to 37%. FICA contributions are added on top: Social Security at 6.2% up
-              to the wage base ($176,100) and Medicare at 1.45% on all wages, plus the 0.9%
+              to the wage base ($184,500) and Medicare at 1.45% on all wages, plus the 0.9%
               Additional Medicare Tax on wages above $200,000. State income tax is not included
               because it varies from 0% in Texas and Florida to over 13% in California.
             </p>

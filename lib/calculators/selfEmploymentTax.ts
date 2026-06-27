@@ -23,7 +23,7 @@ function calcUKSE(profit: number): CalcResult {
     ? N.class2WeeklyRate * 52
     : 0;
 
-  // Class 4 NI: 9% on profits between LPL and UPL, 2% above
+  // Class 4 NI: 6% on profits between LPL and UPL, 2% above
   let class4 = 0;
   if (profit > N.class4LowerProfitsLimit) {
     const main = Math.min(profit, N.class4UpperProfitsLimit) - N.class4LowerProfitsLimit;

@@ -8,7 +8,7 @@ import { calcAuAnnualLeave, AU_ANNUAL_LEAVE_SOURCE, type AuLeaveCalcMode } from 
 export function AuAnnualLeaveCalculator() {
   const [mode, setMode] = useState<AuLeaveCalcMode>("accrued");
   const [hoursPerWeek, setHoursPerWeek] = useState<number | "">(38);
-  const [hourlyRate, setHourlyRate] = useState<number | "">("");
+  const [hourlyRate, setHourlyRate] = useState<number | "">(30);
   const [weeksWorked, setWeeksWorked] = useState<number | "">(26);
   const [accruedHours, setAccruedHours] = useState<number | "">("");
   const [hasLeaveLoading, setHasLeaveLoading] = useState(false);

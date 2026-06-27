@@ -145,7 +145,7 @@ export const UK_NI_SELF_EMPLOYED = {
   class2SmallProfitsThreshold: 6_845,
   class4LowerProfitsLimit: 12_570,
   class4UpperProfitsLimit: 50_270,
-  /** Class 4 main rate reduced from 9% → 8% (2024/25) → 6% (2025/26 onward). */
+  /** Current Class 4 main rate. */
   class4MainRate: 0.06,
   class4UpperRate: 0.02,
   effectiveDate: "2026-04-06",
@@ -184,7 +184,7 @@ export const US_INCOME_TAX = {
 /** FICA — employee share (2026) */
 export const US_FICA = {
   ssTaxRate: 0.062,
-  /** SSA 2026 taxable maximum: $184,500 (up from $176,100 in 2025). */
+  /** SSA 2026 taxable maximum. */
   ssWageBase: 184_500,
   medicareTaxRate: 0.0145,
   additionalMedicareRate: 0.009,

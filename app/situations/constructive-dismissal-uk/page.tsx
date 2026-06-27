@@ -52,7 +52,7 @@ const steps = [
     duration: "Within 3 months less 1 day of resignation (minus EC pause)",
     urgency: "Hard deadline — no extensions without exceptional reason",
     description:
-      "Once ACAS issues your EC certificate (used if conciliation fails), submit your ET1 form online at gov.uk. Your claim should set out: the fundamental breach, when it occurred, when you resigned, and the losses you have suffered. Compensation for constructive dismissal is typically a basic award (same formula as statutory redundancy pay) plus a compensatory award (capped at the lower of 52 weeks' pay or £115,115 for 2025/26). If the breach also involves discrimination, there is no cap on compensation.",
+      "Once ACAS issues your EC certificate (used if conciliation fails), submit your ET1 form online at gov.uk. Your claim should set out: the fundamental breach, when it occurred, when you resigned, and the losses you have suffered. Compensation for constructive dismissal is typically a basic award (same formula as statutory redundancy pay) plus a compensatory award (capped at the lower of 52 weeks' pay or £115,115 for 2026/27). If the breach also involves discrimination, there is no cap on compensation.",
   },
 ];
 
@@ -76,7 +76,7 @@ const faqs = [
   },
   {
     q: "What compensation can I get for constructive dismissal?",
-    a: "You can receive a basic award (same as statutory redundancy pay: up to £22,530) and a compensatory award for financial losses (capped at the lower of 52 weeks' pay or £115,115 in 2025/26). Both can be reduced if you failed to mitigate your losses or failed to follow the ACAS Code. If discrimination is also involved, there is no cap.",
+    a: "You can receive a basic award (same as statutory redundancy pay: up to £22,530) and a compensatory award for financial losses (capped at the lower of 52 weeks' pay or £115,115 in 2026/27). Both can be reduced if you failed to mitigate your losses or failed to follow the ACAS Code. If discrimination is also involved, there is no cap.",
   },
   {
     q: "Can I resign with immediate effect?",

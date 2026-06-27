@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function UkMaternityPayRights2026() {
   const weeks = [
     { period: "Weeks 1–6", rate: "90% of average weekly earnings (no cap)", type: "higher" },
-    { period: "Weeks 7–39", rate: "£184.03/week, or 90% of AWE if lower", type: "standard" },
+    { period: "Weeks 7–39", rate: "£194.32/week, or 90% of AWE if lower", type: "standard" },
     { period: "Weeks 40–52", rate: "Unpaid (statutory maternity leave continues)", type: "unpaid" },
   ];
 
@@ -18,7 +18,7 @@ export default function UkMaternityPayRights2026() {
         total (the final 13 weeks are unpaid if you have used your full SMP entitlement).
       </p>
 
-      <h2>SMP rates for 2025/26</h2>
+      <h2>SMP rates for 2026/27</h2>
       <div className="my-6 overflow-x-auto rounded-xl border border-surface-line">
         <table className="w-full text-sm">
           <thead>
@@ -43,7 +43,7 @@ export default function UkMaternityPayRights2026() {
         </table>
       </div>
       <p className="text-xs text-ink-faint">
-        The flat-rate SMP (£184.03/week for 2025/26) is reviewed each April by the government.
+        The flat-rate SMP (£194.32/week for 2026/27) is reviewed each April by the government.
         Your employer pays SMP through payroll and recovers most of it from HMRC. SMP is taxable as income.
       </p>
 
@@ -69,8 +69,8 @@ export default function UkMaternityPayRights2026() {
           "qualifying week"
         </li>
         <li>
-          <strong>Earning at or above the Lower Earnings Limit (LEL)</strong> — £125/week for
-          2025/26 — during the 8-week averaging period
+          <strong>Earning at or above the Lower Earnings Limit (LEL)</strong> — £129/week for
+          2026/27 — during the 8-week averaging period
         </li>
         <li>
           <strong>Still pregnant at 11 weeks before the EWC</strong> (or have already given birth)
@@ -84,7 +84,7 @@ export default function UkMaternityPayRights2026() {
         Agency workers, zero-hours workers, and employees on short fixed-term contracts can qualify
         if they meet the service and earnings conditions with a single employer. Self-employed people
         do not get SMP but may qualify for Maternity Allowance (MA) instead — paid directly by
-        HMRC at up to £184.03/week for 39 weeks.
+        HMRC at up to £194.32/week for 39 weeks.
       </p>
 
       <h2>How average weekly earnings (AWE) are calculated</h2>

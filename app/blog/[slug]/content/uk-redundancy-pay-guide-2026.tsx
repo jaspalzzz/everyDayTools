@@ -13,7 +13,7 @@ export default function UkRedundancyPayGuide2026() {
       <p>
         The amount is calculated using a fixed formula based on three things: your <strong>age</strong>,
         your <strong>length of continuous service</strong> (capped at 20 years), and your{" "}
-        <strong>weekly pay</strong> (capped at £643 for 2025/26). The maximum statutory payment is
+        <strong>weekly pay</strong> (capped at £751 from 6 April 2026). The maximum statutory payment is
         therefore £22,530. Many employers pay more (enhanced redundancy pay) — the statutory amount is
         the legal minimum, not the target.
       </p>
@@ -40,18 +40,18 @@ export default function UkRedundancyPayGuide2026() {
         <li><strong>Service years aged 41 or over:</strong> 1.5 week's pay per complete year</li>
       </ul>
       <p>
-        Only the last 20 years of service count. Weekly pay is capped at £643 (2025/26 — reviewed
-        annually each April 6). The maximum payment is therefore 20 years × 1.5 × £643 = £19,290
-        for service entirely after age 41, or £643 × 30 × 0.5 / 1 = up to £22,530 across age bands.
+        Only the last 20 years of service count. Weekly pay is capped at £751 (2026/27 — reviewed
+        annually each April 6). The maximum payment is therefore 20 years × 1.5 × £751 = £22,530
+        for service entirely after age 41.
       </p>
 
       <div className="my-6 rounded-xl border border-brand-100 bg-brand-50 p-5">
         <p className="font-semibold text-brand-700 mb-2">Quick example</p>
         <p className="text-sm">
-          Age 45, 8 years of service, weekly pay £800 (capped to £643):<br />
-          Years aged 22–40: 7 years × £643 × 1.0 = £4,501<br />
-          Years aged 41–45: 1 year × £643 × 1.5 = £964.50<br />
-          <strong>Total: £5,465.50</strong>
+          Age 45, 8 years of service, weekly pay £800 (capped to £751):<br />
+          Years aged 22–40: 4 years × £751 × 1.0 = £3,004<br />
+          Years aged 41–45: 4 years × £751 × 1.5 = £4,506<br />
+          <strong>Total: £7,510</strong>
         </p>
         <Link href="/redundancy-pay-calculator" className="mt-3 inline-block text-sm font-medium text-brand-600 hover:underline">
           Calculate your exact entitlement →

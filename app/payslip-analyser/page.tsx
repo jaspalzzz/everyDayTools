@@ -79,7 +79,7 @@ export default function Page() {
         </nav>
 
         <h1 className="mb-2 text-3xl font-bold tracking-tight text-ink">
-          UK payslip deduction analyser
+          Payslip deduction analyser
         </h1>
         <p className="mb-8 text-ink-soft">
           Enter your payslip figures to get a plain-English explanation of every deduction — and
