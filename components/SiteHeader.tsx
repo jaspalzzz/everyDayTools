@@ -1,96 +1,129 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { TOOLS, CATEGORY_META } from "@/data/tools";
 import { SITE } from "@/lib/seo";
 import { TablerIcon } from "./TablerIcon";
+import { CountryFlag } from "./CountryFlag";
 
-const HERO_TOOLS = TOOLS.filter((t) => t.hero);
-const NAV_TOOLS = HERO_TOOLS.slice(0, 5);
-const MORE_TOOLS = HERO_TOOLS.slice(5);
+const CATEGORY_LINKS = [
+  { label: "Leaving a Job", href: "/#cat-leaving-job" },
+  { label: "Pay & Tax", href: "/#cat-pay-tax" },
+  { label: "Parental Leave", href: "/#cat-parental-leave" },
+  { label: "Benefits & Entitlements", href: "/#cat-benefits" },
+];
+
+const COUNTRY_LINKS = [
+  { code: "UK", label: "United Kingdom", href: "/uk" },
+  { code: "US", label: "United States", href: "/us" },
+  { code: "CA", label: "Canada", href: "/ca" },
+  { code: "AU", label: "Australia", href: "/au" },
+];
+
+function LogoMark() {
+  return (
+    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-brand-800 text-white shadow-[0_4px_10px_rgba(59,130,246,0.3)]">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <path d="M9 11l2 2 4-4" />
+      </svg>
+    </span>
+  );
+}
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false);
-  const moreRef = useRef<HTMLDivElement>(null);
+  const [menu, setMenu] = useState<"calculators" | "countries" | null>(null);
+  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!moreOpen) return;
+    if (!menu) return;
     function handler(e: MouseEvent) {
-      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
-        setMoreOpen(false);
-      }
+      if (navRef.current && !navRef.current.contains(e.target as Node)) setMenu(null);
     }
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
-  }, [moreOpen]);
+  }, [menu]);
 
   return (
     <>
-      <header className="border-b border-surface-line">
-        <div className="mx-auto flex max-w-content items-center justify-between gap-4 px-5 py-4">
-          <Link href="/" className="flex shrink-0 items-center gap-2" onClick={() => setOpen(false)}>
-            <Image
-              src="/logo-mark.svg"
-              alt=""
-              width={28}
-              height={28}
-              className="h-7 w-7"
-              priority
-              aria-hidden="true"
-            />
-            <span className="text-base font-medium tracking-tight text-ink">{SITE.name}</span>
+      <header className="sticky top-0 z-50 border-b border-surface-line bg-white">
+        <div className="mx-auto flex h-18 max-w-[1180px] items-center justify-between px-6" style={{ height: "4.5rem" }}>
+          {/* Logo */}
+          <Link href="/" className="flex shrink-0 items-center gap-3" onClick={() => setOpen(false)}>
+            <LogoMark />
+            <span className="flex flex-col leading-tight">
+              <span className="text-[1.25rem] font-bold tracking-tight text-ink">{SITE.name}</span>
+              <span className="text-[11px] text-ink-soft">Know what you&apos;re owed</span>
+            </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav aria-label="Quick tools" className="hidden items-center gap-5 lg:flex">
-            {NAV_TOOLS.map((tool) => (
-              <Link
-                key={tool.slug}
-                href={`/${tool.slug}`}
-                className="whitespace-nowrap text-sm text-ink-soft transition-colors hover:text-ink"
+          <nav ref={navRef} aria-label="Primary" className="hidden items-center gap-8 lg:flex">
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setMenu(menu === "calculators" ? null : "calculators")}
+                className="flex items-center gap-1 text-[15px] font-medium text-ink transition-colors hover:text-brand-600"
+                aria-expanded={menu === "calculators"}
               >
-                {tool.shortName}
-              </Link>
-            ))}
+                Calculators
+                <TablerIcon name="ti-chevron-down" size={14} aria-hidden="true" className={`transition-transform ${menu === "calculators" ? "rotate-180" : ""}`} />
+              </button>
+              {menu === "calculators" && (
+                <div className="absolute left-0 top-full z-50 mt-3 min-w-[220px] rounded-xl border border-surface-line bg-white py-2 shadow-lg">
+                  {CATEGORY_LINKS.map((c) => (
+                    <Link key={c.href} href={c.href} onClick={() => setMenu(null)} className="block px-4 py-2 text-sm text-ink-soft hover:bg-surface-muted hover:text-ink">
+                      {c.label}
+                    </Link>
+                  ))}
+                  <Link href="/#all-calculators" onClick={() => setMenu(null)} className="block border-t border-surface-line px-4 py-2 text-sm font-medium text-brand-600 hover:bg-surface-muted">
+                    View all calculators →
+                  </Link>
+                </div>
+              )}
+            </div>
 
-            {MORE_TOOLS.length > 0 && (
-              <div className="relative" ref={moreRef}>
-                <button
-                  type="button"
-                  onClick={() => setMoreOpen((v) => !v)}
-                  className="flex items-center gap-0.5 whitespace-nowrap text-sm text-ink-soft transition-colors hover:text-ink"
-                  aria-expanded={moreOpen}
-                >
-                  More
-                  <TablerIcon name="ti-chevron-down" size={14} aria-hidden="true" className={`transition-transform ${moreOpen ? "rotate-180" : ""}`} />
-                </button>
-                {moreOpen && (
-                  <div className="absolute right-0 top-full z-50 mt-2 min-w-[180px] rounded-lg border border-surface-line bg-white py-1 shadow-lg">
-                    {MORE_TOOLS.map((tool) => (
-                      <Link
-                        key={tool.slug}
-                        href={`/${tool.slug}`}
-                        onClick={() => setMoreOpen(false)}
-                        className="block px-4 py-2 text-sm text-ink-soft hover:bg-surface-muted hover:text-ink"
-                      >
-                        {tool.shortName}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
+            <Link href="/guides" className="text-[15px] font-medium text-ink transition-colors hover:text-brand-600">Guides</Link>
 
-            <Link
-              href="/guides"
-              className="whitespace-nowrap text-sm font-medium text-brand-600 transition-colors hover:text-brand-700"
-            >
-              Guides
-            </Link>
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setMenu(menu === "countries" ? null : "countries")}
+                className="flex items-center gap-1 text-[15px] font-medium text-ink transition-colors hover:text-brand-600"
+                aria-expanded={menu === "countries"}
+              >
+                Countries
+                <TablerIcon name="ti-chevron-down" size={14} aria-hidden="true" className={`transition-transform ${menu === "countries" ? "rotate-180" : ""}`} />
+              </button>
+              {menu === "countries" && (
+                <div className="absolute left-0 top-full z-50 mt-3 min-w-[200px] rounded-xl border border-surface-line bg-white py-2 shadow-lg">
+                  {COUNTRY_LINKS.map((c) => (
+                    <Link key={c.href} href={c.href} onClick={() => setMenu(null)} className="flex items-center gap-2.5 px-4 py-2 text-sm text-ink-soft hover:bg-surface-muted hover:text-ink">
+                      <CountryFlag country={c.code} size={18} />
+                      {c.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Link href="/about" className="text-[15px] font-medium text-ink transition-colors hover:text-brand-600">About Us</Link>
+            <Link href="/blog" className="text-[15px] font-medium text-ink transition-colors hover:text-brand-600">News</Link>
           </nav>
+
+          {/* Right */}
+          <div className="hidden items-center gap-3 lg:flex">
+            <Link href="/uk" className="flex items-center gap-2 rounded-lg border border-surface-line px-3 py-2 text-sm font-medium text-ink transition-colors hover:border-brand-600">
+              <CountryFlag country="UK" size={18} />
+              UK
+              <TablerIcon name="ti-chevron-down" size={14} aria-hidden="true" className="text-ink-faint" />
+            </Link>
+            <Link href="/#all-calculators" aria-label="Search calculators" className="flex h-10 w-10 items-center justify-center rounded-lg border border-surface-line text-ink-soft transition-colors hover:border-brand-600 hover:text-brand-600">
+              <TablerIcon name="ti-search" size={18} aria-hidden="true" />
+            </Link>
+          </div>
 
           {/* Mobile hamburger */}
           <button
@@ -106,14 +139,9 @@ export function SiteHeader() {
         </div>
       </header>
 
-      {/* Mobile nav drawer */}
+      {/* Mobile drawer */}
       {open && (
-        <div
-          id="mobile-nav"
-          className="border-b border-surface-line bg-white lg:hidden"
-          role="navigation"
-          aria-label="Mobile menu"
-        >
+        <div id="mobile-nav" className="border-b border-surface-line bg-white lg:hidden" role="navigation" aria-label="Mobile menu">
           {(Object.keys(CATEGORY_META) as (keyof typeof CATEGORY_META)[]).map((cat) => {
             const tools = TOOLS.filter((t) => t.category === cat);
             return (
@@ -141,11 +169,11 @@ export function SiteHeader() {
               </div>
             );
           })}
-          <div className="flex gap-4 px-5 py-4">
+          <div className="flex flex-wrap gap-4 px-5 py-4">
             <Link href="/guides" onClick={() => setOpen(false)} className="text-xs font-medium text-brand-600 hover:text-brand-700">Guides</Link>
+            <Link href="/uk" onClick={() => setOpen(false)} className="text-xs text-ink-faint hover:text-ink-soft">Countries</Link>
             <Link href="/about" onClick={() => setOpen(false)} className="text-xs text-ink-faint hover:text-ink-soft">About</Link>
-            <Link href="/privacy" onClick={() => setOpen(false)} className="text-xs text-ink-faint hover:text-ink-soft">Privacy</Link>
-            <Link href="/terms" onClick={() => setOpen(false)} className="text-xs text-ink-faint hover:text-ink-soft">Terms</Link>
+            <Link href="/blog" onClick={() => setOpen(false)} className="text-xs text-ink-faint hover:text-ink-soft">News</Link>
           </div>
         </div>
       )}

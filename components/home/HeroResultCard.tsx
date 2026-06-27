@@ -10,48 +10,44 @@ const ROWS = [
 const TRUST = [
   { icon: "ti-shield-check", title: "Accurate", sub: "Based on legislation" },
   { icon: "ti-bolt", title: "Fast", sub: "Results in seconds" },
-  { icon: "ti-users", title: "Trusted", sub: "Used across four countries" },
+  { icon: "ti-users", title: "Trusted", sub: "Across four countries" },
   { icon: "ti-lock", title: "Private", sub: "We don't store your data" },
 ] as const;
 
 export function HeroResultCard() {
   return (
-    <div className="grid gap-3 sm:grid-cols-5">
+    <div className="grid items-start gap-5 sm:grid-cols-[1.1fr_0.9fr]">
       {/* Example result card */}
-      <div className="rounded-2xl border border-surface-line bg-white p-5 shadow-sm sm:col-span-3">
-        <div className="flex items-center justify-between">
-          <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Example result</p>
-          <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-medium text-brand-600">
-            Illustrative
+      <div className="rounded-2xl border border-surface-line bg-white p-7 shadow-[0_10px_30px_-5px_rgba(24,95,165,0.06),0_4px_12px_-2px_rgba(0,0,0,0.03)]">
+        <div className="mb-6 flex items-center justify-between">
+          <span className="text-[13px] font-bold text-ink">Example Result</span>
+          <span className="rounded-md bg-emerald-50 px-2 py-1 text-[11px] font-semibold text-emerald-600">
+            Estimate
           </span>
         </div>
-        <div className="mt-4 border-b border-surface-line pb-4">
-          <p className="text-xs text-ink-faint">Your estimated entitlement</p>
-          <p className="mt-1 text-3xl font-semibold tracking-tight text-ink">£8,420.00</p>
-        </div>
-        <dl className="mt-4 flex flex-col gap-2.5">
+        <p className="text-xs text-ink-soft">Your estimated entitlement</p>
+        <p className="mt-1 text-4xl font-bold tracking-tight text-ink">£8,420.00</p>
+        <dl className="mt-6">
           {ROWS.map((row) => (
-            <div key={row.label} className="flex items-center justify-between text-sm">
-              <dt className="text-ink-soft">{row.label}</dt>
-              <dd className="font-medium text-ink">{row.value}</dd>
+            <div key={row.label} className="flex items-center justify-between border-t border-dashed border-surface-line py-3 text-[13px]">
+              <dt className="font-semibold text-ink">{row.label}</dt>
+              <dd className="font-medium text-ink-soft">{row.value}</dd>
             </div>
           ))}
         </dl>
-        <p className="mt-4 text-[11px] text-ink-faint">
-          Example figures only — your result depends on the details you enter.
-        </p>
+        <p className="mt-6 text-[11px] text-ink-faint">This is an estimate only</p>
       </div>
 
-      {/* Trust mini-cards */}
-      <div className="grid grid-cols-2 gap-3 sm:col-span-2 sm:grid-cols-1">
+      {/* Side value badges */}
+      <div className="flex flex-col gap-4">
         {TRUST.map((t) => (
-          <div key={t.title} className="flex items-start gap-2.5 rounded-xl border border-surface-line bg-white p-3">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
-              <TablerIcon name={t.icon} size={16} aria-hidden="true" />
+          <div key={t.title} className="flex items-start gap-3 rounded-2xl border border-surface-line bg-white p-4 shadow-sm">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
+              <TablerIcon name={t.icon} size={18} aria-hidden="true" />
             </span>
             <div>
-              <p className="text-xs font-semibold text-ink">{t.title}</p>
-              <p className="text-[11px] text-ink-faint">{t.sub}</p>
+              <p className="text-[13px] font-bold text-ink">{t.title}</p>
+              <p className="mt-0.5 text-[11px] text-ink-soft">{t.sub}</p>
             </div>
           </div>
         ))}

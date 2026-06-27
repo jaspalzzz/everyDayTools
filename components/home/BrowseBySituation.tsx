@@ -1,74 +1,44 @@
 import Link from "next/link";
 import { TablerIcon } from "@/components/TablerIcon";
+import { CARD_THEMES, type CardTheme } from "./cardThemes";
 
-const SITUATIONS = [
-  {
-    title: "Leaving my job",
-    sub: "Redundancy, notice period, settlement and more",
-    icon: "ti-briefcase-off",
-    accent: "bg-red-50 text-red-500",
-    href: "#cat-leaving-job",
-  },
-  {
-    title: "Getting paid",
-    sub: "Pay, overtime, bonuses, tax and deductions",
-    icon: "ti-cash",
-    accent: "bg-blue-50 text-blue-500",
-    href: "#cat-pay-tax",
-  },
-  {
-    title: "Starting a family",
-    sub: "Maternity, paternity, shared parental leave",
-    icon: "ti-baby-carriage",
-    accent: "bg-emerald-50 text-emerald-600",
-    href: "#cat-parental-leave",
-  },
-  {
-    title: "Workplace issues",
-    sub: "Unfair dismissal, tribunal, discipline and more",
-    icon: "ti-gavel",
-    accent: "bg-orange-50 text-orange-500",
-    href: "/tribunal-compensation-calculator",
-  },
-  {
-    title: "Benefits & entitlements",
-    sub: "Sick pay, holiday pay, leave and other benefits",
-    icon: "ti-gift",
-    accent: "bg-purple-50 text-purple-500",
-    href: "#cat-benefits",
-  },
-  {
-    title: "All calculators",
-    sub: "View every calculator in one place",
-    icon: "ti-dots",
-    accent: "bg-surface-muted text-ink-soft",
-    href: "#all-calculators",
-  },
-] as const;
+const SITUATIONS: {
+  title: string;
+  sub: string;
+  icon: string;
+  theme: CardTheme;
+  href: string;
+  cta: string;
+}[] = [
+  { title: "Leaving My Job", sub: "Redundancy, notice period, settlement and more", icon: "ti-briefcase", theme: "blue", href: "#cat-leaving-job", cta: "View calculators" },
+  { title: "Getting Paid", sub: "Pay, overtime, bonuses, tax and deductions", icon: "ti-cash", theme: "green", href: "#cat-pay-tax", cta: "View calculators" },
+  { title: "Starting a Family", sub: "Maternity, paternity, shared parental leave", icon: "ti-users", theme: "purple", href: "#cat-parental-leave", cta: "View calculators" },
+  { title: "Workplace Issues", sub: "Unfair dismissal, tribunal, discipline and more", icon: "ti-gavel", theme: "orange", href: "/tribunal-compensation-calculator", cta: "View calculators" },
+  { title: "Benefits & Entitlements", sub: "Sick pay, holiday pay, leave and other benefits", icon: "ti-gift", theme: "red", href: "#cat-benefits", cta: "View calculators" },
+  { title: "All Calculators", sub: "View all calculators in one place", icon: "ti-dots", theme: "gray", href: "#all-calculators", cta: "View all" },
+];
 
 export function BrowseBySituation() {
   return (
-    <section aria-labelledby="situation-heading" className="mt-14">
-      <h2 id="situation-heading" className="text-lg font-semibold text-ink">
+    <section aria-labelledby="situation-heading" className="mt-6">
+      <h2 id="situation-heading" className="mb-8 text-2xl font-bold text-ink">
         Browse by situation
       </h2>
-      <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
         {SITUATIONS.map((s) => (
           <Link
             key={s.title}
             href={s.href}
-            className="group flex flex-col gap-3 rounded-xl border border-surface-line bg-white p-4 transition-colors hover:border-brand-200 hover:bg-brand-50"
+            className="group flex h-full flex-col rounded-2xl border border-surface-line bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-600 hover:shadow-md"
           >
-            <span className={`flex h-10 w-10 items-center justify-center rounded-lg ${s.accent}`}>
+            <span className={`mb-5 flex h-10 w-10 items-center justify-center rounded-lg ${CARD_THEMES[s.theme]}`}>
               <TablerIcon name={s.icon} size={20} aria-hidden="true" />
             </span>
-            <div>
-              <p className="text-sm font-semibold text-ink">{s.title}</p>
-              <p className="mt-0.5 text-xs leading-relaxed text-ink-faint">{s.sub}</p>
-            </div>
-            <span className="mt-auto inline-flex items-center gap-1 text-xs font-medium text-brand-600">
-              View calculators
-              <TablerIcon name="ti-arrow-right" size={13} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5" />
+            <h3 className="mb-2 text-[15px] font-bold text-ink">{s.title}</h3>
+            <p className="mb-6 flex-grow text-xs leading-relaxed text-ink-soft">{s.sub}</p>
+            <span className="inline-flex items-center gap-1 text-[13px] font-semibold text-brand-600">
+              {s.cta}
+              <TablerIcon name="ti-arrow-right" size={14} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5" />
             </span>
           </Link>
         ))}
