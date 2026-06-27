@@ -20,6 +20,17 @@ export function ResultPanel({
 }) {
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Fallback: select a temp input
+    }
+  };
 
   const handleDownload = async () => {
     setError(false);
@@ -80,9 +91,9 @@ export function ResultPanel({
         </ul>
       )}
 
-      {/* PDF CTA */}
+      {/* Actions */}
       {result.valid && (
-        <div className="mt-1 flex flex-col gap-1.5 border-t border-surface-line pt-4">
+        <div className="mt-1 flex flex-col gap-2 border-t border-surface-line pt-4">
           <button
             type="button"
             onClick={handleDownload}
@@ -91,6 +102,14 @@ export function ResultPanel({
           >
             <TablerIcon name={generating ? "ti-loader-2" : "ti-file-download"} className={generating ? "animate-spin" : undefined} size={16} aria-hidden="true" />
             {generating ? "Preparing…" : "Download PDF summary"}
+          </button>
+          <button
+            type="button"
+            onClick={handleShare}
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-surface-line bg-white px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-surface-muted hover:text-ink"
+          >
+            <TablerIcon name={copied ? "ti-check" : "ti-link"} size={15} aria-hidden="true" className={copied ? "text-emerald-500" : undefined} />
+            {copied ? "Link copied!" : "Share these results"}
           </button>
           {error && (
             <p role="alert" className="text-xs text-red-700">

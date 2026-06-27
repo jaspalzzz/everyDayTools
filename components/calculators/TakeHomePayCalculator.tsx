@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { readUrlParamsOnMount, writeUrlParams } from "@/hooks/useUrlSync";
 import { FieldGrid, NumberField, SelectField } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcTakeHomePay, takeHomeSource } from "@/lib/calculators/takeHomePay";
@@ -15,6 +16,15 @@ const COUNTRY_OPTIONS = [
 export function TakeHomePayCalculator() {
   const [country, setCountry] = useState<CountryCode>("UK");
   const [grossAnnual, setGrossAnnual] = useState<number | "">(45_000);
+
+  useEffect(() => {
+    readUrlParamsOnMount({ salary: (v) => setGrossAnnual(v) });
+  }, []);
+
+  useEffect(() => {
+    const t = setTimeout(() => writeUrlParams({ salary: Number(grossAnnual) || 0 }), 400);
+    return () => clearTimeout(t);
+  }, [grossAnnual]);
 
   const result = useMemo(
     () =>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { readUrlParamsOnMount, writeUrlParams } from "@/hooks/useUrlSync";
 import { FieldGrid, NumberField, SelectField } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcNoticePeriod, NOTICE_SOURCE, type NoticeRegion } from "@/lib/calculators/noticePeriod";
@@ -9,6 +10,18 @@ export function NoticePeriodCalculator() {
   const [region, setRegion] = useState<NoticeRegion>("UK");
   const [years, setYears] = useState<number | "">(4);
   const [contractual, setContractual] = useState<number | "">(0);
+
+  useEffect(() => {
+    readUrlParamsOnMount({
+      years: (v) => setYears(v),
+      contractual: (v) => setContractual(v),
+    });
+  }, []);
+
+  useEffect(() => {
+    const t = setTimeout(() => writeUrlParams({ years: Number(years) || 0, contractual: Number(contractual) || 0 }), 400);
+    return () => clearTimeout(t);
+  }, [years, contractual]);
 
   const result = useMemo(
     () =>
