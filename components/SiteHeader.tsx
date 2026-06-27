@@ -23,17 +23,11 @@ const COUNTRY_LINKS = [
 
 function LogoMark() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 84 84" aria-hidden="true">
-      <g transform="translate(6 6) scale(.75)">
-        <path d="M26 14h30l16 16v48H26z" fill="#FFFFFF"/>
-        <path d="M56 14v16h16" fill="#EAF3FF"/>
-        <path d="M26 14h30l16 16v48H26z" fill="none" stroke="#16324F" strokeWidth="5" strokeLinejoin="round"/>
-        <path d="M56 14v16h16" fill="none" stroke="#16324F" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M36 35h18M36 47h22M36 59h14" fill="none" stroke="#16324F" strokeWidth="4" strokeLinecap="round"/>
-        <circle cx="67" cy="66" r="16" fill="#1769E0"/>
-        <path d="M59 66l6 6 12-14" fill="none" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
-      </g>
-    </svg>
+    <span
+      style={{ width: 31, height: 31, display: "grid", placeItems: "center", border: "1px solid #b7d3f4", borderRadius: 7, color: "#1769e0", background: "#f2f7fd", fontWeight: 900, fontSize: 15 }}
+    >
+      M
+    </span>
   );
 }
 
@@ -56,11 +50,9 @@ export function SiteHeader() {
       <header className="sticky top-0 z-50 border-b border-surface-line bg-white">
         <div className="mx-auto flex h-18 max-w-[1180px] items-center justify-between px-6" style={{ height: "4.5rem" }}>
           {/* Logo */}
-          <Link href="/" className="flex shrink-0 items-center gap-2.5" onClick={() => setOpen(false)}>
+          <Link href="/" className="inline-flex shrink-0 items-center gap-2.5 whitespace-nowrap font-extrabold" style={{ color: "#16324f", gap: 10 }} onClick={() => setOpen(false)}>
             <LogoMark />
-            <span className="flex flex-col leading-tight">
-              <span className="text-[1.25rem] font-extrabold tracking-tight text-navy">MyPay<span className="text-brand-600">Rights</span></span>
-            </span>
+            <span>MyPayRights</span>
           </Link>
 
           {/* Desktop nav */}

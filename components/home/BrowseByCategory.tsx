@@ -1,66 +1,141 @@
+"use client";
+
 import Link from "next/link";
-import { TOOLS } from "@/data/tools";
-import { TablerIcon } from "@/components/TablerIcon";
-import { CARD_THEMES, type CardTheme } from "./cardThemes";
+import { useState } from "react";
 
-function count(category: string) {
-  return TOOLS.filter((t) => t.category === category).length;
-}
+const TABS = [
+  { label: "Leaving a job", id: "leaving-job" },
+  { label: "Pay & tax", id: "pay-tax" },
+  { label: "Parental leave", id: "parental-leave" },
+  { label: "Benefits", id: "benefits" },
+  { label: "Workplace hours", id: "hours" },
+  { label: "Guides", id: "guides" },
+] as const;
 
-const CATEGORIES: { title: string; icon: string; theme: CardTheme; href: string; count: number }[] = [
-  { title: "Leaving a Job", icon: "ti-briefcase", theme: "blue", href: "#cat-leaving-job", count: count("leaving-job") },
-  { title: "Pay & Tax", icon: "ti-cash", theme: "green", href: "#cat-pay-tax", count: count("pay-tax") },
-  { title: "Parental Leave", icon: "ti-users", theme: "purple", href: "#cat-parental-leave", count: count("parental-leave") },
-  { title: "Benefits & Entitlements", icon: "ti-gift", theme: "red", href: "#cat-benefits", count: count("benefits") },
-  { title: "Workplace Issues", icon: "ti-shield-check", theme: "blue", href: "/tribunal-compensation-calculator", count: 6 },
-  { title: "Guides & Tools", icon: "ti-file-text", theme: "orange", href: "/guides", count: 15 },
-];
+type TabId = (typeof TABS)[number]["id"];
 
-const TRUST = [
-  { icon: "ti-shield-check", title: "100% Free", desc: "Always free forever", theme: "blue" as const },
-  { icon: "ti-scale", title: "Law Backed", desc: "Based on official legislation", theme: "blue" as const },
-  { icon: "ti-world", title: "Multi-Country", desc: "UK, US, CA & AU coverage", theme: "blue" as const },
-  { icon: "ti-users", title: "Trusted by Users", desc: "Thousands of employees", theme: "green" as const },
-  { icon: "ti-lock", title: "Private & Secure", desc: "We don't store your personal data", theme: "green" as const },
-];
+const COMPACT_TOOLS: Record<TabId, { icon: string; title: string; desc: string; href: string }[]> = {
+  "leaving-job": [
+    { icon: "S", title: "Settlement agreement calculator", desc: "Estimate possible settlement value and notice pay.", href: "/settlement-agreement-calculator" },
+    { icon: "E", title: "Employment tribunal compensation", desc: "Check possible award ranges and caps.", href: "/tribunal-compensation-calculator" },
+    { icon: "R", title: "Redundancy pay calculator", desc: "Statutory and contractual redundancy pay estimates.", href: "/redundancy-pay-calculator" },
+    { icon: "N", title: "Notice pay calculator", desc: "What notice pay may be owed after dismissal.", href: "/notice-period-calculator" },
+    { icon: "G", title: "Garden leave calculator", desc: "Estimate pay owed during garden leave.", href: "/garden-leave-calculator" },
+    { icon: "F", title: "Final paycheck deadline calculator", desc: "Find when your final wage payment should be made.", href: "/final-paycheck-calculator" },
+  ],
+  "pay-tax": [
+    { icon: "U", title: "Unpaid wages calculator", desc: "Estimate missing wages, overtime and deductions.", href: "/unpaid-wages-calculator" },
+    { icon: "O", title: "Overtime pay calculator", desc: "Check overtime rates and unpaid overtime.", href: "/overtime-pay-calculator" },
+    { icon: "T", title: "Take-home pay calculator", desc: "Net pay after tax and national insurance.", href: "/take-home-pay-calculator" },
+    { icon: "P", title: "Pay rise calculator", desc: "Calculate new salary and percentage increase.", href: "/pay-rise-calculator" },
+    { icon: "M", title: "Minimum wage calculator", desc: "Check if wages meet national minimum wage.", href: "/minimum-wage-calculator" },
+    { icon: "B", title: "Back pay calculator", desc: "Estimate arrears from underpayment or error.", href: "/back-pay-calculator" },
+  ],
+  "parental-leave": [
+    { icon: "M", title: "Maternity pay calculator", desc: "Statutory maternity pay entitlement by week.", href: "/maternity-pay-calculator" },
+    { icon: "P", title: "Paternity pay calculator", desc: "Statutory paternity leave and pay rights.", href: "/paternity-pay-calculator" },
+    { icon: "S", title: "Shared parental leave", desc: "Split leave entitlement between partners.", href: "/shared-parental-leave-calculator" },
+    { icon: "A", title: "Adoption pay calculator", desc: "Statutory adoption pay and leave estimate.", href: "/adoption-pay-calculator" },
+    { icon: "H", title: "Holiday accrual on leave", desc: "Holiday rights during parental leave.", href: "/holiday-entitlement-calculator" },
+    { icon: "K", title: "Keep in touch days", desc: "Calculate KIT day pay during maternity leave.", href: "/maternity-pay-calculator" },
+  ],
+  "benefits": [
+    { icon: "U", title: "Unemployment benefit calculator", desc: "Estimate weekly benefit amount by location.", href: "/unemployment-benefit-calculator" },
+    { icon: "S", title: "Sick pay calculator", desc: "Statutory sick pay entitlement estimates.", href: "/sick-pay-calculator" },
+    { icon: "H", title: "Holiday pay calculator", desc: "Calculate accrued holiday entitlement.", href: "/holiday-entitlement-calculator" },
+    { icon: "P", title: "PTO payout calculator", desc: "Estimate unused paid time off after leaving.", href: "/pto-payout-calculator" },
+    { icon: "R", title: "COBRA cost calculator", desc: "Estimate health insurance continuation costs.", href: "/cobra-calculator" },
+    { icon: "W", title: "Workers comp calculator", desc: "Estimate injury compensation by state.", href: "/workers-comp-calculator" },
+  ],
+  "hours": [
+    { icon: "O", title: "Overtime pay calculator", desc: "Check overtime rates and unpaid overtime.", href: "/overtime-pay-calculator" },
+    { icon: "H", title: "Hours to salary calculator", desc: "Convert hourly rate to annual salary.", href: "/salary-calculator" },
+    { icon: "S", title: "Shift pay calculator", desc: "Calculate shift differentials and premiums.", href: "/salary-calculator" },
+    { icon: "B", title: "Break time calculator", desc: "Legal rest break entitlements at work.", href: "/salary-calculator" },
+    { icon: "Z", title: "Zero-hours rights", desc: "Pay rights on zero-hours contracts.", href: "/salary-calculator" },
+    { icon: "W", title: "Working hours checker", desc: "Check if hours exceed legal maximums.", href: "/salary-calculator" },
+  ],
+  "guides": [
+    { icon: "R", title: "Redundancy rights guide", desc: "Everything you need to know about redundancy.", href: "/guides/uk-redundancy-pay" },
+    { icon: "S", title: "Settlement agreement guide", desc: "Before you sign — what to check.", href: "/guides/uk-settlement-agreement" },
+    { icon: "N", title: "Notice period guide", desc: "Rights and obligations during notice.", href: "/guides/uk-notice-period-law" },
+    { icon: "U", title: "Unpaid wages guide", desc: "How to claim wages your employer owes you.", href: "/guides/uk-notice-period-law" },
+    { icon: "P", title: "Parental leave guide", desc: "Maternity, paternity and shared leave.", href: "/guides" },
+    { icon: "F", title: "Final pay guide", desc: "What must be in your last paycheck.", href: "/guides/uk-final-paycheck" },
+  ],
+};
+
+const DIRECTORY_NOTE: Record<TabId, { title: string; body: string }> = {
+  "leaving-job": { title: "Most common category", body: "Redundancy, notice pay and settlement tools are the most searched. Start here if you are leaving or have left work." },
+  "pay-tax": { title: "Check your pay", body: "Use these tools if you think your wages, overtime or deductions are incorrect." },
+  "parental-leave": { title: "Leave entitlements", body: "Statutory pay rules differ by country and employment type. Select your situation above." },
+  "benefits": { title: "Entitlement checks", body: "Sick pay, holiday pay and unemployment benefit rules vary significantly by jurisdiction." },
+  "hours": { title: "Working time rules", body: "Maximum hours, rest breaks and shift pay differ by country and contract type." },
+  "guides": { title: "Read before you act", body: "Plain-English guides to employment law. Understand your rights before talking to an employer or adviser." },
+};
 
 export function BrowseByCategory() {
+  const [active, setActive] = useState<TabId>("leaving-job");
+  const tools = COMPACT_TOOLS[active];
+  const note = DIRECTORY_NOTE[active];
+
   return (
-    <section aria-labelledby="category-heading" className="mt-6">
-      <h2 id="category-heading" className="mb-8 text-2xl font-bold text-ink">
-        Browse by category
-      </h2>
-      <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-        {CATEGORIES.map((c) => (
-          <Link
-            key={c.title}
-            href={c.href}
-            className="flex items-center gap-3 rounded-xl border border-surface-line bg-white px-4 py-3 shadow-sm transition-all hover:-translate-y-px hover:border-brand-600 hover:shadow-md"
+    <section
+      aria-labelledby="directory-title"
+      style={{ marginTop: 58, border: "1px solid #cdddeb", borderRadius: 8, background: "#fff", overflow: "hidden" }}
+    >
+      {/* Tabs */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(6,1fr)", background: "#f8fbff", borderBottom: "1px solid #e7edf3" }}>
+        {TABS.map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            onClick={() => setActive(tab.id)}
+            style={{
+              minHeight: 66, display: "grid", placeItems: "center",
+              borderRight: "1px solid #e7edf3", borderBottom: "none", borderTop: "none", borderLeft: "none",
+              background: active === tab.id ? "#fff" : "transparent",
+              boxShadow: active === tab.id ? "inset 0 -3px 0 #1769e0" : "none",
+              color: active === tab.id ? "#0f56bd" : "#25384c",
+              fontSize: 13, fontWeight: 850, textAlign: "center", padding: 8, cursor: "pointer",
+            }}
           >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
-              <TablerIcon name={c.icon} size={18} aria-hidden="true" />
-            </span>
-            <span className="flex flex-col">
-              <span className="text-[13px] font-bold text-ink">{c.title}</span>
-              <span className="text-[11px] text-ink-soft">{c.count} calculators</span>
-            </span>
-          </Link>
+            {tab.label}
+          </button>
         ))}
       </div>
 
-      {/* Trust pill box */}
-      <div className="flex flex-col items-stretch gap-5 rounded-2xl border border-brand-100 bg-brand-50 px-8 py-5 lg:flex-row lg:items-center lg:justify-between">
-        {TRUST.map((t) => (
-          <div key={t.title} className="flex flex-1 items-center gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm text-brand-600">
-              <TablerIcon name={t.icon} size={18} aria-hidden="true" />
-            </span>
-            <span className="flex flex-col">
-              <span className="text-[13px] font-bold text-ink">{t.title}</span>
-              <span className="text-[11px] text-ink-soft">{t.desc}</span>
-            </span>
+      {/* Directory content */}
+      <div style={{ padding: 22, display: "grid", gridTemplateColumns: "230px 1fr", gap: 24 }}>
+        {/* Left: title + note */}
+        <div>
+          <h2 id="directory-title" style={{ margin: "0 0 16px", fontSize: 22, color: "#102033" }}>
+            Calculator directory
+          </h2>
+          <div style={{ borderRadius: 8, background: "#fff4df", border: "1px solid #f1d9aa", padding: 15, color: "#5d461d", fontSize: 13 }}>
+            <strong style={{ display: "block", color: "#3c2c0d", fontSize: 15, marginBottom: 4 }}>{note.title}</strong>
+            {note.body}
           </div>
-        ))}
+        </div>
+
+        {/* Right: compact tool grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+          {tools.map((tool) => (
+            <Link
+              key={tool.href + tool.title}
+              href={tool.href}
+              style={{ minHeight: 78, border: "1px solid #e7edf3", borderRadius: 8, background: "#f5f9fe", padding: 13, display: "grid", gridTemplateColumns: "34px 1fr", gap: 12, alignItems: "start", textDecoration: "none" }}
+            >
+              <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontWeight: 900, fontSize: 14 }}>
+                {tool.icon}
+              </span>
+              <span>
+                <strong style={{ display: "block", color: "#102033", fontSize: 14, lineHeight: 1.25 }}>{tool.title}</strong>
+                <span style={{ display: "block", marginTop: 3, color: "#52616f", fontSize: 12 }}>{tool.desc}</span>
+              </span>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );

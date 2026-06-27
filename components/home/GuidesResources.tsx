@@ -1,88 +1,82 @@
 import Link from "next/link";
-import Image from "next/image";
-import { TablerIcon } from "@/components/TablerIcon";
 
-const GUIDES: { title: string; desc: string; img: string; alt: string; href: string; badge?: "popular" | "new" }[] = [
+const GUIDES = [
   {
-    title: "What is a Settlement Agreement?",
-    desc: "Everything you need to know before signing.",
-    img: "/guides/agreement.jpg",
-    alt: "Person signing an agreement",
-    href: "/guides/uk-settlement-agreement",
-    badge: "popular",
+    badge: "UK guide",
+    bgStyle: {
+      background: "linear-gradient(180deg,rgba(16,32,51,.05) 0%,rgba(16,32,51,.76) 100%), linear-gradient(135deg,#23435f 0%,#d9e8f4 48%,#1769e0 100%)",
+    },
+    title: "What should be in your final paycheck?",
+    desc: "Understand wages, notice pay, holiday pay and deductions after leaving work.",
+    href: "/guides/uk-final-paycheck",
   },
   {
-    title: "Redundancy Rights in the UK (2026)",
-    desc: "Latest changes to redundancy law explained.",
-    img: "/guides/gavel.jpg",
-    alt: "Gavel on a sound block",
-    href: "/guides/uk-redundancy-pay",
-    badge: "new",
+    badge: "Workplace pay",
+    bgStyle: {
+      background: "linear-gradient(180deg,rgba(16,32,51,.02) 0%,rgba(16,32,51,.76) 100%), linear-gradient(135deg,#16324f 0%,#f7c873 52%,#fff4df 100%)",
+    },
+    title: "When unpaid wages become a legal issue",
+    desc: "How to identify missing pay, gather evidence and raise the problem clearly.",
+    href: "/guides/uk-unpaid-wages",
   },
   {
-    title: "How to Claim Unpaid Wages",
-    desc: "A step-by-step guide to recover what you're owed.",
-    img: "/guides/laptop.jpg",
-    alt: "Hands typing on a laptop",
-    href: "/guides/uk-notice-period-law",
+    badge: "Notice pay",
+    bgStyle: {
+      background: "linear-gradient(180deg,rgba(16,32,51,.02) 0%,rgba(16,32,51,.76) 100%), linear-gradient(135deg,#1c5c46 0%,#b5ead4 50%,#f7fafc 100%)",
+    },
+    title: "Notice period rights by country",
+    desc: "Compare how notice periods, dismissal and final pay timing differ by location.",
+    href: "/guides/notice-period-rights",
   },
-  {
-    title: "Notice Period: Your Complete Guide",
-    desc: "Understand your notice period rights and obligations.",
-    img: "/guides/skyline.jpg",
-    alt: "City skyline at sunset",
-    href: "/guides/uk-notice-period-law",
-  },
-];
+] as const;
 
 export function GuidesResources() {
   return (
-    <section aria-labelledby="guides-heading" className="mt-6">
-      <div className="mb-8 flex items-end justify-between">
-        <h2 id="guides-heading" className="text-[1.375rem] font-bold tracking-tight text-ink">
-          Understand your rights
-        </h2>
-        <Link href="/guides" className="group inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
-          View all guides
-          <TablerIcon name="ti-arrow-right" size={14} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5" />
+    <section aria-labelledby="guides-title" style={{ marginTop: 58 }}>
+      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24, marginBottom: 20 }}>
+        <div>
+          <h2 id="guides-title" style={{ margin: 0, color: "#102033", fontSize: 28, lineHeight: 1.15 }}>
+            Guides that explain your rights
+          </h2>
+          <p style={{ maxWidth: 560, margin: "8px 0 0", color: "#52616f", fontSize: 15 }}>
+            Use editorial content for confidence and context, not as another row of tiny product cards.
+          </p>
+        </div>
+        <Link href="/guides" style={{ color: "#0f56bd", fontSize: 14, fontWeight: 850, whiteSpace: "nowrap" }}>
+          View all guides →
         </Link>
       </div>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 18 }}>
         {GUIDES.map((g) => (
-          <Link
+          <article
             key={g.title}
-            href={g.href}
-            className="group flex flex-col overflow-hidden rounded-2xl border border-surface-line bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+            style={{ border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", overflow: "hidden" }}
           >
-            <div className="relative aspect-video w-full overflow-hidden">
-              <Image
-                src={g.img}
-                alt={g.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              {g.badge && (
-                <span
-                  className={`absolute left-3 top-3 rounded px-2 py-1 text-[11px] font-bold ${
-                    g.badge === "popular" ? "bg-brand-50 text-brand-600" : "bg-success-50 text-success"
-                  }`}
-                >
-                  {g.badge === "popular" ? "POPULAR" : "NEW"}
-                </span>
-              )}
-            </div>
-            <div className="flex flex-1 flex-col p-5">
-              <h3 className="mb-2 text-[15px] font-bold leading-snug text-ink group-hover:text-brand-700">
-                {g.title}
-              </h3>
-              <p className="mb-5 flex-grow text-xs leading-relaxed text-ink-soft">{g.desc}</p>
-              <span className="inline-flex items-center gap-1 text-[13px] font-semibold text-brand-600">
-                Read guide
-                <TablerIcon name="ti-arrow-right" size={14} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5" />
+            {/* Gradient image area */}
+            <div
+              style={{ minHeight: 150, display: "grid", alignContent: "end", padding: 16, color: "#fff", ...g.bgStyle }}
+            >
+              <span
+                style={{ display: "inline-flex", width: "fit-content", borderRadius: 999, background: "rgba(255,255,255,.92)", color: "#16324f", padding: "5px 9px", fontSize: 11, fontWeight: 850 }}
+              >
+                {g.badge}
               </span>
             </div>
-          </Link>
+
+            {/* Body */}
+            <div style={{ padding: 17 }}>
+              <h3 style={{ margin: "0 0 8px", fontSize: 18, lineHeight: 1.25, color: "#102033" }}>
+                {g.title}
+              </h3>
+              <p style={{ margin: "0 0 14px", color: "#52616f", fontSize: 14 }}>
+                {g.desc}
+              </p>
+              <Link href={g.href} style={{ color: "#0f56bd", fontSize: 13, fontWeight: 850 }}>
+                Read guide →
+              </Link>
+            </div>
+          </article>
         ))}
       </div>
     </section>
