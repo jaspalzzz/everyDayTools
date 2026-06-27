@@ -1,246 +1,202 @@
-# SEO Full Audit Report — My Pay Rights
-**URL**: https://mypayrights-site.pages.dev/ (production: mypayrights.com)  
-**Date**: 2026-06-27 (re-audit — all previous Phase 1–4 fixes applied)  
-**Pages crawled**: 28 (all tool + support pages)
+# MyPayRights.com — Full SEO Audit Report
+**Date:** 27 June 2026  
+**Domain age at audit:** 2 days (registered 25 June 2026)  
+**Audited by:** 7 specialist agents (Technical, Content/E-E-A-T, Schema, GEO/AI, On-Page/SXO, Content Cluster, Backlinks)
 
 ---
 
-## SEO Health Score: 78 / 100
+## SEO Health Score: 59 / 100
 
-| Category | Score | Weight | Contribution |
+| Category | Weight | Score | Weighted |
 |---|---|---|---|
-| Technical SEO | 80/100 | 22% | 17.6 |
-| Content Quality | 82/100 | 23% | 18.9 |
-| On-Page SEO | 76/100 | 20% | 15.2 |
-| Schema / Structured Data | 84/100 | 10% | 8.4 |
-| Performance (CWV) | 72/100 | 10% | 7.2 |
-| AI Search Readiness | 85/100 | 10% | 8.5 |
-| Images | 90/100 | 5% | 4.5 |
-| **Total** | | | **80.3 → 78** |
+| Technical SEO | 22% | 72 | 15.8 |
+| Content Quality / E-E-A-T | 23% | **61** | 14.0 |
+| On-Page SEO | 20% | **41** | 8.2 |
+| Schema / Structured Data | 10% | 72 | 7.2 |
+| Performance (CWV) | 10% | 65 | 6.5 |
+| AI Search Readiness (GEO) | 10% | 64 | 6.4 |
+| Images | 5% | 20 | 1.0 |
+| **TOTAL** | | | **59.1** |
 
----
+**Bonus (not in score):** Content Cluster Architecture: 34/100 · Backlinks: N/A (domain 2 days old, zero backlinks expected)
 
-## What's been fixed since the previous audit
-
-- ✅ Per-page OG images (all 23 tools) — `app/[slug]/opengraph-image.tsx`
-- ✅ WebApplication + FAQPage + BreadcrumbList schema on all tools
-- ✅ priceCurrency region-mapped (GBP/USD)
-- ✅ featureList on all WebApplication schemas
-- ✅ Homepage WebSite + Organization JSON-LD
-- ✅ Favicon: navy rounded-square background, full icon set
-- ✅ PWA manifest with brand theme
-- ✅ llms.txt — all 23 tools, 4 jurisdictions
-- ✅ Preconnect to CDN + logo preload
-- ✅ About page E-E-A-T content sections
-- ✅ Content blocks expanded on 4 thin pages
+> **Context:** At 2 days old, a score of 59 is a strong technical foundation. The site is not yet indexed in Google — this is expected. The gap between the technical score (72) and the content/on-page scores (41–61) reveals the clearest growth path: the infrastructure is solid, the content architecture and E-E-A-T signals need investment.
 
 ---
 
 ## Executive Summary
 
-The site has gone from 61 → 78 in one audit cycle. Remaining issues are small fixes — one missing canonical tag, a MIME type on OG images, and on-page SEO improvements (H1, internal links, breadcrumbs).
+**What works:**
+- Full SSR static export — Googlebot can index all content without JavaScript execution
+- HTTPS, HSTS, complete security header set — security posture above average for a new site
+- All major AI crawlers explicitly permitted — GPTBot, anthropic-ai, PerplexityBot, Google-Extended
+- llms.txt live with usage permissions and rate data — a minority of domains have implemented this
+- Calculator pages cite primary legislation accurately (ERA 1996, ITEPA 2003, Fair Work Act 2009)
+- FAQPage + WebApplication + BreadcrumbList triple-schema on all 23 calculator pages
+- 341-URL sitemap covering all sections
+- FAQ pages open with direct-answer sentences — optimal for AI citation extraction
+- Settlement agreement calculator correctly distinguishes PILON taxation from the £30,000 exemption (most secondary sources get this wrong)
 
-### Top 5 Issues to Fix Now
+**Three most urgent gaps:**
 
-1. **Homepage missing canonical tag** — 1-line fix in `app/page.tsx`
-2. **23 tool OG images served as `application/octet-stream`** — LinkedIn/Slack won't render previews
-3. **About page has zero JSON-LD** — missed Organization/WebPage rich result
-4. **Homepage H1 is tagline, not keyword-targeted** — blocks homepage from ranking for tool-category queries
-5. **No internal cross-linking between related tools** — largest remaining on-page gap
+1. **No Privacy Policy** — GDPR compliance gap on a site soliciting contact emails. Quality raters flag absence on YMYL sites as a trust failure. Two-hour fix.
 
-### Top 5 Quick Wins
+2. **No named legal reviewer** — The founder is identified as a software engineer. No solicitor, barrister, or ACAS-qualified adviser reviews content. Google's QRG explicitly evaluates whether YMYL content creators have needed expertise. This is the single biggest E-E-A-T weakness.
 
-1. `alternates: { canonical: SITE.url }` in homepage metadata → fixes canonical in 60 seconds
-2. `export const contentType = "image/png"` in opengraph-image.tsx files → fixes MIME type
-3. Add Organization + WebPage JSON-LD to About page → 20 minutes
-4. Add "Related calculators" links to 5 tool pages → improves crawl depth and PageRank flow
-5. Add `potentialAction` SearchAction to WebSite schema → SiteLinks Search eligibility
-
----
-
-## Technical SEO — 80/100
-
-### ✅ Passing
-- HTTPS + HSTS preload (max-age=63,072,000, includeSubDomains, preload)
-- CSP, X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Permissions-Policy ✓
-- robots.txt: Allow: / — no accidental blocks ✓
-- sitemap.xml: 28 URLs covering all tools ✓
-- HTTP/2, Cloudflare edge CDN — TTFB 146ms ✓
-- Favicon set complete: ico, svg, 192×192, 512×512, apple-touch-icon ✓
-- site.webmanifest valid, theme_color: #0C447C ✓
-- All 23 OG image routes: HTTP 200 ✓
-- No noindex on any page ✓
-
-### ❌ Issues
-
-**[HIGH] Homepage missing canonical tag**
-
-The homepage `/` has no `<link rel="canonical">`. All 23 tool pages correctly have canonical tags. The missing homepage canonical risks Google indexing multiple variants (preview domain vs production domain, with/without trailing slash).
-
-Fix in `app/page.tsx` — add to `export const metadata`:
-```ts
-alternates: { canonical: SITE.url },
-openGraph: { url: SITE.url, ... }
-```
-
-**[MEDIUM] Tool OG images: content-type: application/octet-stream**
-
-All 23 `/[slug]/opengraph-image` routes return wrong MIME type. The homepage OG image correctly returns `image/png`. LinkedIn and Slack will not render social preview images.
-
-Root cause: `OG_CONTENT_TYPE` is defined in `lib/ogImage.tsx` but not re-exported from the route files.
-
-Fix — add to every `app/[slug]/opengraph-image.tsx`:
-```ts
-export { OG_CONTENT_TYPE as contentType, OG_SIZE as size } from "@/lib/ogImage";
-```
-
-**[LOW] No HTML compression (45KB uncompressed)**
-
-Cloudflare Pages should auto-compress but Content-Encoding: none observed. Test with production deployment.
+3. **Calculators are isolated islands** — The 23 calculators receive homepage PageRank but pass none to editorial content. They do not link to guides, blog posts, or FAQ pages. This means the site's tool pages cannot build topical authority cluster signals — only individual page authority.
 
 ---
 
-## Content Quality — 82/100
+## Findings by Category
 
-### ✅ Passing
-- 20 of 23 tool pages: 2,000+ words
-- FAQs on all 23 pages (3–6 questions each)
-- About page E-E-A-T: verification process, team, contact details
-- Statutory rate citations with effective dates throughout
-- llms.txt comprehensive — all 23 tools described
+### 1. Technical SEO — 72/100
 
-### ⚠️ Issues
+**No critical issues blocking indexation.**
 
-**[MEDIUM] Three leave calculators at lower content threshold**
+| Finding | Severity |
+|---|---|
+| www serves duplicate content — no 301 to non-www | High |
+| No hreflang despite UK/US/AU/CA/fr-CA routes | High |
+| 60 of 341 sitemap URLs missing lastmod | Medium |
+| No IndexNow — delayed Bing/Yandex indexing | Medium |
+| 12 JS chunks — INP risk on mobile | Medium |
+| Ad slots without reserved dimensions — CLS risk | Medium |
+| CSP uses unsafe-inline | Low |
 
-Paternity (1,627w), Adoption (1,622w), Shared Parental Leave (1,635w) — below site average of ~2,300w for competitive UK parental leave queries.
+**www redirect** is the most impactful fix — 5 minutes in Cloudflare, closes a duplicate content and link equity fragmentation issue permanently.
 
-Add 600–800 words covering: eligibility walkthrough, AWE calculation examples, HMRC reclaim for employers, enhanced pay comparison.
-
-**[LOW] Homepage content light (1,188 words)**
-
-Single H2, no category groupings. Add grouped tool directory with category H2s.
-
----
-
-## On-Page SEO — 76/100
-
-### ✅ Passing
-- All 23 tool pages: unique title tags, keyword-relevant meta descriptions
-- H1 = exact tool name on every tool page
-- All tool page canonicals correct
-
-### ❌ Issues
-
-**[HIGH] Homepage H1 not keyword-targeted**
-
-Current: *"Pay rights calculators that know your country's rules"*
-
-No primary keyword in H1. Revise to, e.g.: *"Free Statutory Pay Calculators for UK & US Employees"*
-
-**[MEDIUM] No internal cross-links between related tools**
-
-Zero "Related calculators" sections anywhere. Key missing links:
-- Redundancy Pay → Notice Period, Severance, Garden Leave
-- Maternity Pay → Paternity, Shared Parental, Adoption
-- Take-Home Pay → IR35, Self-Employment Tax
-- PTO Payout → Final Paycheck Deadline
-
-**[MEDIUM] No visible breadcrumb navigation**
-
-BreadcrumbList JSON-LD exists on all tool pages but no visible `<nav aria-label="Breadcrumb">` UI. Google uses visible breadcrumbs to validate schema.
+**hreflang** is the highest-effort but highest-impact technical fix. The site has distinct content for 5 locales (en-GB, en-US, en-AU, en-CA, fr-CA) with zero hreflang annotations. French-Canadian pages at /fr/ca/* are currently invisible to fr-CA geo-targeting.
 
 ---
 
-## Schema / Structured Data — 84/100
+### 2. Content Quality / E-E-A-T — 61/100
 
-### ✅ Passing
-- WebApplication + FAQPage + BreadcrumbList on all 23 tool pages
-- WebSite + Organization on homepage
-- priceCurrency: GBP for UK tools, USD for US tools
-- featureList on all WebApplication schemas
-- No validation errors
+| Finding | Severity |
+|---|---|
+| No named legal reviewer on any YMYL content | Critical |
+| No Privacy Policy page | High |
+| Blog post word count thin (980 words vs 1,500 min) | High |
+| No legal disclaimer on blog posts or guides | High |
+| About page inadequate E-E-A-T at 390 words | High |
+| Blog posts lack direct answer in opening paragraph | Medium |
+| No freshness date on Methodology / About / Homepage | Medium |
+| Organisation sameAs points only to GitHub | Medium |
+| No social proof or usage signals anywhere | Low |
 
-### ❌ Issues
-
-**[HIGH] About page: zero JSON-LD**
-
-Add to `app/about/page.tsx`:
-```ts
-jsonLd({
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: "About My Pay Rights",
-  url: `${SITE.url}/about`,
-  isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url }
-})
-```
-
-**[MEDIUM] No SiteLinksSearchBox (potentialAction) on homepage**
-
-Add SearchAction to WebSite schema for SiteLinks Search eligibility.
+The **calculator pages are the strongest content on the site** — specific statutory figures, dated verification badges, accurate legislative citations. The settlement calculator in particular has the best content quality. The gap is in the blog and About pages.
 
 ---
 
-## Performance — 72/100
+### 3. On-Page SEO — 41/100
 
-TTFB: 146ms ✓, static export ✓, no heavy analytics ✓
+This is the lowest scoring category and the fastest to improve.
 
-Issues:
-- No HTML compression (45KB uncompressed)
-- Tabler Icons webfont loaded from CDN as render-blocking `<link>` in `<head>`
+| Finding | Severity |
+|---|---|
+| Meta descriptions absent on 4 of 6 audited pages | Critical |
+| Title tags missing 'UK' and '2026' | High |
+| Double/inconsistent brand name in FAQ title tags | High |
+| No OG / Twitter Card meta tags | High |
+| No trust signals above fold on calculator pages | High |
+| No author bylines on blog posts | High |
+| Homepage: no primary CTA, 13+ equal options | High |
+| Blog post title truncated at 79 chars (limit: 60) | High |
+| No descriptive images or alt text on any page | Medium |
 
-Recommendation: Migrate to `@tabler/icons-react` SVG imports (tree-shaken, eliminates external CDN dependency).
-
----
-
-## AI Search Readiness — 85/100
-
-Excellent: llms.txt, all AI crawlers allowed, factual cited content, answer-first structure.
-
-Minor improvements: explicit GPTBot/anthropic-ai/Google-Extended entries in robots.txt; sameAs on Organization schema.
-
----
-
-## Images — 90/100
-
-All OG images: HTTP 200 ✓. Favicon complete ✓. No missing alt text.
-
-Only issue: tool OG images as application/octet-stream (fix: export contentType).
+**Meta descriptions and title tags are the fastest CTR levers** — under 1 hour of work that directly affects click-through rates for every page. These should be done in Phase 1.
 
 ---
 
-## Action Plan
+### 4. Schema / Structured Data — 72/100
 
-### Phase 1 — This week (~3 hours total)
+Strong on calculator pages; significant gaps elsewhere.
 
-| # | Task | File | Time |
+| Finding | Severity |
+|---|---|
+| Guide pages carry zero schema | High |
+| About page has zero schema | High |
+| Blog Article schema uses Organization as author | Medium |
+| Methodology page has zero schema | Medium |
+| Compare pages carry zero schema | Medium |
+| Organization schema missing sameAs social profiles | Low |
+| FAQPage rich results retired (May 2026) — no action needed | Info |
+
+**Important:** Google retired FAQ rich results on 7 May 2026. Existing FAQPage schema remains valuable for AI/LLM citation but will not produce SERP accordions. No action needed on existing FAQPage markup.
+
+---
+
+### 5. AI Search Readiness (GEO) — 64/100
+
+Best performing category. The site is well-positioned for AI discovery.
+
+| Platform | Score |
+|---|---|
+| Perplexity | 70/100 |
+| Google AI Overviews | 62/100 |
+| ChatGPT | 58/100 |
+| Bing Copilot | 55/100 |
+
+| Finding | Severity |
+|---|---|
+| Article/Person schema missing on guide pages | Critical |
+| llms-full.txt missing (404) | High |
+| No Wikipedia/Wikidata entity | High |
+| No YouTube channel (correlation: 0.737 with AI citation) | High |
+| Brand name inconsistency: My Pay Rights vs MyPayRights | Medium |
+| ClaudeBot not explicitly listed in robots.txt | Low |
+
+**llms-full.txt** is the single highest-leverage GEO action — 2-3 days of work that directly feeds verbatim citable passages to ChatGPT, Claude, and Perplexity indexing pipelines.
+
+---
+
+### 6. Content Cluster Architecture — 34/100 (bonus)
+
+This is the biggest structural gap holding back long-term ranking performance.
+
+| Finding | Severity |
+|---|---|
+| No pillar pages — no topical authority anchors | Critical |
+| Calculators don't link to guides, blog posts, or FAQs | Critical |
+| Guide and blog post cannibalize same keyword | Critical |
+| Country hubs don't surface editorial content | High |
+| Parental leave cluster: 4 calculators, 1 guide | High |
+| US state pages: thin-content risk (153 programmatic pages) | High |
+| Benefits & Entitlements: zero blog/guide coverage | High |
+
+The core problem: **10 blog posts and 8 guides supporting 380+ indexed URLs**. The site has invested heavily in tools and FAQ pages but the editorial depth that would let Google assign topical authority is thin relative to the URL count.
+
+---
+
+### 7. Backlinks — N/A
+
+Domain registered 25 June 2026 — 2 days before this audit. Zero backlinks is expected and not a red flag. Clean provenance (no expired domain history). All AI crawlers permitted — LLM citations may precede traditional backlinks as the first discovery mechanism.
+
+**12-month backlink target:** 15-25 referring domains at DA 40+ from institutional sources (ACAS, CIPD, Citizens Advice, SHRM, TUC, union resource pages). One GOV.UK editorial link outweighs 500 directory entries.
+
+---
+
+## Images — 20/100
+
+No descriptive images found on any audited page. Missing:
+- Alt text on any image (WCAG 2.1 Level AA failure)
+- Explanatory diagrams or rate tables
+- OG images for social sharing
+- Statutory rate comparison tables as visual content
+
+---
+
+## Top 10 Actions by ROI
+
+| # | Action | Effort | Impact |
 |---|---|---|---|
-| 1 | Add canonical + og:url to homepage metadata | `app/page.tsx` | 5 min |
-| 2 | Export contentType from all 23 OG image routes | `app/*/opengraph-image.tsx` | 30 min |
-| 3 | Add JSON-LD (WebPage + Organization) to About page | `app/about/page.tsx` | 20 min |
-| 4 | Add potentialAction to WebSite schema | `app/page.tsx` | 10 min |
+| 1 | www → non-www 301 redirect (Cloudflare) | 5 min | High |
+| 2 | Fix Article schema author: Org → Person | 5 min | High |
+| 3 | Add 'UK 2026' to calculator title tags | 15 min | High |
+| 4 | Add ClaudeBot to robots.txt | 5 min | Low-Medium |
+| 5 | Write meta descriptions for top 5 pages | 1 hour | High |
+| 6 | Add legal disclaimer to all blog/guide pages | 30 min | High |
+| 7 | Create /privacy-policy page | 2 hours | Critical |
+| 8 | Create /llms-full.txt (top 40 pages, 134-167 word passages) | 3 hours | High |
+| 9 | Add Article+BreadcrumbList schema to /guides/* via helper | 2 hours | High |
+| 10 | Implement hreflang in Next.js root layout | 3 hours | High |
 
-### Phase 2 — Weeks 2–3
-
-| # | Task | Time |
-|---|---|---|
-| 5 | Revise homepage H1 | 10 min |
-| 6 | Add Related Calculators section to all 23 tool pages | 2 hrs |
-| 7 | Add visible breadcrumb nav component | 1 hr |
-
-### Phase 3 — Month 2
-
-- Expand paternity/adoption/shared parental pages by 600–800 words each
-- Add explicit AI crawler entries to robots.txt
-- Migrate Tabler Icons to @tabler/icons-react SVG
-
-### Phase 4 — Ongoing
-
-- Set up Google Search Console on mypayrights.com
-- Submit sitemap.xml
-- Monitor CrUX after traffic accumulates
-
----
-
-*Full per-category findings in `mypayrights-audit/findings/`. Structured data in `mypayrights-audit/audit-data.json`.*

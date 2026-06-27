@@ -1,167 +1,117 @@
-# My Pay Rights — SEO Action Plan
-**Generated:** 2026-06-26
+# MyPayRights.com — SEO Action Plan
+**Based on:** Full 7-agent audit, 27 June 2026  
+**Overall score:** 59/100
 
 ---
 
-## Phase 1: Critical Fixes (This week — 1–3 hours total)
+## Phase 1: Critical Fixes — Week 1
+*All can be implemented without content writing. Pure code/config changes.*
 
-### 1. Add per-page `og:title`, `og:description`, `og:url` to all tool metadata
-**File:** every `app/<slug>/page.tsx`  
-**Impact:** Every social share, Slack preview, and LinkedIn post shows the correct tool name instead of the homepage headline.  
-**How:** In each tool page, add to the `metadata` export:
-```ts
-openGraph: {
-  title: tool.name,
-  description: tool.description,
-  url,
-},
-twitter: {
-  title: tool.name,
-  description: tool.description,
-},
-```
-Or centralise in a `toolMetadata(tool)` helper in `lib/seo.ts` so each page calls it once.
-
-### 2. Add `WebSite` + `Organization` JSON-LD to the homepage
-**File:** `app/page.tsx`  
-**Impact:** Enables Google sitelinks, brand Knowledge Panel, AI brand entity.  
-**How:**
-```ts
-// In app/page.tsx, add:
-import { jsonLd, SITE } from "@/lib/seo";
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: SITE.name,
-  url: SITE.url,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${SITE.url}/?q={search_term_string}`,
-    "query-input": "required name=search_term_string"
-  }
-};
-const orgSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: SITE.name,
-  url: SITE.url,
-  contactPoint: { "@type": "ContactPoint", email: SITE.contactEmail, contactType: "customer support" }
-};
-// Render both via <script dangerouslySetInnerHTML={jsonLd(websiteSchema)} />
-```
-
-### 3. Add favicon
-**Files:** `public/favicon.ico`, `public/apple-touch-icon.png`  
-**Impact:** Fixes browser tab icon, SERP favicon, iOS shortcut.  
-**How:** Create a 32×32 favicon.ico and 180×180 apple-touch-icon.png in `/public/`. Then in `app/layout.tsx`:
-```ts
-icons: {
-  icon: "/favicon.ico",
-  apple: "/apple-touch-icon.png",
-},
-```
+- [ ] **Cloudflare redirect rule:** www.mypayrights.com → https://mypayrights.com/${uri} (301) — 5 min
+- [ ] **Create /privacy-policy page** — GDPR compliance, link from footer — 2 hours
+- [ ] **Fix Article schema author** in blog post pages: `@type: "Organization"` → `@type: "Person", name: "Jaspal Singh", url: "https://mypayrights.com/about"` — 5 min
+- [ ] **Add legal disclaimer** block to all blog post and guide page templates — 30 min
+- [ ] **Calculator title tags:** prefix with "UK" and "2026" on redundancy, tribunal, settlement calculators — 15 min
+- [ ] **Standardise brand name** in title tag templates: eliminate "MyPayRights" duplicate, use "My Pay Rights" consistently — 15 min
+- [ ] **Meta descriptions:** write for homepage, redundancy calculator, FAQ index (top 3 missing) — 45 min
+- [ ] **Add ClaudeBot to robots.txt:** `User-agent: ClaudeBot` / `Allow: /` — 5 min
+- [ ] **Add About page schema:** AboutPage + expanded Organization JSON-LD — 30 min
+- [ ] **Add Methodology page schema:** WebPage JSON-LD with author + isPartOf — 15 min
 
 ---
 
-## Phase 2: High-Impact Improvements (This week — 2–4 hours)
+## Phase 2: High-Impact Improvements — Weeks 2–4
 
-### 4. Fix `priceCurrency` in WebApplication schema
-**File:** `lib/seo.ts`  
-**Impact:** Schema validation; correct currency for UK tool rich results.  
-**How:** Pass `region` to `webApplicationSchema()` and derive currency:
-```ts
-export function webApplicationSchema(params: {
-  name: string; description: string; url: string; region: string;
-}) {
-  const currency = params.region === "UK" ? "GBP" : "USD";
-  return { ...schema, offers: { "@type": "Offer", price: "0", priceCurrency: currency } };
-}
-```
-
-### 5. Add `BreadcrumbList` JSON-LD to tool pages
-**File:** `components/ToolLayout.tsx`  
-**Impact:** Breadcrumb rich results in SERP ("mypayrights.com › Redundancy pay").  
-**How:** Add to `ToolLayout` a breadcrumb schema rendered via `jsonLd()`:
-```ts
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
-    { "@type": "ListItem", position: 2, name: tool.name, item: `${SITE.url}/${tool.slug}` }
-  ]
-};
-```
-
-### 6. Add `<link rel="preconnect">` for Tabler Icons CDN
-**File:** `app/layout.tsx`  
-**How:**
-```tsx
-<link rel="preconnect" href="https://cdn.jsdelivr.net" />
-```
-
-### 7. Improve About page with E-E-A-T signals
-**File:** `app/about/page.tsx`  
-**Impact:** YMYL credibility — critical for financial/employment tools.  
-**How:** Add a named author or contributor with credentials (e.g. "Built by [Name], an employment law researcher with X years experience"), or at minimum "verified by employment law professionals." Link to a professional profile if available.
+- [ ] **hreflang implementation** in Next.js root layout `generateMetadata()`:
+  - `/` → `en` + `x-default`
+  - `/uk` → `en-GB`
+  - `/us` → `en-US`  
+  - `/ca` → `en-CA`
+  - `/au` → `en-AU`
+  - `/fr` → `fr-CA`
+  - Reciprocal declarations on all locale pages
+- [ ] **Guide page schema:** Add `guideSchema()` helper to `lib/seo.ts` — Article + BreadcrumbList on all `/guides/*` pages
+- [ ] **Compare page schema:** WebPage + BreadcrumbList on all `/compare/*` pages
+- [ ] **Create /llms-full.txt:** 134–167 word verbatim passages for top 40 FAQ and guide pages with source attribution
+- [ ] **Trust bar on calculator pages:** "Law-backed · Updated April 2026 · [Methodology]" above/below tool
+- [ ] **Author byline on blog posts:** visible "By Jaspal Singh" with link to /about
+- [ ] **Add 'Learn more' section** to top 5 calculators (redundancy, settlement, tribunal, notice period, take-home pay) linking to relevant guide + 3 FAQ pages
+- [ ] **Sitemap lastmod:** Add to all 60 URLs currently missing it (homepage, hubs, indexes, French pages)
+- [ ] **IndexNow:** generate key, add `/public/{key}.txt`, add post-deploy webhook to `api.indexnow.org`
+- [ ] **Expand About page** to 700+ words: professional background, LinkedIn link, editorial process, error escalation procedure
+- [ ] **'Quick answer' block** as first element of all blog posts: 2–4 bullets with specific numbers/dates
+- [ ] **Reserve ad slot dimensions** in CSS to prevent CLS: `min-height: 90px` on all ad containers
+- [ ] **OG / Twitter Card meta tags** on all pages (og:title, og:description, og:image 1200×630px, og:url, twitter:card)
 
 ---
 
-## Phase 3: Content & Authority (Month 1)
+## Phase 3: Content & Authority — Month 2
 
-### 8. Create `/public/llms.txt`
-**Impact:** AI search readiness — Perplexity, Claude, ChatGPT, Bing Copilot.  
-**Example content:**
-```
-# My Pay Rights
-> Law-backed pay rights calculators for redundancy, PTO, notice, severance, overtime and more.
-
-## Calculators
-- [Redundancy Pay Calculator](https://mypayrights.com/redundancy-pay-calculator): UK statutory redundancy pay by age, service, and weekly pay.
-- [PTO Payout Calculator](https://mypayrights.com/pto-payout-calculator): US unused PTO payout by state.
-... (one line per tool)
-
-## About
-All figures are estimates based on current statutory rates. Source citations on each page.
-Contact: hello@mypayrights.com
-```
-
-### 9. Add H2 to homepage
-**File:** `app/page.tsx`  
-**Impact:** Heading structure for crawlers; anchor for the feature strip.  
-**How:** Add `<h2 className="...">Why use My Pay Rights?</h2>` before the feature strip section.
-
-### 10. Add `featureList` to WebApplication schema
-**File:** `lib/seo.ts` → `webApplicationSchema()`  
-**How:** Accept a `features?: string[]` param and add to the schema:
-```ts
-featureList: features ?? ["Live results", "PDF download", "No signup required"]
-```
-
-### 11. Per-page OG images (stretch)
-Generate programmatic OG images using Next.js `ImageResponse` (already supported in the App Router). A template with the tool name renders a unique 1200×630 card per page. This significantly improves social click-through.
+- [ ] **Engage employment solicitor** for content review — add "Reviewed by [Name], Solicitor" to all calculator pages and blog posts
+- [ ] **Create 5 pillar pages:**
+  - `/uk/redundancy` (links: redundancy calculator, redundancy guide, all redundancy FAQs, redundancy blog posts, compare articles)
+  - `/uk/maternity-leave` 
+  - `/uk/pay-rights`
+  - `/us/overtime`
+  - `/us/pto-payout`
+- [ ] **Parental leave editorial gap:** publish paternity pay guide, adoption leave guide, shared parental leave guide
+- [ ] **Benefits cluster gap:** publish 'UK Holiday Entitlement: Complete Guide' and 'UK Statutory Sick Pay Explained'
+- [ ] **Add editorial content to country hubs:** 'Featured guides' + 'Latest articles' sections on /uk, /us, /au, /ca
+- [ ] **Extend sick pay blog post** from 980 → 1,800+ words (qualifying days, linked periods, SSP → UC, evidence rules)
+- [ ] **YouTube channel:** 60–90 second explainers for top 10 FAQ topics; embed on corresponding pages
+- [ ] **Create /press page** with media kit and contact for editorial backlink acquisition
+- [ ] **Submit to directories:** ACAS partner listings, CIPD tools directory, Citizens Advice resource pages, SHRM, HR Dive, BenefitsPro
+- [ ] **Annual data study:** 'UK Redundancy Pay Trends 2026' using anonymised calculator data — press release to employment law journalists
+- [ ] **Add 'Last reviewed' dates** to Methodology, About, and Homepage using `<time datetime>` element
+- [ ] **Differentiate intent** between guide and blog post for each major topic (resolve keyword cannibalization)
 
 ---
 
-## Phase 4: Monitoring & Iteration (Ongoing)
+## Phase 4: Scale & Monitoring — Ongoing
 
-- **Submit sitemap** to Google Search Console once `mypayrights.com` custom domain is live.
-- **Monitor Core Web Vitals** in GSC — the static export and Cloudflare edge delivery should score well; track LCP/CLS after any CSS changes.
-- **Re-verify statutory rates** each April (UK budget) and January (US DOL annual update). The `effectiveDate` fields in `lib/rates.ts` make this auditable.
-- **Track PAA appearances** for FAQ-targeted queries (redundancy pay calculator UK, PTO payout by state, etc.).
+- [ ] **Google Search Console:** submit sitemap, monitor coverage errors, indexation status, manual actions
+- [ ] **Bundle analysis:** run `@next/bundle-analyzer` — target <200kb compressed for critical path
+- [ ] **Moz API (free tier):** configure for backlink monitoring
+- [ ] **Unique depth on US state pages:** unique paragraphs + state labor dept links for top 10 states
+- [ ] **Wikidata stub entry** once first 2–3 press references secured
+- [ ] **Embeddable calculator widget** for HR blog link acquisition
+- [ ] **Blog pagination** implementation at 30+ posts
+- [ ] **sameAs expansion** on Organization schema: add LinkedIn company page URL
 
 ---
 
-## Summary scorecard
+## Effort vs Impact Matrix
 
-| Fix | Effort | SEO Impact |
-|---|---|---|
-| Per-page OG tags | Low (1h) | High |
-| WebSite + Org schema on homepage | Low (30m) | High |
-| favicon.ico | Low (20m) | Medium |
-| Fix priceCurrency | Low (15m) | Medium |
-| BreadcrumbList JSON-LD | Low (30m) | Medium |
-| preconnect for CDN | Trivial (5m) | Low |
-| llms.txt | Low (15m) | High (AI search) |
-| About page E-E-A-T | Medium (1h) | High (YMYL) |
-| Homepage H2 | Trivial (5m) | Low |
+```
+HIGH IMPACT / LOW EFFORT (Do immediately)
+- www 301 redirect
+- Article schema author fix  
+- Calculator title tags (UK + 2026)
+- Meta descriptions (top 5 pages)
+- Legal disclaimer on blog/guides
+- Privacy policy page
+- ClaudeBot in robots.txt
+- About + Methodology page schema
+
+HIGH IMPACT / MEDIUM EFFORT (Do in weeks 2-4)
+- hreflang implementation
+- llms-full.txt
+- Guide page schema via helper
+- Trust bar on calculators
+- Calculator → editorial content links
+- OG / Twitter Card meta tags
+
+HIGH IMPACT / HIGH EFFORT (Do in month 2)
+- Engage legal reviewer
+- Create pillar pages
+- Fill parental leave editorial gap
+- YouTube channel
+- Press/PR infrastructure
+
+LOW IMPACT / LOW EFFORT (Backlog)
+- IndexNow
+- Sitemap lastmod
+- ClaudeBot robots.txt entry
+- Ad slot dimensions
+```
+

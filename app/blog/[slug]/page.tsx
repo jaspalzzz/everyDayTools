@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS, getBlogPost, BLOG_CATEGORIES } from "@/data/blogPosts";
 import { getTool } from "@/data/tools";
-import { SITE, jsonLd } from "@/lib/seo";
+import { SITE, FOUNDER_PERSON, jsonLd } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: Props) {
     url,
     datePublished: post.datePublished,
     dateModified: post.dateModified,
-    author: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    author: FOUNDER_PERSON,
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
     keywords: post.tags.join(", "),
   };
@@ -115,6 +115,20 @@ export default async function BlogPostPage({ params }: Props) {
               {tag}
             </span>
           ))}
+        </div>
+
+        {/* Author byline */}
+        <div className="mb-6 flex items-center gap-2 text-sm text-ink-soft border-b border-surface-line pb-4">
+          <span>By <Link href="/about" className="font-medium text-ink hover:text-brand-600">Jaspal Singh</Link></span>
+          <span>·</span>
+          <span>Founder, My Pay Rights</span>
+        </div>
+
+        {/* Legal disclaimer */}
+        <div className="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900">
+          <strong>For information only.</strong> This article is not legal advice. For advice on your specific situation, consult a qualified employment solicitor or contact{" "}
+          <a href="https://www.acas.org.uk" target="_blank" rel="noopener noreferrer" className="underline">ACAS</a> (UK),{" "}
+          <a href="https://www.dol.gov" target="_blank" rel="noopener noreferrer" className="underline">DOL</a> (US), or the relevant statutory body for your jurisdiction.
         </div>
 
         {/* Article content */}

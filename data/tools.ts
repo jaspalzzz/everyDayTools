@@ -35,6 +35,8 @@ export interface ToolMeta {
   name: string;
   /** Exact-keyword H1 / nav label. */
   shortName: string;
+  /** Override title tag only — if set, used for <title> and OG title instead of name. */
+  seoTitle?: string;
   description: string;
   region: Region;
   /** Icon name from the Tabler set used on the homepage. */
@@ -106,6 +108,7 @@ export const TOOLS: ToolMeta[] = [
     slug: "settlement-agreement-calculator",
     name: "Settlement agreement calculator",
     shortName: "Settlement agreement",
+    seoTitle: "UK Settlement Agreement Calculator 2026 | Free Estimate",
     description:
       "Estimate a UK settlement agreement value — redundancy pay, PILON, ex gratia payment, and the £30,000 tax-free threshold.",
     region: "UK",
@@ -119,6 +122,7 @@ export const TOOLS: ToolMeta[] = [
     slug: "tribunal-compensation-calculator",
     name: "Employment tribunal compensation calculator",
     shortName: "Tribunal compensation",
+    seoTitle: "UK Employment Tribunal Compensation Calculator 2026 | Free",
     description:
       "Estimate UK Employment Tribunal compensation — basic award, capped compensatory award, ACAS uplift, Vento bands, and contributory fault reductions.",
     region: "UK",
@@ -132,6 +136,7 @@ export const TOOLS: ToolMeta[] = [
     slug: "redundancy-pay-calculator",
     name: "Redundancy pay calculator",
     shortName: "Redundancy pay",
+    seoTitle: "UK Redundancy Pay Calculator 2026 | Free & Law-Backed",
     description:
       "Just been made redundant? Calculate exactly what your employer must pay you under UK law — based on your age, service length and weekly pay.",
     region: "UK",

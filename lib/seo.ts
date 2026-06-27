@@ -136,30 +136,96 @@ export function homepageSchemas(): [object, object] {
  * Builds the per-tool metadata object (title, description, canonical,
  * and per-page Open Graph / Twitter tags). Call this in every tool page.tsx
  * instead of building metadata manually.
+ *
+ * Pass seoTitle to use a keyword-optimised title tag (e.g. "UK Redundancy Pay
+ * Calculator 2026") without changing the UI display name.
  */
 export function toolMetadata(params: {
   title: string;
+  /** If set, used for <title> and OG title instead of title. */
+  seoTitle?: string;
   description: string;
   url: string;
   /** Slug used to build the per-page OG image path. */
   slug: string;
 }): Metadata {
+  const displayTitle = params.seoTitle ?? params.title;
   const ogImageUrl = `/${params.slug}/opengraph-image`;
   return {
-    title: params.title,
+    title: displayTitle,
     description: params.description,
     alternates: { canonical: params.url },
     openGraph: {
-      title: params.title,
+      title: displayTitle,
       description: params.description,
       url: params.url,
       images: [{ url: ogImageUrl, width: 1200, height: 630 }],
     },
     twitter: {
-      title: params.title,
+      title: displayTitle,
       description: params.description,
       images: [ogImageUrl],
     },
+  };
+}
+
+/** Person entity for the site founder — used in Article/Guide schema. */
+export const FOUNDER_PERSON = {
+  "@type": "Person",
+  name: "Jaspal Singh",
+  jobTitle: "Founder",
+  url: `${SITE.url}/about`,
+} as const;
+
+/**
+ * Article schema for blog posts and guides. Uses a named Person author
+ * rather than Organization so Google can display bylines and author-rich results.
+ */
+export function articleSchema(params: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+  keywords?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: params.headline,
+    description: params.description,
+    url: params.url,
+    datePublished: params.datePublished,
+    dateModified: params.dateModified,
+    author: FOUNDER_PERSON,
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    ...(params.keywords ? { keywords: params.keywords } : {}),
+  };
+}
+
+/**
+ * Schema for long-form guide pages (/guides/*). Article subtype with an
+ * 'about' property naming the legal topic for enhanced entity signals.
+ */
+export function guideSchema(params: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+  legalTopic: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: params.headline,
+    description: params.description,
+    url: params.url,
+    datePublished: params.datePublished,
+    dateModified: params.dateModified,
+    author: FOUNDER_PERSON,
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    about: { "@type": "Thing", name: params.legalTopic },
   };
 }
 
