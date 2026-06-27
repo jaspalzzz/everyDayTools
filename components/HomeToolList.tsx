@@ -175,10 +175,10 @@ export function HomeToolList() {
 }
 
 const CATEGORY_ICON_COLOR: Record<string, string> = {
-  "leaving-job":    "text-rose-500",
+  "leaving-job":    "text-brand-600",
   "pay-tax":        "text-brand-600",
-  "parental-leave": "text-emerald-600",
-  "benefits":       "text-violet-500",
+  "parental-leave": "text-brand-600",
+  "benefits":       "text-brand-600",
 };
 
 function ToolCard({ tool }: { tool: (typeof TOOLS)[number] }) {
@@ -186,17 +186,16 @@ function ToolCard({ tool }: { tool: (typeof TOOLS)[number] }) {
   return (
     <Link
       href={`/${tool.slug}`}
-      className="group flex items-center gap-4 rounded-xl border border-slate-100 bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all hover:-translate-y-px hover:border-slate-200 hover:shadow-[0_4px_12px_rgba(0,0,0,0.07)]"
+      className="group flex items-start gap-4 rounded-2xl bg-[#EEF4FB] px-5 py-4 transition-all hover:bg-[#E4EDF7]"
     >
-      <TablerIcon name={tool.icon} size={20} aria-hidden="true" className={`shrink-0 ${iconColor}`} />
+      <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
+        <TablerIcon name={tool.icon} size={20} aria-hidden="true" className={iconColor} />
+      </span>
       <span className="min-w-0 flex-1">
-        <span className="block truncate text-[14px] font-semibold text-ink group-hover:text-brand-700">{tool.name}</span>
-        <span className="mt-0.5 block truncate text-[12px] text-ink-soft">{tool.description}</span>
+        <span className="block text-[14px] font-semibold leading-snug text-ink">{tool.name}</span>
+        <span className="mt-1 block text-[12px] leading-relaxed text-ink-soft">{tool.description}</span>
       </span>
-      <span className="hidden shrink-0 text-[11px] font-medium text-ink-faint sm:inline">
-        {tool.region}
-      </span>
-      <TablerIcon name="ti-chevron-right" className="shrink-0 text-ink-faint opacity-0 transition-opacity group-hover:opacity-100" size={15} aria-hidden="true" />
+      <TablerIcon name="ti-arrow-right" className="mt-1 shrink-0 text-ink-faint transition-transform group-hover:translate-x-0.5 group-hover:text-brand-600" size={16} aria-hidden="true" />
     </Link>
   );
 }
