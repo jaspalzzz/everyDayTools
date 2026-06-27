@@ -9,6 +9,27 @@ export type Region = "UK" | "US" | "UK/CA" | "US/UK/CA" | "US/UK/CA/AU";
 /** Launch tier. Tier 1 = hero launch set; Tier 2 = expansion; Tier 3 = long-tail funnel. */
 export type Tier = 1 | 2 | 3;
 
+export type ToolCategory = "leaving-job" | "pay-tax" | "parental-leave" | "benefits";
+
+export const CATEGORY_META: Record<ToolCategory, { label: string; description: string }> = {
+  "leaving-job": {
+    label: "Leaving a Job",
+    description: "Redundancy, notice periods, severance and final pay when you leave employment.",
+  },
+  "pay-tax": {
+    label: "Pay & Tax",
+    description: "Take-home pay, overtime, bonuses and contractor calculations.",
+  },
+  "parental-leave": {
+    label: "Parental Leave",
+    description: "Maternity, paternity, adoption and shared parental pay entitlements.",
+  },
+  benefits: {
+    label: "Benefits & Entitlements",
+    description: "Holiday entitlement, sick pay and working days.",
+  },
+};
+
 export interface ToolMeta {
   slug: string;
   name: string;
@@ -22,6 +43,8 @@ export interface ToolMeta {
   hero: boolean;
   /** Launch tier. */
   tier?: Tier;
+  /** Intent-based category for homepage grouping and hub pages. */
+  category: ToolCategory;
   /** Slugs of related tools for the internal-link block. */
   related: string[];
 }
@@ -37,6 +60,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-wallet",
     hero: true,
     tier: 2,
+    category: "pay-tax",
     related: ["salary-to-hourly-calculator", "bonus-tax-calculator", "pay-rise-calculator"],
   },
   {
@@ -49,6 +73,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-briefcase",
     hero: false,
     tier: 2,
+    category: "pay-tax",
     related: ["take-home-pay-calculator", "ir35-calculator", "day-rate-calculator"],
   },
   {
@@ -61,6 +86,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-calendar-dollar",
     hero: false,
     tier: 2,
+    category: "pay-tax",
     related: ["self-employment-tax-calculator", "ir35-calculator", "salary-to-hourly-calculator"],
   },
   {
@@ -73,6 +99,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-scale",
     hero: false,
     tier: 2,
+    category: "pay-tax",
     related: ["self-employment-tax-calculator", "day-rate-calculator", "take-home-pay-calculator"],
   },
   {
@@ -85,6 +112,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-file-off",
     hero: true,
     tier: 1,
+    category: "leaving-job",
     related: ["notice-period-calculator", "severance-pay-calculator"],
   },
   {
@@ -97,6 +125,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-cash",
     hero: true,
     tier: 1,
+    category: "leaving-job",
     related: ["severance-pay-calculator", "take-home-overtime-calculator"],
   },
   {
@@ -109,6 +138,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-calendar-clock",
     hero: true,
     tier: 1,
+    category: "leaving-job",
     related: ["redundancy-pay-calculator", "severance-pay-calculator"],
   },
   {
@@ -121,6 +151,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-cash-banknote",
     hero: true,
     tier: 1,
+    category: "leaving-job",
     related: ["redundancy-pay-calculator", "pto-payout-calculator"],
   },
   {
@@ -133,6 +164,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-clock-dollar",
     hero: false,
     tier: 1,
+    category: "pay-tax",
     related: ["pto-payout-calculator", "severance-pay-calculator"],
   },
   {
@@ -145,6 +177,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-arrows-exchange",
     hero: false,
     tier: 2,
+    category: "pay-tax",
     related: ["take-home-overtime-calculator", "pto-payout-calculator"],
   },
   {
@@ -157,6 +190,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-beach",
     hero: false,
     tier: 2,
+    category: "benefits",
     related: ["notice-period-calculator", "redundancy-pay-calculator"],
   },
   {
@@ -169,6 +203,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-baby-carriage",
     hero: false,
     tier: 2,
+    category: "parental-leave",
     related: ["holiday-entitlement-calculator", "notice-period-calculator"],
   },
   {
@@ -181,6 +216,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-baby-bottle",
     hero: false,
     tier: 2,
+    category: "parental-leave",
     related: ["maternity-pay-calculator", "shared-parental-leave-calculator"],
   },
   {
@@ -193,6 +229,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-home-heart",
     hero: false,
     tier: 2,
+    category: "parental-leave",
     related: ["maternity-pay-calculator", "shared-parental-leave-calculator"],
   },
   {
@@ -205,6 +242,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-users-group",
     hero: false,
     tier: 2,
+    category: "parental-leave",
     related: ["maternity-pay-calculator", "paternity-pay-calculator"],
   },
   {
@@ -217,6 +255,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-mood-sick",
     hero: false,
     tier: 2,
+    category: "benefits",
     related: ["holiday-entitlement-calculator", "redundancy-pay-calculator"],
   },
   {
@@ -229,6 +268,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-calendar-due",
     hero: false,
     tier: 2,
+    category: "leaving-job",
     related: ["pto-payout-calculator", "severance-pay-calculator"],
   },
   {
@@ -241,6 +281,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-businessplan",
     hero: false,
     tier: 2,
+    category: "leaving-job",
     related: ["final-paycheck-deadline-calculator", "severance-pay-calculator"],
   },
   {
@@ -253,6 +294,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-trending-up",
     hero: false,
     tier: 3,
+    category: "pay-tax",
     related: ["salary-to-hourly-calculator", "take-home-overtime-calculator"],
   },
   {
@@ -265,6 +307,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-clock-hour-4",
     hero: false,
     tier: 3,
+    category: "pay-tax",
     related: ["salary-to-hourly-calculator", "holiday-entitlement-calculator"],
   },
   {
@@ -277,6 +320,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-gift",
     hero: false,
     tier: 3,
+    category: "pay-tax",
     related: ["take-home-overtime-calculator", "pay-rise-calculator"],
   },
   {
@@ -289,6 +333,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-calendar-week",
     hero: false,
     tier: 3,
+    category: "benefits",
     related: ["notice-period-calculator", "holiday-entitlement-calculator"],
   },
   {
@@ -301,6 +346,7 @@ export const TOOLS: ToolMeta[] = [
     icon: "ti-plant-2",
     hero: false,
     tier: 3,
+    category: "leaving-job",
     related: ["notice-period-calculator", "redundancy-pay-calculator"],
   },
 ];

@@ -33,8 +33,10 @@ import {
   IconSearch,
   IconTrendingUp,
   IconUsersGroup,
+  IconMenu2,
   IconWallet,
   IconWorld,
+  IconX,
 } from "@tabler/icons-react";
 import type { ComponentType, SVGAttributes } from "react";
 
@@ -65,6 +67,7 @@ const ICON_MAP: Record<string, ComponentType<SVGAttributes<SVGElement> & { size?
   "ti-info-circle": IconInfoCircle,
   "ti-loader-2": IconLoader2,
   "ti-lock": IconLock,
+  "ti-menu-2": IconMenu2,
   "ti-mood-sick": IconMoodSick,
   "ti-plant-2": IconPlant2,
   "ti-scale": IconScale,
@@ -73,6 +76,7 @@ const ICON_MAP: Record<string, ComponentType<SVGAttributes<SVGElement> & { size?
   "ti-users-group": IconUsersGroup,
   "ti-wallet": IconWallet,
   "ti-world": IconWorld,
+  "ti-x": IconX,
 };
 
 /**

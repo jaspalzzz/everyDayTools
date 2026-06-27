@@ -13,26 +13,38 @@ export default function HomePage() {
   const [websiteSchema, orgSchema] = homepageSchemas();
   return (
     <>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-sm focus:text-white focus:outline-none"
+      >
+        Skip to main content
+      </a>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(websiteSchema)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(orgSchema)} />
       <div className="mx-auto max-w-content px-5">
         {/* Hero */}
         <section className="py-12 text-center sm:py-16">
           <p className="text-xs font-medium uppercase tracking-widest text-brand-600">
-            Free · No signup · Instant results
+            Free · Law-backed · No signup required
           </p>
           <h1 className="mx-auto mt-3 max-w-xl text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl">
-            Free employment pay calculators{" "}
-            <span className="text-brand-600">for UK, US & more</span>
+            Know exactly{" "}
+            <span className="text-brand-600">what you&apos;re owed.</span>
           </h1>
-          <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-ink-soft">
-            Redundancy, PTO payout, notice, severance, overtime and more — with the
-            law built in. Enter your numbers, get your answer, download a PDF.
+          <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-ink-soft">
+            Whether you&apos;ve just been made redundant, you&apos;re leaving a job, or
+            you need to check your overtime — get an instant, law-backed answer.
+            Built on the actual statutory rules for UK, US, Canada and Australia.
+          </p>
+          <p className="mt-5 text-xs text-ink-faint">
+            Select your country below or search for a calculator
           </p>
         </section>
 
-        {/* Tool search + list */}
-        <HomeToolList />
+        {/* Tool search + filtered list */}
+        <main id="main">
+          <HomeToolList />
+        </main>
 
         {/* Trust feature strip */}
         <section aria-labelledby="features-heading" className="mx-auto mt-14 max-w-2xl">
