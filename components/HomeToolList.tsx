@@ -153,7 +153,7 @@ export function HomeToolList() {
           /* Grouped by category */
           <div className="flex flex-col gap-8">
             {grouped.map(({ cat, tools }) => (
-              <section key={cat} aria-labelledby={`cat-${cat}`}>
+              <section key={cat} aria-labelledby={`cat-${cat}`} className="scroll-mt-20">
                 <div className="mb-3 flex items-baseline gap-2">
                   <h2 id={`cat-${cat}`} className="text-sm font-semibold text-ink">
                     {CATEGORY_META[cat].label}

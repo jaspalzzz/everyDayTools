@@ -1,12 +1,16 @@
 import { HomeToolList } from "@/components/HomeToolList";
-import { SituationSelector } from "@/components/SituationSelector";
+import { HeroResultCard } from "@/components/home/HeroResultCard";
+import { HowItWorks } from "@/components/home/HowItWorks";
+import { BrowseBySituation } from "@/components/home/BrowseBySituation";
+import { PopularCalculators } from "@/components/home/PopularCalculators";
+import { GuidesResources } from "@/components/home/GuidesResources";
 import { homepageSchemas, jsonLd } from "@/lib/seo";
 
 const TRUST = [
-  "Based on official legislation",
-  "Free forever · No login",
-  "UK, US, Canada & Australia",
-  "Nothing stored — runs in your browser",
+  "Law backed",
+  "100% Free",
+  "No signup",
+  "Nothing stored",
 ] as const;
 
 export default function HomePage() {
@@ -14,53 +18,65 @@ export default function HomePage() {
   return (
     <>
       <a
-        href="#main"
+        href="#all-calculators"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-sm focus:text-white focus:outline-none"
       >
-        Skip to main content
+        Skip to calculators
       </a>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(websiteSchema)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(orgSchema)} />
 
-      <div className="mx-auto max-w-content px-5">
+      <div className="mx-auto max-w-5xl px-5">
         {/* Hero */}
-        <section className="pb-6 pt-12 text-center sm:pt-16">
-          <h1 className="mx-auto max-w-xl text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl">
-            Leaving your job?{" "}
-            <span className="text-brand-600">Find out exactly what your employer owes you.</span>
-          </h1>
-          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-ink-soft">
-            Employment law is stressful. We make it simple — instant, law-backed answers for redundancy, dismissal, pay disputes, and parental leave across the UK, US, Canada and Australia.
-          </p>
+        <section className="grid items-center gap-10 pb-6 pt-12 sm:pt-16 lg:grid-cols-2">
+          <div>
+            <h1 className="text-4xl font-medium leading-tight tracking-tight text-ink sm:text-5xl">
+              Know exactly{" "}
+              <span className="text-brand-600">what you&apos;re owed.</span>
+            </h1>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft">
+              Free, law-backed calculators to help you understand your employment
+              rights in the UK, US, Canada and Australia.
+            </p>
+            <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+              {TRUST.map((t) => (
+                <li key={t} className="flex items-center gap-1.5 text-xs font-medium text-ink-soft">
+                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-50 text-emerald-600" aria-hidden="true">
+                    <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 8.5L6.5 12L13 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          {/* Trust signals — above the fold */}
-          <ul className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-1.5">
-            {TRUST.map((t) => (
-              <li key={t} className="flex items-center gap-1.5 text-xs text-ink-faint">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
-                {t}
-              </li>
-            ))}
-          </ul>
+          <HeroResultCard />
         </section>
 
-        {/* Situation selector */}
-        <SituationSelector />
+        {/* How it works */}
+        <HowItWorks />
 
-        {/* Divider */}
-        <div className="mx-auto mt-10 flex items-center gap-3 text-xs text-ink-faint">
-          <div className="h-px flex-1 bg-surface-line" />
-          <span>or browse all calculators</span>
-          <div className="h-px flex-1 bg-surface-line" />
-        </div>
+        {/* Browse by situation */}
+        <BrowseBySituation />
 
-        {/* Tool search + filtered list */}
-        <main id="main" className="mt-6">
-          <HomeToolList />
-        </main>
+        {/* Popular calculators */}
+        <PopularCalculators />
 
-        {/* Bottom disclaimer */}
-        <p className="mx-auto mt-10 max-w-lg text-center text-xs leading-relaxed text-ink-faint">
+        {/* Guides & resources */}
+        <GuidesResources />
+
+        {/* All calculators — searchable list */}
+        <section id="all-calculators" className="mt-16 scroll-mt-6">
+          <h2 className="mb-6 text-center text-lg font-semibold text-ink">All calculators</h2>
+          <main>
+            <HomeToolList />
+          </main>
+        </section>
+
+        {/* Disclaimer */}
+        <p className="mx-auto mt-12 max-w-lg text-center text-xs leading-relaxed text-ink-faint">
           All figures are estimates based on current statutory rates. Always confirm
           with your employer or a qualified adviser.{" "}
           <a href="/disclaimer" className="underline-offset-2 hover:underline">
