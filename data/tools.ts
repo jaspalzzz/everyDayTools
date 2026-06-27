@@ -362,6 +362,58 @@ export const TOOLS: ToolMeta[] = [
     category: "leaving-job",
     related: ["notice-period-calculator", "redundancy-pay-calculator"],
   },
+  {
+    slug: "au-notice-period-calculator",
+    name: "Australia notice period calculator",
+    shortName: "AU Notice period",
+    description:
+      "Calculate your minimum notice entitlement under the Fair Work Act 2009. Includes the over-45 additional week and pay in lieu of notice estimate.",
+    region: "AU",
+    icon: "ti-clock-hour-4",
+    hero: false,
+    tier: 2,
+    category: "leaving-job",
+    related: ["au-redundancy-pay-calculator"],
+  },
+  {
+    slug: "au-annual-leave-calculator",
+    name: "Australia annual leave calculator",
+    shortName: "AU Annual leave",
+    description:
+      "Calculate your accrued annual leave balance or payout on termination under the NES. Includes optional 17.5% leave loading and shift worker entitlement.",
+    region: "AU",
+    icon: "ti-beach",
+    hero: false,
+    tier: 2,
+    category: "benefits",
+    related: ["au-redundancy-pay-calculator", "au-notice-period-calculator"],
+  },
+  {
+    slug: "employer-redundancy-cost-calculator",
+    name: "Employer redundancy cost calculator",
+    shortName: "Redundancy cost",
+    description:
+      "Calculate what you owe an employee you're making redundant: statutory redundancy pay, notice pay, and accrued holiday. For UK employers.",
+    region: "UK",
+    icon: "ti-building",
+    hero: false,
+    tier: 2,
+    category: "leaving-job",
+    related: ["redundancy-pay-calculator", "notice-period-calculator"],
+  },
+  {
+    slug: "employer-notice-pay-calculator",
+    name: "Employer notice pay calculator",
+    shortName: "Notice pay cost",
+    description:
+      "Calculate the statutory notice pay you owe a departing employee, or the cost of putting them on garden leave. For UK employers.",
+    region: "UK",
+    icon: "ti-building",
+    hero: false,
+    tier: 2,
+    category: "leaving-job",
+    related: ["notice-period-calculator", "employer-redundancy-cost-calculator"],
+  },
 ];
 
 export function getTool(slug: string): ToolMeta | undefined {
