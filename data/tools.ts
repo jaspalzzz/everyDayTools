@@ -419,7 +419,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Payslip deduction analyser",
     shortName: "Payslip analyser",
     description:
-      "Enter your UK payslip figures and get a plain-English explanation of every deduction — income tax, NI, pension, student loan, salary sacrifice — plus a reconciliation check.",
+      "UK payslip analyser: plain-English breakdown of every deduction — income tax, NI, pension, student loan, salary sacrifice — with reconciliation check.",
     region: "UK",
     icon: "ti-file-description",
     hero: false,

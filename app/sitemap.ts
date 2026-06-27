@@ -112,7 +112,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/fr/ca/preavis`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE.url}/fr/ca/paie-de-vacances`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE.url}/tupe-wizard`, changeFrequency: "monthly", priority: 0.88 },
-    { url: `${SITE.url}/payslip-analyser`, changeFrequency: "monthly", priority: 0.85 },
     { url: `${SITE.url}/blog`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE.url}/methodology`, changeFrequency: "yearly", priority: 0.6 },
     { url: `${SITE.url}/editorial-policy`, changeFrequency: "yearly", priority: 0.5 },

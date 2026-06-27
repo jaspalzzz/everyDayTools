@@ -26,35 +26,11 @@ export function calcSickPay(input: SickPayInput): CalcResult {
     };
   }
 
-  if (input.averageWeeklyEarnings === undefined) {
-    return {
-      headline: "—",
-      headlineCaption: "Enter your weekly earnings to check eligibility",
-      breakdown: [],
-      notes: [
-        `You must earn at least £${C.lowerEarningsLimit}/wk on average to qualify for SSP. Your earnings also determine whether the 80%-of-earnings cap applies instead of the standard £${C.weeklyRate} rate.`,
-      ],
-      valid: false,
-    };
-  }
-
-  const awe = safeNumber(input.averageWeeklyEarnings);
-
-  if (awe < C.lowerEarningsLimit) {
-    return {
-      headline: "Not eligible",
-      headlineCaption: "Earnings below the Lower Earnings Limit",
-      breakdown: [],
-      notes: [
-        `To qualify for SSP your average weekly earnings must be at least £${C.lowerEarningsLimit} (${C.taxYear}).`,
-        "If you do not qualify for SSP, check whether your employer offers contractual sick pay.",
-      ],
-      valid: false,
-    };
-  }
-
-  const earningsCap = awe * C.earningsFraction;
-  const effectiveWeeklyRate = Math.min(C.weeklyRate, earningsCap);
+  // From 6 April 2026 there is no LEL eligibility condition.
+  // Weekly earnings are still collected to apply the 80%-of-AWE cap for low earners.
+  const awe = safeNumber(input.averageWeeklyEarnings ?? 0);
+  const earningsCap = awe > 0 ? awe * C.earningsFraction : C.weeklyRate;
+  const effectiveWeeklyRate = awe > 0 ? Math.min(C.weeklyRate, earningsCap) : C.weeklyRate;
   const cappedByEarnings = awe > 0 && earningsCap < C.weeklyRate;
 
   const dailyRate = effectiveWeeklyRate / qdpw;
@@ -63,25 +39,24 @@ export function calcSickPay(input: SickPayInput): CalcResult {
   const total = payableDays * dailyRate;
 
   const notes: string[] = [];
-  if (daysOff <= C.waitingDays) {
-    notes.push(
-      "The first 3 qualifying days are unpaid 'waiting days', so no SSP is payable until the 4th day off.",
-    );
-  }
+  // Waiting days abolished from 6 April 2026 — SSP is payable from day 1 of illness.
   if (cappedByEarnings) {
     notes.push(
       `Your SSP is capped at 80% of your weekly earnings (${formatCurrency(earningsCap, "UK", { decimals: 2 })}/wk) because that is less than the standard rate of ${formatCurrency(C.weeklyRate, "UK", { decimals: 2 })}.`,
     );
   } else {
     notes.push(
-      `Based on ${C.taxYear} standard rate of ${formatCurrency(C.weeklyRate, "UK", { decimals: 2 })} a week (lower of flat rate or 80% of earnings), paid for up to 28 weeks.`,
+      `Based on ${C.taxYear} standard rate of ${formatCurrency(C.weeklyRate, "UK", { decimals: 2 })} a week, paid from the first qualifying day of illness for up to 28 weeks.`,
     );
   }
   if (awe === 0) {
     notes.push(
-      `You must earn at least £${C.lowerEarningsLimit} a week on average to qualify. Enter your weekly earnings above to check the 80% earnings cap.`,
+      "Enter your average weekly earnings above to check whether the 80%-of-earnings cap applies to you.",
     );
   }
+  notes.push(
+    "From 6 April 2026 the 3 unpaid waiting days and the Lower Earnings Limit eligibility condition are both abolished. SSP now starts from the first day you are ill.",
+  );
   notes.push("SSP rates are uprated each April.");
 
   return {
@@ -90,7 +65,6 @@ export function calcSickPay(input: SickPayInput): CalcResult {
     breakdown: [
       { label: "Weekly SSP rate", value: formatCurrency(effectiveWeeklyRate, "UK", { decimals: 2 }) },
       { label: `Daily rate (${pluralUnit(qdpw, "qualifying day")})`, value: formatCurrency(dailyRate, "UK", { decimals: 2 }) },
-      { label: "Unpaid waiting days", value: pluralUnit(C.waitingDays, "day") },
       { label: "Days paid", value: pluralUnit(payableDays, "day") },
       { label: "Total SSP", value: formatCurrency(total, "UK"), emphasis: true },
     ],

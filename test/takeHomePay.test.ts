@@ -76,10 +76,10 @@ describe("US take-home pay", () => {
     expect(takeHome).toBeLessThan(75_000);
   });
 
-  it("SS tax stops at wage base ($176,100)", () => {
+  it("SS tax stops at wage base ($184,500)", () => {
     const r = calcTakeHomePay({ country: "US", grossAnnual: 200_000 });
     expect(r.valid).toBe(true);
-    expect(r.notes.some((n) => n.includes("$176,100"))).toBe(true);
+    expect(r.notes.some((n) => n.includes("$184,500"))).toBe(true);
   });
 
   it("breakdown includes monthly take-home line", () => {

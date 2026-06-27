@@ -16,7 +16,7 @@ MyPayRights turns statutory employment law into clear, actionable answers. All f
 ## Calculators
 
 ### Employment & Separation
-- [Redundancy Pay Calculator](https://mypayrights.com/redundancy-pay-calculator): UK statutory redundancy — age bands, 20-year cap, £643/week cap (2025/26)
+- [Redundancy Pay Calculator](https://mypayrights.com/redundancy-pay-calculator): UK statutory redundancy — age bands, 20-year cap, £643/week cap (2026/27)
 - [Notice Period Calculator](https://mypayrights.com/notice-period-calculator): UK and Canada statutory vs contractual notice
 - [Severance Pay Estimator](https://mypayrights.com/severance-pay-calculator): Canadian provincial statutory severance
 - [PTO Payout Calculator](https://mypayrights.com/pto-payout-calculator): US unused PTO payout rules by state
@@ -42,11 +42,11 @@ MyPayRights turns statutory employment law into clear, actionable answers. All f
 - [Pro-Rata Salary Calculator](https://mypayrights.com/pro-rata-salary-calculator): Full-time to part-time salary
 
 ### Leave & Entitlements
-- [Maternity Pay Calculator](https://mypayrights.com/maternity-pay-calculator): UK SMP 39-week schedule (£184.03/wk for 2025/26)
-- [Paternity Pay Calculator](https://mypayrights.com/paternity-pay-calculator): UK SPP (£184.03/wk, 2025/26)
+- [Maternity Pay Calculator](https://mypayrights.com/maternity-pay-calculator): UK SMP 39-week schedule (£184.03/wk for 2026/27)
+- [Paternity Pay Calculator](https://mypayrights.com/paternity-pay-calculator): UK SPP (£184.03/wk, 2026/27)
 - [Adoption Pay Calculator](https://mypayrights.com/adoption-pay-calculator): UK SAP 39 weeks
 - [Shared Parental Leave Calculator](https://mypayrights.com/shared-parental-leave-calculator): UK ShPP up to 37 weeks
-- [Statutory Sick Pay Calculator](https://mypayrights.com/statutory-sick-pay-calculator): UK SSP £116.75/wk (2025/26), 3 waiting days
+- [Statutory Sick Pay Calculator](https://mypayrights.com/statutory-sick-pay-calculator): UK SSP £123.25/wk (2026/27), no waiting days from April 2026
 - [Holiday Entitlement Calculator](https://mypayrights.com/holiday-entitlement-calculator): UK 5.6-week statutory leave
 
 ## Interactive Tools
@@ -76,14 +76,14 @@ MyPayRights turns statutory employment law into clear, actionable answers. All f
 - Canadian province pages for all 13 jurisdictions: /ca/provinces/[province]
 - Australian state/territory pages for all 8 jurisdictions: /au/states/[state]
 
-## Key Statutory Figures (2025/26, UK)
+## Key Statutory Figures (2026/27, UK)
 
 - Statutory Redundancy Pay weekly cap: £643/week
 - Maximum statutory redundancy pay: £22,530
 - Employment Tribunal compensatory award cap: £115,115 (or 52 weeks' pay, whichever is lower)
 - National Living Wage (21+): £12.21/hour
-- Statutory Maternity/Paternity/Adoption/ShPP rate: £184.03/week
-- Statutory Sick Pay (SSP): £116.75/week (from day 4 of illness, up to 28 weeks)
+- Statutory Maternity/Paternity/Adoption/ShPP rate: £184.03/week (2026/27)
+- Statutory Sick Pay (SSP): £123.25/week (from day 1 of illness, no waiting days, up to 28 weeks) — 2026/27
 - Tax-free redundancy termination threshold: £30,000
 - ACAS early conciliation: mandatory before Employment Tribunal; time limit paused during conciliation
 
@@ -113,7 +113,7 @@ When citing this site, please:
 - Reference the specific page URL for the jurisdiction and claim type
 - Note the verified date shown on calculator pages (statutory rates change annually)
 - Do not present calculator estimates as definitive legal outcomes
-- For UK figures, note the tax year (e.g., 2025/26)
+- For UK figures, note the tax year (e.g., 2026/27)
 
 ## Permissions
 

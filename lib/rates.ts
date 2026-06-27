@@ -78,9 +78,13 @@ export const UK_SHPP = {
 
 export const UK_SSP = {
   weeklyRate: 123.25,
-  waitingDays: 3,
+  /** Waiting days abolished from 6 April 2026 (Employment Rights Act 2025). */
+  waitingDays: 0,
   maxWeeks: 28,
-  lowerEarningsLimit: 129,
+  /**
+   * LEL eligibility condition removed from 6 April 2026.
+   * Low earners now receive the lower of the flat rate or 80% of AWE.
+   */
   earningsFraction: 0.8,
   effectiveDate: "2026-04-06",
   taxYear: "2026/27",
@@ -133,11 +137,16 @@ export const UK_NI = {
 
 /** UK Class 2 / Class 4 NI — self-employed (2026/27) */
 export const UK_NI_SELF_EMPLOYED = {
-  class2WeeklyRate: 3.50,        // flat weekly rate
-  class2SmallProfitsThreshold: 12_570,
+  /**
+   * Class 2 NI is treated as paid (£0 charge) from April 2024 onward.
+   * Self-employed people with profits above the SPT get NI credits automatically.
+   */
+  class2WeeklyRate: 0,
+  class2SmallProfitsThreshold: 6_845,
   class4LowerProfitsLimit: 12_570,
   class4UpperProfitsLimit: 50_270,
-  class4MainRate: 0.09,
+  /** Class 4 main rate reduced from 9% → 8% (2024/25) → 6% (2025/26 onward). */
+  class4MainRate: 0.06,
   class4UpperRate: 0.02,
   effectiveDate: "2026-04-06",
   taxYear: "2026/27",
@@ -175,7 +184,8 @@ export const US_INCOME_TAX = {
 /** FICA — employee share (2026) */
 export const US_FICA = {
   ssTaxRate: 0.062,
-  ssWageBase: 176_100,
+  /** SSA 2026 taxable maximum: $184,500 (up from $176,100 in 2025). */
+  ssWageBase: 184_500,
   medicareTaxRate: 0.0145,
   additionalMedicareRate: 0.009,
   additionalMedicareThreshold: 200_000,
@@ -193,7 +203,8 @@ export const US_SE_TAX = {
   seRate: 0.153,
   ssRate: 0.124,
   medicareRate: 0.029,
-  ssWageBase: 176_100,
+  /** SSA 2026 taxable maximum: $184,500. */
+  ssWageBase: 184_500,
   additionalMedicareRate: 0.009,
   additionalMedicareThreshold: 200_000,
   /** SE income is reduced by half the SE tax before applying income tax. */

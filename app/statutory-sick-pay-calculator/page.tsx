@@ -15,17 +15,12 @@ const faqs: FaqItem[] = [
   {
     question: "How much is Statutory Sick Pay?",
     answer:
-      "SSP is £123.25 a week for the 2026/27 tax year (or 80% of your normal weekly earnings if that is lower), paid for up to 28 weeks. It is paid for the qualifying days you normally work, divided into a daily rate, once your unpaid waiting days have passed.",
-  },
-  {
-    question: "What are SSP waiting days?",
-    answer:
-      "The first 3 qualifying days of any period of sickness are unpaid 'waiting days'. SSP is only payable from the 4th qualifying day you are off sick. If days off are linked within 8 weeks, the waiting days may not apply again.",
+      "SSP is £123.25 a week for the 2026/27 tax year (or 80% of your normal weekly earnings if that is lower). It is paid from the first day you are ill, for up to 28 weeks, for the qualifying days you normally work.",
   },
   {
     question: "Do I qualify for SSP?",
     answer:
-      "You normally qualify if you are classed as an employee, have been off sick for at least 4 days in a row (including non-working days), and earn at least £129 a week on average before tax.",
+      "From 6 April 2026, you qualify if you are an employee, you have done some work for your employer, and you are ill for at least one full working day. The old Lower Earnings Limit (LEL) eligibility condition and the 3 unpaid waiting days are both abolished from that date.",
   },
   {
     question: "How is the SSP daily rate worked out?",

@@ -11,7 +11,7 @@ const priorityByTier = {
 
 describe("tool catalogue SEO rules", () => {
   it("gives every tool an explicit launch tier", () => {
-    expect(TOOLS.length).toBe(23);
+    expect(TOOLS.length).toBe(29);
     expect(TOOLS.every((tool) => tool.tier !== undefined)).toBe(true);
   });
 
