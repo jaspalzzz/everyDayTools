@@ -1,12 +1,12 @@
-import { TablerIcon } from "@/components/TablerIcon";
 import { HomeToolList } from "@/components/HomeToolList";
+import { SituationSelector } from "@/components/SituationSelector";
 import { homepageSchemas, jsonLd } from "@/lib/seo";
 
-const FEATURES = [
-  { icon: "ti-bolt", title: "Live results", sub: "Updates as you type" },
-  { icon: "ti-world", title: "Country-aware", sub: "UK, US, CA & AU rules" },
-  { icon: "ti-file-download", title: "PDF output", sub: "Download a summary" },
-  { icon: "ti-lock", title: "Nothing stored", sub: "Runs in your browser" },
+const TRUST = [
+  "Based on official legislation",
+  "Free forever · No login",
+  "UK, US, Canada & Australia",
+  "Nothing stored — runs in your browser",
 ] as const;
 
 export default function HomePage() {
@@ -21,57 +21,46 @@ export default function HomePage() {
       </a>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(websiteSchema)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(orgSchema)} />
+
       <div className="mx-auto max-w-content px-5">
         {/* Hero */}
-        <section className="py-12 text-center sm:py-16">
-          <p className="text-xs font-medium uppercase tracking-widest text-brand-600">
-            Free · Law-backed · No signup required
-          </p>
-          <h1 className="mx-auto mt-3 max-w-xl text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl">
-            Know exactly{" "}
-            <span className="text-brand-600">what you&apos;re owed.</span>
+        <section className="pb-6 pt-12 text-center sm:pt-16">
+          <h1 className="mx-auto max-w-xl text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl">
+            Leaving your job?{" "}
+            <span className="text-brand-600">Find out exactly what your employer owes you.</span>
           </h1>
-          <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-ink-soft">
-            Whether you&apos;ve just been made redundant, you&apos;re leaving a job, or
-            you need to check your overtime — get an instant, law-backed answer.
-            Built on the actual statutory rules for UK, US, Canada and Australia.
+          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-ink-soft">
+            Employment law is stressful. We make it simple — instant, law-backed answers for redundancy, dismissal, pay disputes, and parental leave across the UK, US, Canada and Australia.
           </p>
-          <p className="mt-5 text-xs text-ink-faint">
-            Select your country below or search for a calculator
-          </p>
+
+          {/* Trust signals — above the fold */}
+          <ul className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-1.5">
+            {TRUST.map((t) => (
+              <li key={t} className="flex items-center gap-1.5 text-xs text-ink-faint">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+                {t}
+              </li>
+            ))}
+          </ul>
         </section>
 
+        {/* Situation selector */}
+        <SituationSelector />
+
+        {/* Divider */}
+        <div className="mx-auto mt-10 flex items-center gap-3 text-xs text-ink-faint">
+          <div className="h-px flex-1 bg-surface-line" />
+          <span>or browse all calculators</span>
+          <div className="h-px flex-1 bg-surface-line" />
+        </div>
+
         {/* Tool search + filtered list */}
-        <main id="main">
+        <main id="main" className="mt-6">
           <HomeToolList />
         </main>
 
-        {/* Trust feature strip */}
-        <section aria-labelledby="features-heading" className="mx-auto mt-14 max-w-2xl">
-          <h2
-            id="features-heading"
-            className="mb-4 text-center text-sm font-medium text-ink-soft"
-          >
-            Why use My Pay Rights?
-          </h2>
-          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-surface-line bg-surface-line sm:grid-cols-4">
-            {FEATURES.map((f) => (
-              <dl
-                key={f.title}
-                className="flex flex-col items-center bg-white px-4 py-5 text-center"
-              >
-                <dd aria-hidden="true">
-                  <TablerIcon name={f.icon} className="text-brand-400" size={20} />
-                </dd>
-                <dt className="mt-2 text-xs font-medium text-ink">{f.title}</dt>
-                <dd className="text-[11px] text-ink-faint">{f.sub}</dd>
-              </dl>
-            ))}
-          </div>
-        </section>
-
-        {/* Bottom trust copy */}
-        <p className="mx-auto mt-8 max-w-lg text-center text-xs leading-relaxed text-ink-faint">
+        {/* Bottom disclaimer */}
+        <p className="mx-auto mt-10 max-w-lg text-center text-xs leading-relaxed text-ink-faint">
           All figures are estimates based on current statutory rates. Always confirm
           with your employer or a qualified adviser.{" "}
           <a href="/disclaimer" className="underline-offset-2 hover:underline">

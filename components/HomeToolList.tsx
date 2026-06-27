@@ -174,28 +174,28 @@ export function HomeToolList() {
   );
 }
 
+const CATEGORY_ACCENT: Record<string, { border: string; icon: string }> = {
+  "leaving-job":    { border: "border-l-red-400",    icon: "bg-red-50 text-red-500" },
+  "pay-tax":        { border: "border-l-blue-400",   icon: "bg-blue-50 text-blue-500" },
+  "parental-leave": { border: "border-l-emerald-400", icon: "bg-emerald-50 text-emerald-600" },
+  "benefits":       { border: "border-l-purple-400", icon: "bg-purple-50 text-purple-500" },
+};
+
 function ToolCard({ tool }: { tool: (typeof TOOLS)[number] }) {
+  const accent = CATEGORY_ACCENT[tool.category] ?? { border: "border-l-brand-400", icon: "bg-brand-50 text-brand-600" };
   return (
     <Link
       href={`/${tool.slug}`}
-      className={`flex items-center gap-4 rounded-lg border px-4 py-4 transition-colors ${
-        tool.hero
-          ? "border-brand-100 bg-brand-50 hover:bg-brand-100/40"
-          : "border-surface-line bg-white hover:bg-surface-muted"
-      }`}
+      className={`flex items-center gap-4 rounded-lg border border-surface-line border-l-4 bg-white px-4 py-4 transition-colors hover:bg-surface-muted ${accent.border}`}
     >
-      <span
-        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
-          tool.hero ? "bg-white text-brand-600" : "bg-surface-muted text-ink-soft"
-        }`}
-      >
+      <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${accent.icon}`}>
         <TablerIcon name={tool.icon} size={18} aria-hidden="true" />
       </span>
       <span className="min-w-0 flex-1">
         <span className="block text-sm font-medium text-ink">{tool.name}</span>
         <span className="block truncate text-xs text-ink-soft">{tool.description}</span>
       </span>
-      <span className="hidden shrink-0 rounded-full bg-white/70 px-2 py-0.5 text-[10px] font-medium text-brand-800 sm:inline">
+      <span className="hidden shrink-0 rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-medium text-ink-faint sm:inline">
         {tool.region}
       </span>
       <TablerIcon name="ti-arrow-right" className="shrink-0 text-ink-faint" size={16} aria-hidden="true" />

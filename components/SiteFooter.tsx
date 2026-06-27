@@ -3,6 +3,17 @@ import Image from "next/image";
 import { TOOLS, CATEGORY_META, type ToolCategory } from "@/data/tools";
 import { SITE } from "@/lib/seo";
 
+const POPULAR_FAQS = [
+  { label: "Can employer refuse redundancy pay?", href: "/faq/can-employer-refuse-redundancy-pay" },
+  { label: "Is redundancy pay tax free?", href: "/faq/is-redundancy-pay-tax-free" },
+  { label: "What is PILON?", href: "/faq/what-is-pilon-uk" },
+  { label: "What is garden leave?", href: "/faq/what-is-garden-leave-uk" },
+  { label: "How much is a settlement agreement worth?", href: "/faq/how-much-is-a-settlement-agreement-worth" },
+  { label: "US state PTO payout laws", href: "/us/pto-payout" },
+  { label: "UK redundancy rights guide", href: "/uk/redundancy" },
+  { label: "US overtime law explained", href: "/us/overtime" },
+];
+
 const CATEGORY_ORDER: ToolCategory[] = ["leaving-job", "pay-tax", "parental-leave", "benefits"];
 
 export function SiteFooter() {
@@ -30,6 +41,22 @@ export function SiteFooter() {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* Popular guides & FAQs */}
+        <div className="mb-10 border-t border-surface-line pt-8">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-brand-600">
+            Popular guides & questions
+          </p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-1.5">
+            {POPULAR_FAQS.map((f) => (
+              <li key={f.href}>
+                <Link href={f.href} className="text-xs text-ink-faint transition-colors hover:text-ink-soft">
+                  {f.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Divider */}
