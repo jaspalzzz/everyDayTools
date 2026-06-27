@@ -1,0 +1,336 @@
+export interface FaqPageMeta {
+  slug: string;
+  question: string;
+  /** Short answer for hub listing — 1–2 sentences */
+  shortAnswer: string;
+  /** Full structured answer — rendered as HTML paragraphs */
+  answer: string[];
+  country: "UK" | "US" | "UK/US";
+  /** Related FAQ slugs for "Related questions" section */
+  related: string[];
+  /** Tool slug for CTA */
+  relatedTool?: string;
+  relatedToolName?: string;
+  /** Optional guide slug for secondary CTA */
+  relatedGuide?: string;
+  relatedGuideName?: string;
+  datePublished: string;
+  dateModified: string;
+}
+
+export const FAQS: FaqPageMeta[] = [
+  {
+    slug: "can-employer-refuse-redundancy-pay",
+    question: "Can my employer refuse to pay redundancy pay?",
+    shortAnswer: "No — if you qualify (2+ years' service, genuine redundancy), statutory redundancy pay is a legal entitlement your employer cannot withhold.",
+    answer: [
+      "Statutory redundancy pay is a legal right under the Employment Rights Act 1996 (ERA 1996 s.135). If you have 2 or more years of continuous employment and your dismissal is by reason of redundancy, your employer is legally required to pay you. They cannot refuse, reduce, or waive the statutory minimum — any attempt to do so is unlawful.",
+      "If your employer refuses to pay, you have two options. First, you can write to them formally requesting payment and citing ERA 1996. Second, if they still refuse, you can bring a claim in the Employment Tribunal. The time limit is 6 months from the date your employment ended (an exception to the usual 3-month limit for employment tribunal claims). The Redundancy Payments Service can also make the payment on your employer's behalf if your employer is insolvent.",
+      "Note that your employer can lawfully refuse redundancy pay if you have fewer than 2 years' service, if you unreasonably refused an offer of suitable alternative employment, if you resigned rather than being dismissed, or if the dismissal was for gross misconduct in addition to a redundancy situation. Outside these specific circumstances, refusal is unlawful.",
+    ],
+    country: "UK",
+    related: ["is-redundancy-pay-tax-free", "how-long-to-receive-redundancy-pay", "what-is-the-redundancy-pay-cap"],
+    relatedTool: "redundancy-pay-calculator",
+    relatedToolName: "Redundancy pay calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "is-redundancy-pay-tax-free",
+    question: "Is redundancy pay tax free?",
+    shortAnswer: "Yes — statutory redundancy pay is tax-free up to £30,000 in total termination payments. Amounts above £30,000 are subject to income tax.",
+    answer: [
+      "Statutory redundancy pay is tax-free provided your total qualifying termination payment does not exceed £30,000. The £30,000 threshold applies to the combined value of statutory redundancy pay, any enhanced (contractual) redundancy pay, and any ex gratia payment made on termination. Amounts within this threshold are exempt from both income tax and National Insurance contributions.",
+      "If your total termination payment exceeds £30,000, only the excess above £30,000 is subject to income tax (at your marginal rate). Importantly, National Insurance contributions do not apply to the excess — it is income tax only on amounts above the threshold.",
+      "Notice pay (or pay in lieu of notice — PILON) is always fully taxable and does not benefit from the £30,000 exemption. Since April 2018, all PILON is treated as earnings regardless of whether your contract contains a PILON clause. When calculating what falls within the threshold, PILON is kept separate. For example: if you receive £15,000 redundancy pay and £10,000 PILON, the redundancy pay is tax-free (within £30,000) and the PILON is fully taxable as earnings.",
+    ],
+    country: "UK",
+    related: ["can-employer-refuse-redundancy-pay", "what-is-the-redundancy-pay-cap", "how-is-a-weeks-pay-calculated-for-redundancy"],
+    relatedTool: "redundancy-pay-calculator",
+    relatedToolName: "Redundancy pay calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "how-long-to-receive-redundancy-pay",
+    question: "How long does an employer have to pay redundancy pay?",
+    shortAnswer: "Your employer must pay redundancy pay on or before your last day of employment — or as soon as reasonably practicable after that date if the calculation takes longer.",
+    answer: [
+      "There is no specific statutory deadline for the exact day redundancy pay must be paid, but case law and ACAS guidance indicate it should be paid on or before your final day of employment, or as soon as reasonably practicable thereafter. Most employers include redundancy pay in the final payslip or make a separate payment on the termination date.",
+      "If your employer delays without explanation, write to them immediately requesting payment and providing your statutory redundancy pay calculation. Give them a reasonable deadline — 7–14 days is typical. If they still fail to pay, you can bring a claim in the Employment Tribunal. The time limit for a redundancy pay claim is 6 months from the date your employment ended, which is longer than the usual 3-month limit for unfair dismissal claims.",
+      "If your employer is insolvent and cannot pay, the government's Redundancy Payments Service (RPS) can pay statutory redundancy pay directly to you, up to the statutory cap. Contact the Insolvency Service if your employer has entered administration, liquidation, or receivership.",
+    ],
+    country: "UK",
+    related: ["can-employer-refuse-redundancy-pay", "is-redundancy-pay-tax-free", "do-i-get-notice-pay-if-made-redundant"],
+    relatedTool: "redundancy-pay-calculator",
+    relatedToolName: "Redundancy pay calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "can-i-be-made-redundant-on-sick-leave",
+    question: "Can I be made redundant while on sick leave?",
+    shortAnswer: "Yes — a genuine redundancy can proceed while you are on sick leave. However, selecting you for redundancy because of your sick leave is potentially discriminatory and may be automatically unfair.",
+    answer: [
+      "Being on sick leave does not protect you from genuine redundancy. If your role is genuinely redundant — the business is restructuring, the workplace is closing, or the need for your type of work has diminished — your employer can proceed with the redundancy process even while you are absent due to illness. You are still entitled to statutory redundancy pay, notice pay, and a fair redundancy process.",
+      "However, selecting you for redundancy because of your sick leave, or because of the illness causing it, is highly likely to be unlawful. If your illness constitutes a disability under the Equality Act 2010, selection for redundancy related to that illness could be disability discrimination — a claim with no qualifying period and uncapped compensation. Even where disability is not in play, using sick leave as a selection criterion in a redundancy pool is likely to make the dismissal unfair.",
+      "The practical challenge is attending redundancy consultation meetings while unwell. Your employer should make reasonable adjustments — offering telephone or video consultation, postponing meetings if you are genuinely unable to attend, or allowing a representative to attend on your behalf. Failure to make any accommodation could be used as evidence of unfair procedure at tribunal.",
+    ],
+    country: "UK",
+    related: ["can-i-be-made-redundant-while-on-maternity-leave", "what-is-unfair-redundancy-selection", "can-employer-refuse-redundancy-pay"],
+    relatedTool: "redundancy-pay-calculator",
+    relatedToolName: "Redundancy pay calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "does-tupe-protect-redundancy-rights",
+    question: "Does TUPE protect my redundancy rights?",
+    shortAnswer: "Yes — TUPE makes dismissal connected to a business transfer automatically unfair, and your service with the old employer counts towards any future redundancy pay entitlement.",
+    answer: [
+      "TUPE (Transfer of Undertakings (Protection of Employment) Regulations 2006) provides two key protections for redundancy rights. First, under Regulation 7, dismissal connected to a TUPE transfer is automatically unfair — meaning your employer cannot make you redundant simply because the business has been sold or a service contract has changed hands. If dismissal is connected to the transfer, you can bring an unfair dismissal claim from day one (no 2-year qualifying period applies for automatically unfair dismissal).",
+      "Second, your continuous employment with your old employer transfers to the new employer. This means your service years count towards the 2-year qualifying period for unfair dismissal protection and towards any future redundancy pay calculation. If the new employer makes you redundant 6 months after the transfer, your redundancy pay is calculated using all your service years — including those with the old employer.",
+      "There is an exception: if the new employer can show an economic, technical, or organisational (ETO) reason entailing a change in the workforce — a genuine restructuring unconnected to the transfer itself — a redundancy may be lawful. Even then, a fair redundancy process (consultation, selection, notice) must be followed, and statutory redundancy pay is owed based on your full service including pre-transfer years.",
+    ],
+    country: "UK",
+    related: ["can-employer-refuse-redundancy-pay", "can-i-be-made-redundant-and-rehired", "what-happens-to-my-pension-if-made-redundant"],
+    relatedGuide: "uk-tupe",
+    relatedGuideName: "TUPE: your rights when your employer changes",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "what-is-the-redundancy-pay-cap",
+    question: "What is the redundancy pay cap in the UK?",
+    shortAnswer: "The weekly pay cap for statutory redundancy pay is £643 for 2026/27. The maximum you can receive is £22,530 (20 years × £643 × 1.5 age multiplier).",
+    answer: [
+      "Statutory redundancy pay in the UK is subject to two caps. First, the weekly pay cap — your actual weekly pay is capped at £643 (for the tax year 2025/26; this figure is reviewed each April). Even if you earn £2,000 per week, only £643 is used in the redundancy pay calculation. Second, the years of service cap — a maximum of 20 years is counted, regardless of how long you have actually worked for the employer.",
+      "The formula is: complete years of service (up to 20) × weekly pay (up to £643) × age multiplier (0.5 for under-22 service years, 1 for 22–40, 1.5 for 41 and over). The absolute maximum statutory payment is therefore £22,530: 20 years × £643 × 1.5. This maximum applies to someone who is 61+ with 20 or more years of service all worked aged 41 or over.",
+      "Enhanced redundancy schemes paid by employers are not subject to these statutory caps — they can use your actual salary and count more years of service. Enhanced payments above the statutory amount can still benefit from the £30,000 tax-free threshold on total termination payments.",
+    ],
+    country: "UK",
+    related: ["is-redundancy-pay-tax-free", "how-is-a-weeks-pay-calculated-for-redundancy", "statutory-vs-enhanced-redundancy"],
+    relatedTool: "redundancy-pay-calculator",
+    relatedToolName: "Redundancy pay calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "can-i-be-made-redundant-while-on-maternity-leave",
+    question: "Can I be made redundant while on maternity leave?",
+    shortAnswer: "Yes, but only in very specific circumstances — and you have stronger rights than other employees. You must be offered any suitable alternative vacancy before it is offered to anyone else.",
+    answer: [
+      "Employees on maternity leave (and shared parental leave or adoption leave) cannot be selected for redundancy because they are on maternity leave, or because of their pregnancy or maternity. Doing so is automatically unfair dismissal and sex discrimination — claims with no qualifying period and, for discrimination, uncapped compensation.",
+      "Where a genuine redundancy situation exists and your role is affected, you have a special statutory right under the Maternity and Parental Leave etc. Regulations 1999: you must be offered any suitable alternative vacancy (if one exists) before it is offered to other employees at risk of redundancy. This priority right applies from the day you start maternity leave until the day you return. Your employer must actively look for suitable vacancies — they cannot simply invite you to apply alongside other redundant employees.",
+      "If there is no suitable alternative role and the redundancy is genuine, the dismissal can proceed even during maternity leave. You will still be entitled to statutory redundancy pay (provided you have 2+ years' service), notice pay (which continues to accrue even during unpaid maternity leave), and any enhanced maternity pay owed under your contract. The dismissal letter and P45 must be issued in the usual way.",
+    ],
+    country: "UK",
+    related: ["can-i-be-made-redundant-on-sick-leave", "what-is-unfair-redundancy-selection", "can-employer-refuse-redundancy-pay"],
+    relatedTool: "redundancy-pay-calculator",
+    relatedToolName: "Redundancy pay calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "do-i-get-notice-pay-if-made-redundant",
+    question: "Do I get notice pay if I'm made redundant?",
+    shortAnswer: "Yes — notice pay and redundancy pay are separate entitlements. You receive both: your notice period (or pay in lieu) plus your statutory redundancy payment.",
+    answer: [
+      "Notice pay and redundancy pay are distinct entitlements — you are owed both. Statutory redundancy pay compensates you for losing your job after long service. Notice pay (or pay in lieu of notice — PILON) compensates you for the notice period your employer is required to give before terminating your employment. Both are payable on redundancy.",
+      "Statutory minimum notice is: 1 week after 1 month's employment, then 1 additional week per complete year of service, up to a maximum of 12 weeks after 12 or more years. Your contract may provide a longer notice period — your employer must apply whichever is greater. If you are not required to work your notice period, you must receive PILON instead, which is fully taxable as earnings.",
+      "If your employer fails to give you either notice or PILON, you have a wrongful dismissal claim (breach of contract). You can bring this at the Employment Tribunal (claims up to £25,000) or in the county court. Note that PILON does not benefit from the £30,000 tax-free threshold that applies to redundancy pay — it is always subject to income tax and National Insurance.",
+    ],
+    country: "UK",
+    related: ["can-employer-refuse-redundancy-pay", "is-redundancy-pay-tax-free", "how-long-to-receive-redundancy-pay"],
+    relatedTool: "notice-period-calculator",
+    relatedToolName: "Notice period calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "what-happens-to-my-pension-if-made-redundant",
+    question: "What happens to my pension if I'm made redundant?",
+    shortAnswer: "Your pension pot is yours — redundancy does not affect it. You become a deferred member of any final salary scheme and can keep or transfer a defined contribution pot.",
+    answer: [
+      "Being made redundant does not affect the pension rights you have already accrued. For defined contribution (DC) pensions — the most common type for private sector workers — your pot remains invested as it was. You simply stop making contributions and your employer stops contributing. You become a 'deferred member' and the pot grows (or falls) with investment until you draw it down from age 55 (rising to 57 from 2028).",
+      "For defined benefit (final salary or career average) pensions, your accrued pension is protected and revalued in line with inflation up to a cap (currently CPI, capped at 2.5% for pre-2009 accrual). You will receive a deferred pension statement showing your projected pension at normal retirement age. You can usually transfer the deferred value to a personal pension (though taking independent financial advice is required for transfers over £30,000).",
+      "During your redundancy notice period (or the period covered by PILON), pension contributions should continue as normal — including employer contributions — if you are working the notice period. If you receive PILON, whether pension contributions continue depends on your contract and scheme rules. Auto-enrolment continues while you remain employed during notice; it ceases on your termination date.",
+    ],
+    country: "UK",
+    related: ["can-employer-refuse-redundancy-pay", "do-i-get-notice-pay-if-made-redundant", "does-tupe-protect-redundancy-rights"],
+    relatedTool: "redundancy-pay-calculator",
+    relatedToolName: "Redundancy pay calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "can-i-be-made-redundant-and-rehired",
+    question: "Can I be made redundant and then rehired by the same employer?",
+    shortAnswer: "Yes — this is legal, but if you return quickly with no change to role or terms, HMRC and tribunals may challenge whether the redundancy was genuine.",
+    answer: [
+      "There is no law that prevents an employer from making you redundant and then offering you a new job — even in the same or similar role. However, the redundancy must be genuine at the time it was declared. If you are made redundant and then rehired into an identical role within a short period (often cited as a few months in HMRC guidance), this raises a strong inference that the redundancy was not genuine — and may mean you were entitled to statutory redundancy pay that the employer is trying to avoid paying.",
+      "HMRC looks closely at 'phoenix' redundancies — situations where an employer makes staff redundant to avoid paying ongoing employment costs, then rehires them as self-employed contractors or re-engages them through a new entity. If HMRC concludes the redundancy was a sham, the employer may face tax penalties and the employee may have NI contribution gaps.",
+      "If you are made redundant and genuinely rehired into a new role, a new period of continuous employment begins. You lose the service years built up before the redundancy for most purposes — though if your new contract includes a continuity preservation clause, or if the break is less than 1 week, statutory rules may preserve some continuity. Always check what your new contract says about treatment of previous service.",
+    ],
+    country: "UK",
+    related: ["can-employer-refuse-redundancy-pay", "does-tupe-protect-redundancy-rights", "what-is-unfair-redundancy-selection"],
+    relatedTool: "redundancy-pay-calculator",
+    relatedToolName: "Redundancy pay calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "how-is-a-weeks-pay-calculated-for-redundancy",
+    question: "How is a week's pay calculated for redundancy purposes?",
+    shortAnswer: "A week's pay is your normal weekly wage, capped at £643 for 2026/27. For variable pay, it's averaged over the 12 weeks before the notice date.",
+    answer: [
+      "For employees with fixed hours and fixed pay, a week's pay is straightforward: it is your gross weekly wage — but capped at £643 for the tax year 2025/26. The cap is reviewed by the government each April in line with inflation. If you earn £800 per week, only £643 is used in the calculation.",
+      "For employees with variable pay — where pay varies depending on hours worked, commission, or other variable elements — a week's pay is calculated as the average of the 12 weeks' pay actually paid in the 12 weeks before the notice was given (or the effective date of termination if no notice was given). Weeks in which no pay was received (for example, unpaid leave) are ignored and an earlier week is substituted to make up the 12-week period.",
+      "For employees with no fixed working hours (zero-hours or irregular hours), the average is taken over the 12 weeks before the calculation date. Overtime and commission that are guaranteed and regularly paid may be included; purely discretionary bonuses that are not regular are generally excluded. For part-time workers, a week's pay reflects actual part-time earnings, not a full-time equivalent.",
+    ],
+    country: "UK",
+    related: ["what-is-the-redundancy-pay-cap", "is-redundancy-pay-tax-free", "can-employer-refuse-redundancy-pay"],
+    relatedTool: "redundancy-pay-calculator",
+    relatedToolName: "Redundancy pay calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "what-is-unfair-redundancy-selection",
+    question: "What makes a redundancy selection unfair?",
+    shortAnswer: "Redundancy selection is unfair if the pool is too narrow, the criteria are discriminatory, the process is a sham, or you were selected for a prohibited reason (pregnancy, disability, trade union activity).",
+    answer: [
+      "Even where a genuine redundancy situation exists, the selection of which employees are made redundant must be fair. Unfair selection grounds fall into three broad categories. First, automatically unfair selection: selecting an employee because of pregnancy or maternity, trade union membership or activities, whistleblowing, asserting a statutory right, or exercising rights under TUPE or working time legislation. These grounds are automatically unfair with no 2-year qualifying period required.",
+      "Second, discriminatory selection: using criteria that disproportionately affect employees with a protected characteristic (age, disability, sex, race, religion, sexual orientation, etc.) without objective justification. Using attendance records as a selection criterion, for example, can indirectly discriminate against disabled employees if their absences relate to their disability.",
+      "Third, procedurally unfair selection: defining the redundancy pool too narrowly to exclude obvious alternatives, failing to apply selection criteria consistently or objectively, not consulting properly with the employees in the pool, or not scoring employees fairly against the agreed criteria. An employer who has already decided who will be made redundant before beginning consultation, and uses the process as a formality, is likely to be found to have acted unfairly.",
+    ],
+    country: "UK",
+    related: ["can-i-be-made-redundant-on-sick-leave", "can-i-be-made-redundant-while-on-maternity-leave", "what-is-acas-early-conciliation"],
+    relatedTool: "redundancy-pay-calculator",
+    relatedToolName: "Redundancy pay calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "what-is-acas-early-conciliation",
+    question: "What is ACAS early conciliation and do I have to do it?",
+    shortAnswer: "ACAS early conciliation is a free, mandatory pre-step before bringing most Employment Tribunal claims. You must contact ACAS first — failing to do so means your claim will be rejected.",
+    answer: [
+      "Before you can start an Employment Tribunal claim (for unfair dismissal, redundancy pay, discrimination, or most other employment rights), you must first notify ACAS and go through early conciliation. This is a legal requirement under the Enterprise and Regulatory Reform Act 2013 — the Tribunal will reject your claim form (ET1) if you have not done this first.",
+      "Early conciliation is free and voluntary in the sense that you cannot be forced to settle. ACAS will contact your employer and try to help both parties reach an agreement without going to tribunal. The process typically takes up to 6 weeks, though it can be shorter if both parties engage quickly or either party decides not to proceed. If conciliation does not result in a settlement, ACAS issues a certificate that you use to proceed with your tribunal claim.",
+      "Critically, contacting ACAS pauses (tolls) the 3-month time limit for your claim. The clock stops when you notify ACAS and resumes one month after the certificate is issued (or sooner if you decide to withdraw). This means you should contact ACAS as early as possible — well before the 3-month deadline — to give conciliation time to work without eating into your time limit. You can contact ACAS at acas.org.uk or by phone.",
+    ],
+    country: "UK",
+    related: ["what-is-unfair-redundancy-selection", "can-employer-refuse-redundancy-pay", "does-tupe-protect-redundancy-rights"],
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "can-employer-change-terms-after-tupe",
+    question: "Can my new employer change my terms after a TUPE transfer?",
+    shortAnswer: "No — changes to your terms connected to the TUPE transfer are void, even if you agree to them in writing. Only changes for a genuine ETO reason unconnected to the transfer are permitted.",
+    answer: [
+      "Under Regulation 4(4) of TUPE 2006, any variation to your employment contract that is connected to the TUPE transfer is void — legally unenforceable — even if you agreed to it and even if your employer claims you consented. The new employer cannot use the transfer as an opportunity to harmonise terms downwards, cut your pay, reduce your benefits, or alter your working hours simply because the business has changed hands.",
+      "This protection is particularly powerful because it applies regardless of time: there is no set period after which the transfer connection fades in law, though in practice it becomes harder for you to prove the connection the longer after the transfer the change occurs. Courts and tribunals look at the reason for the change: if it is directly connected to the transfer (even if wrapped in business language), it is void.",
+      "Changes are permissible in two situations. First, if the change is for a genuine economic, technical, or organisational (ETO) reason entailing a change in the workforce — a restructuring for business reasons genuinely unconnected to the transfer. Second, where the change is permitted by the contract itself or by a collective agreement. Even where an ETO reason exists, the employer must still follow proper employment law processes (notice, consultation, or variation agreement) — ETO is not a free pass to change terms unilaterally.",
+    ],
+    country: "UK",
+    related: ["does-tupe-protect-redundancy-rights", "can-employer-refuse-redundancy-pay", "what-is-unfair-redundancy-selection"],
+    relatedGuide: "uk-tupe",
+    relatedGuideName: "TUPE: your rights when your employer changes",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "does-my-employer-have-to-pay-out-pto",
+    question: "Does my employer have to pay out unused PTO when I leave?",
+    shortAnswer: "It depends on your state. There is no federal law requiring PTO payout. California, Colorado, and several other states treat accrued vacation as earned wages and require payout. Most states leave it to company policy.",
+    answer: [
+      "There is no federal law requiring employers to pay out unused PTO or vacation time when employment ends. The rules are entirely governed by state law — and they vary dramatically. In some states, accrued vacation is treated as earned wages that cannot be forfeited under any circumstances. In others, the employer's written policy controls, including use-it-or-lose-it provisions.",
+      "States that generally require vacation payout include California, Colorado, Illinois, Louisiana, Massachusetts, Minnesota, Montana, and Nebraska. In California, for example, accrued vacation is definitively treated as earned wages under the Labor Code — employers cannot implement use-it-or-lose-it policies, and all accrued, unused vacation must be paid on the last day of employment regardless of why employment ended.",
+      "In states without a mandatory payout rule, your employer's written PTO or vacation policy governs. Read your employee handbook carefully — if the policy says unused PTO is forfeited on termination, that provision is likely enforceable in your state. If the policy is silent on payout, you may have a stronger argument that the accrued balance is owed. When in doubt, contact your state's department of labor.",
+    ],
+    country: "US",
+    related: ["can-employer-withhold-final-paycheck", "is-severance-pay-taxable-us", "what-is-at-will-employment"],
+    relatedTool: "pto-payout-calculator",
+    relatedToolName: "PTO payout calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "what-is-warn-act",
+    question: "What is the WARN Act and does it apply to me?",
+    shortAnswer: "The federal WARN Act requires employers with 100+ employees to give 60 days' notice before mass layoffs or plant closings. Some states have 'mini-WARN' laws that apply to smaller employers.",
+    answer: [
+      "The Worker Adjustment and Retraining Notification (WARN) Act of 1988 (29 U.S.C. §2101) requires covered employers to provide 60 calendar days' advance written notice before a plant closing or mass layoff affecting 50 or more employees. A covered employer is one with 100 or more full-time employees (excluding employees who have worked fewer than 6 months or fewer than 20 hours per week).",
+      "A 'plant closing' is the shutdown of a single site of employment resulting in job loss for 50 or more employees. A 'mass layoff' is a layoff of 500+ employees at a single site, or 50–499 employees if they constitute at least 33% of the employer's active workforce at that site. The notice must be given to affected employees, their union representatives (if any), the state dislocated worker unit, and the local government.",
+      "WARN Act penalties for non-compliance are significant: up to 60 days' back pay and benefits for each affected employee, plus civil penalties of up to $500 per day. Many states have enacted 'mini-WARN' laws that apply to smaller employers or provide longer notice periods — New York (90 days, 25+ employees), California (60 days, 75+ employees), and New Jersey (90 days, 100+ employees) have notable mini-WARN protections.",
+    ],
+    country: "US",
+    related: ["does-my-employer-have-to-pay-out-pto", "can-employer-withhold-final-paycheck", "is-severance-pay-taxable-us"],
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "how-long-does-cobra-coverage-last",
+    question: "How long does COBRA coverage last?",
+    shortAnswer: "COBRA continuation coverage lasts 18 months for most qualifying events (job loss or reduced hours), extended to 36 months in certain circumstances such as divorce, death, or a dependent losing coverage.",
+    answer: [
+      "COBRA (Consolidated Omnibus Budget Reconciliation Act) allows you to continue your employer-sponsored group health coverage for a limited period after it would otherwise end. For the most common qualifying event — involuntary job loss or voluntary resignation (but not termination for gross misconduct) — the standard COBRA period is 18 months. If you are disabled at the time of the qualifying event (or become disabled within 60 days), coverage can be extended to 29 months.",
+      "For other qualifying events — divorce or legal separation from the covered employee, death of the covered employee, or a dependent child losing dependent status under the plan — the COBRA period is 36 months. If a second qualifying event occurs during an initial 18-month COBRA period (for example, the covered employee dies after being laid off), beneficiaries may be entitled to extend to 36 months total.",
+      "COBRA applies to employers with 20 or more employees. You must elect COBRA within 60 days of losing coverage (or receiving the election notice, whichever is later) and pay premiums retroactively to the date coverage would have ended. Premiums can be up to 102% of the full group rate — often significantly more than you paid as an employee. Before electing COBRA, compare ACA marketplace plans — if you lost job-based coverage, you have a 60-day special enrollment window.",
+    ],
+    country: "US",
+    related: ["what-is-warn-act", "does-my-employer-have-to-pay-out-pto", "is-severance-pay-taxable-us"],
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "is-severance-pay-taxable-us",
+    question: "Is severance pay taxable in the US?",
+    shortAnswer: "Yes — severance pay is treated as regular wages and is subject to federal income tax, Social Security, Medicare (FICA), and state income tax where applicable.",
+    answer: [
+      "Severance pay is fully taxable under US federal law. The IRS treats severance as supplemental wages — meaning it is subject to federal income tax withholding, Social Security tax (6.2% on earnings up to the annual wage base), and Medicare tax (1.45%, or 2.35% above $200,000). State income tax also applies in most states. There is no US federal equivalent of the UK's £30,000 tax-free termination payment threshold.",
+      "Because severance is often paid as a lump sum, the withholding can be jarring. Employers typically withhold federal income tax on lump-sum supplemental wages at either the flat supplemental rate (22% for amounts up to $1 million, 37% above that) or by aggregating the payment with your regular pay and withholding at the corresponding rate. The actual tax you owe is settled when you file your annual return — you may owe more or receive a refund depending on your total income for the year.",
+      "One exception: if severance is paid as a result of a qualifying employment claim or lawsuit (rather than as a standard exit payment), some portion may be characterised differently for tax purposes. Payments for physical injuries or sickness may be excludable from gross income. Non-physical damages are generally taxable. Always consult a tax advisor if your severance was received as part of a legal settlement.",
+    ],
+    country: "US",
+    related: ["does-my-employer-have-to-pay-out-pto", "can-employer-withhold-final-paycheck", "what-is-warn-act"],
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "can-employer-withhold-final-paycheck",
+    question: "Can my employer withhold my final paycheck?",
+    shortAnswer: "No — withholding a final paycheck is illegal in every US state. Federal and state wage and hour laws require prompt payment, and some states require payment on the last day of employment.",
+    answer: [
+      "Withholding a final paycheck is unlawful in all 50 states, regardless of the reason for separation. An employer cannot withhold your final wages because you failed to return equipment, gave insufficient notice, or are involved in a dispute. The final paycheck must include all wages earned through your last day of work, including regular pay, overtime, and any accrued vacation or PTO that your state requires to be paid out.",
+      "Deadlines for the final paycheck vary by state and by how employment ended. In California, if you are fired or laid off, your employer must pay your final wages on your last day of employment — immediately. If you resign with at least 72 hours' notice, payment is also due on the last day; if you resign without notice, it is due within 72 hours. Other states are less strict: some require payment by the next regular payday, others within a set number of days (typically 3–14 business days).",
+      "If your employer withholds your final paycheck, file a wage claim with your state's department of labor as soon as possible. You may be entitled to waiting time penalties (in California, for example, up to 30 days' worth of wages if the employer willfully fails to pay), interest, and attorney's fees. You can also sue in small claims court for amounts within that court's jurisdictional limit. Do not sign any release of claims in exchange for receiving wages you were already owed.",
+    ],
+    country: "US",
+    related: ["does-my-employer-have-to-pay-out-pto", "is-severance-pay-taxable-us", "what-is-at-will-employment"],
+    relatedTool: "pto-payout-calculator",
+    relatedToolName: "PTO payout calculator",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+  {
+    slug: "what-is-at-will-employment",
+    question: "What is at-will employment and what does it mean for me?",
+    shortAnswer: "At-will employment means your employer can terminate you at any time, for any reason (or no reason), without notice — as long as the reason is not illegal. Most US private-sector employment is at-will.",
+    answer: [
+      "At-will employment is the default rule in every US state except Montana. It means that either party — employer or employee — can end the employment relationship at any time, with or without notice, and with or without a reason. Your employer can let you go because of a restructuring, because they want to cut costs, because they don't like your attitude, or for no stated reason at all — and it is generally legal.",
+      "At-will has important exceptions. Your employer cannot terminate you for an illegal reason: discrimination based on a protected characteristic (race, sex, age, disability, religion, national origin, and others under federal and state law), retaliation for whistleblowing or filing a workers' compensation claim, or exercising protected concerted activity under the National Labor Relations Act. These exceptions mean at-will is not quite as absolute as it sounds — wrongful termination claims are possible when the employer's true reason was unlawful.",
+      "At-will employment can also be limited by contract. If you have a written employment agreement specifying that you can only be terminated 'for cause', or a collective bargaining agreement, or if your employer's handbook makes promises about termination procedures, those commitments may override the at-will default. Courts in some states also recognise an implied covenant of good faith and fair dealing that limits at-will termination in extreme bad-faith situations.",
+    ],
+    country: "US",
+    related: ["can-employer-withhold-final-paycheck", "is-severance-pay-taxable-us", "what-is-warn-act"],
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+  },
+];
+
+export function getFaq(slug: string): FaqPageMeta | undefined {
+  return FAQS.find((f) => f.slug === slug);
+}
