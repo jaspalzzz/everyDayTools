@@ -76,6 +76,45 @@ export const UK_SHPP = {
   } satisfies SourceRef,
 } as const;
 
+/** UK Employment Tribunal compensation limits (2026/27) */
+export const UK_TRIBUNAL = {
+  /** Lower of 52 weeks' gross pay or this cap — Employment Rights Act 1996 s.124 */
+  compensatoryAwardCap: 115_115,
+  /** Same formula as redundancy pay — ERA 1996 s.119 */
+  basicAwardWeeklyPayCap: 751,
+  basicAwardMaxYears: 20,
+  basicAwardMinYears: 2,
+  /** Total termination payment tax-free threshold — ITEPA 2003 s.403 */
+  taxFreeThreshold: 30_000,
+  /**
+   * Vento bands — injury to feelings in discrimination claims.
+   * Presidential Guidance (updated annually). Approximate 2026/27 values.
+   */
+  ventoLower:  { min: 1_200,  max: 11_700 },
+  ventoMiddle: { min: 11_700, max: 35_200 },
+  ventoUpper:  { min: 35_200, max: 58_700 },
+  effectiveDate: "2026-04-06",
+  taxYear: "2026/27",
+  source: {
+    label: "Employment Rights Act 1996 — Tribunal compensation limits",
+    url: "https://www.legislation.gov.uk/ukpga/1996/18/section/124",
+  } satisfies SourceRef,
+} as const;
+
+/** UK settlement agreement benchmarks (2026/27) */
+export const UK_SETTLEMENT = {
+  weeklyPayCap: 751,
+  taxFreeThreshold: 30_000,
+  /** Employer legal fees contribution — market standard £500–£1,500 */
+  legalFeesContribution: 750,
+  effectiveDate: "2026-04-06",
+  taxYear: "2026/27",
+  source: {
+    label: "Employment Rights Act 1996 / ITEPA 2003 — Settlement agreements",
+    url: "https://www.gov.uk/negotiate-settle-employment-dispute",
+  } satisfies SourceRef,
+} as const;
+
 export const UK_SSP = {
   weeklyRate: 123.25,
   /** Waiting days abolished from 6 April 2026 (Employment Rights Act 2025). */

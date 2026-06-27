@@ -418,6 +418,56 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     },
   ],
 
+  "settlement-agreement-calculator": [
+    {
+      label: "Employment Rights Act 1996",
+      section: "s.203 (Settlement agreements — statutory provisions)",
+      url: "https://www.legislation.gov.uk/ukpga/1996/18/section/203",
+      type: "legislation",
+    },
+    {
+      label: "Income Tax (Earnings and Pensions) Act 2003",
+      section: "s.403 — £30,000 termination payment exemption",
+      url: "https://www.legislation.gov.uk/ukpga/2003/1/section/403",
+      type: "legislation",
+    },
+    {
+      label: "GOV.UK — Settlement agreements",
+      url: "https://www.gov.uk/negotiate-settle-employment-dispute",
+      type: "guidance",
+    },
+    {
+      label: "ACAS — Settlement agreements guide",
+      url: "https://www.acas.org.uk/settlement-agreements",
+      type: "regulator",
+    },
+  ],
+
+  "tribunal-compensation-calculator": [
+    {
+      label: "Employment Rights Act 1996",
+      section: "ss.119–124 (Basic award & compensatory award)",
+      url: "https://www.legislation.gov.uk/ukpga/1996/18/section/119",
+      type: "legislation",
+    },
+    {
+      label: "Equality Act 2010",
+      section: "s.124 (Remedies — injury to feelings, Vento bands)",
+      url: "https://www.legislation.gov.uk/ukpga/2010/15/section/124",
+      type: "legislation",
+    },
+    {
+      label: "GOV.UK — Employment Tribunal decisions and awards",
+      url: "https://www.gov.uk/employment-tribunals/what-you-can-claim",
+      type: "guidance",
+    },
+    {
+      label: "ACAS — Code of Practice on Disciplinary and Grievance Procedures",
+      url: "https://www.acas.org.uk/acas-code-of-practice-for-disciplinary-and-grievance-procedures",
+      type: "regulator",
+    },
+  ],
+
   /* ─── SITUATION PAGES ───────────────────────────────────── */
 
   "made-redundant-uk": [

@@ -103,6 +103,32 @@ export const TOOLS: ToolMeta[] = [
     related: ["self-employment-tax-calculator", "day-rate-calculator", "take-home-pay-calculator"],
   },
   {
+    slug: "settlement-agreement-calculator",
+    name: "Settlement agreement calculator",
+    shortName: "Settlement agreement",
+    description:
+      "Estimate a UK settlement agreement value — redundancy pay, PILON, ex gratia payment, and the £30,000 tax-free threshold.",
+    region: "UK",
+    icon: "ti-file-certificate",
+    hero: true,
+    tier: 1,
+    category: "leaving-job",
+    related: ["tribunal-compensation-calculator", "redundancy-pay-calculator", "notice-period-calculator"],
+  },
+  {
+    slug: "tribunal-compensation-calculator",
+    name: "Employment tribunal compensation calculator",
+    shortName: "Tribunal compensation",
+    description:
+      "Estimate UK Employment Tribunal compensation — basic award, capped compensatory award, ACAS uplift, Vento bands, and contributory fault reductions.",
+    region: "UK",
+    icon: "ti-gavel",
+    hero: true,
+    tier: 1,
+    category: "leaving-job",
+    related: ["settlement-agreement-calculator", "redundancy-pay-calculator", "notice-period-calculator"],
+  },
+  {
     slug: "redundancy-pay-calculator",
     name: "Redundancy pay calculator",
     shortName: "Redundancy pay",
