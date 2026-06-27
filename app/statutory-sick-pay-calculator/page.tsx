@@ -72,18 +72,18 @@ export default function Page() {
               have been off.
             </p>
             <p>
-              The part people most often miss is the <strong>three waiting days</strong>. The first
-              three qualifying days of a sickness absence are unpaid, and SSP only starts from the
-              fourth day you are off. Where separate absences are linked — within eight weeks of each
-              other — the waiting days may not apply a second time. SSP can run for up to 28 weeks
-              for a single or linked period of sickness, after which your employer should issue form
-              SSP1 so you can look at other support.
+              From <strong>6 April 2026</strong>, the three unpaid waiting days are abolished — SSP
+              is now payable from your first qualifying day of illness under the Employment Rights Act
+              2025. Where separate absences are linked — within eight weeks of each other — they count
+              as a single period of incapacity, so the 28-week maximum runs continuously across the
+              linked absences. After 28 weeks your employer should issue form SSP1 so you can look at
+              other support such as Employment and Support Allowance.
             </p>
             <p>
-              To qualify you generally need to be an employee, be off for at least four days in a
-              row, and earn at least £129 a week on average. The figure shown is gross and is taxed
-              like normal pay. Download the PDF summary to keep a clear record of how your sick pay
-              was calculated.
+              To qualify from April 2026 you need to be an employee and have done at least one day's
+              work for that employer — the old Lower Earnings Limit (£129/week) no longer applies. The
+              figure shown is gross and is taxed like normal pay. Download the PDF summary to keep a
+              clear record of how your sick pay was calculated.
             </p>
           </>
         }

@@ -4,15 +4,16 @@ export default function Content() {
       <p>
         Statutory Sick Pay (SSP) is one of the most widely misunderstood employment rights in the UK.
         Many workers don&apos;t know when it starts, how long it lasts, or what to do when their
-        employer refuses to pay it. This guide covers everything for 2026.
+        employer refuses to pay it. This guide covers everything for 2026, including the major rule
+        changes that came into force on 6 April 2026.
       </p>
 
       <h2>The basics: what is SSP?</h2>
       <p>
         Statutory Sick Pay (SSP) is a minimum payment your employer must make when you are too ill
-        to work. For 2025/26, the rate is <strong>£116.75 per week</strong>. SSP is paid by your
-        employer through payroll — it is not a benefit you claim from DWP (unlike the old system
-        before 2014).
+        to work. For 2026/27, the rate is <strong>£123.25 per week</strong> (or 80% of your average
+        weekly earnings if that is lower). SSP is paid by your employer through payroll — it is not
+        a benefit you claim from DWP (unlike the old system before 2014).
       </p>
       <p>
         SSP is subject to income tax and National Insurance in the same way as regular earnings.
@@ -20,58 +21,63 @@ export default function Content() {
         NI payments of £45,000 or less).
       </p>
 
-      <h2>Who qualifies for SSP?</h2>
+      <h2>What changed in April 2026?</h2>
       <p>
-        To qualify for SSP, you must:
+        The <strong>Employment Rights Act 2025</strong> made two significant changes to SSP, both
+        effective from <strong>6 April 2026</strong>:
+      </p>
+      <ul>
+        <li>
+          <strong>Waiting days abolished.</strong> The old rule that made the first 3 qualifying
+          days unpaid is gone. SSP is now payable from your <em>first</em> qualifying day of illness.
+        </li>
+        <li>
+          <strong>Lower Earnings Limit (LEL) removed.</strong> You no longer need to earn a minimum
+          weekly amount to qualify. Any employee who has done at least one day of work for their
+          employer and falls ill is now eligible.
+        </li>
+      </ul>
+
+      <h2>Who qualifies for SSP from April 2026?</h2>
+      <p>
+        To qualify for SSP under the new rules, you must:
       </p>
       <ul>
         <li>Be classed as an employee (not a worker or self-employed contractor)</li>
-        <li>
-          Have average weekly earnings of at least the <strong>Lower Earnings Limit (LEL)</strong> —
-          £125/week for 2025/26 — calculated over the 8 weeks before your illness
-        </li>
-        <li>Be sick for at least <strong>4 consecutive days</strong> (including non-working days)</li>
+        <li>Have done at least one day of work for that employer</li>
+        <li>Be genuinely ill and unable to work</li>
         <li>Give your employer proper notice of absence (in accordance with their sick leave policy)</li>
       </ul>
       <p>
-        Workers on zero-hours contracts, part-time workers, and short-term employees all qualify as long
-        as they meet the earnings threshold. Agency workers qualify if they meet the threshold and are
-        classed as employees of the agency.
+        Workers on zero-hours contracts, part-time workers, and short-term employees all qualify,
+        regardless of how much they earn per week. Agency workers qualify if they are classed as
+        employees of the agency.
       </p>
       <p>
-        People who do not qualify include: those earning below the LEL, the self-employed, those in
-        their first day of employment (in most cases), and those who have already had 28 weeks of SSP
-        in the current sickness period.
-      </p>
-
-      <h2>Waiting days: why you don&apos;t get paid for the first 3 days</h2>
-      <p>
-        SSP does not start from day 1 of your absence. The first <strong>3 qualifying days</strong>
-        (called &quot;waiting days&quot;) are unpaid. This means you only receive SSP from day 4 of
-        illness onwards. For most people on a standard Mon–Fri pattern, this means you get nothing
-        for the first 3 days off work sick.
-      </p>
-      <p>
-        However, if you have another period of sickness within <strong>8 weeks</strong> of the first,
-        the two periods can be &quot;linked&quot; and treated as a single period of incapacity for work
-        (PIW). Waiting days only apply once per linked period — so if you return to work and fall sick
-        again within 8 weeks, SSP starts from day 1 of the second absence (because you are still within
-        the same PIW).
+        People who do not qualify include: the self-employed, those who have already had 28 weeks of
+        SSP in the current linked sickness period, and those whose employment has ended.
       </p>
 
       <h2>How long does SSP last?</h2>
       <p>
         SSP is payable for a maximum of <strong>28 weeks</strong> per period of incapacity for work.
-        Once SSP runs out, you cannot receive it again until:
+        Where separate illness absences are &quot;linked&quot; (within 8 weeks of each other), they
+        count as a single period and the 28-week total runs across all linked absences.
       </p>
-      <ul>
-        <li>You have recovered and then become ill again after 8+ weeks</li>
-        <li>At least 3 years have passed since the last SSP entitlement ended</li>
-      </ul>
       <p>
         When SSP expires after 28 weeks, your employer must give you an SSP1 form explaining why SSP
         has ended. You can then claim Employment and Support Allowance (ESA) from DWP, or Universal
         Credit if you are eligible.
+      </p>
+
+      <h2>The 80%-of-earnings cap</h2>
+      <p>
+        Although the LEL eligibility threshold is gone, the <strong>80% earnings cap</strong> is
+        retained for low earners. If 80% of your average weekly earnings is <em>less</em> than the
+        flat rate of £123.25, you receive the lower figure. For example, if you earn £140/week on
+        average, 80% = £112 — so you would receive £112/week rather than £123.25. This protects
+        higher-earning workers from a windfall while ensuring low earners still receive proportionate
+        support.
       </p>
 
       <h2>Enhanced sick pay: what your employer can offer above SSP</h2>
