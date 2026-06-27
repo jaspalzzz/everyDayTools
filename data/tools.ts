@@ -4,7 +4,7 @@
  * Order matters: it reflects launch priority (Tier 1 first).
  */
 
-export type Region = "UK" | "US" | "UK/CA" | "US/UK/CA" | "US/UK/CA/AU";
+export type Region = "UK" | "US" | "AU" | "UK/CA" | "US/UK/CA" | "US/UK/CA/AU";
 
 /** Launch tier. Tier 1 = hero launch set; Tier 2 = expansion; Tier 3 = long-tail funnel. */
 export type Tier = 1 | 2 | 3;
@@ -113,7 +113,20 @@ export const TOOLS: ToolMeta[] = [
     hero: true,
     tier: 1,
     category: "leaving-job",
-    related: ["notice-period-calculator", "severance-pay-calculator"],
+    related: ["notice-period-calculator", "severance-pay-calculator", "au-redundancy-pay-calculator"],
+  },
+  {
+    slug: "au-redundancy-pay-calculator",
+    name: "Australia redundancy pay calculator",
+    shortName: "AU redundancy pay",
+    description:
+      "Made redundant in Australia? Calculate your NES redundancy pay under the Fair Work Act 2009 — based on your years of service and weekly base rate.",
+    region: "AU",
+    icon: "ti-file-off",
+    hero: true,
+    tier: 1,
+    category: "leaving-job",
+    related: ["redundancy-pay-calculator", "notice-period-calculator", "take-home-pay-calculator"],
   },
   {
     slug: "pto-payout-calculator",

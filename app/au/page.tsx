@@ -72,14 +72,18 @@ export default function AUPage() {
           </p>
           <div className="mt-5 rounded-lg border border-surface-line bg-surface-muted px-4 py-3 text-xs leading-relaxed text-ink-faint">
             <strong className="text-ink">Key 2025–26 figures:</strong> National Minimum Wage
-            $24.10/hr · Overtime: 1.5× for first 3 hrs, 2× thereafter (modern award dependent) ·
-            Superannuation guarantee 11.5% · Annual leave: 4 weeks (NES minimum)
+            $24.10/hr · Superannuation guarantee 12% (from 1 July 2025) ·
+            Overtime: 1.5× for first 3 hrs, 2× thereafter (modern award dependent) ·
+            Annual leave: 4 weeks paid (NES minimum) · Long service leave after 7–10 years
+            (varies by state/territory)
           </div>
 
-          <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-800">
-            <strong>Coming soon:</strong> Dedicated Australian calculators for Fair Work redundancy
-            pay, annual leave payout, and take-home pay are in development. Currently the
-            overtime and salary calculators below cover Australian rates.
+          <div className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs leading-relaxed text-emerald-800">
+            <strong className="font-semibold">New:</strong> The{" "}
+            <a href="/au-redundancy-pay-calculator" className="underline underline-offset-2 hover:text-emerald-900">
+              Australia redundancy pay calculator
+            </a>{" "}
+            is now live — calculate your NES entitlement under the Fair Work Act 2009 in seconds.
           </div>
         </div>
 

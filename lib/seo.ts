@@ -21,6 +21,7 @@ export const SITE = {
 function priceCurrencyForRegion(region: Region): string {
   if (region === "UK") return "GBP";
   if (region === "US") return "USD";
+  if (region === "AU") return "AUD";
   // Multi-region tools: default to GBP as the first listed currency
   return region.startsWith("UK") ? "GBP" : "USD";
 }
