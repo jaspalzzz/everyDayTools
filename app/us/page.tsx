@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TOOLS, CATEGORY_META, type ToolCategory } from "@/data/tools";
+import { US_STATES } from "@/data/usStates";
 import { SITE, jsonLd } from "@/lib/seo";
 import { TablerIcon } from "@/components/TablerIcon";
 
@@ -130,6 +131,56 @@ export default function USPage() {
             );
           })}
         </div>
+
+        {/* Browse by state */}
+        <section aria-labelledby="us-states-heading" className="mt-12 border-t border-surface-line pt-8">
+          <div className="mb-4 flex items-baseline gap-2">
+            <h2 id="us-states-heading" className="text-sm font-semibold text-ink">
+              Browse by state
+            </h2>
+            <span className="text-xs text-ink-faint">
+              PTO payout law, final paycheck deadlines &amp; minimum wage — all 50 states + DC
+            </span>
+          </div>
+          <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 lg:grid-cols-4">
+            {US_STATES.map((s) => {
+              const ruleColor =
+                s.pto.rule === "required"
+                  ? "text-emerald-700"
+                  : s.pto.rule === "conditional"
+                  ? "text-amber-700"
+                  : "text-ink-faint";
+              return (
+                <Link
+                  key={s.slug}
+                  href={`/us/states/${s.slug}`}
+                  className="flex items-center gap-2 rounded-lg border border-surface-line bg-white px-3 py-2.5 text-xs transition-colors hover:bg-surface-muted"
+                >
+                  <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${
+                    s.pto.rule === "required" ? "bg-emerald-500" :
+                    s.pto.rule === "conditional" ? "bg-amber-400" : "bg-ink-faint/40"
+                  }`} aria-hidden="true" />
+                  <span className="font-medium text-ink">{s.name}</span>
+                  <span className={`ml-auto shrink-0 ${ruleColor}`}>{s.code}</span>
+                </Link>
+              );
+            })}
+          </div>
+          <p className="mt-3 text-xs text-ink-faint">
+            <span className="inline-flex items-center gap-1.5">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              Required by law
+            </span>
+            <span className="mx-3 inline-flex items-center gap-1.5">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
+              Depends on employer policy
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-ink-faint/40" />
+              No requirement
+            </span>
+          </p>
+        </section>
 
         {/* Context block */}
         <section className="prose-tool mt-12 max-w-2xl border-t border-surface-line pt-8 text-sm leading-relaxed text-ink-soft">
