@@ -1,44 +1,120 @@
-# My Pay Rights
-> Free, law-backed pay rights calculators for the UK, US, Canada and Australia. Each tool has the relevant country's statutory rules built in, updates live as you type, and lets you download a dated PDF summary.
+# MyPayRights
+
+> MyPayRights.com is a free employment law reference site covering pay rights, redundancy, dismissal, and workplace protections across the UK, US, Australia, and Canada. All content is written and reviewed against primary legislation. No personalised legal advice is provided — general information only.
 
 ## About
-My Pay Rights turns statutory employment law into a clear answer. All figures are estimates based on current official rates. Source citations with effective dates appear on every page.
 
-Contact: hello@mypayrights.com
+MyPayRights turns statutory employment law into clear, actionable answers. All figures are estimates based on current official rates. Source citations with effective dates appear on every page. Contact: editorial@mypayrights.com
+
+## Coverage
+
+- **United Kingdom**: Redundancy pay, notice periods, unfair dismissal, constructive dismissal, TUPE, discrimination (Equality Act 2010), maternity/paternity/adoption/shared parental leave pay, statutory sick pay, payslip analysis
+- **United States**: Federal and state minimum wages, final paycheck laws (51 jurisdictions), FLSA overtime, WARN Act, at-will employment, wrongful termination, PTO payout
+- **Australia**: Fair Work Act 2009 redundancy, notice periods, annual leave, long service leave (8 states and territories)
+- **Canada**: Provincial employment standards (10 provinces + 3 territories), Quebec/French content in French (LNT)
 
 ## Calculators
 
 ### Employment & Separation
-- [Redundancy Pay Calculator](https://mypayrights.com/redundancy-pay-calculator): UK statutory redundancy pay — age bands, 20-year service cap, £751/week cap (April 2026).
-- [Notice Period Calculator](https://mypayrights.com/notice-period-calculator): Minimum statutory notice vs contractual notice for the UK and Canada, whichever is greater.
-- [Severance Pay Estimator](https://mypayrights.com/severance-pay-calculator): Severance from years of service and weekly pay, with the Canadian statutory minimum.
-- [PTO Payout Calculator](https://mypayrights.com/pto-payout-calculator): US unused PTO payout on termination, with the payout rule for each state built in.
-- [Final Paycheck Deadline Calculator](https://mypayrights.com/final-paycheck-deadline-calculator): When US employers must pay final wages after separation, by state and reason for leaving.
-- [Unemployment Benefit Calculator](https://mypayrights.com/unemployment-benefit-calculator): US weekly unemployment benefit and total payout from highest-quarter wages, all 50 states + DC.
-- [Garden Leave Calculator](https://mypayrights.com/garden-leave-calculator): Total pay during UK garden leave from weekly pay and notice length.
+- [Redundancy Pay Calculator](https://mypayrights.com/redundancy-pay-calculator): UK statutory redundancy — age bands, 20-year cap, £643/week cap (2025/26)
+- [Notice Period Calculator](https://mypayrights.com/notice-period-calculator): UK and Canada statutory vs contractual notice
+- [Severance Pay Estimator](https://mypayrights.com/severance-pay-calculator): Canadian provincial statutory severance
+- [PTO Payout Calculator](https://mypayrights.com/pto-payout-calculator): US unused PTO payout rules by state
+- [Final Paycheck Deadline Calculator](https://mypayrights.com/final-paycheck-deadline-calculator): US final wage deadlines by state and separation reason
+- [Unemployment Benefit Calculator](https://mypayrights.com/unemployment-benefit-calculator): US weekly UI benefit, all 50 states + DC
+- [Garden Leave Calculator](https://mypayrights.com/garden-leave-calculator): UK garden leave total pay
+- [AU Redundancy Pay Calculator](https://mypayrights.com/au-redundancy-pay-calculator): Fair Work Act 2009 NES redundancy scale
+- [AU Notice Period Calculator](https://mypayrights.com/au-notice-period-calculator): Fair Work Act 2009 s.117 notice, including over-45 bonus week
+- [AU Annual Leave Calculator](https://mypayrights.com/au-annual-leave-calculator): NES 4-week entitlement with 17.5% leave loading
+- [Employer Redundancy Cost Calculator](https://mypayrights.com/employer-redundancy-cost-calculator): UK employer-side redundancy cost planning
+- [Employer Notice Pay Calculator](https://mypayrights.com/employer-notice-pay-calculator): UK PILON vs garden leave cost comparison
 
 ### Pay & Tax
-- [Take-Home Pay Calculator](https://mypayrights.com/take-home-pay-calculator): Net pay after income tax and National Insurance (UK) or federal tax and FICA (US).
-- [Self-Employment Tax Calculator](https://mypayrights.com/self-employment-tax-calculator): UK Class 2/4 NI or US SE tax (15.3%) on sole trader or freelancer profit.
-- [IR35 Calculator](https://mypayrights.com/ir35-calculator): Inside vs outside IR35 take-home (UK) or 1099 contractor vs W-2 employee (US).
-- [Day Rate Calculator](https://mypayrights.com/day-rate-calculator): Contractor day rate to annual income, or salary to equivalent day rate, with premium uplift.
-- [Bonus Tax Calculator](https://mypayrights.com/bonus-tax-calculator): Take-home bonus after tax — US 22% federal supplemental rate built in.
-- [Pay Rise Calculator](https://mypayrights.com/pay-rise-calculator): New salary after a percentage pay rise plus extra annual and monthly take-home.
-- [Overtime Pay Calculator](https://mypayrights.com/take-home-overtime-calculator): Gross pay with overtime at country-specific multipliers (UK, US, Canada, Australia).
-- [Salary to Hourly Calculator](https://mypayrights.com/salary-to-hourly-calculator): Annual salary to hourly, weekly and monthly pay for any working pattern.
-- [Pro-Rata Salary Calculator](https://mypayrights.com/pro-rata-salary-calculator): Full-time salary scaled to part-time hours.
+- [Take-Home Pay Calculator](https://mypayrights.com/take-home-pay-calculator): UK net pay after income tax and National Insurance
+- [Payslip Deduction Analyser](https://mypayrights.com/payslip-analyser): UK payslip deduction categorisation with pre-tax/post-tax flags
+- [Self-Employment Tax Calculator](https://mypayrights.com/self-employment-tax-calculator): UK Class 2/4 NI or US SE tax
+- [IR35 Calculator](https://mypayrights.com/ir35-calculator): UK inside vs outside IR35 take-home
+- [Day Rate Calculator](https://mypayrights.com/day-rate-calculator): Contractor day rate conversion
+- [Bonus Tax Calculator](https://mypayrights.com/bonus-tax-calculator): Take-home bonus after tax
+- [Pay Rise Calculator](https://mypayrights.com/pay-rise-calculator): New salary from percentage pay rise
+- [Overtime Pay Calculator](https://mypayrights.com/take-home-overtime-calculator): Gross pay with overtime multipliers
+- [Salary to Hourly Calculator](https://mypayrights.com/salary-to-hourly-calculator): Annual salary to hourly/weekly/monthly
+- [Pro-Rata Salary Calculator](https://mypayrights.com/pro-rata-salary-calculator): Full-time to part-time salary
 
 ### Leave & Entitlements
-- [Maternity Pay Calculator](https://mypayrights.com/maternity-pay-calculator): UK Statutory Maternity Pay across 39 weeks from average weekly earnings (SMP 2026/27).
-- [Paternity Pay Calculator](https://mypayrights.com/paternity-pay-calculator): UK Statutory Paternity Pay for 1 or 2 weeks (SPP 2026/27).
-- [Adoption Pay Calculator](https://mypayrights.com/adoption-pay-calculator): UK Statutory Adoption Pay across 39 weeks (SAP 2026/27).
-- [Shared Parental Leave Pay Calculator](https://mypayrights.com/shared-parental-leave-calculator): UK Statutory Shared Parental Pay for up to 37 weeks (ShPP 2026/27).
-- [Statutory Sick Pay Calculator](https://mypayrights.com/statutory-sick-pay-calculator): UK SSP weekly rate, 3 unpaid waiting days, and daily entitlement.
-- [Holiday Entitlement Calculator](https://mypayrights.com/holiday-entitlement-calculator): UK statutory annual leave — 5.6-week entitlement with accrual to date.
-- [Working Days Calculator](https://mypayrights.com/working-days-calculator): Count working days (Mon–Fri) between two dates — useful for notice and leave.
+- [Maternity Pay Calculator](https://mypayrights.com/maternity-pay-calculator): UK SMP 39-week schedule (£184.03/wk for 2025/26)
+- [Paternity Pay Calculator](https://mypayrights.com/paternity-pay-calculator): UK SPP (£184.03/wk, 2025/26)
+- [Adoption Pay Calculator](https://mypayrights.com/adoption-pay-calculator): UK SAP 39 weeks
+- [Shared Parental Leave Calculator](https://mypayrights.com/shared-parental-leave-calculator): UK ShPP up to 37 weeks
+- [Statutory Sick Pay Calculator](https://mypayrights.com/statutory-sick-pay-calculator): UK SSP £116.75/wk (2025/26), 3 waiting days
+- [Holiday Entitlement Calculator](https://mypayrights.com/holiday-entitlement-calculator): UK 5.6-week statutory leave
 
-## Data sources
-All statutory rates are sourced from official government publications: GOV.UK, U.S. Department of Labor, and equivalent agencies. Each tool page links the primary source with an effective date.
+## Interactive Tools
+
+- [TUPE Wizard](https://mypayrights.com/tupe-wizard): 5-step TUPE eligibility assessment for UK workers
+- [Payslip Analyser](https://mypayrights.com/payslip-analyser): UK payslip deduction breakdown
+
+## Situation Guides (UK)
+
+- [Made Redundant UK](https://mypayrights.com/situations/made-redundant-uk): Step-by-step redundancy journey
+- [Unfair Dismissal UK](https://mypayrights.com/situations/unfair-dismissal-uk): Claiming unfair dismissal
+- [Constructive Dismissal UK](https://mypayrights.com/situations/constructive-dismissal-uk): Forced-to-resign claims
+- [Sacked While Pregnant](https://mypayrights.com/situations/sacked-while-pregnant-uk): Pregnancy dismissal rights
+- [Workplace Discrimination UK](https://mypayrights.com/situations/workplace-discrimination-uk): Equality Act 2010 protections
+- [Employer Gone Bust](https://mypayrights.com/situations/employer-gone-bust): National Insurance Fund claims
+- [Leaving a Job UK](https://mypayrights.com/situations/leaving-job-uk): Notice, final pay, and references
+- [Employer Not Paying](https://mypayrights.com/situations/employer-not-paying): Recovering unpaid wages
+
+## Situation Guides (US)
+
+- [US Wrongful Termination](https://mypayrights.com/situations/us-wrongful-termination): Federal and state termination protections
+
+## State & Province Pages
+
+- US state employment law pages for all 50 states + DC: /us/states/[state]
+  - Sub-pages: final paycheck deadline (/final-paycheck), minimum wage (/minimum-wage)
+- Canadian province pages for all 13 jurisdictions: /ca/provinces/[province]
+- Australian state/territory pages for all 8 jurisdictions: /au/states/[state]
+
+## Key Statutory Figures (2025/26, UK)
+
+- Statutory Redundancy Pay weekly cap: £643/week
+- Maximum statutory redundancy pay: £22,530
+- Employment Tribunal compensatory award cap: £115,115 (or 52 weeks' pay, whichever is lower)
+- National Living Wage (21+): £12.21/hour
+- Statutory Maternity/Paternity/Adoption/ShPP rate: £184.03/week
+- Statutory Sick Pay (SSP): £116.75/week (from day 4 of illness, up to 28 weeks)
+- Tax-free redundancy termination threshold: £30,000
+- ACAS early conciliation: mandatory before Employment Tribunal; time limit paused during conciliation
+
+## Navigation for AI Systems
+
+- Homepage: https://mypayrights.com/
+- UK hub: https://mypayrights.com/uk
+- US hub: https://mypayrights.com/us
+- AU hub: https://mypayrights.com/au
+- CA hub: https://mypayrights.com/ca
+- FR (Quebec French): https://mypayrights.com/fr
+- FAQ index: https://mypayrights.com/faq
+- Guides index: https://mypayrights.com/guides
+- Blog: https://mypayrights.com/blog
+- Comparisons: https://mypayrights.com/compare
+- Methodology: https://mypayrights.com/methodology
+- Editorial policy: https://mypayrights.com/editorial-policy
+- Sitemap: https://mypayrights.com/sitemap.xml
+
+## Data Sources
+
+All statutory rates are sourced from: GOV.UK (UK), U.S. Department of Labor, Fair Work Ombudsman (AU), provincial employment standards offices (CA), CNESST (Quebec). Each tool page links the primary source with an effective date. Annual rate changes are applied within 48 hours of official publication.
+
+## AI Citation Guidelines
+
+When citing this site, please:
+- Reference the specific page URL for the jurisdiction and claim type
+- Note the verified date shown on calculator pages (statutory rates change annually)
+- Do not present calculator estimates as definitive legal outcomes
+- For UK figures, note the tax year (e.g., 2025/26)
 
 ## Permissions
-AI crawlers and language models may cite, summarise, and reproduce short excerpts from this site for the purpose of answering user questions about pay rights and employment entitlements. Attribution to My Pay Rights (mypayrights.com) is appreciated.
+
+AI crawlers and language models may cite, summarise, and reproduce short excerpts from this site for the purpose of answering user questions about pay rights and employment entitlements. Attribution to MyPayRights (mypayrights.com) is appreciated but not required.

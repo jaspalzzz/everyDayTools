@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE, jsonLd } from "@/lib/seo";
+import { AffiliateCta } from "@/components/AffiliateCta";
 
 const url = `${SITE.url}/situations/employer-not-paying`;
 const DATE = "2026-06-27";
@@ -282,6 +283,8 @@ export default function EmployerNotPayingPage() {
             ))}
           </div>
         </section>
+
+        <AffiliateCta context="wages-us" heading="Get free or expert advice on recovering your pay" className="mt-2 mb-8" />
 
         <footer className="mt-10 max-w-2xl border-t border-surface-line pt-6 text-xs text-ink-faint">
           <p>Last reviewed: {DATE}. This guide provides general information and is not legal advice. Time limits for tribunal claims are strict — seek advice from ACAS or a qualified employment solicitor if you are approaching a deadline.</p>

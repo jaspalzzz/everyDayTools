@@ -120,6 +120,81 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["maternity pay", "SMP", "maternity leave", "UK employment law"],
     relatedTools: ["maternity-pay-calculator", "shared-parental-leave-calculator"],
   },
+  {
+    slug: "constructive-dismissal-uk-guide",
+    title: "Constructive Dismissal UK: What It Is, How to Prove It, and What You're Owed",
+    description:
+      "A complete guide to constructive dismissal in the UK — what counts as a fundamental breach, how to build your case, and how much compensation you can expect from the Employment Tribunal.",
+    excerpt:
+      "Being forced to resign because of your employer's conduct? Constructive dismissal is legally a dismissal — and you can claim compensation. Here is everything you need to know.",
+    region: "UK",
+    category: "workplace-rights",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    readingTimeMinutes: 9,
+    tags: ["constructive dismissal", "unfair dismissal", "Employment Tribunal", "UK employment law"],
+    relatedTools: ["notice-period-calculator"],
+  },
+  {
+    slug: "can-employer-cut-my-pay-uk",
+    title: "Can My Employer Cut My Pay Without My Consent? UK Rights Explained",
+    description:
+      "Unilaterally cutting your pay is a breach of contract — and may be an unlawful deduction from wages. This guide explains what your employer can and cannot do, and how to respond.",
+    excerpt:
+      "Your employer cannot simply cut your pay. Here is what the law says about unlawful deductions, the right to refuse, and how to bring a claim if they do it anyway.",
+    region: "UK",
+    category: "pay-rights",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    readingTimeMinutes: 7,
+    tags: ["pay cut", "unlawful deduction", "wages", "UK employment law", "breach of contract"],
+    relatedTools: ["take-home-pay-calculator", "payslip-analyser"],
+  },
+  {
+    slug: "uk-sick-pay-rights-2026",
+    title: "UK Sick Pay Rights 2026: SSP, Qualifying Days, and What Your Employer Must Pay",
+    description:
+      "Statutory Sick Pay is £116.75/week from day 4 of illness — but many workers don't know when it starts, how long it lasts, or what to do when it runs out. This guide covers all of it.",
+    excerpt:
+      "Everything UK workers need to know about Statutory Sick Pay in 2026: eligibility, waiting days, the 28-week maximum, enhanced sick pay, and what happens when SSP ends.",
+    region: "UK",
+    category: "pay-rights",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    readingTimeMinutes: 8,
+    tags: ["sick pay", "SSP", "statutory sick pay", "sick leave", "UK employment law"],
+    relatedTools: ["statutory-sick-pay-calculator"],
+  },
+  {
+    slug: "us-overtime-law-explained",
+    title: "US Overtime Law Explained: Who Qualifies and How Much You're Owed",
+    description:
+      "The Fair Labor Standards Act requires time-and-a-half for hours over 40 per week — but exemptions are wide and complex. This guide explains who qualifies, how to calculate overtime, and what to do if you're not being paid correctly.",
+    excerpt:
+      "Most US workers are entitled to overtime pay at 1.5× their regular rate. Here is how to tell if you qualify, how overtime is calculated, and how to recover unpaid overtime.",
+    region: "US",
+    category: "pay-rights",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    readingTimeMinutes: 9,
+    tags: ["overtime", "FLSA", "wage theft", "US employment law", "exempt vs non-exempt"],
+    relatedTools: ["overtime-calculator"],
+  },
+  {
+    slug: "uk-tax-code-explained-2026",
+    title: "How to Read Your UK Tax Code — and What to Do If It's Wrong",
+    description:
+      "Most UK workers on PAYE have a tax code they don't understand. This guide decodes common codes, explains why they go wrong, and how to get HMRC to fix it — potentially recovering thousands in overpaid tax.",
+    excerpt:
+      "Your tax code controls how much income tax your employer deducts. Here is how to read it, spot errors (emergency codes, wrong allowances), and get a refund if you've overpaid.",
+    region: "UK",
+    category: "tax",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    readingTimeMinutes: 7,
+    tags: ["tax code", "PAYE", "income tax", "HMRC", "tax refund", "UK"],
+    relatedTools: ["take-home-pay-calculator", "payslip-analyser"],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

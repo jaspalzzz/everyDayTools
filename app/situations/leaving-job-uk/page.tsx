@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE, jsonLd } from "@/lib/seo";
+import { AffiliateCta } from "@/components/AffiliateCta";
 
 const url = `${SITE.url}/situations/leaving-job-uk`;
 const DATE = "2026-06-27";
@@ -282,6 +283,8 @@ export default function LeavingJobUKPage() {
             ))}
           </div>
         </section>
+
+        <AffiliateCta context="general-uk" heading="Need help with your leaving-job rights?" className="mt-2 mb-8" />
 
         <footer className="mt-10 max-w-2xl border-t border-surface-line pt-6 text-xs text-ink-faint">
           <p>Last reviewed: {DATE}. This guide provides general information and is not legal advice. Employment situations are fact-specific — seek advice from ACAS or a qualified employment solicitor if you are unsure about your rights.</p>
