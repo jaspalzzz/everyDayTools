@@ -123,6 +123,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/privacy`, changeFrequency: "yearly" as const, priority: 0.2, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/terms`, changeFrequency: "yearly" as const, priority: 0.2, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/disclaimer`, changeFrequency: "yearly" as const, priority: 0.2, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/press`, changeFrequency: "yearly" as const, priority: 0.4, lastModified: RATES_UPDATED },
+    // Pillar pages
+    { url: `${SITE.url}/uk/redundancy`, changeFrequency: "monthly" as const, priority: 0.88, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/uk/maternity-leave`, changeFrequency: "monthly" as const, priority: 0.88, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/uk/pay-rights`, changeFrequency: "monthly" as const, priority: 0.87, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/us/overtime`, changeFrequency: "monthly" as const, priority: 0.87, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/us/pto-payout`, changeFrequency: "monthly" as const, priority: 0.87, lastModified: RATES_UPDATED },
     ...toolEntries,
     ...stateEntries,
     ...provinceEntries,
