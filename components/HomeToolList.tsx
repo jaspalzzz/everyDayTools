@@ -1,18 +1,61 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import type React from "react";
 import Link from "next/link";
 import { TablerIcon } from "./TablerIcon";
 import { TOOLS, CATEGORY_META, type ToolCategory } from "@/data/tools";
 
 type CountryFilter = "all" | "UK" | "US" | "CA" | "AU";
 
-const COUNTRY_TABS: { value: CountryFilter; label: string }[] = [
+function FlagUK() {
+  return (
+    <svg width="16" height="12" viewBox="0 0 60 40" aria-hidden="true" className="inline-block shrink-0">
+      <rect width="60" height="40" fill="#012169"/>
+      <path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" strokeWidth="8"/>
+      <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" strokeWidth="5"/>
+      <path d="M30,0 V40 M0,20 H60" stroke="#fff" strokeWidth="13"/>
+      <path d="M30,0 V40 M0,20 H60" stroke="#C8102E" strokeWidth="8"/>
+    </svg>
+  );
+}
+function FlagUS() {
+  return (
+    <svg width="16" height="12" viewBox="0 0 60 40" aria-hidden="true" className="inline-block shrink-0">
+      <rect width="60" height="40" fill="#B22234"/>
+      {[0,1,2,3,4,5].map(i => <rect key={i} y={i*6+3} width="60" height="3" fill="#fff"/>)}
+      <rect width="24" height="21" fill="#3C3B6E"/>
+    </svg>
+  );
+}
+function FlagCA() {
+  return (
+    <svg width="16" height="12" viewBox="0 0 60 40" aria-hidden="true" className="inline-block shrink-0">
+      <rect width="60" height="40" fill="#fff"/>
+      <rect width="15" height="40" fill="#D80621"/>
+      <rect x="45" width="15" height="40" fill="#D80621"/>
+      <path d="M30,8 L33,16 H41 L35,21 L37,29 L30,24 L23,29 L25,21 L19,16 H27 Z" fill="#D80621"/>
+    </svg>
+  );
+}
+function FlagAU() {
+  return (
+    <svg width="16" height="12" viewBox="0 0 60 40" aria-hidden="true" className="inline-block shrink-0">
+      <rect width="60" height="40" fill="#00008B"/>
+      <path d="M0,0 L30,20 M30,0 L0,20" stroke="#fff" strokeWidth="5"/>
+      <path d="M0,0 L30,20 M30,0 L0,20" stroke="#C8102E" strokeWidth="3"/>
+      <path d="M15,0 V20 M0,10 H30" stroke="#fff" strokeWidth="8"/>
+      <path d="M15,0 V20 M0,10 H30" stroke="#C8102E" strokeWidth="5"/>
+    </svg>
+  );
+}
+
+const COUNTRY_TABS: { value: CountryFilter; label: string; flag?: React.ReactNode }[] = [
   { value: "all", label: "All" },
-  { value: "UK", label: "🇬🇧 UK" },
-  { value: "US", label: "🇺🇸 US" },
-  { value: "CA", label: "🇨🇦 CA" },
-  { value: "AU", label: "🇦🇺 AU" },
+  { value: "UK", label: "UK", flag: <FlagUK /> },
+  { value: "US", label: "US", flag: <FlagUS /> },
+  { value: "CA", label: "CA", flag: <FlagCA /> },
+  { value: "AU", label: "AU", flag: <FlagAU /> },
 ];
 
 const CATEGORY_ORDER: ToolCategory[] = ["leaving-job", "pay-tax", "parental-leave", "benefits"];
@@ -62,13 +105,13 @@ export function HomeToolList() {
               role="tab"
               aria-selected={country === tab.value}
               onClick={() => setCountry(tab.value)}
-              className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                 country === tab.value
                   ? "bg-white text-ink shadow-sm"
                   : "text-ink-soft hover:text-ink"
               }`}
             >
-              {tab.label}
+              {tab.flag}{tab.label}
             </button>
           ))}
         </div>
