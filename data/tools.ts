@@ -55,7 +55,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Take-home pay calculator",
     shortName: "Take-home pay",
     description:
-      "See exactly how much of your salary you keep after income tax and National Insurance (UK) or federal tax and FICA (US).",
+      "Enter your salary and see what actually lands in your bank account — every tax and NI deduction calculated for UK, US and Canada.",
     region: "US/UK/CA",
     icon: "ti-wallet",
     hero: true,
@@ -68,7 +68,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Self-employment tax calculator",
     shortName: "SE tax",
     description:
-      "Estimate your self-employment tax and take-home pay as a sole trader or freelancer — UK Class 2/4 NI or US SE tax (15.3%) calculated in one step.",
+      "Self-employed or freelancing? See how much tax you'll actually owe and what's left in your pocket — UK sole trader or US self-employed.",
     region: "US/UK/CA",
     icon: "ti-briefcase",
     hero: false,
@@ -81,7 +81,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Day rate calculator",
     shortName: "Day rate",
     description:
-      "Convert a contractor day rate to annual income, or find the day rate needed to match your salary, with a contractor-premium uplift.",
+      "Contracting? Convert your day rate to an annual equivalent — or find the day rate you need to match your old salary.",
     region: "US/UK/CA",
     icon: "ti-calendar-dollar",
     hero: false,
@@ -94,7 +94,7 @@ export const TOOLS: ToolMeta[] = [
     name: "IR35 calculator",
     shortName: "IR35 / 1099 vs W-2",
     description:
-      "Compare take-home pay inside vs outside IR35 (UK) or as a 1099 contractor vs W-2 employee (US) — tax and NI modelled side by side.",
+      "Inside or outside IR35? 1099 or W-2? See the real take-home difference side by side before you decide how to work.",
     region: "US/UK/CA",
     icon: "ti-scale",
     hero: false,
@@ -107,7 +107,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Redundancy pay calculator",
     shortName: "Redundancy pay",
     description:
-      "Your exact statutory redundancy pay under UK law — age bands, capped weekly pay and length of service built in.",
+      "Just been made redundant? Calculate exactly what your employer must pay you under UK law — based on your age, service length and weekly pay.",
     region: "UK",
     icon: "ti-file-off",
     hero: true,
@@ -120,7 +120,7 @@ export const TOOLS: ToolMeta[] = [
     name: "PTO payout calculator",
     shortName: "PTO payout",
     description:
-      "What your employer owes for unused PTO when you leave — with the payout rule for your US state built in.",
+      "Leaving your job with unused vacation? Find out what your employer must pay — rules vary by state and are built in for all 50.",
     region: "US",
     icon: "ti-cash",
     hero: true,
@@ -133,7 +133,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Notice period calculator",
     shortName: "Notice period",
     description:
-      "Your minimum statutory notice vs your contractual notice — for the UK and Canada, whichever is greater.",
+      "How much notice are you actually owed? Get the statutory minimum for your length of service — UK and Canada, whichever is greater.",
     region: "UK/CA",
     icon: "ti-calendar-clock",
     hero: true,
@@ -146,7 +146,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Severance pay estimator",
     shortName: "Severance pay",
     description:
-      "Estimate your severance from years of service and weekly pay, with the Canadian statutory minimum applied.",
+      "Negotiating a severance package? See the statutory minimum you're entitled to — and what's fair to push for.",
     region: "US/UK/CA",
     icon: "ti-cash-banknote",
     hero: true,
@@ -159,7 +159,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Overtime pay calculator",
     shortName: "Overtime pay",
     description:
-      "Your gross pay with overtime — hourly rate, regular hours and overtime at your country's multiplier.",
+      "Working extra hours? Calculate your total gross pay with overtime at the correct legal multiplier for your country.",
     region: "US/UK/CA/AU",
     icon: "ti-clock-dollar",
     hero: false,
@@ -172,7 +172,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Salary to hourly calculator",
     shortName: "Salary to hourly",
     description:
-      "Convert an annual salary into the equivalent hourly, weekly and monthly pay — for any working pattern.",
+      "What's your salary worth per hour? Convert any annual figure to hourly, weekly and monthly pay for any working pattern.",
     region: "US/UK/CA/AU",
     icon: "ti-arrows-exchange",
     hero: false,
@@ -185,7 +185,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Holiday entitlement calculator",
     shortName: "Holiday entitlement",
     description:
-      "Your statutory annual leave under UK law — days per week converted to your 5.6-week entitlement, with accrual to date.",
+      "Not sure how much holiday you're entitled to? Get your exact UK statutory leave entitlement — and how much you've accrued so far this year.",
     region: "UK",
     icon: "ti-beach",
     hero: false,
@@ -198,7 +198,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Maternity pay calculator",
     shortName: "Maternity pay",
     description:
-      "Estimate your UK Statutory Maternity Pay across the 39-week period from your average weekly earnings.",
+      "Pregnant and planning your finances? See your full 39-week UK Statutory Maternity Pay week by week from your average earnings.",
     region: "UK",
     icon: "ti-baby-carriage",
     hero: false,
@@ -211,7 +211,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Paternity pay calculator",
     shortName: "Paternity pay",
     description:
-      "Estimate UK Statutory Paternity Pay for 1 or 2 weeks from your average weekly earnings.",
+      "Taking paternity leave? Find out exactly what you'll receive for 1 or 2 weeks under UK law, based on your earnings.",
     region: "UK",
     icon: "ti-baby-bottle",
     hero: false,
@@ -224,7 +224,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Adoption pay calculator",
     shortName: "Adoption pay",
     description:
-      "Estimate UK Statutory Adoption Pay across the 39-week period from your average weekly earnings.",
+      "Adopting a child? Calculate your full 39-week UK Statutory Adoption Pay entitlement from your average weekly earnings.",
     region: "UK",
     icon: "ti-home-heart",
     hero: false,
@@ -237,7 +237,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Shared parental leave pay calculator",
     shortName: "Shared parental pay",
     description:
-      "Estimate UK Statutory Shared Parental Pay for up to 37 payable weeks from average weekly earnings.",
+      "Splitting parental leave with your partner? See how much each of you will receive across up to 37 shared pay weeks.",
     region: "UK",
     icon: "ti-users-group",
     hero: false,
@@ -250,7 +250,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Statutory sick pay calculator",
     shortName: "Statutory sick pay",
     description:
-      "Your UK SSP for time off sick — the weekly rate, the 3 unpaid waiting days and your daily entitlement built in.",
+      "Off sick and unsure what you'll be paid? Find out your UK Statutory Sick Pay — including the 3 unpaid waiting days.",
     region: "UK",
     icon: "ti-mood-sick",
     hero: false,
@@ -263,7 +263,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Final paycheck deadline calculator",
     shortName: "Final paycheck deadline",
     description:
-      "When your employer must pay your final wages after you leave — by US state and whether you quit or were let go.",
+      "Left a job and waiting for your last paycheck? Find the legal deadline your employer must meet — by state and how you left.",
     region: "US",
     icon: "ti-calendar-due",
     hero: false,
@@ -276,7 +276,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Unemployment benefit calculator",
     shortName: "Unemployment benefit",
     description:
-      "Estimate your weekly US unemployment benefit and total payout from your highest-quarter wages, by state.",
+      "Just lost your job? Estimate your weekly unemployment benefit and how long it lasts — calculated by state from your highest earning quarter.",
     region: "US",
     icon: "ti-businessplan",
     hero: false,
@@ -289,7 +289,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Pay rise calculator",
     shortName: "Pay rise",
     description:
-      "See your new salary after a percentage pay rise — plus the extra you take home each year and month.",
+      "Got a pay rise? See your new annual salary, and exactly how much more hits your pocket each month after tax.",
     region: "US/UK/CA/AU",
     icon: "ti-trending-up",
     hero: false,
@@ -302,7 +302,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Pro-rata salary calculator",
     shortName: "Pro-rata salary",
     description:
-      "Scale a full-time salary to your part-time hours — your pro-rata annual and monthly pay, in seconds.",
+      "Going part-time? Scale any full-time salary down to your actual hours and see your pro-rata annual and monthly pay instantly.",
     region: "US/UK/CA/AU",
     icon: "ti-clock-hour-4",
     hero: false,
@@ -315,7 +315,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Bonus tax calculator",
     shortName: "Bonus tax",
     description:
-      "Estimate your take-home bonus after tax — with the US 22% federal supplemental rate built in.",
+      "Getting a bonus? Find out what you'll actually take home after HMRC or the IRS takes their cut.",
     region: "US/UK/CA/AU",
     icon: "ti-gift",
     hero: false,
@@ -328,7 +328,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Working days calculator",
     shortName: "Working days",
     description:
-      "Count the working days (Mon–Fri) between two dates — useful for notice periods and leave.",
+      "Need to count working days between two dates? Useful for notice periods, leave calculations and deadline planning.",
     region: "US/UK/CA/AU",
     icon: "ti-calendar-week",
     hero: false,
@@ -341,7 +341,7 @@ export const TOOLS: ToolMeta[] = [
     name: "Garden leave calculator",
     shortName: "Garden leave",
     description:
-      "Work out your total pay during garden leave from your weekly pay and notice length.",
+      "Being put on garden leave? Calculate the total pay you're owed for the full notice period while you're kept away from work.",
     region: "UK",
     icon: "ti-plant-2",
     hero: false,
