@@ -27,7 +27,18 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
-  alternates: { canonical: SITE.url },
+  alternates: {
+    canonical: SITE.url,
+    languages: {
+      "en": SITE.url,
+      "en-GB": `${SITE.url}/uk`,
+      "en-US": `${SITE.url}/us`,
+      "en-CA": `${SITE.url}/ca`,
+      "en-AU": `${SITE.url}/au`,
+      "fr-CA": `${SITE.url}/fr`,
+      "x-default": SITE.url,
+    },
+  },
   openGraph: {
     type: "website",
     siteName: SITE.name,

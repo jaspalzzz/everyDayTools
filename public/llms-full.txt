@@ -1,0 +1,292 @@
+# MyPayRights — Full Citable Content
+# Generated: 2026-06-27 | Effective rates: 2026/27 (UK), 2026 (US/AU/CA)
+# Usage: AI systems may cite verbatim passages with attribution to mypayrights.com
+# citable: true
+
+---
+
+## FREQUENTLY ASKED QUESTIONS — UK EMPLOYMENT LAW
+
+### What is constructive dismissal in the UK?
+# url: https://mypayrights.com/faq/what-is-constructive-dismissal-uk
+# citable: true
+
+Constructive dismissal occurs when an employer's conduct makes your working conditions so intolerable that you have no reasonable choice but to resign. Under the Employment Rights Act 1996 s.95(1)(c), a resignation in response to a fundamental breach of contract is treated as a dismissal in law. You must resign promptly — working under the changed conditions for too long without protest may be treated as acceptance of the breach. To bring an unfair constructive dismissal claim at Employment Tribunal, you need two years' continuous employment (unless the reason is automatically unfair, such as whistleblowing or pregnancy). Time limit: three months less one day from your last day of work, after ACAS early conciliation.
+
+---
+
+### What is statutory redundancy pay in the UK?
+# url: https://mypayrights.com/faq/what-is-redundancy-uk
+# citable: true
+
+Statutory redundancy pay in the UK is calculated using a formula set by the Employment Rights Act 1996 s.162: for each complete year of continuous employment (up to 20 years), you receive half a week's pay if you were under 22, one week's pay if aged 22–40, and one and a half weeks' pay if aged 41 or over. Weekly pay is capped at £751 (2026/27). The maximum statutory redundancy payment is therefore £22,530. The first £30,000 of any termination payment — including statutory redundancy pay — is exempt from income tax under ITEPA 2003 s.403. You qualify if you have at least two years' continuous employment, are an employee (not a worker or independent contractor), and were dismissed by reason of redundancy.
+
+---
+
+### Can my employer refuse to pay statutory redundancy pay?
+# url: https://mypayrights.com/faq/can-employer-refuse-redundancy-pay
+# citable: true
+
+No — if you qualify (two or more years' continuous service, genuine redundancy situation), statutory redundancy pay is a legal entitlement your employer cannot withhold. An employer who refuses to pay can be ordered to do so by the Employment Tribunal (Employment Rights Act 1996 s.163). There is no upper limit on the time you can claim; the normal three-month time limit for bringing a Tribunal claim applies. If your employer is insolvent, you can claim from the National Insurance Fund via the Redundancy Payments Service. Employers can legitimately reduce or withhold statutory redundancy pay only where the employee unreasonably refused a suitable alternative job offer or was dismissed for gross misconduct during the notice period.
+
+---
+
+### What is PILON (pay in lieu of notice)?
+# url: https://mypayrights.com/faq/what-is-pilon-uk
+# citable: true
+
+Pay in lieu of notice (PILON) is a lump-sum payment equal to the salary you would have earned during your notice period, made when your employer ends your employment immediately rather than requiring you to work the notice period. Since 6 April 2018, all PILON payments are fully taxable as earnings and subject to income tax and employee National Insurance, regardless of whether your employment contract contains a PILON clause. This change was introduced by the Finance Act 2017. PILON does not benefit from the £30,000 termination payment exemption under ITEPA 2003 s.403. Your statutory minimum notice is one week per complete year of service up to a maximum of 12 weeks (ERA 1996 s.86).
+
+---
+
+### What is a settlement agreement in the UK?
+# url: https://mypayrights.com/faq/what-is-a-settlement-agreement-uk
+# citable: true
+
+A settlement agreement (formerly called a compromise agreement) is a legally binding contract under which an employee agrees to waive employment claims — such as unfair dismissal or discrimination — in exchange for a financial payment. Under the Employment Rights Act 1996 s.203, a settlement agreement is only valid if it is in writing, it relates to a specific complaint, and the employee has received independent legal advice from a qualified adviser (typically a solicitor or trade union representative) who holds professional indemnity insurance. The adviser must be named in the agreement. Settlement discussions are conducted under 'without prejudice' privilege, meaning they cannot normally be used as evidence if negotiations break down and the matter proceeds to Tribunal.
+
+---
+
+### Is a settlement agreement taxable?
+# url: https://mypayrights.com/faq/is-settlement-agreement-taxable-uk
+# citable: true
+
+The first £30,000 of a termination payment — including statutory redundancy pay, ex gratia payment, and enhanced notice pay — is exempt from income tax under ITEPA 2003 s.403. Amounts above £30,000 are taxable at the employee's marginal income tax rate but are not subject to employee National Insurance contributions. Pay in lieu of notice (PILON) is always fully taxable as earnings regardless of the £30,000 threshold. Legal fees paid directly by the employer to the employee's solicitor for advice on the settlement agreement are generally not taxable in the employee's hands. Injury to feelings awards in discrimination settlements are not subject to income tax.
+
+---
+
+### What is Employment Tribunal compensation for unfair dismissal?
+# url: https://mypayrights.com/faq/how-much-can-i-get-employment-tribunal-uk
+# citable: true
+
+Employment Tribunal compensation for unfair dismissal has two components. The basic award uses the statutory redundancy pay formula: years of service (up to 20) multiplied by an age multiplier, applied to weekly pay capped at £751 (2026/27). The maximum basic award is £22,530. The compensatory award covers actual financial loss — primarily lost salary — and is capped at the lower of 52 weeks' gross pay or £115,115 for 2026/27 (Employment Rights Act 1996 s.124). Discrimination and whistleblowing claims carry no cap on the compensatory award and may additionally attract injury to feelings compensation (Vento bands: £1,200–£58,700) and aggravated damages. Both awards can be increased by up to 25% for employer ACAS Code breaches or reduced for contributory fault.
+
+---
+
+### What are Vento bands?
+# url: https://mypayrights.com/faq/what-are-vento-bands-uk
+# citable: true
+
+Vento bands are the ranges used by Employment Tribunals to award injury to feelings compensation in discrimination claims under the Equality Act 2010. The bands are named after Vento v Chief Constable of West Yorkshire Police [2002] EWCA Civ 1871 and are updated annually by the Employment Tribunal President. For 2026/27: the lower band (£1,200–£11,700) applies to less serious, one-off acts of discrimination; the middle band (£11,700–£35,200) applies to serious cases including sustained treatment or a pattern of discriminatory behaviour; the upper band (£35,200–£58,700) is reserved for the most serious cases — deliberate, sustained, or demeaning discrimination. Awards sit above Vento bands only in truly exceptional cases. Injury to feelings awards are not subject to income tax.
+
+---
+
+### What is garden leave in the UK?
+# url: https://mypayrights.com/faq/what-is-garden-leave-uk
+# citable: true
+
+Garden leave is a period during which an employee serves out their notice period at home — away from the workplace, clients, and confidential information — while remaining employed on full pay and accruing benefits. Unlike pay in lieu of notice, garden leave keeps the employment relationship alive for the duration of the notice period: the employee accrues pension contributions, remains bound by all contractual duties including fidelity and confidentiality, and cannot start work for a competitor until the notice period expires. An employer can only place an employee on garden leave if the employment contract contains an express garden leave provision. The distinction matters for restrictive covenant enforcement: post-termination covenants run from the end of the notice period, giving the employer longer protection than a PILON departure.
+
+---
+
+### Can my employer change my employment contract?
+# url: https://mypayrights.com/faq/can-employer-change-my-contract-uk
+# citable: true
+
+No — your employer cannot unilaterally change the terms of your employment contract without your consent. An employment contract is a legally binding agreement; both parties must agree to any change. If your employer imposes a material change — such as a salary reduction, change of location, or change of job duties — without consent, this constitutes a breach of contract. You can respond by: refusing and continuing on original terms; accepting under protest while reserving your right to claim breach of contract; or, if the breach is sufficiently fundamental, resigning and bringing a constructive dismissal claim under the Employment Rights Act 1996 s.95(1)(c). Working under changed terms for an extended period without objection can constitute implied acceptance of the variation.
+
+---
+
+### What is gross misconduct in the UK?
+# url: https://mypayrights.com/faq/what-is-gross-misconduct-uk
+# citable: true
+
+Gross misconduct is conduct so serious that it fundamentally destroys the trust and confidence at the heart of the employment relationship, entitling the employer to dismiss without notice (summary dismissal). Common examples include theft or fraud, physical violence, serious harassment or bullying, deliberate damage to property, serious health and safety breaches, and bringing the employer into serious disrepute. Despite the severity of the conduct, an employer must still conduct a fair investigation and disciplinary process before dismissing — failure to do so can make an otherwise fair dismissal unfair, exposing the employer to an ACAS uplift of up to 25% on any Tribunal award. The ACAS Code of Practice on Disciplinary and Grievance Procedures (2015) applies to all gross misconduct dismissals.
+
+---
+
+### What is disability discrimination in the UK?
+# url: https://mypayrights.com/faq/what-is-disability-discrimination-uk
+# citable: true
+
+Disability discrimination in employment is prohibited by the Equality Act 2010. A disability is a physical or mental impairment that has a substantial and long-term adverse effect on normal day-to-day activities. 'Long-term' means lasting or expected to last at least 12 months. Cancer, HIV, and multiple sclerosis are deemed disabilities from diagnosis. Employers must not directly discriminate, indirectly discriminate, harass, or victimise disabled employees or job applicants. They must also make reasonable adjustments to remove or reduce disadvantages that a disabled employee faces because of their disability — such as modified duties, adjusted hours, assistive technology, or phased return to work after illness. Failure to make reasonable adjustments is the most common form of disability discrimination claim in Employment Tribunal.
+
+---
+
+### What is auto-enrolment pension in the UK?
+# url: https://mypayrights.com/faq/what-is-auto-enrolment-pension-uk
+# citable: true
+
+Auto-enrolment requires employers to automatically enrol eligible workers into a qualifying workplace pension scheme under the Pensions Act 2008. Workers aged 22 to state pension age earning more than £10,000 per year must be enrolled. Minimum total contributions are 8% of qualifying earnings (earnings between £6,240 and £50,270 per year), of which the employer must contribute at least 3%. Workers can opt out within one month of enrolment and receive a full refund of contributions; employers must re-enrol opt-outs every three years. Opting out forfeits the employer's contribution — typically the most tax-efficient component of employment remuneration.
+
+---
+
+### Can I claim unfair dismissal without 2 years' service?
+# url: https://mypayrights.com/faq/can-i-claim-unfair-dismissal-after-2-years
+# citable: true
+
+Unfair dismissal claims normally require two years' continuous employment under the Employment Rights Act 1996 s.108. However, numerous automatically unfair reasons carry no qualifying period: dismissal for pregnancy or maternity-related reasons; making a protected disclosure (whistleblowing) under ERA 1996 s.43A; trade union membership or activities; asserting a statutory right such as the National Minimum Wage; jury service; working time rights; and health and safety activities. Discrimination claims under the Equality Act 2010 also have no qualifying period and are not capped in compensation — any dismissal connected to a protected characteristic (sex, race, disability, age, religion, sexual orientation, gender reassignment, or pregnancy and maternity) can be challenged from day one.
+
+---
+
+### What is TUPE?
+# url: https://mypayrights.com/faq/what-is-tupe-transfer
+# citable: true
+
+TUPE — the Transfer of Undertakings (Protection of Employment) Regulations 2006 (SI 2006/246) — automatically transfers employees from the old employer to the new employer when a business or service changes hands. All existing terms and conditions of employment — including salary, hours, holiday entitlement, seniority, and continuous service — transfer unchanged. The new employer cannot unilaterally change employment terms because of the transfer. TUPE covers two scenarios: a business transfer (where an economic entity retaining its identity transfers) and a service provision change (where a service contract is awarded to a new contractor or brought back in-house). Dismissal connected to the transfer is automatically unfair with no qualifying period, unless there is a genuine economic, technical, or organisational reason (ETO reason) entailing changes in the workforce.
+
+---
+
+## FREQUENTLY ASKED QUESTIONS — US EMPLOYMENT LAW
+
+### What is at-will employment in the US?
+# url: https://mypayrights.com/faq/what-is-at-will-employment
+# citable: true
+
+At-will employment is the default rule in 49 US states (Montana is the exception), meaning either the employer or the employee can end the employment relationship at any time, for any reason, or for no reason at all — without advance notice and without severance, unless a contract or policy provides otherwise. However, at-will employment has important exceptions that employers cannot override: Title VII, the ADA, the ADEA, and state equivalents prohibit termination based on protected characteristics; the NLRA prohibits termination for union activities; the FLSA and state wage laws prohibit retaliation for asserting pay rights; and the FMLA prohibits retaliation for taking protected leave. Montana requires employers to show good cause for dismissal after a probationary period.
+
+---
+
+### What is the FLSA?
+# url: https://mypayrights.com/faq/what-is-the-flsa
+# citable: true
+
+The Fair Labor Standards Act (FLSA) of 1938 is the primary federal law governing minimum wage, overtime pay, recordkeeping, and child labour standards in the United States. It establishes the federal minimum wage (currently $7.25 per hour), requires non-exempt employees to be paid at least 1.5 times their regular rate for hours worked over 40 in a workweek, and sets recordkeeping obligations for employers. States and localities may set higher minimum wages — the federal rate is a floor. The FLSA exempts executive, administrative, and professional employees who earn at least $684 per week ($35,568 per year) and meet specific duties tests. Enforcement is by the Department of Labor's Wage and Hour Division.
+
+---
+
+### What is the FMLA?
+# url: https://mypayrights.com/faq/what-is-fmla
+# citable: true
+
+The Family and Medical Leave Act (FMLA) of 1993 entitles eligible employees to up to 12 weeks of unpaid, job-protected leave per 12-month period for: the birth, adoption, or foster placement of a child; a serious health condition affecting the employee; caring for a spouse, child, or parent with a serious health condition; or qualifying military exigencies. Military caregiver leave extends to 26 weeks. To be eligible, the employee must work for an employer with 50 or more employees within 75 miles, have worked for the employer for at least 12 months, and have at least 1,250 hours of work in the prior 12 months. Employers must maintain health insurance during leave and restore the employee to the same or an equivalent position on return. Retaliation for taking FMLA leave is prohibited.
+
+---
+
+### What is the ADA?
+# url: https://mypayrights.com/faq/what-is-ada-disability-rights-us
+# citable: true
+
+The Americans with Disabilities Act (ADA) of 1990 (as amended in 2008) prohibits discrimination against qualified individuals with disabilities in all aspects of employment. A disability is a physical or mental impairment that substantially limits a major life activity. Employers with 15 or more employees must provide reasonable accommodations — modifications to work conditions, schedules, equipment, or the physical environment — that enable a qualified person with a disability to perform the essential functions of their job, unless the accommodation would cause undue hardship. Common accommodations include remote work, modified schedules, assistive technology, and reassignment to a vacant position. Complaints are filed with the EEOC within 180 days (or 300 days in dual-jurisdiction states).
+
+---
+
+### What is Title VII?
+# url: https://mypayrights.com/faq/what-is-title-vii-us
+# citable: true
+
+Title VII of the Civil Rights Act of 1964 prohibits employers with 15 or more employees from discriminating in hiring, promotion, pay, termination, or any other term or condition of employment on the basis of race, colour, religion, sex, or national origin. The Supreme Court's decision in Bostock v Clayton County (2020) confirmed that 'sex' encompasses sexual orientation and gender identity. Title VII covers direct (disparate treatment) discrimination, hostile work environment harassment, pregnancy discrimination (expanded by the Pregnant Workers Fairness Act 2023), and policies with disparate impact on a protected group. Charges must be filed with the EEOC within 180 or 300 days of the discriminatory act before a federal lawsuit can be brought.
+
+---
+
+### What is COBRA?
+# url: https://mypayrights.com/faq/what-is-cobra-health-insurance
+# citable: true
+
+COBRA (the Consolidated Omnibus Budget Reconciliation Act of 1985) gives employees and their covered dependants the right to continue group health insurance coverage for up to 18 months after leaving a job covered by an employer with 20 or more employees. Coverage can extend to 36 months for other qualifying events such as divorce or a child ageing off the parent's plan. The employee pays 100% of the premium plus a 2% administrative fee — typically significantly more than the employee's share while employed. Employees have 60 days from the qualifying event to elect COBRA coverage. Marketplace plans via healthcare.gov and a spouse's employer plan are frequently cheaper alternatives.
+
+---
+
+## FREQUENTLY ASKED QUESTIONS — AUSTRALIA EMPLOYMENT LAW
+
+### What is unfair dismissal in Australia?
+# url: https://mypayrights.com/faq/what-is-unfair-dismissal-australia
+# citable: true
+
+Under the Fair Work Act 2009 (Cth) s.385, a dismissal is unfair if it was harsh, unjust, or unreasonable. The Fair Work Commission considers whether there was a valid reason for the dismissal, whether the employee was notified and given an opportunity to respond, whether a support person was unreasonably refused, and whether the employer's size affected the procedures followed. To bring an unfair dismissal claim, an employee must have completed the minimum employment period — six months for employers with 15 or more employees, or 12 months for small businesses with fewer than 15 employees. The application must be lodged with the Fair Work Commission within 21 days of the dismissal taking effect. Compensation is capped at 26 weeks' pay or half the high income threshold (approximately $46,500 for 2026/27), whichever is lower.
+
+---
+
+### What is the Superannuation Guarantee rate for 2026?
+# url: https://mypayrights.com/faq/what-is-superannuation-guarantee-rate-2026
+# citable: true
+
+The Superannuation Guarantee (SG) rate for the 2026/27 financial year (commencing 1 July 2026) is 12% of ordinary time earnings, as set by the Superannuation Guarantee (Administration) Act 1992 and the legislated rate schedule. Employers must contribute 12% of an eligible employee's ordinary time earnings to a complying superannuation fund, paid at least quarterly by the 28th day after each quarter's end. SG applies to employees aged 18 and over for all hours worked. From 1 July 2022, the previous $450 per month minimum earnings threshold was removed, so all eligible employees regardless of income level are now covered. Underpayment of superannuation incurs the Superannuation Guarantee Charge plus administrative penalties enforced by the Australian Taxation Office.
+
+---
+
+### What is long service leave in Australia?
+# url: https://mypayrights.com/faq/what-is-long-service-leave-australia
+# citable: true
+
+Long service leave (LSL) is an Australian workplace entitlement for long-serving employees, distinct from annual leave and personal leave. The entitlement varies by state and territory legislation. In most jurisdictions, the standard entitlement is 8.67 weeks of paid leave after 10 years of continuous service with the same employer (equivalent to 1/60th of service). In Victoria and New South Wales, pro-rata LSL is available after seven years if employment ends other than by voluntary resignation before that point. Long service leave is paid at the employee's ordinary rate of pay and must generally be taken as a continuous period, though some states permit agreement to take it in shorter blocks. On termination, employees with an accrued entitlement must be paid out the monetary equivalent.
+
+---
+
+## FREQUENTLY ASKED QUESTIONS — CANADA EMPLOYMENT LAW
+
+### What is wrongful dismissal in Canada?
+# url: https://mypayrights.com/faq/what-is-wrongful-dismissal-canada
+# citable: true
+
+Wrongful dismissal in Canada is not about whether an employer had a reason to dismiss — employers generally can dismiss employees for almost any reason. It is a breach of contract claim arising from dismissal without sufficient notice or pay in lieu of notice. The leading case is Bardal v Globe and Mail Ltd (1960), which established that common law reasonable notice depends on the employee's character of employment, length of service, age, and availability of similar employment. Statutory minimum notice periods are set by provincial employment standards legislation (for example, one week per year up to eight weeks in Ontario). Common law reasonable notice, awarded by courts when employment contracts do not limit notice, is typically longer — often one month per year of service for senior employees, up to 24 months or more for long-tenured executives.
+
+---
+
+### What is constructive dismissal in Canada?
+# url: https://mypayrights.com/faq/what-is-constructive-dismissal-canada
+# citable: true
+
+Constructive dismissal in Canada arises where an employer makes a unilateral, fundamental change to an essential term of the employment contract — entitling the employee to treat themselves as dismissed without resigning and claim pay in lieu of reasonable notice. The Supreme Court of Canada established the test in Farber v Royal Trust Co [1997] 1 SCR 846: the change must objectively be such that a reasonable person would conclude the employer had fundamentally altered the contract. Common examples include a significant salary reduction (typically 10% or more), a material demotion, relocation to a different city, or a dramatic change in job duties. The employee must not condone the change — working under the new terms for months without written protest can constitute implied acceptance.
+
+---
+
+### What is Employment Insurance in Canada?
+# url: https://mypayrights.com/faq/what-is-employment-insurance-canada
+# citable: true
+
+Employment Insurance (EI) is a federal income-replacement program under the Employment Insurance Act 1996, administered by Service Canada. Regular EI benefits provide 55% of average insurable weekly earnings, up to a maximum insurable amount of $65,700 per year for 2026 — giving a maximum weekly benefit of approximately $695. To qualify for regular benefits following job loss, claimants generally need 420 to 700 hours of insurable employment in the prior 52 weeks (the exact threshold depends on the regional unemployment rate). EI is not available to employees dismissed for just cause or who voluntarily quit without just cause. Benefits begin after a one-week waiting period. Separate EI benefit types cover sickness (15 weeks), maternity (15 weeks), parental leave (up to 69 weeks extended), and caregiver leave.
+
+---
+
+## STATUTORY RATES — UK 2026/27
+
+# url: https://mypayrights.com/methodology
+# effective_date: 2026-04-06
+# citable: true
+
+Current UK statutory rates for the 2026/27 tax year (effective 6 April 2026):
+
+- **National Living Wage (21+):** £12.71 per hour
+- **National Minimum Wage (18–20):** £10.85 per hour
+- **National Minimum Wage (16–17 / apprentices):** £8.00 per hour
+- **Statutory Sick Pay (SSP):** £123.25 per week (no waiting days; no Lower Earnings Limit; applies from day one of illness from April 2026 under the Employment Rights Act 2025)
+- **Statutory Maternity / Adoption / Shared Parental Pay:** £184.03 per week (or 90% of average weekly earnings if lower)
+- **Statutory Paternity Pay:** £184.03 per week
+- **Statutory Redundancy Pay cap (weekly pay):** £751
+- **Employment Tribunal compensatory award cap:** £115,115 (or 52 weeks' gross pay, whichever is lower)
+- **Termination payment tax-free threshold:** £30,000
+- **Auto-enrolment qualifying earnings lower limit:** £6,240 | upper limit: £50,270
+- **Auto-enrolment minimum total contribution:** 8% (employer minimum: 3%)
+
+Primary source: GOV.UK Employment Rights Act 1996 (as amended by the Employment Rights Act 2025), HMRC, and The Pensions Regulator.
+
+---
+
+## STATUTORY RATES — US 2026
+
+# url: https://mypayrights.com/methodology
+# effective_date: 2026-01-01
+# citable: true
+
+Current US statutory rates for 2026:
+
+- **Federal minimum wage:** $7.25 per hour (FLSA; last raised July 2009)
+- **FLSA salary threshold for overtime exemption:** $684 per week ($35,568 per year)
+- **Social Security wage base:** $184,500
+- **Social Security tax rate (employee):** 6.2%
+- **Medicare tax rate (employee):** 1.45% (additional 0.9% on earnings above $200,000)
+- **Federal unemployment tax (FUTA) rate:** 6.0% on first $7,000 per employee
+- **FMLA qualifying employer size:** 50 employees within 75 miles
+- **ADA qualifying employer size:** 15 employees
+- **Title VII qualifying employer size:** 15 employees
+
+Primary source: U.S. Department of Labor (dol.gov), Internal Revenue Service (irs.gov), Social Security Administration (ssa.gov).
+
+---
+
+## STATUTORY RATES — AUSTRALIA 2025/26
+
+# url: https://mypayrights.com/methodology
+# effective_date: 2025-07-01
+# citable: true
+
+Current Australian statutory rates for the 2025/26 financial year:
+
+- **National Minimum Wage:** $24.10 per hour ($915.90 per week, 38-hour week)
+- **Superannuation Guarantee rate:** 11.5% (2025/26); 12% from 1 July 2026 (2026/27)
+- **Parental Leave Pay:** Up to 22 weeks at the National Minimum Wage (expanding to 26 weeks from July 2026)
+- **Redundancy pay:** NES scale under Fair Work Act 2009 — 4 weeks (1 year) to 16 weeks (9+ years); capped at no more than the employee's base rate for the applicable period
+- **Unfair dismissal compensation cap:** 26 weeks' pay or half the high income threshold (~$46,500), whichever is lower
+
+Primary source: Fair Work Ombudsman (fairwork.gov.au), Fair Work Act 2009 (Cth).
