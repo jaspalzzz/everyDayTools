@@ -96,8 +96,8 @@ export default function MethodologyPage() {
                     j: "Australia",
                     sources: [
                       { label: "legislation.gov.au — Fair Work Act 2009", url: "https://www.legislation.gov.au/Details/C2009A00028" },
-                      { label: "Fair Work Commission — Pay and conditions", url: "https://www.fairwork.gov.au/pay-and-wages" },
-                      { label: "Fair Work Commission — Ending employment", url: "https://www.fairwork.gov.au/ending-employment" },
+                      { label: "Fair Work Ombudsman — Pay and conditions", url: "https://www.fairwork.gov.au/pay-and-wages" },
+                      { label: "Fair Work Ombudsman — Ending employment", url: "https://www.fairwork.gov.au/ending-employment" },
                     ],
                   },
                   {

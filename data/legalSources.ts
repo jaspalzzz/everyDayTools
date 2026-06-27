@@ -368,7 +368,7 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
       type: "legislation",
     },
     {
-      label: "Fair Work Commission — Redundancy pay",
+      label: "Fair Work Ombudsman — Redundancy pay",
       url: "https://www.fairwork.gov.au/ending-employment/redundancy/redundancy-pay-and-entitlements",
       type: "regulator",
     },
@@ -382,7 +382,7 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
       type: "legislation",
     },
     {
-      label: "Fair Work Commission — Notice of termination",
+      label: "Fair Work Ombudsman — Notice of termination",
       url: "https://www.fairwork.gov.au/ending-employment/notice-and-final-pay",
       type: "regulator",
     },
@@ -396,7 +396,7 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
       type: "legislation",
     },
     {
-      label: "Fair Work Commission — Annual leave",
+      label: "Fair Work Ombudsman — Annual leave",
       url: "https://www.fairwork.gov.au/leave/annual-leave",
       type: "regulator",
     },
