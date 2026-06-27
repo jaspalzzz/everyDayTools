@@ -1,4 +1,4 @@
-import { ToolLayout } from "@/components/ToolLayout";
+import { ToolLayout, type LearnMoreMeta } from "@/components/ToolLayout";
 import { TakeHomePayCalculator } from "@/components/calculators/TakeHomePayCalculator";
 import { TAKE_HOME_SOURCE_UK } from "@/lib/calculators/takeHomePay";
 import { getTool } from "@/data/tools";
@@ -67,6 +67,15 @@ export default function Page() {
         source={TAKE_HOME_SOURCE_UK}
         verifiedDate={UK_INCOME_TAX.effectiveDate}
         faqs={faqs}
+        learnMore={{
+          guideSlug: "uk-take-home-pay",
+          guideTitle: "How to Calculate UK Take-Home Pay 2026/27",
+          faqs: [
+            { slug: "what-is-salary-sacrifice-uk", question: "What is salary sacrifice?" },
+            { slug: "what-is-auto-enrolment-pension-uk", question: "What is auto-enrolment pension?" },
+            { slug: "what-is-national-living-wage-2026", question: "What is the National Living Wage for 2026?" },
+          ],
+        }}
         contentBlock={
           <>
             <h2>How this take-home pay calculator works</h2>

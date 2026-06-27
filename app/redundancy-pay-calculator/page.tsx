@@ -1,4 +1,4 @@
-import { ToolLayout } from "@/components/ToolLayout";
+import { ToolLayout, type LearnMoreMeta } from "@/components/ToolLayout";
 import { RedundancyCalculator } from "@/components/calculators/RedundancyCalculator";
 import { REDUNDANCY_SOURCE } from "@/lib/calculators/redundancy";
 import { getTool } from "@/data/tools";
@@ -67,6 +67,15 @@ export default function Page() {
         source={REDUNDANCY_SOURCE}
         verifiedDate={UK_REDUNDANCY.effectiveDate}
         faqs={faqs}
+        learnMore={{
+          guideSlug: "uk-redundancy-pay",
+          guideTitle: "UK Redundancy Pay: Complete Guide 2026",
+          faqs: [
+            { slug: "can-employer-refuse-redundancy-pay", question: "Can my employer refuse to pay redundancy pay?" },
+            { slug: "is-redundancy-pay-tax-free", question: "Is redundancy pay tax free?" },
+            { slug: "what-is-the-redundancy-pay-cap", question: "What is the redundancy pay cap for 2026/27?" },
+          ],
+        }}
         contentBlock={
           <>
             <h2>How this redundancy calculator works</h2>

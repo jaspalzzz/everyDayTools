@@ -1,4 +1,4 @@
-import { ToolLayout } from "@/components/ToolLayout";
+import { ToolLayout, type LearnMoreMeta } from "@/components/ToolLayout";
 import { NoticePeriodCalculator } from "@/components/calculators/NoticePeriodCalculator";
 import { NOTICE_SOURCE } from "@/lib/calculators/noticePeriod";
 import { getTool } from "@/data/tools";
@@ -62,6 +62,15 @@ export default function Page() {
         calculator={<NoticePeriodCalculator />}
         source={NOTICE_SOURCE}
         faqs={faqs}
+        learnMore={{
+          guideSlug: "uk-notice-period-law",
+          guideTitle: "UK Notice Period Law: Your Rights Explained 2026",
+          faqs: [
+            { slug: "what-is-pilon-uk", question: "What is PILON (pay in lieu of notice)?" },
+            { slug: "what-is-garden-leave-uk", question: "What is garden leave?" },
+            { slug: "do-i-get-notice-pay-if-made-redundant", question: "Do I get notice pay if made redundant?" },
+          ],
+        }}
         contentBlock={
           <>
             <h2>Statutory vs contractual notice</h2>

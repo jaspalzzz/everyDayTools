@@ -124,6 +124,61 @@ export const GUIDES: GuideMeta[] = [
     relatedTool: "redundancy-pay-calculator",
     category: "Leaving a Job",
   },
+  {
+    slug: "uk-paternity-pay",
+    title: "UK Paternity Pay & Leave 2026: SPP, Qualifying Conditions & New Rights",
+    description:
+      "How Statutory Paternity Pay works in the UK, who qualifies, the 2-week entitlement and rate (£184.03/week), the extended 'paternity leave 2.0' rights from April 2025, and how to apply.",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    country: "UK",
+    relatedTool: "paternity-pay-calculator",
+    category: "Parental Leave",
+  },
+  {
+    slug: "uk-holiday-entitlement",
+    title: "UK Holiday Entitlement 2026: Statutory Leave, Pay & Carry-Over Rules",
+    description:
+      "How UK statutory holiday entitlement works — the 28-day minimum (including bank holidays), how part-time and irregular-hours workers accrue leave, rolled-up holiday pay, and the rules on carry-over and payout.",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    country: "UK",
+    relatedTool: "holiday-entitlement-calculator",
+    category: "Benefits & Entitlements",
+  },
+  {
+    slug: "uk-sick-pay",
+    title: "UK Sick Pay 2026: SSP Rules, Qualifying Days & What Happens When It Runs Out",
+    description:
+      "Statutory Sick Pay is £123.25/week from day one of illness (no waiting days from April 2026). This guide covers who qualifies, how long SSP lasts, enhanced sick pay, fit notes, and options when SSP ends.",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    country: "UK",
+    relatedTool: "statutory-sick-pay-calculator",
+    category: "Benefits & Entitlements",
+  },
+  {
+    slug: "uk-adoption-pay",
+    title: "UK Adoption Pay & Leave 2026: SAP, Qualifying Conditions & Paternity Rights",
+    description:
+      "How Statutory Adoption Pay (SAP) works — the 39-week entitlement at £184.03/week, qualifying conditions, adoption leave periods, the partner's 2-week entitlement, and interaction with Shared Parental Leave.",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    country: "UK",
+    relatedTool: "adoption-pay-calculator",
+    category: "Parental Leave",
+  },
+  {
+    slug: "uk-shared-parental-leave",
+    title: "UK Shared Parental Leave 2026: ShPL, ShPP & How to Split Leave",
+    description:
+      "How Shared Parental Leave and Shared Parental Pay work in the UK — who can use it, how to curtail maternity leave, how to split the remaining 37 weeks, discontinuous leave blocks, and ShPP at £184.03/week.",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    country: "UK",
+    relatedTool: "shared-parental-leave-calculator",
+    category: "Parental Leave",
+  },
 ];
 
 export function getGuide(slug: string): GuideMeta | undefined {

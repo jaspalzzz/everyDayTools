@@ -124,6 +124,14 @@ export default async function BlogPostPage({ params }: Props) {
           <span>Founder, My Pay Rights</span>
         </div>
 
+        {/* Quick answer — direct response callout */}
+        {post.quickAnswer && (
+          <div className="mb-6 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
+            <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Quick answer</p>
+            <p className="leading-relaxed">{post.quickAnswer}</p>
+          </div>
+        )}
+
         {/* Legal disclaimer */}
         <div className="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900">
           <strong>For information only.</strong> This article is not legal advice. For advice on your specific situation, consult a qualified employment solicitor or contact{" "}

@@ -1,4 +1,4 @@
-import { ToolLayout } from "@/components/ToolLayout";
+import { ToolLayout, type LearnMoreMeta } from "@/components/ToolLayout";
 import { SettlementCalculator } from "@/components/calculators/SettlementCalculator";
 import { SETTLEMENT_SOURCE } from "@/lib/calculators/settlementAgreement";
 import { getTool } from "@/data/tools";
@@ -56,6 +56,15 @@ export default function Page() {
         source={SETTLEMENT_SOURCE}
         verifiedDate={UK_SETTLEMENT.effectiveDate}
         faqs={faqs}
+        learnMore={{
+          guideSlug: "uk-settlement-agreement",
+          guideTitle: "UK Settlement Agreements: What You're Owed & How to Negotiate 2026",
+          faqs: [
+            { slug: "what-is-a-settlement-agreement-uk", question: "What is a settlement agreement?" },
+            { slug: "how-much-is-a-settlement-agreement-worth", question: "How much is a settlement agreement worth?" },
+            { slug: "is-settlement-agreement-taxable-uk", question: "Is a settlement agreement taxable?" },
+          ],
+        }}
         contentBlock={
           <>
             <h2>How settlement agreement values are calculated</h2>

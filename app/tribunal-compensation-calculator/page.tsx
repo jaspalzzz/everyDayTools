@@ -1,4 +1,4 @@
-import { ToolLayout } from "@/components/ToolLayout";
+import { ToolLayout, type LearnMoreMeta } from "@/components/ToolLayout";
 import { TribunalCalculator } from "@/components/calculators/TribunalCalculator";
 import { TRIBUNAL_SOURCE } from "@/lib/calculators/tribunalCompensation";
 import { getTool } from "@/data/tools";
@@ -56,6 +56,13 @@ export default function Page() {
         source={TRIBUNAL_SOURCE}
         verifiedDate={UK_TRIBUNAL.effectiveDate}
         faqs={faqs}
+        learnMore={{
+          faqs: [
+            { slug: "how-much-can-i-get-employment-tribunal-uk", question: "How much can I get from Employment Tribunal?" },
+            { slug: "what-are-vento-bands-uk", question: "What are Vento bands?" },
+            { slug: "what-is-acas-early-conciliation", question: "What is ACAS early conciliation?" },
+          ],
+        }}
         contentBlock={
           <>
             <h2>How Employment Tribunal compensation works</h2>
