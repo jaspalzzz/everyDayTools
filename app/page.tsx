@@ -8,7 +8,15 @@ import { BrowseByCategory } from "@/components/home/BrowseByCategory";
 import { GuidesResources } from "@/components/home/GuidesResources";
 import { homepageSchemas, jsonLd } from "@/lib/seo";
 
-const BADGES = ["Law backed", "100% Free", "No signup", "Nothing stored"] as const;
+const TRUST_BADGES = ["100% Free", "Law Backed", "No Sign Up", "Private & Secure", "Fast Results"] as const;
+
+function CheckIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-500 shrink-0" aria-hidden="true">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+}
 
 export default function HomePage() {
   const [websiteSchema, orgSchema] = homepageSchemas();
@@ -23,32 +31,42 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(websiteSchema)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(orgSchema)} />
 
-      {/* Hero — radial tint background */}
-      <section className="bg-[radial-gradient(circle_at_top_right,rgba(230,241,251,0.6)_0%,rgba(255,255,255,0)_60%)]">
-        <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-6 py-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+      {/* Hero */}
+      <section className="bg-[radial-gradient(ellipse_80%_60%_at_70%_40%,rgba(214,233,251,0.45)_0%,rgba(255,255,255,0)_70%)]">
+        <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-6 py-14 lg:grid-cols-[1fr_1fr] lg:gap-12">
           {/* Left */}
           <div>
-            <h1 className="text-5xl font-bold leading-[1.1] tracking-tight text-ink">
+            {/* Top tagline */}
+            <div className="mb-6 flex items-center gap-2 text-[12px] font-semibold uppercase tracking-widest text-emerald-600">
+              <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+              Free
+              <span className="text-ink-faint">·</span>
+              Law Backed
+              <span className="text-ink-faint">·</span>
+              No Sign Up
+            </div>
+
+            <h1 className="text-[3.25rem] font-extrabold leading-[1.08] tracking-tight text-ink">
               Know exactly<br />
-              what <span className="text-brand-600">you&apos;re owed.</span>
+              <span className="text-brand-600">what you&apos;re owed.</span>
             </h1>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-soft">
-              Free, law-backed calculators to help you understand your employment
-              rights in the UK, US, Canada and Australia.
+
+            <p className="mt-5 max-w-[480px] text-[1.0625rem] leading-relaxed text-ink-soft">
+              Whether you&apos;ve been made redundant, you&apos;re leaving a job, or your employer hasn&apos;t paid you — our free calculators are backed by employment law in the UK, US, Canada and Australia.
             </p>
 
-            <div className="mb-10 mt-8 flex flex-wrap gap-6">
-              {BADGES.map((b) => (
-                <span key={b} className="flex items-center gap-2 text-sm font-semibold text-ink-soft">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-500" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
+            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+              {TRUST_BADGES.map((b) => (
+                <span key={b} className="flex items-center gap-1.5 text-[13px] font-medium text-ink-soft">
+                  <CheckIcon />
                   {b}
                 </span>
               ))}
             </div>
 
-            <HeroSearch />
+            <div className="mt-8">
+              <HeroSearch />
+            </div>
           </div>
 
           {/* Right */}

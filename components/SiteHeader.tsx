@@ -23,12 +23,17 @@ const COUNTRY_LINKS = [
 
 function LogoMark() {
   return (
-    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-brand-800 text-white shadow-[0_4px_10px_rgba(59,130,246,0.3)]">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="M9 11l2 2 4-4" />
-      </svg>
-    </span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 84 84" aria-hidden="true">
+      <g transform="translate(6 6) scale(.75)">
+        <path d="M26 14h30l16 16v48H26z" fill="#FFFFFF"/>
+        <path d="M56 14v16h16" fill="#E6F1FB"/>
+        <path d="M26 14h30l16 16v48H26z" fill="none" stroke="#0C447C" strokeWidth="5" strokeLinejoin="round"/>
+        <path d="M56 14v16h16" fill="none" stroke="#0C447C" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M36 35h18M36 47h22M36 59h14" fill="none" stroke="#0C447C" strokeWidth="4" strokeLinecap="round"/>
+        <circle cx="67" cy="66" r="16" fill="#185FA5"/>
+        <path d="M59 66l6 6 12-14" fill="none" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
+      </g>
+    </svg>
   );
 }
 
@@ -51,11 +56,10 @@ export function SiteHeader() {
       <header className="sticky top-0 z-50 border-b border-surface-line bg-white">
         <div className="mx-auto flex h-18 max-w-[1180px] items-center justify-between px-6" style={{ height: "4.5rem" }}>
           {/* Logo */}
-          <Link href="/" className="flex shrink-0 items-center gap-3" onClick={() => setOpen(false)}>
+          <Link href="/" className="flex shrink-0 items-center gap-2.5" onClick={() => setOpen(false)}>
             <LogoMark />
             <span className="flex flex-col leading-tight">
-              <span className="text-[1.25rem] font-bold tracking-tight text-ink">{SITE.name}</span>
-              <span className="text-[11px] text-ink-soft">Know what you&apos;re owed</span>
+              <span className="text-[1.15rem] font-bold tracking-tight text-[#0C447C]">MyPay<span className="text-brand-600">Rights</span></span>
             </span>
           </Link>
 
