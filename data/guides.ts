@@ -102,6 +102,28 @@ export const GUIDES: GuideMeta[] = [
     relatedTool: "notice-period-calculator",
     category: "Leaving a Job",
   },
+  {
+    slug: "uk-unfair-dismissal",
+    title: "Unfair Dismissal UK: Your Rights, Compensation & How to Claim 2026",
+    description:
+      "What unfair dismissal is, the 2-year qualifying period, automatically unfair grounds (no qualifying period), compensation caps for 2026/27, and how to bring a tribunal claim.",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    country: "UK",
+    relatedTool: "redundancy-pay-calculator",
+    category: "Leaving a Job",
+  },
+  {
+    slug: "uk-tupe",
+    title: "TUPE UK: Your Rights When Your Employer Changes 2026",
+    description:
+      "What TUPE is, when it applies (business transfers and service provision changes), what it protects, how redundancy interacts with TUPE, and what to do if your employer breaches it.",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    country: "UK",
+    relatedTool: "redundancy-pay-calculator",
+    category: "Leaving a Job",
+  },
 ];
 
 export function getGuide(slug: string): GuideMeta | undefined {
