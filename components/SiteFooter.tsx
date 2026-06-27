@@ -9,14 +9,21 @@ export function SiteFooter() {
       >
         {/* Brand column */}
         <div>
-          <Link href="/" className="inline-flex items-center gap-2.5 font-extrabold" style={{ color: "#16324f" }}>
-            <span
-              className="flex h-8 w-8 items-center justify-center rounded-[7px] text-sm font-black"
-              style={{ border: "1px solid #b7d3f4", background: "#f2f7fd", color: "#1769e0" }}
-            >
-              M
+          <Link href="/" className="inline-flex items-center" style={{ gap: 10 }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 84 84" aria-hidden="true">
+              <g transform="translate(6 6) scale(.75)">
+                <path d="M26 14h30l16 16v48H26z" fill="#FFFFFF"/>
+                <path d="M56 14v16h16" fill="#EAF3FF"/>
+                <path d="M26 14h30l16 16v48H26z" fill="none" stroke="#16324F" strokeWidth="5" strokeLinejoin="round"/>
+                <path d="M56 14v16h16" fill="none" stroke="#16324F" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M36 35h18M36 47h22M36 59h14" fill="none" stroke="#16324F" strokeWidth="4" strokeLinecap="round"/>
+                <circle cx="67" cy="66" r="16" fill="#1769E0"/>
+                <path d="M59 66l6 6 12-14" fill="none" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
+              </g>
+            </svg>
+            <span style={{ fontWeight: 800, fontSize: 16 }}>
+              <span style={{ color: "#102033" }}>MyPay</span><span style={{ color: "#1769e0" }}>Rights</span>
             </span>
-            MyPayRights
           </Link>
           <p className="mt-2.5 max-w-[330px] text-[13px] leading-relaxed" style={{ color: "#52616f" }}>
             Private educational calculators for pay, leave, termination and workplace money questions. Estimates are not legal advice.
