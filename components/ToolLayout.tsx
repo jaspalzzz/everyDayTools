@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Faq } from "./Faq";
 import { SourceBadge } from "./SourceBadge";
+import { AdSlot } from "./AdSlot";
 import { relatedTools, CATEGORY_META, type ToolMeta } from "@/data/tools";
 import { TablerIcon } from "./TablerIcon";
 import type { FaqItem, SourceRef } from "@/lib/types";
@@ -66,15 +67,8 @@ export function ToolLayout({
       {/* Tool — above the fold, no ad before it */}
       <div className="mt-6">{calculator}</div>
 
-      {/* First ad slot — below the tool output only */}
-      <div
-        className="my-8 flex items-center justify-center rounded-md border border-dashed border-surface-line bg-surface-muted py-3"
-        aria-hidden="true"
-      >
-        <span className="text-[10px] uppercase tracking-wide text-ink-faint">
-          Advertisement
-        </span>
-      </div>
+      {/* Ad slot 1 — below tool result, highest RPM position */}
+      <AdSlot slot="2957844781" format="rectangle" className="my-8 max-w-sm" />
 
       {/* 300-word context block */}
       <section className="prose-tool max-w-2xl text-sm leading-relaxed text-ink-soft">
@@ -82,6 +76,9 @@ export function ToolLayout({
       </section>
 
       <Faq items={faqs} />
+
+      {/* Ad slot 2 — below FAQs, second-highest dwell position */}
+      <AdSlot slot="6483920154" format="rectangle" className="mt-6 max-w-sm" />
 
       <SourceBadge source={source} verifiedDate={verifiedDate} />
 

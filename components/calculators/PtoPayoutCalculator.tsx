@@ -21,8 +21,29 @@ export function PtoPayoutCalculator() {
   );
   const state = STATE_PTO.find((s) => s.code === stateCode);
 
+  const ruleBanner = state ? (
+    <div
+      className={`rounded-lg border px-4 py-3 text-xs leading-relaxed ${
+        state.rule === "required"
+          ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+          : state.rule === "conditional"
+          ? "border-amber-200 bg-amber-50 text-amber-800"
+          : "border-surface-line bg-surface-muted text-ink-faint"
+      }`}
+    >
+      <strong className="font-semibold">
+        {state.rule === "required" && `${state.name}: PTO payout required by law`}
+        {state.rule === "conditional" && `${state.name}: PTO payout depends on your employer's policy`}
+        {state.rule === "no-requirement" && `${state.name}: No law requires PTO payout`}
+      </strong>
+      <span className="ml-1">{state.note}</span>
+    </div>
+  ) : null;
+
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
+    <div className="flex flex-col gap-4">
+      {ruleBanner}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
       <form className="flex flex-col gap-4" aria-label="PTO payout inputs">
         <SelectField
           id="state"
@@ -66,6 +87,7 @@ export function PtoPayoutCalculator() {
           ],
         }}
       />
+    </div>
     </div>
   );
 }
