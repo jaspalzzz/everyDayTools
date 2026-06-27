@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { CalcResult } from "@/lib/types";
 import type { LetterMeta } from "@/lib/pdf";
 import { generateLetter } from "@/lib/pdf";
+import { TablerIcon } from "./TablerIcon";
 
 /**
  * Live-updating result panel shared by every tool. Renders the headline
@@ -72,7 +73,7 @@ export function ResultPanel({
         <ul className="flex flex-col gap-1.5 border-t border-surface-line pt-3">
           {result.notes.map((note, i) => (
             <li key={i} className="flex gap-2 text-xs leading-relaxed text-ink-faint">
-              <i className="ti ti-info-circle mt-px shrink-0 text-brand-300" aria-hidden="true" />
+              <TablerIcon name="ti-info-circle" className="mt-px shrink-0 text-brand-300" size={14} aria-hidden="true" />
               {note}
             </li>
           ))}
@@ -88,10 +89,7 @@ export function ResultPanel({
             disabled={generating}
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-800 disabled:opacity-60"
           >
-            <i
-              className={generating ? "ti ti-loader-2 animate-spin" : "ti ti-file-download"}
-              aria-hidden="true"
-            />
+            <TablerIcon name={generating ? "ti-loader-2" : "ti-file-download"} className={generating ? "animate-spin" : undefined} size={16} aria-hidden="true" />
             {generating ? "Preparing…" : "Download PDF summary"}
           </button>
           {error && (

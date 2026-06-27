@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
+import { TablerIcon } from "@/components/TablerIcon";
 
 export default function Error({
   error,
@@ -17,7 +18,7 @@ export default function Error({
   return (
     <div className="mx-auto flex max-w-content flex-col items-center gap-6 px-5 py-24 text-center">
       <span className="flex h-14 w-14 items-center justify-center rounded-full bg-red-50">
-        <i className="ti ti-alert-triangle text-2xl text-red-500" aria-hidden="true" />
+        <TablerIcon name="ti-alert-triangle" className="text-2xl text-red-500" size={24} aria-hidden="true" />
       </span>
       <div>
         <h1 className="text-xl font-medium text-ink">Something went wrong</h1>

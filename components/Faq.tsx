@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/lib/types";
+import { TablerIcon } from "./TablerIcon";
 
 /**
  * Static FAQ block targeting People Also Ask. Rendered server-side so Q&A
@@ -21,10 +22,7 @@ export function Faq({ items }: { items: FaqItem[] }) {
               aria-expanded="false"
             >
               {item.question}
-              <i
-                className="ti ti-chevron-down shrink-0 text-ink-faint transition-transform group-open:rotate-180"
-                aria-hidden="true"
-              />
+              <TablerIcon name="ti-chevron-down" className="shrink-0 text-ink-faint transition-transform group-open:rotate-180" size={16} aria-hidden="true" />
             </summary>
             <p className="mt-2 pr-6 text-sm leading-relaxed text-ink-soft">{item.answer}</p>
           </details>

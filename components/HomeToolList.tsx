@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { TablerIcon } from "./TablerIcon";
 import { TOOLS } from "@/data/tools";
 
 /**
@@ -27,10 +28,7 @@ export function HomeToolList() {
   return (
     <div>
       <div className="relative mx-auto max-w-md">
-        <i
-          className="ti ti-search pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-faint"
-          aria-hidden="true"
-        />
+        <TablerIcon name="ti-search" className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-faint" size={16} aria-hidden="true" />
         <input
           type="search"
           value={query}
@@ -57,7 +55,7 @@ export function HomeToolList() {
                 tool.hero ? "bg-white text-brand-600" : "bg-surface-muted text-ink-soft"
               }`}
             >
-              <i className={`ti ${tool.icon} text-lg`} aria-hidden="true" />
+              <TablerIcon name={tool.icon} size={18} aria-hidden="true" />
             </span>
             <span className="min-w-0 flex-1">
               <span className="block text-sm font-medium text-ink">{tool.name}</span>
@@ -66,7 +64,7 @@ export function HomeToolList() {
             <span className="hidden shrink-0 rounded-full bg-white/70 px-2 py-0.5 text-[10px] font-medium text-brand-800 sm:inline">
               {tool.region}
             </span>
-            <i className="ti ti-arrow-right shrink-0 text-ink-faint" aria-hidden="true" />
+            <TablerIcon name="ti-arrow-right" className="shrink-0 text-ink-faint" size={16} aria-hidden="true" />
           </Link>
         ))}
         {filtered.length === 0 && (

@@ -94,6 +94,9 @@ export function homepageSchemas(): [object, object] {
       "@type": "Organization",
       name: SITE.name,
       url: SITE.url,
+      sameAs: [
+        "https://github.com/jaspalzzz/everyDayTools",
+      ],
       contactPoint: {
         "@type": "ContactPoint",
         email: SITE.contactEmail,

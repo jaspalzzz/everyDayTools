@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TOOLS } from "@/data/tools";
+import { TablerIcon } from "@/components/TablerIcon";
 
 export default function NotFound() {
   const heroTools = TOOLS.filter((t) => t.hero).slice(0, 4);
@@ -16,7 +17,7 @@ export default function NotFound() {
           href="/"
           className="mt-6 inline-flex items-center gap-2 rounded-md bg-brand-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-800"
         >
-          <i className="ti ti-home" aria-hidden="true" />
+          <TablerIcon name="ti-home" size={16} aria-hidden="true" />
           All tools
         </Link>
       </div>
@@ -29,7 +30,7 @@ export default function NotFound() {
             className="flex items-center gap-3 rounded-lg border border-surface-line bg-white px-4 py-3 hover:bg-surface-muted"
           >
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-surface-muted text-ink-soft">
-              <i className={`ti ${tool.icon} text-base`} aria-hidden="true" />
+              <TablerIcon name={tool.icon} size={16} aria-hidden="true" />
             </span>
             <span className="text-sm font-medium text-ink">{tool.name}</span>
           </Link>

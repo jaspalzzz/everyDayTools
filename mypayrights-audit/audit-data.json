@@ -1,0 +1,270 @@
+{
+  "domain": "mypayrights-site.pages.dev",
+  "production_domain": "mypayrights.com",
+  "audit_date": "2026-06-27",
+  "summary": {
+    "health_score": 78,
+    "business_type": "SaaS Tool / Finance Web Application — 23 free employment law calculators for UK, US, CA, AU",
+    "top_findings": [
+      "Homepage missing canonical tag — Google may index multiple URL variants",
+      "All 23 tool OG images served as application/octet-stream instead of image/png",
+      "About page has no JSON-LD structured data",
+      "No compression on HTML responses (45KB uncompressed)",
+      "Homepage H1 is tagline-style, not keyword-targeted"
+    ],
+    "quick_wins": [
+      "Add canonical to homepage metadata (1 line in app/page.tsx)",
+      "Export contentType from opengraph-image.tsx files to fix MIME type",
+      "Add JSON-LD to about page",
+      "Add internal 'Related calculators' links to tool pages",
+      "Add visible breadcrumb navigation component"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 80,
+      "what_works": [
+        "HSTS preload, HTTPS enforced",
+        "robots.txt correct — all pages allowed",
+        "28-URL sitemap covering all tools",
+        "HTTP/2, 146ms TTFB from Cloudflare edge",
+        "Complete favicon set (ico, svg, 192, 512, apple-touch-icon)",
+        "CSP, X-Frame-Options, X-Content-Type-Options all set",
+        "All 23 OG image routes resolve HTTP 200"
+      ],
+      "findings": [
+        {
+          "title": "Homepage missing canonical tag",
+          "severity": "High",
+          "description": "The homepage / returns no <link rel=\"canonical\"> tag. Confirmed via HTML inspection. All 23 tool pages have correct canonical tags pointing to mypayrights.com.",
+          "recommendation": "Add `alternates: { canonical: SITE.url }` to the homepage metadata export in app/page.tsx"
+        },
+        {
+          "title": "Tool OG images served as application/octet-stream",
+          "severity": "Medium",
+          "description": "All 23 /[slug]/opengraph-image routes return content-type: application/octet-stream instead of image/png. The homepage /opengraph-image correctly returns image/png. This can cause LinkedIn and Slack to not render preview images.",
+          "recommendation": "Add `export const contentType = 'image/png';` to each app/[slug]/opengraph-image.tsx file, or export OG_CONTENT_TYPE from lib/ogImage.tsx and re-export it from each route file."
+        },
+        {
+          "title": "No HTML compression",
+          "severity": "Low",
+          "description": "Content-Encoding: none on 45KB homepage HTML. Cloudflare Pages should auto-compress. May be a Pages configuration or caching issue.",
+          "recommendation": "Verify Cloudflare Pages compression is enabled. Test with Accept-Encoding: gzip header."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 82,
+      "what_works": [
+        "All 23 tool pages have substantive content blocks (1,600–2,980 total words)",
+        "FAQ section on every tool page (3–6 questions)",
+        "Statutory rates cited with effective dates",
+        "About page has E-E-A-T sections: rate verification process, team background",
+        "llms.txt comprehensive — all 23 tools described",
+        "Unique descriptions per page"
+      ],
+      "findings": [
+        {
+          "title": "Three leave calculators borderline thin",
+          "severity": "Medium",
+          "description": "Paternity (1,627w), adoption (1,622w), and shared parental leave (1,635w) pages are at the lower content threshold for competitive calculator terms.",
+          "recommendation": "Expand content blocks with: qualification eligibility walkthrough, worked salary examples, HMRC reclaim process for employers, and comparison with enhanced employer pay."
+        },
+        {
+          "title": "Homepage word count low",
+          "severity": "Low",
+          "description": "Homepage has ~1,188 total words, serving primarily as a navigation hub with one H2 section.",
+          "recommendation": "Add a grouped tool directory with category H2s (Employment, Pay & Tax, Leave & Benefits) and a brief intro paragraph explaining why country-aware calculators matter."
+        },
+        {
+          "title": "About page has no structured data",
+          "severity": "Low",
+          "description": "About page has strong E-E-A-T content but no JSON-LD. Zero schema blocks detected.",
+          "recommendation": "Add WebPage + Organization JSON-LD to app/about/page.tsx using the existing homepageSchemas() helper or a new aboutPageSchema()."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 76,
+      "what_works": [
+        "All 23 tool pages have unique, descriptive title tags",
+        "Meta descriptions under 160 chars and keyword-relevant",
+        "H1 matches primary keyword on every tool page",
+        "Canonical tags on all tool pages pointing to production domain"
+      ],
+      "findings": [
+        {
+          "title": "Homepage H1 is tagline, not keyword-targeted",
+          "severity": "High",
+          "description": "Current H1: 'Pay rights calculators that know your country's rules' — no primary keyword ('pay calculator', 'employment calculator', 'statutory pay') in the H1.",
+          "recommendation": "Revise to include primary keywords: e.g., 'Free Employment Pay Calculators for UK & US' or 'Statutory Pay Calculators — UK, US, Canada & Australia'"
+        },
+        {
+          "title": "No internal links between related tool pages",
+          "severity": "Medium",
+          "description": "Tool pages have no cross-links to related calculators. Redundancy pay has no link to Notice Period; Take-home pay has no link to IR35; PTO Payout has no link to Final Paycheck.",
+          "recommendation": "Add 'Related calculators' section to each tool page with 2–3 relevant tool links. This improves crawl depth, PageRank distribution, and user journey."
+        },
+        {
+          "title": "No visible breadcrumb navigation",
+          "severity": "Medium",
+          "description": "BreadcrumbList schema exists on all tool pages but no visible breadcrumb UI. Google uses visible breadcrumbs to confirm schema and improve SERP display.",
+          "recommendation": "Add a visible <nav aria-label='Breadcrumb'> with Home > Tool Name on each tool page, matching the JSON-LD."
+        },
+        {
+          "title": "Homepage missing canonical",
+          "severity": "High",
+          "description": "See Technical SEO findings.",
+          "recommendation": "Add canonical to homepage metadata."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 84,
+      "what_works": [
+        "WebApplication schema on all 23 tool pages",
+        "FAQPage schema on all 23 tool pages",
+        "BreadcrumbList schema on all 23 tool pages",
+        "WebSite + Organization on homepage",
+        "priceCurrency correctly region-mapped (GBP for UK, USD for US)",
+        "featureList present on all WebApplication schemas"
+      ],
+      "findings": [
+        {
+          "title": "About page missing JSON-LD",
+          "severity": "High",
+          "description": "About page has 0 schema blocks. Missed Organization and WebPage rich result opportunity.",
+          "recommendation": "Add Organization + WebPage schema to app/about/page.tsx"
+        },
+        {
+          "title": "Homepage missing ItemList or SiteLinksSearchBox schema",
+          "severity": "Medium",
+          "description": "The homepage WebSite schema has no potentialAction (SearchAction) for SiteLinksSearchBox, and no ItemList pointing to the 23 tools.",
+          "recommendation": "Add potentialAction SearchAction to WebSite schema, and/or an ItemList of top tools."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 72,
+      "what_works": [
+        "146ms TTFB — excellent Cloudflare edge performance",
+        "HTTP/2",
+        "Static export — no SSR computation on request",
+        "Logo preloaded",
+        "No heavy third-party analytics"
+      ],
+      "findings": [
+        {
+          "title": "No HTML response compression",
+          "severity": "High",
+          "description": "45KB homepage HTML served without gzip/brotli. Expected compression would reduce to ~10KB.",
+          "recommendation": "Check Cloudflare Pages compression settings. Add _headers file if needed with Content-Encoding: gzip."
+        },
+        {
+          "title": "Tabler Icons webfont loaded from CDN (potential render-block)",
+          "severity": "Medium",
+          "description": "Stylesheet for Tabler Icons loaded from cdn.jsdelivr.net via <link> in <head>. External CSS can block rendering.",
+          "recommendation": "Either self-host the icon subset, add media='print' onload trick for async load, or migrate to @tabler/icons-react SVG imports (tree-shaken, zero webfont)."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 85,
+      "what_works": [
+        "llms.txt present and comprehensive",
+        "All AI crawlers allowed by robots.txt",
+        "Factual, dated, cited content — highly citable by AI",
+        "Statutory rate references with effective dates on every page",
+        "Answer-first content structure"
+      ],
+      "findings": [
+        {
+          "title": "No explicit AI crawler permission signals",
+          "severity": "Low",
+          "description": "robots.txt uses global Allow: / rather than explicit GPTBot, anthropic-ai, Google-Extended entries. While this works, explicit entries send a positive signal.",
+          "recommendation": "Add explicit User-Agent blocks for GPTBot, anthropic-ai, Google-Extended, PerplexityBot with Allow: /"
+        },
+        {
+          "title": "Organization sameAs links absent",
+          "severity": "Low",
+          "description": "Organization schema has no sameAs pointing to social/professional profiles.",
+          "recommendation": "Add sameAs array to Organization schema with LinkedIn, GitHub, or other verified profiles."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 90,
+      "what_works": [
+        "All OG images generated dynamically (200 OK)",
+        "Favicon complete set",
+        "Logo SVG optimised",
+        "No decorative images without alt text detected"
+      ],
+      "findings": [
+        {
+          "title": "Tool OG images missing image/png content-type",
+          "severity": "Medium",
+          "description": "See Technical SEO findings. All 23 tool OG image routes return application/octet-stream.",
+          "recommendation": "Export contentType = 'image/png' from each opengraph-image.tsx"
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "This week",
+        "items": [
+          "Add canonical tag to homepage (app/page.tsx) — 1 line change",
+          "Fix OG image content-type — export contentType from all 23 opengraph-image.tsx files",
+          "Add JSON-LD to About page (Organization + WebPage schema)",
+          "Investigate and fix missing HTML compression"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact SEO",
+        "timeframe": "Weeks 2–3",
+        "items": [
+          "Revise homepage H1 to include primary keyword",
+          "Add 'Related calculators' internal links to all 23 tool pages",
+          "Add visible breadcrumb navigation component",
+          "Add ItemList or SiteLinksSearchBox schema to homepage"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Expand paternity, adoption, shared parental leave pages by 600–800 words each",
+          "Expand homepage with category-grouped tool directory and intro copy",
+          "Add explicit AI crawler permission entries to robots.txt",
+          "Add sameAs links to Organization schema",
+          "Submit to employment law resource directories and relevant Reddit communities"
+        ]
+      },
+      {
+        "name": "Phase 4: Performance & Monitoring",
+        "timeframe": "Ongoing",
+        "items": [
+          "Migrate Tabler Icons to SVG imports (eliminate webfont CDN dependency)",
+          "Set up Google Search Console on production domain",
+          "Submit sitemap to GSC",
+          "Monitor CrUX data once production gets sufficient traffic",
+          "Set up drift baseline for future audit comparison"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

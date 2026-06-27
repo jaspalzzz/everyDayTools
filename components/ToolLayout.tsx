@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Faq } from "./Faq";
 import { SourceBadge } from "./SourceBadge";
 import { relatedTools, type ToolMeta } from "@/data/tools";
+import { TablerIcon } from "./TablerIcon";
 import type { FaqItem, SourceRef } from "@/lib/types";
 
 /**
@@ -83,7 +84,7 @@ export function ToolLayout({
                   <span className="block text-sm font-medium text-ink">{r.name}</span>
                   <span className="block text-xs text-ink-faint">{r.region}</span>
                 </span>
-                <i className="ti ti-arrow-right text-ink-faint" aria-hidden="true" />
+                <TablerIcon name="ti-arrow-right" className="text-ink-faint" size={16} aria-hidden="true" />
               </Link>
             ))}
           </div>

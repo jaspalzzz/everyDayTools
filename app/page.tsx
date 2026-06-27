@@ -1,3 +1,4 @@
+import { TablerIcon } from "@/components/TablerIcon";
 import { HomeToolList } from "@/components/HomeToolList";
 import { homepageSchemas, jsonLd } from "@/lib/seo";
 
@@ -48,7 +49,7 @@ export default function HomePage() {
                 className="flex flex-col items-center bg-white px-4 py-5 text-center"
               >
                 <dd aria-hidden="true">
-                  <i className={`ti ${f.icon} text-xl text-brand-400`} />
+                  <TablerIcon name={f.icon} className="text-brand-400" size={20} />
                 </dd>
                 <dt className="mt-2 text-xs font-medium text-ink">{f.title}</dt>
                 <dd className="text-[11px] text-ink-faint">{f.sub}</dd>
