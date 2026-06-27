@@ -29,7 +29,7 @@ export default function HomePage() {
 
       {/* ── Hero ── */}
       <section style={{ background: "radial-gradient(circle at 78% 20%,rgba(23,105,224,.10),transparent 28%),linear-gradient(180deg,#ffffff 0%,#f8fbff 74%,#f7fafc 100%)", borderBottom: "1px solid #e7edf3" }}>
-        <div style={{ maxWidth: 1180, minHeight: 620, margin: "0 auto", padding: "74px 24px 54px", display: "grid", gridTemplateColumns: "minmax(0,1.02fr) minmax(410px,.78fr)", alignItems: "center", gap: 68 }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto", padding: "44px 24px 36px", display: "grid", gridTemplateColumns: "minmax(0,1.02fr) minmax(410px,.78fr)", alignItems: "center", gap: 52 }}>
 
           {/* Left column */}
           <div>
@@ -39,7 +39,7 @@ export default function HomePage() {
               Private pay-rights calculators
             </div>
 
-            <h1 style={{ maxWidth: 650, margin: "18px 0 18px", color: "#102033", fontSize: "clamp(44px,6vw,76px)", lineHeight: .96, letterSpacing: 0, fontWeight: 800 }}>
+            <h1 style={{ maxWidth: 650, margin: "14px 0 14px", color: "#102033", fontSize: "clamp(38px,5vw,66px)", lineHeight: .96, letterSpacing: 0, fontWeight: 800 }}>
               Know what your employer owes you.
             </h1>
 
@@ -49,7 +49,7 @@ export default function HomePage() {
             </p>
 
             {/* Start panel */}
-            <div style={{ maxWidth: 640, marginTop: 32 }}>
+            <div style={{ maxWidth: 640, marginTop: 22 }}>
               <HeroSearch />
             </div>
 
@@ -76,7 +76,9 @@ export default function HomePage() {
         <BrowseBySituation />
 
         {/* Most used calculators + rights panel */}
-        <PopularCalculators />
+        <div style={{ marginTop: 56 }}>
+          <PopularCalculators />
+        </div>
 
         {/* Category band */}
         <BrowseByCategory />
