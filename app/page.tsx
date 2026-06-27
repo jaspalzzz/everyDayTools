@@ -8,11 +8,17 @@ import { BrowseByCategory } from "@/components/home/BrowseByCategory";
 import { GuidesResources } from "@/components/home/GuidesResources";
 import { homepageSchemas, jsonLd } from "@/lib/seo";
 
-const TRUST_BADGES = ["100% Free", "Law Backed", "No Sign Up", "Private & Secure", "Fast Results"] as const;
+const TRUST_BADGES = [
+  { label: "100% Free",       color: "text-emerald-500" },
+  { label: "Law Backed",      color: "text-emerald-500" },
+  { label: "No Sign Up",      color: "text-emerald-500" },
+  { label: "Private & Secure",color: "text-emerald-500" },
+  { label: "Fast Results",    color: "text-emerald-500" },
+] as const;
 
-function CheckIcon() {
+function CheckIcon({ className }: { className: string }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-500 shrink-0" aria-hidden="true">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" className={`shrink-0 ${className}`} aria-hidden="true">
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );
@@ -55,11 +61,11 @@ export default function HomePage() {
               Whether you&apos;ve been made redundant, you&apos;re leaving a job, or your employer hasn&apos;t paid you — our free calculators are backed by employment law in the UK, US, Canada and Australia.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1.5">
               {TRUST_BADGES.map((b) => (
-                <span key={b} className="flex items-center gap-1.5 text-[13px] font-medium text-ink-soft">
-                  <CheckIcon />
-                  {b}
+                <span key={b.label} className="flex items-center gap-1.5 text-[12.5px] font-medium text-ink-soft">
+                  <CheckIcon className={b.color} />
+                  {b.label}
                 </span>
               ))}
             </div>
