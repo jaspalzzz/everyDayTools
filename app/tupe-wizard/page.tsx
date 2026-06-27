@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TupeWizard } from "./TupeWizard";
+import { AffiliateCta } from "@/components/AffiliateCta";
 import { SITE, jsonLd } from "@/lib/seo";
 
 const title = "Does TUPE Apply to Me? Free UK TUPE Checker 2026";
@@ -87,6 +88,8 @@ export default function Page() {
             for free advice.
           </p>
         </section>
+
+        <AffiliateCta context="tupe-uk" heading="Official TUPE resources" className="mt-8" />
 
         {/* Related */}
         <section className="mt-8 flex flex-wrap gap-3">

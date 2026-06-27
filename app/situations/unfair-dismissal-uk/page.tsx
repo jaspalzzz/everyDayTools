@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE, jsonLd } from "@/lib/seo";
+import { AffiliateCta } from "@/components/AffiliateCta";
 
 const url = `${SITE.url}/situations/unfair-dismissal-uk`;
 const DATE = "2026-06-27";
@@ -283,6 +284,8 @@ export default function UnfairDismissalUKPage() {
             ))}
           </div>
         </section>
+
+        <AffiliateCta context="unfair-dismissal-uk" heading="Get advice on your unfair dismissal claim" className="mt-10 max-w-2xl" />
 
         {/* Related guides */}
         <section className="mt-10 max-w-2xl" aria-labelledby="related-heading">
