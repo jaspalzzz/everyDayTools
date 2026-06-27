@@ -29,7 +29,7 @@ export function SiteHeader() {
             <span className="text-base font-medium tracking-tight text-ink">{SITE.name}</span>
           </Link>
 
-          {/* Desktop nav — hero tools */}
+          {/* Desktop nav — hero tools + Guides */}
           <nav aria-label="Quick tools" className="hidden items-center gap-5 sm:flex">
             {HERO_TOOLS.map((tool) => (
               <Link
@@ -40,6 +40,12 @@ export function SiteHeader() {
                 {tool.shortName}
               </Link>
             ))}
+            <Link
+              href="/guides"
+              className="text-sm font-medium text-brand-600 transition-colors hover:text-brand-700"
+            >
+              Guides
+            </Link>
           </nav>
 
           {/* Mobile hamburger */}
@@ -92,6 +98,7 @@ export function SiteHeader() {
             );
           })}
           <div className="flex gap-4 px-5 py-4">
+            <Link href="/guides" onClick={() => setOpen(false)} className="text-xs font-medium text-brand-600 hover:text-brand-700">Guides</Link>
             <Link href="/about" onClick={() => setOpen(false)} className="text-xs text-ink-faint hover:text-ink-soft">About</Link>
             <Link href="/privacy" onClick={() => setOpen(false)} className="text-xs text-ink-faint hover:text-ink-soft">Privacy</Link>
             <Link href="/terms" onClick={() => setOpen(false)} className="text-xs text-ink-faint hover:text-ink-soft">Terms</Link>
