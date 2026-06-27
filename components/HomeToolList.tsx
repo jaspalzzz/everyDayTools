@@ -154,11 +154,11 @@ export function HomeToolList() {
           <div className="flex flex-col gap-8">
             {grouped.map(({ cat, tools }) => (
               <section key={cat} aria-labelledby={`cat-${cat}`} className="scroll-mt-20">
-                <div className="mb-3 flex items-baseline gap-2">
-                  <h2 id={`cat-${cat}`} className="text-sm font-semibold text-ink">
+                <div className="mb-3">
+                  <h2 id={`cat-${cat}`} className="text-[15px] font-bold text-ink">
                     {CATEGORY_META[cat].label}
                   </h2>
-                  <span className="text-xs text-ink-faint">{CATEGORY_META[cat].description}</span>
+                  <p className="mt-0.5 text-[12px] text-ink-faint">{CATEGORY_META[cat].description}</p>
                 </div>
                 <div className="flex flex-col gap-2">
                   {tools.map((tool) => (
@@ -174,31 +174,29 @@ export function HomeToolList() {
   );
 }
 
-const CATEGORY_ACCENT: Record<string, { border: string; icon: string }> = {
-  "leaving-job":    { border: "border-l-red-400",    icon: "bg-red-50 text-red-500" },
-  "pay-tax":        { border: "border-l-blue-400",   icon: "bg-blue-50 text-blue-500" },
-  "parental-leave": { border: "border-l-emerald-400", icon: "bg-emerald-50 text-emerald-600" },
-  "benefits":       { border: "border-l-purple-400", icon: "bg-purple-50 text-purple-500" },
+const CATEGORY_ICON_COLOR: Record<string, string> = {
+  "leaving-job":    "text-rose-500",
+  "pay-tax":        "text-brand-600",
+  "parental-leave": "text-emerald-600",
+  "benefits":       "text-violet-500",
 };
 
 function ToolCard({ tool }: { tool: (typeof TOOLS)[number] }) {
-  const accent = CATEGORY_ACCENT[tool.category] ?? { border: "border-l-brand-400", icon: "bg-brand-50 text-brand-600" };
+  const iconColor = CATEGORY_ICON_COLOR[tool.category] ?? "text-brand-600";
   return (
     <Link
       href={`/${tool.slug}`}
-      className={`flex items-center gap-4 rounded-lg border border-surface-line border-l-4 bg-white px-4 py-4 transition-colors hover:bg-surface-muted ${accent.border}`}
+      className="group flex items-center gap-4 rounded-xl border border-slate-100 bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all hover:-translate-y-px hover:border-slate-200 hover:shadow-[0_4px_12px_rgba(0,0,0,0.07)]"
     >
-      <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${accent.icon}`}>
-        <TablerIcon name={tool.icon} size={18} aria-hidden="true" />
-      </span>
+      <TablerIcon name={tool.icon} size={20} aria-hidden="true" className={`shrink-0 ${iconColor}`} />
       <span className="min-w-0 flex-1">
-        <span className="block text-sm font-medium text-ink">{tool.name}</span>
-        <span className="block truncate text-xs text-ink-soft">{tool.description}</span>
+        <span className="block truncate text-[14px] font-semibold text-ink group-hover:text-brand-700">{tool.name}</span>
+        <span className="mt-0.5 block truncate text-[12px] text-ink-soft">{tool.description}</span>
       </span>
-      <span className="hidden shrink-0 rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-medium text-ink-faint sm:inline">
+      <span className="hidden shrink-0 text-[11px] font-medium text-ink-faint sm:inline">
         {tool.region}
       </span>
-      <TablerIcon name="ti-arrow-right" className="shrink-0 text-ink-faint" size={16} aria-hidden="true" />
+      <TablerIcon name="ti-chevron-right" className="shrink-0 text-ink-faint opacity-0 transition-opacity group-hover:opacity-100" size={15} aria-hidden="true" />
     </Link>
   );
 }
