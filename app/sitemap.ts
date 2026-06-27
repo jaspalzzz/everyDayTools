@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { TOOLS } from "@/data/tools";
+import { GUIDES } from "@/data/guides";
 import { SITE } from "@/lib/seo";
 
 // Generated once at build time for the static export.
@@ -12,6 +13,13 @@ const priorityByTier = {
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const guideEntries: MetadataRoute.Sitemap = GUIDES.map((g) => ({
+    url: `${SITE.url}/guides/${g.slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+    lastModified: g.dateModified,
+  }));
+
   const toolEntries: MetadataRoute.Sitemap = TOOLS.map((tool) => ({
     url: `${SITE.url}/${tool.slug}`,
     changeFrequency: "monthly",
@@ -24,6 +32,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/us`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE.url}/ca`, changeFrequency: "monthly", priority: 0.85 },
     { url: `${SITE.url}/au`, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${SITE.url}/guides`, changeFrequency: "monthly", priority: 0.9 },
+    ...guideEntries,
     { url: `${SITE.url}/about`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE.url}/privacy`, changeFrequency: "yearly", priority: 0.2 },
     { url: `${SITE.url}/terms`, changeFrequency: "yearly", priority: 0.2 },
