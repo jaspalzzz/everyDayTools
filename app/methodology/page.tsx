@@ -62,56 +62,71 @@ export default function MethodologyPage() {
             <section>
               <h2>Primary sources by jurisdiction</h2>
               <p>
-                We only use primary government sources for statutory rates. No rate is taken from
-                a secondary aggregator, payroll vendor, or news article without verification
-                against the original legislation or official guidance.
+                Every statutory rate on this site traces directly to official government legislation
+                or regulatory guidance — never a secondary aggregator, payroll vendor, or news
+                article. Each calculator page displays its legal basis with direct links to the
+                source legislation and official guidance.
               </p>
 
-              <div className="mt-4 overflow-x-auto rounded-xl border border-surface-line">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-surface-line bg-surface-muted">
-                      <th className="px-4 py-2.5 text-left text-xs font-semibold text-ink">Jurisdiction</th>
-                      <th className="px-4 py-2.5 text-left text-xs font-semibold text-ink">Primary source</th>
-                      <th className="px-4 py-2.5 text-left text-xs font-semibold text-ink">Supplementary source</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      {
-                        j: "United Kingdom",
-                        primary: "GOV.UK statutory rates & thresholds; legislation.gov.uk (ERA 1996, WTR 1998)",
-                        supp: "HMRC technical guidance; ACAS code of practice; Employment Tribunals Service",
-                      },
-                      {
-                        j: "United States (federal)",
-                        primary: "DOL Wage and Hour Division (dol.gov/whd); FLSA text via U.S. Code",
-                        supp: "IRS Publication 15; SSA wage base notices",
-                      },
-                      {
-                        j: "US states (PTO, min wage, final paycheck)",
-                        primary: "Individual state labor department websites (all 50 states + DC)",
-                        supp: "DOL state minimum wage table; SHRM state law chart (cross-check only)",
-                      },
-                      {
-                        j: "Canada",
-                        primary: "Employment Standards Canada (canada.ca); each provincial labour standards act",
-                        supp: "Service Canada benefit rates; CRA payroll deduction tables",
-                      },
-                      {
-                        j: "Australia",
-                        primary: "Fair Work Commission (fairwork.gov.au); Fair Work Act 2009 (legislation.gov.au)",
-                        supp: "ATO tax withholding schedules; Fair Work Ombudsman guidance",
-                      },
-                    ].map(({ j, primary, supp }, i) => (
-                      <tr key={j} className={`border-b border-surface-line last:border-0 ${i % 2 === 0 ? "bg-white" : "bg-surface-muted/40"}`}>
-                        <td className="px-4 py-2.5 font-medium text-ink">{j}</td>
-                        <td className="px-4 py-2.5 text-ink-soft">{primary}</td>
-                        <td className="px-4 py-2.5 text-ink-soft">{supp}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div className="mt-4 space-y-4">
+                {([
+                  {
+                    j: "United Kingdom",
+                    sources: [
+                      { label: "legislation.gov.uk — Employment Rights Act 1996", url: "https://www.legislation.gov.uk/ukpga/1996/18/contents" },
+                      { label: "legislation.gov.uk — Employment Rights Act 2025", url: "https://www.legislation.gov.uk/ukpga/2025/15" },
+                      { label: "legislation.gov.uk — Working Time Regulations 1998", url: "https://www.legislation.gov.uk/uksi/1998/1833/contents" },
+                      { label: "legislation.gov.uk — Equality Act 2010", url: "https://www.legislation.gov.uk/ukpga/2010/15/contents" },
+                      { label: "GOV.UK — Statutory rates & thresholds", url: "https://www.gov.uk/government/collections/tax-and-tax-credit-rates-and-thresholds" },
+                      { label: "HMRC — Rates and allowances", url: "https://www.gov.uk/government/publications/rates-and-allowances-income-tax" },
+                      { label: "ACAS — Employment relations guidance", url: "https://www.acas.org.uk/advice" },
+                    ],
+                  },
+                  {
+                    j: "United States",
+                    sources: [
+                      { label: "DOL — Wage and Hour Division (FLSA)", url: "https://www.dol.gov/agencies/whd/flsa" },
+                      { label: "DOL — State payday laws", url: "https://www.dol.gov/agencies/whd/state/payday" },
+                      { label: "SSA — Contribution and benefit base (wage base)", url: "https://www.ssa.gov/oact/cola/cbb.html" },
+                      { label: "IRS — FICA and withholding tables", url: "https://www.irs.gov/publications/p15" },
+                      { label: "EEOC — Federal employment discrimination law", url: "https://www.eeoc.gov/statutes" },
+                    ],
+                  },
+                  {
+                    j: "Australia",
+                    sources: [
+                      { label: "legislation.gov.au — Fair Work Act 2009", url: "https://www.legislation.gov.au/Details/C2009A00028" },
+                      { label: "Fair Work Commission — Pay and conditions", url: "https://www.fairwork.gov.au/pay-and-wages" },
+                      { label: "Fair Work Commission — Ending employment", url: "https://www.fairwork.gov.au/ending-employment" },
+                    ],
+                  },
+                  {
+                    j: "Canada",
+                    sources: [
+                      { label: "laws-lois.justice.gc.ca — Canada Labour Code", url: "https://laws-lois.justice.gc.ca/eng/acts/L-2/" },
+                      { label: "Canada.ca — Employment standards", url: "https://www.canada.ca/en/employment-social-development/services/labour-standards.html" },
+                      { label: "Service Canada — Employment Insurance rates", url: "https://www.canada.ca/en/employment-social-development/programs/ei.html" },
+                    ],
+                  },
+                ] as { j: string; sources: { label: string; url: string }[] }[]).map(({ j, sources }, i) => (
+                  <div key={j} className={`rounded-xl border border-surface-line p-4 ${i % 2 === 0 ? "bg-white" : "bg-surface-muted/40"}`}>
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-faint">{j}</p>
+                    <ul className="space-y-1">
+                      {sources.map((s) => (
+                        <li key={s.url}>
+                          <a
+                            href={s.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-brand-600 hover:underline"
+                          >
+                            {s.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </section>
 

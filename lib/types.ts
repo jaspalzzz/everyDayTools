@@ -47,6 +47,26 @@ export interface SourceRef {
   url: string;
 }
 
+/**
+ * A primary legal or regulatory source for a calculator or guide.
+ * Rendered as clickable legislation / guidance links in the LegalSources block.
+ */
+export interface LegalSource {
+  /** Display name, e.g. "Employment Rights Act 1996" */
+  label: string;
+  /** Specific section or part, e.g. "ss.135–154" */
+  section?: string;
+  /** Canonical URL — must be a government or official regulatory domain */
+  url: string;
+  /**
+   * legislation — actual statutory text (legislation.gov.uk, uscode.house.gov, etc.)
+   * guidance    — official government guidance (gov.uk, dol.gov, irs.gov, etc.)
+   * regulator   — independent regulatory body (acas.org.uk, fairwork.gov.au, etc.)
+   * calculator  — official government calculator for cross-check
+   */
+  type: "legislation" | "guidance" | "regulator" | "calculator";
+}
+
 export interface FaqItem {
   question: string;
   answer: string;

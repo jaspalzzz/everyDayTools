@@ -2,10 +2,12 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Faq } from "./Faq";
 import { SourceBadge } from "./SourceBadge";
+import { LegalSources } from "./LegalSources";
 import { AdSlot } from "./AdSlot";
 import { relatedTools, CATEGORY_META, type ToolMeta } from "@/data/tools";
 import { TablerIcon } from "./TablerIcon";
 import type { FaqItem, SourceRef } from "@/lib/types";
+import { LEGAL_SOURCES } from "@/data/legalSources";
 
 /**
  * The shared tool-page contract. Every calculator page renders through this
@@ -76,6 +78,9 @@ export function ToolLayout({
       </section>
 
       <Faq items={faqs} />
+
+      {/* Legal basis block — primary sources auto-looked up by tool slug */}
+      <LegalSources sources={LEGAL_SOURCES[tool.slug] ?? []} />
 
       {/* Ad slot 2 — below FAQs, second-highest dwell position */}
       <AdSlot slot="6483920154" format="rectangle" className="mt-6 max-w-sm" />
