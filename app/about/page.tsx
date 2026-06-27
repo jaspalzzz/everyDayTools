@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE } from "@/lib/seo";
+import { SITE, jsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About",
@@ -10,7 +10,26 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <article className="prose-tool mx-auto max-w-2xl px-5 py-10 text-sm leading-relaxed text-ink-soft">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "About My Pay Rights",
+          url: `${SITE.url}/about`,
+          description:
+            "My Pay Rights builds law-backed employment pay calculators that turn statutory rules into a clear answer and a downloadable document.",
+          isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
+          publisher: {
+            "@type": "Organization",
+            name: SITE.name,
+            url: SITE.url,
+            contactPoint: { "@type": "ContactPoint", email: SITE.contactEmail, contactType: "customer support" },
+          },
+        })}
+      />
+      <article className="prose-tool mx-auto max-w-2xl px-5 py-10 text-sm leading-relaxed text-ink-soft">
       <h1 className="text-2xl font-medium tracking-tight text-ink">About {SITE.name}</h1>
       <p className="mt-4">
         {SITE.name} builds focused pay rights calculators for the moments that matter — being made
@@ -55,5 +74,6 @@ export default function AboutPage() {
         professional or the official guidance linked on each page.
       </p>
     </article>
+    </>
   );
 }

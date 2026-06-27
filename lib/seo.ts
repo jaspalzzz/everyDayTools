@@ -80,6 +80,14 @@ export function homepageSchemas(): [object, object] {
       "@type": "WebSite",
       name: SITE.name,
       url: SITE.url,
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE.url}/?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
     {
       "@context": "https://schema.org",

@@ -24,9 +24,11 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
+  alternates: { canonical: SITE.url },
   openGraph: {
     type: "website",
     siteName: SITE.name,
+    url: SITE.url,
     title: `${SITE.name} — ${SITE.tagline}`,
     description:
       "Free, law-backed pay rights calculators — redundancy pay, PTO payout, notice period, severance and overtime. Live results, no signup, instant PDF.",
