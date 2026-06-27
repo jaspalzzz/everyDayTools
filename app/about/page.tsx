@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { SITE, jsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About MyPayRights — Law-Backed Employment Pay Calculators",
   description:
-    "My Pay Rights builds law-backed employment pay calculators that turn statutory rules into a clear answer and a downloadable document.",
+    "MyPayRights builds employment pay calculators backed by primary government sources for the UK, US, Canada, and Australia. Statutory rates, verified annually.",
   alternates: { canonical: `${SITE.url}/about` },
 };
 

@@ -61,6 +61,8 @@ export function SiteFooter() {
             <nav aria-label="Footer legal" className="flex flex-wrap gap-x-4 gap-y-1">
               <Link href="/" className="text-xs text-ink-faint hover:text-ink-soft">Home</Link>
               <Link href="/about" className="text-xs text-ink-faint hover:text-ink-soft">About</Link>
+              <Link href="/methodology" className="text-xs text-ink-faint hover:text-ink-soft">Methodology</Link>
+              <Link href="/editorial-policy" className="text-xs text-ink-faint hover:text-ink-soft">Editorial policy</Link>
               <Link href="/privacy" className="text-xs text-ink-faint hover:text-ink-soft">Privacy</Link>
               <Link href="/terms" className="text-xs text-ink-faint hover:text-ink-soft">Terms</Link>
               <Link href="/disclaimer" className="text-xs text-ink-faint hover:text-ink-soft">Disclaimer</Link>

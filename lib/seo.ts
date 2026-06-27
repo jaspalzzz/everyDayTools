@@ -95,6 +95,30 @@ export function homepageSchemas(): [object, object] {
       "@type": "Organization",
       name: SITE.name,
       url: SITE.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE.url}/logo-mark.svg`,
+        width: 64,
+        height: 64,
+      },
+      description:
+        "MyPayRights provides free, law-backed employment pay calculators for the UK, US, Canada, and Australia. Every statutory rate is sourced directly from official government publications and reviewed on each jurisdiction's annual legislative cycle.",
+      founder: {
+        "@type": "Person",
+        name: "Jaspal Singh",
+        jobTitle: "Founder",
+        url: SITE.url,
+      },
+      knowsAbout: [
+        "Employment law",
+        "Statutory redundancy pay",
+        "Pay in lieu of notice",
+        "UK employment rights",
+        "US wage and hour law",
+        "Fair Work Act Australia",
+        "Canadian employment standards",
+      ],
+      areaServed: ["GB", "US", "CA", "AU"],
       sameAs: [
         "https://github.com/jaspalzzz/everyDayTools",
       ],
@@ -102,6 +126,7 @@ export function homepageSchemas(): [object, object] {
         "@type": "ContactPoint",
         email: SITE.contactEmail,
         contactType: "customer support",
+        availableLanguage: "English",
       },
     },
   ];
