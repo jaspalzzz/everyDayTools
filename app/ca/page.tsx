@@ -3,6 +3,7 @@ import Link from "next/link";
 import { TOOLS, CATEGORY_META, type ToolCategory } from "@/data/tools";
 import { SITE } from "@/lib/seo";
 import { TablerIcon } from "@/components/TablerIcon";
+import { CA_PROVINCES } from "@/data/caProvinces";
 
 const url = `${SITE.url}/ca`;
 
@@ -118,6 +119,29 @@ export default function CAPage() {
             );
           })}
         </div>
+
+        {/* Province browse */}
+        <section className="mt-12" aria-labelledby="province-heading">
+          <div className="mb-4 flex items-baseline gap-2">
+            <h2 id="province-heading" className="text-sm font-semibold text-ink">Browse by province or territory</h2>
+            <span className="text-xs text-ink-faint">Minimum wage, notice periods &amp; vacation entitlement</span>
+          </div>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
+            {CA_PROVINCES.map((prov) => (
+              <Link
+                key={prov.slug}
+                href={`/ca/provinces/${prov.slug}`}
+                className="flex items-center justify-between rounded-lg border border-surface-line bg-white px-3 py-2.5 text-xs hover:bg-surface-muted"
+              >
+                <span>
+                  <span className="font-medium text-ink">{prov.code}</span>
+                  <span className="ml-1.5 text-ink-soft">{prov.minimumWage}</span>
+                </span>
+                <TablerIcon name="ti-arrow-right" size={12} className="text-ink-faint" aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <section className="prose-tool mt-12 max-w-2xl border-t border-surface-line pt-8 text-sm leading-relaxed text-ink-soft">
           <h2>Federal vs provincial — which rules apply to you?</h2>

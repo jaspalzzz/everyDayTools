@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { TOOLS } from "@/data/tools";
 import { GUIDES } from "@/data/guides";
 import { US_STATES } from "@/data/usStates";
+import { CA_PROVINCES } from "@/data/caProvinces";
 import { SITE } from "@/lib/seo";
 
 // Generated once at build time for the static export.
@@ -34,6 +35,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: `${s.verifiedYear}-01-01`,
   }));
 
+  const provinceEntries: MetadataRoute.Sitemap = CA_PROVINCES.map((p) => ({
+    url: `${SITE.url}/ca/provinces/${p.slug}`,
+    changeFrequency: "yearly" as const,
+    priority: 0.75,
+    lastModified: `${p.verifiedYear}-01-01`,
+  }));
+
   return [
     { url: SITE.url, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE.url}/uk`, changeFrequency: "monthly", priority: 0.9 },
@@ -51,5 +59,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/disclaimer`, changeFrequency: "yearly", priority: 0.2 },
     ...toolEntries,
     ...stateEntries,
+    ...provinceEntries,
   ];
 }
