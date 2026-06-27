@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CountryFlag } from "@/components/CountryFlag";
 import { SITE, jsonLd } from "@/lib/seo";
 
 const SLUG = "uk-constructive-dismissal";
+const COUNTRY = "UK";
 const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 

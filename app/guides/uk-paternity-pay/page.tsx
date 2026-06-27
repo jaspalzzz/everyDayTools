@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CountryFlag } from "@/components/CountryFlag";
 import { SITE, FOUNDER_PERSON, jsonLd } from "@/lib/seo";
 
 const SLUG = "uk-paternity-pay";
+const COUNTRY = "UK";
 const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 
@@ -69,7 +71,7 @@ export default function UKPaternityPayGuide() {
         <article className="max-w-2xl">
           <div className="mb-8">
             <div className="mb-3 flex items-center gap-2">
-              <span className="text-base">🇬🇧</span>
+              <CountryFlag country={COUNTRY} size={18} />
               <span className="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-ink-faint">Parental Leave</span>
             </div>
             <h1 className="text-3xl font-medium tracking-tight text-ink sm:text-4xl">UK Paternity Pay & Leave 2026</h1>

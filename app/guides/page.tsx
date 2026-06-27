@@ -3,6 +3,7 @@ import Link from "next/link";
 import { GUIDES } from "@/data/guides";
 import { SITE, jsonLd } from "@/lib/seo";
 import { TablerIcon } from "@/components/TablerIcon";
+import { CountryFlag } from "@/components/CountryFlag";
 
 const url = `${SITE.url}/guides`;
 
@@ -19,13 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-const COUNTRY_FLAG: Record<string, string> = {
-  UK: "🇬🇧",
-  US: "🇺🇸",
-  CA: "🇨🇦",
-  AU: "🇦🇺",
-  "UK/US": "🇬🇧🇺🇸",
-};
+
 
 export default function GuidesPage() {
   const breadcrumb = {
@@ -72,7 +67,7 @@ export default function GuidesPage() {
               className="group flex flex-col gap-2 rounded-xl border border-surface-line bg-white p-5 transition-colors hover:border-brand-200 hover:bg-brand-50"
             >
               <div className="flex items-center gap-2">
-                <span className="text-base">{COUNTRY_FLAG[guide.country]}</span>
+                <CountryFlag country={guide.country} size={18} />
                 <span className="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-ink-faint">
                   {guide.category}
                 </span>
