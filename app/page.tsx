@@ -21,8 +21,8 @@ export default function HomePage() {
             Free · No signup · Instant results
           </p>
           <h1 className="mx-auto mt-3 max-w-xl text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl">
-            Pay rights calculators that know{" "}
-            <span className="text-brand-600">your country&apos;s rules</span>
+            Free employment pay calculators{" "}
+            <span className="text-brand-600">for UK, US & more</span>
           </h1>
           <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-ink-soft">
             Redundancy, PTO payout, notice, severance, overtime and more — with the
