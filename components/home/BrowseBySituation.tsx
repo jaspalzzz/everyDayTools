@@ -3,89 +3,67 @@ import { TablerIcon } from "@/components/TablerIcon";
 
 const SITUATIONS = [
   {
-    title: "Leaving My Job",
-    sub: "Redundancy, notice period, settlement and more",
+    title: "I've been made redundant",
+    sub: "Calculate statutory redundancy pay, notice, and final wages",
     icon: "ti-briefcase",
-    iconBg: "bg-blue-50",
-    iconColor: "text-blue-500",
-    titleColor: "text-blue-600",
     href: "#cat-leaving-job",
-    cta: "View calculators",
   },
   {
-    title: "Getting Paid",
-    sub: "Pay, overtime, bonuses, tax and deductions",
+    title: "My employer isn't paying me",
+    sub: "Unpaid wages, withheld pay, unlawful deductions",
     icon: "ti-cash",
-    iconBg: "bg-emerald-50",
-    iconColor: "text-emerald-600",
-    titleColor: "text-emerald-600",
     href: "#cat-pay-tax",
-    cta: "View calculators",
   },
   {
-    title: "Starting a Family",
-    sub: "Maternity, paternity, shared parental leave",
+    title: "I'm going on parental leave",
+    sub: "Maternity, paternity, shared parental pay entitlements",
     icon: "ti-users",
-    iconBg: "bg-violet-50",
-    iconColor: "text-violet-500",
-    titleColor: "text-violet-600",
     href: "#cat-parental-leave",
-    cta: "View calculators",
   },
   {
-    title: "Workplace Issues",
-    sub: "Unfair dismissal, tribunal, discipline and more",
-    icon: "ti-shield-check",
-    iconBg: "bg-orange-50",
-    iconColor: "text-orange-500",
-    titleColor: "text-orange-500",
+    title: "I'm leaving my job",
+    sub: "Notice period, garden leave, PILON, final paycheck",
+    icon: "ti-door-exit",
+    href: "#cat-leaving-job",
+  },
+  {
+    title: "I was unfairly dismissed",
+    sub: "Tribunal compensation, wrongful dismissal, settlement",
+    icon: "ti-gavel",
     href: "/tribunal-compensation-calculator",
-    cta: "View calculators",
   },
   {
-    title: "Benefits & Entitlements",
-    sub: "Sick pay, holiday pay, leave and other benefits",
+    title: "I need sick or holiday pay",
+    sub: "SSP, annual leave entitlement, carry-over rights",
     icon: "ti-gift",
-    iconBg: "bg-red-50",
-    iconColor: "text-red-500",
-    titleColor: "text-red-500",
     href: "#cat-benefits",
-    cta: "View calculators",
-  },
-  {
-    title: "All Calculators",
-    sub: "View all calculators in one place",
-    icon: "ti-dots",
-    iconBg: "bg-slate-100",
-    iconColor: "text-slate-500",
-    titleColor: "text-slate-700",
-    href: "#all-calculators",
-    cta: "View all",
   },
 ] as const;
 
 export function BrowseBySituation() {
   return (
     <section aria-labelledby="situation-heading" className="mt-6">
-      <h2 id="situation-heading" className="mb-6 text-2xl font-bold text-ink">
-        Browse by situation
-      </h2>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+      <div className="mb-5">
+        <h2 id="situation-heading" className="text-[1.375rem] font-bold tracking-tight text-ink">
+          What&apos;s your situation?
+        </h2>
+        <p className="mt-1 text-[13px] text-ink-soft">Pick what applies to you — we&apos;ll show the most relevant calculators.</p>
+      </div>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {SITUATIONS.map((s) => (
           <Link
             key={s.title}
             href={s.href}
-            className="group flex flex-col rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+            className="group flex items-start gap-3.5 rounded-xl border border-surface-line bg-white px-4 py-3.5 transition-all hover:border-brand-600 hover:shadow-[0_2px_12px_rgba(23,105,224,0.10)]"
           >
-            <span className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl ${s.iconBg}`}>
-              <TablerIcon name={s.icon} size={22} aria-hidden="true" className={s.iconColor} />
+            <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
+              <TablerIcon name={s.icon} size={18} aria-hidden="true" />
             </span>
-            <h3 className={`mb-1.5 text-[14px] font-bold leading-snug ${s.titleColor}`}>{s.title}</h3>
-            <p className="mb-4 flex-grow text-[11px] leading-relaxed text-ink-soft">{s.sub}</p>
-            <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-brand-600">
-              {s.cta}
-              <TablerIcon name="ti-arrow-right" size={13} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5" />
+            <span className="min-w-0 flex-1">
+              <span className="block text-[13.5px] font-semibold text-ink group-hover:text-brand-600">{s.title}</span>
+              <span className="mt-0.5 block text-[12px] leading-snug text-ink-soft">{s.sub}</span>
             </span>
+            <TablerIcon name="ti-arrow-right" size={15} aria-hidden="true" className="mt-1 shrink-0 text-ink-faint transition-transform group-hover:translate-x-0.5 group-hover:text-brand-600" />
           </Link>
         ))}
       </div>

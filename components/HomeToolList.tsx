@@ -154,11 +154,11 @@ export function HomeToolList() {
           <div className="flex flex-col gap-8">
             {grouped.map(({ cat, tools }) => (
               <section key={cat} aria-labelledby={`cat-${cat}`} className="scroll-mt-20">
-                <div className="mb-3">
+                <div className="mb-3 flex items-baseline gap-3 border-b border-surface-line pb-2">
                   <h2 id={`cat-${cat}`} className="text-[15px] font-bold text-ink">
                     {CATEGORY_META[cat].label}
                   </h2>
-                  <p className="mt-0.5 text-[12px] text-ink-faint">{CATEGORY_META[cat].description}</p>
+                  <span className="text-[11px] text-ink-faint">{CATEGORY_META[cat].description}</span>
                 </div>
                 <div className="flex flex-col gap-2">
                   {tools.map((tool) => (
@@ -182,20 +182,22 @@ const CATEGORY_ICON_COLOR: Record<string, string> = {
 };
 
 function ToolCard({ tool }: { tool: (typeof TOOLS)[number] }) {
-  const iconColor = CATEGORY_ICON_COLOR[tool.category] ?? "text-brand-600";
   return (
     <Link
       href={`/${tool.slug}`}
-      className="group flex items-start gap-4 rounded-2xl bg-[#EEF4FB] px-5 py-4 transition-all hover:bg-[#E4EDF7]"
+      className="group flex items-center gap-3.5 rounded-xl border border-surface-line bg-white px-4 py-3 transition-all hover:border-brand-600 hover:shadow-[0_2px_8px_rgba(23,105,224,0.08)]"
     >
-      <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
-        <TablerIcon name={tool.icon} size={20} aria-hidden="true" className={iconColor} />
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
+        <TablerIcon name={tool.icon} size={17} aria-hidden="true" />
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block text-[14px] font-semibold leading-snug text-ink">{tool.name}</span>
-        <span className="mt-1 block text-[12px] leading-relaxed text-ink-soft">{tool.description}</span>
+        <span className="block text-[13.5px] font-semibold text-ink group-hover:text-brand-600">{tool.name}</span>
+        <span className="mt-0.5 block text-[11.5px] leading-snug text-ink-soft">{tool.description}</span>
       </span>
-      <TablerIcon name="ti-arrow-right" className="mt-1 shrink-0 text-ink-faint transition-transform group-hover:translate-x-0.5 group-hover:text-brand-600" size={16} aria-hidden="true" />
+      <span className="shrink-0 rounded-full border border-surface-line px-1.5 py-0.5 text-[10px] font-medium text-ink-faint">
+        {tool.region}
+      </span>
+      <TablerIcon name="ti-arrow-right" className="shrink-0 text-ink-faint transition-transform group-hover:translate-x-0.5 group-hover:text-brand-600" size={14} aria-hidden="true" />
     </Link>
   );
 }

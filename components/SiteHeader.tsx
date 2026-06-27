@@ -23,14 +23,14 @@ const COUNTRY_LINKS = [
 
 function LogoMark() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 84 84" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 84 84" aria-hidden="true">
       <g transform="translate(6 6) scale(.75)">
         <path d="M26 14h30l16 16v48H26z" fill="#FFFFFF"/>
-        <path d="M56 14v16h16" fill="#E6F1FB"/>
-        <path d="M26 14h30l16 16v48H26z" fill="none" stroke="#0C447C" strokeWidth="5" strokeLinejoin="round"/>
-        <path d="M56 14v16h16" fill="none" stroke="#0C447C" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M36 35h18M36 47h22M36 59h14" fill="none" stroke="#0C447C" strokeWidth="4" strokeLinecap="round"/>
-        <circle cx="67" cy="66" r="16" fill="#185FA5"/>
+        <path d="M56 14v16h16" fill="#EAF3FF"/>
+        <path d="M26 14h30l16 16v48H26z" fill="none" stroke="#16324F" strokeWidth="5" strokeLinejoin="round"/>
+        <path d="M56 14v16h16" fill="none" stroke="#16324F" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M36 35h18M36 47h22M36 59h14" fill="none" stroke="#16324F" strokeWidth="4" strokeLinecap="round"/>
+        <circle cx="67" cy="66" r="16" fill="#1769E0"/>
         <path d="M59 66l6 6 12-14" fill="none" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
       </g>
     </svg>
@@ -59,7 +59,7 @@ export function SiteHeader() {
           <Link href="/" className="flex shrink-0 items-center gap-2.5" onClick={() => setOpen(false)}>
             <LogoMark />
             <span className="flex flex-col leading-tight">
-              <span className="text-[1.15rem] font-bold tracking-tight text-[#0C447C]">MyPay<span className="text-brand-600">Rights</span></span>
+              <span className="text-[1.25rem] font-extrabold tracking-tight text-navy">MyPay<span className="text-brand-600">Rights</span></span>
             </span>
           </Link>
 

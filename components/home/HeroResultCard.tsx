@@ -8,9 +8,9 @@ const ROWS = [
 ] as const;
 
 const TRUST = [
-  { icon: "ti-shield-check", title: "Accurate", sub: "Based on legislation", iconBg: "bg-emerald-50", iconColor: "text-emerald-500" },
-  { icon: "ti-clock-hour-4", title: "Fast", sub: "Results in seconds", iconBg: "bg-blue-50", iconColor: "text-blue-500" },
-  { icon: "ti-users", title: "Trusted", sub: "Used by thousands", iconBg: "bg-blue-50", iconColor: "text-blue-500" },
+  { icon: "ti-shield-check", title: "Accurate", sub: "Based on legislation" },
+  { icon: "ti-clock-hour-4", title: "Fast", sub: "Results in seconds" },
+  { icon: "ti-users", title: "Trusted", sub: "Used by thousands" },
 ] as const;
 
 export function HeroResultCard() {
@@ -27,9 +27,9 @@ export function HeroResultCard() {
       >
         <defs>
           <radialGradient id="cg1" cx="48%" cy="46%" r="52%">
-            <stop offset="0%" stopColor="#BFD7F7" stopOpacity="1" />
-            <stop offset="60%" stopColor="#D4E8FB" stopOpacity="0.75" />
-            <stop offset="100%" stopColor="#EBF4FD" stopOpacity="0.2" />
+            <stop offset="0%" stopColor="#A8C8F0" stopOpacity="1" />
+            <stop offset="60%" stopColor="#C8E0FB" stopOpacity="0.75" />
+            <stop offset="100%" stopColor="#EAF3FF" stopOpacity="0.2" />
           </radialGradient>
         </defs>
 
@@ -65,25 +65,25 @@ export function HeroResultCard() {
       <div className="relative z-10 flex items-start gap-3 px-12 py-8">
 
         {/* Result card */}
-        <div className="relative w-[262px] shrink-0 rounded-2xl border border-white/80 bg-white p-6 shadow-[0_16px_48px_-8px_rgba(24,95,165,0.16),0_4px_16px_-2px_rgba(0,0,0,0.06)]">
-          <p className="mb-2 text-[12px] text-slate-500">Your estimated entitlement</p>
+        <div className="relative w-[262px] shrink-0 rounded-2xl border border-white/80 bg-white p-6 shadow-[0_16px_48px_-8px_rgba(23,105,224,0.16),0_4px_16px_-2px_rgba(0,0,0,0.06)]">
+          <p className="mb-2 text-[12px] text-ink-soft">Your estimated entitlement</p>
 
           <div className="mb-4 flex items-center gap-2.5">
             <span className="text-[1.9rem] font-extrabold tracking-tight text-ink">£8,420.00</span>
-            <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-600">Estimate</span>
+            <span className="rounded-full bg-success-50 px-2.5 py-0.5 text-[11px] font-bold text-success">Estimate</span>
           </div>
 
           <dl>
             {ROWS.map((row) => (
-              <div key={row.label} className="flex items-center justify-between border-t border-dashed border-slate-100 py-2.5 text-[13px]">
-                <dt className="font-semibold text-slate-800">{row.label}</dt>
-                <dd className="text-slate-500">{row.value}</dd>
+              <div key={row.label} className="flex items-center justify-between border-t border-dashed border-surface-line py-2.5 text-[13px]">
+                <dt className="font-semibold text-ink">{row.label}</dt>
+                <dd className="text-ink-soft">{row.value}</dd>
               </div>
             ))}
           </dl>
 
           {/* Blue shield — floats below-left of card */}
-          <div className="absolute -bottom-5 -left-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-600 shadow-[0_8px_24px_rgba(24,95,165,0.45)]">
+          <div className="absolute -bottom-5 -left-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-600 shadow-[0_8px_24px_rgba(23,105,224,0.40)]">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               <path d="M9 11l2 2 4-4" />
@@ -95,12 +95,12 @@ export function HeroResultCard() {
         <div className="flex flex-col gap-2 pt-3">
           {TRUST.map((t) => (
             <div key={t.title} className="flex items-center gap-2.5 rounded-xl border border-white/90 bg-white px-3.5 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-              <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${t.iconBg}`}>
-                <TablerIcon name={t.icon} size={16} aria-hidden="true" className={t.iconColor} />
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-50">
+                <TablerIcon name={t.icon} size={16} aria-hidden="true" className="text-brand-600" />
               </span>
               <div>
                 <p className="text-[12px] font-bold text-ink">{t.title}</p>
-                <p className="text-[10px] text-slate-500">{t.sub}</p>
+                <p className="text-[10px] text-ink-soft">{t.sub}</p>
               </div>
             </div>
           ))}

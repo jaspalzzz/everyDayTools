@@ -5,7 +5,7 @@ export const CARD_THEMES = {
   purple: "bg-violet-50 text-violet-500",
   orange: "bg-orange-50 text-orange-500",
   red: "bg-red-50 text-red-500",
-  gray: "bg-slate-100 text-slate-500",
+  gray: "bg-surface-muted text-ink-soft",
 } as const;
 
 export type CardTheme = keyof typeof CARD_THEMES;

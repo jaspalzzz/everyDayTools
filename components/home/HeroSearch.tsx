@@ -35,8 +35,8 @@ export function HeroSearch() {
             onClick={() => { setActive(c.code); goToList(); }}
             className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-[13px] font-medium transition-colors ${
               active === c.code
-                ? "bg-slate-100 text-ink"
-                : "text-ink-soft hover:bg-slate-50 hover:text-ink"
+                ? "bg-surface-muted text-ink"
+                : "text-ink-soft hover:bg-surface-muted hover:text-ink"
             }`}
           >
             <CountryFlag country={c.code} size={16} />
@@ -53,9 +53,9 @@ export function HeroSearch() {
       {/* Search bar */}
       <form
         onSubmit={handleSubmit}
-        className="flex h-[52px] max-w-[480px] items-center overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-shadow focus-within:border-brand-300 focus-within:shadow-[0_2px_12px_rgba(24,95,165,0.12)]"
+        className="flex h-[52px] max-w-[480px] items-center overflow-hidden rounded-xl border border-surface-line bg-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-shadow focus-within:border-brand-300 focus-within:shadow-[0_2px_12px_rgba(23,105,224,0.12)]"
       >
-        <span className="flex shrink-0 items-center pl-4 text-slate-400">
+        <span className="flex shrink-0 items-center pl-4 text-ink-faint">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -67,12 +67,12 @@ export function HeroSearch() {
           onChange={(e) => setQuery(e.target.value)}
           placeholder='Search calculators... e.g. "redundancy" or "overtime"'
           aria-label="Search calculators"
-          className="flex-1 bg-transparent px-3 py-0 text-[13.5px] text-ink outline-none placeholder:text-slate-400"
+          className="flex-1 bg-transparent px-3 py-0 text-[13.5px] text-ink outline-none placeholder:text-ink-faint"
         />
         <button
           type="submit"
           aria-label="Search"
-          className="mr-1.5 flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-lg bg-brand-600 text-white transition-colors hover:bg-brand-800"
+          className="flex h-full w-[52px] shrink-0 items-center justify-center rounded-r-xl bg-brand-600 text-white transition-colors hover:bg-brand-800"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <circle cx="11" cy="11" r="8" />

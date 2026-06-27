@@ -8,21 +8,13 @@ import { BrowseByCategory } from "@/components/home/BrowseByCategory";
 import { GuidesResources } from "@/components/home/GuidesResources";
 import { homepageSchemas, jsonLd } from "@/lib/seo";
 
-const TRUST_BADGES = [
-  { label: "100% Free",       color: "text-emerald-500" },
-  { label: "Law Backed",      color: "text-emerald-500" },
-  { label: "No Sign Up",      color: "text-emerald-500" },
-  { label: "Private & Secure",color: "text-emerald-500" },
-  { label: "Fast Results",    color: "text-emerald-500" },
+const TRUST_SIGNALS = [
+  { icon: "✓", text: "No signup required" },
+  { icon: "✓", text: "Private — no data stored" },
+  { icon: "✓", text: "Updated for 2026 pay rates" },
+  { icon: "✓", text: "UK · US · Canada · Australia" },
+  { icon: "✓", text: "Educational estimates, not legal advice" },
 ] as const;
-
-function CheckIcon({ className }: { className: string }) {
-  return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" className={`shrink-0 ${className}`} aria-hidden="true">
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  );
-}
 
 export default function HomePage() {
   const [websiteSchema, orgSchema] = homepageSchemas();
@@ -38,34 +30,31 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(orgSchema)} />
 
       {/* Hero */}
-      <section className="bg-[radial-gradient(ellipse_80%_60%_at_70%_40%,rgba(214,233,251,0.45)_0%,rgba(255,255,255,0)_70%)]">
-        <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-6 py-14 lg:grid-cols-[1fr_1fr] lg:gap-12">
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-6 py-14 lg:grid-cols-[1fr_1fr] lg:gap-16">
           {/* Left */}
           <div>
-            {/* Top tagline */}
-            <div className="mb-6 flex items-center gap-2 text-[12px] font-semibold uppercase tracking-widest text-emerald-600">
-              <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
-              Free
-              <span className="text-ink-faint">·</span>
-              Law Backed
-              <span className="text-ink-faint">·</span>
-              No Sign Up
+            {/* Authority pill */}
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-surface-line bg-surface-muted px-3 py-1 text-[11.5px] font-semibold uppercase tracking-wider text-ink-soft">
+              <span className="h-1.5 w-1.5 rounded-full bg-success" />
+              Free · Law Backed · No Sign Up
             </div>
 
-            <h1 className="text-[3.25rem] font-extrabold leading-[1.08] tracking-tight text-ink">
+            <h1 className="text-[3rem] font-extrabold leading-[1.07] tracking-[-0.02em] text-ink">
               Know exactly<br />
               <span className="text-brand-600">what you&apos;re owed.</span>
             </h1>
 
-            <p className="mt-5 max-w-[480px] text-[1.0625rem] leading-relaxed text-ink-soft">
-              Whether you&apos;ve been made redundant, you&apos;re leaving a job, or your employer hasn&apos;t paid you — our free calculators are backed by employment law in the UK, US, Canada and Australia.
+            <p className="mt-4 max-w-[460px] text-[1rem] leading-[1.7] text-ink-soft">
+              Redundancy pay, notice period, holiday pay, overtime — calculated against current employment law. No signup. No data stored. Updated for 2026.
             </p>
 
-            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1.5">
-              {TRUST_BADGES.map((b) => (
-                <span key={b.label} className="flex items-center gap-1.5 text-[12.5px] font-medium text-ink-soft">
-                  <CheckIcon className={b.color} />
-                  {b.label}
+            {/* Trust signals — 2 col grid */}
+            <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-1.5">
+              {TRUST_SIGNALS.map((t) => (
+                <span key={t.text} className="flex items-center gap-1.5 text-[12px] font-medium text-ink-soft">
+                  <span className="text-success font-bold text-[11px]">{t.icon}</span>
+                  {t.text}
                 </span>
               ))}
             </div>
@@ -80,39 +69,55 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Authority trust bar */}
+      <div className="border-y border-surface-line bg-navy">
+        <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-between gap-4 px-6 py-3">
+          <span className="text-[12px] font-semibold text-white/80 uppercase tracking-wider">Built on employment law for:</span>
+          {["🇬🇧 United Kingdom", "🇺🇸 United States", "🇨🇦 Canada", "🇦🇺 Australia"].map((c) => (
+            <span key={c} className="text-[13px] font-semibold text-white">{c}</span>
+          ))}
+          <span className="text-[11px] text-white/50">Updated 2026</span>
+        </div>
+      </div>
+
       {/* Body sections */}
-      <div className="mx-auto max-w-[1180px] px-6 pb-4">
-        <div className="mt-10">
-          <HowItWorks />
-        </div>
-        <div className="mt-14">
-          <BrowseBySituation />
-        </div>
-        <div className="mt-14">
-          <PopularCalculators />
-        </div>
-        <div className="mt-14">
-          <BrowseByCategory />
-        </div>
-        <div className="mt-14">
-          <GuidesResources />
-        </div>
+      <div className="bg-surface-muted">
+        <div className="mx-auto max-w-[1180px] px-6 pb-12">
+          <div className="pt-10">
+            <HowItWorks />
+          </div>
+          <div className="mt-14">
+            <BrowseBySituation />
+          </div>
+          <div className="mt-14">
+            <PopularCalculators />
+          </div>
+          <div className="mt-14">
+            <BrowseByCategory />
+          </div>
+          <div className="mt-14">
+            <GuidesResources />
+          </div>
 
-        {/* All calculators — searchable list */}
-        <section id="all-calculators" className="mt-16 scroll-mt-20">
-          <h2 className="mb-8 text-2xl font-bold text-ink">All calculators</h2>
-          <main>
-            <HomeToolList />
-          </main>
-        </section>
+          {/* All calculators */}
+          <section id="all-calculators" className="mt-16 scroll-mt-20">
+            <div className="mb-6">
+              <h2 className="text-[1.375rem] font-bold tracking-tight text-ink">All calculators</h2>
+              <p className="mt-1 text-[13px] text-ink-soft">Complete directory — filter by country or search by topic.</p>
+            </div>
+            <main>
+              <HomeToolList />
+            </main>
+          </section>
 
-        <p className="mx-auto mt-12 max-w-lg text-center text-xs leading-relaxed text-ink-faint">
-          All figures are estimates based on current statutory rates. Always confirm
-          with your employer or a qualified adviser.{" "}
-          <a href="/disclaimer" className="underline-offset-2 hover:underline">
-            Read the disclaimer.
-          </a>
-        </p>
+          <p className="mx-auto mt-12 max-w-lg text-center text-[11px] leading-relaxed text-ink-faint">
+            All figures are educational estimates based on current statutory rates and are not legal advice. Always confirm
+            with your employer or a qualified adviser.{" "}
+            <a href="/disclaimer" className="underline underline-offset-2 hover:text-ink">
+              Read the disclaimer.
+            </a>
+          </p>
+        </div>
       </div>
     </>
   );

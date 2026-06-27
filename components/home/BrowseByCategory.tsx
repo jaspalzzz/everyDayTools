@@ -37,7 +37,7 @@ export function BrowseByCategory() {
             href={c.href}
             className="flex items-center gap-3 rounded-xl border border-surface-line bg-white px-4 py-3 shadow-sm transition-all hover:-translate-y-px hover:border-brand-600 hover:shadow-md"
           >
-            <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${CARD_THEMES[c.theme]}`}>
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
               <TablerIcon name={c.icon} size={18} aria-hidden="true" />
             </span>
             <span className="flex flex-col">
@@ -52,7 +52,7 @@ export function BrowseByCategory() {
       <div className="flex flex-col items-stretch gap-5 rounded-2xl border border-brand-100 bg-brand-50 px-8 py-5 lg:flex-row lg:items-center lg:justify-between">
         {TRUST.map((t) => (
           <div key={t.title} className="flex flex-1 items-center gap-3">
-            <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ${t.theme === "green" ? "text-emerald-500" : "text-brand-600"}`}>
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm text-brand-600">
               <TablerIcon name={t.icon} size={18} aria-hidden="true" />
             </span>
             <span className="flex flex-col">

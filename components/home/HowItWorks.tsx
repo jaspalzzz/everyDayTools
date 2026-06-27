@@ -1,37 +1,46 @@
 import { TablerIcon } from "@/components/TablerIcon";
 
 const STEPS = [
-  { icon: "ti-world", title: "Choose your country", sub: "Select where you work" },
-  { icon: "ti-calculator", title: "Open a calculator", sub: "Pick the one that matches your situation" },
-  { icon: "ti-file-check", title: "Get your estimate", sub: "Instant results based on employment law" },
+  {
+    icon: "ti-world",
+    title: "Jurisdiction-aware",
+    sub: "Employment law differs by country. Select UK, US, Canada or Australia — every calculation uses that country's current statutory rates.",
+  },
+  {
+    icon: "ti-lock",
+    title: "Completely private",
+    sub: "No account. No data stored. Your figures are calculated in your browser and never sent to a server or third party.",
+  },
+  {
+    icon: "ti-file-check",
+    title: "Law-backed estimates",
+    sub: "Results are based on current statutory legislation and payroll rules — not guesswork. Updated for 2026 pay rates.",
+  },
 ] as const;
 
 export function HowItWorks() {
   return (
     <section aria-labelledby="how-heading" className="mt-6">
-      <h2 id="how-heading" className="mb-8 text-center text-2xl font-bold text-ink">
-        How it works
-      </h2>
-      <div className="flex flex-col items-stretch justify-between gap-6 rounded-2xl border border-brand-100 bg-brand-50 p-8 lg:flex-row lg:items-center">
+      <div className="mb-6 flex items-end justify-between">
+        <h2 id="how-heading" className="text-[1.375rem] font-bold tracking-tight text-ink">
+          Why people trust these calculators
+        </h2>
+      </div>
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {STEPS.map((step, i) => (
-          <div key={step.title} className="flex flex-1 items-center gap-4">
-            <span className="flex h-13 w-13 shrink-0 items-center justify-center rounded-xl border border-surface-line bg-white text-brand-600 shadow-sm" style={{ height: "3.25rem", width: "3.25rem" }}>
-              <TablerIcon name={step.icon} size={24} aria-hidden="true" />
+          <div key={step.title} className="flex gap-4 rounded-xl border border-surface-line bg-white p-5">
+            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
+              <TablerIcon name={step.icon} size={20} aria-hidden="true" />
             </span>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="flex h-[1.15rem] w-[1.15rem] items-center justify-center rounded-full bg-brand-600 text-[11px] font-bold text-white">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-navy text-[10px] font-bold text-white">
                   {i + 1}
                 </span>
-                <h3 className="text-[15px] font-bold text-ink">{step.title}</h3>
+                <h3 className="text-[14px] font-bold text-ink">{step.title}</h3>
               </div>
-              <p className="mt-0.5 text-xs text-ink-soft">{step.sub}</p>
+              <p className="text-[12.5px] leading-relaxed text-ink-soft">{step.sub}</p>
             </div>
-            {i < STEPS.length - 1 && (
-              <span className="ml-auto hidden shrink-0 text-ink-faint lg:block">
-                <TablerIcon name="ti-arrow-right" size={20} aria-hidden="true" />
-              </span>
-            )}
           </div>
         ))}
       </div>

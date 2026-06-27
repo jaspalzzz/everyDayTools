@@ -39,8 +39,8 @@ export function GuidesResources() {
   return (
     <section aria-labelledby="guides-heading" className="mt-6">
       <div className="mb-8 flex items-end justify-between">
-        <h2 id="guides-heading" className="text-2xl font-bold text-ink">
-          Guides &amp; resources
+        <h2 id="guides-heading" className="text-[1.375rem] font-bold tracking-tight text-ink">
+          Understand your rights
         </h2>
         <Link href="/guides" className="group inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
           View all guides
@@ -65,7 +65,7 @@ export function GuidesResources() {
               {g.badge && (
                 <span
                   className={`absolute left-3 top-3 rounded px-2 py-1 text-[11px] font-bold ${
-                    g.badge === "popular" ? "bg-blue-50 text-blue-600" : "bg-emerald-50 text-emerald-600"
+                    g.badge === "popular" ? "bg-brand-50 text-brand-600" : "bg-success-50 text-success"
                   }`}
                 >
                   {g.badge === "popular" ? "POPULAR" : "NEW"}
