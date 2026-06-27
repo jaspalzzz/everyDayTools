@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Faq } from "./Faq";
 import { SourceBadge } from "./SourceBadge";
-import { relatedTools, type ToolMeta } from "@/data/tools";
+import { relatedTools, CATEGORY_META, type ToolMeta } from "@/data/tools";
 import { TablerIcon } from "./TablerIcon";
 import type { FaqItem, SourceRef } from "@/lib/types";
 
@@ -38,12 +38,30 @@ export function ToolLayout({
           Home
         </Link>
         <span className="mx-1.5">/</span>
+        <span className="hover:text-ink-soft">
+          {CATEGORY_META[tool.category].label}
+        </span>
+        <span className="mx-1.5">/</span>
         <span>{tool.shortName}</span>
       </nav>
 
       {/* H1 = exact keyword */}
       <h1 className="text-2xl font-medium tracking-tight text-ink">{tool.name}</h1>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-soft">{tool.description}</p>
+
+      {/* Verified date — visible above fold for E-E-A-T and user trust */}
+      {verifiedDate && (
+        <p className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-surface-line bg-surface-muted px-3 py-1 text-[11px] text-ink-faint">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+          Rates verified{" "}
+          {new Date(verifiedDate).toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            timeZone: "UTC",
+          })}
+        </p>
+      )}
 
       {/* Tool — above the fold, no ad before it */}
       <div className="mt-6">{calculator}</div>
