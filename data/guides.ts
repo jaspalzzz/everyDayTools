@@ -69,6 +69,39 @@ export const GUIDES: GuideMeta[] = [
     relatedTool: "maternity-pay-calculator",
     category: "Parental Leave",
   },
+  {
+    slug: "uk-constructive-dismissal",
+    title: "Constructive Dismissal UK: Your Rights & How to Claim 2026",
+    description:
+      "What constructive dismissal is, when it applies, how to resign correctly to preserve your claim, what compensation you can get, and the 3-month time limit to act.",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    country: "UK",
+    relatedTool: "redundancy-pay-calculator",
+    category: "Leaving a Job",
+  },
+  {
+    slug: "uk-settlement-agreement",
+    title: "UK Settlement Agreements: What You're Owed & How to Negotiate 2026",
+    description:
+      "What a settlement agreement is, what it must contain to be valid, the tax-free £30,000 threshold, typical settlement amounts by role, and how to negotiate a better offer.",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    country: "UK",
+    relatedTool: "severance-pay-calculator",
+    category: "Leaving a Job",
+  },
+  {
+    slug: "uk-pilon",
+    title: "PILON UK: Pay in Lieu of Notice Explained 2026",
+    description:
+      "What PILON is, how it differs from garden leave, how it's taxed after the 2018 rule change, how to calculate it, and what to do if your employer doesn't pay.",
+    datePublished: "2026-06-27",
+    dateModified: "2026-06-27",
+    country: "UK",
+    relatedTool: "notice-period-calculator",
+    category: "Leaving a Job",
+  },
 ];
 
 export function getGuide(slug: string): GuideMeta | undefined {

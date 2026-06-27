@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { TOOLS } from "@/data/tools";
 import { GUIDES } from "@/data/guides";
+import { US_STATES } from "@/data/usStates";
 import { SITE } from "@/lib/seo";
 
 // Generated once at build time for the static export.
@@ -26,6 +27,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: priorityByTier[tool.tier ?? 1] ?? 0.8,
   }));
 
+  const stateEntries: MetadataRoute.Sitemap = US_STATES.map((s) => ({
+    url: `${SITE.url}/us/states/${s.slug}`,
+    changeFrequency: "yearly" as const,
+    priority: 0.75,
+    lastModified: `${s.verifiedYear}-01-01`,
+  }));
+
   return [
     { url: SITE.url, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE.url}/uk`, changeFrequency: "monthly", priority: 0.9 },
@@ -34,10 +42,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/au`, changeFrequency: "monthly", priority: 0.85 },
     { url: `${SITE.url}/guides`, changeFrequency: "monthly", priority: 0.9 },
     ...guideEntries,
+    { url: `${SITE.url}/situations/made-redundant-uk`, changeFrequency: "monthly", priority: 0.88 },
     { url: `${SITE.url}/about`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE.url}/privacy`, changeFrequency: "yearly", priority: 0.2 },
     { url: `${SITE.url}/terms`, changeFrequency: "yearly", priority: 0.2 },
     { url: `${SITE.url}/disclaimer`, changeFrequency: "yearly", priority: 0.2 },
     ...toolEntries,
+    ...stateEntries,
   ];
 }
