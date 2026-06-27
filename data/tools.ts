@@ -154,7 +154,7 @@ export const TOOLS: ToolMeta[] = [
       "Made redundant in Australia? Calculate your NES redundancy pay under the Fair Work Act 2009 — based on your years of service and weekly base rate.",
     region: "AU",
     icon: "ti-file-off",
-    hero: true,
+    hero: false,
     tier: 1,
     category: "leaving-job",
     related: ["redundancy-pay-calculator", "notice-period-calculator", "take-home-pay-calculator"],
