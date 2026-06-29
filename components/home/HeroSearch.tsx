@@ -53,10 +53,10 @@ export function HeroSearch() {
       </div>
 
       {/* Finder row */}
-      <form onSubmit={handleSubmit} className="grid gap-2.5 p-4" style={{ gridTemplateColumns: "170px 1fr 54px" }}>
+      <form onSubmit={handleSubmit} className="grid grid-cols-[1fr_54px] sm:grid-cols-[170px_1fr_54px] gap-2.5 p-4">
         <select
           aria-label="Country"
-          className="min-h-[52px] rounded-lg border px-3.5 text-[13px] font-medium text-ink outline-none"
+          className="col-span-2 sm:col-span-1 min-h-[52px] rounded-lg border px-3.5 text-[13px] font-medium text-ink outline-none"
           style={{ borderColor: "#d8e2ec" }}
           value={active}
           onChange={(e) => setActive(e.target.value as typeof active)}
@@ -69,7 +69,7 @@ export function HeroSearch() {
         <input
           type="search"
           aria-label="Search calculator"
-          placeholder='Describe your issue: unpaid wages, notice pay, redundancy'
+          placeholder='Describe your issue: unpaid wages, notice pay…'
           className="min-h-[52px] rounded-lg border px-3.5 text-[13px] text-ink outline-none placeholder:text-[#8795a3]"
           style={{ borderColor: "#d8e2ec" }}
         />
