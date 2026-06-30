@@ -346,9 +346,9 @@ export function SiteHeader() {
                   onMouseLeave={closeMenu}
                   style={{
                     position: "absolute", top: "calc(100% + 10px)", right: 0,
-                    width: 220, border: "1px solid #cbd9e8", borderRadius: 10,
+                    width: 280, border: "1px solid #cbd9e8", borderRadius: 10,
                     background: "#fff", boxShadow: "0 16px 48px rgba(16,32,51,.14)",
-                    padding: 8, zIndex: 100,
+                    padding: 6, zIndex: 100,
                   }}
                 >
                   {COUNTRY_LINKS.map((c) => (
@@ -357,23 +357,22 @@ export function SiteHeader() {
                       href={c.href}
                       onClick={() => setMenu(null)}
                       style={{
-                        display: "grid", gridTemplateColumns: "36px 1fr",
-                        alignItems: "center", gap: 10, minHeight: 48,
-                        borderRadius: 7, padding: "7px 9px",
-                        textDecoration: "none", color: "#25384c",
+                        display: "flex", alignItems: "center", gap: 10,
+                        borderRadius: 7, padding: "8px 10px",
+                        textDecoration: "none",
                       }}
                       className="hover:bg-[#f6f9fc]"
                     >
                       <span style={{
-                        width: 32, height: 28, display: "grid", placeItems: "center",
+                        width: 36, height: 30, flexShrink: 0, display: "grid", placeItems: "center",
                         border: "1px solid #bfd3e8", borderRadius: 6, background: "#f8fbff",
                         color: "#16324f", fontSize: 11, fontWeight: 900, letterSpacing: ".04em",
                       }}>
                         {c.code}
                       </span>
-                      <span>
-                        <strong style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#102033" }}>{c.label}</strong>
-                        <small style={{ color: "#52616f", fontSize: 11, fontWeight: 600 }}>{c.sub}</small>
+                      <span style={{ minWidth: 0 }}>
+                        <strong style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#102033", whiteSpace: "nowrap" }}>{c.label}</strong>
+                        <small style={{ display: "block", color: "#52616f", fontSize: 11, fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{c.sub}</small>
                       </span>
                     </Link>
                   ))}
