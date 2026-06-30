@@ -1,11 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import { TOOLS, CATEGORY_META } from "@/data/tools";
 import { SITE } from "@/lib/seo";
 import { TablerIcon } from "./TablerIcon";
 import { CountryFlag } from "./CountryFlag";
+
+// Consistent SVG chevron — always same size, same weight
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      width="12" height="12" viewBox="0 0 12 12" fill="none"
+      xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+      style={{ transition: "transform 180ms ease", transform: open ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0 }}
+    >
+      <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
 
 const MEGA_CATEGORIES = [
   { icon: "L", label: "Leaving a job", desc: "Redundancy, notice pay, severance, settlement, final paycheck.", href: "/#cat-leaving-job" },
@@ -51,15 +64,20 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState<"calculators" | "countries" | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
-    if (!menu) return;
-    function handler(e: MouseEvent) {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) setMenu(null);
-    }
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [menu]);
+  const openMenu = useCallback((name: "calculators" | "countries") => {
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    setMenu(name);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    leaveTimer.current = setTimeout(() => setMenu(null), 120);
+  }, []);
+
+  const cancelClose = useCallback(() => {
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+  }, []);
 
   return (
     <>
@@ -78,10 +96,13 @@ export function SiteHeader() {
           <nav ref={navRef} aria-label="Primary" className="hidden items-center gap-6 lg:flex">
 
             {/* Calculators mega-menu trigger */}
-            <div className="relative">
+            <div
+              className="relative"
+              onMouseEnter={() => openMenu("calculators")}
+              onMouseLeave={closeMenu}
+            >
               <button
                 type="button"
-                onClick={() => setMenu(menu === "calculators" ? null : "calculators")}
                 aria-expanded={menu === "calculators"}
                 style={{
                   height: 40, display: "inline-flex", alignItems: "center", gap: 7,
@@ -89,17 +110,17 @@ export function SiteHeader() {
                   borderRadius: 8,
                   color: menu === "calculators" ? "#0f56bd" : "#25384c",
                   background: menu === "calculators" ? "#f7fbff" : "transparent",
-                  padding: "0 11px", cursor: "pointer", fontWeight: 850, fontSize: 14,
+                  padding: "0 11px", cursor: "default", fontWeight: 850, fontSize: 14,
                 }}
               >
                 Calculators
-                <span style={{ color: menu === "calculators" ? "#0f56bd" : "#52616f", fontSize: 15, lineHeight: 1 }}>
-                  {menu === "calculators" ? "⌃" : "⌄"}
-                </span>
+                <Chevron open={menu === "calculators"} />
               </button>
 
               {menu === "calculators" && (
                 <div
+                  onMouseEnter={cancelClose}
+                  onMouseLeave={closeMenu}
                   style={{
                     position: "absolute", top: "calc(100% + 14px)", left: "50%",
                     width: "min(940px, calc(100vw - 48px))",
@@ -211,10 +232,13 @@ export function SiteHeader() {
             <Link href="/guides" style={{ fontSize: 14, fontWeight: 700, color: "#25384c" }} className="hover:text-brand-600 transition-colors">Guides</Link>
 
             {/* Countries dropdown */}
-            <div className="relative">
+            <div
+              className="relative"
+              onMouseEnter={() => openMenu("countries")}
+              onMouseLeave={closeMenu}
+            >
               <button
                 type="button"
-                onClick={() => setMenu(menu === "countries" ? null : "countries")}
                 aria-expanded={menu === "countries"}
                 style={{
                   height: 40, display: "inline-flex", alignItems: "center", gap: 7,
@@ -222,22 +246,23 @@ export function SiteHeader() {
                   borderRadius: 8,
                   color: menu === "countries" ? "#0f56bd" : "#25384c",
                   background: menu === "countries" ? "#f7fbff" : "transparent",
-                  padding: "0 11px", cursor: "pointer", fontWeight: 850, fontSize: 14,
+                  padding: "0 11px", cursor: "default", fontWeight: 850, fontSize: 14,
                 }}
               >
                 Countries
-                <span style={{ color: menu === "countries" ? "#0f56bd" : "#52616f", fontSize: 15, lineHeight: 1 }}>
-                  {menu === "countries" ? "⌃" : "⌄"}
-                </span>
+                <Chevron open={menu === "countries"} />
               </button>
 
               {menu === "countries" && (
-                <div style={{
-                  position: "absolute", top: "calc(100% + 14px)", left: "50%", width: 300,
-                  transform: "translateX(-50%)",
-                  border: "1px solid #cbd9e8", borderRadius: 12, background: "#fff",
-                  boxShadow: "0 24px 70px rgba(16,32,51,.16)", padding: 10, zIndex: 100,
-                }}>
+                <div
+                  onMouseEnter={cancelClose}
+                  onMouseLeave={closeMenu}
+                  style={{
+                    position: "absolute", top: "calc(100% + 14px)", left: "50%", width: 300,
+                    transform: "translateX(-50%)",
+                    border: "1px solid #cbd9e8", borderRadius: 12, background: "#fff",
+                    boxShadow: "0 24px 70px rgba(16,32,51,.16)", padding: 10, zIndex: 100,
+                  }}>
                   {COUNTRY_LINKS.map((c) => (
                     <Link
                       key={c.href}
