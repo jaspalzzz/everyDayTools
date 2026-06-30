@@ -18,10 +18,7 @@ export default function HomePage() {
   const [websiteSchema, orgSchema] = homepageSchemas();
   return (
     <>
-      <a
-        href="#all-calculators"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-sm focus:text-white focus:outline-none"
-      >
+      <a href="#all-calculators" className="skip-link">
         Skip to calculators
       </a>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(websiteSchema)} />
@@ -29,7 +26,7 @@ export default function HomePage() {
 
       {/* ── Hero ── */}
       <section style={{ background: "radial-gradient(circle at 78% 20%,rgba(23,105,224,.10),transparent 28%),linear-gradient(180deg,#ffffff 0%,#f8fbff 74%,#f7fafc 100%)", borderBottom: "1px solid #e7edf3" }}>
-        <div style={{ maxWidth: 1180, margin: "0 auto", padding: "44px 24px 36px", display: "grid", gridTemplateColumns: "minmax(0,1.02fr) minmax(410px,.78fr)", alignItems: "center", gap: 52 }}>
+        <div className="mx-auto grid grid-cols-1 lg:grid-cols-[1.02fr_0.78fr] items-center gap-8 lg:gap-12" style={{ maxWidth: 1180, padding: "44px 24px 36px" }}>
 
           {/* Left column */}
           <div>
@@ -54,7 +51,7 @@ export default function HomePage() {
             </div>
 
             {/* Trust row */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 10, marginTop: 20, maxWidth: 640 }}>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-5" style={{ maxWidth: 640 }}>
               {TRUST_ROW.map((t) => (
                 <div key={t.title} style={{ border: "1px solid #e7edf3", borderRadius: 8, background: "rgba(255,255,255,.78)", padding: 12, color: "#52616f", fontSize: 12, fontWeight: 700 }}>
                   <strong style={{ display: "block", color: "#102033", fontSize: 13, marginBottom: 2 }}>{t.title}</strong>

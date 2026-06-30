@@ -45,3 +45,26 @@ body {
   outline-offset: 2px;
   border-radius: 3px;
 }
+
+/* Skip link — invisible until keyboard focused */
+.skip-link {
+  position: fixed;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 10px 22px;
+  border-radius: 0 0 10px 10px;
+  background: #1769e0;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(16,32,51,.18);
+  transition: top 180ms ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: none;
+}
