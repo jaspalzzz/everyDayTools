@@ -62,11 +62,14 @@ function LogoMark() {
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const [menu, setMenu] = useState<"calculators" | "countries" | null>(null);
+  const [menu, setMenu] = useState<"calculators" | "countries" | "region" | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQ, setSearchQ] = useState("");
   const navRef = useRef<HTMLDivElement>(null);
   const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
 
-  const openMenu = useCallback((name: "calculators" | "countries") => {
+  const openMenu = useCallback((name: "calculators" | "countries" | "region") => {
     if (leaveTimer.current) clearTimeout(leaveTimer.current);
     setMenu(name);
   }, []);
@@ -78,6 +81,21 @@ export function SiteHeader() {
   const cancelClose = useCallback(() => {
     if (leaveTimer.current) clearTimeout(leaveTimer.current);
   }, []);
+
+  const toggleSearch = useCallback(() => {
+    setSearchOpen((v) => {
+      if (!v) setTimeout(() => searchRef.current?.focus(), 50);
+      else setSearchQ("");
+      return !v;
+    });
+  }, []);
+
+  const searchResults = searchQ.length > 1
+    ? TOOLS.filter((t) =>
+        t.name.toLowerCase().includes(searchQ.toLowerCase()) ||
+        t.description.toLowerCase().includes(searchQ.toLowerCase())
+      ).slice(0, 8)
+    : [];
 
   return (
     <>
@@ -297,20 +315,168 @@ export function SiteHeader() {
           </nav>
 
           {/* Right actions */}
-          <div className="hidden items-center gap-2.5 lg:flex">
-            <Link
-              href="/uk"
-              style={{ height: 38, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", color: "#25384c", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, padding: "0 12px", fontSize: 13, fontWeight: 800 }}
+          <div className="hidden items-center gap-2.5 lg:flex" style={{ position: "relative" }}>
+
+            {/* Country switcher */}
+            <div
+              style={{ position: "relative" }}
+              onMouseEnter={() => openMenu("region")}
+              onMouseLeave={closeMenu}
             >
-              UK ▾
-            </Link>
-            <Link
-              href="/#all-calculators"
+              <button
+                type="button"
+                aria-expanded={menu === "region"}
+                aria-label="Switch country"
+                style={{
+                  height: 38, border: "1px solid #d8e2ec", borderRadius: 8,
+                  background: menu === "region" ? "#f7fbff" : "#fff",
+                  color: "#25384c", display: "inline-flex", alignItems: "center",
+                  justifyContent: "center", gap: 6, padding: "0 12px",
+                  fontSize: 13, fontWeight: 800, cursor: "default",
+                  borderColor: menu === "region" ? "#b8d3f1" : "#d8e2ec",
+                }}
+              >
+                UK
+                <Chevron open={menu === "region"} />
+              </button>
+
+              {menu === "region" && (
+                <div
+                  onMouseEnter={cancelClose}
+                  onMouseLeave={closeMenu}
+                  style={{
+                    position: "absolute", top: "calc(100% + 10px)", right: 0,
+                    width: 220, border: "1px solid #cbd9e8", borderRadius: 10,
+                    background: "#fff", boxShadow: "0 16px 48px rgba(16,32,51,.14)",
+                    padding: 8, zIndex: 100,
+                  }}
+                >
+                  {COUNTRY_LINKS.map((c) => (
+                    <Link
+                      key={c.href}
+                      href={c.href}
+                      onClick={() => setMenu(null)}
+                      style={{
+                        display: "grid", gridTemplateColumns: "36px 1fr",
+                        alignItems: "center", gap: 10, minHeight: 48,
+                        borderRadius: 7, padding: "7px 9px",
+                        textDecoration: "none", color: "#25384c",
+                      }}
+                      className="hover:bg-[#f6f9fc]"
+                    >
+                      <span style={{
+                        width: 32, height: 28, display: "grid", placeItems: "center",
+                        border: "1px solid #bfd3e8", borderRadius: 6, background: "#f8fbff",
+                        color: "#16324f", fontSize: 11, fontWeight: 900, letterSpacing: ".04em",
+                      }}>
+                        {c.code}
+                      </span>
+                      <span>
+                        <strong style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#102033" }}>{c.label}</strong>
+                        <small style={{ color: "#52616f", fontSize: 11, fontWeight: 600 }}>{c.sub}</small>
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Search toggle */}
+            <button
+              type="button"
+              onClick={toggleSearch}
               aria-label="Search calculators"
-              style={{ width: 38, height: 38, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", color: "#25384c", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}
+              aria-expanded={searchOpen}
+              style={{
+                width: 38, height: 38, border: "1px solid #d8e2ec", borderRadius: 8,
+                background: searchOpen ? "#f7fbff" : "#fff",
+                borderColor: searchOpen ? "#b8d3f1" : "#d8e2ec",
+                color: searchOpen ? "#0f56bd" : "#25384c",
+                display: "inline-flex", alignItems: "center", justifyContent: "center",
+                fontSize: 18, cursor: "pointer",
+              }}
             >
-              ⌕
-            </Link>
+              {searchOpen ? "✕" : "⌕"}
+            </button>
+
+            {/* Search overlay panel */}
+            {searchOpen && (
+              <div style={{
+                position: "absolute", top: "calc(100% + 10px)", right: 0,
+                width: 360, border: "1px solid #cbd9e8", borderRadius: 10,
+                background: "#fff", boxShadow: "0 16px 48px rgba(16,32,51,.14)",
+                zIndex: 100, overflow: "hidden",
+              }}>
+                <div style={{ padding: "10px 12px", borderBottom: "1px solid #e7edf3" }}>
+                  <input
+                    ref={searchRef}
+                    type="search"
+                    value={searchQ}
+                    onChange={(e) => setSearchQ(e.target.value)}
+                    placeholder="Search calculators…"
+                    style={{
+                      width: "100%", height: 40, border: "1px solid #d8e2ec", borderRadius: 7,
+                      padding: "0 12px", fontSize: 14, color: "#102033", outline: "none",
+                      background: "#f8fbff",
+                    }}
+                  />
+                </div>
+                {searchQ.length <= 1 ? (
+                  <div style={{ padding: "12px 14px" }}>
+                    <p style={{ margin: 0, fontSize: 12, color: "#52616f", fontWeight: 700 }}>Popular calculators</p>
+                    <div style={{ marginTop: 8, display: "grid", gap: 4 }}>
+                      {MEGA_TOOLS.map((t) => (
+                        <Link
+                          key={t.href}
+                          href={t.href}
+                          onClick={() => { setSearchOpen(false); setSearchQ(""); }}
+                          style={{
+                            display: "flex", alignItems: "center", justifyContent: "space-between",
+                            padding: "9px 10px", borderRadius: 7, fontSize: 13,
+                            fontWeight: 700, color: "#25384c", textDecoration: "none",
+                          }}
+                          className="hover:bg-[#f6f9fc]"
+                        >
+                          {t.label}
+                          <span style={{ color: "#1769e0", fontSize: 12 }}>→</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : searchResults.length === 0 ? (
+                  <div style={{ padding: "20px 14px", fontSize: 13, color: "#52616f", textAlign: "center" }}>
+                    No calculators found for &ldquo;{searchQ}&rdquo;
+                  </div>
+                ) : (
+                  <div style={{ padding: "8px 0", maxHeight: 320, overflowY: "auto" }}>
+                    {searchResults.map((t) => (
+                      <Link
+                        key={t.slug}
+                        href={`/${t.slug}`}
+                        onClick={() => { setSearchOpen(false); setSearchQ(""); }}
+                        style={{
+                          display: "grid", gridTemplateColumns: "1fr auto",
+                          alignItems: "center", gap: 10, padding: "10px 14px",
+                          textDecoration: "none", borderBottom: "1px solid #f1f5f9",
+                        }}
+                        className="hover:bg-[#f6f9fc]"
+                      >
+                        <span>
+                          <strong style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#102033" }}>{t.name}</strong>
+                          <small style={{ color: "#52616f", fontSize: 11 }}>{t.region}</small>
+                        </span>
+                        <span style={{
+                          fontSize: 10, fontWeight: 900, color: "#16324f", letterSpacing: ".04em",
+                          background: "#eaf3ff", borderRadius: 5, padding: "3px 6px",
+                        }}>
+                          {t.region.slice(0, 2)}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Mobile hamburger */}
