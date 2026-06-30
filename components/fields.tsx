@@ -137,3 +137,62 @@ export function DateField({ id, label, value, onChange, hint }: DateFieldProps) 
 export function FieldGrid({ children }: { children: ReactNode }) {
   return <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">{children}</div>;
 }
+
+/** Card wrapper for the calculator form — matches the reference "calculator-panel" style. */
+export function FormPanel({ children, label }: { children: ReactNode; label?: string }) {
+  return (
+    <form
+      aria-label={label}
+      style={{
+        border: "1px solid #c8d9ea",
+        borderRadius: 10,
+        background: "#fff",
+        boxShadow: "0 10px 24px rgba(16,32,51,.05)",
+        padding: 22,
+        display: "flex",
+        flexDirection: "column",
+        gap: 20,
+      }}
+    >
+      {children}
+    </form>
+  );
+}
+
+/** Divides the form into labelled sections (matches reference "form-section"). */
+export function FormSection({ title, children }: { title?: string; children: ReactNode }) {
+  return (
+    <div
+      style={{
+        borderTop: title ? "1px solid #e7edf3" : "none",
+        paddingTop: title ? 18 : 0,
+      }}
+    >
+      {title && (
+        <h2 style={{ margin: "0 0 12px", color: "#102033", fontSize: 16, fontWeight: 700 }}>
+          {title}
+        </h2>
+      )}
+      {children}
+    </div>
+  );
+}
+
+/** Amber assumption/note box inside the form (matches reference "assumption-box"). */
+export function AssumptionBox({ children }: { children: ReactNode }) {
+  return (
+    <div
+      style={{
+        border: "1px solid #f1d9aa",
+        borderRadius: 8,
+        background: "#fff4df",
+        color: "#5d461d",
+        padding: 13,
+        fontSize: 13,
+        marginTop: 14,
+      }}
+    >
+      {children}
+    </div>
+  );
+}

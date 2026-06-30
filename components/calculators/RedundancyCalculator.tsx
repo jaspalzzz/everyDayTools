@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { FieldGrid, NumberField } from "../fields";
+import { FieldGrid, FormPanel, NumberField } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcRedundancy, REDUNDANCY_SOURCE } from "@/lib/calculators/redundancy";
 import { UK_REDUNDANCY } from "@/lib/rates";
@@ -65,8 +65,8 @@ export function RedundancyCalculator({ startEligible = false }: { startEligible?
 
       {eligible && (
         <>
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-            <form className="flex flex-col gap-4" aria-label="Redundancy pay inputs">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+            <FormPanel label="Redundancy pay inputs">
               <FieldGrid>
                 <NumberField id="age" label="Your age" value={age} onChange={setAge} min={16} max={100} />
                 <NumberField
@@ -87,8 +87,9 @@ export function RedundancyCalculator({ startEligible = false }: { startEligible?
                 prefix="£"
                 hint="Before tax. Capped at £751 for the 2026/27 statutory calculation."
               />
-            </form>
+            </FormPanel>
 
+            <div style={{ position: "sticky", top: 88 }}>
             <ResultPanel
               result={result}
               letterMeta={{
@@ -105,6 +106,7 @@ export function RedundancyCalculator({ startEligible = false }: { startEligible?
                 ],
               }}
             />
+            </div>
           </div>
 
           {/* Scenario comparison */}

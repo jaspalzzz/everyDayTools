@@ -150,9 +150,6 @@ export function ToolLayout({
             background: "#fff", boxShadow: "0 10px 24px rgba(16,32,51,.05)", padding: 22,
           }}
         >
-          <h2 id="methodology-heading" style={{ margin: "0 0 12px", color: "#102033", fontSize: 22, lineHeight: 1.2 }}>
-            How {tool.shortName.toLowerCase()} {tool.shortName.toLowerCase().endsWith("s") ? "are" : "is"} calculated
-          </h2>
           <div className="prose-tool text-sm leading-relaxed" style={{ color: "#25384c" }}>
             {contentBlock}
           </div>
