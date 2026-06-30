@@ -77,7 +77,7 @@ export function SiteFooter() {
       {/* Bottom note */}
       <div className="border-t" style={{ borderColor: "#e7edf3" }}>
         <p className="mx-auto max-w-[1180px] px-6 py-4 text-[12px]" style={{ color: "#6d7b88" }}>
-          © {new Date().getFullYear()} MyPayRights. All figures are educational estimates and are not legal or financial advice.{" "}
+          © 2026 MyPayRights. All figures are educational estimates and are not legal or financial advice.{" "}
           <Link href="/disclaimer" className="underline-offset-2 hover:underline">Read the disclaimer.</Link>
         </p>
       </div>
