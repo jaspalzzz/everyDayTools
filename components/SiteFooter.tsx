@@ -4,11 +4,10 @@ export function SiteFooter() {
   return (
     <footer className="border-t bg-white" style={{ borderColor: "#e7edf3" }}>
       <div
-        className="mx-auto grid max-w-[1180px] gap-6 px-6 py-9"
-        style={{ gridTemplateColumns: "1.2fr repeat(4, 1fr)" }}
+        className="mx-auto grid max-w-[1180px] grid-cols-2 md:grid-cols-5 gap-8 px-6 py-9"
       >
         {/* Brand column */}
-        <div>
+        <div className="col-span-2 md:col-span-1">
           <Link href="/" className="inline-flex items-center" style={{ gap: 10 }}>
             <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 84 84" aria-hidden="true">
               <g transform="translate(6 6) scale(.75)">
@@ -37,7 +36,7 @@ export function SiteFooter() {
           </h4>
           <Link href="/redundancy-pay-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Redundancy pay</Link>
           <Link href="/notice-period-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Notice pay</Link>
-          <Link href="/final-paycheck-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Final paycheck</Link>
+          <Link href="/final-paycheck-deadline-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Final paycheck</Link>
           <Link href="/settlement-agreement-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Settlement agreement</Link>
         </div>
 
@@ -47,9 +46,9 @@ export function SiteFooter() {
             Pay &amp; tax
           </h4>
           <Link href="/take-home-pay-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Take-home pay</Link>
-          <Link href="/overtime-pay-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Overtime pay</Link>
+          <Link href="/take-home-overtime-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Overtime pay</Link>
           <Link href="/pay-rise-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Pay rise</Link>
-          <Link href="/unpaid-wages-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Unpaid wages</Link>
+          <Link href="/payslip-analyser" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Payslip analyser</Link>
         </div>
 
         {/* Countries */}
