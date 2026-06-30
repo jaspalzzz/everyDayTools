@@ -78,7 +78,9 @@ export default function HomePage() {
         </div>
 
         {/* Category band */}
-        <BrowseByCategory />
+        <div id="all-calculators">
+          <BrowseByCategory />
+        </div>
 
         {/* Guides */}
         <GuidesResources />

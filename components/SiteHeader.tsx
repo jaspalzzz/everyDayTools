@@ -21,11 +21,11 @@ function Chevron({ open }: { open: boolean }) {
 }
 
 const MEGA_CATEGORIES = [
-  { icon: "L", label: "Leaving a job", desc: "Redundancy, notice pay, severance, settlement, final paycheck.", href: "/#cat-leaving-job" },
-  { icon: "P", label: "Pay & tax", desc: "Take-home pay, overtime, deductions, salary to hourly, bonus tax.", href: "/#cat-pay-tax" },
-  { icon: "F", label: "Family & parental leave", desc: "Maternity pay, paternity pay, shared parental leave and adoption pay.", href: "/#cat-parental-leave" },
-  { icon: "B", label: "Benefits & entitlements", desc: "Sick pay, holiday pay, unemployment benefits and annual leave.", href: "/#cat-benefits" },
-  { icon: "H", label: "Hours & workplace", desc: "Working days, overtime checks, annual leave and pay-period dates.", href: "/#cat-hours" },
+  { icon: "L", label: "Leaving a job", desc: "Redundancy, notice pay, severance, settlement, final paycheck.", href: "/redundancy-pay-calculator" },
+  { icon: "P", label: "Pay & tax", desc: "Take-home pay, overtime, deductions, salary to hourly, bonus tax.", href: "/take-home-pay-calculator" },
+  { icon: "F", label: "Family & parental leave", desc: "Maternity pay, paternity pay, shared parental leave and adoption pay.", href: "/maternity-pay-calculator" },
+  { icon: "B", label: "Benefits & entitlements", desc: "Sick pay, holiday pay, unemployment benefits and annual leave.", href: "/holiday-entitlement-calculator" },
+  { icon: "H", label: "Hours & workplace", desc: "Working days, overtime checks, annual leave and pay-period dates.", href: "/working-days-calculator" },
   { icon: "A", label: "All calculators", desc: "Browse every calculator by category, country and workplace issue.", href: "/#all-calculators" },
 ] as const;
 
