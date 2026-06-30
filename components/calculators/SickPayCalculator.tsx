@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldGrid, NumberField } from "../fields";
+import { FieldGrid, NumberField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { SSP_SOURCE, calcSickPay } from "@/lib/calculators/sickPay";
 import { UK_SSP } from "@/lib/rates";
@@ -22,8 +22,8 @@ export function SickPayCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Statutory sick pay inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Statutory sick pay inputs">
         <FieldGrid>
           <NumberField
             id="qualifying-days"
@@ -51,8 +51,9 @@ export function SickPayCalculator() {
           step={10}
           hint="Required — confirms eligibility (LEL £129/wk) and applies the 80% earnings cap"
         />
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -72,6 +73,7 @@ export function SickPayCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

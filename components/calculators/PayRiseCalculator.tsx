@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldGrid, NumberField, SelectField } from "../fields";
+import { FieldGrid, NumberField, SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { PAY_RISE_SOURCE, calcPayRise } from "@/lib/calculators/payRise";
 import { COUNTRIES, type CountryCode } from "@/lib/types";
@@ -22,8 +22,8 @@ export function PayRiseCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Pay rise inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Pay rise inputs">
         <SelectField
           id="country"
           label="Country"
@@ -48,8 +48,9 @@ export function PayRiseCalculator() {
             step={0.5}
           />
         </FieldGrid>
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -65,6 +66,7 @@ export function PayRiseCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldGrid, NumberField } from "../fields";
+import { FieldGrid, NumberField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcAuNoticePeriod, AU_NOTICE_SOURCE } from "@/lib/calculators/auNoticePeriod";
 
@@ -21,8 +21,8 @@ export function AuNoticePeriodCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="AU notice period inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="AU notice period inputs">
         <FieldGrid>
           <NumberField
             id="au-notice-years"
@@ -51,8 +51,9 @@ export function AuNoticePeriodCalculator() {
             hint="Used to calculate pay in lieu of notice (PILON)"
           />
         </FieldGrid>
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -69,6 +70,7 @@ export function AuNoticePeriodCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

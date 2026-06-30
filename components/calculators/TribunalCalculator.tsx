@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { NumberField, SelectField, FieldGrid } from "../fields";
+import { NumberField, SelectField, FieldGrid, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcTribunal, TRIBUNAL_SOURCE, type ClaimType, type VentoBand } from "@/lib/calculators/tribunalCompensation";
 import { UK_TRIBUNAL } from "@/lib/rates";
@@ -52,8 +52,8 @@ export function TribunalCalculator() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-        <form className="flex flex-col gap-4" aria-label="Tribunal compensation inputs">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+        <FormPanel label="Tribunal compensation inputs">
           <NumberField
             id="salary"
             label="Gross annual salary"
@@ -120,8 +120,9 @@ export function TribunalCalculator() {
             options={FAULT_OPTIONS}
             hint="Tribunal reduces the award by your share of responsibility"
           />
-        </form>
+        </FormPanel>
 
+        <div style={{ position: "sticky", top: 88 }}>
         <ResultPanel
           result={result}
           letterMeta={{
@@ -142,6 +143,7 @@ export function TribunalCalculator() {
             ],
           }}
         />
+        </div>
       </div>
 
       {/* Cap notice */}

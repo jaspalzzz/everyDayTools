@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldGrid, NumberField, SelectField } from "../fields";
+import { FieldGrid, NumberField, SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { BONUS_TAX_SOURCE, US_SUPPLEMENTAL_RATE, calcBonusTax } from "@/lib/calculators/bonusTax";
 import { US_BONUS } from "@/lib/rates";
@@ -23,8 +23,8 @@ export function BonusTaxCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Bonus tax inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Bonus tax inputs">
         <SelectField
           id="country"
           label="Country"
@@ -50,8 +50,9 @@ export function BonusTaxCalculator() {
             hint="US default: 22% federal supplemental"
           />
         </FieldGrid>
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -68,6 +69,7 @@ export function BonusTaxCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

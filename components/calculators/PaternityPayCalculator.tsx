@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { NumberField, SelectField } from "../fields";
+import { NumberField, SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { PATERNITY_SOURCE, calcPaternityPay } from "@/lib/calculators/paternityPay";
 import { UK_SPP } from "@/lib/rates";
@@ -20,8 +20,8 @@ export function PaternityPayCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Paternity pay inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Paternity pay inputs">
         <NumberField
           id="average-weekly-earnings"
           label="Average gross weekly earnings"
@@ -41,8 +41,9 @@ export function PaternityPayCalculator() {
             { value: "2", label: "2 weeks" },
           ]}
         />
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -61,6 +62,7 @@ export function PaternityPayCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

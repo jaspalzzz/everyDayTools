@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldGrid, NumberField, SelectField } from "../fields";
+import { FieldGrid, NumberField, SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcAuAnnualLeave, AU_ANNUAL_LEAVE_SOURCE, type AuLeaveCalcMode } from "@/lib/calculators/auAnnualLeave";
 
@@ -29,8 +29,8 @@ export function AuAnnualLeaveCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="AU annual leave inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="AU annual leave inputs">
         <SelectField
           id="au-leave-mode"
           label="What do you want to calculate?"
@@ -103,8 +103,9 @@ export function AuAnnualLeaveCalculator() {
             Annual leave loading applies (17.5% — check your award or contract)
           </label>
         </div>
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -124,6 +125,7 @@ export function AuAnnualLeaveCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

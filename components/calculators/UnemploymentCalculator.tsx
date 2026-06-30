@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { NumberField, SelectField } from "../fields";
+import { NumberField, SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import {
   UNEMPLOYMENT_SOURCE,
@@ -24,8 +24,8 @@ export function UnemploymentCalculator() {
   const state = UNEMPLOYMENT_STATES.find((s) => s.code === stateCode);
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Unemployment benefit inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Unemployment benefit inputs">
         <SelectField
           id="state"
           label="State"
@@ -44,8 +44,9 @@ export function UnemploymentCalculator() {
           step={500}
           hint="Your gross pay in your highest-earning 3-month quarter"
         />
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -64,6 +65,7 @@ export function UnemploymentCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

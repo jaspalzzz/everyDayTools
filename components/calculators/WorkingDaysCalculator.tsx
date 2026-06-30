@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { DateField, FieldGrid } from "../fields";
+import { DateField, FieldGrid, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { WORKING_DAYS_SOURCE, calcWorkingDays } from "@/lib/calculators/workingDays";
 
@@ -23,14 +23,15 @@ export function WorkingDaysCalculator() {
   const result = useMemo(() => calcWorkingDays({ startDate, endDate }), [startDate, endDate]);
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Working days inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Working days inputs">
         <FieldGrid>
           <DateField id="start-date" label="Start date" value={startDate} onChange={setStartDate} />
           <DateField id="end-date" label="End date" value={endDate} onChange={setEndDate} />
         </FieldGrid>
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -45,6 +46,7 @@ export function WorkingDaysCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

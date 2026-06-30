@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldGrid, NumberField, SelectField } from "../fields";
+import { FieldGrid, NumberField, SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { GARDEN_LEAVE_SOURCE, calcGardenLeave } from "@/lib/calculators/gardenLeave";
 import { COUNTRIES, type CountryCode } from "@/lib/types";
@@ -22,8 +22,8 @@ export function GardenLeaveCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Garden leave inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Garden leave inputs">
         <SelectField
           id="country"
           label="Country"
@@ -49,8 +49,9 @@ export function GardenLeaveCalculator() {
             hint="Length of garden leave in weeks"
           />
         </FieldGrid>
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -66,6 +67,7 @@ export function GardenLeaveCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

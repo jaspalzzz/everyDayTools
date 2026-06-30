@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldGrid, NumberField } from "../fields";
+import { FieldGrid, NumberField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import {
   SHARED_PARENTAL_SOURCE,
@@ -23,8 +23,8 @@ export function SharedParentalPayCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Shared parental pay inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Shared parental pay inputs">
         <FieldGrid>
           <NumberField
             id="average-weekly-earnings"
@@ -44,8 +44,9 @@ export function SharedParentalPayCalculator() {
             hint={`Maximum ${UK_SHPP.maxWeeks} payable weeks`}
           />
         </FieldGrid>
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -64,6 +65,7 @@ export function SharedParentalPayCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

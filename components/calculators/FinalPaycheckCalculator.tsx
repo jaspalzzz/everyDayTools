@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { SelectField } from "../fields";
+import { SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import {
   FINAL_PAY_SOURCE,
@@ -21,8 +21,8 @@ export function FinalPaycheckCalculator() {
   const state = STATE_FINAL_PAY.find((s) => s.code === stateCode);
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Final paycheck inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Final paycheck inputs">
         <SelectField
           id="state"
           label="State"
@@ -40,8 +40,9 @@ export function FinalPaycheckCalculator() {
             { value: "quit", label: "Resigned / quit (voluntary)" },
           ]}
         />
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -59,6 +60,7 @@ export function FinalPaycheckCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

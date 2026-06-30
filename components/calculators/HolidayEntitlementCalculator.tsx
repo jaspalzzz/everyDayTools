@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldGrid, NumberField } from "../fields";
+import { FieldGrid, NumberField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { HOLIDAY_SOURCE, calcHolidayAccrual } from "@/lib/calculators/holidayAccrual";
 import { UK_HOLIDAY } from "@/lib/rates";
@@ -20,8 +20,8 @@ export function HolidayEntitlementCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Holiday entitlement inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Holiday entitlement inputs">
         <FieldGrid>
           <NumberField
             id="days-per-week"
@@ -41,8 +41,9 @@ export function HolidayEntitlementCalculator() {
             hint="12 for a full year"
           />
         </FieldGrid>
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -58,6 +59,7 @@ export function HolidayEntitlementCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldGrid, NumberField, SelectField } from "../fields";
+import { FieldGrid, NumberField, SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcSelfEmploymentTax, seTaxSource } from "@/lib/calculators/selfEmploymentTax";
 import { UK_NI_SELF_EMPLOYED, US_SE_TAX } from "@/lib/rates";
@@ -27,8 +27,8 @@ export function SelfEmploymentTaxCalculator() {
     country === "UK" ? UK_NI_SELF_EMPLOYED.effectiveDate : US_SE_TAX.effectiveDate;
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Self-employment tax inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Self-employment tax inputs">
         <FieldGrid>
           <SelectField
             id="se-country"
@@ -52,8 +52,9 @@ export function SelfEmploymentTaxCalculator() {
             }
           />
         </FieldGrid>
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -69,6 +70,7 @@ export function SelfEmploymentTaxCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

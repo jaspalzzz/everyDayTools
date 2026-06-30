@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { NumberField, SelectField, FieldGrid } from "../fields";
+import { NumberField, SelectField, FieldGrid, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcSettlement, SETTLEMENT_SOURCE, type SettlementReason } from "@/lib/calculators/settlementAgreement";
 import { UK_SETTLEMENT } from "@/lib/rates";
@@ -32,8 +32,8 @@ export function SettlementCalculator() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-        <form className="flex flex-col gap-4" aria-label="Settlement agreement inputs">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+        <FormPanel label="Settlement agreement inputs">
           <NumberField
             id="salary"
             label="Gross annual salary"
@@ -69,8 +69,9 @@ export function SettlementCalculator() {
             options={REASON_OPTIONS}
             hint="Affects the ex gratia / compensatory element of the estimate"
           />
-        </form>
+        </FormPanel>
 
+        <div style={{ position: "sticky", top: 88 }}>
         <ResultPanel
           result={result}
           letterMeta={{
@@ -88,6 +89,7 @@ export function SettlementCalculator() {
             ],
           }}
         />
+        </div>
       </div>
 
       {/* Range context */}

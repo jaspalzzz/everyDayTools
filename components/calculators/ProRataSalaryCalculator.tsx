@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldGrid, NumberField, SelectField } from "../fields";
+import { FieldGrid, NumberField, SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { PRO_RATA_SOURCE, calcProRata } from "@/lib/calculators/proRataSalary";
 import { COUNTRIES, type CountryCode } from "@/lib/types";
@@ -24,8 +24,8 @@ export function ProRataSalaryCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Pro-rata salary inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Pro-rata salary inputs">
         <SelectField
           id="country"
           label="Country"
@@ -58,8 +58,9 @@ export function ProRataSalaryCalculator() {
             max={168}
           />
         </FieldGrid>
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -76,6 +77,7 @@ export function ProRataSalaryCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

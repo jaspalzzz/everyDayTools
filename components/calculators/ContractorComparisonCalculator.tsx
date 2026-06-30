@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldGrid, NumberField, SelectField } from "../fields";
+import { FieldGrid, NumberField, SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcContractorComparison, contractorComparisonSource } from "@/lib/calculators/ir35";
 import { UK_INCOME_TAX, US_INCOME_TAX } from "@/lib/rates";
@@ -38,8 +38,8 @@ export function ContractorComparisonCalculator() {
     country === "UK" ? UK_INCOME_TAX.effectiveDate : US_INCOME_TAX.effectiveDate;
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Contractor comparison inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Contractor comparison inputs">
         <SelectField
           id="cc-country"
           label="Country / comparison type"
@@ -79,8 +79,9 @@ export function ContractorComparisonCalculator() {
           step={500}
           hint="Equipment, software, professional fees, travel"
         />
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -98,6 +99,7 @@ export function ContractorComparisonCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

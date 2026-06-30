@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldGrid, NumberField, SelectField } from "../fields";
+import { FieldGrid, NumberField, SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcDayRate, DAY_RATE_SOURCE } from "@/lib/calculators/dayRate";
 import type { CountryCode } from "@/lib/types";
@@ -37,8 +37,8 @@ export function DayRateCalculator() {
   const prefix = country === "UK" ? "£" : "$";
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Day rate converter inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Day rate converter inputs">
         <FieldGrid>
           <SelectField
             id="dr-country"
@@ -89,8 +89,9 @@ export function DayRateCalculator() {
           max={365}
           hint="220 = 52 weeks × 5 days, minus 8 bank holidays and 12 days holiday"
         />
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -110,6 +111,7 @@ export function DayRateCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

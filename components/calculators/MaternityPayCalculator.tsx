@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { NumberField } from "../fields";
+import { NumberField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { MATERNITY_SOURCE, calcMaternityPay } from "@/lib/calculators/maternityPay";
 import { UK_SMP } from "@/lib/rates";
@@ -15,8 +15,8 @@ export function MaternityPayCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Maternity pay inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Maternity pay inputs">
         <NumberField
           id="average-weekly-earnings"
           label="Average gross weekly earnings"
@@ -26,8 +26,9 @@ export function MaternityPayCalculator() {
           step={10}
           hint="Your average pay over the 8 weeks before the qualifying week"
         />
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -45,6 +46,7 @@ export function MaternityPayCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }

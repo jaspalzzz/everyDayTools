@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { readUrlParamsOnMount, writeUrlParams } from "@/hooks/useUrlSync";
-import { FieldGrid, NumberField, SelectField } from "../fields";
+import { FieldGrid, NumberField, SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcNoticePeriod, NOTICE_SOURCE, type NoticeRegion } from "@/lib/calculators/noticePeriod";
 
@@ -34,8 +34,8 @@ export function NoticePeriodCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-      <form className="flex flex-col gap-4" aria-label="Notice period inputs">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+      <FormPanel label="Notice period inputs">
         <SelectField
           id="region"
           label="Country"
@@ -64,8 +64,9 @@ export function NoticePeriodCalculator() {
             hint="From your contract (0 if unknown)"
           />
         </FieldGrid>
-      </form>
+      </FormPanel>
 
+      <div style={{ position: "sticky", top: 88 }}>
       <ResultPanel
         result={result}
         letterMeta={{
@@ -81,6 +82,7 @@ export function NoticePeriodCalculator() {
           ],
         }}
       />
+      </div>
     </div>
   );
 }
