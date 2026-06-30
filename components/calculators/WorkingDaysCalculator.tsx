@@ -23,7 +23,7 @@ export function WorkingDaysCalculator() {
   const result = useMemo(() => calcWorkingDays({ startDate, endDate }), [startDate, endDate]);
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+    <div className="grid grid-cols-1 gap-7 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
       <FormPanel label="Working days inputs">
         <FieldGrid>
           <DateField id="start-date" label="Start date" value={startDate} onChange={setStartDate} />

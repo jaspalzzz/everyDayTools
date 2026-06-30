@@ -37,7 +37,7 @@ export function DayRateCalculator() {
   const prefix = country === "UK" ? "£" : "$";
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+    <div className="grid grid-cols-1 gap-7 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
       <FormPanel label="Day rate converter inputs">
         <FieldGrid>
           <SelectField

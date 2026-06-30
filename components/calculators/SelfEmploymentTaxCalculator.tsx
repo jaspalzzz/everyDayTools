@@ -27,7 +27,7 @@ export function SelfEmploymentTaxCalculator() {
     country === "UK" ? UK_NI_SELF_EMPLOYED.effectiveDate : US_SE_TAX.effectiveDate;
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+    <div className="grid grid-cols-1 gap-7 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
       <FormPanel label="Self-employment tax inputs">
         <FieldGrid>
           <SelectField

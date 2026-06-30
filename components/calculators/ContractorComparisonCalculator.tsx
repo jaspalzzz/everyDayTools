@@ -38,7 +38,7 @@ export function ContractorComparisonCalculator() {
     country === "UK" ? UK_INCOME_TAX.effectiveDate : US_INCOME_TAX.effectiveDate;
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+    <div className="grid grid-cols-1 gap-7 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
       <FormPanel label="Contractor comparison inputs">
         <SelectField
           id="cc-country"

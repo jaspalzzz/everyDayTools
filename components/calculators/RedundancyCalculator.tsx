@@ -65,7 +65,7 @@ export function RedundancyCalculator({ startEligible = false }: { startEligible?
 
       {eligible && (
         <>
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
+          <div className="grid grid-cols-1 gap-7 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
             <FormPanel label="Redundancy pay inputs">
               <FieldGrid>
                 <NumberField id="age" label="Your age" value={age} onChange={setAge} min={16} max={100} />

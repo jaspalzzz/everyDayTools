@@ -178,15 +178,15 @@ export function FormSection({ title, children }: { title?: string; children: Rea
   );
 }
 
-/** Amber assumption/note box inside the form (matches reference "assumption-box"). */
+/** Info/assumption note box inside the form (blue, matches reference "assumption-box"). */
 export function AssumptionBox({ children }: { children: ReactNode }) {
   return (
     <div
       style={{
-        border: "1px solid #f1d9aa",
+        border: "1px solid #d9e7f5",
         borderRadius: 8,
-        background: "#fff4df",
-        color: "#5d461d",
+        background: "#f8fbff",
+        color: "#52616f",
         padding: 13,
         fontSize: 13,
         marginTop: 14,
