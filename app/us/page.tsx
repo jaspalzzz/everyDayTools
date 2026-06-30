@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { TOOLS, CATEGORY_META, type ToolCategory } from "@/data/tools";
+import { TOOLS } from "@/data/tools";
 import { US_STATES } from "@/data/usStates";
 import { SITE, jsonLd } from "@/lib/seo";
-import { TablerIcon } from "@/components/TablerIcon";
+import { CountryPage } from "@/components/country/CountryPage";
+import type { CountryTool } from "@/components/country/CountryPage";
 
 const url = `${SITE.url}/us`;
 
@@ -29,8 +30,64 @@ export const metadata: Metadata = {
   },
 };
 
-const US_TOOLS = TOOLS.filter((t) => t.region.includes("US"));
-const CATEGORY_ORDER: ToolCategory[] = ["leaving-job", "pay-tax", "parental-leave", "benefits"];
+const US_TOOLS: CountryTool[] = TOOLS.filter((t) => t.region.includes("US")).map((t) => ({
+  slug: t.slug,
+  name: t.name,
+  shortName: t.shortName,
+  description: t.description,
+  category: t.category,
+  hero: t.hero,
+}));
+
+function USStatesGrid() {
+  return (
+    <section aria-labelledby="us-states-heading">
+      <h2 id="us-states-heading" style={{ margin: "0 0 5px", color: "#102033", fontSize: 22, fontWeight: 850 }}>
+        Browse by state
+      </h2>
+      <p style={{ margin: "0 0 14px", color: "#52616f", fontSize: 14 }}>
+        PTO payout law, final paycheck deadlines &amp; minimum wage — all 50 states + DC
+      </p>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+        {US_STATES.map((s) => (
+          <Link
+            key={s.slug}
+            href={`/us/states/${s.slug}`}
+            style={{
+              display: "flex", alignItems: "center", gap: 8,
+              border: "1px solid #e7edf3", borderRadius: 8,
+              background: "#fff", padding: "10px 12px",
+              textDecoration: "none",
+            }}
+          >
+            <span
+              style={{
+                width: 8, height: 8, flexShrink: 0, borderRadius: "50%",
+                background: s.pto.rule === "required" ? "#10b981" : s.pto.rule === "conditional" ? "#f59e0b" : "#d1d5db",
+              }}
+            />
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#102033", flex: 1 }}>{s.name}</span>
+            <span style={{ fontSize: 11, fontWeight: 900, color: "#52616f" }}>{s.code}</span>
+          </Link>
+        ))}
+      </div>
+      <p style={{ marginTop: 12, color: "#52616f", fontSize: 12, display: "flex", gap: 16, flexWrap: "wrap" }}>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+          <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#10b981", display: "inline-block" }} />
+          Required by law
+        </span>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+          <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#f59e0b", display: "inline-block" }} />
+          Depends on policy
+        </span>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+          <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#d1d5db", display: "inline-block" }} />
+          No requirement
+        </span>
+      </p>
+    </section>
+  );
+}
 
 export default function USPage() {
   const itemList = {
@@ -58,165 +115,44 @@ export default function USPage() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPage) }} />
-
-      <div className="mx-auto max-w-content px-5 py-10">
-        {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-ink-faint">
-          <Link href="/" className="hover:text-ink-soft">Home</Link>
-          <span className="mx-1.5">/</span>
-          <span>🇺🇸 US</span>
-        </nav>
-
-        {/* Hero */}
-        <div className="mb-10 max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-widest text-brand-600">
-            United States · Federal &amp; State Law 2026
-          </p>
-          <h1 className="mt-2 text-3xl font-medium tracking-tight text-ink sm:text-4xl">
-            US Employment Pay Calculators
-          </h1>
-          <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-            US employment law operates at two levels: federal rules set a floor, and individual
-            states can — and often do — provide stronger protections. These calculators apply the
-            correct federal or state rule depending on the calculation, covering all 50 states
-            where state law varies (PTO payout, final paycheck deadlines, unemployment benefit).
-          </p>
-          <div className="mt-5 rounded-lg border border-surface-line bg-surface-muted px-4 py-3 text-xs leading-relaxed text-ink-faint">
-            <strong className="text-ink">Key 2026 figures:</strong> Federal minimum wage $7.25/hr ·
-            FLSA overtime at 1.5× after 40 hours/week · Federal bonus withholding 22% supplemental
-            rate · FICA: 6.2% Social Security + 1.45% Medicare · Self-employment tax 15.3%
-          </div>
-        </div>
-
-        {/* Tool sections */}
-        <div className="flex flex-col gap-10">
-          {CATEGORY_ORDER.map((cat) => {
-            const tools = US_TOOLS.filter((t) => t.category === cat);
-            if (tools.length === 0) return null;
-            return (
-              <section key={cat} aria-labelledby={`us-cat-${cat}`}>
-                <div className="mb-4 flex items-baseline gap-2">
-                  <h2 id={`us-cat-${cat}`} className="text-sm font-semibold text-ink">
-                    {CATEGORY_META[cat].label}
-                  </h2>
-                  <span className="text-xs text-ink-faint">{CATEGORY_META[cat].description}</span>
-                </div>
-                <div className="flex flex-col gap-2">
-                  {tools.map((tool) => (
-                    <Link
-                      key={tool.slug}
-                      href={`/${tool.slug}`}
-                      className={`flex items-center gap-4 rounded-lg border px-4 py-4 transition-colors ${
-                        tool.hero
-                          ? "border-brand-100 bg-brand-50 hover:bg-brand-100/40"
-                          : "border-surface-line bg-white hover:bg-surface-muted"
-                      }`}
-                    >
-                      <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
-                        tool.hero ? "bg-white text-brand-600" : "bg-surface-muted text-ink-soft"
-                      }`}>
-                        <TablerIcon name={tool.icon} size={18} aria-hidden="true" />
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="block text-sm font-medium text-ink">{tool.name}</span>
-                        <span className="block truncate text-xs text-ink-soft">{tool.description}</span>
-                      </span>
-                      <TablerIcon name="ti-arrow-right" className="shrink-0 text-ink-faint" size={16} aria-hidden="true" />
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            );
-          })}
-        </div>
-
-        {/* Browse by state */}
-        <section aria-labelledby="us-states-heading" className="mt-12 border-t border-surface-line pt-8">
-          <div className="mb-4 flex items-baseline gap-2">
-            <h2 id="us-states-heading" className="text-sm font-semibold text-ink">
-              Browse by state
-            </h2>
-            <span className="text-xs text-ink-faint">
-              PTO payout law, final paycheck deadlines &amp; minimum wage — all 50 states + DC
-            </span>
-          </div>
-          <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 lg:grid-cols-4">
-            {US_STATES.map((s) => {
-              const ruleColor =
-                s.pto.rule === "required"
-                  ? "text-emerald-700"
-                  : s.pto.rule === "conditional"
-                  ? "text-amber-700"
-                  : "text-ink-faint";
-              return (
-                <Link
-                  key={s.slug}
-                  href={`/us/states/${s.slug}`}
-                  className="flex items-center gap-2 rounded-lg border border-surface-line bg-white px-3 py-2.5 text-xs transition-colors hover:bg-surface-muted"
-                >
-                  <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${
-                    s.pto.rule === "required" ? "bg-emerald-500" :
-                    s.pto.rule === "conditional" ? "bg-amber-400" : "bg-ink-faint/40"
-                  }`} aria-hidden="true" />
-                  <span className="font-medium text-ink">{s.name}</span>
-                  <span className={`ml-auto shrink-0 ${ruleColor}`}>{s.code}</span>
-                </Link>
-              );
-            })}
-          </div>
-          <p className="mt-3 text-xs text-ink-faint">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              Required by law
-            </span>
-            <span className="mx-3 inline-flex items-center gap-1.5">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
-              Depends on employer policy
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-ink-faint/40" />
-              No requirement
-            </span>
-          </p>
-        </section>
-
-        {/* Context block */}
-        <section className="prose-tool mt-12 max-w-2xl border-t border-surface-line pt-8 text-sm leading-relaxed text-ink-soft">
-          <h2>How US employment law works</h2>
-          <p>
-            At the federal level, the <strong>Fair Labor Standards Act (FLSA)</strong> sets the
-            federal minimum wage, overtime rules (time-and-a-half after 40 hours/week for covered
-            non-exempt employees), and recordkeeping requirements. The{" "}
-            <a href="https://www.dol.gov/agencies/whd" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
-              Department of Labor Wage and Hour Division
-            </a>{" "}
-            enforces these rules and publishes guidance on all federal wage standards.
-          </p>
-          <p>
-            There is <strong>no federal law requiring PTO payout</strong> when you leave a job —
-            this is entirely determined by state law and employer policy. States like California,
-            Colorado, and Illinois treat accrued vacation as earned wages that cannot be forfeited.
-            Others leave it entirely to employer discretion. The{" "}
-            <Link href="/pto-payout-calculator" className="text-brand-600 underline-offset-2 hover:underline">
-              PTO payout calculator
-            </Link>{" "}
-            applies the correct rule for each state automatically.
-          </p>
-          <h2>Final paycheck timing</h2>
-          <p>
-            Every state has its own deadline for paying a departing employee their final wages,
-            and most distinguish between voluntary resignation and termination. California, for
-            example, requires immediate final pay on the day of termination. Texas requires it
-            within 6 days for terminated employees. Use the{" "}
-            <Link href="/final-paycheck-deadline-calculator" className="text-brand-600 underline-offset-2 hover:underline">
-              final paycheck deadline calculator
-            </Link>{" "}
-            to find the exact rule for your state.
-          </p>
-        </section>
-      </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(itemList)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(webPage)} />
+      <CountryPage
+        code="US"
+        name="United States"
+        eyebrow="US employment law · federal & state rules 2026"
+        heroCopy={
+          <>
+            Employment calculators for US workers covering federal and state rules — PTO payout,
+            final paycheck deadlines, overtime pay, unemployment benefit and take-home pay.{" "}
+            <strong style={{ color: "#16324f", fontWeight: 850 }}>
+              State law applies automatically: all 50 states covered.
+            </strong>
+          </>
+        }
+        rates={[
+          { label: "Federal minimum wage", value: "$7.25/hr" },
+          { label: "FLSA overtime threshold", value: "1.5× after 40 hrs/wk" },
+          { label: "Federal bonus withholding", value: "22% supplemental" },
+          { label: "FICA — Social Security", value: "6.2%" },
+          { label: "FICA — Medicare", value: "1.45%" },
+        ]}
+        ratesNote="Federal rates · state minimums may be higher"
+        searchPlaceholder="Search US calculators: PTO, overtime, final paycheck…"
+        tools={US_TOOLS}
+        sources={[
+          { label: "U.S. Department of Labor (DOL)", href: "https://www.dol.gov/agencies/whd" },
+          { label: "IRS — withholding rates", href: "https://www.irs.gov/publications/p15" },
+          { label: "FLSA overtime guide", href: "https://www.dol.gov/agencies/whd/overtime" },
+        ]}
+        note={
+          <>
+            <strong style={{ display: "block", color: "#3c2c0d", marginBottom: 5 }}>State law varies</strong>
+            PTO payout and final paycheck deadlines differ by state. These calculators apply the correct rule automatically — always verify with your state labor board.
+          </>
+        }
+        extraContent={<USStatesGrid />}
+      />
     </>
   );
 }

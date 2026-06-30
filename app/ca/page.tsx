@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { TOOLS, CATEGORY_META, type ToolCategory } from "@/data/tools";
-import { SITE } from "@/lib/seo";
-import { TablerIcon } from "@/components/TablerIcon";
+import { TOOLS } from "@/data/tools";
 import { CA_PROVINCES } from "@/data/caProvinces";
+import { SITE, jsonLd } from "@/lib/seo";
+import { CountryPage } from "@/components/country/CountryPage";
+import type { CountryTool } from "@/components/country/CountryPage";
 
 const url = `${SITE.url}/ca`;
 
@@ -29,8 +30,45 @@ export const metadata: Metadata = {
   },
 };
 
-const CA_TOOLS = TOOLS.filter((t) => t.region.includes("CA"));
-const CATEGORY_ORDER: ToolCategory[] = ["leaving-job", "pay-tax", "parental-leave", "benefits"];
+const CA_TOOLS: CountryTool[] = TOOLS.filter((t) => t.region.includes("CA")).map((t) => ({
+  slug: t.slug,
+  name: t.name,
+  shortName: t.shortName,
+  description: t.description,
+  category: t.category,
+  hero: t.hero,
+}));
+
+function CAProvincesGrid() {
+  const provinces = Array.isArray(CA_PROVINCES) ? CA_PROVINCES : [];
+  if (provinces.length === 0) return null;
+  return (
+    <section aria-labelledby="ca-provinces-heading">
+      <h2 id="ca-provinces-heading" style={{ margin: "0 0 5px", color: "#102033", fontSize: 22, fontWeight: 850 }}>
+        Browse by province
+      </h2>
+      <p style={{ margin: "0 0 14px", color: "#52616f", fontSize: 14 }}>
+        Employment standards, minimum wage and notice rules by province and territory
+      </p>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        {provinces.map((p: { slug: string; name: string; code: string }) => (
+          <Link
+            key={p.slug}
+            href={`/ca/provinces/${p.slug}`}
+            style={{
+              display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8,
+              border: "1px solid #e7edf3", borderRadius: 8, background: "#fff",
+              padding: "10px 12px", textDecoration: "none",
+            }}
+          >
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#102033" }}>{p.name}</span>
+            <span style={{ fontSize: 11, fontWeight: 900, color: "#52616f" }}>{p.code}</span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default function CAPage() {
   const itemList = {
@@ -47,124 +85,55 @@ export default function CAPage() {
     })),
   };
 
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Canada Employment Pay Calculators",
+    url,
+    description: metadata.description,
+    isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
+  };
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }} />
-
-      <div className="mx-auto max-w-content px-5 py-10">
-        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-ink-faint">
-          <Link href="/" className="hover:text-ink-soft">Home</Link>
-          <span className="mx-1.5">/</span>
-          <span>🇨🇦 Canada</span>
-        </nav>
-
-        <div className="mb-10 max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-widest text-brand-600">
-            Canada · Federal &amp; Provincial Employment Standards 2026
-          </p>
-          <h1 className="mt-2 text-3xl font-medium tracking-tight text-ink sm:text-4xl">
-            Canada Employment Pay Calculators
-          </h1>
-          <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-            Canadian employment law operates at two levels: the federal{" "}
-            <strong>Canada Labour Code</strong> covers federally regulated industries (banking,
-            telecommunications, interprovincial transport), while each province and territory has
-            its own employment standards legislation. These calculators apply the federal statutory
-            minimum for notice and severance as the baseline.
-          </p>
-          <div className="mt-5 rounded-lg border border-surface-line bg-surface-muted px-4 py-3 text-xs leading-relaxed text-ink-faint">
-            <strong className="text-ink">Federal minimums (Canada Labour Code):</strong> Notice: 2
-            weeks after 1 year · Severance: 2 days/year of service (min. 5 days) ·
-            Overtime: 1.5× after 8 hrs/day or 40 hrs/week · Federal minimum wage $17.30/hr (2024)
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-10">
-          {CATEGORY_ORDER.map((cat) => {
-            const tools = CA_TOOLS.filter((t) => t.category === cat);
-            if (tools.length === 0) return null;
-            return (
-              <section key={cat} aria-labelledby={`ca-cat-${cat}`}>
-                <div className="mb-4 flex items-baseline gap-2">
-                  <h2 id={`ca-cat-${cat}`} className="text-sm font-semibold text-ink">
-                    {CATEGORY_META[cat].label}
-                  </h2>
-                  <span className="text-xs text-ink-faint">{CATEGORY_META[cat].description}</span>
-                </div>
-                <div className="flex flex-col gap-2">
-                  {tools.map((tool) => (
-                    <Link
-                      key={tool.slug}
-                      href={`/${tool.slug}`}
-                      className={`flex items-center gap-4 rounded-lg border px-4 py-4 transition-colors ${
-                        tool.hero
-                          ? "border-brand-100 bg-brand-50 hover:bg-brand-100/40"
-                          : "border-surface-line bg-white hover:bg-surface-muted"
-                      }`}
-                    >
-                      <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
-                        tool.hero ? "bg-white text-brand-600" : "bg-surface-muted text-ink-soft"
-                      }`}>
-                        <TablerIcon name={tool.icon} size={18} aria-hidden="true" />
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="block text-sm font-medium text-ink">{tool.name}</span>
-                        <span className="block truncate text-xs text-ink-soft">{tool.description}</span>
-                      </span>
-                      <TablerIcon name="ti-arrow-right" className="shrink-0 text-ink-faint" size={16} aria-hidden="true" />
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            );
-          })}
-        </div>
-
-        {/* Province browse */}
-        <section className="mt-12" aria-labelledby="province-heading">
-          <div className="mb-4 flex items-baseline gap-2">
-            <h2 id="province-heading" className="text-sm font-semibold text-ink">Browse by province or territory</h2>
-            <span className="text-xs text-ink-faint">Minimum wage, notice periods &amp; vacation entitlement</span>
-          </div>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-            {CA_PROVINCES.map((prov) => (
-              <Link
-                key={prov.slug}
-                href={`/ca/provinces/${prov.slug}`}
-                className="flex items-center justify-between rounded-lg border border-surface-line bg-white px-3 py-2.5 text-xs hover:bg-surface-muted"
-              >
-                <span>
-                  <span className="font-medium text-ink">{prov.code}</span>
-                  <span className="ml-1.5 text-ink-soft">{prov.minimumWage}</span>
-                </span>
-                <TablerIcon name="ti-arrow-right" size={12} className="text-ink-faint" aria-hidden="true" />
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="prose-tool mt-12 max-w-2xl border-t border-surface-line pt-8 text-sm leading-relaxed text-ink-soft">
-          <h2>Federal vs provincial — which rules apply to you?</h2>
-          <p>
-            About 10% of the Canadian workforce is covered by the federal Canada Labour Code —
-            those working for banks, airlines, railways, telecommunications companies, and other
-            federally regulated employers. Everyone else is covered by the employment standards
-            legislation of the province or territory they work in. Ontario, British Columbia, and
-            Alberta all have their own minimum notice, termination pay, and severance rules that
-            differ from federal minimums.
-          </p>
-          <p>
-            The calculators on this site apply federal statutory minimums. If you work in a
-            province where provincial standards are higher (for example, Ontario&apos;s ESA
-            provides up to 8 weeks&apos; notice and separate severance pay for employees with 5+
-            years of service), check the{" "}
-            <a href="https://www.canada.ca/en/employment-social-development/services/labour-standards.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
-              Employment and Social Development Canada
-            </a>{" "}
-            website for provincial comparisons.
-          </p>
-        </section>
-      </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(itemList)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(webPage)} />
+      <CountryPage
+        code="CA"
+        name="Canada"
+        eyebrow="Canadian employment law · federal & provincial 2026"
+        heroCopy={
+          <>
+            Employment calculators for Canadian workers — notice periods, severance pay,
+            take-home pay and overtime across federal and provincial rules.{" "}
+            <strong style={{ color: "#16324f", fontWeight: 850 }}>
+              Provincial employment standards apply automatically by jurisdiction.
+            </strong>
+          </>
+        }
+        rates={[
+          { label: "Federal minimum wage", value: "CA$17.75/hr" },
+          { label: "Federal CPP contribution", value: "5.95% (2026)" },
+          { label: "EI premium rate (employee)", value: "1.66% of insurable earnings" },
+          { label: "Basic Personal Amount", value: "CA$16,129 (2026)" },
+          { label: "Federal termination notice", value: "1–8 weeks (by service length)" },
+        ]}
+        ratesNote="Federal Canada Labour Code · provincial rates may differ"
+        searchPlaceholder="Search Canadian calculators: notice, severance, take-home…"
+        tools={CA_TOOLS}
+        sources={[
+          { label: "Canada Labour Code (CLC)", href: "https://www.canada.ca/en/employment-social-development/programs/employment-standards.html" },
+          { label: "CRA — payroll deductions", href: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll.html" },
+          { label: "Provincial employment standards", href: "https://www.canada.ca/en/employment-social-development/services/labour-standards/reports/employment-standards.html" },
+        ]}
+        note={
+          <>
+            <strong style={{ display: "block", color: "#3c2c0d", marginBottom: 5 }}>Provincial rules vary</strong>
+            Most workers in Canada are covered by their province's employment standards, not the federal Canada Labour Code. Select your province for the correct rules.
+          </>
+        }
+        extraContent={<CAProvincesGrid />}
+      />
     </>
   );
 }
