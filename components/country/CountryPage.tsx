@@ -144,44 +144,16 @@ export function CountryPage({
               </h1>
             </div>
 
-            <p style={{ maxWidth: 740, margin: 0, color: "#25384c", fontSize: 18, lineHeight: 1.62 }}>
+            <p style={{ maxWidth: 740, margin: "0 0 20px", color: "#25384c", fontSize: 18, lineHeight: 1.62 }}>
               {heroCopy}
             </p>
-          </div>
 
-          {/* Right column: rate panel + search */}
-          <div className="hidden lg:flex flex-col gap-3">
-            {/* Rate panel */}
-            <aside
-              style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", overflow: "hidden" }}
-              aria-label={`Key ${code} statutory rates`}
-            >
-              <div style={{ padding: "18px 20px", borderBottom: "1px solid #e7edf3", background: "#f8fbff" }}>
-                <h2 style={{ margin: "0 0 4px", fontSize: 18, color: "#102033", fontWeight: 850 }}>Key 2026 rates</h2>
-                <p style={{ margin: 0, color: "#52616f", fontSize: 13, fontWeight: 700 }}>{ratesNote}</p>
-              </div>
-              <div style={{ display: "grid", padding: "8px 20px 18px" }}>
-                {rates.map((r, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      display: "flex", justifyContent: "space-between", gap: 16,
-                      borderBottom: i < rates.length - 1 ? "1px solid #e7edf3" : "none",
-                      padding: "12px 0", color: "#52616f", fontSize: 13, fontWeight: 700,
-                    }}
-                  >
-                    <span>{r.label}</span>
-                    <strong style={{ color: "#102033", textAlign: "right", fontWeight: 850 }}>{r.value}</strong>
-                  </div>
-                ))}
-              </div>
-            </aside>
-
-            {/* Search — sits directly below rates card */}
+            {/* Search — left column, directly below hero copy */}
             <form
               onSubmit={(e) => e.preventDefault()}
               aria-label={`Search ${name} calculators`}
-              style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 4px 16px rgba(16,32,51,.07)", padding: 10, display: "grid", gap: 8 }}
+              className="grid grid-cols-[1fr_auto_44px] gap-2"
+              style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 4px 20px rgba(16,32,51,.08)", padding: 10, maxWidth: 640 }}
             >
               <input
                 type="search"
@@ -189,57 +161,56 @@ export function CountryPage({
                 placeholder={searchPlaceholder}
                 value={searchQ}
                 onChange={(e) => setSearchQ(e.target.value)}
-                style={{ minHeight: 44, border: "1px solid #d8e2ec", borderRadius: 8, background: "#f8fbff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13, width: "100%" }}
+                style={{ minHeight: 46, border: "1px solid #d8e2ec", borderRadius: 8, background: "#f8fbff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
               />
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 44px", gap: 8 }}>
-                <select
-                  aria-label="Topic"
-                  value={activeTab}
-                  onChange={(e) => setActiveTab(e.target.value as TabKey)}
-                  style={{ minHeight: 40, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 10px", outline: "none", fontSize: 13 }}
-                >
-                  {TABS.map((t) => (
-                    <option key={t.key} value={t.key}>{t.label}</option>
-                  ))}
-                </select>
-                <button
-                  type="submit"
-                  aria-label="Search"
-                  style={{ minHeight: 40, border: 0, borderRadius: 8, background: "#1769e0", color: "#fff", fontSize: 16, fontWeight: 900, cursor: "pointer" }}
-                >
-                  →
-                </button>
-              </div>
+              <select
+                aria-label="Topic"
+                value={activeTab}
+                onChange={(e) => setActiveTab(e.target.value as TabKey)}
+                style={{ minHeight: 46, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 12px", outline: "none", fontSize: 13 }}
+              >
+                {TABS.map((t) => (
+                  <option key={t.key} value={t.key}>{t.label}</option>
+                ))}
+              </select>
+              <button
+                type="submit"
+                aria-label="Search"
+                style={{ minHeight: 46, width: 46, border: 0, borderRadius: 8, background: "#1769e0", color: "#fff", fontSize: 18, fontWeight: 900, cursor: "pointer" }}
+              >
+                →
+              </button>
             </form>
           </div>
+
+          {/* Right column: rate panel only */}
+          <aside
+            className="hidden lg:block"
+            style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", overflow: "hidden" }}
+            aria-label={`Key ${code} statutory rates`}
+          >
+            <div style={{ padding: "18px 20px", borderBottom: "1px solid #e7edf3", background: "#f8fbff" }}>
+              <h2 style={{ margin: "0 0 4px", fontSize: 18, color: "#102033", fontWeight: 850 }}>Key 2026 rates</h2>
+              <p style={{ margin: 0, color: "#52616f", fontSize: 13, fontWeight: 700 }}>{ratesNote}</p>
+            </div>
+            <div style={{ display: "grid", padding: "8px 20px 18px" }}>
+              {rates.map((r, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: "flex", justifyContent: "space-between", gap: 16,
+                    borderBottom: i < rates.length - 1 ? "1px solid #e7edf3" : "none",
+                    padding: "12px 0", color: "#52616f", fontSize: 13, fontWeight: 700,
+                  }}
+                >
+                  <span>{r.label}</span>
+                  <strong style={{ color: "#102033", textAlign: "right", fontWeight: 850 }}>{r.value}</strong>
+                </div>
+              ))}
+            </div>
+          </aside>
         </div>
       </section>
-
-      {/* ── Mobile search band (shown only below lg) ── */}
-      <div className="lg:hidden" style={{ maxWidth: 1180, margin: "16px auto 0", padding: "0 24px" }}>
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          aria-label={`Search ${name} calculators`}
-          className="grid grid-cols-[1fr_44px] gap-2"
-          style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 4px 16px rgba(16,32,51,.07)", padding: 10 }}
-        >
-          <input
-            type="search"
-            aria-label="Search calculators"
-            placeholder={searchPlaceholder}
-            value={searchQ}
-            onChange={(e) => setSearchQ(e.target.value)}
-            style={{ minHeight: 44, border: "1px solid #d8e2ec", borderRadius: 8, background: "#f8fbff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
-          />
-          <button
-            type="submit"
-            aria-label="Search"
-            style={{ minHeight: 44, border: 0, borderRadius: 8, background: "#1769e0", color: "#fff", fontSize: 16, fontWeight: 900, cursor: "pointer" }}
-          >
-            →
-          </button>
-        </form>
-      </div>
 
       {/* ── Main ── */}
       <div style={{ maxWidth: 1180, margin: "0 auto", padding: "44px 24px 74px" }}>
