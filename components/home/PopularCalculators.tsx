@@ -24,7 +24,7 @@ const TOOLS = [
     icon: "F",
     title: "Final paycheck deadline calculator",
     desc: "Find when your final wage payment should be made.",
-    href: "/final-paycheck-calculator",
+    href: "/final-paycheck-deadline-calculator",
   },
 ] as const;
 

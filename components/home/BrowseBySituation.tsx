@@ -13,7 +13,7 @@ const SITUATIONS = [
     title: "I was not paid correctly",
     desc: "Missing wages, overtime, commission, deductions and payslip issues.",
     cta: "Find wage tools",
-    href: "/unpaid-wages-calculator",
+    href: "/payslip-analyser",
   },
   {
     icon: "+",
@@ -27,7 +27,7 @@ const SITUATIONS = [
     title: "My hours changed",
     desc: "Salary to hourly, working days, overtime rates and take-home checks.",
     cta: "Review hours",
-    href: "/overtime-pay-calculator",
+    href: "/take-home-overtime-calculator",
   },
   {
     icon: "?",

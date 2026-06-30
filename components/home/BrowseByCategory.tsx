@@ -21,15 +21,15 @@ const COMPACT_TOOLS: Record<TabId, { icon: string; title: string; desc: string; 
     { icon: "R", title: "Redundancy pay calculator", desc: "Statutory and contractual redundancy pay estimates.", href: "/redundancy-pay-calculator" },
     { icon: "N", title: "Notice pay calculator", desc: "What notice pay may be owed after dismissal.", href: "/notice-period-calculator" },
     { icon: "G", title: "Garden leave calculator", desc: "Estimate pay owed during garden leave.", href: "/garden-leave-calculator" },
-    { icon: "F", title: "Final paycheck deadline calculator", desc: "Find when your final wage payment should be made.", href: "/final-paycheck-calculator" },
+    { icon: "F", title: "Final paycheck deadline calculator", desc: "Find when your final wage payment should be made.", href: "/final-paycheck-deadline-calculator" },
   ],
   "pay-tax": [
-    { icon: "U", title: "Unpaid wages calculator", desc: "Estimate missing wages, overtime and deductions.", href: "/unpaid-wages-calculator" },
-    { icon: "O", title: "Overtime pay calculator", desc: "Check overtime rates and unpaid overtime.", href: "/overtime-pay-calculator" },
+    { icon: "U", title: "Payslip analyser", desc: "Check your payslip for missing wages and deductions.", href: "/payslip-analyser" },
+    { icon: "O", title: "Overtime pay calculator", desc: "Check overtime rates and unpaid overtime.", href: "/take-home-overtime-calculator" },
     { icon: "T", title: "Take-home pay calculator", desc: "Net pay after tax and national insurance.", href: "/take-home-pay-calculator" },
     { icon: "P", title: "Pay rise calculator", desc: "Calculate new salary and percentage increase.", href: "/pay-rise-calculator" },
-    { icon: "M", title: "Minimum wage calculator", desc: "Check if wages meet national minimum wage.", href: "/minimum-wage-calculator" },
-    { icon: "B", title: "Back pay calculator", desc: "Estimate arrears from underpayment or error.", href: "/back-pay-calculator" },
+    { icon: "D", title: "Day rate calculator", desc: "Convert salary to daily or contract rate.", href: "/day-rate-calculator" },
+    { icon: "S", title: "Salary to hourly calculator", desc: "Convert annual salary to hourly equivalent.", href: "/salary-to-hourly-calculator" },
   ],
   "parental-leave": [
     { icon: "M", title: "Maternity pay calculator", desc: "Statutory maternity pay entitlement by week.", href: "/maternity-pay-calculator" },
@@ -41,27 +41,27 @@ const COMPACT_TOOLS: Record<TabId, { icon: string; title: string; desc: string; 
   ],
   "benefits": [
     { icon: "U", title: "Unemployment benefit calculator", desc: "Estimate weekly benefit amount by location.", href: "/unemployment-benefit-calculator" },
-    { icon: "S", title: "Sick pay calculator", desc: "Statutory sick pay entitlement estimates.", href: "/sick-pay-calculator" },
+    { icon: "S", title: "Sick pay calculator", desc: "Statutory sick pay entitlement estimates.", href: "/statutory-sick-pay-calculator" },
     { icon: "H", title: "Holiday pay calculator", desc: "Calculate accrued holiday entitlement.", href: "/holiday-entitlement-calculator" },
     { icon: "P", title: "PTO payout calculator", desc: "Estimate unused paid time off after leaving.", href: "/pto-payout-calculator" },
-    { icon: "R", title: "COBRA cost calculator", desc: "Estimate health insurance continuation costs.", href: "/cobra-calculator" },
-    { icon: "W", title: "Workers comp calculator", desc: "Estimate injury compensation by state.", href: "/workers-comp-calculator" },
+    { icon: "B", title: "Bonus tax calculator", desc: "Estimate tax on a bonus or one-off payment.", href: "/bonus-tax-calculator" },
+    { icon: "I", title: "IR35 calculator", desc: "Check IR35 status and contractor take-home.", href: "/ir35-calculator" },
   ],
   "hours": [
-    { icon: "O", title: "Overtime pay calculator", desc: "Check overtime rates and unpaid overtime.", href: "/overtime-pay-calculator" },
-    { icon: "H", title: "Hours to salary calculator", desc: "Convert hourly rate to annual salary.", href: "/salary-calculator" },
-    { icon: "S", title: "Shift pay calculator", desc: "Calculate shift differentials and premiums.", href: "/salary-calculator" },
-    { icon: "B", title: "Break time calculator", desc: "Legal rest break entitlements at work.", href: "/salary-calculator" },
-    { icon: "Z", title: "Zero-hours rights", desc: "Pay rights on zero-hours contracts.", href: "/salary-calculator" },
-    { icon: "W", title: "Working hours checker", desc: "Check if hours exceed legal maximums.", href: "/salary-calculator" },
+    { icon: "O", title: "Overtime pay calculator", desc: "Check overtime rates and unpaid overtime.", href: "/take-home-overtime-calculator" },
+    { icon: "H", title: "Salary to hourly calculator", desc: "Convert annual salary to hourly equivalent.", href: "/salary-to-hourly-calculator" },
+    { icon: "D", title: "Day rate calculator", desc: "Convert salary to daily or contract rate.", href: "/day-rate-calculator" },
+    { icon: "W", title: "Working days calculator", desc: "Count working days between two dates.", href: "/working-days-calculator" },
+    { icon: "P", title: "Pro-rata salary calculator", desc: "Calculate pay for part-time or part-year work.", href: "/pro-rata-salary-calculator" },
+    { icon: "S", title: "Self-employment tax calculator", desc: "Estimate tax and NI for self-employed workers.", href: "/self-employment-tax-calculator" },
   ],
   "guides": [
     { icon: "R", title: "Redundancy rights guide", desc: "Everything you need to know about redundancy.", href: "/guides/uk-redundancy-pay" },
     { icon: "S", title: "Settlement agreement guide", desc: "Before you sign — what to check.", href: "/guides/uk-settlement-agreement" },
     { icon: "N", title: "Notice period guide", desc: "Rights and obligations during notice.", href: "/guides/uk-notice-period-law" },
-    { icon: "U", title: "Unpaid wages guide", desc: "How to claim wages your employer owes you.", href: "/guides/uk-notice-period-law" },
-    { icon: "P", title: "Parental leave guide", desc: "Maternity, paternity and shared leave.", href: "/guides" },
-    { icon: "F", title: "Final pay guide", desc: "What must be in your last paycheck.", href: "/guides/uk-final-paycheck" },
+    { icon: "U", title: "Unfair dismissal guide", desc: "Rights and remedies when dismissed unfairly.", href: "/guides/uk-unfair-dismissal" },
+    { icon: "P", title: "Parental leave guide", desc: "Maternity, paternity and shared leave.", href: "/guides/uk-maternity-pay" },
+    { icon: "F", title: "PILON guide", desc: "Pay in lieu of notice — what you are owed.", href: "/guides/uk-pilon" },
   ],
 };
 
@@ -85,7 +85,7 @@ export function BrowseByCategory() {
       style={{ marginTop: 58, border: "1px solid #cdddeb", borderRadius: 8, background: "#fff", overflow: "hidden" }}
     >
       {/* Tabs */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(6,1fr)", background: "#f8fbff", borderBottom: "1px solid #e7edf3" }}>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 bg-[#f8fbff] border-b border-surface-line">
         {TABS.map((tab) => (
           <button
             key={tab.id}
@@ -93,7 +93,7 @@ export function BrowseByCategory() {
             onClick={() => setActive(tab.id)}
             style={{
               minHeight: 66, display: "grid", placeItems: "center",
-              borderRight: "1px solid #e7edf3", borderBottom: "none", borderTop: "none", borderLeft: "none",
+              borderRight: "1px solid #e7edf3", borderBottom: "1px solid #e7edf3", borderTop: "none", borderLeft: "none",
               background: active === tab.id ? "#fff" : "transparent",
               boxShadow: active === tab.id ? "inset 0 -3px 0 #1769e0" : "none",
               color: active === tab.id ? "#0f56bd" : "#25384c",
@@ -106,7 +106,7 @@ export function BrowseByCategory() {
       </div>
 
       {/* Directory content */}
-      <div style={{ padding: 22, display: "grid", gridTemplateColumns: "230px 1fr", gap: 24 }}>
+      <div className="grid grid-cols-1 md:grid-cols-[230px_1fr] gap-6" style={{ padding: 22 }}>
         {/* Left: title + note */}
         <div>
           <h2 id="directory-title" style={{ margin: "0 0 16px", fontSize: 22, color: "#102033" }}>
@@ -119,7 +119,7 @@ export function BrowseByCategory() {
         </div>
 
         {/* Right: compact tool grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           {tools.map((tool) => (
             <Link
               key={tool.href + tool.title}

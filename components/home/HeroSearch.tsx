@@ -10,10 +10,10 @@ const COUNTRIES = [
 ] as const;
 
 const QUICK_LINKS = [
-  { label: "Unpaid wages", href: "/unpaid-wages-calculator" },
+  { label: "Payslip analyser", href: "/payslip-analyser" },
   { label: "Redundancy pay", href: "/redundancy-pay-calculator" },
   { label: "Notice period", href: "/notice-period-calculator" },
-  { label: "Final paycheck", href: "/final-paycheck-calculator" },
+  { label: "Final paycheck", href: "/final-paycheck-deadline-calculator" },
   { label: "Holiday pay", href: "/holiday-entitlement-calculator" },
 ] as const;
 

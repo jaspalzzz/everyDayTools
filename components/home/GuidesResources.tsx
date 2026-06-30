@@ -109,7 +109,7 @@ const GUIDES = [
     badge: "UK guide",
     title: "What should be in your final paycheck?",
     desc: "Understand wages, notice pay, holiday pay and deductions after leaving work.",
-    href: "/guides/uk-final-paycheck",
+    href: "/guides/uk-pilon",
     Illustration: SketchPayslip,
     bg: "#e8f2fb",
   },
@@ -117,7 +117,7 @@ const GUIDES = [
     badge: "Workplace pay",
     title: "When unpaid wages become a legal issue",
     desc: "How to identify missing pay, gather evidence and raise the problem clearly.",
-    href: "/guides/uk-unpaid-wages",
+    href: "/guides/uk-take-home-pay",
     Illustration: SketchScales,
     bg: "#fef6e8",
   },
@@ -125,7 +125,7 @@ const GUIDES = [
     badge: "Notice pay",
     title: "Notice period rights by country",
     desc: "Compare how notice periods, dismissal and final pay timing differ by location.",
-    href: "/guides/notice-period-rights",
+    href: "/guides/uk-notice-period-law",
     Illustration: SketchGlobe,
     bg: "#e8f4ef",
   },
@@ -148,7 +148,7 @@ export function GuidesResources() {
         </Link>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 18 }}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4.5">
         {GUIDES.map((g) => (
           <article key={g.title} style={{ border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", overflow: "hidden" }}>
             {/* Sketch illustration area */}

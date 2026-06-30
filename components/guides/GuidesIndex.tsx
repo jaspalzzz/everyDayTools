@@ -25,8 +25,8 @@ const CALCULATOR_LINKS = [
   { label: "Redundancy pay", href: "/redundancy-pay-calculator" },
   { label: "Notice pay", href: "/notice-period-calculator" },
   { label: "Holiday pay", href: "/holiday-entitlement-calculator" },
-  { label: "Final paycheck deadline", href: "/final-paycheck-calculator" },
-  { label: "Unpaid wages", href: "/unpaid-wages-calculator" },
+  { label: "Final paycheck deadline", href: "/final-paycheck-deadline-calculator" },
+  { label: "Payslip analyser", href: "/payslip-analyser" },
 ] as const;
 
 function filterGuides(guides: GuideMeta[], tab: TabKey): GuideMeta[] {
