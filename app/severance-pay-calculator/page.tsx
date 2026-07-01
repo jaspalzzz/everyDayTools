@@ -75,8 +75,12 @@ export default function Page() {
               This estimator multiplies your years of service by a weeks-per-year figure and your
               gross weekly pay. The default of one week per year reflects a common policy, but you
               can adjust it to match an offer you have received. For Canada, the calculator applies
-              the federal statutory minimum where it exceeds the policy figure, so you never see a
-              number below your legal entitlement.
+              the <strong>federal</strong> statutory minimum (Canada Labour Code Part III) where it
+              exceeds the policy figure — but this federal rule only covers federally-regulated
+              employers such as banks, telecoms, airlines, and interprovincial transport. Most
+              Canadian employees are covered by their province&apos;s employment standards instead,
+              which set different minimums. Check your province&apos;s rules before relying on this
+              figure as your legal entitlement.
             </p>
             <p>
               Severance is also separate from any notice you are owed. In a large layoff, US

@@ -49,6 +49,11 @@ export function calcSeverance(input: SeveranceInput): CalcResult {
   const total = weeks * weekly;
 
   const notes: string[] = [];
+  if (input.country === "CA") {
+    notes.push(
+      "The Canadian statutory minimum shown is the federal rule (Canada Labour Code Part III), which only applies to federally-regulated employers — banking, telecoms, airlines, railways, and interprovincial transport. Most Canadian employees are covered by their province's employment standards instead, which set different (often higher) minimums. Check your province's rules before relying on this figure.",
+    );
+  }
   if (input.country === "CA" && statutoryWeeks > policyWeeks) {
     notes.push(
       "Your estimate uses the Canadian statutory minimum because it exceeds the policy figure you entered.",

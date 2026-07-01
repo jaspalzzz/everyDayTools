@@ -181,7 +181,7 @@ export const UK_NI_SELF_EMPLOYED = {
    * Self-employed people with profits above the SPT get NI credits automatically.
    */
   class2WeeklyRate: 0,
-  class2SmallProfitsThreshold: 6_845,
+  class2SmallProfitsThreshold: 7_105,
   class4LowerProfitsLimit: 12_570,
   class4UpperProfitsLimit: 50_270,
   /** Current Class 4 main rate. */

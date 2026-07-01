@@ -20,7 +20,7 @@ const faqs: FaqItem[] = [
   {
     question: "What National Insurance do self-employed people pay in the UK?",
     answer:
-      "Self-employed workers pay Class 2 NI (a flat £3.50/week if profits exceed £12,570) and Class 4 NI (9% on profits between £12,570 and £50,270, then 2% above). This is lower than the combined employee + employer Class 1 NI, which is one reason contracting can be more tax-efficient.",
+      "Since April 2024, Class 2 NI is no longer paid — it is treated as paid automatically once profits reach £7,105, protecting your NI record at no cost. Self-employed workers instead pay Class 4 NI: 6% on profits between £12,570 and £50,270, then 2% above. This is lower than the combined employee + employer Class 1 NI, which is one reason contracting can be more tax-efficient.",
   },
   {
     question: "What counts as net profit for this calculation?",
@@ -79,10 +79,12 @@ export default function Page() {
             <p>
               In the <strong>UK</strong>, self-employed people pay income tax on profits using the
               same bands as employees (20%, 40%, 45%) and the same personal allowance (£12,570 in
-              2026/27). On top of that they pay <strong>Class 2 National Insurance</strong> (a flat
-              £3.50/week) and <strong>Class 4 NI</strong> (9% on profits between £12,570 and
-              £50,270, then 2%). The total NI burden is lower than the combined employee + employer
-              Class 1 rate, which is part of why outside-IR35 contracting can be more tax-efficient.
+              2026/27). Since April 2024, <strong>Class 2 National Insurance</strong> is no longer
+              paid — it is treated as paid automatically once profits reach £7,105, protecting your
+              NI record at no cost. Instead, self-employed people pay <strong>Class 4 NI</strong>{" "}
+              (6% on profits between £12,570 and £50,270, then 2% above). The total NI burden is
+              lower than the combined employee + employer Class 1 rate, which is part of why
+              outside-IR35 contracting can be more tax-efficient.
             </p>
             <p>
               In the <strong>US</strong>, self-employed workers pay{" "}
