@@ -51,6 +51,11 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
       url: "https://www.acas.org.uk/notice-periods",
       type: "regulator",
     },
+    {
+      label: "Ontario.ca — Termination of employment (ESA notice, 1 week/year up to 8 weeks)",
+      url: "https://www.ontario.ca/document/your-guide-employment-standards-act-0/termination-employment",
+      type: "guidance",
+    },
   ],
 
   "garden-leave-calculator": [
