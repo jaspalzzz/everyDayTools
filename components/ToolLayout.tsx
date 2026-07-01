@@ -57,7 +57,6 @@ export function ToolLayout({
     : null;
 
   const legalSources = LEGAL_SOURCES[tool.slug] ?? [];
-  const reviewedLabel = verifiedLabel ?? "1 July 2026";
   const showExitKit = tool.category === "leaving-job";
 
   return (
@@ -122,7 +121,9 @@ export function ToolLayout({
             {tool.region.split("/").map((r) => (
               <span key={r} style={PILL_STYLE}>{r.trim()} rules</span>
             ))}
-            <span style={PILL_STYLE}>Last reviewed {reviewedLabel}</span>
+            {verifiedLabel && (
+              <span style={PILL_STYLE}>Last reviewed {verifiedLabel}</span>
+            )}
             <span style={PILL_STYLE}>Private estimate</span>
             <span style={PILL_STYLE}>No signup</span>
             <Link href="/methodology" style={{ ...PILL_STYLE, color: "#1769e0", borderColor: "#a8c9ef", background: "#eaf3ff" }}>
@@ -146,12 +147,12 @@ export function ToolLayout({
           style={{ marginTop: 24 }}
         >
           <div style={TRUST_CARD_STYLE}>
-            <strong style={TRUST_CARD_TITLE_STYLE}>Author</strong>
-            <span style={TRUST_CARD_TEXT_STYLE}>My Pay Rights editorial team</span>
+            <strong style={TRUST_CARD_TITLE_STYLE}>Publisher</strong>
+            <span style={TRUST_CARD_TEXT_STYLE}>{SITE.name}</span>
           </div>
           <div style={TRUST_CARD_STYLE}>
-            <strong style={TRUST_CARD_TITLE_STYLE}>Source review</strong>
-            <span style={TRUST_CARD_TEXT_STYLE}>Reviewed against official sources on {reviewedLabel}</span>
+            <strong style={TRUST_CARD_TITLE_STYLE}>Source basis</strong>
+            <span style={TRUST_CARD_TEXT_STYLE}>Figures are linked to official sources below</span>
           </div>
           <div style={TRUST_CARD_STYLE}>
             <strong style={TRUST_CARD_TITLE_STYLE}>Corrections</strong>
@@ -358,12 +359,14 @@ export function ToolLayout({
             Review history
           </h2>
           <div style={{ display: "grid", gap: 10 }}>
-            <div style={CHANGELOG_ROW_STYLE}>
-              <strong style={{ color: "#102033" }}>{reviewedLabel}</strong>
-              <span style={{ color: "#52616f" }}>
-                Calculator logic, page copy, and official-source links reviewed for the current published rules.
-              </span>
-            </div>
+            {verifiedLabel && (
+              <div style={CHANGELOG_ROW_STYLE}>
+                <strong style={{ color: "#102033" }}>{verifiedLabel}</strong>
+                <span style={{ color: "#52616f" }}>
+                  Rate figures updated to match the official source cited below.
+                </span>
+              </div>
+            )}
             <div style={CHANGELOG_ROW_STYLE}>
               <strong style={{ color: "#102033" }}>Correction path</strong>
               <span style={{ color: "#52616f" }}>
@@ -422,7 +425,7 @@ export function ToolLayout({
         >
           <strong style={{ display: "block", color: "#3c2c0d", marginBottom: 5 }}>Educational estimates only</strong>
           Results are approximate and for guidance purposes only. They do not constitute legal or financial advice.
-          Statutory rates are based on figures reviewed {reviewedLabel} from {source.label}.{" "}
+          Statutory rates are based on {verifiedLabel ? `figures verified ${verifiedLabel}` : "current published rates"} from {source.label}.{" "}
           <Link href="/disclaimer" style={{ color: "#b7791f", fontWeight: 700 }}>Read the full disclaimer →</Link>
         </div>
       </main>

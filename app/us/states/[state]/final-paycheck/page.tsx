@@ -216,7 +216,7 @@ export default async function Page({ params }: Props) {
         <section className="mt-8 rounded-xl border border-surface-line bg-surface-muted p-5 text-sm leading-relaxed text-ink-soft">
           <h2 className="mb-2 text-base font-bold text-ink">Sources and review</h2>
           <p>
-            Author: My Pay Rights editorial team. Last reviewed: 1 July 2026.
+            Publisher: My Pay Rights.
             Primary state source:{" "}
             <a href={s.dolUrl} target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">
               {s.name} labor agency
