@@ -134,6 +134,11 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
       url: "https://www.gov.uk/statutory-sick-pay",
       type: "guidance",
     },
+    {
+      label: "ACAS — SSP eligibility (day-one pay, no earnings threshold from 6 April 2026)",
+      url: "https://www.acas.org.uk/checking-sick-pay/statutory-sick-pay-ssp",
+      type: "regulator",
+    },
   ],
 
   "maternity-pay-calculator": [
