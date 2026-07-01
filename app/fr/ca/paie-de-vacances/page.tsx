@@ -67,7 +67,7 @@ export default function PaieDeVacancesPage() {
         </p>
 
         {/* Key stats */}
-        <div className="mb-8 grid grid-cols-2 gap-4">
+        <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="rounded-xl border border-surface-line bg-surface-muted p-5">
             <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-ink-faint">Après 1 an</p>
             <p className="text-2xl font-bold text-ink">2 semaines</p>

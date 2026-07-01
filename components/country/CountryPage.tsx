@@ -296,9 +296,8 @@ export function CountryPage({
                       <Link
                         key={tool.slug}
                         href={`/${tool.slug}`}
+                        className="grid grid-cols-[40px_1fr] sm:grid-cols-[40px_1fr_30px]"
                         style={{
-                          display: "grid",
-                          gridTemplateColumns: "40px 1fr 30px",
                           gap: 14,
                           alignItems: "center",
                           minHeight: 76,

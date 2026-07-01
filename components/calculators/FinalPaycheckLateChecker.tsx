@@ -67,7 +67,8 @@ function calculateDueDate(params: {
   const days = phrase.match(/within (\d+) (calendar |business |working )?days?/i)?.[1];
   if (days) return { dueDate: addDays(lastDay, Number(days)), note: `${state?.name} rule shown by the deadline calculator: ${phrase}.` };
   if (/next business day/i.test(phrase)) return { dueDate: nextBusinessDay(lastDay), note: `${state?.name} rule shown by the deadline calculator: ${phrase}.` };
-  if (/24 hours/i.test(phrase)) return { dueDate: addDays(lastDay, 1), note: `${state?.name} rule shown by the deadline calculator: ${phrase}.` };
+  const hours = phrase.match(/within (\d+) hours?/i)?.[1];
+  if (hours) return { dueDate: addDays(lastDay, Math.ceil(Number(hours) / 24)), note: `${state?.name} rule shown by the deadline calculator: ${phrase}.` };
   if (/last day|immediately|on your last day/i.test(phrase)) return { dueDate: lastDay, note: `${state?.name} rule shown by the deadline calculator: ${phrase}.` };
   if (/next.*payday/i.test(phrase) || /regular payday/i.test(phrase)) {
     return nextPayday

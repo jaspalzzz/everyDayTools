@@ -52,10 +52,10 @@ describe("RedundancyCalculator (component wiring)", () => {
   it("shows the download CTA only for a valid result", () => {
     render(<RedundancyCalculator />);
     skipGate();
-    expect(screen.getByRole("button", { name: /download pdf summary/i })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /download private estimate/i })).toBeTruthy();
 
     const years = screen.getByLabelText("Full years of service") as HTMLInputElement;
     fireEvent.change(years, { target: { value: "1" } }); // below 2-year minimum
-    expect(screen.queryByRole("button", { name: /download pdf summary/i })).toBeNull();
+    expect(screen.queryByRole("button", { name: /download private estimate/i })).toBeNull();
   });
 });
