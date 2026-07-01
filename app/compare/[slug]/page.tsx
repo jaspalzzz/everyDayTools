@@ -95,8 +95,11 @@ export default async function ComparisonPage({ params }: Props) {
             {/* Side-by-side comparison table */}
             <section>
               <h2>Key differences at a glance</h2>
+              <p className="mb-2 text-xs font-medium text-ink-faint sm:hidden">
+                ← Swipe to see both sides →
+              </p>
               <div className="overflow-x-auto rounded-xl border border-surface-line">
-                <table className="w-full text-sm">
+                <table className="w-full min-w-[560px] text-sm">
                   <thead>
                     <tr className="border-b border-surface-line bg-surface-muted">
                       <th className="w-1/3 px-4 py-2.5 text-left text-xs font-semibold text-ink">Aspect</th>

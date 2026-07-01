@@ -171,8 +171,11 @@ export default function UKPILONGuide() {
 
             <section>
               <h2>PILON vs garden leave — key differences</h2>
+              <p className="mb-2 text-xs font-medium text-ink-faint sm:hidden">
+                ← Swipe to see all columns →
+              </p>
               <div className="overflow-x-auto rounded-xl border border-surface-line">
-                <table className="w-full text-sm">
+                <table className="w-full min-w-[560px] text-sm">
                   <thead>
                     <tr className="border-b border-surface-line bg-surface-muted">
                       <th className="px-4 py-2.5 text-left text-xs font-semibold text-ink">Factor</th>
