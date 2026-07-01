@@ -62,7 +62,7 @@ export default function Page() {
         tool={tool}
         calculator={<HolidayEntitlementCalculator />}
         source={HOLIDAY_SOURCE}
-        verifiedDate={UK_HOLIDAY.effectiveDate}
+        verifiedDate={UK_HOLIDAY.lastVerifiedDate}
         faqs={faqs}
         contentBlock={
           <>

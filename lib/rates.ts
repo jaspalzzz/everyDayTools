@@ -136,7 +136,15 @@ export const UK_SSP = {
 export const UK_HOLIDAY = {
   statutoryWeeks: 5.6,
   maxStatutoryDays: 28,
+  /** When the 5.6-week entitlement itself took effect (Working Time Regulations 1998). */
   effectiveDate: "1998-10-01",
+  /**
+   * Date this figure was last checked against GOV.UK and confirmed still current.
+   * Distinct from effectiveDate: the rule is ~30 years old but still in force,
+   * so "last reviewed" should reflect a recent freshness check, not the
+   * original commencement date (which reads as an abandoned page).
+   */
+  lastVerifiedDate: "2026-07-01",
   source: {
     label: "GOV.UK — Holiday entitlement",
     url: "https://www.gov.uk/holiday-entitlement-rights",
