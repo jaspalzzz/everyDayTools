@@ -292,6 +292,11 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
       url: "https://www.gov.uk/income-tax",
       type: "guidance",
     },
+    {
+      label: "IRS — Publication 15 (flat 22% supplemental wage withholding rate)",
+      url: "https://www.irs.gov/publications/p15",
+      type: "guidance",
+    },
   ],
 
   "day-rate-calculator": [
