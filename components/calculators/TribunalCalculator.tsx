@@ -20,9 +20,9 @@ const FAULT_OPTIONS = [
 ];
 
 const VENTO_OPTIONS: { value: VentoBand; label: string }[] = [
-  { value: "lower",  label: `Lower band (£1,200 – £11,700)` },
-  { value: "middle", label: `Middle band (£11,700 – £35,200)` },
-  { value: "upper",  label: `Upper band (£35,200 – £58,700)` },
+  { value: "lower",  label: `Lower band (£1,300 – £12,600)` },
+  { value: "middle", label: `Middle band (£12,600 – £37,700)` },
+  { value: "upper",  label: `Upper band (£37,700 – £62,900)` },
 ];
 
 export function TribunalCalculator() {

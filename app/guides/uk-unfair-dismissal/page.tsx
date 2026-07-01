@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: "How much compensation can I get for unfair dismissal?",
-    a: "Compensation for unfair dismissal has two components. The basic award is calculated the same way as statutory redundancy pay (age × service × weekly pay, with a weekly pay cap of £751 for 2026/27, maximum 20 years' service). The compensatory award covers your actual financial loss — lost earnings, lost benefits, and future job prospects — and is capped at the lower of £115,115 or 52 weeks' actual gross pay. Some categories of automatically unfair dismissal (e.g. whistleblowing, union activity) have an additional minimum basic award of £8,533 (2026/27) and an uncapped compensatory award.",
+    a: "Compensation for unfair dismissal has two components. The basic award is calculated the same way as statutory redundancy pay (age × service × weekly pay, with a weekly pay cap of £751 for 2026/27, maximum 20 years' service). The compensatory award covers your actual financial loss — lost earnings, lost benefits, and future job prospects — and is capped at the lower of £123,543 or 52 weeks' actual gross pay. Some categories of automatically unfair dismissal (e.g. whistleblowing, union activity) have an additional minimum basic award of £8,533 (2026/27) and an uncapped compensatory award.",
   },
   {
     q: "What is the time limit for bringing an unfair dismissal claim?",
@@ -234,7 +234,7 @@ export default function UKUnfairDismissalGuide() {
                   <tbody>
                     {[
                       { award: "Basic award", calc: "Age × service × weekly pay (same as statutory redundancy)", cap: "£22,530 (max)" },
-                      { award: "Compensatory award", calc: "Actual loss of earnings, benefits and future prospects", cap: "£115,115 or 52 weeks' pay" },
+                      { award: "Compensatory award", calc: "Actual loss of earnings, benefits and future prospects", cap: "£123,543 or 52 weeks' pay" },
                       { award: "Additional award", calc: "If employer fails to reinstate or re-engage after a tribunal order", cap: "26–52 weeks' pay" },
                       { award: "Interim relief", calc: "For whistleblowing / union activity claims pending full hearing", cap: "Weekly pay until final hearing" },
                     ].map(({ award, calc, cap }, i) => (

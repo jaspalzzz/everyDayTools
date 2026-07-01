@@ -97,7 +97,7 @@ export const COMPARISONS: ComparisonMeta[] = [
       { aspect: "Legal basis", a: "Employment Rights Act 1996 (ERA 1996) — statutory right", b: "Common law contract claim — breach of employment contract" },
       { aspect: "Qualifying period", a: "2 years' continuous employment (with exceptions for automatically unfair dismissal)", b: "None — available from day one of employment" },
       { aspect: "What it covers", a: "Dismissal without a fair reason or without a fair procedure, even if notice was given", b: "Dismissal without the correct notice (or pay in lieu) — regardless of reason" },
-      { aspect: "Compensation (2026/27)", a: "Basic award up to £22,530 + compensatory award up to £115,115 or 52 weeks' pay (lower figure)", b: "Loss of earnings during the notice period only — typically weeks to months of pay" },
+      { aspect: "Compensation (2026/27)", a: "Basic award up to £22,530 + compensatory award up to £123,543 or 52 weeks' pay (lower figure)", b: "Loss of earnings during the notice period only — typically weeks to months of pay" },
       { aspect: "Where to claim", a: "Employment Tribunal", b: "Employment Tribunal (up to £25,000) or county court (no cap)" },
       { aspect: "Time limit", a: "3 months less one day from effective date of termination (ACAS early conciliation first)", b: "3 months less one day (ET) or 6 years (county court)" },
       { aspect: "Notice requirement", a: "Irrelevant — about the reason and process, not notice", b: "Core of the claim: employer failed to give contractual/statutory notice" },
@@ -260,7 +260,7 @@ export const COMPARISONS: ComparisonMeta[] = [
       { aspect: "Risk to employee", a: "High — if the tribunal finds the breach was not fundamental, or you affirmed it, you lose and receive nothing. You also lose your job voluntarily.", b: "Lower — employer must justify the dismissal; employee does not need to establish a breach" },
       { aspect: "What triggers it", a: "Fundamental breach of contract: pay cuts, demotion, bullying, hostile working environment, removing duties, changing location unreasonably", b: "Employer dismisses for no good reason, unfair reason, or without following a fair process (even if reason was potentially fair)" },
       { aspect: "Notice on resignation", a: "Can resign with or without notice — either can found a constructive dismissal claim. Resigning without notice does not amount to misconduct if the breach was serious enough.", b: "Employer must give notice (or PILON) unless gross misconduct justifies summary dismissal" },
-      { aspect: "Compensation", a: "Same as unfair dismissal: basic award + compensatory award up to £115,115 or 52 weeks' pay", b: "Basic award + compensatory award up to £115,115 or 52 weeks' pay" },
+      { aspect: "Compensation", a: "Same as unfair dismissal: basic award + compensatory award up to £123,543 or 52 weeks' pay", b: "Basic award + compensatory award up to £123,543 or 52 weeks' pay" },
     ],
     verdict:
       "Constructive dismissal claims are harder to win than unfair dismissal claims — you carry the burden of proving your employer committed a fundamental breach, and any delay in resigning risks being taken as 'affirming' the breach. Always take legal advice before resigning with a view to claiming constructive dismissal. If your employer has fired you and the reason or process was unfair, an unfair dismissal claim is usually more straightforward.",

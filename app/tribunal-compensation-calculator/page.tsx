@@ -15,7 +15,7 @@ const faqs: FaqItem[] = [
   {
     question: "How is Employment Tribunal compensation calculated?",
     answer:
-      "Unfair dismissal compensation has two parts. The basic award uses the same formula as statutory redundancy pay: years of service (up to 20) × weekly pay (capped at £751 for 2026/27) × an age multiplier. The compensatory award covers your actual financial loss — primarily your lost earnings from dismissal until you find equivalent work, capped at the lower of 52 weeks' gross pay or £115,115. Discrimination and whistleblowing claims have no cap on the compensatory element.",
+      "Unfair dismissal compensation has two parts. The basic award uses the same formula as statutory redundancy pay: years of service (up to 20) × weekly pay (capped at £751 for 2026/27) × an age multiplier. The compensatory award covers your actual financial loss — primarily your lost earnings from dismissal until you find equivalent work, capped at the lower of 52 weeks' gross pay or £123,543. Discrimination and whistleblowing claims have no cap on the compensatory element.",
   },
   {
     question: "What is the ACAS uplift?",
@@ -25,7 +25,7 @@ const faqs: FaqItem[] = [
   {
     question: "What are Vento bands in discrimination claims?",
     answer:
-      "Vento bands are the ranges used for injury to feelings awards in discrimination claims (named after the Court of Appeal case Vento v Chief Constable of West Yorkshire Police). The lower band (approximately £1,200–£11,700) covers less serious one-off acts. The middle band (£11,700–£35,200) covers serious cases. The upper band (£35,200–£58,700) is reserved for the most serious cases — sustained campaigns, deliberate discrimination, or repeated harassment. The bands are reviewed annually by the Employment Tribunal President.",
+      "Vento bands are the ranges used for injury to feelings awards in discrimination claims (named after the Court of Appeal case Vento v Chief Constable of West Yorkshire Police). The lower band (£1,300–£12,600 for 2026/27) covers less serious one-off acts. The middle band (£12,600–£37,700) covers serious cases. The upper band (£37,700–£62,900) is reserved for the most serious cases — sustained campaigns, deliberate discrimination, or repeated harassment. The bands are reviewed annually by the Employment Tribunal President.",
   },
   {
     question: "What is contributory fault?",

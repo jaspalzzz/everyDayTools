@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: "What compensation can I get for constructive dismissal?",
-    a: "A successful constructive dismissal claim is treated as unfair dismissal. You can receive: (1) a basic award calculated the same way as statutory redundancy pay (age × service × weekly pay, capped at £751/week for 2026/27); and (2) a compensatory award for loss of earnings, benefits and future job prospects — capped at the lower of £115,115 or 52 weeks' actual pay. You may also receive notice pay if you resigned without it. The tribunal can reduce your award if it finds you contributed to the breach.",
+    a: "A successful constructive dismissal claim is treated as unfair dismissal. You can receive: (1) a basic award calculated the same way as statutory redundancy pay (age × service × weekly pay, capped at £751/week for 2026/27); and (2) a compensatory award for loss of earnings, benefits and future job prospects — capped at the lower of £123,543 or 52 weeks' actual pay. You may also receive notice pay if you resigned without it. The tribunal can reduce your award if it finds you contributed to the breach.",
   },
   {
     q: "How long do I have to make a claim?",
@@ -217,7 +217,7 @@ export default function UKConstructiveDismissalGuide() {
                   <tbody>
                     {[
                       { award: "Basic award", calc: "Age × service × weekly pay (same as redundancy pay)", cap: "£22,530" },
-                      { award: "Compensatory award", calc: "Actual financial loss — loss of earnings, benefits, future employment prospects", cap: "£115,115 or 52 weeks' pay" },
+                      { award: "Compensatory award", calc: "Actual financial loss — loss of earnings, benefits, future employment prospects", cap: "£123,543 or 52 weeks' pay" },
                       { award: "Notice pay", calc: "Statutory or contractual notice, whichever is greater", cap: "Uncapped" },
                     ].map(({ award, calc, cap }, i) => (
                       <tr key={award} className={`border-b border-surface-line last:border-0 ${i % 2 === 0 ? "bg-white" : "bg-surface-muted/40"}`}>

@@ -540,10 +540,10 @@ export const FAQS: FaqPageMeta[] = [
   {
     slug: "how-much-can-i-get-employment-tribunal-uk",
     question: "How much compensation can I get from an Employment Tribunal?",
-    shortAnswer: "Unfair dismissal: basic award up to £22,530 plus compensatory award capped at £115,115 (or 52 weeks' pay). Discrimination claims are uncapped — you can also claim injury to feelings (Vento bands: £1,200–£58,700).",
+    shortAnswer: "Unfair dismissal: basic award up to £22,530 plus compensatory award capped at £123,543 (or 52 weeks' pay). Discrimination claims are uncapped — you can also claim injury to feelings (Vento bands: £1,300–£62,900).",
     answer: [
-      "Employment Tribunal compensation for unfair dismissal has two parts. The basic award is calculated like statutory redundancy pay: years of service (up to 20) × weekly pay (capped at £751 for 2026/27) × age multiplier. The compensatory award covers your actual financial loss — primarily lost salary — capped at the lower of 52 weeks' gross pay or £115,115 for 2026/27.",
-      "Discrimination and whistleblowing claims are different: there is no cap on the compensatory element, and you can also claim injury to feelings under the Vento bands framework. Vento bands range from £1,200 (less serious, lower band) to £58,700 (most serious, upper band). Aggravated damages and personal injury (psychiatric harm) can be awarded on top in the most serious cases.",
+      "Employment Tribunal compensation for unfair dismissal has two parts. The basic award is calculated like statutory redundancy pay: years of service (up to 20) × weekly pay (capped at £751 for 2026/27) × age multiplier. The compensatory award covers your actual financial loss — primarily lost salary — capped at the lower of 52 weeks' gross pay or £123,543 for 2026/27.",
+      "Discrimination and whistleblowing claims are different: there is no cap on the compensatory element, and you can also claim injury to feelings under the Vento bands framework. Vento bands range from £1,300 (less serious, lower band) to £62,900 (most serious, upper band). Aggravated damages and personal injury (psychiatric harm) can be awarded on top in the most serious cases.",
       "Both awards can be increased by up to 25% (ACAS uplift) if the employer failed to follow a fair disciplinary/grievance process, or reduced by any percentage the Tribunal considers fair for contributory conduct on your part.",
     ],
     country: "UK",
@@ -556,10 +556,10 @@ export const FAQS: FaqPageMeta[] = [
   {
     slug: "what-are-vento-bands-uk",
     question: "What are Vento bands in discrimination claims?",
-    shortAnswer: "Vento bands are the ranges used for injury to feelings awards in discrimination claims. Lower band: £1,200–£11,700 (less serious). Middle: £11,700–£35,200. Upper: £35,200–£58,700 (most serious). Reviewed annually.",
+    shortAnswer: "Vento bands are the ranges used for injury to feelings awards in discrimination claims. Lower band: £1,300–£12,600 (less serious). Middle: £12,600–£37,700. Upper: £37,700–£62,900 (most serious). Reviewed annually.",
     answer: [
       "Vento bands set the range within which Employment Tribunals award injury to feelings compensation in discrimination claims (sex, race, disability, age, religion, sexual orientation, etc.). The name comes from the Court of Appeal case Vento v Chief Constable of West Yorkshire Police [2002]. The bands are updated each April to reflect inflation by the Employment Tribunal Presidential Guidance.",
-      "The lower band (approximately £1,200–£11,700) covers less serious one-off acts: a single discriminatory remark, a single act of unfavourable treatment. The middle band (£11,700–£35,200) covers more serious cases: sustained treatment, repeated acts, or a pattern of discrimination. The upper band (£35,200–£58,700) is reserved for the most serious cases — deliberate, sustained, or particularly demeaning treatment — and should only be used in exceptional circumstances.",
+      "The lower band (£1,300–£12,600 for 2026/27) covers less serious one-off acts: a single discriminatory remark, a single act of unfavourable treatment. The middle band (£12,600–£37,700) covers more serious cases: sustained treatment, repeated acts, or a pattern of discrimination. The upper band (£37,700–£62,900) is reserved for the most serious cases — deliberate, sustained, or particularly demeaning treatment — and should only be used in exceptional circumstances.",
       "The injury to feelings award is separate from and in addition to financial loss compensation. It is not subject to income tax. Exceptionally serious cases can also attract aggravated damages on top of the Vento award.",
     ],
     country: "UK",

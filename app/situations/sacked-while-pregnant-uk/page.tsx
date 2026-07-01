@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     q: "What compensation can I get if I was sacked while pregnant?",
-    a: "You can claim: (1) a basic award (same as redundancy pay); (2) a compensatory award for lost earnings (capped at the lower of 52 weeks' pay or £115,115); and (3) an injury to feelings award under the Equality Act (typically £1,100–£45,600 depending on severity, using the Vento bands). Discrimination compensation is uncapped — there is no limit on what a Tribunal can award.",
+    a: "You can claim: (1) a basic award (same as redundancy pay); (2) a compensatory award for lost earnings (capped at the lower of 52 weeks' pay or £123,543); and (3) an injury to feelings award under the Equality Act (typically £1,300–£62,900 depending on severity, using the Vento bands). Discrimination compensation is uncapped — there is no limit on what a Tribunal can award.",
   },
   {
     q: "What if my employer asks me to resign?",

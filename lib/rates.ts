@@ -79,7 +79,7 @@ export const UK_SHPP = {
 /** UK Employment Tribunal compensation limits (2026/27) */
 export const UK_TRIBUNAL = {
   /** Lower of 52 weeks' gross pay or this cap — Employment Rights Act 1996 s.124 */
-  compensatoryAwardCap: 115_115,
+  compensatoryAwardCap: 123_543,
   /** Same formula as redundancy pay — ERA 1996 s.119 */
   basicAwardWeeklyPayCap: 751,
   basicAwardMaxYears: 20,
@@ -88,11 +88,11 @@ export const UK_TRIBUNAL = {
   taxFreeThreshold: 30_000,
   /**
    * Vento bands — injury to feelings in discrimination claims.
-   * Presidential Guidance (updated annually). Approximate 2026/27 values.
+   * Ninth Addendum to Presidential Guidance, effective 6 April 2026.
    */
-  ventoLower:  { min: 1_200,  max: 11_700 },
-  ventoMiddle: { min: 11_700, max: 35_200 },
-  ventoUpper:  { min: 35_200, max: 58_700 },
+  ventoLower:  { min: 1_300,  max: 12_600 },
+  ventoMiddle: { min: 12_600, max: 37_700 },
+  ventoUpper:  { min: 37_700, max: 62_900 },
   effectiveDate: "2026-04-06",
   taxYear: "2026/27",
   source: {

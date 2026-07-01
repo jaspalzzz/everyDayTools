@@ -72,7 +72,7 @@ const steps = [
   {
     number: 5,
     title: "File an Employment Tribunal claim",
-    body: "File your ET1 form online at gov.uk within 3 months less one day of the last act. Discrimination compensation is uncapped — it includes compensation for financial loss and an 'injury to feelings' award (typically £1,100–£45,600 using the Vento bands).",
+    body: "File your ET1 form online at gov.uk within 3 months less one day of the last act. Discrimination compensation is uncapped — it includes compensation for financial loss and an 'injury to feelings' award (typically £1,300–£62,900 using the Vento bands).",
   },
 ];
 

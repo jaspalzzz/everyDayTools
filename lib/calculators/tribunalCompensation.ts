@@ -92,7 +92,7 @@ export function calcTribunal(input: TribunalInput): CalcResult {
     notes.push(`Compensatory award capped at £${C.compensatoryAwardCap.toLocaleString()} (lower of 52 weeks' pay or the statutory cap). Discrimination and whistleblowing claims are uncapped.`);
   }
   if (uncapped) {
-    notes.push("Discrimination and whistleblowing compensatory awards are uncapped — financial loss beyond the £115,115 cap can be recovered in full.");
+    notes.push("Discrimination and whistleblowing compensatory awards are uncapped — financial loss beyond the £123,543 cap can be recovered in full.");
   }
   if (input.acasBreach) {
     notes.push("ACAS uplift of 25% applied because the employer failed to follow the ACAS Code of Practice on Disciplinary and Grievance Procedures.");

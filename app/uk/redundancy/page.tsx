@@ -74,7 +74,7 @@ export default function UKRedundancyPage() {
           <div className="mt-5 rounded-lg border border-surface-line bg-surface-muted px-4 py-3 text-xs leading-relaxed text-ink-faint">
             <strong className="text-ink">2026/27 key limits:</strong> Weekly pay cap £751 ·
             Maximum statutory redundancy pay £22,530 · Tax-free threshold £30,000 ·
-            Compensatory award cap £115,115 · Tribunal time limit 3 months
+            Compensatory award cap £123,543 · Tribunal time limit 3 months
           </div>
         </div>
 

@@ -142,13 +142,13 @@ export default function Content() {
         <li>
           <strong>Compensatory award</strong>: Your actual financial losses — lost earnings from resignation
           to finding a new job, any difference in salary in a new lower-paid role, pension losses.
-          Capped at the lower of 52 weeks&apos; pay or £115,115 for 2026/27.
+          Capped at the lower of 52 weeks&apos; pay or £123,543 for 2026/27.
         </li>
       </ul>
       <p>
         If the constructive dismissal also involved discrimination, there is <strong>no cap</strong> on
         compensation, and you can additionally claim an injury to feelings award (Vento bands: typically
-        £1,100–£45,600, or higher for the most serious cases).
+        £1,300–£62,900, or higher for the most serious cases).
       </p>
       <p>
         Both awards can be reduced if you: (1) failed to follow the ACAS grievance process (up to 25%
