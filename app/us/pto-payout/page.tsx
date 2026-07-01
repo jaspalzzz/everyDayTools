@@ -148,6 +148,23 @@ export default function USPTOPayoutPage() {
           </ol>
         </section>
 
+        <section className="mb-10 max-w-2xl rounded-xl border border-brand-100 bg-brand-50 p-5">
+          <h2 className="text-base font-semibold text-ink">High-intent state calculators</h2>
+          <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+            Start with state pages where policy wording often decides the answer.
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <Link href="/us/new-york/pto-payout-calculator" className="rounded-lg border border-surface-line bg-white p-4 hover:bg-surface-muted">
+              <p className="text-sm font-semibold text-ink">New York PTO payout calculator</p>
+              <p className="mt-1 text-xs text-ink-soft">Check unused vacation value and policy-dependent payout risk.</p>
+            </Link>
+            <Link href="/us/final-paycheck" className="rounded-lg border border-surface-line bg-white p-4 hover:bg-surface-muted">
+              <p className="text-sm font-semibold text-ink">Final paycheck hub</p>
+              <p className="mt-1 text-xs text-ink-soft">Check deadline, lateness, deductions, and claim steps.</p>
+            </Link>
+          </div>
+        </section>
+
         {/* FAQs */}
         {PTO_FAQS.length > 0 && (
           <section className="mb-10 max-w-2xl" aria-labelledby="faq-heading">

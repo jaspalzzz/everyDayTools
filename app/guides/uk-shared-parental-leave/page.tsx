@@ -11,13 +11,13 @@ const DATE = "2026-06-27";
 export const metadata: Metadata = {
   title: "UK Shared Parental Leave 2026 — ShPL, ShPP & How to Split Leave",
   description:
-    "How Shared Parental Leave (ShPL) and Shared Parental Pay (ShPP) work in the UK — curtailing maternity leave, splitting up to 37 weeks with the other parent, discontinuous leave, and pay at £184.03/week.",
+    "How Shared Parental Leave (ShPL) and Shared Parental Pay (ShPP) work in the UK — curtailing maternity leave, splitting up to 37 weeks with the other parent, discontinuous leave, and pay at £194.32/week.",
   alternates: { canonical: url },
   openGraph: { title: "UK Shared Parental Leave 2026", description: "ShPL lets parents share up to 37 weeks of leave after the compulsory maternity period. Full guide to how it works.", url },
 };
 
 const faqs = [
-  { q: "How much Shared Parental Pay (ShPP) is available?", a: "If the mother or primary adopter curtails their SMP/SAP, any remaining statutory pay converts to ShPP, payable at £184.03/week (2026/27) or 90% of AWE if lower. Up to 37 weeks of ShPP can be available to share — but only the weeks that remain in the 39-week SMP/SAP period." },
+  { q: "How much Shared Parental Pay (ShPP) is available?", a: "If the mother or primary adopter curtails their SMP/SAP, any remaining statutory pay converts to ShPP, payable at £194.32/week (2026/27) or 90% of AWE if lower. Up to 37 weeks of ShPP can be available to share — but only the weeks that remain in the 39-week SMP/SAP period." },
   { q: "Can both parents take ShPL at the same time?", a: "Yes — unlike maternity and paternity leave, both partners can take ShPL concurrently. This allows both parents to be home simultaneously with a new child. The combined weeks still cannot exceed the maximum available." },
   { q: "What is a discontinuous leave request?", a: "Parents can request ShPL in separate, non-consecutive blocks (e.g. 3 weeks in April, 2 weeks in July). The employer has 14 days to agree, propose alternative dates, or refuse. An employer has the right to refuse discontinuous requests, in which case the employee can withdraw and take a continuous block instead." },
   { q: "Is ShPP enhanced by some employers?", a: "Some employers offer enhanced ShPP at full salary for some or all of the ShPL period — particularly where they also offer enhanced maternity pay. If you receive enhanced maternity pay, check whether your employer's policy extends the same rate to ShPL." },
@@ -96,14 +96,14 @@ export default function UKSharedParentalLeaveGuide() {
               </ol>
               <p className="mt-3">
                 Both parents must satisfy a qualifying test: 26 weeks&apos; continuous employment by the end of the 15th
-                week before the due date, and earning at least £125/week on average.
+                week before the due date, and earning at least £129/week on average.
               </p>
             </section>
 
             <section>
               <h2 className="text-base font-semibold text-ink">ShPP rate 2026/27</h2>
               <p>
-                Shared Parental Pay is paid at £184.03/week (2026/27) or 90% of average weekly earnings
+                Shared Parental Pay is paid at £194.32/week (2026/27) or 90% of average weekly earnings
                 if lower — the same rate as SMP weeks 7–39. It is taxable and subject to NI. If either
                 employer offers enhanced SMP/SPP, that enhanced rate does not automatically apply to ShPP
                 unless the employer&apos;s policy says so.

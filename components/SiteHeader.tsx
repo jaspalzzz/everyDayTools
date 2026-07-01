@@ -21,20 +21,20 @@ function Chevron({ open }: { open: boolean }) {
 }
 
 const MEGA_CATEGORIES = [
-  { icon: "L", label: "Leaving a job", desc: "Redundancy, notice pay, severance, settlement, final paycheck.", href: "/redundancy-pay-calculator" },
-  { icon: "P", label: "Pay & tax", desc: "Take-home pay, overtime, deductions, salary to hourly, bonus tax.", href: "/take-home-pay-calculator" },
+  { icon: "L", label: "Leaving a job", desc: "Redundancy, notice pay, severance, settlement, final paycheck.", href: "/uk/leaving-job" },
+  { icon: "F", label: "Final paycheck", desc: "State deadlines, late pay checks, wage claims and deductions.", href: "/us/final-paycheck" },
+  { icon: "P", label: "PTO payout", desc: "Unused vacation and final-pay payout rules by state.", href: "/us/pto-payout" },
   { icon: "F", label: "Family & parental leave", desc: "Maternity pay, paternity pay, shared parental leave and adoption pay.", href: "/maternity-pay-calculator" },
   { icon: "B", label: "Benefits & entitlements", desc: "Sick pay, holiday pay, unemployment benefits and annual leave.", href: "/holiday-entitlement-calculator" },
-  { icon: "H", label: "Hours & workplace", desc: "Working days, overtime checks, annual leave and pay-period dates.", href: "/working-days-calculator" },
   { icon: "A", label: "All calculators", desc: "Browse every calculator by category, country and workplace issue.", href: "/#all-calculators" },
 ] as const;
 
 const MEGA_TOOLS = [
   { label: "Redundancy pay", href: "/redundancy-pay-calculator" },
   { label: "Notice pay", href: "/notice-period-calculator" },
-  { label: "Holiday pay", href: "/holiday-entitlement-calculator" },
-  { label: "Final paycheck deadline", href: "/final-paycheck-deadline-calculator" },
-  { label: "Payslip analyser", href: "/payslip-analyser" },
+  { label: "Final paycheck hub", href: "/us/final-paycheck" },
+  { label: "Was my final paycheck late?", href: "/us/final-paycheck/was-my-final-paycheck-late" },
+  { label: "PTO payout", href: "/pto-payout-calculator" },
 ] as const;
 
 const COUNTRY_LINKS = [

@@ -307,6 +307,58 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     },
   ],
 
+  "salary-to-hourly-calculator": [
+    {
+      label: "GOV.UK — National Minimum Wage and pay calculations",
+      url: "https://www.gov.uk/national-minimum-wage",
+      type: "guidance",
+    },
+    {
+      label: "DOL — Wages and the Fair Labor Standards Act",
+      url: "https://www.dol.gov/agencies/whd/flsa",
+      type: "guidance",
+    },
+  ],
+
+  "pay-rise-calculator": [
+    {
+      label: "HMRC — Income Tax rates and allowances",
+      url: "https://www.gov.uk/income-tax-rates",
+      type: "guidance",
+    },
+    {
+      label: "IRS — Federal income tax rates",
+      url: "https://www.irs.gov/filing/federal-income-tax-rates-and-brackets",
+      type: "guidance",
+    },
+  ],
+
+  "pro-rata-salary-calculator": [
+    {
+      label: "GOV.UK — Part-time workers' rights",
+      url: "https://www.gov.uk/part-time-worker-rights",
+      type: "guidance",
+    },
+    {
+      label: "GOV.UK — Holiday entitlement for irregular hours",
+      url: "https://www.gov.uk/holiday-entitlement-rights",
+      type: "guidance",
+    },
+  ],
+
+  "working-days-calculator": [
+    {
+      label: "GOV.UK — Bank holidays in England and Wales",
+      url: "https://www.gov.uk/bank-holidays",
+      type: "guidance",
+    },
+    {
+      label: "DOL — State labor offices",
+      url: "https://www.dol.gov/agencies/whd/state/contacts",
+      type: "guidance",
+    },
+  ],
+
   /* ─── US CALCULATORS ────────────────────────────────────── */
 
   "unemployment-benefit-calculator": [

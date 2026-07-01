@@ -9,7 +9,10 @@ interface Props {
   className?: string;
 }
 
-const CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+const CLIENT =
+  process.env.NEXT_PUBLIC_ADSENSE_READY === "true"
+    ? process.env.NEXT_PUBLIC_ADSENSE_CLIENT
+    : undefined;
 
 /**
  * Renders a Google AdSense unit when NEXT_PUBLIC_ADSENSE_CLIENT is set.

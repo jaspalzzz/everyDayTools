@@ -39,12 +39,35 @@ const US_TOOLS: CountryTool[] = TOOLS.filter((t) => t.region.includes("US")).map
   hero: t.hero,
 }));
 
+const US_EXIT_LINKS = [
+  { label: "Final paycheck hub", href: "/us/final-paycheck" },
+  { label: "Late paycheck checker", href: "/us/final-paycheck/was-my-final-paycheck-late" },
+  { label: "Deduction checker", href: "/us/final-paycheck/employer-deduction-checker" },
+] as const;
+
 function USStatesGrid() {
   return (
-    <section aria-labelledby="us-states-heading">
-      <h2 id="us-states-heading" style={{ margin: "0 0 5px", color: "#102033", fontSize: 22, fontWeight: 850 }}>
-        Browse by state
-      </h2>
+    <div style={{ display: "grid", gap: 28 }}>
+      <section aria-labelledby="us-job-exit-heading">
+        <h2 id="us-job-exit-heading" style={{ margin: "0 0 5px", color: "#102033", fontSize: 22, fontWeight: 850 }}>
+          Job exit pay tools
+        </h2>
+        <p style={{ margin: "0 0 14px", color: "#52616f", fontSize: 14 }}>
+          Final paycheck timing, PTO payout, deductions, and wage claim next steps.
+        </p>
+        <div className="grid gap-3 sm:grid-cols-3">
+          {US_EXIT_LINKS.map((link) => (
+            <Link key={link.href} href={link.href} className="rounded-lg border border-surface-line bg-white p-4 text-sm font-semibold text-ink hover:bg-surface-muted">
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="us-states-heading">
+        <h2 id="us-states-heading" style={{ margin: "0 0 5px", color: "#102033", fontSize: 22, fontWeight: 850 }}>
+          Browse by state
+        </h2>
       <p style={{ margin: "0 0 14px", color: "#52616f", fontSize: 14 }}>
         PTO payout law, final paycheck deadlines &amp; minimum wage — all 50 states + DC
       </p>
@@ -85,7 +108,8 @@ function USStatesGrid() {
           No requirement
         </span>
       </p>
-    </section>
+      </section>
+    </div>
   );
 }
 

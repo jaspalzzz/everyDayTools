@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${f.question} | MyPayRights`,
     description: f.shortAnswer,
+    robots: { index: false, follow: true },
     alternates: { canonical: url },
     openGraph: { title: f.question, description: f.shortAnswer, url },
   };
@@ -74,16 +75,16 @@ export default async function FaqPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(article)} />
 
-      <div className="mx-auto max-w-content px-5 py-10">
-        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-ink-faint">
-          <Link href="/" className="hover:text-ink-soft">Home</Link>
-          <span className="mx-1.5">/</span>
-          <Link href="/faq" className="hover:text-ink-soft">FAQ</Link>
-          <span className="mx-1.5">/</span>
-          <span className="truncate">{f.question}</span>
+      <div className="mx-auto max-w-content overflow-hidden px-5 py-10">
+        <nav aria-label="Breadcrumb" className="mb-6 flex min-w-0 items-center text-xs text-ink-faint">
+          <Link href="/" className="shrink-0 hover:text-ink-soft">Home</Link>
+          <span className="mx-1.5 shrink-0">/</span>
+          <Link href="/faq" className="shrink-0 hover:text-ink-soft">FAQ</Link>
+          <span className="mx-1.5 shrink-0">/</span>
+          <span className="min-w-0 truncate">{f.question}</span>
         </nav>
 
-        <article className="max-w-2xl">
+        <article className="max-w-2xl break-words">
           <header className="mb-8">
             <p className="text-xs font-medium uppercase tracking-widest text-brand-600">
               {flag} {f.country} · Employment Law · Updated {f.dateModified}
@@ -143,9 +144,9 @@ export default async function FaqPage({ params }: Props) {
                   <Link
                     key={r.slug}
                     href={`/faq/${r.slug}`}
-                    className="flex items-center justify-between gap-4 px-5 py-3.5 hover:bg-surface-muted"
+                    className="flex items-start justify-between gap-3 px-4 py-3.5 hover:bg-surface-muted sm:px-5"
                   >
-                    <span className="text-sm text-ink">{r.question}</span>
+                    <span className="min-w-0 text-sm leading-relaxed text-ink">{r.question}</span>
                     <span className="shrink-0 text-xs text-ink-faint">→</span>
                   </Link>
                 ))}

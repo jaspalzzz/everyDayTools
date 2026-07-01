@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { US_STATES, getUsState } from "@/data/usStates";
 import { SITE, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
+import { FinalPaycheckLateChecker } from "@/components/calculators/FinalPaycheckLateChecker";
 
 type Props = { params: Promise<{ state: string }> };
 
@@ -60,6 +61,7 @@ export default async function Page({ params }: Props) {
 
   const url = `${SITE.url}/us/states/${s.slug}/final-paycheck`;
   const faqs = generateFaqs(s);
+  const hasStateCalculator = s.code === "CA" || s.code === "TX";
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -119,6 +121,19 @@ export default async function Page({ params }: Props) {
             <p className="text-xl font-bold text-ink">{s.finalPaycheckResigned}</p>
           </div>
         </div>
+
+        {hasStateCalculator && (
+          <section className="mb-8">
+            <h2 className="mb-3 text-xl font-bold text-ink">
+              Was your {s.name} final paycheck late?
+            </h2>
+            <p className="mb-4 text-sm leading-relaxed text-ink-soft">
+              Enter your last day and payment date to estimate whether the paycheck missed the
+              {s.name} deadline. This is a timing check only, not legal advice.
+            </p>
+            <FinalPaycheckLateChecker presetStateCode={s.code} />
+          </section>
+        )}
 
         {/* What must be included */}
         <section className="mb-8">
@@ -196,6 +211,26 @@ export default async function Page({ params }: Props) {
               </details>
             ))}
           </div>
+        </section>
+
+        <section className="mt-8 rounded-xl border border-surface-line bg-surface-muted p-5 text-sm leading-relaxed text-ink-soft">
+          <h2 className="mb-2 text-base font-bold text-ink">Sources and review</h2>
+          <p>
+            Author: My Pay Rights editorial team. Last reviewed: 1 July 2026.
+            Primary state source:{" "}
+            <a href={s.dolUrl} target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">
+              {s.name} labor agency
+            </a>
+            . Federal reference:{" "}
+            <a href="https://www.dol.gov/agencies/whd/state/contacts" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">
+              U.S. Department of Labor state contacts
+            </a>
+            .{" "}
+            <Link href="/contact" className="text-brand-600 hover:underline">
+              Report a correction
+            </Link>
+            .
+          </p>
         </section>
 
         {/* Back link */}

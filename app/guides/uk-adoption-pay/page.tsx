@@ -11,14 +11,14 @@ const DATE = "2026-06-27";
 export const metadata: Metadata = {
   title: "UK Adoption Pay & Leave 2026 — SAP Rates, Qualifying Conditions & Paternity Rights",
   description:
-    "Statutory Adoption Pay (SAP) is £184.03/week for up to 39 weeks in 2026/27. How adoption leave works, who qualifies, the partner's 2-week entitlement, and how to elect which parent takes primary leave.",
+    "Statutory Adoption Pay (SAP) is £194.32/week for up to 39 weeks in 2026/27. How adoption leave works, who qualifies, the partner's 2-week entitlement, and how to elect which parent takes primary leave.",
   alternates: { canonical: url },
-  openGraph: { title: "UK Adoption Pay & Leave 2026", description: "SAP pays £184.03/week for 39 weeks. Full guide to adoption leave, qualifying conditions and partner rights.", url },
+  openGraph: { title: "UK Adoption Pay & Leave 2026", description: "SAP pays £194.32/week for 39 weeks. Full guide to adoption leave, qualifying conditions and partner rights.", url },
 };
 
 const faqs = [
-  { q: "How much is Statutory Adoption Pay (SAP)?", a: "SAP is £184.03/week (2026/27) or 90% of average weekly earnings if lower. It is paid for up to 39 weeks — the first 6 weeks at 90% of AWE and the remaining 33 weeks at the flat rate (or 90% AWE if lower). This mirrors the Statutory Maternity Pay structure." },
-  { q: "Who qualifies for adoption pay and leave?", a: "One member of an adopting couple (or a sole adopter) can claim SAP, provided they have been employed continuously for 26 weeks ending the week they are notified of a match, earn at least £125/week (LEL), and intend to care for the child. The other member of an adopting couple (if they qualify) can take Statutory Paternity Leave and Pay." },
+  { q: "How much is Statutory Adoption Pay (SAP)?", a: "SAP is £194.32/week (2026/27) or 90% of average weekly earnings if lower. It is paid for up to 39 weeks — the first 6 weeks at 90% of AWE and the remaining 33 weeks at the flat rate (or 90% AWE if lower). This mirrors the Statutory Maternity Pay structure." },
+  { q: "Who qualifies for adoption pay and leave?", a: "One member of an adopting couple (or a sole adopter) can claim SAP, provided they have been employed continuously for 26 weeks ending the week they are notified of a match, earn at least £129/week (LEL), and intend to care for the child. The other member of an adopting couple (if they qualify) can take Statutory Paternity Leave and Pay." },
   { q: "Does adoption pay work the same as maternity pay?", a: "Yes — the rates and structure of SAP are aligned with SMP: 90% of AWE for 6 weeks then the flat rate for up to 33 weeks. Adoption leave mirrors maternity leave: ordinary adoption leave (26 weeks) and additional adoption leave (a further 26 weeks). The key difference is that adoption leave can start from the date of placement (or up to 14 days before), not a weeks-before-due-date trigger." },
 ];
 
@@ -93,7 +93,7 @@ export default function UKAdoptionPayGuide() {
                   <tbody>
                     {[
                       { period: "First 6 weeks", rate: "90% of average weekly earnings" },
-                      { period: "Weeks 7–39 (up to 33 weeks)", rate: "£184.03/week (or 90% AWE if lower)" },
+                      { period: "Weeks 7–39 (up to 33 weeks)", rate: "£194.32/week (or 90% AWE if lower)" },
                       { period: "Weeks 40–52", rate: "Unpaid (additional adoption leave)" },
                     ].map(({ period, rate }) => (
                       <tr key={period} className="border-t border-surface-line">
@@ -110,7 +110,7 @@ export default function UKAdoptionPayGuide() {
               <h2 className="text-base font-semibold text-ink">Partner&apos;s rights</h2>
               <p>
                 The other member of an adopting couple can take up to 2 weeks of Statutory Paternity
-                Leave paid at SPP (£184.03/week or 90% AWE if lower), provided they meet the qualifying
+                Leave paid at SPP (£194.32/week or 90% AWE if lower), provided they meet the qualifying
                 conditions. Both partners can also opt into Shared Parental Leave after the primary
                 adopter has taken 2 weeks of compulsory adoption leave.
               </p>

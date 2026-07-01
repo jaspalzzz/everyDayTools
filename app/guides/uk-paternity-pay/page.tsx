@@ -11,13 +11,13 @@ const DATE = "2026-06-27";
 export const metadata: Metadata = {
   title: "UK Paternity Pay & Leave 2026 — SPP Rates, Qualifying Conditions & New Rights",
   description:
-    "Statutory Paternity Pay (SPP) is £184.03/week or 90% of AWE (whichever is lower) for up to 2 weeks. How to qualify, when to apply, and the extended rights from April 2025.",
+    "Statutory Paternity Pay (SPP) is £194.32/week or 90% of AWE (whichever is lower) for up to 2 weeks. How to qualify, when to apply, and the extended rights from April 2025.",
   alternates: { canonical: url },
   openGraph: { title: "UK Paternity Pay & Leave 2026", description: "How SPP works, who qualifies, the 2-week entitlement, and new expanded rights.", url },
 };
 
 const faqs = [
-  { q: "How much is Statutory Paternity Pay (SPP)?", a: "SPP is £184.03/week (2026/27) or 90% of your average weekly earnings if lower. It is paid for 1 or 2 weeks — you choose — and must be taken within 52 weeks of the baby's birth or adoption placement." },
+  { q: "How much is Statutory Paternity Pay (SPP)?", a: "SPP is £194.32/week (2026/27) or 90% of your average weekly earnings if lower. It is paid for 1 or 2 weeks — you choose — and must be taken within 52 weeks of the baby's birth or adoption placement." },
   { q: "Do I qualify for paternity leave?", a: "You qualify if you have been continuously employed by the same employer for 26 weeks ending with the 15th week before the baby's due date (or the week the adopter is matched), you are the biological father, the mother's partner, or the child's adopter, and you intend to care for the child. Self-employed individuals do not qualify for SPP." },
   { q: "Can I take paternity leave in the first year?", a: "Since April 2024, eligible fathers and partners can take their paternity leave and pay in two separate 1-week blocks at any point in the first 52 weeks (previously the 56-day window applied). Leave does not have to be taken consecutively." },
   { q: "Is SPP taxable?", a: "Yes — SPP is paid through the payroll and is subject to income tax and National Insurance contributions in the same way as ordinary earnings." },
@@ -76,7 +76,7 @@ export default function UKPaternityPayGuide() {
             </div>
             <h1 className="text-3xl font-medium tracking-tight text-ink sm:text-4xl">UK Paternity Pay & Leave 2026</h1>
             <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-              Eligible employees can take up to 2 weeks of paid paternity leave at £184.03/week. Since April 2024,
+              Eligible employees can take up to 2 weeks of paid paternity leave at £194.32/week. Since April 2024,
               fathers and partners have new flexibility to split their leave and take it at any point in the baby&apos;s first year.
             </p>
             <p className="mt-2 text-[11px] text-ink-faint">
@@ -99,7 +99,7 @@ export default function UKPaternityPayGuide() {
               <ul className="mt-2 flex flex-col gap-1.5 pl-4">
                 <li className="list-disc">The biological father, the mother&apos;s spouse/civil partner/partner, or one of a same-sex couple who has adopted</li>
                 <li className="list-disc">Employed continuously by the same employer for 26 weeks ending in the 15th week before the due date (or matching week for adoption)</li>
-                <li className="list-disc">Earning at least £125/week (Lower Earnings Limit 2026/27)</li>
+                <li className="list-disc">Earning at least £129/week (Lower Earnings Limit 2026/27)</li>
                 <li className="list-disc">Intending to care for the child or support the mother/adopter</li>
               </ul>
             </section>
@@ -116,9 +116,9 @@ export default function UKPaternityPayGuide() {
                   </thead>
                   <tbody>
                     {[
-                      { label: "Weekly SPP rate", value: "£184.03 or 90% AWE (lower)" },
+                      { label: "Weekly SPP rate", value: "£194.32 or 90% AWE (lower)" },
                       { label: "Maximum weeks", value: "2 weeks" },
-                      { label: "Lower Earnings Limit (to qualify)", value: "£125/week" },
+                      { label: "Lower Earnings Limit (to qualify)", value: "£129/week" },
                       { label: "Notice required", value: "15th week before due date" },
                     ].map(({ label, value }) => (
                       <tr key={label} className="border-t border-surface-line">

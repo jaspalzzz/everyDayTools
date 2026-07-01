@@ -26,8 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: g.dateModified,
   }));
 
-  // UK statutory rates last changed 6 April 2026 (2026/27 tax year).
-  const RATES_UPDATED = "2026-04-06";
+  // Official source review completed 1 July 2026 after the 2026/27 UK rate change.
+  const RATES_UPDATED = "2026-07-01";
 
   const toolEntries: MetadataRoute.Sitemap = TOOLS.map((tool) => ({
     url: `${SITE.url}/${tool.slug}`,
@@ -120,6 +120,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/methodology`, changeFrequency: "yearly" as const, priority: 0.6, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/editorial-policy`, changeFrequency: "yearly" as const, priority: 0.5, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/about`, changeFrequency: "yearly" as const, priority: 0.4, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/contact`, changeFrequency: "yearly" as const, priority: 0.4, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/privacy`, changeFrequency: "yearly" as const, priority: 0.2, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/terms`, changeFrequency: "yearly" as const, priority: 0.2, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/disclaimer`, changeFrequency: "yearly" as const, priority: 0.2, lastModified: RATES_UPDATED },
@@ -128,8 +129,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/uk/redundancy`, changeFrequency: "monthly" as const, priority: 0.88, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/uk/maternity-leave`, changeFrequency: "monthly" as const, priority: 0.88, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/uk/pay-rights`, changeFrequency: "monthly" as const, priority: 0.87, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/uk/leaving-job`, changeFrequency: "monthly" as const, priority: 0.89, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/us/overtime`, changeFrequency: "monthly" as const, priority: 0.87, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/us/pto-payout`, changeFrequency: "monthly" as const, priority: 0.87, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/us/final-paycheck`, changeFrequency: "monthly" as const, priority: 0.9, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/us/final-paycheck/was-my-final-paycheck-late`, changeFrequency: "monthly" as const, priority: 0.88, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/us/final-paycheck/employer-deduction-checker`, changeFrequency: "monthly" as const, priority: 0.86, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/us/new-york/pto-payout-calculator`, changeFrequency: "monthly" as const, priority: 0.86, lastModified: RATES_UPDATED },
     ...toolEntries,
     ...stateEntries,
     ...provinceEntries,

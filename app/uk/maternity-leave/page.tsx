@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "UK Maternity Leave & Pay 2026 — SMP, Maternity Allowance & Rights",
     description:
-      "Statutory Maternity Pay pays 90% of earnings for 6 weeks then £184.03/week for 33 weeks. Full guide to qualifying, calculating, and protecting your rights.",
+      "Statutory Maternity Pay pays 90% of earnings for 6 weeks then £194.32/week for 33 weeks. Full guide to qualifying, calculating, and protecting your rights.",
     url,
   },
 };
@@ -68,7 +68,7 @@ export default function UKMaternityLeavePage() {
           </p>
           <div className="mt-5 rounded-lg border border-surface-line bg-surface-muted px-4 py-3 text-xs leading-relaxed text-ink-faint">
             <strong className="text-ink">2026/27 SMP rates:</strong> Weeks 1–6: 90% of average weekly earnings ·
-            Weeks 7–39: £184.03/week (or 90% if lower) · Lower Earnings Limit: £125/week ·
+            Weeks 7–39: £194.32/week (or 90% if lower) · Lower Earnings Limit: £129/week ·
             Qualifying service: 26 weeks by 15th week before due date
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function UKMaternityLeavePage() {
           </p>
           <ul className="mt-2 flex flex-col gap-1.5 pl-4">
             <li className="list-disc"><strong className="text-ink">First 6 weeks:</strong> 90% of your average weekly earnings (AWE), calculated over 8 weeks ending in the 15th week before your due date.</li>
-            <li className="list-disc"><strong className="text-ink">Remaining 33 weeks:</strong> £184.03/week (2026/27) or 90% of AWE, whichever is lower.</li>
+            <li className="list-disc"><strong className="text-ink">Remaining 33 weeks:</strong> £194.32/week (2026/27) or 90% of AWE, whichever is lower.</li>
           </ul>
           <p className="mt-3">SMP is taxable earnings — income tax and NI apply in the same way as normal pay.</p>
 
@@ -109,7 +109,7 @@ export default function UKMaternityLeavePage() {
           <p>To qualify for SMP you must:</p>
           <ul className="mt-2 flex flex-col gap-1.5 pl-4">
             <li className="list-disc">Have been continuously employed by the same employer for at least 26 weeks ending in the 15th week before your baby is due (the "qualifying week")</li>
-            <li className="list-disc">Earn on average at least £125/week (the Lower Earnings Limit for 2026/27) in the 8-week reference period</li>
+            <li className="list-disc">Earn on average at least £129/week (the Lower Earnings Limit for 2026/27) in the 8-week reference period</li>
             <li className="list-disc">Provide your employer with 28 days' notice of when you intend to start maternity leave, plus a MATB1 certificate from your midwife or doctor</li>
           </ul>
 
@@ -117,7 +117,7 @@ export default function UKMaternityLeavePage() {
           <p>
             If you do not qualify for SMP — for example, because you recently changed employer, are
             self-employed, or earn below the Lower Earnings Limit — you may qualify for{" "}
-            <strong>Maternity Allowance</strong> from the government, paid at £184.03/week (or 90%
+            <strong>Maternity Allowance</strong> from the government, paid at £194.32/week (or 90%
             of AWE if lower) for up to 39 weeks.
           </p>
 
@@ -136,7 +136,7 @@ export default function UKMaternityLeavePage() {
             After the first two weeks of compulsory maternity leave, SMP and maternity leave can be
             curtailed and converted into Shared Parental Leave (ShPL) and Shared Parental Pay (ShPP),
             enabling the other parent to share up to 37 weeks of leave and 35 weeks of pay at
-            £184.03/week (or 90% of AWE if lower).
+            £194.32/week (or 90% of AWE if lower).
           </p>
         </section>
 

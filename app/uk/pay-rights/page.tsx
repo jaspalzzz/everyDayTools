@@ -69,7 +69,7 @@ export default function UKPayRightsPage() {
           <div className="mt-5 rounded-lg border border-surface-line bg-surface-muted px-4 py-3 text-xs leading-relaxed text-ink-faint">
             <strong className="text-ink">2026/27 rates:</strong> National Living Wage (21+) £12.71/hour ·
             NMW (18–20) £10.85/hour · NMW (16–17 / apprentices) £8.00/hour ·
-            SSP £123.25/week · SMP/SPP/SAP/ShPP £184.03/week
+            SSP £123.25/week · SMP/SPP/SAP/ShPP £194.32/week
           </div>
         </div>
 

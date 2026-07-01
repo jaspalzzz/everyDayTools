@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { AdSenseScript } from "@/components/AdSenseScript";
+import { ConsentBanner } from "@/components/ConsentBanner";
 import { SITE } from "@/lib/seo";
-
-const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -16,7 +15,6 @@ export const metadata: Metadata = {
   description:
     "Free, law-backed pay rights calculators — redundancy pay, PTO payout, notice period, severance and overtime. Live results, no signup, instant PDF.",
   applicationName: SITE.name,
-  robots: { index: true, follow: true },
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -61,17 +59,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        {ADSENSE_CLIENT && (
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
-            crossOrigin="anonymous"
-            strategy="afterInteractive"
-          />
-        )}
+        <AdSenseScript />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
+        <ConsentBanner />
       </body>
     </html>
   );

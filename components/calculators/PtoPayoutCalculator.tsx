@@ -5,8 +5,8 @@ import { FieldGrid, NumberField, SelectField, FormPanel } from "../fields";
 import { ResultPanel } from "../ResultPanel";
 import { calcPtoPayout, PTO_SOURCE, STATE_PTO } from "@/lib/calculators/ptoPayout";
 
-export function PtoPayoutCalculator() {
-  const [stateCode, setStateCode] = useState<string>("CA");
+export function PtoPayoutCalculator({ presetStateCode }: { presetStateCode?: string } = {}) {
+  const [stateCode, setStateCode] = useState<string>(presetStateCode ?? "CA");
   const [hours, setHours] = useState<number | "">(80);
   const [rate, setRate] = useState<number | "">(30);
 
@@ -45,14 +45,16 @@ export function PtoPayoutCalculator() {
       {ruleBanner}
       <div className="grid grid-cols-1 gap-7 lg:grid-cols-[minmax(0,1fr)_390px]" style={{ alignItems: "start" }}>
       <FormPanel label="PTO payout inputs">
-        <SelectField
-          id="state"
-          label="Your state"
-          value={stateCode}
-          onChange={setStateCode}
-          options={STATE_PTO.map((s) => ({ value: s.code, label: s.name }))}
-          hint="Each state sets its own payout rules"
-        />
+        {!presetStateCode && (
+          <SelectField
+            id="state"
+            label="Your state"
+            value={stateCode}
+            onChange={setStateCode}
+            options={STATE_PTO.map((s) => ({ value: s.code, label: s.name }))}
+            hint="Each state sets its own payout rules"
+          />
+        )}
         <FieldGrid>
           <NumberField
             id="pto-hours"

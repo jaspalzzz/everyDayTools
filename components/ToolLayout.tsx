@@ -4,6 +4,7 @@ import { AdSlot } from "./AdSlot";
 import { relatedTools, CATEGORY_META, type ToolMeta } from "@/data/tools";
 import type { FaqItem, SourceRef } from "@/lib/types";
 import { LEGAL_SOURCES } from "@/data/legalSources";
+import { SITE } from "@/lib/seo";
 
 export interface LearnMoreMeta {
   guideSlug?: string;
@@ -56,6 +57,8 @@ export function ToolLayout({
     : null;
 
   const legalSources = LEGAL_SOURCES[tool.slug] ?? [];
+  const reviewedLabel = verifiedLabel ?? "1 July 2026";
+  const showExitKit = tool.category === "leaving-job";
 
   return (
     <>
@@ -119,9 +122,7 @@ export function ToolLayout({
             {tool.region.split("/").map((r) => (
               <span key={r} style={PILL_STYLE}>{r.trim()} rules</span>
             ))}
-            {verifiedLabel && (
-              <span style={PILL_STYLE}>Updated {verifiedLabel}</span>
-            )}
+            <span style={PILL_STYLE}>Last reviewed {reviewedLabel}</span>
             <span style={PILL_STYLE}>Private estimate</span>
             <span style={PILL_STYLE}>No signup</span>
             <Link href="/methodology" style={{ ...PILL_STYLE, color: "#1769e0", borderColor: "#a8c9ef", background: "#eaf3ff" }}>
@@ -139,6 +140,27 @@ export function ToolLayout({
           {calculator}
         </section>
 
+        <section
+          aria-label="Review and correction details"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-3"
+          style={{ marginTop: 24 }}
+        >
+          <div style={TRUST_CARD_STYLE}>
+            <strong style={TRUST_CARD_TITLE_STYLE}>Author</strong>
+            <span style={TRUST_CARD_TEXT_STYLE}>My Pay Rights editorial team</span>
+          </div>
+          <div style={TRUST_CARD_STYLE}>
+            <strong style={TRUST_CARD_TITLE_STYLE}>Source review</strong>
+            <span style={TRUST_CARD_TEXT_STYLE}>Reviewed against official sources on {reviewedLabel}</span>
+          </div>
+          <div style={TRUST_CARD_STYLE}>
+            <strong style={TRUST_CARD_TITLE_STYLE}>Corrections</strong>
+            <Link href="/contact" style={{ ...TRUST_CARD_TEXT_STYLE, color: "#0f56bd", fontWeight: 850 }}>
+              Report a calculation or source issue
+            </Link>
+          </div>
+        </section>
+
         {/* "What this estimate means" — Low / Typical / High */}
         {meaningPanel && (
           <section
@@ -151,7 +173,7 @@ export function ToolLayout({
             <h2 style={{ margin: "0 0 12px", color: "#102033", fontSize: 22, lineHeight: 1.2 }}>
               What this estimate means
             </h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10 }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
               {(["Low", "Typical", "High"] as const).map((tier) => (
                 <div
                   key={tier}
@@ -171,6 +193,35 @@ export function ToolLayout({
 
         {/* Ad slot 1 — below tool */}
         <AdSlot slot="2957844781" format="rectangle" className="my-8 max-w-sm" />
+
+        {showExitKit && (
+          <section
+            aria-labelledby="next-steps-heading"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-4"
+            style={{ marginBottom: 28 }}
+          >
+            <div style={ACTION_BOX_STYLE}>
+              <h2 id="next-steps-heading" style={ACTION_BOX_TITLE_STYLE}>Employer email template</h2>
+              <p style={ACTION_BOX_TEXT_STYLE}>Subject: Request for final pay review</p>
+              <p style={ACTION_BOX_TEXT_STYLE}>
+                I am writing to ask you to review my final pay. Based on the information
+                available to me, I believe the amount or deadline may not match the applicable
+                rule. Please confirm the calculation, the pay period covered, any deductions,
+                and the expected payment date.
+              </p>
+            </div>
+            <div style={ACTION_BOX_STYLE}>
+              <h2 style={ACTION_BOX_TITLE_STYLE}>Wage claim checklist</h2>
+              <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "grid", gap: 8 }}>
+                {["Final payslip or pay statement", "Employment contract or handbook policy", "Dates worked and termination/resignation date", "Written request sent to employer", "Official state or country claim link"].map((item) => (
+                  <li key={item} style={{ color: "#52616f", fontSize: 13, lineHeight: 1.5 }}>
+                    <strong style={{ color: "#16835b" }}>OK</strong> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         {/* ── Methodology ─────────────────────────────────────────────── */}
         <section
@@ -257,9 +308,8 @@ export function ToolLayout({
             {legalSources.map((src, i) => (
               <div
                 key={src.url}
+                className="grid grid-cols-1 sm:grid-cols-[130px_1fr_auto] gap-2 sm:gap-3 items-start sm:items-center"
                 style={{
-                  display: "grid", gridTemplateColumns: "130px 1fr auto",
-                  gap: 12, alignItems: "center",
                   borderTop: i === 0 ? "none" : "1px solid #e7edf3",
                   padding: "12px 0",
                   color: "#52616f", fontSize: 13,
@@ -296,6 +346,36 @@ export function ToolLayout({
             </p>
           </section>
         )}
+
+        <section
+          aria-labelledby="review-history-heading"
+          style={{
+            marginTop: 28, border: "1px solid #c8d9ea", borderRadius: 10,
+            background: "#fff", boxShadow: "0 10px 24px rgba(16,32,51,.05)", padding: 22,
+          }}
+        >
+          <h2 id="review-history-heading" style={{ margin: "0 0 12px", color: "#102033", fontSize: 22, lineHeight: 1.2 }}>
+            Review history
+          </h2>
+          <div style={{ display: "grid", gap: 10 }}>
+            <div style={CHANGELOG_ROW_STYLE}>
+              <strong style={{ color: "#102033" }}>{reviewedLabel}</strong>
+              <span style={{ color: "#52616f" }}>
+                Calculator logic, page copy, and official-source links reviewed for the current published rules.
+              </span>
+            </div>
+            <div style={CHANGELOG_ROW_STYLE}>
+              <strong style={{ color: "#102033" }}>Correction path</strong>
+              <span style={{ color: "#52616f" }}>
+                If a rate or source has changed, email{" "}
+                <a href={`mailto:${SITE.contactEmail}`} style={{ color: "#0f56bd", fontWeight: 850 }}>
+                  {SITE.contactEmail}
+                </a>{" "}
+                with the page URL and official source.
+              </span>
+            </div>
+          </div>
+        </section>
 
         {/* ── Related tools ────────────────────────────────────────────── */}
         {(related.length > 0 || (learnMore && (learnMore.guideSlug || learnMore.faqs.length > 0))) && (
@@ -342,7 +422,7 @@ export function ToolLayout({
         >
           <strong style={{ display: "block", color: "#3c2c0d", marginBottom: 5 }}>Educational estimates only</strong>
           Results are approximate and for guidance purposes only. They do not constitute legal or financial advice.
-          Statutory rates are based on {verifiedLabel ? `figures verified ${verifiedLabel}` : "current published rates"} from {source.label}.{" "}
+          Statutory rates are based on figures reviewed {reviewedLabel} from {source.label}.{" "}
           <Link href="/disclaimer" style={{ color: "#b7791f", fontWeight: 700 }}>Read the full disclaimer →</Link>
         </div>
       </main>
@@ -364,4 +444,58 @@ const RELATED_ROW_STYLE: React.CSSProperties = {
   background: "#f6f9fc", padding: "13px 14px",
   color: "#25384c", fontSize: 13, fontWeight: 850,
   marginTop: 10, textDecoration: "none",
+};
+
+const TRUST_CARD_STYLE: React.CSSProperties = {
+  border: "1px solid #d8e2ec",
+  borderRadius: 8,
+  background: "#fff",
+  padding: 14,
+};
+
+const TRUST_CARD_TITLE_STYLE: React.CSSProperties = {
+  display: "block",
+  color: "#102033",
+  fontSize: 13,
+  marginBottom: 4,
+};
+
+const TRUST_CARD_TEXT_STYLE: React.CSSProperties = {
+  display: "block",
+  color: "#52616f",
+  fontSize: 12,
+  lineHeight: 1.5,
+};
+
+const ACTION_BOX_STYLE: React.CSSProperties = {
+  border: "1px solid #c8d9ea",
+  borderRadius: 10,
+  background: "#f8fbff",
+  padding: 18,
+};
+
+const ACTION_BOX_TITLE_STYLE: React.CSSProperties = {
+  margin: "0 0 10px",
+  color: "#102033",
+  fontSize: 18,
+  lineHeight: 1.2,
+};
+
+const ACTION_BOX_TEXT_STYLE: React.CSSProperties = {
+  margin: "0 0 10px",
+  color: "#52616f",
+  fontSize: 13,
+  lineHeight: 1.6,
+};
+
+const CHANGELOG_ROW_STYLE: React.CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "150px 1fr",
+  gap: 12,
+  border: "1px solid #e7edf3",
+  borderRadius: 8,
+  background: "#f6f9fc",
+  padding: 12,
+  fontSize: 13,
+  lineHeight: 1.55,
 };

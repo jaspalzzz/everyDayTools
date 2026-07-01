@@ -20,7 +20,7 @@ const faqs = [
   { q: "How much is Statutory Sick Pay in 2026?", a: "SSP is £123.25 per week for the 2026/27 tax year. It is paid by your employer through the payroll in the same way as normal wages and is subject to income tax and National Insurance if you are above the relevant thresholds." },
   { q: "Are there waiting days before SSP starts?", a: "No — the three waiting days were abolished by the Employment Rights Act 2025. From 6 April 2026, SSP is payable from day one of illness. Previously, the first three days of absence were 'waiting days' with no SSP entitlement." },
   { q: "How long does SSP last?", a: "SSP is payable for up to 28 weeks in any period of incapacity for work (PIW). If you are still unable to work after 28 weeks, your employer will issue an SSP1 form and you may be able to claim Employment and Support Allowance (ESA) or Universal Credit." },
-  { q: "Do I qualify for SSP?", a: "You qualify if you earn at least £125/week (the Lower Earnings Limit for 2026/27), have been sick for at least one day, and are an employee. Workers and self-employed people do not qualify for SSP." },
+  { q: "Do I qualify for SSP?", a: "You qualify if you earn at least £129/week (the Lower Earnings Limit for 2026/27), have been sick for at least one day, and are an employee. Workers and self-employed people do not qualify for SSP." },
   { q: "What is enhanced sick pay?", a: "Enhanced sick pay is contractual sick pay offered by your employer above the SSP minimum. Many employers pay full salary for 3–6 months, then half salary for a further period. Check your employment contract or staff handbook for your specific entitlement." },
 ];
 
@@ -109,7 +109,7 @@ export default function UKSickPayGuide() {
                     {[
                       { rule: "Waiting days", before: "3 days (no pay)", after: "None — day 1" },
                       { rule: "Weekly rate", before: "£116.75", after: "£123.25" },
-                      { rule: "Qualifying earnings", before: "£123/week LEL", after: "£125/week LEL" },
+                      { rule: "Qualifying earnings", before: "£123/week LEL", after: "£129/week LEL" },
                       { rule: "Duration", before: "Up to 28 weeks", after: "Up to 28 weeks" },
                     ].map(({ rule, before, after }) => (
                       <tr key={rule} className="border-t border-surface-line">
@@ -128,7 +128,7 @@ export default function UKSickPayGuide() {
               <ul className="mt-2 flex flex-col gap-1.5 pl-4">
                 <li className="list-disc">You must be an employee (not a worker or self-employed)</li>
                 <li className="list-disc">You must be off work sick for at least one day</li>
-                <li className="list-disc">You must have average weekly earnings of at least £125 (the Lower Earnings Limit 2026/27)</li>
+                <li className="list-disc">You must have average weekly earnings of at least £129 (the Lower Earnings Limit 2026/27)</li>
                 <li className="list-disc">You must follow your employer&apos;s absence notification procedures (typically notifying by day 1 or day 7)</li>
               </ul>
             </section>

@@ -120,7 +120,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "uk-maternity-pay-rights-2026",
     quickAnswer:
-      "UK Statutory Maternity Pay (SMP) pays 90% of your average weekly earnings for the first 6 weeks, then £184.03/week (or 90% of earnings if lower) for up to 33 more weeks — 39 weeks total. You must have 26 weeks' service by the 15th week before your due date and earn at least £125/week to qualify.",
+      "UK Statutory Maternity Pay (SMP) pays 90% of your average weekly earnings for the first 6 weeks, then £194.32/week (or 90% of earnings if lower) for up to 33 more weeks — 39 weeks total. You must have 26 weeks' service by the 15th week before your due date and earn at least £129/week to qualify.",
     title: "UK Maternity Pay Rights 2026: SMP, OMP, and What You Are Entitled To",
     description:
       "Everything pregnant employees in the UK need to know about Statutory Maternity Pay — the 39-week entitlement, qualifying conditions, the 90% first-6-weeks rule, and how enhanced (occupational) maternity pay works.",
@@ -171,7 +171,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "uk-sick-pay-rights-2026",
     quickAnswer:
-      "Statutory Sick Pay (SSP) is £123.25 per week (2026/27) and is paid from day one of illness — the three waiting days were abolished by the Employment Rights Act 2025 with effect from April 2026. SSP is paid for up to 28 weeks. You qualify if you earn at least £125/week. Your contract may provide more generous enhanced sick pay.",
+      "Statutory Sick Pay (SSP) is £123.25 per week (2026/27) and is paid from day one of illness — the three waiting days were abolished by the Employment Rights Act 2025 with effect from April 2026. SSP is paid for up to 28 weeks. You qualify if you earn at least £129/week. Your contract may provide more generous enhanced sick pay.",
     title: "UK Sick Pay Rights 2026: SSP, Qualifying Days, and What Your Employer Must Pay",
     description:
       "Statutory Sick Pay is £123.25/week from day 4 of illness — but many workers don't know when it starts, how long it lasts, or what to do when it runs out. This guide covers all of it.",

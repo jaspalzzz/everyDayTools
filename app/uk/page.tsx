@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TOOLS } from "@/data/tools";
 import { SITE, jsonLd } from "@/lib/seo";
 import { CountryPage } from "@/components/country/CountryPage";
@@ -36,6 +37,32 @@ const UK_TOOLS: CountryTool[] = TOOLS.filter((t) => t.region.includes("UK")).map
   category: t.category,
   hero: t.hero,
 }));
+
+const UK_EXIT_LINKS = [
+  { label: "Leaving job hub", href: "/uk/leaving-job" },
+  { label: "Redundancy rights", href: "/uk/redundancy" },
+  { label: "Pay rights", href: "/uk/pay-rights" },
+] as const;
+
+function UKLeavingJobLinks() {
+  return (
+    <section aria-labelledby="uk-leaving-job-heading">
+      <h2 id="uk-leaving-job-heading" style={{ margin: "0 0 5px", color: "#102033", fontSize: 22, fontWeight: 850 }}>
+        Leaving a job in the UK
+      </h2>
+      <p style={{ margin: "0 0 14px", color: "#52616f", fontSize: 14 }}>
+        Check final pay, redundancy, notice, holiday pay, and settlement money before you sign or leave.
+      </p>
+      <div className="grid gap-3 sm:grid-cols-3">
+        {UK_EXIT_LINKS.map((link) => (
+          <Link key={link.href} href={link.href} className="rounded-lg border border-surface-line bg-white p-4 text-sm font-semibold text-ink hover:bg-surface-muted">
+            {link.label}
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default function UKPage() {
   const itemList = {
@@ -80,7 +107,7 @@ export default function UKPage() {
         }
         rates={[
           { label: "Redundancy pay cap", value: "£751/week" },
-          { label: "SMP / SPP / ShPP", value: "£184.03/week" },
+          { label: "SMP / SPP / ShPP", value: "£194.32/week" },
           { label: "SSP", value: "£123.25/week" },
           { label: "National Living Wage", value: "£12.21/hour" },
           { label: "Lower Earnings Limit", value: "£129/week" },
@@ -99,6 +126,7 @@ export default function UKPage() {
             These calculators show the legal floor. Contractual terms may give more — your contract always applies if it is more generous.
           </>
         }
+        extraContent={<UKLeavingJobLinks />}
       />
     </>
   );

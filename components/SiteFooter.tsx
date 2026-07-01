@@ -68,6 +68,8 @@ export function SiteFooter() {
             Company
           </h4>
           <Link href="/about" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>About</Link>
+          <Link href="/contact" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Contact</Link>
+          <Link href="/contact" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Corrections</Link>
           <Link href="/privacy" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Privacy</Link>
           <Link href="/terms" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Terms</Link>
           <Link href="/disclaimer" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Disclaimer</Link>

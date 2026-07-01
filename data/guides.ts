@@ -128,7 +128,7 @@ export const GUIDES: GuideMeta[] = [
     slug: "uk-paternity-pay",
     title: "UK Paternity Pay & Leave 2026: SPP, Qualifying Conditions & New Rights",
     description:
-      "How Statutory Paternity Pay works in the UK, who qualifies, the 2-week entitlement and rate (£184.03/week), the extended 'paternity leave 2.0' rights from April 2025, and how to apply.",
+      "How Statutory Paternity Pay works in the UK, who qualifies, the 2-week entitlement and rate (£194.32/week), the extended 'paternity leave 2.0' rights from April 2025, and how to apply.",
     datePublished: "2026-06-27",
     dateModified: "2026-06-27",
     country: "UK",
@@ -161,7 +161,7 @@ export const GUIDES: GuideMeta[] = [
     slug: "uk-adoption-pay",
     title: "UK Adoption Pay & Leave 2026: SAP, Qualifying Conditions & Paternity Rights",
     description:
-      "How Statutory Adoption Pay (SAP) works — the 39-week entitlement at £184.03/week, qualifying conditions, adoption leave periods, the partner's 2-week entitlement, and interaction with Shared Parental Leave.",
+      "How Statutory Adoption Pay (SAP) works — the 39-week entitlement at £194.32/week, qualifying conditions, adoption leave periods, the partner's 2-week entitlement, and interaction with Shared Parental Leave.",
     datePublished: "2026-06-27",
     dateModified: "2026-06-27",
     country: "UK",
@@ -172,7 +172,7 @@ export const GUIDES: GuideMeta[] = [
     slug: "uk-shared-parental-leave",
     title: "UK Shared Parental Leave 2026: ShPL, ShPP & How to Split Leave",
     description:
-      "How Shared Parental Leave and Shared Parental Pay work in the UK — who can use it, how to curtail maternity leave, how to split the remaining 37 weeks, discontinuous leave blocks, and ShPP at £184.03/week.",
+      "How Shared Parental Leave and Shared Parental Pay work in the UK — who can use it, how to curtail maternity leave, how to split the remaining 37 weeks, discontinuous leave blocks, and ShPP at £194.32/week.",
     datePublished: "2026-06-27",
     dateModified: "2026-06-27",
     country: "UK",
