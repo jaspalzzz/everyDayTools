@@ -43,7 +43,7 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     },
     {
       label: "GOV.UK — Notice periods",
-      url: "https://www.gov.uk/giving-staff-notice-pay",
+      url: "https://www.gov.uk/staff-redundant/giving-staff-notice",
       type: "guidance",
     },
     {
@@ -59,11 +59,6 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
       section: "s.86 (Minimum notice) — garden leave derived from common law",
       url: "https://www.legislation.gov.uk/ukpga/1996/18/section/86",
       type: "legislation",
-    },
-    {
-      label: "ACAS — Garden leave guidance",
-      url: "https://www.acas.org.uk/garden-leave",
-      type: "regulator",
     },
   ],
 
@@ -95,7 +90,7 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     },
     {
       label: "GOV.UK — Giving staff notice pay",
-      url: "https://www.gov.uk/giving-staff-notice-pay",
+      url: "https://www.gov.uk/staff-redundant/giving-staff-notice",
       type: "guidance",
     },
   ],
