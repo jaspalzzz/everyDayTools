@@ -360,7 +360,7 @@ export function ToolLayout({
           </h2>
           <div style={{ display: "grid", gap: 10 }}>
             {verifiedLabel && (
-              <div style={CHANGELOG_ROW_STYLE}>
+              <div className="grid-cols-1 sm:grid-cols-[150px_1fr]" style={CHANGELOG_ROW_STYLE}>
                 <strong style={{ color: "#102033" }}>{verifiedLabel}</strong>
                 <span style={{ color: "#52616f" }}>
                   Rate figures updated to match the official source cited below.
@@ -493,7 +493,6 @@ const ACTION_BOX_TEXT_STYLE: React.CSSProperties = {
 
 const CHANGELOG_ROW_STYLE: React.CSSProperties = {
   display: "grid",
-  gridTemplateColumns: "150px 1fr",
   gap: 12,
   border: "1px solid #e7edf3",
   borderRadius: 8,
