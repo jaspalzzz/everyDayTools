@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PayslipAnalyser } from "@/components/calculators/PayslipAnalyser";
-import { SITE, jsonLd, faqSchema } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
 const title = "UK Payslip Deduction Analyser — What Do Each Deduction Mean?";
@@ -11,9 +11,9 @@ const url = `${SITE.url}/payslip-analyser`;
 
 export const metadata: Metadata = {
   title,
-  description,
+  description: clampMetaDescription(description),
   alternates: { canonical: url },
-  openGraph: { title, description, url },
+  openGraph: { title, description: clampMetaDescription(description), url },
 };
 
 const faqs: FaqItem[] = [

@@ -139,13 +139,12 @@ export default function UsPtoPayoutGuide() {
               <h2 className="text-base font-semibold text-ink">The federal position: no requirement</h2>
               <p>
                 The Fair Labor Standards Act (FLSA) governs minimum wage, overtime, and recordkeeping
-                for US employers, but it says nothing about vacation pay. The U.S. Department of Labor
-                has confirmed:{" "}
-                <a href="https://www.dol.gov/agencies/whd/fmla" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
-                  vacation pay is not federally mandated
+                for US employers, but it does not create a federal vacation-payout requirement.
+                The U.S. Department of Labor&apos;s{" "}
+                <a href="https://www.dol.gov/agencies/whd/state/contacts" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
+                  state labor office directory
                 </a>
-                , and there is no federal law requiring employers to pay out unused vacation when
-                employment ends.
+                {" "}is the best starting point because vacation payout is handled under state law.
               </p>
               <p className="mt-2">
                 This means the answer depends on two things: your state law and your employer&apos;s
@@ -247,8 +246,8 @@ export default function UsPtoPayoutGuide() {
               <h2 className="text-xs font-semibold uppercase tracking-widest text-ink-faint">Sources</h2>
               <ul className="mt-2 flex flex-col gap-1 text-xs text-ink-faint">
                 <li>
-                  <a href="https://www.dol.gov/general/topic/wages/vacationpay" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
-                    U.S. Department of Labor — Vacation Pay
+                  <a href="https://www.dol.gov/agencies/whd/state/contacts" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
+                    U.S. Department of Labor — State labor offices
                   </a>
                 </li>
                 <li>State Department of Labor regulations (individual states)</li>

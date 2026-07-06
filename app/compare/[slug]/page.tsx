@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SITE, jsonLd } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { COMPARISONS, getComparison } from "@/data/comparisons";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -17,9 +17,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${SITE.url}/compare/${c.slug}`;
   return {
     title: c.title,
-    description: c.description,
+    description: clampMetaDescription(c.description),
     alternates: { canonical: url },
-    openGraph: { title: c.title, description: c.description, url },
+    openGraph: { title: c.title, description: clampMetaDescription(c.description), url },
   };
 }
 

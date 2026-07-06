@@ -110,8 +110,8 @@ export const UK_SETTLEMENT = {
   effectiveDate: "2026-04-06",
   taxYear: "2026/27",
   source: {
-    label: "Employment Rights Act 1996 / ITEPA 2003 — Settlement agreements",
-    url: "https://www.gov.uk/negotiate-settle-employment-dispute",
+    label: "Employment Rights Act 1996 — Settlement agreements",
+    url: "https://www.legislation.gov.uk/ukpga/1996/18/section/203",
   } satisfies SourceRef,
 } as const;
 
@@ -224,7 +224,7 @@ export const US_INCOME_TAX = {
   taxYear: "2026",
   source: {
     label: "IRS — 2026 Tax Brackets and Standard Deduction",
-    url: "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026",
+    url: "https://www.irs.gov/filing/federal-income-tax-rates-and-brackets",
   } satisfies SourceRef,
 } as const;
 

@@ -57,9 +57,32 @@ export default function FrenchHubPage() {
     ],
   };
 
+  const collectionPage = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Calculateurs de droits au travail — Canada (Québec)",
+    url,
+    inLanguage: "fr-CA",
+    description:
+      "Hub francophone avec calculateurs d'indemnité de départ, de préavis et de paie de vacances pour le Québec et le Canada.",
+  };
+
+  const itemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: tools.map((tool, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: tool.name,
+      url: `${SITE.url}/${tool.slug}`,
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(collectionPage)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(itemList)} />
 
       <div className="mx-auto max-w-content px-5 py-10" lang="fr">
         <nav className="mb-6 text-xs text-ink-faint">
@@ -89,6 +112,27 @@ export default function FrenchHubPage() {
           </div>
         </div>
 
+        <section className="mb-10 grid gap-4 sm:grid-cols-3" aria-label="Repères rapides">
+          <article className="rounded-xl border border-surface-line bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">À quoi servent ces outils</p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+              Vérifier rapidement un montant brut, un délai de préavis ou une indemnité minimale avant de parler aux RH.
+            </p>
+          </article>
+          <article className="rounded-xl border border-surface-line bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Base juridique</p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+              Normes fédérales canadiennes, CNESST, lois provinciales et règles de paie applicables au Québec et au Canada.
+            </p>
+          </article>
+          <article className="rounded-xl border border-surface-line bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Quand utiliser un avocat</p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+              Si votre employeur conteste la rupture, retient des sommes ou invoque une faute grave, il faut un avis juridique individualisé.
+            </p>
+          </article>
+        </section>
+
         <div className="flex flex-col gap-3">
           {tools.map((tool) => (
             <Link
@@ -105,6 +149,29 @@ export default function FrenchHubPage() {
             </Link>
           ))}
         </div>
+
+        <section className="mt-10 max-w-2xl rounded-xl border border-brand-100 bg-brand-50 px-5 py-5" aria-labelledby="fr-how-to-use-heading">
+          <h2 id="fr-how-to-use-heading" className="text-base font-semibold text-ink">
+            Comment utiliser ces calculateurs correctement
+          </h2>
+          <div className="mt-3 space-y-3 text-sm leading-relaxed text-ink-soft">
+            <p>
+              Commencez toujours par votre convention d'emploi, votre lettre d'offre et votre relevé de paie.
+              Les calculateurs donnent une estimation du minimum légal ou du scénario standard, mais ils ne remplacent
+              pas les clauses contractuelles plus favorables.
+            </p>
+            <p>
+              Pour l'indemnité de départ et le préavis, vérifiez d'abord si vous êtes régi par le Code canadien du
+              travail ou par une loi provinciale. Pour la paie de vacances, gardez sous la main votre ancienneté,
+              votre salaire brut et toute politique interne sur les congés accumulés.
+            </p>
+            <p>
+              Si l'outil montre un écart important avec ce que l'employeur vous propose, utilisez ensuite la version
+              anglaise régionale ou les pages Canada / Québec pour consulter les sources officielles et les étapes
+              suivantes avant toute signature.
+            </p>
+          </div>
+        </section>
 
         {/* Language switcher */}
         <div className="mt-10 border-t border-surface-line pt-6">

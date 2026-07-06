@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CountryFlag } from "@/components/CountryFlag";
-import { SITE, jsonLd } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 const SLUG = "uk-notice-period-law";
 const COUNTRY = "UK";
@@ -10,13 +10,15 @@ const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
   title: "UK Notice Period Law 2026: Statutory Rights, Garden Leave & PILON Explained",
-  description:
+  description: clampMetaDescription(
     "How statutory minimum notice works in the UK under the Employment Rights Act 1996, the difference between statutory and contractual notice, garden leave, payment in lieu of notice, and what to do if your employer ignores your entitlement.",
+  ),
   alternates: { canonical: url },
   openGraph: {
     title: "UK Notice Period Law: Your Rights Explained 2026",
-    description:
+    description: clampMetaDescription(
       "Statutory minimum notice, contractual notice, garden leave, PILON and wrongful dismissal — the complete guide for UK employees.",
+    ),
     url,
   },
 };
@@ -295,8 +297,8 @@ export default function UKNoticePeriodGuide() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.gov.uk/employee-rights-when-company-in-administration/notice-periods" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
-                    GOV.UK — Notice periods
+                  <a href="https://www.gov.uk/handing-in-your-notice/giving-notice" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
+                    GOV.UK — Giving notice
                   </a>
                 </li>
                 <li>
@@ -305,7 +307,7 @@ export default function UKNoticePeriodGuide() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.gov.uk/guidance/employment-income-manual/eim13505" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
+                  <a href="https://www.gov.uk/hmrc-internal-manuals/employment-income-manual/eim13505" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
                     HMRC Employment Income Manual — EIM13505 (PILON)
                   </a>
                 </li>

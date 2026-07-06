@@ -116,8 +116,8 @@ export default function UKPage() {
         searchPlaceholder="Search UK calculators: redundancy, notice, maternity…"
         tools={UK_TOOLS}
         sources={[
-          { label: "GOV.UK — employment rights", href: "https://www.gov.uk/employment-rights-and-pay" },
-          { label: "HMRC — statutory pay rates", href: "https://www.gov.uk/guidance/statutory-redundancy-pay" },
+          { label: "GOV.UK — working, jobs and pensions", href: "https://www.gov.uk/browse/working" },
+          { label: "GOV.UK — redundancy pay", href: "https://www.gov.uk/redundancy-your-rights/redundancy-pay" },
           { label: "ACAS — workplace guidance", href: "https://www.acas.org.uk" },
         ]}
         note={

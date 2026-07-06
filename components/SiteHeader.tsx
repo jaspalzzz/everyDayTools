@@ -122,13 +122,14 @@ export function SiteHeader() {
               <button
                 type="button"
                 aria-expanded={menu === "calculators"}
+                onClick={() => openMenu("calculators")}
                 style={{
                   height: 40, display: "inline-flex", alignItems: "center", gap: 7,
                   border: menu === "calculators" ? "1px solid #b8d3f1" : "1px solid transparent",
                   borderRadius: 8,
                   color: menu === "calculators" ? "#0f56bd" : "#25384c",
                   background: menu === "calculators" ? "#f7fbff" : "transparent",
-                  padding: "0 11px", cursor: "default", fontWeight: 850, fontSize: 14,
+                  padding: "0 11px", cursor: "pointer", fontWeight: 850, fontSize: 14,
                 }}
               >
                 Calculators
@@ -258,13 +259,14 @@ export function SiteHeader() {
               <button
                 type="button"
                 aria-expanded={menu === "countries"}
+                onClick={() => openMenu("countries")}
                 style={{
                   height: 40, display: "inline-flex", alignItems: "center", gap: 7,
                   border: menu === "countries" ? "1px solid #b8d3f1" : "1px solid transparent",
                   borderRadius: 8,
                   color: menu === "countries" ? "#0f56bd" : "#25384c",
                   background: menu === "countries" ? "#f7fbff" : "transparent",
-                  padding: "0 11px", cursor: "default", fontWeight: 850, fontSize: 14,
+                  padding: "0 11px", cursor: "pointer", fontWeight: 850, fontSize: 14,
                 }}
               >
                 Countries
@@ -327,12 +329,13 @@ export function SiteHeader() {
                 type="button"
                 aria-expanded={menu === "region"}
                 aria-label="Switch country"
+                onClick={() => openMenu("region")}
                 style={{
                   height: 38, border: "1px solid #d8e2ec", borderRadius: 8,
                   background: menu === "region" ? "#f7fbff" : "#fff",
                   color: "#25384c", display: "inline-flex", alignItems: "center",
                   justifyContent: "center", gap: 6, padding: "0 12px",
-                  fontSize: 13, fontWeight: 800, cursor: "default",
+                  fontSize: 13, fontWeight: 800, cursor: "pointer",
                   borderColor: menu === "region" ? "#b8d3f1" : "#d8e2ec",
                 }}
               >
@@ -494,7 +497,12 @@ export function SiteHeader() {
 
       {/* Mobile drawer */}
       {open && (
-        <div id="mobile-nav" className="border-b border-surface-line bg-white lg:hidden" role="navigation" aria-label="Mobile menu">
+        <div
+          id="mobile-nav"
+          className="fixed left-0 right-0 top-[68px] z-40 max-h-[calc(100dvh-68px)] overflow-y-auto border-b border-surface-line bg-white shadow-[0_18px_44px_rgba(16,32,51,0.12)] lg:hidden"
+          role="navigation"
+          aria-label="Mobile menu"
+        >
           {(Object.keys(CATEGORY_META) as (keyof typeof CATEGORY_META)[]).map((cat) => {
             const tools = TOOLS.filter((t) => t.category === cat);
             return (

@@ -2,8 +2,8 @@ import { formatCurrency, pluralUnit, safeNumber } from "../format";
 import type { CalcResult, SourceRef } from "../types";
 
 export const AU_REDUNDANCY_SOURCE: SourceRef = {
-  label: "Fair Work Act 2009 (Cth) s.119 — Fair Work Commission",
-  url: "https://www.fairwork.gov.au/ending-employment/redundancy/redundancy-pay-and-entitlements",
+  label: "Fair Work Act 2009 (Cth) s.119",
+  url: "https://www.legislation.gov.au/C2009A00028/latest/text",
 };
 
 /**

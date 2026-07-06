@@ -121,7 +121,7 @@ const RAW: UsStateData[] = [
     minimumWage: "$17.50/hr",
     finalPaycheckTerminated: "Next business day after separation",
     finalPaycheckResigned: "Next scheduled payday",
-    dolUrl: "https://does.dc.gov/service/labor-law-compliance",
+    dolUrl: "https://does.dc.gov/page/office-wage-hour",
     verifiedYear: 2025,
   },
   {
@@ -143,7 +143,7 @@ const RAW: UsStateData[] = [
     minimumWageNote: "State minimum is $5.15/hr, but federal minimum of $7.25 applies to most employers",
     finalPaycheckTerminated: "Next scheduled payday",
     finalPaycheckResigned: "Next scheduled payday",
-    dolUrl: "https://dol.georgia.gov/workers-rights",
+    dolUrl: "https://dol.georgia.gov",
     verifiedYear: 2025,
   },
   {
@@ -283,7 +283,7 @@ const RAW: UsStateData[] = [
     minimumWage: "$7.25/hr (federal minimum)",
     finalPaycheckTerminated: "Next regular payday",
     finalPaycheckResigned: "Next regular payday",
-    dolUrl: "https://mdes.ms.gov/employers/labor-market-information/",
+    dolUrl: "https://mdes.ms.gov",
     verifiedYear: 2025,
   },
   {
@@ -377,7 +377,7 @@ const RAW: UsStateData[] = [
     minimumWage: "$7.25/hr (federal minimum)",
     finalPaycheckTerminated: "Next scheduled payday",
     finalPaycheckResigned: "Next scheduled payday",
-    dolUrl: "https://www.labor.nc.gov/workplace-rights/employee-rights-issues/wage-and-hour/final-pay",
+    dolUrl: "https://www.labor.nc.gov/workplace-rights/employee-rights-regarding-time-worked-and-wages-earned",
     verifiedYear: 2025,
   },
   {
@@ -398,7 +398,7 @@ const RAW: UsStateData[] = [
     minimumWageNote: "For employers with gross receipts over $385,000/year; $7.25 for smaller employers",
     finalPaycheckTerminated: "Next scheduled payday",
     finalPaycheckResigned: "Next scheduled payday",
-    dolUrl: "https://com.ohio.gov/divisions/industrial-compliance/wage-and-hour",
+    dolUrl: "https://www.dol.gov/agencies/whd/state/contacts",
     verifiedYear: 2025,
   },
   {
@@ -420,7 +420,7 @@ const RAW: UsStateData[] = [
     finalPaycheckTerminated: "End of the next business day after termination",
     finalPaycheckResigned:
       "Last day of work if 48+ hours notice given; within 5 business days otherwise",
-    dolUrl: "https://www.oregon.gov/boli/workers/pages/final-paychecks.aspx",
+    dolUrl: "https://www.oregon.gov/boli/workers/Pages/paychecks.aspx",
     verifiedYear: 2025,
   },
   {
@@ -490,7 +490,7 @@ const RAW: UsStateData[] = [
     minimumWage: "$7.25/hr (federal minimum)",
     finalPaycheckTerminated: "Within 24 hours of a written demand",
     finalPaycheckResigned: "Next scheduled payday",
-    dolUrl: "https://laborcommission.utah.gov/divisions/antidiscrimination-and-labor/",
+    dolUrl: "https://laborcommission.utah.gov/divisions/utah-antidiscrimination-and-labor-uald/",
     verifiedYear: 2025,
   },
   {
@@ -530,7 +530,7 @@ const RAW: UsStateData[] = [
     minimumWage: "$8.75/hr",
     finalPaycheckTerminated: "Within 72 hours of separation",
     finalPaycheckResigned: "Within 72 hours of separation",
-    dolUrl: "https://labor.wv.gov/Wage-Hour/Pages/Wage-Hour.aspx",
+    dolUrl: "https://labor.wv.gov",
     verifiedYear: 2025,
   },
   {

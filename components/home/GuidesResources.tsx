@@ -148,7 +148,7 @@ export function GuidesResources() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4.5">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:gap-6">
         {GUIDES.map((g) => (
           <article key={g.title} style={{ border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", overflow: "hidden" }}>
             {/* Sketch illustration area */}

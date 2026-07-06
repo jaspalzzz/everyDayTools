@@ -184,7 +184,7 @@ export default function UKPayRightsPage() {
           {" · "}
           <a href="https://www.gov.uk/national-minimum-wage-rates" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">GOV.UK — NMW rates</a>
           {" · "}
-          <a href="https://www.acas.org.uk/your-rights-during-employment/getting-paid" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">ACAS — Getting paid</a>
+          <a href="https://www.acas.org.uk/if-your-wages-are-not-paid" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">ACAS — If your wages are not paid</a>
         </div>
       </div>
     </>

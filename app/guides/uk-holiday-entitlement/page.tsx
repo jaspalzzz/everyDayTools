@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CountryFlag } from "@/components/CountryFlag";
-import { SITE, FOUNDER_PERSON, jsonLd } from "@/lib/seo";
+import { SITE, FOUNDER_PERSON, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 const SLUG = "uk-holiday-entitlement";
 const COUNTRY = "UK";
@@ -10,10 +10,15 @@ const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
   title: "UK Holiday Entitlement 2026 — 28 Days, Part-Time & Carry-Over Rules",
-  description:
+  description: clampMetaDescription(
     "UK workers are entitled to at least 28 days' paid holiday per year (including 8 bank holidays). How part-time and irregular-hours workers accrue leave, rolled-up holiday pay, and carry-over rules.",
+  ),
   alternates: { canonical: url },
-  openGraph: { title: "UK Holiday Entitlement 2026 — Statutory Leave Guide", description: "28 days minimum for full-time workers. How accrual, carry-over, and payout work in the UK.", url },
+  openGraph: {
+    title: "UK Holiday Entitlement 2026 — Statutory Leave Guide",
+    description: clampMetaDescription("28 days minimum for full-time workers. How accrual, carry-over, and payout work in the UK."),
+    url,
+  },
 };
 
 const faqs = [
@@ -156,7 +161,7 @@ export default function UKHolidayEntitlementGuide() {
               <ul className="mt-2 flex flex-col gap-1 text-xs text-ink-faint">
                 <li><a href="https://www.legislation.gov.uk/uksi/1998/1833" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">Working Time Regulations 1998</a></li>
                 <li><a href="https://www.gov.uk/holiday-entitlement-rights" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">GOV.UK — Holiday entitlement</a></li>
-                <li><a href="https://www.acas.org.uk/annual-leave" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">ACAS — Annual leave</a></li>
+                <li><a href="https://www.acas.org.uk/checking-holiday-entitlement" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">ACAS — Holiday entitlement</a></li>
               </ul>
             </section>
           </div>

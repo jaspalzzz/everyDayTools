@@ -35,7 +35,7 @@ const AFFILIATE_LINKS: Record<AffiliateContext, AffiliateLink[]> = {
     },
     {
       label: "Citizens Advice — Redundancy help",
-      href: "https://www.citizensadvice.org.uk/work/leaving-a-job/redundancy/",
+      href: "https://www.citizensadvice.org.uk/work/redundancy/",
       description: "Free, confidential advice on your redundancy rights and next steps.",
       isFree: true,
       rel: "noopener noreferrer",

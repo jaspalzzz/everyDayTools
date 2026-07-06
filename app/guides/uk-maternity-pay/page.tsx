@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CountryFlag } from "@/components/CountryFlag";
-import { SITE, jsonLd } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 const SLUG = "uk-maternity-pay";
 const COUNTRY = "UK";
@@ -10,13 +10,15 @@ const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
   title: "UK Maternity Pay: Complete Guide to SMP 2026/27 — Rates, Eligibility & Calculation",
-  description:
+  description: clampMetaDescription(
     "How UK Statutory Maternity Pay (SMP) works in 2026/27: the £194.32 weekly rate, the 90% rule for the first six weeks, who qualifies, Maternity Allowance for those who don't, and your rights to return.",
+  ),
   alternates: { canonical: url },
   openGraph: {
     title: "UK Maternity Pay: Complete Guide to SMP 2026/27",
-    description:
+    description: clampMetaDescription(
       "Everything you need to know about SMP — who qualifies, how 39 weeks of pay is structured, the £194.32 rate for 2026/27, and what Maternity Allowance covers when SMP doesn't apply.",
+    ),
     url,
   },
 };
@@ -310,7 +312,7 @@ export default function UKMaternityPayGuide() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.acas.org.uk/maternity-leave" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
+                  <a href="https://www.acas.org.uk/statutory-maternity-leave-and-pay" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
                     ACAS — Maternity leave and pay
                   </a>
                 </li>

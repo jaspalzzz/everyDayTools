@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { US_STATES, getUsState } from "@/data/usStates";
-import { SITE, jsonLd, faqSchema } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
 type Props = { params: Promise<{ state: string }> };
@@ -22,9 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title,
-    description,
+    description: clampMetaDescription(description),
     alternates: { canonical: url },
-    openGraph: { title, description, url },
+    openGraph: { title, description: clampMetaDescription(description), url },
   };
 }
 
@@ -116,7 +116,9 @@ export default async function Page({ params }: Props) {
         {/* Current rate card */}
         <div className="mb-8 rounded-xl border border-brand-100 bg-brand-50 p-6">
           <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-brand-600">Current minimum wage</p>
-          <p className="text-4xl font-bold text-ink">{s.minimumWage}</p>
+          <p className="break-words text-3xl font-bold leading-tight text-ink sm:text-4xl" style={{ overflowWrap: "anywhere" }}>
+            {s.minimumWage}
+          </p>
           {isFederal && (
             <p className="mt-2 text-sm text-ink-soft">
               {s.name} uses the federal minimum wage — no higher state rate has been enacted.
@@ -131,7 +133,7 @@ export default async function Page({ params }: Props) {
         <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-surface-line bg-surface-muted p-5">
             <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-ink-faint">Federal vs state</p>
-            <p className="font-semibold text-ink">
+            <p className="break-words font-semibold text-ink" style={{ overflowWrap: "anywhere" }}>
               {isFederal ? "Federal rate applies ($7.25/hr)" : `State rate applies (${s.minimumWage})`}
             </p>
           </div>
@@ -207,7 +209,7 @@ export default async function Page({ params }: Props) {
                   {faq.question}
                   <svg className="h-4 w-4 shrink-0 text-ink-faint transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="M6 9l6 6 6-6" /></svg>
                 </summary>
-                <p className="border-t border-surface-line px-4 py-3 text-sm text-ink-soft">{faq.answer}</p>
+                <p className="break-words border-t border-surface-line px-4 py-3 text-sm text-ink-soft">{faq.answer}</p>
               </details>
             ))}
           </div>

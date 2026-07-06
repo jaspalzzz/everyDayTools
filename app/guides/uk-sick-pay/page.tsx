@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CountryFlag } from "@/components/CountryFlag";
-import { SITE, FOUNDER_PERSON, jsonLd } from "@/lib/seo";
+import { SITE, FOUNDER_PERSON, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 const SLUG = "uk-sick-pay";
 const COUNTRY = "UK";
@@ -10,10 +10,15 @@ const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
   title: "UK Sick Pay Guide 2026 — SSP from Day 1, Qualifying Conditions & When It Runs Out",
-  description:
+  description: clampMetaDescription(
     "Statutory Sick Pay is £123.25/week from day one of illness in 2026 — the three waiting days were abolished by the Employment Rights Act 2025. How long SSP lasts, what to do when it ends, and enhanced sick pay.",
+  ),
   alternates: { canonical: url },
-  openGraph: { title: "UK Sick Pay 2026 — SSP from Day 1", description: "SSP is £123.25/week with no waiting days from April 2026. Full guide to qualifying, duration, and what happens when SSP ends.", url },
+  openGraph: {
+    title: "UK Sick Pay 2026 — SSP from Day 1",
+    description: clampMetaDescription("SSP is £123.25/week with no waiting days from April 2026. Full guide to qualifying, duration, and what happens when SSP ends."),
+    url,
+  },
 };
 
 const faqs = [

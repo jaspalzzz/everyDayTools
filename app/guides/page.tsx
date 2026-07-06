@@ -30,9 +30,34 @@ export default function GuidesPage() {
     ],
   };
 
+  const itemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Employment Rights Guides",
+    url,
+    numberOfItems: GUIDES.length,
+    itemListElement: GUIDES.map((guide, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: guide.title,
+      url: `${SITE.url}/guides/${guide.slug}`,
+    })),
+  };
+
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Employment Rights Guides",
+    url,
+    description: metadata.description,
+    isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(itemList)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(webPage)} />
       <GuidesIndex guides={GUIDES} />
     </>
   );

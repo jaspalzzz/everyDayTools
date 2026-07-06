@@ -78,7 +78,7 @@ export default function HomePage() {
         </div>
 
         {/* Category band */}
-        <div id="all-calculators">
+        <div id="all-calculators" style={{ scrollMarginTop: 96 }}>
           <BrowseByCategory />
         </div>
 

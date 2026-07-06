@@ -360,18 +360,18 @@ export function ToolLayout({
           </h2>
           <div style={{ display: "grid", gap: 10 }}>
             {verifiedLabel && (
-              <div className="grid-cols-1 sm:grid-cols-[150px_1fr]" style={CHANGELOG_ROW_STYLE}>
+              <div className="grid grid-cols-1 sm:grid-cols-[150px_minmax(0,1fr)]" style={CHANGELOG_ROW_STYLE}>
                 <strong style={{ color: "#102033" }}>{verifiedLabel}</strong>
                 <span style={{ color: "#52616f" }}>
                   Rate figures updated to match the official source cited below.
                 </span>
               </div>
             )}
-            <div style={CHANGELOG_ROW_STYLE}>
+            <div className="grid grid-cols-1 sm:grid-cols-[150px_minmax(0,1fr)]" style={CHANGELOG_ROW_STYLE}>
               <strong style={{ color: "#102033" }}>Correction path</strong>
               <span style={{ color: "#52616f" }}>
                 If a rate or source has changed, email{" "}
-                <a href={`mailto:${SITE.contactEmail}`} style={{ color: "#0f56bd", fontWeight: 850 }}>
+                <a href={`mailto:${SITE.contactEmail}`} style={{ color: "#0f56bd", fontWeight: 850, overflowWrap: "anywhere" }}>
                   {SITE.contactEmail}
                 </a>{" "}
                 with the page URL and official source.
@@ -492,7 +492,6 @@ const ACTION_BOX_TEXT_STYLE: React.CSSProperties = {
 };
 
 const CHANGELOG_ROW_STYLE: React.CSSProperties = {
-  display: "grid",
   gap: 12,
   border: "1px solid #e7edf3",
   borderRadius: 8,
@@ -500,4 +499,6 @@ const CHANGELOG_ROW_STYLE: React.CSSProperties = {
   padding: 12,
   fontSize: 13,
   lineHeight: 1.55,
+  minWidth: 0,
+  overflowWrap: "anywhere",
 };

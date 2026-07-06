@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SITE, jsonLd } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { FAQS, getFaq } from "@/data/faqs";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -17,10 +17,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${SITE.url}/faq/${f.slug}`;
   return {
     title: `${f.question} | MyPayRights`,
-    description: f.shortAnswer,
-    robots: { index: false, follow: true },
+    description: clampMetaDescription(f.shortAnswer),
     alternates: { canonical: url },
-    openGraph: { title: f.question, description: f.shortAnswer, url },
+    openGraph: { title: f.question, description: clampMetaDescription(f.shortAnswer), url },
   };
 }
 

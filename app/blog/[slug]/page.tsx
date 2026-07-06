@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS, getBlogPost, BLOG_CATEGORIES } from "@/data/blogPosts";
 import { getTool } from "@/data/tools";
-import { SITE, FOUNDER_PERSON, jsonLd } from "@/lib/seo";
+import { SITE, FOUNDER_PERSON, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -19,11 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${SITE.url}/blog/${post.slug}`;
   return {
     title: post.title,
-    description: post.description,
+    description: clampMetaDescription(post.description),
     alternates: { canonical: url },
     openGraph: {
       title: post.title,
-      description: post.description,
+      description: clampMetaDescription(post.description),
       url,
       type: "article",
       publishedTime: post.datePublished,

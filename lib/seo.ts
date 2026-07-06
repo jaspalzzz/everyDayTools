@@ -17,6 +17,15 @@ export const SITE = {
   legalEmail: "legal@mypayrights.com",
 } as const;
 
+export function clampMetaDescription(text: string, max = 160): string {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  if (normalized.length <= max) return normalized;
+
+  const trimmed = normalized.slice(0, Math.max(0, max - 3));
+  const lastSpace = trimmed.lastIndexOf(" ");
+  return `${(lastSpace > 110 ? trimmed.slice(0, lastSpace) : trimmed).trim()}...`;
+}
+
 /** Derive the primary offer currency from the tool region. */
 function priceCurrencyForRegion(region: Region): string {
   if (region === "UK") return "GBP";
@@ -153,17 +162,17 @@ export function toolMetadata(params: {
   const ogImageUrl = `/${params.slug}/opengraph-image`;
   return {
     title: displayTitle,
-    description: params.description,
+    description: clampMetaDescription(params.description),
     alternates: { canonical: params.url },
     openGraph: {
       title: displayTitle,
-      description: params.description,
+      description: clampMetaDescription(params.description),
       url: params.url,
       images: [{ url: ogImageUrl, width: 1200, height: 630 }],
     },
     twitter: {
       title: displayTitle,
-      description: params.description,
+      description: clampMetaDescription(params.description),
       images: [ogImageUrl],
     },
   };

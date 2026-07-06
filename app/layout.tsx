@@ -6,6 +6,12 @@ import { AdSenseScript } from "@/components/AdSenseScript";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { SITE } from "@/lib/seo";
 
+const googleSiteVerification =
+  process.env.GOOGLE_SITE_VERIFICATION ?? process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+const bingSiteVerification = process.env.BING_SITE_VERIFICATION;
+const yandexSiteVerification = process.env.YANDEX_SITE_VERIFICATION;
+const adsenseAccount = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
@@ -25,6 +31,22 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  verification: {
+    ...(googleSiteVerification ? { google: googleSiteVerification } : {}),
+    ...(bingSiteVerification ? { other: { "msvalidate.01": bingSiteVerification } } : {}),
+    ...(yandexSiteVerification ? { yandex: yandexSiteVerification } : {}),
+  },
   alternates: {
     canonical: SITE.url,
     languages: {
@@ -53,6 +75,7 @@ export const metadata: Metadata = {
       "Free, law-backed pay rights calculators. Live results, no signup, instant PDF.",
     images: ["/twitter-image"],
   },
+  ...(adsenseAccount ? { other: { "google-adsense-account": adsenseAccount } } : {}),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -2,8 +2,8 @@ import { formatCurrency, safeNumber } from "../format";
 import type { CalcResult, SourceRef } from "../types";
 
 export const AU_ANNUAL_LEAVE_SOURCE: SourceRef = {
-  label: "Fair Work Act 2009 (Cth) s.87 — Fair Work Ombudsman",
-  url: "https://www.fairwork.gov.au/leave/annual-leave",
+  label: "Fair Work Act 2009 (Cth) s.87",
+  url: "https://www.legislation.gov.au/C2009A00028/latest/text",
 };
 
 export type AuLeaveCalcMode = "accrued" | "payout";

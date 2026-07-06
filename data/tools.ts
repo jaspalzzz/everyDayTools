@@ -404,7 +404,7 @@ export const TOOLS: ToolMeta[] = [
     hero: false,
     tier: 2,
     category: "leaving-job",
-    related: ["au-redundancy-pay-calculator"],
+    related: ["au-redundancy-pay-calculator", "au-annual-leave-calculator"],
   },
   {
     slug: "au-annual-leave-calculator",

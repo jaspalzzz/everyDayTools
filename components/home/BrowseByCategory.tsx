@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const TABS = [
   { label: "Leaving a job", id: "leaving-job" },
@@ -12,7 +12,113 @@ const TABS = [
   { label: "Guides", id: "guides" },
 ] as const;
 
-type TabId = (typeof TABS)[number]["id"];
+export type TabId = (typeof TABS)[number]["id"];
+
+const TAB_IDS = new Set<TabId>(TABS.map((tab) => tab.id));
+
+const TAB_SEARCH_KEYWORDS: Record<TabId, string[]> = {
+  "leaving-job": [
+    "dismissal",
+    "final paycheck",
+    "final pay",
+    "garden leave",
+    "leaving",
+    "notice",
+    "notice pay",
+    "notice period",
+    "pilon",
+    "redundancy",
+    "settlement",
+    "severance",
+    "tribunal",
+  ],
+  "pay-tax": [
+    "bonus",
+    "day rate",
+    "deduction",
+    "deductions",
+    "income tax",
+    "ir35",
+    "national insurance",
+    "overtime",
+    "pay rise",
+    "pay slip",
+    "payslip",
+    "salary",
+    "salary to hourly",
+    "take home",
+    "take-home",
+    "tax",
+    "unpaid wages",
+    "wage",
+    "wages",
+  ],
+  "parental-leave": [
+    "adoption",
+    "adoption pay",
+    "keep in touch",
+    "kit day",
+    "maternity",
+    "maternity pay",
+    "parental",
+    "paternity",
+    "paternity pay",
+    "shared parental",
+  ],
+  benefits: [
+    "annual leave",
+    "benefit",
+    "benefits",
+    "holiday",
+    "holiday pay",
+    "pto",
+    "pto payout",
+    "sick",
+    "sick pay",
+    "statutory sick",
+    "unemployment",
+    "vacation",
+  ],
+  hours: [
+    "contract rate",
+    "daily rate",
+    "hourly",
+    "hours",
+    "part time",
+    "part-time",
+    "pro rata",
+    "pro-rata",
+    "self employed",
+    "self-employment",
+    "working days",
+    "working hours",
+  ],
+  guides: [
+    "acas",
+    "explain",
+    "guide",
+    "guides",
+    "rights",
+    "what should i do",
+  ],
+};
+
+export function directoryTabForSearch(query: string): TabId {
+  const q = query.trim().toLowerCase();
+  if (!q) return "leaving-job";
+
+  let best: { tab: TabId; score: number } | null = null;
+
+  for (const [tab, keywords] of Object.entries(TAB_SEARCH_KEYWORDS) as [TabId, string[]][]) {
+    for (const keyword of keywords) {
+      const k = keyword.toLowerCase();
+      const score = q === k ? k.length + 100 : q.includes(k) || k.includes(q) ? k.length : 0;
+      if (score > (best?.score ?? 0)) best = { tab, score };
+    }
+  }
+
+  return best?.tab ?? "leaving-job";
+}
 
 const COMPACT_TOOLS: Record<TabId, { icon: string; title: string; desc: string; href: string }[]> = {
   "leaving-job": [
@@ -78,6 +184,16 @@ export function BrowseByCategory() {
   const [active, setActive] = useState<TabId>("leaving-job");
   const tools = COMPACT_TOOLS[active];
   const note = DIRECTORY_NOTE[active];
+
+  useEffect(() => {
+    function handleDirectoryTab(event: Event) {
+      const tab = (event as CustomEvent<{ tab?: TabId }>).detail?.tab;
+      if (tab && TAB_IDS.has(tab)) setActive(tab);
+    }
+
+    window.addEventListener("calculator-directory:select-tab", handleDirectoryTab);
+    return () => window.removeEventListener("calculator-directory:select-tab", handleDirectoryTab);
+  }, []);
 
   return (
     <section

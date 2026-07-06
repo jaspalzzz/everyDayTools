@@ -186,8 +186,8 @@ export default function USPTOPayoutPage() {
 
         <div className="border-t border-surface-line pt-6 text-xs text-ink-faint">
           Sources:{" "}
-          <a href="https://www.dol.gov/general/topic/workhours/vacation" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">DOL — Vacation Leave</a>
-          {" · State labor department statutes (verified 2026) · "}
+          <a href="https://www.dol.gov/agencies/whd/state/contacts" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">DOL — State labor offices</a>
+          {" · State labor department statutes and guidance (verified 2026) · "}
           <Link href="/guides/us-pto-payout-laws-by-state" className="text-brand-600 hover:underline">Full state-by-state guide →</Link>
         </div>
       </div>

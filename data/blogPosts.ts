@@ -200,7 +200,7 @@ export const BLOG_POSTS: BlogPost[] = [
     dateModified: "2026-06-27",
     readingTimeMinutes: 9,
     tags: ["overtime", "FLSA", "wage theft", "US employment law", "exempt vs non-exempt"],
-    relatedTools: ["overtime-calculator"],
+    relatedTools: ["take-home-overtime-calculator"],
   },
   {
     slug: "uk-tax-code-explained-2026",

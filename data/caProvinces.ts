@@ -37,7 +37,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     severancePay: "1 week per year of service (up to 26 weeks) for employees with 5+ years at employers with annual payroll ≥ $2.5 million",
     vacationEntitlement: "2 weeks (4%) for first 5 years; 3 weeks (6%) after 5 years",
     legislationName: "Employment Standards Act 2000 (ESA)",
-    labourMinistryUrl: "https://www.ontario.ca/page/employment-standards-ontario",
+    labourMinistryUrl: "https://www.ontario.ca/document/your-guide-employment-standards-act-0",
     verifiedYear: 2025,
   },
   {

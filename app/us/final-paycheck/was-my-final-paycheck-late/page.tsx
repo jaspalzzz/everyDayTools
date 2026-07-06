@@ -45,6 +45,53 @@ export default function LatePaycheckPage() {
           </p>
         </div>
         <FinalPaycheckLateChecker />
+
+        <section className="mt-8 grid gap-4 sm:grid-cols-3" aria-label="What to prepare">
+          <article className="rounded-xl border border-surface-line bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Before you check</p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+              Keep your last day worked, the date you were told you were terminated or resigned, and the actual payment date.
+            </p>
+          </article>
+          <article className="rounded-xl border border-surface-line bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">What counts as late</p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+              State law usually changes the deadline depending on whether you were fired, laid off, or resigned with notice.
+            </p>
+          </article>
+          <article className="rounded-xl border border-surface-line bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">What this tool does not decide</p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+              It checks timing only. Whether bonuses, commissions, PTO, or deductions were handled correctly is a separate question.
+            </p>
+          </article>
+        </section>
+
+        <section className="mt-8 max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-5">
+          <h2 className="text-base font-semibold text-amber-900">What to do if the paycheck was late</h2>
+          <div className="mt-3 space-y-3 text-sm leading-relaxed text-amber-900">
+            <p>
+              Save the final payslip, direct-deposit confirmation, resignation email or termination notice, and any handbook wording on final pay. If the deadline has passed, ask payroll to confirm the legal basis for the payment date in writing.
+            </p>
+            <p>
+              If the explanation does not match your state rule, move to the state final paycheck page or wage-claim route immediately. Many state agencies and courts care about the exact dates, so a clean paper trail matters more than a long complaint email.
+            </p>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Link
+              href="/final-paycheck-deadline-calculator"
+              className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
+            >
+              Open deadline calculator
+            </Link>
+            <Link
+              href="/us/final-paycheck"
+              className="rounded-lg border border-amber-300 px-4 py-2 text-sm font-medium text-amber-900 hover:bg-amber-100"
+            >
+              Final paycheck hub
+            </Link>
+          </div>
+        </section>
       </main>
     </>
   );

@@ -10,7 +10,10 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "audit:external-links": "node scripts/audit-external-links.mjs",
+    "audit:indexability": "node scripts/audit-indexability.mjs",
+    "audit:responsive": "playwright test --config=playwright.static.config.ts responsive-audit.spec.ts"
   },
   "dependencies": {
     "@tabler/icons-react": "^3.44.0",

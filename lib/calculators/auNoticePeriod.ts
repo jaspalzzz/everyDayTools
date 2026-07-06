@@ -2,8 +2,8 @@ import { pluralUnit, safeNumber } from "../format";
 import type { CalcResult, SourceRef } from "../types";
 
 export const AU_NOTICE_SOURCE: SourceRef = {
-  label: "Fair Work Act 2009 (Cth) s.117 — Fair Work Ombudsman",
-  url: "https://www.fairwork.gov.au/ending-employment/notice-and-final-pay/notice-of-termination",
+  label: "Fair Work Act 2009 (Cth) s.117",
+  url: "https://www.legislation.gov.au/C2009A00028/latest/text",
 };
 
 /**

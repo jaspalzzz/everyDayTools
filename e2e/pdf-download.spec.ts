@@ -17,7 +17,7 @@ for (const tool of TOOLS) {
     test("produces a real PDF on download", async ({ page }) => {
       await page.goto(`/${tool.slug}`);
 
-      const downloadBtn = page.getByRole("button", { name: /download pdf summary/i });
+      const downloadBtn = page.getByRole("button", { name: /download private estimate/i });
       await expect(downloadBtn).toBeVisible();
 
       const [download] = await Promise.all([

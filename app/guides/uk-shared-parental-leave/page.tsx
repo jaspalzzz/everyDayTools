@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CountryFlag } from "@/components/CountryFlag";
-import { SITE, FOUNDER_PERSON, jsonLd } from "@/lib/seo";
+import { SITE, FOUNDER_PERSON, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 const SLUG = "uk-shared-parental-leave";
 const COUNTRY = "UK";
@@ -10,10 +10,15 @@ const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
   title: "UK Shared Parental Leave 2026 — ShPL, ShPP & How to Split Leave",
-  description:
+  description: clampMetaDescription(
     "How Shared Parental Leave (ShPL) and Shared Parental Pay (ShPP) work in the UK — curtailing maternity leave, splitting up to 37 weeks with the other parent, discontinuous leave, and pay at £194.32/week.",
+  ),
   alternates: { canonical: url },
-  openGraph: { title: "UK Shared Parental Leave 2026", description: "ShPL lets parents share up to 37 weeks of leave after the compulsory maternity period. Full guide to how it works.", url },
+  openGraph: {
+    title: "UK Shared Parental Leave 2026",
+    description: clampMetaDescription("ShPL lets parents share up to 37 weeks of leave after the compulsory maternity period. Full guide to how it works."),
+    url,
+  },
 };
 
 const faqs = [

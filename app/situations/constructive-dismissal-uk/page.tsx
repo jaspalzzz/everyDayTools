@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE, jsonLd } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { AffiliateCta } from "@/components/AffiliateCta";
 
 const url = `${SITE.url}/situations/constructive-dismissal-uk`;
 
 export const metadata: Metadata = {
   title: "Constructive Dismissal UK: Step-by-Step Guide 2026",
-  description:
+  description: clampMetaDescription(
     "Being forced to resign? This guide walks you through each step of a constructive dismissal claim in the UK — from documenting the breach to ACAS conciliation and the Employment Tribunal.",
+  ),
   alternates: { canonical: url },
   openGraph: { title: "Constructive Dismissal UK: Step-by-Step Guide 2026", url },
 };

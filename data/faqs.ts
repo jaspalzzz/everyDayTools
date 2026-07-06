@@ -109,7 +109,7 @@ export const FAQS: FaqPageMeta[] = [
       "Enhanced redundancy schemes paid by employers are not subject to these statutory caps — they can use your actual salary and count more years of service. Enhanced payments above the statutory amount can still benefit from the £30,000 tax-free threshold on total termination payments.",
     ],
     country: "UK",
-    related: ["is-redundancy-pay-tax-free", "how-is-a-weeks-pay-calculated-for-redundancy", "statutory-vs-enhanced-redundancy"],
+    related: ["is-redundancy-pay-tax-free", "how-is-a-weeks-pay-calculated-for-redundancy", "can-employer-refuse-redundancy-pay"],
     relatedTool: "redundancy-pay-calculator",
     relatedToolName: "Redundancy pay calculator",
     datePublished: "2026-06-27",

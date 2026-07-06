@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE, jsonLd } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { AffiliateCta } from "@/components/AffiliateCta";
 
 const url = `${SITE.url}/situations/sacked-while-pregnant-uk`;
 
 export const metadata: Metadata = {
   title: "Sacked While Pregnant UK: Your Rights & What to Do 2026",
-  description:
+  description: clampMetaDescription(
     "Dismissing someone because of pregnancy is automatically unfair and unlawful discrimination. This guide explains your rights, protections during the redundancy period, and how to bring a claim.",
+  ),
   alternates: { canonical: url },
   openGraph: { title: "Sacked While Pregnant UK: Your Rights 2026", url },
 };

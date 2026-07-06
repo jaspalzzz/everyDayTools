@@ -1,6 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { TOOLS } from "@/data/tools";
+import { directoryTabForSearch, type TabId } from "./BrowseByCategory";
 
 const COUNTRIES = [
   { code: "UK", label: "UK" },
@@ -10,20 +13,96 @@ const COUNTRIES = [
 ] as const;
 
 const QUICK_LINKS = [
-  { label: "Payslip analyser", href: "/payslip-analyser" },
-  { label: "Redundancy pay", href: "/redundancy-pay-calculator" },
-  { label: "Notice period", href: "/notice-period-calculator" },
-  { label: "Final paycheck", href: "/final-paycheck-deadline-calculator" },
-  { label: "Holiday pay", href: "/holiday-entitlement-calculator" },
+  { label: "Payslip analyser" },
+  { label: "Redundancy pay" },
+  { label: "Notice period" },
+  { label: "Final paycheck" },
+  { label: "Holiday pay" },
 ] as const;
 
+const DIRECT_ALIASES: Record<string, string> = {
+  "final pay": "final-paycheck-deadline-calculator",
+  "final paycheck": "final-paycheck-deadline-calculator",
+  "holiday pay": "holiday-entitlement-calculator",
+  "notice": "notice-period-calculator",
+  "notice pay": "notice-period-calculator",
+  "notice period": "notice-period-calculator",
+  "payslip": "payslip-analyser",
+  "payslip analyser": "payslip-analyser",
+  "pto": "pto-payout-calculator",
+  "redundancy": "redundancy-pay-calculator",
+  "redundancy pay": "redundancy-pay-calculator",
+  "sick pay": "statutory-sick-pay-calculator",
+};
+
+function normalizeSearch(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[-–—]/g, " ")
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\bcalculator\b/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function directCalculatorHrefForSearch(searchText: string) {
+  const q = normalizeSearch(searchText);
+  if (!q) return null;
+
+  const aliasSlug = DIRECT_ALIASES[q];
+  if (aliasSlug) return `/${aliasSlug}`;
+
+  let best: { slug: string; score: number } | null = null;
+
+  for (const tool of TOOLS) {
+    const candidates = [
+      tool.name,
+      tool.shortName,
+      tool.slug,
+      tool.slug.replace(/-/g, " "),
+    ];
+
+    for (const candidate of candidates) {
+      const label = normalizeSearch(candidate);
+      const score =
+        q === label ? 1000 + label.length :
+        q.length >= 4 && label.startsWith(q) ? 800 + q.length :
+        label.length >= 5 && q.includes(label) ? 700 + label.length :
+        0;
+
+      if (score > (best?.score ?? 0)) best = { slug: tool.slug, score };
+    }
+  }
+
+  return best && best.score >= 700 ? `/${best.slug}` : null;
+}
+
 export function HeroSearch() {
+  const router = useRouter();
   const [active, setActive] = useState<"UK" | "US" | "CA" | "AU">("UK");
+  const [query, setQuery] = useState("");
+
+  function scrollToDirectoryTab(searchText: string) {
+    const tab: TabId = directoryTabForSearch(searchText);
+    window.dispatchEvent(new CustomEvent("calculator-directory:select-tab", { detail: { tab } }));
+
+    const el = document.getElementById("all-calculators");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function openSearchResult(searchText: string) {
+    const directHref = directCalculatorHrefForSearch(searchText);
+    if (directHref) {
+      router.push(directHref);
+      return;
+    }
+
+    scrollToDirectoryTab(searchText);
+  }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const el = document.getElementById("all-calculators");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    openSearchResult(query);
   }
 
   return (
@@ -72,6 +151,8 @@ export function HeroSearch() {
           placeholder='Describe your issue: unpaid wages, notice pay…'
           className="min-h-[52px] rounded-lg border px-3.5 text-[13px] text-ink outline-none placeholder:text-[#8795a3]"
           style={{ borderColor: "#d8e2ec" }}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
         <button
           type="submit"
@@ -86,14 +167,18 @@ export function HeroSearch() {
       {/* Quick links */}
       <div className="flex flex-wrap gap-2 px-4 pb-4">
         {QUICK_LINKS.map((q) => (
-          <a
+          <button
             key={q.label}
-            href={q.href}
+            type="button"
+            onClick={() => {
+              setQuery(q.label);
+              openSearchResult(q.label);
+            }}
             className="rounded-full border px-2.5 py-[7px] text-[12px] font-bold text-ink-soft transition-colors hover:border-brand-300 hover:text-ink"
             style={{ borderColor: "#cfe0f1", background: "#f7fbff" }}
           >
             {q.label}
-          </a>
+          </button>
         ))}
       </div>
     </div>

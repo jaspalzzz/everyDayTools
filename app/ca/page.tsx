@@ -124,7 +124,7 @@ export default function CAPage() {
         sources={[
           { label: "Canada Labour Code (CLC)", href: "https://www.canada.ca/en/employment-social-development/programs/employment-standards.html" },
           { label: "CRA — payroll deductions", href: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll.html" },
-          { label: "Provincial employment standards", href: "https://www.canada.ca/en/employment-social-development/services/labour-standards/reports/employment-standards.html" },
+          { label: "Federal labour standards", href: "https://www.canada.ca/en/services/jobs/workplace/federal-labour-standards.html" },
         ]}
         note={
           <>

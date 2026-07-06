@@ -46,6 +46,53 @@ export default function DeductionCheckerPage() {
           </p>
         </div>
         <EmployerDeductionChecker />
+
+        <section className="mt-8 grid gap-4 sm:grid-cols-3" aria-label="Common deduction categories">
+          <article className="rounded-xl border border-surface-line bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Usually allowed</p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+              Taxes, court-ordered garnishments, and deductions you clearly authorized in writing are the safest categories.
+            </p>
+          </article>
+          <article className="rounded-xl border border-surface-line bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Often disputed</p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+              Equipment loss, register shortages, breakage, uniforms, training costs, and negative PTO balances often depend on state law and documentation.
+            </p>
+          </article>
+          <article className="rounded-xl border border-surface-line bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">What to collect</p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+              Keep the policy, written authorization, final pay stub, and any itemized explanation from payroll before you agree the deduction is valid.
+            </p>
+          </article>
+        </section>
+
+        <section className="mt-8 max-w-2xl rounded-xl border border-brand-100 bg-brand-50 p-5">
+          <h2 className="text-base font-semibold text-ink">How to use this result</h2>
+          <div className="mt-3 space-y-3 text-sm leading-relaxed text-ink-soft">
+            <p>
+              A deduction can still be unlawful even if your employer says it is “company policy.” In many states the real question is whether you signed a specific authorization and whether the deduction drops your wages below the minimum wage or violates final-paycheck rules.
+            </p>
+            <p>
+              If the checker flags a deduction for review, move next to your state final paycheck page, compare the policy language, and ask payroll to break out gross wages, each deduction line, and the legal basis for withholding that amount.
+            </p>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Link
+              href="/us/final-paycheck"
+              className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
+            >
+              Final paycheck hub
+            </Link>
+            <Link
+              href="/final-paycheck-deadline-calculator"
+              className="rounded-lg border border-brand-200 px-4 py-2 text-sm font-medium text-brand-700 hover:bg-white"
+            >
+              Check deadline too
+            </Link>
+          </div>
+        </section>
       </main>
     </>
   );

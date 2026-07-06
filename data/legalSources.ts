@@ -169,7 +169,7 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     {
       label: "Social Security Contributions & Benefits Act 1992",
       section: "ss.171ZA–171ZJ (Statutory paternity pay)",
-      url: "https://www.legislation.gov.uk/ukpga/1992/4/part/XIIZA",
+      url: "https://www.legislation.gov.uk/ukpga/1992/4/section/171ZA",
       type: "legislation",
     },
     {
@@ -183,7 +183,7 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     {
       label: "Social Security Contributions & Benefits Act 1992",
       section: "ss.171ZL–171ZT (Statutory adoption pay)",
-      url: "https://www.legislation.gov.uk/ukpga/1992/4/part/XIIZB",
+      url: "https://www.legislation.gov.uk/ukpga/1992/4/section/171ZL",
       type: "legislation",
     },
     {
@@ -400,8 +400,8 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
 
   "pto-payout-calculator": [
     {
-      label: "DOL — Vacation / PTO payout rules",
-      url: "https://www.dol.gov/agencies/whd/fact-sheets/56-vacation",
+      label: "DOL — State labor offices",
+      url: "https://www.dol.gov/agencies/whd/state/contacts",
       type: "guidance",
     },
   ],
@@ -410,7 +410,7 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     {
       label: "Fair Labor Standards Act",
       section: "§207 (Maximum hours / overtime requirement)",
-      url: "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section207",
+      url: "https://www.govinfo.gov/content/pkg/USCODE-2024-title29/html/USCODE-2024-title29-chap8-sec207.htm",
       type: "legislation",
     },
     {
@@ -426,12 +426,12 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     {
       label: "Fair Work Act 2009",
       section: "s.119 (Redundancy pay entitlement)",
-      url: "https://www.legislation.gov.au/Details/C2009A00028/Html/Volume_1#_Toc279384854",
+      url: "https://www.legislation.gov.au/C2009A00028/latest/text",
       type: "legislation",
     },
     {
-      label: "Fair Work Ombudsman — Redundancy pay",
-      url: "https://www.fairwork.gov.au/ending-employment/redundancy/redundancy-pay-and-entitlements",
+      label: "Fair Work Ombudsman — Pay and Conditions Tool",
+      url: "https://calculate.fairwork.gov.au/FindYourAward",
       type: "regulator",
     },
   ],
@@ -440,12 +440,12 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     {
       label: "Fair Work Act 2009",
       section: "s.117 (Requirement to give notice of termination)",
-      url: "https://www.legislation.gov.au/Details/C2009A00028/Html/Volume_1#_Toc279384852",
+      url: "https://www.legislation.gov.au/C2009A00028/latest/text",
       type: "legislation",
     },
     {
-      label: "Fair Work Ombudsman — Notice of termination",
-      url: "https://www.fairwork.gov.au/ending-employment/notice-and-final-pay",
+      label: "Fair Work Ombudsman — Pay and Conditions Tool",
+      url: "https://calculate.fairwork.gov.au/FindYourAward",
       type: "regulator",
     },
   ],
@@ -454,12 +454,12 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     {
       label: "Fair Work Act 2009",
       section: "s.87 (Annual leave entitlement)",
-      url: "https://www.legislation.gov.au/Details/C2009A00028/Html/Volume_1#_Toc279384640",
+      url: "https://www.legislation.gov.au/C2009A00028/latest/text",
       type: "legislation",
     },
     {
-      label: "Fair Work Ombudsman — Annual leave",
-      url: "https://www.fairwork.gov.au/leave/annual-leave",
+      label: "Fair Work Ombudsman — Pay and Conditions Tool",
+      url: "https://calculate.fairwork.gov.au/FindYourAward",
       type: "regulator",
     },
   ],
@@ -474,8 +474,8 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
       type: "legislation",
     },
     {
-      label: "Canada.ca — Severance pay",
-      url: "https://www.canada.ca/en/employment-social-development/services/labour-standards/reports/severance-pay.html",
+      label: "Canada.ca — Termination and severance",
+      url: "https://www.canada.ca/en/services/jobs/workplace/federal-labour-standards/termination.html",
       type: "guidance",
     },
   ],
@@ -494,8 +494,9 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
       type: "legislation",
     },
     {
-      label: "GOV.UK — Settlement agreements",
-      url: "https://www.gov.uk/negotiate-settle-employment-dispute",
+      label: "HMRC — Termination payments",
+      section: "Employment Income Manual EIM12800",
+      url: "https://www.gov.uk/hmrc-internal-manuals/employment-income-manual/eim12800",
       type: "guidance",
     },
     {
@@ -525,7 +526,7 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     },
     {
       label: "ACAS — Code of Practice on Disciplinary and Grievance Procedures",
-      url: "https://www.acas.org.uk/acas-code-of-practice-for-disciplinary-and-grievance-procedures",
+      url: "https://www.acas.org.uk/acas-code-of-practice-on-disciplinary-and-grievance-procedures",
       type: "regulator",
     },
   ],
@@ -565,7 +566,7 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     },
     {
       label: "ACAS — Dismissal",
-      url: "https://www.acas.org.uk/dismissal",
+      url: "https://www.acas.org.uk/dismissals",
       type: "regulator",
     },
   ],
@@ -584,7 +585,7 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     },
     {
       label: "ACAS — Constructive dismissal",
-      url: "https://www.acas.org.uk/constructive-dismissal",
+      url: "https://www.acas.org.uk/dismissals/constructive-dismissal",
       type: "regulator",
     },
   ],
@@ -669,13 +670,13 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
       type: "legislation",
     },
     {
-      label: "GOV.UK — If you're not paid the right amount",
-      url: "https://www.gov.uk/recover-debt-money-owed-you",
+      label: "GOV.UK — Make a court claim for money",
+      url: "https://www.gov.uk/make-court-claim-for-money",
       type: "guidance",
     },
     {
       label: "ACAS — Chasing payment",
-      url: "https://www.acas.org.uk/if-your-employer-has-not-paid-you",
+      url: "https://www.acas.org.uk/if-your-wages-are-not-paid",
       type: "regulator",
     },
   ],
@@ -688,7 +689,7 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     },
     {
       label: "Americans with Disabilities Act 1990",
-      url: "https://www.eeoc.gov/statutes/americans-disabilities-act-1990",
+      url: "https://www.ada.gov/law-and-regs/ada/",
       type: "legislation",
     },
     {

@@ -76,7 +76,7 @@ npm run e2e         # 33 Playwright tests
 Run locally before pushing:
 
 ```bash
-npm run test && npm run typecheck && npm run build
+npm run test && npm run typecheck && npm run build && npm run audit:indexability
 ```
 
 ## Develop
@@ -88,6 +88,8 @@ npm run typecheck  # strict TS check
 npm run build      # production build
 npm run test       # unit tests
 npm run e2e        # e2e tests (requires built app or dev server)
+npm run audit:indexability
+npm run audit:responsive
 ```
 
 ## Deployment (Cloudflare Pages — static)
@@ -109,10 +111,16 @@ Cloudflare Pages as static assets.
 
 ```bash
 NEXT_PUBLIC_SITE_URL=https://mypayrights.com
+GOOGLE_SITE_VERIFICATION=google-site-verification-token
+NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-0000000000000000
+NEXT_PUBLIC_ADSENSE_READY=false
 ```
 
 This drives metadata, sitemap, robots, canonical URLs, and structured data. If unset, it falls
-back to `https://mypayrights.com`.
+back to `https://mypayrights.com`. Search Console verification metadata is emitted when
+`GOOGLE_SITE_VERIFICATION` is set. The AdSense account meta tag is emitted when
+`NEXT_PUBLIC_ADSENSE_CLIENT` is set, and the client script remains off until
+`NEXT_PUBLIC_ADSENSE_READY=true`.
 
 **Edge headers** — `public/_headers` is copied to the output root and applied by Cloudflare Pages:
 security headers (CSP, HSTS, `X-Frame-Options`, `nosniff`) on every route, plus a `Content-Type:
@@ -140,6 +148,12 @@ changes. Key constants to refresh:
 
 - `NEXT_PUBLIC_SITE_URL` may override the production URL used for metadata, sitemap,
   robots, canonicals, and schema. The fallback is `https://mypayrights.com`.
+- `GOOGLE_SITE_VERIFICATION` or `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` adds the Search Console
+  verification meta tag.
+- `NEXT_PUBLIC_ADSENSE_CLIENT` adds the site-level AdSense publisher meta tag.
+- `NEXT_PUBLIC_ADSENSE_READY=true` enables the AdSense runtime script after consent.
+- `public/ads.txt` ships as a placeholder and must be replaced with the real publisher record
+  after AdSense approval.
 - Public contact emails live in `lib/seo.ts`.
 - Analytics/Search Console are tracked in [TASKS.md](TASKS.md) under T1.3.
 

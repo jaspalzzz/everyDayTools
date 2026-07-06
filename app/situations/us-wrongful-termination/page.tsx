@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE, jsonLd } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 const url = `${SITE.url}/situations/us-wrongful-termination`;
 
 export const metadata: Metadata = {
   title: "US Wrongful Termination: Know Your Rights 2026",
-  description:
+  description: clampMetaDescription(
     "At-will employment doesn't mean employers can fire you for any reason. This guide explains federal and state protections against wrongful termination, retaliation, and discrimination.",
+  ),
   alternates: { canonical: url },
   openGraph: { title: "US Wrongful Termination: Your Rights 2026", url },
 };

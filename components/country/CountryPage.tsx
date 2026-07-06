@@ -152,7 +152,7 @@ export function CountryPage({
             <form
               onSubmit={(e) => e.preventDefault()}
               aria-label={`Search ${name} calculators`}
-              className="grid grid-cols-[1fr_auto_44px] gap-2"
+              className="grid grid-cols-[minmax(0,1fr)_46px] gap-2 sm:grid-cols-[minmax(0,1fr)_auto_46px]"
               style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 4px 20px rgba(16,32,51,.08)", padding: 10, maxWidth: 640 }}
             >
               <input
@@ -161,13 +161,15 @@ export function CountryPage({
                 placeholder={searchPlaceholder}
                 value={searchQ}
                 onChange={(e) => setSearchQ(e.target.value)}
+                className="col-span-2 min-w-0 sm:col-span-1"
                 style={{ minHeight: 46, border: "1px solid #d8e2ec", borderRadius: 8, background: "#f8fbff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
               />
               <select
                 aria-label="Topic"
                 value={activeTab}
                 onChange={(e) => setActiveTab(e.target.value as TabKey)}
-                style={{ minHeight: 46, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 12px", outline: "none", fontSize: 13 }}
+                className="min-w-0"
+                style={{ width: "100%", minHeight: 46, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 12px", outline: "none", fontSize: 13 }}
               >
                 {TABS.map((t) => (
                   <option key={t.key} value={t.key}>{t.label}</option>
@@ -218,7 +220,7 @@ export function CountryPage({
         {/* Sticky category tabs */}
         <nav
           aria-label="Category filter"
-          className="flex gap-2 overflow-x-auto pb-4 mb-5"
+          className="flex flex-wrap gap-2 pb-4 mb-5"
           style={{ position: "sticky", top: 68, zIndex: 5, background: "#f7fafc", scrollbarWidth: "none" }}
         >
           {TABS.map((tab) => (

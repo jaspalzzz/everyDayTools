@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CountryFlag } from "@/components/CountryFlag";
-import { SITE, jsonLd } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 const SLUG = "uk-redundancy-pay";
 const COUNTRY = "UK";
@@ -10,13 +10,15 @@ const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
   title: "UK Redundancy Pay: Complete Guide 2026 — Statutory Entitlement Explained",
-  description:
+  description: clampMetaDescription(
     "How UK statutory redundancy pay is calculated, who qualifies, the weekly pay cap for 2026/27 (£751), the tax-free threshold (£30,000), and what to do if your employer refuses to pay.",
+  ),
   alternates: { canonical: url },
   openGraph: {
     title: "UK Redundancy Pay: Complete Guide 2026",
-    description:
+    description: clampMetaDescription(
       "Everything you need to know about statutory redundancy pay — age bands, the £751 weekly cap, the £30,000 tax-free threshold, and how to challenge an underpayment.",
+    ),
     url,
   },
 };
@@ -301,7 +303,7 @@ export default function UKRedundancyPayGuide() {
                 <li className="list-decimal">
                   <strong className="text-ink">Insolvent employers</strong> — if your employer has
                   gone into administration or liquidation, you can claim directly from the{" "}
-                  <a href="https://www.gov.uk/redundancy-payments-service" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
+                  <a href="https://www.gov.uk/claim-redundancy" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
                     Redundancy Payments Service
                   </a>{" "}
                   (part of the Insolvency Service), which is funded by the National Insurance Fund.
@@ -342,8 +344,8 @@ export default function UKRedundancyPayGuide() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.gov.uk/guidance/statutory-redundancy-pay" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
-                    HMRC — Statutory Redundancy Pay guidance
+                  <a href="https://www.gov.uk/redundancy-your-rights/redundancy-pay" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline-offset-2 hover:underline">
+                    GOV.UK — Redundancy pay
                   </a>
                 </li>
               </ul>

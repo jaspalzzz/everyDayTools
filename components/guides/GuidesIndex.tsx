@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import type { FormEvent } from "react";
 import Link from "next/link";
 import type { GuideMeta } from "@/data/guides";
 
@@ -13,6 +14,8 @@ const TABS = [
   { key: "us", label: "US state rules", sub: "PTO and paycheck timing" },
 ] as const;
 type TabKey = (typeof TABS)[number]["key"];
+const SEARCH_TOPIC_KEYS = ["leaving", "pay", "parental", "benefits"] as const;
+type SearchTopicKey = (typeof SEARCH_TOPIC_KEYS)[number];
 
 const FEATURED_SLUGS = [
   "uk-redundancy-pay",
@@ -46,6 +49,73 @@ function filterGuides(guides: GuideMeta[], tab: TabKey): GuideMeta[] {
     default:
       return guides;
   }
+}
+
+function tabForGuide(guide: GuideMeta): TabKey {
+  if (guide.country === "US") return "us";
+  switch (guide.category) {
+    case "Leaving a Job":
+      return "leaving";
+    case "Pay & Tax":
+      return "pay";
+    case "Parental Leave":
+      return "parental";
+    case "Benefits & Entitlements":
+      return "benefits";
+    default:
+      return "featured";
+  }
+}
+
+function topicForGuide(guide: GuideMeta): string {
+  const tab = tabForGuide(guide);
+  return isSearchTopicKey(tab) ? tab : "all";
+}
+
+function isSearchTopicKey(value: string): value is SearchTopicKey {
+  return SEARCH_TOPIC_KEYS.includes(value as SearchTopicKey);
+}
+
+function normalizeSearch(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function guideSearchText(guide: GuideMeta) {
+  const aliases: string[] = [];
+
+  if (guide.slug.includes("notice") || guide.relatedTool.includes("notice")) {
+    aliases.push("notice pay notice period pilon payment in lieu dismissal notice final pay leaving job");
+  }
+  if (guide.slug.includes("holiday") || guide.relatedTool.includes("holiday")) {
+    aliases.push("holiday pay annual leave vacation payout benefits entitlement");
+  }
+  if (guide.slug.includes("sick") || guide.relatedTool.includes("sick")) {
+    aliases.push("sick pay statutory sick pay ssp benefits illness");
+  }
+  if (guide.slug.includes("pto")) {
+    aliases.push("pto vacation payout unused leave final paycheck benefits");
+  }
+
+  return normalizeSearch([
+    guide.title,
+    guide.description,
+    guide.category,
+    guide.country,
+    guide.relatedTool,
+    guide.slug,
+    ...aliases,
+  ].join(" "));
+}
+
+function guideMatchesSearch(guide: GuideMeta, query: string) {
+  const normalizedQuery = normalizeSearch(query);
+  if (!normalizedQuery) return true;
+
+  const haystack = guideSearchText(guide);
+  if (haystack.includes(normalizedQuery)) return true;
+
+  const tokens = normalizedQuery.split(" ").filter(Boolean);
+  return tokens.length > 0 && tokens.every((token) => haystack.includes(token));
 }
 
 function CountryBadge({ country }: { country: string }) {
@@ -83,16 +153,67 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
   const [searchQ, setSearchQ] = useState("");
   const [country, setCountry] = useState("all");
   const [topic, setTopic] = useState("all");
+  const resultsRef = useRef<HTMLElement>(null);
 
   const featured = guides.find((g) => g.slug === "uk-redundancy-pay")!;
-  const filtered = filterGuides(guides, activeTab).filter((g) => {
-    if (searchQ && !g.title.toLowerCase().includes(searchQ.toLowerCase()) && !g.description.toLowerCase().includes(searchQ.toLowerCase())) return false;
-    if (country !== "all" && g.country !== country) return false;
-    return true;
-  });
+  const isFiltering = Boolean(searchQ.trim()) || country !== "all" || topic !== "all";
+  const baseGuides = useMemo(() => {
+    if (!isFiltering) return filterGuides(guides, activeTab);
+    if (isSearchTopicKey(topic)) return filterGuides(guides, topic);
+    if (activeTab !== "featured") return filterGuides(guides, activeTab);
+    return guides;
+  }, [activeTab, guides, isFiltering, topic]);
+  const filtered = useMemo(
+    () =>
+      baseGuides.filter((g) => {
+        if (!guideMatchesSearch(g, searchQ)) return false;
+        if (country !== "all" && g.country !== country) return false;
+        return true;
+      }),
+    [baseGuides, country, searchQ],
+  );
 
   const gridGuides = activeTab === "featured" ? filtered.slice(1) : filtered;
-  const featuredGuide = activeTab === "featured" ? filtered[0] ?? featured : null;
+  const featuredGuide = activeTab === "featured" ? filtered[0] ?? (isFiltering ? null : featured) : null;
+
+  function setTopicFilter(value: string) {
+    setTopic(value);
+    if (isSearchTopicKey(value)) {
+      setActiveTab(value);
+    } else {
+      setActiveTab("featured");
+    }
+  }
+
+  function setGuideTab(tab: TabKey) {
+    setActiveTab(tab);
+    setTopic(isSearchTopicKey(tab) ? tab : "all");
+  }
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const query = searchQ.trim();
+    const textMatches = query ? guides.filter((guide) => guideMatchesSearch(guide, query)) : [];
+
+    const bestMatch = textMatches[0];
+    if (bestMatch && filtered.length === 0) {
+      const nextTab = tabForGuide(bestMatch);
+      setActiveTab(nextTab);
+      setTopic(topicForGuide(bestMatch));
+      setCountry(bestMatch.country === "UK/US" ? "all" : bestMatch.country);
+    } else if (isSearchTopicKey(topic)) {
+      setActiveTab(topic);
+    } else if (query && activeTab === "featured") {
+      setActiveTab("featured");
+    }
+
+    requestAnimationFrame(() => {
+      const target = resultsRef.current;
+      if (!target) return;
+      const top = target.getBoundingClientRect().top + window.scrollY - 96;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    });
+  }
 
   return (
     <>
@@ -156,7 +277,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
       {/* ── Search band ── */}
       <div style={{ maxWidth: 1180, margin: "-20px auto 0", padding: "0 24px", position: "relative", zIndex: 2 }}>
         <form
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
           aria-label="Find a guide"
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_170px_170px_52px] gap-2.5"
           style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 14px 32px rgba(16,32,51,.08)", padding: 14 }}
@@ -184,7 +305,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
           <select
             aria-label="Topic"
             value={topic}
-            onChange={(e) => setTopic(e.target.value)}
+            onChange={(e) => setTopicFilter(e.target.value)}
             style={{ minHeight: 50, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
           >
             <option value="all">All topics</option>
@@ -209,15 +330,18 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
 
         {/* Topic strip */}
         <nav
+          id="guide-results"
+          ref={resultsRef}
           aria-label="Guide topics"
           className="flex gap-2 overflow-x-auto pb-4 mb-1"
-          style={{ scrollbarWidth: "none" }}
+          style={{ scrollbarWidth: "none", scrollMarginTop: 88 }}
         >
           {TABS.map((tab) => (
             <button
               key={tab.key}
               type="button"
-              onClick={() => setActiveTab(tab.key)}
+              onClick={() => setGuideTab(tab.key)}
+              aria-pressed={activeTab === tab.key}
               style={{
                 flexShrink: 0, minHeight: 72,
                 border: activeTab === tab.key ? "1px solid #a8c9ef" : "1px solid #d8e2ec",

@@ -49,7 +49,7 @@ const TRUST_SIGNALS = [
 ] as const;
 
 const SOURCES = [
-  { label: "GOV.UK and HMRC", href: "https://www.gov.uk/employment-rights-and-pay" },
+  { label: "GOV.UK and HMRC", href: "https://www.gov.uk/browse/working" },
   { label: "ACAS guidance", href: "https://www.acas.org.uk" },
   { label: "U.S. Department of Labor", href: "https://www.dol.gov/agencies/whd" },
   { label: "Fair Work Australia", href: "https://www.fairwork.gov.au" },

@@ -133,7 +133,7 @@ const contentBlock = (
       Your employer must pay whichever is greater — NES, award, or agreement. Check your award on
       the{" "}
       <a
-        href="https://www.fairwork.gov.au/find-help-for/visa-holders-and-migrants/pay-and-conditions-tool"
+        href="https://calculate.fairwork.gov.au/FindYourAward"
         target="_blank"
         rel="noopener noreferrer"
         className="text-brand-600 underline-offset-2 hover:underline"

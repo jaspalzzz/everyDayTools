@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CountryFlag } from "@/components/CountryFlag";
-import { SITE, jsonLd } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 const SLUG = "uk-take-home-pay";
 const COUNTRY = "UK";
@@ -10,13 +10,15 @@ const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
   title: "How to Calculate UK Take-Home Pay 2026/27 — Income Tax, NI & Deductions Explained",
-  description:
+  description: clampMetaDescription(
     "A plain-English guide to how your salary is taxed in the UK for 2026/27: income tax bands, National Insurance thresholds, student loan deductions, and worked examples for salaries from £20,000 to £100,000.",
+  ),
   alternates: { canonical: url },
   openGraph: {
     title: "How to Calculate UK Take-Home Pay 2026/27",
-    description:
+    description: clampMetaDescription(
       "Income tax bands, National Insurance rates, student loan thresholds — and worked examples showing exactly how much you keep from a £30K, £50K and £80K salary.",
+    ),
     url,
   },
 };

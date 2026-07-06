@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { US_STATES, getUsState } from "@/data/usStates";
-import { SITE, jsonLd, faqSchema } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 import { FinalPaycheckLateChecker } from "@/components/calculators/FinalPaycheckLateChecker";
 
@@ -23,9 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title,
-    description,
+    description: clampMetaDescription(description),
     alternates: { canonical: url },
-    openGraph: { title, description, url },
+    openGraph: { title, description: clampMetaDescription(description), url },
   };
 }
 

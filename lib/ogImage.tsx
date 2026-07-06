@@ -27,10 +27,11 @@ const LOGO_MARK = (
 
 /** Region pill label — shown in the top-right corner of tool OG images. */
 function regionLabel(region: string): string {
-  if (region === "UK") return "🇬🇧 UK";
-  if (region === "US") return "🇺🇸 US";
-  if (region === "UK/CA") return "🇬🇧 UK · CA";
-  return "🌍 Multi-region";
+  if (region === "UK") return "UK";
+  if (region === "US") return "US";
+  if (region === "AU") return "AU";
+  if (region === "UK/CA") return "UK + CA";
+  return "Multi-region";
 }
 
 /** Shared OG card for the homepage. */

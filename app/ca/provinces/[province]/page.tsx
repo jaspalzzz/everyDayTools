@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SITE, jsonLd } from "@/lib/seo";
+import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { CA_PROVINCES, getCaProvince } from "@/data/caProvinces";
 
 type Props = { params: Promise<{ province: string }> };
@@ -16,13 +16,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!p) return {};
 
   const url = `${SITE.url}/ca/provinces/${p.slug}`;
+  const description = `${p.name} employment standards: minimum wage ${p.minimumWage}, statutory notice periods, vacation entitlement, and severance rules under the ${p.legislationName}.`;
+  const ogDescription = `Minimum wage, notice periods, and vacation entitlement for workers in ${p.name} under the ${p.legislationName}.`;
   return {
     title: `${p.name} Employment Standards 2025 — Notice, Minimum Wage & Vacation`,
-    description: `${p.name} employment standards: minimum wage ${p.minimumWage}, statutory notice periods, vacation entitlement, and severance rules under the ${p.legislationName}.`,
+    description: clampMetaDescription(description),
     alternates: { canonical: url },
     openGraph: {
       title: `${p.name} Employment Standards 2025`,
-      description: `Minimum wage, notice periods, and vacation entitlement for workers in ${p.name} under the ${p.legislationName}.`,
+      description: clampMetaDescription(ogDescription),
       url,
     },
   };
