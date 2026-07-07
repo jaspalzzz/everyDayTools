@@ -68,6 +68,8 @@ export function SiteFooter() {
             Company
           </h4>
           <Link href="/about" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>About</Link>
+          <Link href="/methodology" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Methodology</Link>
+          <Link href="/editorial-policy" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Editorial policy</Link>
           <Link href="/contact" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Contact</Link>
           <Link href="/contact" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Corrections</Link>
           <Link href="/privacy" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Privacy</Link>
@@ -80,7 +82,12 @@ export function SiteFooter() {
       <div className="border-t" style={{ borderColor: "#e7edf3" }}>
         <p className="mx-auto max-w-[1180px] px-6 py-4 text-[12px]" style={{ color: "#6d7b88" }}>
           © 2026 MyPayRights. All figures are educational estimates and are not legal or financial advice.{" "}
-          <Link href="/disclaimer" className="underline-offset-2 hover:underline">Read the disclaimer.</Link>
+          Figures are reviewed against official sources and corrected through the published correction path.{" "}
+          <Link href="/methodology" className="underline-offset-2 hover:underline">Methodology</Link>
+          {" · "}
+          <Link href="/editorial-policy" className="underline-offset-2 hover:underline">Editorial policy</Link>
+          {" · "}
+          <Link href="/disclaimer" className="underline-offset-2 hover:underline">Disclaimer</Link>
         </p>
       </div>
     </footer>

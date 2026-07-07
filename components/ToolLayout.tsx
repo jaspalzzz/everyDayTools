@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { AdSlot } from "./AdSlot";
+import { EditorialReview } from "./EditorialReview";
 import { relatedTools, CATEGORY_META, type ToolMeta } from "@/data/tools";
 import type { FaqItem, SourceRef } from "@/lib/types";
 import { LEGAL_SOURCES } from "@/data/legalSources";
@@ -129,6 +130,9 @@ export function ToolLayout({
             <Link href="/methodology" style={{ ...PILL_STYLE, color: "#1769e0", borderColor: "#a8c9ef", background: "#eaf3ff" }}>
               Methodology →
             </Link>
+            <Link href="/editorial-policy" style={{ ...PILL_STYLE, color: "#1769e0", borderColor: "#a8c9ef", background: "#eaf3ff" }}>
+              Editorial review →
+            </Link>
           </div>
         </div>
       </section>
@@ -141,14 +145,20 @@ export function ToolLayout({
           {calculator}
         </section>
 
+        <EditorialReview
+          lastReviewed={verifiedDate}
+          sourceLabel={source.label}
+          className="mt-6"
+        />
+
         <section
           aria-label="Review and correction details"
           className="grid grid-cols-1 sm:grid-cols-3 gap-3"
           style={{ marginTop: 24 }}
         >
           <div style={TRUST_CARD_STYLE}>
-            <strong style={TRUST_CARD_TITLE_STYLE}>Publisher</strong>
-            <span style={TRUST_CARD_TEXT_STYLE}>{SITE.name}</span>
+            <strong style={TRUST_CARD_TITLE_STYLE}>Editorial review</strong>
+            <span style={TRUST_CARD_TEXT_STYLE}>Checked against official sources before publication</span>
           </div>
           <div style={TRUST_CARD_STYLE}>
             <strong style={TRUST_CARD_TITLE_STYLE}>Source basis</strong>
@@ -363,10 +373,20 @@ export function ToolLayout({
               <div className="grid grid-cols-1 sm:grid-cols-[150px_minmax(0,1fr)]" style={CHANGELOG_ROW_STYLE}>
                 <strong style={{ color: "#102033" }}>{verifiedLabel}</strong>
                 <span style={{ color: "#52616f" }}>
-                  Rate figures updated to match the official source cited below.
+                  Rate figures and source links reviewed against the official source cited below.
                 </span>
               </div>
             )}
+            <div className="grid grid-cols-1 sm:grid-cols-[150px_minmax(0,1fr)]" style={CHANGELOG_ROW_STYLE}>
+              <strong style={{ color: "#102033" }}>Editorial policy</strong>
+              <span style={{ color: "#52616f" }}>
+                Calculator logic is built from public legislation, government guidance, and regulator material.
+                Advertising relationships do not influence statutory figures.{" "}
+                <Link href="/editorial-policy" style={{ color: "#0f56bd", fontWeight: 850 }}>
+                  Read the editorial policy.
+                </Link>
+              </span>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-[150px_minmax(0,1fr)]" style={CHANGELOG_ROW_STYLE}>
               <strong style={{ color: "#102033" }}>Correction path</strong>
               <span style={{ color: "#52616f" }}>

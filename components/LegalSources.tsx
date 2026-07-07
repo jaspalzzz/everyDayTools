@@ -3,7 +3,8 @@
  *
  * Renders below the FAQ on every calculator/guide that has entries in
  * data/legalSources.ts. Links open in a new tab with noopener.
- * No named reviewer needed — primary government sources ARE the authority.
+ * Primary government sources remain the authority; editorial review explains
+ * how MyPayRights checks and corrects its summaries of those sources.
  */
 
 import type { LegalSource } from "@/lib/types";

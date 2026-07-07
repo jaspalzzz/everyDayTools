@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState, type UsStateWithPto } from "@/data/usStates";
-import { SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
+import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
 type Props = { params: Promise<{ state: string }> };
@@ -94,6 +95,7 @@ export default async function StatePage({ params }: Props) {
   const url = `${SITE.url}/us/states/${s.slug}`;
   const rule = RULE_CONFIG[s.pto.rule];
   const faqs = generateFaqs(s);
+  const reviewedDate = `${s.verifiedYear}-01-01`;
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -117,6 +119,9 @@ export default async function StatePage({ params }: Props) {
       name: `${s.name} employment law`,
     },
     areaServed: { "@type": "State", name: s.name },
+    dateModified: reviewedDate,
+    reviewedBy: EDITORIAL_REVIEW,
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   };
 
   return (
@@ -148,6 +153,12 @@ export default async function StatePage({ params }: Props) {
             deadlines, and minimum wage — accurate to 2025 state legislation.
           </p>
         </div>
+
+        <EditorialReview
+          lastReviewed={reviewedDate}
+          sourceLabel={`${s.name} labor and wage official sources`}
+          className="mb-8"
+        />
 
         {/* PTO rule card */}
         <section aria-labelledby="pto-rule-heading" className="mb-8">

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
+import { EditorialReview } from "@/components/EditorialReview";
+import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { CA_PROVINCES, getCaProvince } from "@/data/caProvinces";
 
 type Props = { params: Promise<{ province: string }> };
@@ -96,6 +97,7 @@ export default async function ProvincePage({ params }: Props) {
     url,
     dateModified: DATE,
     areaServed: { "@type": "AdministrativeArea", name: p.name, containedInPlace: { "@type": "Country", name: "Canada" } },
+    reviewedBy: EDITORIAL_REVIEW,
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   };
 
@@ -139,6 +141,12 @@ export default async function ProvincePage({ params }: Props) {
               your employment contract may provide more generous terms.
             </p>
           </header>
+
+          <EditorialReview
+            lastReviewed={DATE}
+            sourceLabel={p.legislationName}
+            className="mb-8"
+          />
 
           {/* Stat cards */}
           <div className="mb-8 grid gap-3 sm:grid-cols-3">

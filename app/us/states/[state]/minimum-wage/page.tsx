@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState } from "@/data/usStates";
-import { SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
+import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
 type Props = { params: Promise<{ state: string }> };
@@ -63,6 +64,7 @@ export default async function Page({ params }: Props) {
 
   const url = `${SITE.url}/us/states/${s.slug}/minimum-wage`;
   const faqs = generateFaqs(s);
+  const reviewedDate = `${s.verifiedYear}-01-01`;
 
   const isFederal = s.minimumWage.includes("federal minimum");
 
@@ -84,7 +86,9 @@ export default async function Page({ params }: Props) {
     description: `Current minimum wage in ${s.name} and rules for 2026.`,
     url,
     datePublished: "2026-01-01",
-    dateModified: "2026-06-27",
+    dateModified: reviewedDate,
+    author: { "@type": "Person", name: "Jaspal Singh", jobTitle: "Founder, MyPayRights" },
+    reviewedBy: EDITORIAL_REVIEW,
     publisher: { "@type": "Organization", name: "MyPayRights", url: SITE.url },
   };
 
@@ -112,6 +116,12 @@ export default async function Page({ params }: Props) {
         <p className="mb-8 text-ink-soft">
           Current rate, tipped employee rules, and what to do if you are underpaid.
         </p>
+
+        <EditorialReview
+          lastReviewed={reviewedDate}
+          sourceLabel={`${s.name} labor agency`}
+          className="mb-8"
+        />
 
         {/* Current rate card */}
         <div className="mb-8 rounded-xl border border-brand-100 bg-brand-50 p-6">

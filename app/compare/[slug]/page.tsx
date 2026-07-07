@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
+import { EditorialReview } from "@/components/EditorialReview";
+import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { COMPARISONS, getComparison } from "@/data/comparisons";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -50,6 +51,7 @@ export default async function ComparisonPage({ params }: Props) {
     datePublished: c.datePublished,
     dateModified: c.dateModified,
     author: { "@type": "Person", name: "Jaspal Singh", jobTitle: "Founder, MyPayRights" },
+    reviewedBy: EDITORIAL_REVIEW,
     publisher: { "@type": "Organization", name: "MyPayRights", url: SITE.url },
     mainEntityOfPage: url,
   };
@@ -89,6 +91,8 @@ export default async function ComparisonPage({ params }: Props) {
             </h1>
             <p className="mt-3 text-sm leading-relaxed text-ink-soft">{c.intro}</p>
           </header>
+
+          <EditorialReview lastReviewed={c.dateModified} className="mb-8" />
 
           <div className="prose-tool space-y-8 text-sm leading-relaxed text-ink-soft">
 

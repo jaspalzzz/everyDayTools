@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState } from "@/data/usStates";
-import { SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
+import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 import { FinalPaycheckLateChecker } from "@/components/calculators/FinalPaycheckLateChecker";
 
@@ -62,6 +63,7 @@ export default async function Page({ params }: Props) {
   const url = `${SITE.url}/us/states/${s.slug}/final-paycheck`;
   const faqs = generateFaqs(s);
   const hasStateCalculator = s.code === "CA" || s.code === "TX";
+  const reviewedDate = `${s.verifiedYear}-01-01`;
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -81,7 +83,9 @@ export default async function Page({ params }: Props) {
     description: `Final paycheck deadlines and rules in ${s.name}.`,
     url,
     datePublished: "2026-01-01",
-    dateModified: "2026-06-27",
+    dateModified: reviewedDate,
+    author: { "@type": "Person", name: "Jaspal Singh", jobTitle: "Founder, MyPayRights" },
+    reviewedBy: EDITORIAL_REVIEW,
     publisher: { "@type": "Organization", name: "MyPayRights", url: SITE.url },
   };
 
@@ -109,6 +113,12 @@ export default async function Page({ params }: Props) {
         <p className="mb-8 text-ink-soft">
           Deadlines, what must be included, and how to claim if your employer pays late.
         </p>
+
+        <EditorialReview
+          lastReviewed={reviewedDate}
+          sourceLabel={`${s.name} labor agency`}
+          className="mb-8"
+        />
 
         {/* Key deadlines */}
         <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">

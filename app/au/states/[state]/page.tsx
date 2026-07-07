@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EditorialReview } from "@/components/EditorialReview";
 import { AU_STATES, getAuState } from "@/data/auStates";
-import { SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
+import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
 type Props = { params: Promise<{ state: string }> };
@@ -62,6 +63,7 @@ export default async function Page({ params }: Props) {
 
   const url = `${SITE.url}/au/states/${s.slug}`;
   const faqs = generateFaqs(s);
+  const reviewedDate = `${s.verifiedYear}-01-01`;
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -81,6 +83,9 @@ export default async function Page({ params }: Props) {
     description: `Employment law facts for ${s.name}: minimum wage, long service leave, workers compensation.`,
     isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
     areaServed: { "@type": "State", name: s.name, containedInPlace: { "@type": "Country", name: "Australia" } },
+    dateModified: reviewedDate,
+    reviewedBy: EDITORIAL_REVIEW,
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   };
 
   return (
@@ -110,6 +115,12 @@ export default async function Page({ params }: Props) {
             rights for workers in {s.name}.
           </p>
         </div>
+
+        <EditorialReview
+          lastReviewed={reviewedDate}
+          sourceLabel={s.lslLegislation}
+          className="mb-8"
+        />
 
         {/* Key stats grid */}
         <section className="mb-8">

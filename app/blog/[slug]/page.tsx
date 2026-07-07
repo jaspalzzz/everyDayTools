@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS, getBlogPost, BLOG_CATEGORIES } from "@/data/blogPosts";
 import { getTool } from "@/data/tools";
-import { SITE, FOUNDER_PERSON, clampMetaDescription, jsonLd } from "@/lib/seo";
+import { EditorialReview } from "@/components/EditorialReview";
+import { EDITORIAL_REVIEW, SITE, FOUNDER_PERSON, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -64,6 +65,7 @@ export default async function BlogPostPage({ params }: Props) {
     datePublished: post.datePublished,
     dateModified: post.dateModified,
     author: FOUNDER_PERSON,
+    reviewedBy: EDITORIAL_REVIEW,
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
     keywords: post.tags.join(", "),
   };
@@ -138,6 +140,8 @@ export default async function BlogPostPage({ params }: Props) {
           <a href="https://www.acas.org.uk" target="_blank" rel="noopener noreferrer" className="underline">ACAS</a> (UK),{" "}
           <a href="https://www.dol.gov" target="_blank" rel="noopener noreferrer" className="underline">DOL</a> (US), or the relevant statutory body for your jurisdiction.
         </div>
+
+        <EditorialReview lastReviewed={post.dateModified} className="mb-8" />
 
         {/* Article content */}
         {Content ? (

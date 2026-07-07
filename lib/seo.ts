@@ -17,6 +17,12 @@ export const SITE = {
   legalEmail: "legal@mypayrights.com",
 } as const;
 
+export const EDITORIAL_REVIEW = {
+  "@type": "Organization",
+  name: `${SITE.name} editorial review`,
+  url: `${SITE.url}/editorial-policy`,
+} as const;
+
 export function clampMetaDescription(text: string, max = 160): string {
   const normalized = text.replace(/\s+/g, " ").trim();
   if (normalized.length <= max) return normalized;
@@ -56,6 +62,8 @@ export function webApplicationSchema(params: {
       priceCurrency: priceCurrencyForRegion(params.region ?? "US/UK/CA/AU"),
     },
     publisher: { "@type": "Organization", name: SITE.name },
+    maintainer: EDITORIAL_REVIEW,
+    isAccessibleForFree: true,
   };
 }
 
@@ -207,6 +215,7 @@ export function articleSchema(params: {
     datePublished: params.datePublished,
     dateModified: params.dateModified,
     author: FOUNDER_PERSON,
+    reviewedBy: EDITORIAL_REVIEW,
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
     ...(params.keywords ? { keywords: params.keywords } : {}),
   };
@@ -233,6 +242,7 @@ export function guideSchema(params: {
     datePublished: params.datePublished,
     dateModified: params.dateModified,
     author: FOUNDER_PERSON,
+    reviewedBy: EDITORIAL_REVIEW,
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
     about: { "@type": "Thing", name: params.legalTopic },
   };
