@@ -8,7 +8,7 @@ type EditorialReviewProps = {
 };
 
 function formatReviewDate(date?: string) {
-  if (!date) return "most recent official-source review";
+  if (!date) return null;
 
   return new Date(date).toLocaleDateString("en-GB", {
     day: "numeric",
@@ -42,9 +42,11 @@ export function EditorialReview({ lastReviewed, sourceLabel, className = "" }: E
 
         <div>
           <p className="text-[11px] font-bold uppercase tracking-[.06em] text-ink-faint">
-            Last source check
+            {reviewedLabel ? "Last source check" : "Source basis"}
           </p>
-          <p className="mt-1 text-sm font-semibold text-ink">{reviewedLabel}</p>
+          {reviewedLabel && (
+            <p className="mt-1 text-sm font-semibold text-ink">{reviewedLabel}</p>
+          )}
           {sourceLabel && (
             <p className="mt-1 text-xs leading-relaxed text-ink-soft">
               Primary source: {sourceLabel}
