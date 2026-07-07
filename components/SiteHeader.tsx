@@ -70,17 +70,27 @@ export function SiteHeader() {
   const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const searchRef = useRef<HTMLInputElement>(null);
 
-  const openMenu = useCallback((name: "calculators" | "countries" | "region") => {
-    if (leaveTimer.current) clearTimeout(leaveTimer.current);
-    setMenu((current) => (current === name ? null : name));
+  const showMenu = useCallback((name: "calculators" | "countries" | "region") => {
+    if (leaveTimer.current) {
+      clearTimeout(leaveTimer.current);
+      leaveTimer.current = null;
+    }
+    setMenu(name);
   }, []);
 
   const closeMenu = useCallback(() => {
-    leaveTimer.current = setTimeout(() => setMenu(null), 120);
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    leaveTimer.current = setTimeout(() => {
+      setMenu(null);
+      leaveTimer.current = null;
+    }, 220);
   }, []);
 
   const cancelClose = useCallback(() => {
-    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    if (leaveTimer.current) {
+      clearTimeout(leaveTimer.current);
+      leaveTimer.current = null;
+    }
   }, []);
 
   // Tapping outside the nav (no hover on touch devices) closes any open dropdown.
@@ -129,13 +139,13 @@ export function SiteHeader() {
             {/* Calculators mega-menu trigger */}
             <div
               className="relative"
-              onMouseEnter={() => openMenu("calculators")}
+              onMouseEnter={() => showMenu("calculators")}
               onMouseLeave={closeMenu}
             >
               <button
                 type="button"
                 aria-expanded={menu === "calculators"}
-                onClick={() => openMenu("calculators")}
+                onClick={() => showMenu("calculators")}
                 style={{
                   height: 40, display: "inline-flex", alignItems: "center", gap: 7,
                   border: menu === "calculators" ? "1px solid #b8d3f1" : "1px solid transparent",
@@ -154,107 +164,114 @@ export function SiteHeader() {
                   onMouseEnter={cancelClose}
                   onMouseLeave={closeMenu}
                   style={{
-                    position: "absolute", top: "calc(100% + 14px)", left: "50%",
+                    position: "absolute", top: "100%", left: "50%",
                     width: "min(940px, calc(100vw - 48px))",
                     transform: "translateX(-38%)",
-                    border: "1px solid #cbd9e8", borderRadius: 12, background: "#fff",
-                    boxShadow: "0 24px 70px rgba(16,32,51,.18)", overflow: "hidden", zIndex: 100,
+                    paddingTop: 14, zIndex: 100, background: "rgba(255,255,255,0)",
                   }}
                 >
                   {/* Arrow caret */}
                   <div style={{
-                    position: "absolute", top: -7, left: "28%", width: 14, height: 14,
+                    position: "absolute", top: 7, left: "28%", width: 14, height: 14,
                     borderTop: "1px solid #cbd9e8", borderLeft: "1px solid #cbd9e8",
                     background: "#fff", transform: "rotate(45deg)", zIndex: 2,
                   }} />
 
-                  <div style={{ position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1.25fr .9fr", minHeight: 360 }}>
-                    {/* Left: category grid */}
-                    <div style={{ padding: 22 }}>
-                      <p style={{ margin: "0 0 4px", color: "#16835b", fontSize: 11, fontWeight: 900, letterSpacing: ".08em", textTransform: "uppercase" }}>
-                        Find the right pay-rights tool
-                      </p>
-                      <p style={{ margin: "0 0 18px", color: "#102033", fontSize: 19, lineHeight: 1.25, fontWeight: 850 }}>
-                        Calculators grouped by the way people actually think about workplace pay.
-                      </p>
+                  <div
+                    style={{
+                      position: "relative", border: "1px solid #cbd9e8", borderRadius: 12,
+                      background: "#fff", boxShadow: "0 24px 70px rgba(16,32,51,.18)",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <div style={{ position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1.25fr .9fr", minHeight: 360 }}>
+                      {/* Left: category grid */}
+                      <div style={{ padding: 22 }}>
+                        <p style={{ margin: "0 0 4px", color: "#16835b", fontSize: 11, fontWeight: 900, letterSpacing: ".08em", textTransform: "uppercase" }}>
+                          Find the right pay-rights tool
+                        </p>
+                        <p style={{ margin: "0 0 18px", color: "#102033", fontSize: 19, lineHeight: 1.25, fontWeight: 850 }}>
+                          Calculators grouped by the way people actually think about workplace pay.
+                        </p>
 
-                      <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 10 }}>
-                        {MEGA_CATEGORIES.map((cat) => (
-                          <Link
-                            key={cat.href}
-                            href={cat.href}
-                            onClick={() => setMenu(null)}
-                            style={{
-                              minHeight: 98, display: "grid", gridTemplateColumns: "38px 1fr", gap: 12,
-                              border: "1px solid #e7edf3", borderRadius: 8, background: "#f6f9fc",
-                              padding: 13, textDecoration: "none",
-                            }}
-                          >
-                            <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontSize: 13, fontWeight: 900 }}>
-                              {cat.icon}
-                            </span>
-                            <span>
-                              <strong style={{ display: "block", marginBottom: 4, color: "#102033", fontSize: 14, lineHeight: 1.25, fontWeight: 800 }}>{cat.label}</strong>
-                              <span style={{ display: "block", color: "#52616f", fontSize: 12, lineHeight: 1.4, fontWeight: 600 }}>{cat.desc}</span>
-                            </span>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Right: most-used + countries + CTA */}
-                    <div style={{ borderLeft: "1px solid #e7edf3", background: "#f8fbff", padding: 22 }}>
-                      <h3 style={{ margin: "0 0 12px", color: "#102033", fontSize: 15, fontWeight: 800 }}>Most used calculators</h3>
-                      <div style={{ display: "grid", gap: 8, marginBottom: 18 }}>
-                        {MEGA_TOOLS.map((t) => (
-                          <Link
-                            key={t.href}
-                            href={t.href}
-                            onClick={() => setMenu(null)}
-                            style={{
-                              display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10,
-                              minHeight: 42, border: "1px solid #dce7f2", borderRadius: 8, background: "#fff",
-                              padding: "9px 11px", color: "#25384c", fontSize: 13, fontWeight: 850, textDecoration: "none",
-                            }}
-                          >
-                            {t.label}
-                            <span style={{ color: "#0f56bd" }}>→</span>
-                          </Link>
-                        ))}
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 10 }}>
+                          {MEGA_CATEGORIES.map((cat) => (
+                            <Link
+                              key={cat.href}
+                              href={cat.href}
+                              onClick={() => setMenu(null)}
+                              style={{
+                                minHeight: 98, display: "grid", gridTemplateColumns: "38px 1fr", gap: 12,
+                                border: "1px solid #e7edf3", borderRadius: 8, background: "#f6f9fc",
+                                padding: 13, textDecoration: "none",
+                              }}
+                            >
+                              <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontSize: 13, fontWeight: 900 }}>
+                                {cat.icon}
+                              </span>
+                              <span>
+                                <strong style={{ display: "block", marginBottom: 4, color: "#102033", fontSize: 14, lineHeight: 1.25, fontWeight: 800 }}>{cat.label}</strong>
+                                <span style={{ display: "block", color: "#52616f", fontSize: 12, lineHeight: 1.4, fontWeight: 600 }}>{cat.desc}</span>
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
                       </div>
 
-                      <h3 style={{ margin: "0 0 8px", color: "#102033", fontSize: 15, fontWeight: 800 }}>Country rules</h3>
-                      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 7, marginBottom: 16 }}>
-                        {(["UK","US","CA","AU"] as const).map((c) => (
-                          <Link
-                            key={c}
-                            href={`/${c.toLowerCase()}`}
-                            onClick={() => setMenu(null)}
-                            style={{
-                              minHeight: 34, display: "grid", placeItems: "center",
-                              border: "1px solid #dce7f2", borderRadius: 8, background: "#fff",
-                              color: "#25384c", fontSize: 12, fontWeight: 850, textDecoration: "none",
-                            }}
-                          >
-                            {c}
-                          </Link>
-                        ))}
-                      </div>
+                      {/* Right: most-used + countries + CTA */}
+                      <div style={{ borderLeft: "1px solid #e7edf3", background: "#f8fbff", padding: 22 }}>
+                        <h3 style={{ margin: "0 0 12px", color: "#102033", fontSize: 15, fontWeight: 800 }}>Most used calculators</h3>
+                        <div style={{ display: "grid", gap: 8, marginBottom: 18 }}>
+                          {MEGA_TOOLS.map((t) => (
+                            <Link
+                              key={t.href}
+                              href={t.href}
+                              onClick={() => setMenu(null)}
+                              style={{
+                                display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10,
+                                minHeight: 42, border: "1px solid #dce7f2", borderRadius: 8, background: "#fff",
+                                padding: "9px 11px", color: "#25384c", fontSize: 13, fontWeight: 850, textDecoration: "none",
+                              }}
+                            >
+                              {t.label}
+                              <span style={{ color: "#0f56bd" }}>→</span>
+                            </Link>
+                          ))}
+                        </div>
 
-                      <Link
-                        href="/#all-calculators"
-                        onClick={() => setMenu(null)}
-                        style={{
-                          display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14,
-                          borderRadius: 8, background: "#16324f", color: "#fff", padding: 14, textDecoration: "none",
-                        }}
-                      >
-                        <span>
-                          <strong style={{ display: "block", fontSize: 14, lineHeight: 1.2, marginBottom: 3 }}>View all calculators</strong>
-                          <span style={{ color: "#dce8f4", fontSize: 12, fontWeight: 600 }}>Search, filter and compare every tool.</span>
-                        </span>
-                        <span style={{ width: 34, height: 34, flexShrink: 0, display: "grid", placeItems: "center", borderRadius: 8, background: "#fff", color: "#16324f", fontSize: 16, fontWeight: 900 }}>→</span>
-                      </Link>
+                        <h3 style={{ margin: "0 0 8px", color: "#102033", fontSize: 15, fontWeight: 800 }}>Country rules</h3>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 7, marginBottom: 16 }}>
+                          {(["UK","US","CA","AU"] as const).map((c) => (
+                            <Link
+                              key={c}
+                              href={`/${c.toLowerCase()}`}
+                              onClick={() => setMenu(null)}
+                              style={{
+                                minHeight: 34, display: "grid", placeItems: "center",
+                                border: "1px solid #dce7f2", borderRadius: 8, background: "#fff",
+                                color: "#25384c", fontSize: 12, fontWeight: 850, textDecoration: "none",
+                              }}
+                            >
+                              {c}
+                            </Link>
+                          ))}
+                        </div>
+
+                        <Link
+                          href="/#all-calculators"
+                          onClick={() => setMenu(null)}
+                          style={{
+                            display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14,
+                            borderRadius: 8, background: "#16324f", color: "#fff", padding: 14, textDecoration: "none",
+                          }}
+                        >
+                          <span>
+                            <strong style={{ display: "block", fontSize: 14, lineHeight: 1.2, marginBottom: 3 }}>View all calculators</strong>
+                            <span style={{ color: "#dce8f4", fontSize: 12, fontWeight: 600 }}>Search, filter and compare every tool.</span>
+                          </span>
+                          <span style={{ width: 34, height: 34, flexShrink: 0, display: "grid", placeItems: "center", borderRadius: 8, background: "#fff", color: "#16324f", fontSize: 16, fontWeight: 900 }}>→</span>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -266,13 +283,13 @@ export function SiteHeader() {
             {/* Countries dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => openMenu("countries")}
+              onMouseEnter={() => showMenu("countries")}
               onMouseLeave={closeMenu}
             >
               <button
                 type="button"
                 aria-expanded={menu === "countries"}
-                onClick={() => openMenu("countries")}
+                onClick={() => showMenu("countries")}
                 style={{
                   height: 40, display: "inline-flex", alignItems: "center", gap: 7,
                   border: menu === "countries" ? "1px solid #b8d3f1" : "1px solid transparent",
@@ -291,36 +308,40 @@ export function SiteHeader() {
                   onMouseEnter={cancelClose}
                   onMouseLeave={closeMenu}
                   style={{
-                    position: "absolute", top: "calc(100% + 14px)", left: "50%", width: 300,
+                    position: "absolute", top: "100%", left: "50%", width: 300,
                     transform: "translateX(-50%)",
-                    border: "1px solid #cbd9e8", borderRadius: 12, background: "#fff",
-                    boxShadow: "0 24px 70px rgba(16,32,51,.16)", padding: 10, zIndex: 100,
+                    paddingTop: 14, zIndex: 100, background: "rgba(255,255,255,0)",
                   }}>
-                  {COUNTRY_LINKS.map((c) => (
-                    <Link
-                      key={c.href}
-                      href={c.href}
-                      onClick={() => setMenu(null)}
-                      style={{
-                        display: "grid", gridTemplateColumns: "42px 1fr", gap: 12,
-                        alignItems: "center", minHeight: 54, borderRadius: 8,
-                        padding: "8px 10px", color: "#25384c", fontSize: 14, fontWeight: 850, textDecoration: "none",
-                      }}
-                      className="hover:bg-[#f6f9fc] hover:text-[#0f56bd]"
-                    >
-                      <span style={{
-                        width: 38, height: 32, display: "grid", placeItems: "center",
-                        border: "1px solid #bfd3e8", borderRadius: 7, background: "#f8fbff",
-                        color: "#16324f", fontSize: 12, fontWeight: 900, letterSpacing: ".04em",
-                      }}>
-                        {c.code}
-                      </span>
-                      <span>
-                        {c.label}
-                        <small style={{ display: "block", color: "#52616f", fontSize: 11, fontWeight: 700, marginTop: 1 }}>{c.sub}</small>
-                      </span>
-                    </Link>
-                  ))}
+                  <div style={{
+                    border: "1px solid #cbd9e8", borderRadius: 12, background: "#fff",
+                    boxShadow: "0 24px 70px rgba(16,32,51,.16)", padding: 10,
+                  }}>
+                    {COUNTRY_LINKS.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        onClick={() => setMenu(null)}
+                        style={{
+                          display: "grid", gridTemplateColumns: "42px 1fr", gap: 12,
+                          alignItems: "center", minHeight: 54, borderRadius: 8,
+                          padding: "8px 10px", color: "#25384c", fontSize: 14, fontWeight: 850, textDecoration: "none",
+                        }}
+                        className="hover:bg-[#f6f9fc] hover:text-[#0f56bd]"
+                      >
+                        <span style={{
+                          width: 38, height: 32, display: "grid", placeItems: "center",
+                          border: "1px solid #bfd3e8", borderRadius: 7, background: "#f8fbff",
+                          color: "#16324f", fontSize: 12, fontWeight: 900, letterSpacing: ".04em",
+                        }}>
+                          {c.code}
+                        </span>
+                        <span>
+                          {c.label}
+                          <small style={{ display: "block", color: "#52616f", fontSize: 11, fontWeight: 700, marginTop: 1 }}>{c.sub}</small>
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -335,14 +356,14 @@ export function SiteHeader() {
             {/* Country switcher */}
             <div
               style={{ position: "relative" }}
-              onMouseEnter={() => openMenu("region")}
+              onMouseEnter={() => showMenu("region")}
               onMouseLeave={closeMenu}
             >
               <button
                 type="button"
                 aria-expanded={menu === "region"}
                 aria-label="Switch country"
-                onClick={() => openMenu("region")}
+                onClick={() => showMenu("region")}
                 style={{
                   height: 38, border: "1px solid #d8e2ec", borderRadius: 8,
                   background: menu === "region" ? "#f7fbff" : "#fff",
@@ -361,37 +382,41 @@ export function SiteHeader() {
                   onMouseEnter={cancelClose}
                   onMouseLeave={closeMenu}
                   style={{
-                    position: "absolute", top: "calc(100% + 10px)", right: 0,
-                    width: 280, border: "1px solid #cbd9e8", borderRadius: 10,
-                    background: "#fff", boxShadow: "0 16px 48px rgba(16,32,51,.14)",
-                    padding: 6, zIndex: 100,
+                    position: "absolute", top: "100%", right: 0,
+                    width: 280, paddingTop: 10, zIndex: 100, background: "rgba(255,255,255,0)",
                   }}
                 >
-                  {COUNTRY_LINKS.map((c) => (
-                    <Link
-                      key={c.href}
-                      href={c.href}
-                      onClick={() => setMenu(null)}
-                      style={{
-                        display: "flex", alignItems: "center", gap: 10,
-                        borderRadius: 7, padding: "8px 10px",
-                        textDecoration: "none",
-                      }}
-                      className="hover:bg-[#f6f9fc]"
-                    >
-                      <span style={{
-                        width: 36, height: 30, flexShrink: 0, display: "grid", placeItems: "center",
-                        border: "1px solid #bfd3e8", borderRadius: 6, background: "#f8fbff",
-                        color: "#16324f", fontSize: 11, fontWeight: 900, letterSpacing: ".04em",
-                      }}>
-                        {c.code}
-                      </span>
-                      <span style={{ minWidth: 0 }}>
-                        <strong style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#102033", whiteSpace: "nowrap" }}>{c.label}</strong>
-                        <small style={{ display: "block", color: "#52616f", fontSize: 11, fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{c.sub}</small>
-                      </span>
-                    </Link>
-                  ))}
+                  <div style={{
+                    border: "1px solid #cbd9e8", borderRadius: 10,
+                    background: "#fff", boxShadow: "0 16px 48px rgba(16,32,51,.14)",
+                    padding: 6,
+                  }}>
+                    {COUNTRY_LINKS.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        onClick={() => setMenu(null)}
+                        style={{
+                          display: "flex", alignItems: "center", gap: 10,
+                          borderRadius: 7, padding: "8px 10px",
+                          textDecoration: "none",
+                        }}
+                        className="hover:bg-[#f6f9fc]"
+                      >
+                        <span style={{
+                          width: 36, height: 30, flexShrink: 0, display: "grid", placeItems: "center",
+                          border: "1px solid #bfd3e8", borderRadius: 6, background: "#f8fbff",
+                          color: "#16324f", fontSize: 11, fontWeight: 900, letterSpacing: ".04em",
+                        }}>
+                          {c.code}
+                        </span>
+                        <span style={{ minWidth: 0 }}>
+                          <strong style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#102033", whiteSpace: "nowrap" }}>{c.label}</strong>
+                          <small style={{ display: "block", color: "#52616f", fontSize: 11, fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{c.sub}</small>
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>

@@ -53,7 +53,7 @@ export function PopularCalculators() {
             </h2>
             <span
               className="rounded-full px-2.5 py-1.5 text-[12px] font-bold whitespace-nowrap"
-              style={{ background: "#e9f7f1", color: "#16835b" }}
+              style={{ background: "#e9f7f1", color: "#0b6848" }}
             >
               Current rules
             </span>

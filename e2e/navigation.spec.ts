@@ -70,6 +70,43 @@ test("desktop calculators menu opens on click", async ({ page }) => {
   await expect(page.getByRole("link", { name: /^redundancy pay$/i })).toBeVisible();
 });
 
+test("desktop dropdowns stay open while moving through the hover gap", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/blog");
+
+  const calculatorsButton = page.getByRole("button", { name: "Calculators", exact: true });
+  await calculatorsButton.hover();
+
+  const allCalculatorsLink = page.getByRole("link", { name: /view all calculators/i });
+  await expect(allCalculatorsLink).toBeVisible();
+
+  const calculatorsBox = await calculatorsButton.boundingBox();
+  expect(calculatorsBox).not.toBeNull();
+  await page.mouse.move(calculatorsBox!.x + calculatorsBox!.width / 2, calculatorsBox!.y + calculatorsBox!.height + 7);
+  await page.waitForTimeout(320);
+  await expect(allCalculatorsLink).toBeVisible();
+
+  await allCalculatorsLink.hover();
+  await expect(allCalculatorsLink).toBeVisible();
+
+  const countriesButton = page.getByRole("button", { name: "Countries", exact: true });
+  await countriesButton.hover();
+
+  const unitedStatesLink = page
+    .locator('nav[aria-label="Primary"] a[href="/us"]')
+    .filter({ hasText: "United States" });
+  await expect(unitedStatesLink).toBeVisible();
+
+  const countriesBox = await countriesButton.boundingBox();
+  expect(countriesBox).not.toBeNull();
+  await page.mouse.move(countriesBox!.x + countriesBox!.width / 2, countriesBox!.y + countriesBox!.height + 7);
+  await page.waitForTimeout(320);
+  await expect(unitedStatesLink).toBeVisible();
+
+  await unitedStatesLink.hover();
+  await expect(unitedStatesLink).toBeVisible();
+});
+
 test("mobile hamburger menu opens visibly while scrolled", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 900 });
   await page.goto("/pto-payout-calculator");
