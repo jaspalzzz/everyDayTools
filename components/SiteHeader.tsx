@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { TOOLS, CATEGORY_META } from "@/data/tools";
 import { SITE } from "@/lib/seo";
 import { TablerIcon } from "./TablerIcon";
@@ -66,12 +66,13 @@ export function SiteHeader() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQ, setSearchQ] = useState("");
   const navRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const searchRef = useRef<HTMLInputElement>(null);
 
   const openMenu = useCallback((name: "calculators" | "countries" | "region") => {
     if (leaveTimer.current) clearTimeout(leaveTimer.current);
-    setMenu(name);
+    setMenu((current) => (current === name ? null : name));
   }, []);
 
   const closeMenu = useCallback(() => {
@@ -81,6 +82,18 @@ export function SiteHeader() {
   const cancelClose = useCallback(() => {
     if (leaveTimer.current) clearTimeout(leaveTimer.current);
   }, []);
+
+  // Tapping outside the nav (no hover on touch devices) closes any open dropdown.
+  useEffect(() => {
+    if (!menu) return;
+    function handlePointerDown(event: PointerEvent) {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        setMenu(null);
+      }
+    }
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [menu]);
 
   const toggleSearch = useCallback(() => {
     setSearchOpen((v) => {
@@ -99,7 +112,7 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-surface-line" style={{ background: "rgba(255,255,255,.95)", backdropFilter: "blur(14px)" }}>
+      <header ref={headerRef} className="sticky top-0 z-50 border-b border-surface-line" style={{ background: "rgba(255,255,255,.95)", backdropFilter: "blur(14px)" }}>
         <div className="mx-auto flex max-w-[1180px] items-center justify-between px-6" style={{ height: 68 }}>
 
           {/* Logo */}
