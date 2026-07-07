@@ -4,6 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import Link from "next/link";
 import type { GuideMeta } from "@/data/guides";
+import { HeroSketchScene } from "@/components/HeroSketchScene";
 
 const TABS = [
   { key: "featured", label: "Featured", sub: "Most urgent rights" },
@@ -389,16 +390,18 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
                 {/* Gradient top */}
                 <div
                   style={{
+                    position: "relative", overflow: "hidden",
                     minHeight: 210, display: "grid", alignContent: "end", padding: 24, color: "#fff",
-                    background: "linear-gradient(180deg,rgba(16,32,51,.08) 0%,rgba(16,32,51,.78) 100%),linear-gradient(135deg,#16324f 0%,#d9e8f4 48%,#1769e0 100%)",
+                    background: "linear-gradient(180deg,rgba(16,32,51,.20) 0%,rgba(16,32,51,.84) 100%),linear-gradient(135deg,#0f2338 0%,#16324f 55%,#1769e0 100%)",
                   }}
                 >
-                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                  <HeroSketchScene />
+                  <div style={{ position: "relative", display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8, marginBottom: 10 }}>
                     <CountryBadge country={featuredGuide.country} />
                     <CategoryBadge label={featuredGuide.category} />
                     <CategoryBadge label="Updated 2026" />
                   </div>
-                  <h2 style={{ maxWidth: 700, margin: 0, fontSize: 32, lineHeight: 1.12, fontWeight: 850 }}>
+                  <h2 style={{ position: "relative", maxWidth: 700, margin: 0, fontSize: 32, lineHeight: 1.12, fontWeight: 850 }}>
                     {featuredGuide.title}
                   </h2>
                 </div>

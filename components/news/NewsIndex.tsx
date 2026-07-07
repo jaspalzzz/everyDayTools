@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { BLOG_POSTS, BLOG_CATEGORIES, type BlogPost, type BlogCategory } from "@/data/blogPosts";
+import { HeroSketchScene } from "@/components/HeroSketchScene";
 
 // ── Display groups matching the reference design ──────────────────────────────
 const DISPLAY_GROUPS: { label: string; description: string; categories: BlogCategory[] }[] = [
@@ -250,10 +251,12 @@ export function NewsIndex() {
               }}
             >
               <div style={{
+                position: "relative", overflow: "hidden",
                 minHeight: 230, display: "grid", alignContent: "end", padding: 24, color: "#fff",
-                background: "linear-gradient(180deg,rgba(16,32,51,.06) 0%,rgba(16,32,51,.80) 100%),linear-gradient(135deg,#16324f 0%,#1769e0 50%,#e9f7f1 100%)",
+                background: "linear-gradient(180deg,rgba(16,32,51,.18) 0%,rgba(16,32,51,.86) 100%),linear-gradient(135deg,#0f2338 0%,#16324f 55%,#1769e0 100%)",
               }}>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 12, alignItems: "center" }}>
+                <HeroSketchScene />
+                <div style={{ position: "relative", display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 12, alignItems: "center" }}>
                   <span style={{ background: "rgba(255,255,255,.18)", borderRadius: 6, padding: "4px 8px", fontSize: 11, fontWeight: 900, letterSpacing: ".04em" }}>
                     {featuredPost.region}
                   </span>
@@ -264,7 +267,7 @@ export function NewsIndex() {
                     2026 update
                   </span>
                 </div>
-                <h2 style={{ maxWidth: 720, margin: 0, fontSize: 34, lineHeight: 1.1, fontWeight: 850 }}>
+                <h2 style={{ position: "relative", maxWidth: 720, margin: 0, fontSize: 34, lineHeight: 1.1, fontWeight: 850 }}>
                   {featuredPost.title}
                 </h2>
               </div>
