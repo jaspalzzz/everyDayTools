@@ -136,9 +136,6 @@ export function homepageSchemas(): [object, object] {
         "Canadian employment standards",
       ],
       areaServed: ["GB", "US", "CA", "AU"],
-      sameAs: [
-        "https://github.com/jaspalzzz/everyDayTools",
-      ],
       contactPoint: {
         "@type": "ContactPoint",
         email: SITE.contactEmail,

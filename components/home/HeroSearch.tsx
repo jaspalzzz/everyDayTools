@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 import { TOOLS } from "@/data/tools";
 import { directoryTabForSearch, type TabId } from "./BrowseByCategory";
 
@@ -77,6 +77,38 @@ function directCalculatorHrefForSearch(searchText: string) {
   return best && best.score >= 700 ? `/${best.slug}` : null;
 }
 
+/**
+ * Reads ?q= on mount and runs it through the same search logic as a manual
+ * submit. This is what makes the homepage WebSite/SearchAction schema
+ * (potentialAction targeting /?q={search_term_string}) actually functional
+ * rather than a claimed capability the site doesn't implement -- if Google
+ * renders a sitelinks search box from that schema, this makes it work.
+ * Isolated in its own component because useSearchParams() requires a
+ * Suspense boundary in a static export.
+ */
+function QueryParamSync({
+  onQuery,
+  setQuery,
+}: {
+  onQuery: (value: string) => void;
+  setQuery: (value: string) => void;
+}) {
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const q = searchParams.get("q");
+    if (q && q.trim()) {
+      setQuery(q);
+      onQuery(q);
+    }
+    // Only run on initial load -- deliberately not re-triggering on every
+    // searchParams change, since that would fight the user's own typing.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return null;
+}
+
 export function HeroSearch() {
   const router = useRouter();
   const [active, setActive] = useState<"UK" | "US" | "CA" | "AU">("UK");
@@ -111,6 +143,9 @@ export function HeroSearch() {
       style={{ borderColor: "#cdddeb", boxShadow: "0 10px 28px rgba(16,32,51,.08)" }}
       aria-label="Start a pay rights check"
     >
+      <Suspense fallback={null}>
+        <QueryParamSync onQuery={openSearchResult} setQuery={setQuery} />
+      </Suspense>
       {/* Country tabs */}
       <div className="grid grid-cols-4 border-b" style={{ background: "#f8fbff", borderColor: "#e7edf3" }}>
         {COUNTRIES.map((c) => (
