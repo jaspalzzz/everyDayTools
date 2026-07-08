@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
-import { US_STATES, getUsState } from "@/data/usStates";
+import { US_STATES, getUsState, getNearbyStates } from "@/data/usStates";
 import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 import { FinalPaycheckLateChecker } from "@/components/calculators/FinalPaycheckLateChecker";
@@ -64,6 +64,7 @@ export default async function Page({ params }: Props) {
   const faqs = generateFaqs(s);
   const hasStateCalculator = s.code === "CA" || s.code === "TX";
   const reviewedDate = `${s.verifiedYear}-01-01`;
+  const nearbyStates = getNearbyStates(s.slug);
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -222,6 +223,27 @@ export default async function Page({ params }: Props) {
             ))}
           </div>
         </section>
+
+        {/* Nearby states */}
+        {nearbyStates.length > 0 && (
+          <section className="mt-8">
+            <h2 className="mb-3 text-sm font-semibold text-ink">Compare nearby states</h2>
+            <p className="mb-3 text-sm text-ink-soft">
+              Final paycheck deadlines vary by state — check the {s.region} states near {s.name}.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {nearbyStates.map((n) => (
+                <Link
+                  key={n.slug}
+                  href={`/us/states/${n.slug}/final-paycheck`}
+                  className="rounded-full border border-surface-line px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:border-brand-600 hover:text-brand-700"
+                >
+                  {n.name}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mt-8 rounded-xl border border-surface-line bg-surface-muted p-5 text-sm leading-relaxed text-ink-soft">
           <h2 className="mb-2 text-base font-bold text-ink">Sources and review</h2>

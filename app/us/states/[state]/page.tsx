@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
-import { US_STATES, getUsState, type UsStateWithPto } from "@/data/usStates";
+import { US_STATES, getUsState, getNearbyStates, type UsStateWithPto } from "@/data/usStates";
 import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -96,6 +96,7 @@ export default async function StatePage({ params }: Props) {
   const rule = RULE_CONFIG[s.pto.rule];
   const faqs = generateFaqs(s);
   const reviewedDate = `${s.verifiedYear}-01-01`;
+  const nearbyStates = getNearbyStates(s.slug);
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -196,6 +197,16 @@ export default async function StatePage({ params }: Props) {
           </div>
         </section>
 
+        {/* State-specific legal context (only where genuinely distinct) */}
+        {s.localContext && (
+          <section aria-labelledby="local-context-heading" className="mb-10">
+            <h2 id="local-context-heading" className="mb-3 text-sm font-semibold text-ink">
+              What makes {s.name} different
+            </h2>
+            <p className="text-sm leading-relaxed text-ink-soft">{s.localContext}</p>
+          </section>
+        )}
+
         {/* Calculator CTA */}
         <section aria-labelledby="calc-heading" className="mb-10">
           <h2 id="calc-heading" className="mb-3 text-sm font-semibold text-ink">
@@ -267,6 +278,30 @@ export default async function StatePage({ params }: Props) {
             ))}
           </div>
         </section>
+
+        {/* Nearby states */}
+        {nearbyStates.length > 0 && (
+          <section aria-labelledby="nearby-states-heading" className="mb-10">
+            <h2 id="nearby-states-heading" className="mb-3 text-sm font-semibold text-ink">
+              Compare nearby states
+            </h2>
+            <p className="mb-3 text-sm text-ink-soft">
+              Other {s.region} states — minimum wage and final paycheck rules vary by state, so
+              check the specific rule where you work.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {nearbyStates.map((n) => (
+                <Link
+                  key={n.slug}
+                  href={`/us/states/${n.slug}`}
+                  className="rounded-full border border-surface-line px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:border-brand-600 hover:text-brand-700"
+                >
+                  {n.name}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Source + DOL link */}
         <footer className="border-t border-surface-line pt-6 text-xs text-ink-faint">
