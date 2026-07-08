@@ -112,7 +112,7 @@ Cloudflare Pages as static assets.
 ```bash
 NEXT_PUBLIC_SITE_URL=https://mypayrights.com
 GOOGLE_SITE_VERIFICATION=google-site-verification-token
-NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-0000000000000000
+NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-8825078307302402
 NEXT_PUBLIC_ADSENSE_READY=false
 ```
 
@@ -150,10 +150,10 @@ changes. Key constants to refresh:
   robots, canonicals, and schema. The fallback is `https://mypayrights.com`.
 - `GOOGLE_SITE_VERIFICATION` or `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` adds the Search Console
   verification meta tag.
-- `NEXT_PUBLIC_ADSENSE_CLIENT` adds the site-level AdSense publisher meta tag.
+- `NEXT_PUBLIC_ADSENSE_CLIENT` adds the site-level AdSense publisher meta tag. If unset, the
+  production publisher ID `ca-pub-8825078307302402` is used.
 - `NEXT_PUBLIC_ADSENSE_READY=true` enables the AdSense runtime script after consent.
-- `public/ads.txt` ships as a placeholder and must be replaced with the real publisher record
-  after AdSense approval.
+- `public/ads.txt` contains the Google AdSense publisher record for `pub-8825078307302402`.
 - Public contact emails live in `lib/seo.ts`.
 - Analytics/Search Console are tracked in [TASKS.md](TASKS.md) under T1.3.
 

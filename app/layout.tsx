@@ -4,13 +4,14 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AdSenseScript } from "@/components/AdSenseScript";
 import { ConsentBanner } from "@/components/ConsentBanner";
+import { ADSENSE_CLIENT } from "@/lib/adsense";
 import { SITE } from "@/lib/seo";
 
 const googleSiteVerification =
   process.env.GOOGLE_SITE_VERIFICATION ?? process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 const bingSiteVerification = process.env.BING_SITE_VERIFICATION;
 const yandexSiteVerification = process.env.YANDEX_SITE_VERIFICATION;
-const adsenseAccount = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+const adsenseAccount = ADSENSE_CLIENT;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -81,8 +82,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <head>
         <AdSenseScript />
+      </head>
+      <body>
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

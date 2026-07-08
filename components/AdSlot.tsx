@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { ADSENSE_CLIENT } from "@/lib/adsense";
 
 interface Props {
   /** Slot ID from the AdSense dashboard, e.g. "1234567890" */
@@ -10,9 +11,7 @@ interface Props {
 }
 
 const CLIENT =
-  process.env.NEXT_PUBLIC_ADSENSE_READY === "true"
-    ? process.env.NEXT_PUBLIC_ADSENSE_CLIENT
-    : undefined;
+  process.env.NEXT_PUBLIC_ADSENSE_READY === "true" ? ADSENSE_CLIENT : undefined;
 
 /**
  * Renders a Google AdSense unit when NEXT_PUBLIC_ADSENSE_CLIENT is set.

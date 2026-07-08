@@ -49,7 +49,7 @@ export function ConsentBanner() {
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
         <p style={{ margin: 0, color: "#25384c", fontSize: 13, lineHeight: 1.55 }}>
           My Pay Rights uses essential cookies for the site to work. If advertising is enabled,
-          Google ads and related cookies load only after you accept.{" "}
+          Google ad placements and related cookies load only after you accept.{" "}
           <Link href="/privacy" style={{ color: "#0f56bd", fontWeight: 850 }}>
             Privacy policy
           </Link>
