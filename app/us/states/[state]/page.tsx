@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState, getNearbyStates, type UsStateWithPto } from "@/data/usStates";
+import { pickVariant } from "@/lib/textVariants";
 import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -47,15 +48,82 @@ const RULE_CONFIG = {
   },
 } as const;
 
+const PTO_RULE_ANSWERS = {
+  required: [
+    (name: string, note: string) => `Yes. ${name} treats accrued vacation as earned wages that cannot be forfeited. Your employer must pay out all unused accrued PTO when you leave — regardless of the reason for separation. Use-it-or-lose-it policies are prohibited. ${note}`,
+    (name: string, note: string) => `Yes — and ${name} is firm about it. Accrued vacation counts as wages you've already earned, so it can't be taken away by a use-it-or-lose-it policy, and your employer owes you the full unused balance on separation no matter why you left. ${note}`,
+    (name: string, note: string) => `Yes, by law. Once vacation time accrues in ${name}, it's treated the same as any other earned wage — your employer can't wipe it out with a use-it-or-lose-it clause, and the full unused balance is due regardless of who initiated the separation. ${note}`,
+  ],
+  conditional: [
+    (name: string, note: string) => `It depends on your employer's written policy. ${name} has no blanket state law requiring PTO payout, but if your employer's policy or employment contract provides for it, the payout is enforceable as wages. ${note}`,
+    (name: string, note: string) => `That comes down to what your employer's handbook or contract actually says. ${name} doesn't impose a blanket payout requirement by statute, but once a policy or agreement promises it, that promise becomes an enforceable wage obligation. ${note}`,
+    (name: string, note: string) => `There's no automatic statewide rule in ${name} — it hinges on your employer's own policy. But if that policy or your contract promises a payout, ${name} law will treat the broken promise as unpaid wages. ${note}`,
+  ],
+  "no-requirement": [
+    (name: string, note: string) => `No. ${name} has no state law requiring employers to pay out accrued vacation when you leave. The payout is entirely governed by your employer's written PTO policy and any contractual terms. ${note}`,
+    (name: string, note: string) => `No — there's no ${name} statute forcing a payout. Whether you see that unused balance on your final paycheck comes down entirely to your employer's own written PTO policy or your employment contract, not state law. ${note}`,
+    (name: string, note: string) => `${name} law is silent on this: no statute obligates your employer to cash out unused vacation at separation. What you're owed, if anything, is set by whatever policy or contract your employer put in writing. ${note}`,
+    (name: string, note: string) => `Not by state mandate. ${name} leaves PTO payout entirely up to the employer — there's no law forcing a cash-out of unused vacation when employment ends, so check your handbook. ${note}`,
+    (name: string, note: string) => `No state requirement exists in ${name}. Employers here are free to set their own use-it-or-lose-it or payout policy, and that written policy — not a statute — determines what you're owed. ${note}`,
+    (name: string, note: string) => `${name} doesn't require it. Unlike states with mandatory payout laws, whether your unused vacation gets cashed out here depends solely on what your employer agreed to in writing. ${note}`,
+  ],
+} as const;
+
+const FINAL_PAYCHECK_ANSWERS = [
+  (s: UsStateWithPto) =>
+    `In ${s.name}, the deadlines differ based on how your employment ended. If you were terminated by your employer, your final paycheck is due ${s.finalPaycheckTerminated.toLowerCase()}. If you resigned voluntarily, the deadline is ${s.finalPaycheckResigned.toLowerCase()}. If your employer misses these deadlines, you can file a wage claim with the ${s.name} Department of Labor.`,
+  (s: UsStateWithPto) =>
+    `${s.name} sets separate deadlines depending on why you left. A termination means your final paycheck is due ${s.finalPaycheckTerminated.toLowerCase()}, while a resignation gives your employer until ${s.finalPaycheckResigned.toLowerCase()}. Missing either deadline is grounds for a wage claim with the ${s.name} Department of Labor.`,
+  (s: UsStateWithPto) =>
+    `How fast you're paid in ${s.name} depends on how the job ended: ${s.finalPaycheckTerminated.toLowerCase()} if you were let go, or ${s.finalPaycheckResigned.toLowerCase()} if you quit. An employer that blows past either deadline can be reported to the ${s.name} Department of Labor.`,
+  (s: UsStateWithPto) =>
+    `${s.name} draws a line between firings and resignations for final-pay timing. Fired employees must be paid ${s.finalPaycheckTerminated.toLowerCase()}; those who resign are owed their pay ${s.finalPaycheckResigned.toLowerCase()}. A wage claim with the ${s.name} Department of Labor is the remedy if either deadline slips.`,
+  (s: UsStateWithPto) =>
+    `The clock starts differently in ${s.name} depending on the circumstances: ${s.finalPaycheckTerminated.toLowerCase()} after a termination, ${s.finalPaycheckResigned.toLowerCase()} after a resignation. Employers who miss it can be reported to the ${s.name} Department of Labor.`,
+] as const;
+
+const MIN_WAGE_ANSWERS = [
+  (s: UsStateWithPto) =>
+    `The current minimum wage in ${s.name} is ${s.minimumWage}.${s.minimumWageNote ? ` ${s.minimumWageNote}` : ""} Some cities and counties within ${s.name} may have a higher local minimum wage. Check with the ${s.name} Department of Labor for the most current rate.`,
+  (s: UsStateWithPto) =>
+    `As of 2026, ${s.name}'s minimum wage sits at ${s.minimumWage}.${s.minimumWageNote ? ` ${s.minimumWageNote}` : ""} Local ordinances in some ${s.name} cities or counties can set a higher floor, so it's worth checking with the ${s.name} Department of Labor for the exact rate that applies where you work.`,
+  (s: UsStateWithPto) =>
+    `${s.name}'s minimum wage is currently ${s.minimumWage}.${s.minimumWageNote ? ` ${s.minimumWageNote}` : ""} That's the statewide floor — a handful of localities within ${s.name} set their own higher minimum, so confirm the current figure with the ${s.name} Department of Labor.`,
+  (s: UsStateWithPto) =>
+    `Right now, ${s.name} sets its minimum wage at ${s.minimumWage}.${s.minimumWageNote ? ` ${s.minimumWageNote}` : ""} A few ${s.name} cities or counties may require more, so verify the rate for your specific location with the ${s.name} Department of Labor.`,
+  (s: UsStateWithPto) =>
+    `${s.name} pegs its statewide minimum wage at ${s.minimumWage}.${s.minimumWageNote ? ` ${s.minimumWageNote}` : ""} Local governments in ${s.name} can set a higher rate, so double-check against the ${s.name} Department of Labor before assuming the statewide figure applies to you.`,
+] as const;
+
+const WHAT_TO_DO_ANSWERS = [
+  (name: string) =>
+    `If your employer fails to pay your final wages by the legal deadline, you can file a wage claim with the ${name} labor enforcement agency. You may be entitled to the unpaid wages plus penalties or interest depending on state law. You can also file a civil lawsuit or contact the federal Department of Labor Wage and Hour Division if your employer is covered by federal law. Document all communications and keep records of your hours worked and pay stubs.`,
+  (name: string) =>
+    `A late or missing final paycheck in ${name} is grounds for a formal wage claim with the state's labor enforcement agency, and depending on the circumstances you may recover penalties or interest on top of the unpaid wages. A civil suit or a complaint to the federal Wage and Hour Division are also options if federal law covers your employer. Keep pay stubs, timesheets, and any written communication as evidence.`,
+  (name: string) =>
+    `Start by filing a wage claim with ${name}'s labor enforcement agency if your final paycheck is late — state law may entitle you to the unpaid wages plus penalties or interest. Federally covered employers can also be reported to the U.S. Department of Labor's Wage and Hour Division, or you can pursue a civil claim. Keep a paper trail: hours worked, pay stubs, and any messages with your employer.`,
+  (name: string) =>
+    `You have options if your final paycheck is late in ${name}: a wage claim with the state's labor enforcement agency, a complaint to the federal Wage and Hour Division for employers covered by federal law, or a private civil lawsuit. Compensation can include the unpaid wages plus penalties or interest. Save your pay stubs, hours records, and correspondence in case you need them.`,
+  (name: string) =>
+    `${name} gives you several ways to chase down a late final paycheck — a state wage claim, a federal complaint to the Department of Labor's Wage and Hour Division, or a civil suit. You may recover the wages owed plus penalties or interest. Hold onto pay stubs, time records, and any written exchanges with your employer as proof.`,
+] as const;
+
+const SICK_LEAVE_ANSWERS = [
+  (name: string) =>
+    `In most cases, no. PTO payout rules in ${name} apply primarily to accrued vacation or PTO. Sick leave is typically treated separately — unless your employer has a combined PTO bank or the sick leave has vested as wages under your employment agreement. Check your offer letter and employee handbook for the specific terms of your employer's sick leave policy.`,
+  (name: string) =>
+    `Generally not. ${name}'s PTO payout rules are aimed at vacation time, not sick leave — those stay separate unless your employer runs a combined PTO bank or your contract explicitly vests sick time as wages. Your offer letter or handbook will spell out which policy applies.`,
+  (name: string) =>
+    `Usually no — sick leave and vacation are treated as different buckets under ${name} PTO rules, unless your employer merges them into one combined PTO bank or your employment agreement says sick time vests as wages. Review your handbook to see which setup you have.`,
+  (name: string) =>
+    `Not typically. ${name}'s PTO payout requirements center on vacation time, and sick leave is its own category unless your employer combines them into a single PTO bank or your agreement vests sick time as earned wages. Your handbook or offer letter will settle which rule applies to you.`,
+  (name: string) =>
+    `As a rule, no — ${name} treats sick leave separately from vacation for payout purposes, unless your employer's PTO bank blends the two or your contract vests sick time as wages. Check your employee handbook to confirm how your employer structures it.`,
+] as const;
+
 function generateFaqs(s: UsStateWithPto): FaqItem[] {
-  const ruleLabel = {
-    required:
-      `Yes. ${s.name} treats accrued vacation as earned wages that cannot be forfeited. Your employer must pay out all unused accrued PTO when you leave — regardless of the reason for separation. Use-it-or-lose-it policies are prohibited. ${s.pto.note}`,
-    conditional:
-      `It depends on your employer's written policy. ${s.name} has no blanket state law requiring PTO payout, but if your employer's policy or employment contract provides for it, the payout is enforceable as wages. ${s.pto.note}`,
-    "no-requirement":
-      `No. ${s.name} has no state law requiring employers to pay out accrued vacation when you leave. The payout is entirely governed by your employer's written PTO policy and any contractual terms. ${s.pto.note}`,
-  }[s.pto.rule];
+  const variants = PTO_RULE_ANSWERS[s.pto.rule];
+  const ruleLabel = pickVariant(s.slug + "-ptorule", variants)(s.name, s.pto.note);
 
   const faqs: FaqItem[] = [
     {
@@ -64,23 +132,19 @@ function generateFaqs(s: UsStateWithPto): FaqItem[] {
     },
     {
       question: `How long does my employer have to pay my final paycheck in ${s.name}?`,
-      answer:
-        `In ${s.name}, the deadlines differ based on how your employment ended. If you were terminated by your employer, your final paycheck is due ${s.finalPaycheckTerminated.toLowerCase()}. If you resigned voluntarily, the deadline is ${s.finalPaycheckResigned.toLowerCase()}. If your employer misses these deadlines, you can file a wage claim with the ${s.name} Department of Labor.`,
+      answer: pickVariant(s.slug + "-finalpaycheck", FINAL_PAYCHECK_ANSWERS)(s),
     },
     {
       question: `What is the minimum wage in ${s.name} in 2025?`,
-      answer:
-        `The current minimum wage in ${s.name} is ${s.minimumWage}.${s.minimumWageNote ? ` ${s.minimumWageNote}` : ""} Some cities and counties within ${s.name} may have a higher local minimum wage. Check with the ${s.name} Department of Labor for the most current rate.`,
+      answer: pickVariant(s.slug + "-minwage", MIN_WAGE_ANSWERS)(s),
     },
     {
       question: `What can I do if my employer doesn't pay my final paycheck on time in ${s.name}?`,
-      answer:
-        `If your employer fails to pay your final wages by the legal deadline, you can file a wage claim with the ${s.name} labor enforcement agency. You may be entitled to the unpaid wages plus penalties or interest depending on state law. You can also file a civil lawsuit or contact the federal Department of Labor Wage and Hour Division if your employer is covered by federal law. Document all communications and keep records of your hours worked and pay stubs.`,
+      answer: pickVariant(s.slug + "-whattodo", WHAT_TO_DO_ANSWERS)(s.name),
     },
     {
       question: `Does ${s.name} require employers to include accrued sick leave in the final paycheck?`,
-      answer:
-        `In most cases, no. PTO payout rules in ${s.name} apply primarily to accrued vacation or PTO. Sick leave is typically treated separately — unless your employer has a combined PTO bank or the sick leave has vested as wages under your employment agreement. Check your offer letter and employee handbook for the specific terms of your employer's sick leave policy.`,
+      answer: pickVariant(s.slug + "-sickleave", SICK_LEAVE_ANSWERS)(s.name),
     },
   ];
 
