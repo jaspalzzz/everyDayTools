@@ -1,15 +1,26 @@
 import type { Metadata } from "next";
-import { SITE } from "@/lib/seo";
+import { SITE, jsonLd, webPageSchema } from "@/lib/seo";
+
+const url = `${SITE.url}/disclaimer`;
+const description = `${SITE.name} calculators provide estimates only — not legal or financial advice.`;
 
 export const metadata: Metadata = {
   title: "Disclaimer",
-  description: `${SITE.name} calculators provide estimates only — not legal or financial advice.`,
-  alternates: { canonical: `${SITE.url}/disclaimer` },
+  description,
+  alternates: { canonical: url },
 };
+
+const schema = webPageSchema({
+  name: "Disclaimer",
+  description,
+  url,
+  dateModified: "2026-06-01",
+});
 
 export default function DisclaimerPage() {
   return (
     <article className="prose-tool mx-auto max-w-2xl px-5 py-10 text-sm leading-relaxed text-ink-soft">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(schema)} />
       <h1 className="text-2xl font-medium tracking-tight text-ink">Disclaimer</h1>
       <p className="mt-2 text-xs text-ink-faint">Last updated: June 2026</p>
 

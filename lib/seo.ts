@@ -245,6 +245,24 @@ export function guideSchema(params: {
   };
 }
 
+export function webPageSchema(params: {
+  name: string;
+  description: string;
+  url: string;
+  dateModified?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: params.name,
+    description: params.description,
+    url: params.url,
+    isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    ...(params.dateModified ? { dateModified: params.dateModified } : {}),
+  };
+}
+
 /** Renders a JSON-LD script tag string for injection via dangerouslySetInnerHTML. */
 export function jsonLd(schema: object): { __html: string } {
   return { __html: JSON.stringify(schema) };
