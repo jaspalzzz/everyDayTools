@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState, getNearbyStates } from "@/data/usStates";
-import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
+import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 import { FinalPaycheckLateChecker } from "@/components/calculators/FinalPaycheckLateChecker";
 
@@ -85,7 +85,7 @@ export default async function Page({ params }: Props) {
     url,
     datePublished: "2026-01-01",
     dateModified: reviewedDate,
-    author: { "@type": "Person", name: "Jaspal Singh", jobTitle: "Founder, MyPayRights" },
+    author: FOUNDER_PERSON,
     reviewedBy: EDITORIAL_REVIEW,
     publisher: { "@type": "Organization", name: "MyPayRights", url: SITE.url },
   };

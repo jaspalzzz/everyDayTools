@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState, getNearbyStates, type UsStateWithPto } from "@/data/usStates";
 import { pickVariant } from "@/lib/textVariants";
-import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
+import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
 type Props = { params: Promise<{ state: string }> };
@@ -185,6 +185,7 @@ export default async function StatePage({ params }: Props) {
     },
     areaServed: { "@type": "State", name: s.name },
     dateModified: reviewedDate,
+    author: FOUNDER_PERSON,
     reviewedBy: EDITORIAL_REVIEW,
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   };

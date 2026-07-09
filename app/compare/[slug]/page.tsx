@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
-import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
+import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { COMPARISONS, getComparison } from "@/data/comparisons";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -50,7 +50,7 @@ export default async function ComparisonPage({ params }: Props) {
     url,
     datePublished: c.datePublished,
     dateModified: c.dateModified,
-    author: { "@type": "Person", name: "Jaspal Singh", jobTitle: "Founder, MyPayRights" },
+    author: FOUNDER_PERSON,
     reviewedBy: EDITORIAL_REVIEW,
     publisher: { "@type": "Organization", name: "MyPayRights", url: SITE.url },
     mainEntityOfPage: url,

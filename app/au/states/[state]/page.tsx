@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
 import { AU_STATES, getAuState } from "@/data/auStates";
-import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
+import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
 type Props = { params: Promise<{ state: string }> };
@@ -84,6 +84,7 @@ export default async function Page({ params }: Props) {
     isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
     areaServed: { "@type": "State", name: s.name, containedInPlace: { "@type": "Country", name: "Australia" } },
     dateModified: reviewedDate,
+    author: FOUNDER_PERSON,
     reviewedBy: EDITORIAL_REVIEW,
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   };

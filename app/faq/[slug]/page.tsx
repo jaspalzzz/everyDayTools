@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
-import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
+import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { FAQS, getFaq } from "@/data/faqs";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -64,7 +64,7 @@ export default async function FaqPage({ params }: Props) {
     url,
     datePublished: f.datePublished,
     dateModified: f.dateModified,
-    author: { "@type": "Person", name: "Jaspal Singh", jobTitle: "Founder, MyPayRights" },
+    author: FOUNDER_PERSON,
     reviewedBy: EDITORIAL_REVIEW,
     publisher: { "@type": "Organization", name: "MyPayRights", url: SITE.url },
     mainEntityOfPage: url,
