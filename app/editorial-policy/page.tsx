@@ -23,6 +23,7 @@ export default function EditorialPolicyPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Editorial Policy — MyPayRights",
+    description: metadata.description,
     url,
     dateModified: DATE,
     isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },

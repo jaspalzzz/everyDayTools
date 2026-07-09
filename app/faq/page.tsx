@@ -41,10 +41,25 @@ export default function FaqHubPage() {
     })),
   };
 
+  const itemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Employment Law FAQ",
+    url,
+    numberOfItems: FAQS.length,
+    itemListElement: FAQS.map((f, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: f.question,
+      url: `${SITE.url}/faq/${f.slug}`,
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(itemList)} />
 
       <div className="mx-auto max-w-content px-5 py-10">
         <nav aria-label="Breadcrumb" className="mb-6 text-xs text-ink-faint">

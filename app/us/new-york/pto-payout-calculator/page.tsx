@@ -13,14 +13,26 @@ export const metadata: Metadata = {
 };
 
 export default function NewYorkPtoPayoutPage() {
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+      { "@type": "ListItem", position: 2, name: "US PTO Payout", item: `${SITE.url}/us/pto-payout` },
+      { "@type": "ListItem", position: 3, name: "New York PTO Payout Calculator", item: url },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLd({
           "@context": "https://schema.org",
           "@type": "WebApplication",
           name: "New York PTO payout calculator",
+          description: metadata.description,
           url,
           applicationCategory: "FinanceApplication",
           operatingSystem: "All",

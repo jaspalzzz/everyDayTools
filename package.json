@@ -14,6 +14,8 @@
     "audit:external-links": "node scripts/audit-external-links.mjs",
     "audit:indexability": "node scripts/audit-indexability.mjs",
     "score:seo": "node scripts/score-technical-seo.mjs",
+    "score:schema-seo": "node scripts/score-schema-seo.mjs",
+    "score:programmatic-seo": "node scripts/score-programmatic-seo.mjs",
     "audit:responsive": "playwright test --config=playwright.static.config.ts responsive-audit.spec.ts"
   },
   "dependencies": {
