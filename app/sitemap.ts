@@ -36,26 +36,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: RATES_UPDATED,
   }));
 
-  const stateEntries: MetadataRoute.Sitemap = US_STATES.flatMap((s) => [
-    {
-      url: `${SITE.url}/us/states/${s.slug}`,
-      changeFrequency: "yearly" as const,
-      priority: 0.75,
-      lastModified: `${s.verifiedYear}-01-01`,
-    },
-    {
-      url: `${SITE.url}/us/states/${s.slug}/final-paycheck`,
-      changeFrequency: "yearly" as const,
-      priority: 0.72,
-      lastModified: `${s.verifiedYear}-01-01`,
-    },
-    {
-      url: `${SITE.url}/us/states/${s.slug}/minimum-wage`,
-      changeFrequency: "yearly" as const,
-      priority: 0.72,
-      lastModified: `${s.verifiedYear}-01-01`,
-    },
-  ]);
+  const stateEntries: MetadataRoute.Sitemap = US_STATES.flatMap((s) => {
+    // Reflects the actual last edit to this state's page content where known
+    // (e.g. a state that got a genuinely new localContext paragraph), rather
+    // than a single blanket date shared across all 51 states regardless of
+    // whether anything about that specific page actually changed.
+    const lastModified = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
+    return [
+      {
+        url: `${SITE.url}/us/states/${s.slug}`,
+        changeFrequency: "yearly" as const,
+        priority: 0.75,
+        lastModified,
+      },
+      {
+        url: `${SITE.url}/us/states/${s.slug}/final-paycheck`,
+        changeFrequency: "yearly" as const,
+        priority: 0.72,
+        lastModified,
+      },
+      {
+        url: `${SITE.url}/us/states/${s.slug}/minimum-wage`,
+        changeFrequency: "yearly" as const,
+        priority: 0.72,
+        lastModified,
+      },
+    ];
+  });
 
   const provinceEntries: MetadataRoute.Sitemap = CA_PROVINCES.map((p) => ({
     url: `${SITE.url}/ca/provinces/${p.slug}`,

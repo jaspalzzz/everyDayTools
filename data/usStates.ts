@@ -41,6 +41,14 @@ export interface UsStateData {
    * rather than padding every page with filler for uniformity's sake.
    */
   localContext?: string;
+  /**
+   * ISO date this specific state record's page content (not just the
+   * shared rate fields) last genuinely changed -- e.g. when localContext
+   * was added. Only set on records that actually changed; falls back to
+   * `${verifiedYear}-01-01` in the sitemap for every other state rather
+   * than fabricating per-state precision that doesn't exist.
+   */
+  lastContentUpdate?: string;
 }
 
 const RAW: UsStateData[] = [
@@ -102,6 +110,7 @@ const RAW: UsStateData[] = [
     verifiedYear: 2025,
     localContext:
       "California is unusual in letting workers enforce Labor Code violations directly: under the Private Attorneys General Act (PAGA), an employee can sue on behalf of themselves, coworkers, and the state to recover civil penalties for violations like late final wages or missing meal breaks — not just their own unpaid amount. This sits alongside the standard DLSE wage claim process and is one reason California final-pay disputes can carry larger exposure for employers than in most other states.",
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "colorado",
@@ -160,6 +169,7 @@ const RAW: UsStateData[] = [
     verifiedYear: 2025,
     localContext:
       "Florida's minimum wage rises automatically each year under a 2020 constitutional amendment voters approved, so the rate is not something the legislature can quietly freeze or roll back the way many other states' rates are. Unlike California or New York, though, Florida has no dedicated state agency that investigates individual minimum-wage complaints — workers generally pursue underpayment through a private civil claim or the federal Department of Labor rather than a state wage-claim process.",
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "georgia",
@@ -420,6 +430,7 @@ const RAW: UsStateData[] = [
     verifiedYear: 2025,
     localContext:
       "New York's Wage Theft Prevention Act requires employers to give every worker written notice of their pay rate and payday at the time of hire, and it lets underpaid workers recover liquidated damages of up to 100% of the unpaid amount on top of the wages owed — a materially stronger deterrent than the standard interest-only remedy in many other states. New York's minimum wage is also unusual in varying by region within the same state rather than applying one flat statewide rate.",
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "north-carolina",
@@ -546,6 +557,7 @@ const RAW: UsStateData[] = [
     verifiedYear: 2025,
     localContext:
       "Texas has no state minimum wage above the federal floor and no state income tax, which changes the calculus for both employers and workers compared to states like California or New York. Wage claims are handled under the Texas Payday Law (Labor Code Chapter 61) through the Texas Workforce Commission rather than a dedicated labor department, and a claim generally must be filed within 180 days of the date wages were due — a materially shorter window than several neighboring states allow.",
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "utah",
