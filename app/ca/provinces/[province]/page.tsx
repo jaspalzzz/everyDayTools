@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = `${p.name} employment standards: minimum wage ${p.minimumWage}, statutory notice periods, vacation entitlement, and severance rules under the ${p.legislationName}.`;
   const ogDescription = `Minimum wage, notice periods, and vacation entitlement for workers in ${p.name} under the ${p.legislationName}.`;
   return {
-    title: `${p.name} Employment Standards 2026 — Notice, Minimum Wage & Vacation`,
+    title: `${p.name} Employment Standards 2026`,
     description: clampMetaDescription(description),
     alternates: { canonical: url },
     openGraph: {

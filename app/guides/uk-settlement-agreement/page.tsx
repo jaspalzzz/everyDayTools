@@ -9,7 +9,7 @@ const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "UK Settlement Agreements: What You're Owed & How to Negotiate 2026",
+  title: "UK Settlement Agreements 2026",
   description:
     "What a settlement agreement is, what it must contain to be valid, the tax-free £30,000 threshold, typical settlement amounts by role, and how to negotiate a better offer.",
   alternates: { canonical: url },

@@ -9,7 +9,7 @@ const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "UK Maternity Pay: Complete Guide to SMP 2026/27 — Rates, Eligibility & Calculation",
+  title: "UK Maternity Pay Guide 2026/27",
   description: clampMetaDescription(
     "How UK Statutory Maternity Pay (SMP) works in 2026/27: the £194.32 weekly rate, the 90% rule for the first six weeks, who qualifies, Maternity Allowance for those who don't, and your rights to return.",
   ),

@@ -83,7 +83,7 @@ export const COMPARISONS: ComparisonMeta[] = [
   },
   {
     slug: "unfair-vs-wrongful-dismissal",
-    title: "Unfair Dismissal vs Wrongful Dismissal: What's the Difference? 2026",
+    title: "Unfair vs Wrongful Dismissal: Key Differences 2026",
     h1: "Unfair dismissal vs wrongful dismissal: what's the difference?",
     description:
       "Unfair dismissal and wrongful dismissal are two different legal claims. One is a statutory right, the other is a contract claim. They have different qualifying periods, compensation caps, and tribunals.",
@@ -242,7 +242,7 @@ export const COMPARISONS: ComparisonMeta[] = [
   },
   {
     slug: "constructive-vs-unfair-dismissal",
-    title: "Constructive Dismissal vs Unfair Dismissal: What's the Difference? 2026",
+    title: "Constructive vs Unfair Dismissal: Key Differences 2026",
     h1: "Constructive dismissal vs unfair dismissal: what's the difference?",
     description:
       "Constructive dismissal is where you resign; unfair dismissal is where your employer fires you. Both can lead to an Employment Tribunal claim — but the burden of proof and process differ significantly.",
@@ -454,7 +454,7 @@ export const COMPARISONS: ComparisonMeta[] = [
   },
   {
     slug: "pto-vs-vacation",
-    title: "PTO vs Vacation: What's the Difference & Do You Get Paid Out? 2026",
+    title: "PTO vs Vacation: Difference and Payout Rules 2026",
     h1: "PTO vs vacation: what's the difference and what gets paid out?",
     description:
       "PTO and vacation are often used interchangeably — but they are different leave structures with very different payout rules when you leave a job. Here's what the difference means for what you're owed.",

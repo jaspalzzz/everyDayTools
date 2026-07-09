@@ -9,7 +9,7 @@ const url = `${SITE.url}/uk/pay-rights`;
 export const metadata: Metadata = {
   title: "UK Pay Rights 2026 — Minimum Wage, Payslips & Unlawful Deductions",
   description:
-    "Your UK pay rights in 2026/27: National Living Wage, National Minimum Wage, the right to a payslip, unlawful deductions from wages, and how to claim if your employer underpays you.",
+    "UK pay rights in 2026/27: National Living Wage, payslips, unlawful deductions, and how to claim if your employer underpays you.",
   alternates: { canonical: url },
   openGraph: {
     title: "UK Pay Rights 2026 — Minimum Wage, Payslips & Unlawful Deductions",

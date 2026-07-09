@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!f) return {};
   const url = `${SITE.url}/faq/${f.slug}`;
   return {
-    title: `${f.question} | MyPayRights`,
+    title: f.question,
     description: clampMetaDescription(f.shortAnswer),
     alternates: { canonical: url },
     openGraph: { title: f.question, description: clampMetaDescription(f.shortAnswer), url },

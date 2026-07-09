@@ -8,7 +8,7 @@ const url = `${SITE.url}/fr/ca/paie-de-vacances`;
 export const metadata: Metadata = {
   title: "Calculateur de paie de vacances — Québec 2026",
   description:
-    "Calculez votre droit aux vacances annuelles et à l'indemnité de congés au Québec. Conforme à la Loi sur les normes du travail (LNT) : 2 ou 3 semaines selon l'ancienneté.",
+    "Calculez vos vacances annuelles et votre indemnité de congés au Québec selon la Loi sur les normes du travail.",
   alternates: {
     canonical: url,
     languages: { "fr-CA": url, "en-CA": `${SITE.url}/pto-payout-calculator` },

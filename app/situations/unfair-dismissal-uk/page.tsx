@@ -7,9 +7,9 @@ const url = `${SITE.url}/situations/unfair-dismissal-uk`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "Unfairly Dismissed in the UK? Here's What to Do — Step-by-Step 2026",
+  title: "Unfairly Dismissed in the UK? What to Do 2026",
   description:
-    "Step-by-step guide for UK workers dismissed unfairly: checking your qualifying period, ACAS early conciliation, the tribunal claim process, and how much compensation you could get.",
+    "Step-by-step guide for UK workers dismissed unfairly: qualifying period, ACAS early conciliation, tribunal claims, and compensation.",
   alternates: { canonical: url },
   openGraph: {
     title: "Unfairly Dismissed in the UK? Here's What to Do — 2026",

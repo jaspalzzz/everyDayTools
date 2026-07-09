@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = getUsState(slug);
   if (!s) return {};
 
-  const title = `${s.name} Final Paycheck Law 2026 — Deadlines & Penalties`;
+  const title = `${s.name} Final Paycheck Law 2026`;
   const description = `${s.name} final paycheck deadlines: terminated employees must be paid ${s.finalPaycheckTerminated.toLowerCase()}, resigned employees by ${s.finalPaycheckResigned.toLowerCase()}. What's included, penalties, and how to claim.`;
   const url = `${SITE.url}/us/states/${s.slug}/final-paycheck`;
 

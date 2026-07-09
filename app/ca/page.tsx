@@ -9,7 +9,7 @@ import type { CountryTool } from "@/components/country/CountryPage";
 const url = `${SITE.url}/ca`;
 
 export const metadata: Metadata = {
-  title: "Canada Employment Pay Calculators — Federal & Provincial Rules 2026",
+  title: "Canada Pay Calculators — Federal & Provincial Rules 2026",
   description:
     "Free Canadian employment calculators covering notice periods, severance pay, take-home pay and overtime. Federal Canada Labour Code and provincial standards applied.",
   alternates: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Canada Employment Pay Calculators — Federal & Provincial Rules 2026",
+    title: "Canada Pay Calculators — Federal & Provincial Rules 2026",
     description:
       "Law-backed calculators for Canadian workers: notice periods, severance, take-home pay and overtime. Federal and provincial law built in.",
     url,

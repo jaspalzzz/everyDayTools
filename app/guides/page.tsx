@@ -8,7 +8,7 @@ const url = `${SITE.url}/guides`;
 export const metadata: Metadata = {
   title: "Employment Rights Guides — UK, US & More",
   description:
-    "Plain-English guides to employment rights, pay calculations, and statutory entitlements. Written by employment law specialists and verified against official government sources.",
+    "Plain-English guides to employment rights, pay calculations, and statutory entitlements, verified against official government sources.",
   alternates: { canonical: url },
   openGraph: {
     title: "Employment Rights Guides — UK, US & More",

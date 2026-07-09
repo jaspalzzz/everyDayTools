@@ -9,7 +9,7 @@ const DATE = "2026-06-27";
 export const metadata: Metadata = {
   title: "Leaving a Job in the UK? Everything You're Owed — 2026",
   description:
-    "Step-by-step guide for UK workers leaving a job: notice periods, final pay, holiday pay, references, restrictive covenants, and what to do if your employer owes you money.",
+    "Step-by-step guide for UK workers leaving a job: notice periods, final pay, holiday pay, references, covenants, and unpaid wages.",
   alternates: { canonical: url },
   openGraph: {
     title: "Leaving a Job in the UK? Everything You're Owed — 2026",

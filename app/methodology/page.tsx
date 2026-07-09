@@ -7,7 +7,7 @@ const url = `${SITE.url}/methodology`;
 export const metadata: Metadata = {
   title: "Data Methodology — How We Source & Verify Employment Law Rates",
   description:
-    "How MyPayRights sources statutory rates, who reviews them, when they are updated, and how to report an error. Every figure on the site traces to an official government source.",
+    "How MyPayRights sources statutory rates, reviews updates, verifies official sources, and handles correction reports.",
   alternates: { canonical: url },
   openGraph: {
     title: "Data Methodology — How We Source & Verify Employment Law Rates",

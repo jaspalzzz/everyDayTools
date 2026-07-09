@@ -70,7 +70,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "us-final-paycheck-laws-by-state",
     title: "US Final Paycheck Laws by State: Every Deadline in 2026",
     description:
-      "When does your employer have to pay your final paycheck? The deadline varies from 'immediately' to 'next regular payday' depending on the state and how your employment ended.",
+      "Final paycheck deadlines vary by state and by how employment ended. Check every 2026 deadline in one place.",
     excerpt:
       "Final paycheck deadlines range from the same day (California if you are fired) to the next regular payday in over 20 states. Here is every state's rules in one place.",
     quickAnswer:
@@ -85,7 +85,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "uk-notice-period-rights-explained",
-    title: "UK Notice Period Rights Explained: Statutory Minimum, Contractual Notice & PILON",
+    title: "UK Notice Period Rights: Notice, Garden Leave and PILON",
     description:
       "Confused about notice periods? This guide explains the statutory minimum, what happens if your contract gives more, garden leave, pay in lieu of notice, and wrongful dismissal.",
     excerpt:
@@ -138,7 +138,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "constructive-dismissal-uk-guide",
     quickAnswer:
       "Constructive dismissal occurs when your employer fundamentally breaches your employment contract — such as cutting your pay, demoting you without justification, or creating an unbearable working environment — forcing you to resign. That resignation is treated in law as a dismissal, giving you the right to claim unfair dismissal at Employment Tribunal (requires 2 years' service). You must act promptly and not accept the breach.",
-    title: "Constructive Dismissal UK: What It Is, How to Prove It, and What You're Owed",
+    title: "Constructive Dismissal UK: How to Prove It",
     description:
       "A complete guide to constructive dismissal in the UK — what counts as a fundamental breach, how to build your case, and how much compensation you can expect from the Employment Tribunal.",
     excerpt:
@@ -172,7 +172,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "uk-sick-pay-rights-2026",
     quickAnswer:
       "Statutory Sick Pay (SSP) is £123.25 per week (2026/27) and is paid from day one of illness — the three waiting days were abolished by the Employment Rights Act 2025 with effect from April 2026. SSP is paid for up to 28 weeks. You qualify if you earn at least £129/week. Your contract may provide more generous enhanced sick pay.",
-    title: "UK Sick Pay Rights 2026: SSP, Qualifying Days, and What Your Employer Must Pay",
+    title: "UK Sick Pay Rights 2026: SSP Rules and Employer Duties",
     description:
       "Statutory Sick Pay is £123.25/week from day 4 of illness — but many workers don't know when it starts, how long it lasts, or what to do when it runs out. This guide covers all of it.",
     excerpt:

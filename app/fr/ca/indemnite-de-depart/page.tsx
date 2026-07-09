@@ -8,7 +8,7 @@ const url = `${SITE.url}/fr/ca/indemnite-de-depart`;
 export const metadata: Metadata = {
   title: "Calculateur d'indemnité de départ — Québec et Canada 2026",
   description:
-    "Calculez l'indemnité de fin d'emploi à laquelle vous avez droit au Québec et dans les autres provinces canadiennes. Conforme à la Loi sur les normes du travail du Québec.",
+    "Calculez votre indemnité de fin d'emploi au Québec et au Canada selon les normes du travail applicables.",
   alternates: {
     canonical: url,
     languages: {

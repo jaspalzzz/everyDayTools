@@ -9,7 +9,7 @@ const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "How to Calculate UK Take-Home Pay 2026/27 — Income Tax, NI & Deductions Explained",
+  title: "How to Calculate UK Take-Home Pay 2026/27",
   description: clampMetaDescription(
     "A plain-English guide to how your salary is taxed in the UK for 2026/27: income tax bands, National Insurance thresholds, student loan deductions, and worked examples for salaries from £20,000 to £100,000.",
   ),

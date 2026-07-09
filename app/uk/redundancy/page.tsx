@@ -8,12 +8,12 @@ import { GUIDES } from "@/data/guides";
 const url = `${SITE.url}/uk/redundancy`;
 
 export const metadata: Metadata = {
-  title: "UK Redundancy Rights 2026 — Statutory Pay, Notice & Tribunal Claims",
+  title: "UK Redundancy Rights 2026",
   description:
-    "Everything UK workers need to know about redundancy: statutory pay calculation, notice entitlements, consultation rights, settlement agreements, and Employment Tribunal claims.",
+    "UK redundancy rights: statutory pay, notice, consultation, settlement agreements, and Employment Tribunal claims for 2026.",
   alternates: { canonical: url },
   openGraph: {
-    title: "UK Redundancy Rights 2026 — Statutory Pay, Notice & Tribunal Claims",
+    title: "UK Redundancy Rights 2026",
     description:
       "Complete guide to UK redundancy — statutory pay, notice, consultation, unfair dismissal, and tribunal compensation. All figures for 2026/27.",
     url,

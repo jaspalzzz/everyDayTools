@@ -7,12 +7,12 @@ import { FAQS } from "@/data/faqs";
 const url = `${SITE.url}/uk/maternity-leave`;
 
 export const metadata: Metadata = {
-  title: "UK Maternity Leave & Pay 2026 — SMP, Maternity Allowance & Rights",
+  title: "UK Maternity Leave & Pay 2026",
   description:
-    "Complete guide to UK maternity leave and pay 2026/27: who qualifies for SMP, the 39-week payment structure, Maternity Allowance, shared parental leave, and your right to return.",
+    "UK maternity leave and pay guide: SMP qualification, 39-week payment structure, Maternity Allowance, shared leave, and return rights.",
   alternates: { canonical: url },
   openGraph: {
-    title: "UK Maternity Leave & Pay 2026 — SMP, Maternity Allowance & Rights",
+    title: "UK Maternity Leave & Pay 2026",
     description:
       "Statutory Maternity Pay pays 90% of earnings for 6 weeks then £194.32/week for 33 weeks. Full guide to qualifying, calculating, and protecting your rights.",
     url,

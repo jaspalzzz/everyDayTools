@@ -9,9 +9,9 @@ const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "Unfair Dismissal UK: Your Rights, Compensation & How to Claim 2026",
+  title: "Unfair Dismissal UK Guide 2026",
   description:
-    "What unfair dismissal is, the 2-year qualifying period, automatically unfair grounds (no qualifying period), compensation caps for 2026/27, and how to bring a tribunal claim.",
+    "What unfair dismissal is, the 2-year qualifying period, automatic unfair grounds, 2026/27 compensation caps, and how to bring a tribunal claim.",
   alternates: { canonical: url },
   openGraph: {
     title: "Unfair Dismissal UK: Your Rights, Compensation & How to Claim 2026",

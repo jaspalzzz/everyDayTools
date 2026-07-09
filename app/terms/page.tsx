@@ -1,15 +1,26 @@
 import type { Metadata } from "next";
-import { SITE } from "@/lib/seo";
+import { SITE, jsonLd, webPageSchema } from "@/lib/seo";
+
+const url = `${SITE.url}/terms`;
+const description = `Terms of use for ${SITE.name} — free employment calculators for informational purposes.`;
 
 export const metadata: Metadata = {
   title: "Terms of Use",
-  description: `Terms of use for ${SITE.name} — free employment calculators for informational purposes.`,
-  alternates: { canonical: `${SITE.url}/terms` },
+  description,
+  alternates: { canonical: url },
 };
+
+const schema = webPageSchema({
+  name: "Terms of Use",
+  description,
+  url,
+  dateModified: "2026-06-01",
+});
 
 export default function TermsPage() {
   return (
     <article className="prose-tool mx-auto max-w-2xl px-5 py-10 text-sm leading-relaxed text-ink-soft">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(schema)} />
       <h1 className="text-2xl font-medium tracking-tight text-ink">Terms of Use</h1>
       <p className="mt-2 text-xs text-ink-faint">Last updated: June 2026</p>
 

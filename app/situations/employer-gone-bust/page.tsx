@@ -8,7 +8,7 @@ const url = `${SITE.url}/situations/employer-gone-bust`;
 export const metadata: Metadata = {
   title: "Employer Gone Bust UK: What You're Owed & How to Claim 2026",
   description:
-    "If your employer has gone insolvent you can claim unpaid wages, redundancy pay, notice pay, and holiday pay from the government's National Insurance Fund. Here's how.",
+    "If your employer is insolvent, claim unpaid wages, redundancy pay, notice pay, and holiday pay from the National Insurance Fund.",
   alternates: { canonical: url },
   openGraph: { title: "Employer Gone Bust UK: What You're Owed 2026", url },
 };
