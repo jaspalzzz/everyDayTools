@@ -12,6 +12,14 @@ export function hasAdvertisingConsent() {
   return window.localStorage.getItem(CONSENT_KEY) === "accepted";
 }
 
+/**
+ * Analytics shares the single site-wide consent choice with advertising:
+ * "Accept" opts into both analytics and ad cookies, "Reject" into neither.
+ * Exposed under its own name so the analytics gate reads semantically, even
+ * though it maps to the same stored flag.
+ */
+export const hasAnalyticsConsent = hasAdvertisingConsent;
+
 export function ConsentBanner() {
   const [choice, setChoice] = useState<ConsentValue | null>(null);
 
@@ -48,8 +56,8 @@ export function ConsentBanner() {
     >
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
         <p style={{ margin: 0, color: "#25384c", fontSize: 13, lineHeight: 1.55 }}>
-          My Pay Rights uses essential cookies for the site to work. If advertising is enabled,
-          Google ad placements and related cookies load only after you accept.{" "}
+          My Pay Rights uses essential cookies for the site to work. Analytics and, if advertising
+          is enabled, Google ad cookies load only after you accept.{" "}
           <Link href="/privacy" style={{ color: "#0f56bd", fontWeight: 850 }}>
             Privacy policy
           </Link>

@@ -3,6 +3,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AdSenseScript } from "@/components/AdSenseScript";
+import { Analytics } from "@/components/Analytics";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { ADSENSE_CLIENT } from "@/lib/adsense";
 import { SITE } from "@/lib/seo";
@@ -84,6 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <AdSenseScript />
+        <Analytics />
       </head>
       <body>
         <SiteHeader />

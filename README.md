@@ -153,6 +153,9 @@ changes. Key constants to refresh:
 - `NEXT_PUBLIC_ADSENSE_CLIENT` adds the site-level AdSense publisher meta tag. If unset, the
   production publisher ID `ca-pub-8825078307302402` is used.
 - `NEXT_PUBLIC_ADSENSE_READY=true` enables the AdSense runtime script after consent.
+- `NEXT_PUBLIC_GA_ID` (e.g. `G-XXXXXXXXXX`) enables consent-gated Google Analytics 4. GA loads
+  only after the visitor accepts cookies (same `ConsentBanner` choice as AdSense); if unset, no
+  analytics ships. Set it in Cloudflare Pages Production/Preview to start collecting a baseline.
 - `public/ads.txt` contains the Google AdSense publisher record for `pub-8825078307302402`.
 - Public contact emails live in `lib/seo.ts`.
 - Analytics/Search Console are tracked in [TASKS.md](TASKS.md) under T1.3.
