@@ -8,18 +8,22 @@ const url = `${SITE.url}/faq`;
 export const metadata: Metadata = {
   title: "Employment Law FAQ — Quick Answers to Common Questions | MyPayRights",
   description:
-    "Fast, plain-English answers to the most-searched employment law questions for UK and US workers: redundancy pay, notice periods, TUPE, PTO payout, COBRA, and more.",
+    "Plain-English answers to common employment law questions for UK, US, Canada and Australia workers: redundancy, notice periods, TUPE, PTO payout, and more.",
   alternates: { canonical: url },
   openGraph: {
     title: "Employment Law FAQ | MyPayRights",
     description:
-      "Answers to the most common employment law questions for UK and US workers — redundancy, dismissal, TUPE, PTO, and more.",
+      "Answers to the most common employment law questions for UK, US, Canada and Australia workers — redundancy, dismissal, TUPE, PTO, and more.",
     url,
   },
 };
 
-const UK = FAQS.filter((f) => f.country === "UK" || f.country === "UK/US");
-const US = FAQS.filter((f) => f.country === "US" || f.country === "UK/US");
+const FAQ_GROUPS = [
+  { id: "uk", heading: "🇬🇧 UK employment law", faqs: FAQS.filter((f) => f.country === "UK" || f.country === "UK/US") },
+  { id: "us", heading: "🇺🇸 US employment law", faqs: FAQS.filter((f) => f.country === "US" || f.country === "UK/US") },
+  { id: "ca", heading: "🇨🇦 Canada employment law", faqs: FAQS.filter((f) => f.country === "CA") },
+  { id: "au", heading: "🇦🇺 Australia employment law", faqs: FAQS.filter((f) => f.country === "AU") },
+] as const;
 
 export default function FaqHubPage() {
   const breadcrumb = {
@@ -83,13 +87,13 @@ export default function FaqHubPage() {
         </div>
 
         <div className="flex flex-col gap-10 max-w-2xl">
-          {UK.length > 0 && (
-            <section aria-labelledby="uk-faq-heading">
-              <h2 id="uk-faq-heading" className="mb-4 text-sm font-semibold text-ink">
-                🇬🇧 UK employment law
+          {FAQ_GROUPS.filter((g) => g.faqs.length > 0).map((group) => (
+            <section key={group.id} aria-labelledby={`${group.id}-faq-heading`}>
+              <h2 id={`${group.id}-faq-heading`} className="mb-4 text-sm font-semibold text-ink">
+                {group.heading}
               </h2>
               <div className="flex flex-col divide-y divide-surface-line rounded-xl border border-surface-line">
-                {UK.map((f) => (
+                {group.faqs.map((f) => (
                   <Link
                     key={f.slug}
                     href={`/faq/${f.slug}`}
@@ -104,30 +108,7 @@ export default function FaqHubPage() {
                 ))}
               </div>
             </section>
-          )}
-
-          {US.length > 0 && (
-            <section aria-labelledby="us-faq-heading">
-              <h2 id="us-faq-heading" className="mb-4 text-sm font-semibold text-ink">
-                🇺🇸 US employment law
-              </h2>
-              <div className="flex flex-col divide-y divide-surface-line rounded-xl border border-surface-line">
-                {US.map((f) => (
-                  <Link
-                    key={f.slug}
-                    href={`/faq/${f.slug}`}
-                    className="flex items-start justify-between gap-4 px-5 py-4 hover:bg-surface-muted"
-                  >
-                    <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium text-ink">{f.question}</p>
-                      <p className="mt-0.5 text-xs text-ink-soft line-clamp-1">{f.shortAnswer}</p>
-                    </div>
-                    <span className="mt-0.5 shrink-0 text-xs text-ink-faint">→</span>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          )}
+          ))}
         </div>
       </div>
     </>

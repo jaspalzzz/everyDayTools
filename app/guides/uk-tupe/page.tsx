@@ -267,6 +267,14 @@ export default function UKTUPEGuide() {
             {/* Tool CTAs */}
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="rounded-xl border border-brand-100 bg-brand-50 px-4 py-4">
+                <p className="text-sm font-semibold text-ink">TUPE eligibility checker</p>
+                <p className="mt-1 text-xs text-ink-soft">
+                  Not sure whether TUPE applies to your transfer? Answer a few questions to
+                  check whether your employment should transfer with protected terms.
+                </p>
+                <Link href="/tupe-wizard" className="mt-3 inline-block rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-brand-700">Check eligibility →</Link>
+              </div>
+              <div className="rounded-xl border border-brand-100 bg-brand-50 px-4 py-4">
                 <p className="text-sm font-semibold text-ink">Redundancy pay calculator</p>
                 <p className="mt-1 text-xs text-ink-soft">
                   If you are made redundant post-TUPE for an ETO reason, calculate your

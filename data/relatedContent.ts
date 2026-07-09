@@ -1,4 +1,6 @@
 import { getTool, type ToolMeta } from "./tools";
+import { GUIDES, type GuideMeta } from "./guides";
+import { COMPARISONS } from "./comparisons";
 
 /**
  * Central "situation" cross-linking map.
@@ -152,4 +154,53 @@ export function situationTools(slug: string): ToolMeta[] {
   return (SITUATION_TOOLS[slug] ?? [])
     .map((t) => getTool(t))
     .filter((t): t is ToolMeta => Boolean(t));
+}
+
+/**
+ * Guides whose primary related tool is this calculator. Every guide already
+ * declares its `relatedTool`; this is the derived inverse so calculators link
+ * back to their guide(s) -- previously several guides had no inbound link at
+ * all because only a handful of calculators set `learnMore.guideSlug`.
+ */
+export function guidesForTool(toolSlug: string, limit = 3): GuideMeta[] {
+  return GUIDES.filter((g) => g.relatedTool === toolSlug).slice(0, limit);
+}
+
+export interface CompareLink {
+  slug: string;
+  label: string;
+  summary: string;
+}
+
+/**
+ * Comparison pages that list this calculator in their related tools. The
+ * inverse of ComparisonMeta.relatedTools, so the "X vs Y" pages (previously
+ * only 1-2 inbound links each) get discovered from the relevant calculator.
+ */
+export function comparesForTool(toolSlug: string, limit = 2): CompareLink[] {
+  return COMPARISONS.filter((c) => c.relatedTools.some((t) => t.slug === toolSlug))
+    .map((c) => ({ slug: c.slug, label: `${c.aLabel} vs ${c.bLabel}`, summary: c.summary }))
+    .slice(0, limit);
+}
+
+export interface PillarLink {
+  href: string;
+  label: string;
+}
+
+/**
+ * Topical pillar hub for a calculator. These country pillar pages
+ * (/uk/maternity-leave, /us/overtime) are meant to be hubs but were orphaned;
+ * their spoke calculators now link up to them.
+ */
+export const PILLAR_FOR_TOOL: Record<string, PillarLink> = {
+  "maternity-pay-calculator": { href: "/uk/maternity-leave", label: "UK maternity leave & pay" },
+  "paternity-pay-calculator": { href: "/uk/maternity-leave", label: "UK family leave & pay" },
+  "adoption-pay-calculator": { href: "/uk/maternity-leave", label: "UK family leave & pay" },
+  "shared-parental-leave-calculator": { href: "/uk/maternity-leave", label: "UK family leave & pay" },
+  "take-home-overtime-calculator": { href: "/us/overtime", label: "US overtime pay rules" },
+};
+
+export function pillarForTool(toolSlug: string): PillarLink | undefined {
+  return PILLAR_FOR_TOOL[toolSlug];
 }
