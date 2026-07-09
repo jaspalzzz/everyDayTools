@@ -21,6 +21,7 @@ export default function DeductionCheckerPage() {
           "@context": "https://schema.org",
           "@type": "WebApplication",
           name: "Employer final paycheck deduction checker",
+          description: metadata.description,
           url,
           applicationCategory: "FinanceApplication",
           operatingSystem: "All",

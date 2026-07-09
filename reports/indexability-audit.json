@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-09T02:19:59.076Z",
+  "checkedAt": "2026-07-09T02:27:44.611Z",
   "siteUrl": "https://mypayrights.com",
   "sitemapRoutes": 407,
   "failures": [],
@@ -96,7 +96,7 @@
       "descriptionLength": 163,
       "canonical": "https://mypayrights.com/faq",
       "robots": "index, follow",
-      "jsonLdCount": 2,
+      "jsonLdCount": 3,
       "h1": "Frequently asked questions",
       "words": 2670,
       "minimumWords": 150
@@ -672,7 +672,7 @@
       "descriptionLength": 112,
       "canonical": "https://mypayrights.com/us/new-york/pto-payout-calculator",
       "robots": "index, follow",
-      "jsonLdCount": 1,
+      "jsonLdCount": 2,
       "h1": "New York PTO payout calculator",
       "words": 486,
       "minimumWords": 180

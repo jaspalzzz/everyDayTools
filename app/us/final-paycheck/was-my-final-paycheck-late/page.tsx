@@ -21,6 +21,7 @@ export default function LatePaycheckPage() {
           "@context": "https://schema.org",
           "@type": "WebApplication",
           name: "Was my final paycheck late checker",
+          description: metadata.description,
           url,
           applicationCategory: "FinanceApplication",
           operatingSystem: "All",
