@@ -281,11 +281,11 @@ Primary source: U.S. Department of Labor (dol.gov), Internal Revenue Service (ir
 # effective_date: 2025-07-01
 # citable: true
 
-Current Australian statutory rates for the 2025/26 financial year:
+Current Australian statutory rates for the 2026/27 financial year:
 
-- **National Minimum Wage:** $24.10 per hour ($915.90 per week, 38-hour week)
-- **Superannuation Guarantee rate:** 11.5% (2025/26); 12% from 1 July 2026 (2026/27)
-- **Parental Leave Pay:** Up to 22 weeks at the National Minimum Wage (expanding to 26 weeks from July 2026)
+- **National Minimum Wage:** $26.44 per hour ($1,004.90 per week, 38-hour week) from 1 July 2026
+- **Superannuation Guarantee rate:** 12% (2026/27)
+- **Parental Leave Pay:** Up to 26 weeks at the National Minimum Wage (2026/27)
 - **Redundancy pay:** NES scale under Fair Work Act 2009 — 4 weeks (1 year) to 16 weeks (9+ years); capped at no more than the employee's base rate for the applicable period
 - **Unfair dismissal compensation cap:** 26 weeks' pay or half the high income threshold (~$46,500), whichever is lower
 
