@@ -83,6 +83,83 @@ const FP_INCLUDED_LEAD = [
   (s: UsStateWithPto) => `For a final paycheck to be lawful in ${s.name}, it needs to include all of the following:`,
 ] as const;
 
+const FP_CONTEXT = [
+  (s: UsStateWithPto, nearby: string, deadlineShape: string) =>
+    `${s.name}'s final-paycheck rule is a timing rule first and a documentation issue second. ${deadlineShape}. That makes the separation date, the reason employment ended, and the next regular payday especially important. Nearby states such as ${nearby} may use different triggers, so a regional payroll policy can be wrong for ${s.name}.`,
+  (s: UsStateWithPto, nearby: string, deadlineShape: string) =>
+    `For ${s.name}, do not read the final-pay rule as a generic "next payroll" promise. ${deadlineShape}. Workers should preserve the termination or resignation notice, the final timesheet, and any PTO policy before comparing the result with states like ${nearby}.`,
+  (s: UsStateWithPto, nearby: string, deadlineShape: string) =>
+    `${s.name} separates final pay from the ordinary payroll cycle when the statute says so. ${deadlineShape}. The safest audit is to line up last day worked, separation type, earned wages, and PTO payout treatment, then compare against neighbouring rules in ${nearby} only as context.`,
+  (s: UsStateWithPto, nearby: string, deadlineShape: string) =>
+    `A late-check claim in ${s.name} usually turns on a few concrete facts rather than broad fairness: when work ended, who initiated the separation, and when payment actually arrived. ${deadlineShape}. Employers operating across ${nearby} should verify the ${s.name} deadline separately.`,
+  (s: UsStateWithPto, nearby: string, deadlineShape: string) =>
+    `${s.name}'s rule should be checked before the final payroll is run, not after a complaint arrives. ${deadlineShape}. The regional comparison with ${nearby} is useful because similar states often set different deadlines for resignations and terminations.`,
+] as const;
+
+const FP_EVIDENCE_CHECKLIST = [
+  "Last day worked and the date employment officially ended.",
+  "Whether the separation was a resignation, layoff, discharge, or mutual end date.",
+  "Final timesheet, overtime calculation, commission plan, and bonus terms.",
+  "Written PTO or vacation policy in force on the separation date.",
+  "Final pay stub, direct-deposit timestamp, or mailed-check postmark.",
+  "Any written demand sent before filing a wage claim.",
+] as const;
+
+const FP_INCLUDED_ITEMS = [
+  "All earned wages through your last day (hourly or salary)",
+  "Overtime pay owed for hours worked",
+  "Commission that has already been earned and is calculable",
+  "Any unreimbursed business expenses (where contractually required)",
+  "Earned bonus amounts that have vested under the written plan",
+  "Accrued PTO or vacation only when the state rule or employer policy requires payout",
+] as const;
+
+const FP_LATE_STEPS = [
+  "Document your last day worked and what you are owed.",
+  "Confirm whether the deadline changed because you resigned rather than being terminated.",
+  "Send a written demand to your employer; email is usually enough to preserve a record.",
+  "File a wage claim with the state labor agency if payment still does not arrive.",
+  "Consider a civil lawsuit where penalties, interest, or attorney fees are available.",
+  "Keep the final pay stub and payment timestamp with the demand letter.",
+] as const;
+
+function rotateItems<T>(items: readonly T[], offset: number): T[] {
+  if (items.length === 0) return [];
+  const start = offset % items.length;
+  return [...items.slice(start), ...items.slice(0, start)];
+}
+
+function variantKey(slug: string, rank: number) {
+  return slug.split("").reduce((sum, char, index) => sum + char.charCodeAt(0) * (index + 3), rank * 37);
+}
+
+function pairKey(currentSlug: string, candidateSlug: string) {
+  let hash = 2166136261;
+  for (const char of `${currentSlug}:${candidateSlug}`) {
+    hash ^= char.charCodeAt(0);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+function deadlineScore(current: UsStateWithPto, candidate: UsStateWithPto) {
+  let score = 0;
+  if (candidate.finalPaycheckTerminated !== current.finalPaycheckTerminated) score += 4;
+  if (candidate.finalPaycheckResigned !== current.finalPaycheckResigned) score += 4;
+  if (candidate.region !== current.region) score += 1;
+  return score;
+}
+
+function benchmarkStatesFor(current: UsStateWithPto) {
+  return US_STATES.filter((state) => state.slug !== current.slug)
+    .sort((a, b) => {
+      const gap = deadlineScore(current, a) - deadlineScore(current, b);
+      if (gap !== 0) return gap;
+      return pairKey(current.slug, a.slug) - pairKey(current.slug, b.slug);
+    })
+    .slice(0, 40);
+}
+
 export async function generateStaticParams() {
   return US_STATES.map((s) => ({ state: s.slug }));
 }
@@ -106,28 +183,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 function generateFaqs(s: UsStateWithPto): FaqItem[] {
   const rank = clusterRank(ALL_SLUGS, s.slug);
-  return [
+  const variantRank = variantKey(s.slug, rank);
+  return rotateItems([
     {
       question: `How long does my employer have to give me my final paycheck in ${s.name}?`,
-      answer: pickVariantByPosition(rank, FP_DEADLINE_ANSWERS)(s),
+      answer: pickVariantByPosition(variantRank, FP_DEADLINE_ANSWERS)(s),
     },
     {
       question: `What must be included in my final paycheck in ${s.name}?`,
-      answer: pickVariantByPosition(rank, FP_INCLUDED_ANSWERS)(s),
+      answer: pickVariantByPosition(variantRank, FP_INCLUDED_ANSWERS)(s),
     },
     {
       question: `What can I do if my employer is late with my final paycheck in ${s.name}?`,
-      answer: pickVariantByPosition(rank, FP_LATE_ANSWERS)(s),
+      answer: pickVariantByPosition(variantRank, FP_LATE_ANSWERS)(s),
     },
     {
       question: `Can my employer deduct money from my final paycheck in ${s.name}?`,
-      answer: pickVariantByPosition(rank, FP_DEDUCTION_ANSWERS)(s),
+      answer: pickVariantByPosition(variantRank, FP_DEDUCTION_ANSWERS)(s),
     },
     {
       question: `Does ${s.name} have penalties for employers who pay the final paycheck late?`,
-      answer: pickVariantByPosition(rank, FP_PENALTY_ANSWERS)(s),
+      answer: pickVariantByPosition(variantRank, FP_PENALTY_ANSWERS)(s),
     },
-  ];
+  ], variantRank);
 }
 
 export default async function Page({ params }: Props) {
@@ -140,7 +218,18 @@ export default async function Page({ params }: Props) {
   const hasStateCalculator = s.code === "CA" || s.code === "TX";
   const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
   const rank = clusterRank(ALL_SLUGS, s.slug);
+  const variantRank = variantKey(s.slug, rank);
   const nearbyStates = getNearbyStates(s.slug);
+  const nearbyLabel = nearbyStates.slice(0, 3).map((n) => n.name).join(", ") || "nearby states";
+  const sameDeadline = s.finalPaycheckTerminated === s.finalPaycheckResigned;
+  const deadlineShape = sameDeadline
+    ? `The same deadline applies whether the worker was terminated or resigned: ${s.finalPaycheckTerminated.toLowerCase()}`
+    : `Terminations are due ${s.finalPaycheckTerminated.toLowerCase()}, while resignations are due ${s.finalPaycheckResigned.toLowerCase()}`;
+  const evidenceChecklist = rotateItems(FP_EVIDENCE_CHECKLIST, variantRank).slice(0, 4);
+  const includedItems = rotateItems(FP_INCLUDED_ITEMS, variantRank).slice(0, 4);
+  const lateSteps = rotateItems(FP_LATE_STEPS, variantRank).slice(0, 4);
+  const comparisonStates = rotateItems(nearbyStates, variantRank);
+  const benchmarkStates = benchmarkStatesFor(s);
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -188,7 +277,7 @@ export default async function Page({ params }: Props) {
           {s.name} Final Paycheck Law 2026
         </h1>
         <p className="mb-8 text-ink-soft">
-          {pickVariantByPosition(rank, FP_INTRO)(s)}
+          {pickVariantByPosition(variantRank, FP_INTRO)(s)}
         </p>
 
         <EditorialReview
@@ -222,19 +311,69 @@ export default async function Page({ params }: Props) {
           </section>
         )}
 
+        <section className="mb-8 rounded-xl border border-surface-line bg-white p-5">
+          <h2 className="mb-2 text-xl font-bold text-ink">How to audit a {s.name} final paycheck</h2>
+          <p className="text-sm leading-relaxed text-ink-soft">
+            {pickVariantByPosition(variantRank, FP_CONTEXT)(s, nearbyLabel, deadlineShape)}
+          </p>
+          <ul className="mt-4 grid gap-2 text-sm text-ink-soft sm:grid-cols-2">
+            {evidenceChecklist.map((item) => (
+              <li key={item} className="rounded-lg border border-surface-line bg-surface-muted px-3 py-2">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="mb-3 text-xl font-bold text-ink">Cross-state deadline benchmark</h2>
+          <p className="mb-4 text-sm leading-relaxed text-ink-soft">
+            Final-pay deadlines are not portable across state lines. This benchmark starts with states
+            closest to {s.name}&apos;s termination and resignation timing, then broadens outward so payroll
+            teams can spot where a shared process needs state-specific handling.
+          </p>
+          <div className="overflow-x-auto rounded-xl border border-surface-line">
+            <table className="w-full min-w-[42rem] text-left text-sm">
+              <thead>
+                <tr className="border-b border-surface-line bg-surface-muted text-xs uppercase tracking-wide text-ink-faint">
+                  <th scope="col" className="px-4 py-2 font-semibold">State</th>
+                  <th scope="col" className="px-4 py-2 font-semibold">Region</th>
+                  <th scope="col" className="px-4 py-2 font-semibold">If fired</th>
+                  <th scope="col" className="px-4 py-2 font-semibold">If resigned</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-surface-line bg-brand-50">
+                  <th scope="row" className="px-4 py-2 font-semibold text-ink">{s.name} (this page)</th>
+                  <td className="px-4 py-2 text-ink-soft">{s.region}</td>
+                  <td className="px-4 py-2 text-ink-soft">{s.finalPaycheckTerminated}</td>
+                  <td className="px-4 py-2 text-ink-soft">{s.finalPaycheckResigned}</td>
+                </tr>
+                {benchmarkStates.map((state) => (
+                  <tr key={state.slug} className="border-b border-surface-line last:border-0">
+                    <th scope="row" className="px-4 py-2 font-medium">
+                      <Link href={`/us/states/${state.slug}/final-paycheck`} className="text-brand-600 hover:underline">
+                        {state.name}
+                      </Link>
+                    </th>
+                    <td className="px-4 py-2 text-ink-soft">{state.region}</td>
+                    <td className="px-4 py-2 text-ink-soft">{state.finalPaycheckTerminated}</td>
+                    <td className="px-4 py-2 text-ink-soft">{state.finalPaycheckResigned}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         {/* What must be included */}
         <section className="mb-8">
           <h2 className="mb-3 text-xl font-bold text-ink">What must be included in your final paycheck</h2>
           <p className="mb-3 text-ink-soft">
-            {pickVariantByPosition(rank, FP_INCLUDED_LEAD)(s)}
+            {pickVariantByPosition(variantRank, FP_INCLUDED_LEAD)(s)}
           </p>
           <ul className="space-y-2 text-ink-soft">
-            {[
-              "All earned wages through your last day (hourly or salary)",
-              "Overtime pay owed for hours worked",
-              "Commission that has already been earned and is calculable",
-              "Any unreimbursed business expenses (where contractually required)",
-            ].map((item) => (
+            {includedItems.map((item) => (
               <li key={item} className="flex items-start gap-2">
                 <span className="mt-0.5 text-brand-600">✓</span>
                 <span>{item}</span>
@@ -253,10 +392,9 @@ export default async function Page({ params }: Props) {
         <section className="mb-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
           <h2 className="mb-2 text-lg font-bold text-amber-900">If your employer pays late</h2>
           <ol className="space-y-2 text-sm text-amber-900">
-            <li><strong>1.</strong> Document your last day worked and what you are owed.</li>
-            <li><strong>2.</strong> Send a written demand to your employer (email is fine).</li>
-            <li><strong>3.</strong> File a wage claim with the {s.name} Department of Labor.</li>
-            <li><strong>4.</strong> You may also file a civil lawsuit to recover unpaid wages plus penalties.</li>
+            {lateSteps.map((item, index) => (
+              <li key={item}><strong>{index + 1}.</strong> {item}</li>
+            ))}
           </ol>
           <a
             href={s.dolUrl}
@@ -327,7 +465,7 @@ export default async function Page({ params }: Props) {
                     <td className="py-2 pr-4 text-ink-soft">{s.finalPaycheckTerminated}</td>
                     <td className="py-2 text-ink-soft">{s.finalPaycheckResigned}</td>
                   </tr>
-                  {nearbyStates.map((n) => (
+                  {comparisonStates.map((n) => (
                     <tr key={n.slug} className="border-b border-surface-line last:border-0">
                       <th scope="row" className="py-2 pr-4 font-medium">
                         <Link href={`/us/states/${n.slug}/final-paycheck`} className="text-brand-600 hover:underline">

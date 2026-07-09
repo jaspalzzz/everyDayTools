@@ -87,6 +87,34 @@ const CA_FAQ_PILON = [
   (p: CaProvinceData) => `Yes. As across Canada, ${p.name} permits pay in lieu of notice. The payment can't shortchange you — it must cover the wages and benefits you'd have received had you worked the notice.`,
 ] as const;
 
+const CA_CONTEXT = [
+  (p: CaProvinceData, tierCount: number, maxNotice: string, severance: string) =>
+    `${p.name}'s employment-standards page should be read as a statutory floor. The ${p.legislationName} uses ${tierCount} notice bands and tops out at ${maxNotice}; ${severance}. Minimum wage, vacation pay, and notice all remain separate calculations even when they appear on one termination package.`,
+  (p: CaProvinceData, tierCount: number, maxNotice: string, severance: string) =>
+    `For ${p.name}, the main compliance split is between provincially regulated workers and federally regulated sectors. Under the ${p.legislationName}, notice is organized into ${tierCount} service tiers with a maximum listed entitlement of ${maxNotice}. ${severance}.`,
+  (p: CaProvinceData, tierCount: number, maxNotice: string, severance: string) =>
+    `${p.name} employees should compare the contract, common-law position, and statute separately. The statutory table below has ${tierCount} rows and reaches ${maxNotice}, while ${severance}. Vacation pay and minimum wage are enforced under the same standards framework but answer different questions.`,
+  (p: CaProvinceData, tierCount: number, maxNotice: string, severance: string) =>
+    `The practical audit for ${p.name} starts with jurisdiction, then service length, then the form of payment. The ${p.legislationName} sets ${tierCount} notice tiers up to ${maxNotice}; ${severance}. A contract can improve these numbers but cannot undercut the statutory floor.`,
+  (p: CaProvinceData, tierCount: number, maxNotice: string, severance: string) =>
+    `Use this ${p.name} guide to separate four issues that often get mixed together: hourly wage, termination notice, severance, and vacation pay. The notice schedule has ${tierCount} service bands and reaches ${maxNotice}. ${severance}.`,
+] as const;
+
+const CA_REVIEW_POINTS = [
+  "Confirm whether the employer is provincial or federally regulated.",
+  "Match length of service to the statutory notice tier before checking common law.",
+  "Separate pay in lieu of notice from vacation pay already accrued.",
+  "Check whether the written contract promises more than the statute.",
+  "Keep the termination letter, ROE, final pay stub, and benefits cutoff notice.",
+  "Use the provincial ministry source before relying on an older payroll memo.",
+] as const;
+
+function rotateItems<T>(items: readonly T[], offset: number): T[] {
+  if (items.length === 0) return [];
+  const start = offset % items.length;
+  return [...items.slice(start), ...items.slice(0, start)];
+}
+
 export function generateStaticParams() {
   return CA_PROVINCES.map((p) => ({ province: p.slug }));
 }
@@ -125,7 +153,7 @@ function generateFaqs(p: ReturnType<typeof getCaProvince>) {
   if (!p) return [];
   const hasSeverance = p.severancePay !== null;
   const rank = clusterRank(CA_ALL_SLUGS, p.slug);
-  return [
+  return rotateItems([
     {
       q: `What is the minimum wage in ${p.name} in 2026?`,
       a: pickVariantByPosition(rank, CA_FAQ_MINWAGE)(p),
@@ -148,7 +176,7 @@ function generateFaqs(p: ReturnType<typeof getCaProvince>) {
       q: `Can my employer pay me in lieu of notice instead of working my notice period?`,
       a: pickVariantByPosition(rank, CA_FAQ_PILON)(p),
     },
-  ];
+  ], rank);
 }
 
 export default async function ProvincePage({ params }: Props) {
@@ -160,6 +188,11 @@ export default async function ProvincePage({ params }: Props) {
   const DATE = p.lastContentUpdate ?? `${p.verifiedYear}-01-01`;
   const rank = clusterRank(CA_ALL_SLUGS, p.slug);
   const faqs = generateFaqs(p);
+  const maxNotice = p.noticeTiers.at(-1)?.notice ?? "the final listed tier";
+  const severanceContext = p.severancePay
+    ? `${p.name} also has a separate statutory severance rule for qualifying employees`
+    : `${p.name} does not list a separate statutory severance entitlement beyond notice`;
+  const reviewPoints = rotateItems(CA_REVIEW_POINTS, rank).slice(0, 4);
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -250,6 +283,24 @@ export default async function ProvincePage({ params }: Props) {
           </div>
 
           <div className="prose-tool space-y-8 text-sm leading-relaxed text-ink-soft">
+            <section className="rounded-xl border border-surface-line bg-white p-5">
+              <h2>How to read the {p.name} rules</h2>
+              <p>
+                {pickVariantByPosition(rank, CA_CONTEXT)(
+                  p,
+                  p.noticeTiers.length,
+                  maxNotice,
+                  severanceContext,
+                )}
+              </p>
+              <ul className="not-prose mt-4 grid gap-2 sm:grid-cols-2">
+                {reviewPoints.map((item) => (
+                  <li key={item} className="rounded-lg border border-surface-line bg-surface-muted px-3 py-2">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </section>
 
             {/* Notice periods */}
             <section>

@@ -118,11 +118,11 @@ export default function AUPage() {
           { label: "Redundancy — 10 yr service", value: "12 weeks' pay (max)" },
           { label: "Superannuation rate", value: "11.5% (2026)" },
         ]}
-        ratesNote="Fair Work Australia · NES rates (2025–26)"
+        ratesNote="Fair Work Ombudsman · NES rates (2026–27)"
         searchPlaceholder="Search Australian calculators: redundancy, overtime, salary…"
         tools={AU_TOOLS}
         sources={[
-          { label: "Fair Work Australia", href: "https://www.fairwork.gov.au" },
+          { label: "Fair Work Ombudsman", href: "https://www.fairwork.gov.au" },
           { label: "Fair Work — minimum wages", href: "https://www.fairwork.gov.au/pay-and-wages/minimum-wages" },
           { label: "ATO — super & tax", href: "https://www.ato.gov.au/individuals-and-families/jobs-and-employment-types/working-as-an-employee" },
         ]}
