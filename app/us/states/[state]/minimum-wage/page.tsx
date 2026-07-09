@@ -112,7 +112,7 @@ export default async function Page({ params }: Props) {
 
   const url = `${SITE.url}/us/states/${s.slug}/minimum-wage`;
   const faqs = generateFaqs(s);
-  const reviewedDate = `${s.verifiedYear}-01-01`;
+  const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
   const nearbyStates = getNearbyStates(s.slug);
 
   const isFederal = s.minimumWage.includes("federal minimum");

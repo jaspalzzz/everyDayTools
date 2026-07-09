@@ -159,7 +159,7 @@ export default async function StatePage({ params }: Props) {
   const url = `${SITE.url}/us/states/${s.slug}`;
   const rule = RULE_CONFIG[s.pto.rule];
   const faqs = generateFaqs(s);
-  const reviewedDate = `${s.verifiedYear}-01-01`;
+  const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
   const nearbyStates = getNearbyStates(s.slug);
 
   const breadcrumb = {

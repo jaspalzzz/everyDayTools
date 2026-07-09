@@ -63,7 +63,7 @@ export default async function Page({ params }: Props) {
   const url = `${SITE.url}/us/states/${s.slug}/final-paycheck`;
   const faqs = generateFaqs(s);
   const hasStateCalculator = s.code === "CA" || s.code === "TX";
-  const reviewedDate = `${s.verifiedYear}-01-01`;
+  const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
   const nearbyStates = getNearbyStates(s.slug);
 
   const breadcrumb = {
