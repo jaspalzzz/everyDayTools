@@ -57,13 +57,13 @@ const PAYOUT_ACTION_VARIANTS = {
     (s: UsStateWithPto) => `For a missing ${s.name} vacation payout, start with a written request for the accrued balance and the policy payroll used. If the final check still omits it, the next step is usually a wage claim through ${s.dolUrl}.`,
     (s: UsStateWithPto) => `A denied payout in ${s.name} should be documented like any other wage shortfall: save the PTO ledger, final paystub, and handbook, then contact the state labor agency if payroll will not correct it.`,
     (s: UsStateWithPto) => `If the final paycheck does not include vested vacation in ${s.name}, ask HR to identify the legal basis for nonpayment. Keep the response and use the ${s.name} labor agency process if the balance remains unpaid.`,
-    (s: UsStateWithPto) => `When vested vacation is missing from a ${s.name} final check, put the dispute in writing quickly. List the hours accrued, the final rate of pay, and the policy source before escalating through ${s.dolUrl}.`,
+    (s: UsStateWithPto) => `When vested vacation is missing from a final paycheck in ${s.name}, put the dispute in writing quickly. List the hours accrued, the final rate of pay, and the policy source before escalating through ${s.dolUrl}.`,
     (s: UsStateWithPto) => `For ${s.name}, the practical move is to make payroll confirm the accrued vacation balance and payment date. If they refuse, preserve the records and use the state wage-claim channel.`,
   ],
   conditional: [
     (s: UsStateWithPto) => `In ${s.name}, start with the written PTO policy, offer letter, handbook, and any separation agreement. If those documents promise payout or do not clearly allow forfeiture, you may still have a wage claim.`,
     (s: UsStateWithPto) => `For ${s.name} workers, the first document to read is the employer's vacation policy. If it promises payout, or if the forfeiture language is unclear, preserve the policy and raise the issue with payroll in writing.`,
-    (s: UsStateWithPto) => `A ${s.name} payout dispute is usually won or lost on the paperwork. Compare the handbook, offer letter, and final paystub, then contact ${s.dolUrl} if the employer ignores a promised cash-out.`,
+    (s: UsStateWithPto) => `In ${s.name}, a payout dispute is usually won or lost on the paperwork. Compare the handbook, offer letter, and final paystub, then contact ${s.dolUrl} if the employer ignores a promised cash-out.`,
     (s: UsStateWithPto) => `If your employer says no payout is owed in ${s.name}, ask for the exact policy clause they are relying on. A vague or late-disclosed forfeiture rule may leave room for a wage claim.`,
     (s: UsStateWithPto) => `When ${s.name} policy language points toward payout, send a concise written demand with the accrued hours, final rate, and last day worked before escalating to the state labor agency.`,
   ],
@@ -95,7 +95,7 @@ const USE_IT_OR_LOSE_IT_ANSWERS = {
     (name: string) => `In ${name}, earned vacation is generally protected as wages, so a policy that cancels accrued time at separation can create a wage problem.`,
     (name: string) => `${name} employers should be careful with forfeiture language. Caps on future accrual may be allowed, but already earned vacation generally cannot be treated as worthless.`,
     (name: string) => `For ${name} workers, use-it-or-lose-it language is most vulnerable when it tries to erase vacation that has already vested as wages.`,
-    (name: string) => `A ${name} employer may be able to limit future accrual, but a policy that wipes out earned vacation at the end of employment is a different and riskier question.`,
+    (name: string) => `An employer in ${name} may be able to limit future accrual, but a policy that wipes out earned vacation at the end of employment is a different and riskier question.`,
   ],
   conditional: [
     (name: string) => `${name} may allow "use it or lose it" or forfeiture language if the policy is clear and communicated in advance. The exact result depends on the written policy and any contract terms.`,
@@ -117,12 +117,12 @@ const USE_IT_OR_LOSE_IT_ANSWERS = {
 
 const CALCULATION_ANSWERS = [
   (name: string) => `Multiply unused PTO hours by your final hourly rate. For salaried employees, convert salary to a daily or hourly equivalent, then multiply by accrued unused PTO. PTO payout is gross wages before tax withholding.`,
-  (name: string) => `For a ${name} payout estimate, multiply the unused hours on your PTO ledger by your final regular hourly rate. Salaried workers can convert annual salary into an hourly or daily rate first.`,
+  (name: string) => `For a payout estimate in ${name}, multiply the unused hours on your PTO ledger by your final regular hourly rate. Salaried workers can convert annual salary into an hourly or daily rate first.`,
   (name: string) => `Use the same basic math in ${name}: unused vacation hours times the final pay rate. The result is a gross wage figure before federal, state, and payroll withholding.`,
   (name: string) => `To estimate unpaid PTO in ${name}, start with the accrued balance shown on your paystub or HR portal, then multiply by your final hourly equivalent.`,
   (name: string) => `A practical ${name} estimate is accrued unused PTO x final hourly rate. If your employer tracks days instead of hours, convert the days into work hours before multiplying.`,
   (name: string) => `For ${name}, calculate the gross amount by converting the PTO balance into hours and multiplying by the final regular rate. Taxes and deductions come after that gross figure.`,
-  (name: string) => `For a ${name} final-pay dispute, write down the PTO balance, the rate used by payroll, and the gross amount you expected before comparing it with the final check.`,
+  (name: string) => `For a final-pay dispute in ${name}, write down the PTO balance, the rate used by payroll, and the gross amount you expected before comparing it with the final check.`,
 ] as const;
 
 const PRACTICE_INTRO_VARIANTS = [
@@ -130,9 +130,9 @@ const PRACTICE_INTRO_VARIANTS = [
   (name: string) => `In ${name}, the practical analysis starts with the accrued balance, then moves to the handbook language, and finally to whether the final paycheck met the state timing rule.`,
   (name: string) => `Most ${name} vacation payout disputes come down to proof: the PTO ledger, the written policy, and the final paystub showing what was actually paid.`,
   (name: string) => `For ${name} workers, the important question is not just whether PTO exists, but whether it vested, whether forfeiture was clearly allowed, and whether payroll handled it on time.`,
-  (name: string) => `A ${name} PTO claim is strongest when the records line up: accrued time, a policy promising payout, and a final paycheck that left the balance out.`,
-  (name: string) => `When reviewing a ${name} PTO payout, separate the issue into accrual, policy, and payment timing. Each one needs its own document trail.`,
-  (name: string) => `The cleanest way to review a ${name} payout issue is to match three documents: the PTO balance, the written policy, and the final wage statement.`,
+  (name: string) => `A PTO claim in ${name} is strongest when the records line up: accrued time, a policy promising payout, and a final paycheck that left the balance out.`,
+  (name: string) => `When reviewing a PTO payout in ${name}, separate the issue into accrual, policy, and payment timing. Each one needs its own document trail.`,
+  (name: string) => `The cleanest way to review a payout issue in ${name} is to match three documents: the PTO balance, the written policy, and the final wage statement.`,
 ] as const;
 
 const ESTIMATE_COPY_VARIANTS = [
@@ -151,7 +151,7 @@ const CLAIM_ANSWERS = [
   (s: UsStateWithPto) => `Use ${s.dolUrl} as the official ${s.name} starting point. A strong claim package includes the handbook, offer letter, PTO ledger, final paystub, and last-day documentation.`,
   (s: UsStateWithPto) => `The ${s.name} labor agency can confirm the wage-claim route: ${s.dolUrl}. Keep the final check, PTO balance, separation notice, and HR messages together before filing.`,
   (s: UsStateWithPto) => `If payroll will not correct the issue in ${s.name}, check the agency process at ${s.dolUrl}. Attach documents showing what PTO accrued and why the policy required payout.`,
-  (s: UsStateWithPto) => `For a ${s.name} PTO dispute, collect the policy and payroll records first, then use ${s.dolUrl} to find the state complaint process or contact point.`,
+  (s: UsStateWithPto) => `For a PTO dispute in ${s.name}, collect the policy and payroll records first, then use ${s.dolUrl} to find the state complaint process or contact point.`,
   (s: UsStateWithPto) => `Before filing in ${s.name}, organize the handbook, PTO ledger, and final paystub. The official agency starting point is ${s.dolUrl}.`,
 ] as const;
 
