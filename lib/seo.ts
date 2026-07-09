@@ -17,6 +17,19 @@ export const SITE = {
   legalEmail: "legal@mypayrights.com",
 } as const;
 
+/**
+ * Real brand/social profile URLs for Organization.sameAs (Phase 5, off-page:
+ * entity/authority signals). Empty by default -- sameAs is only emitted once
+ * genuine profiles exist. Never point it at a code repo or placeholder; an
+ * invalid sameAs is worse than none (this is why the old GitHub link was
+ * removed). Populate via NEXT_PUBLIC_SOCIAL_PROFILES (comma-separated) in
+ * Cloudflare, or edit this fallback array once profiles are live.
+ */
+export const SOCIAL_PROFILES: string[] = (process.env.NEXT_PUBLIC_SOCIAL_PROFILES ?? "")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
 export const EDITORIAL_REVIEW = {
   "@type": "Organization",
   name: `${SITE.name} editorial review`,
@@ -142,6 +155,7 @@ export function homepageSchemas(): [object, object] {
         contactType: "customer support",
         availableLanguage: "English",
       },
+      ...(SOCIAL_PROFILES.length ? { sameAs: SOCIAL_PROFILES } : {}),
     },
   ];
 }

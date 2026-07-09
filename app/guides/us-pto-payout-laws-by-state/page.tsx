@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CountryFlag } from "@/components/CountryFlag";
+import { CiteThisPage } from "@/components/CiteThisPage";
 import { SITE, jsonLd } from "@/lib/seo";
 import { STATE_PTO } from "@/lib/calculators/ptoPayout";
 
@@ -253,6 +254,8 @@ export default function UsPtoPayoutGuide() {
                 <li>State Department of Labor regulations (individual states)</li>
               </ul>
             </section>
+
+            <CiteThisPage title="US PTO Payout Laws by State 2026" url={url} updated={DATE} />
           </div>
         </article>
       </div>
