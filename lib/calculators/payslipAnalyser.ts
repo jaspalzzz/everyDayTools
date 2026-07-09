@@ -72,10 +72,10 @@ const LABEL_MAP: { pattern: RegExp; category: DeductionCategory; isPreTax: boole
     guideUrl: "https://www.gov.uk/workplace-pensions/what-you-employer-must-do",
   },
   {
-    pattern: /student.?loan|plan.?[123]|postgrad/i,
+    pattern: /student.?loan|plan.?[12345]|postgrad/i,
     category: "student-loan",
     isPreTax: false,
-    explanation: "Student loan repayment deducted through PAYE. The repayment rate and threshold depend on your plan: Plan 1 (pre-2012 English/Welsh loans): 9% above £26,900/yr. Plan 2 (post-2012 English/Welsh): 9% above £29,385/yr. Plan 4 (Scottish): 9% above £33,795/yr. Postgraduate Loan: 6% above £21,000/yr. You repay nothing if your income is below the threshold.",
+    explanation: "Student loan repayment deducted through PAYE. The repayment rate and threshold depend on your plan: Plan 1 (pre-2012 English/Welsh loans): 9% above £26,900/yr. Plan 2 (post-2012 English/Welsh): 9% above £29,385/yr. Plan 4 (Scottish): 9% above £33,795/yr. Plan 5 (English/Welsh, courses starting from August 2023): 9% above £25,000/yr. Postgraduate Loan: 6% above £21,000/yr. You repay nothing if your income is below the threshold.",
     guideUrl: "https://www.gov.uk/repaying-your-student-loan/when-you-start-repaying",
   },
   {
