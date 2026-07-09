@@ -160,14 +160,12 @@ function pickPtoVariant<T>(position: number, variants: readonly [T, ...T[]], off
   return pickVariantByPosition(adjusted + (Math.floor(adjusted / variants.length) * 4), variants);
 }
 
-function peerSortValue(seed: string, slug: string) {
-  let value = 0;
-  const text = `${seed}:${slug}`;
-  for (let index = 0; index < text.length; index += 1) {
-    value = (Math.imul(value, 33) + text.charCodeAt(index)) >>> 0;
-  }
-  return value;
-}
+const REGION_LABEL: Record<UsStateWithPto["region"], string> = {
+  Northeast: "Northeast",
+  Midwest: "Midwest",
+  South: "South",
+  West: "West",
+};
 
 export function generateStaticParams() {
   return US_STATES.map((s) => ({ state: s.slug }));
@@ -245,20 +243,15 @@ export default async function Page({ params }: Props) {
   const faqs = generateFaqs(s);
   const policy = s.pto;
   const variants = ptoVariantContext(s);
-  const sourceHost = new URL(s.dolUrl).hostname;
-  const comparisonPeers = US_STATES
-    .filter((state) => state.slug !== s.slug)
-    .sort((left, right) => peerSortValue(s.slug, left.slug) - peerSortValue(s.slug, right.slug))
-    .slice(0, 18);
-  const nearbyTrail = nearbyStates
-    .map((nearby) => `${nearby.code}-${nearby.slug}-${nearby.pto.rule}-${nearby.finalPaycheckTerminated}-${nearby.finalPaycheckResigned}`)
-    .join(" | ");
-  const nearbyComparison = nearbyStates
-    .map((nearby) => `${nearby.name} uses "${RULE_LABEL[nearby.pto.rule]}"; fired workers are paid ${nearby.finalPaycheckTerminated.toLowerCase()} and resigning workers are paid ${nearby.finalPaycheckResigned.toLowerCase()}`)
-    .join(". ");
-  const regionalComparison = comparisonPeers
-    .map((peer) => `${peer.name}: ${RULE_LABEL[peer.pto.rule]}, fired ${peer.finalPaycheckTerminated.toLowerCase()}, resigned ${peer.finalPaycheckResigned.toLowerCase()}`)
-    .join(". ");
+  const sameRuleNearby = nearbyStates.filter((nearby) => nearby.pto.rule === s.pto.rule).length;
+  const regionalPattern =
+    nearbyStates.length === 0
+      ? ""
+      : sameRuleNearby === nearbyStates.length
+        ? `all ${nearbyStates.length} of the nearby ${REGION_LABEL[s.region]} states listed below take the same approach, so the regional pattern is consistent`
+        : sameRuleNearby === 0
+          ? `none of the nearby ${REGION_LABEL[s.region]} states below follow the same approach, so neighbouring rules differ sharply`
+          : `${sameRuleNearby} of the ${nearbyStates.length} nearby ${REGION_LABEL[s.region]} states below share the same approach and the rest differ, so it is worth checking each state individually`;
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -355,25 +348,64 @@ export default async function Page({ params }: Props) {
 
           <h2 className="mt-6 text-base font-semibold text-ink">State-specific checkpoints</h2>
           <p>
-            For this {s.code} record, cross-check the {s.region} source trail against {s.dolUrl}.
-            The final-pay timing attached to this page is {s.finalPaycheckTerminated.toLowerCase()}
-            {" "}after an employer termination and {s.finalPaycheckResigned.toLowerCase()} after a
-            resignation. The comparison set used here is{" "}
-            {nearbyStates.map((nearby) => `${nearby.code} ${nearby.slug} (${RULE_LABEL[nearby.pto.rule]})`).join("; ")}.
+            In {s.name}, a final paycheck — including any PTO payout that is owed — is due{" "}
+            {s.finalPaycheckTerminated.toLowerCase()} when the employer ends the job and{" "}
+            {s.finalPaycheckResigned.toLowerCase()} when you resign. Confirm the current rule against the{" "}
+            <a href={s.dolUrl} target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">
+              {s.name} labor agency
+            </a>{" "}
+            before you file, since deadlines and payout rules can change between legislative sessions.
           </p>
-          <p>
-            Source fingerprint: {s.code}-{s.slug}-{s.region}-{sourceHost}-{s.verifiedYear}.
-            PTO classification token: {policy.rule}-{policy.code}-{policy.name}. Final-pay token:
-            terminated={s.finalPaycheckTerminated}; resigned={s.finalPaycheckResigned}. Nearby
-            rule trail: {nearbyTrail}.
-          </p>
-          <p>
-            Nearby comparison detail: {nearbyComparison}.
-          </p>
-          <p>
-            Regional comparison trail: {regionalComparison}.
-          </p>
+          {regionalPattern && (
+            <p>
+              {s.name} sits in the U.S. Census {REGION_LABEL[s.region]} region, and {regionalPattern}.
+            </p>
+          )}
         </section>
+
+        {nearbyStates.length > 0 && (
+          <section className="mb-10" aria-labelledby="nearby-heading">
+            <h2 id="nearby-heading" className="mb-2 text-base font-semibold text-ink">
+              How nearby states handle PTO payout
+            </h2>
+            <p className="mb-4 text-sm leading-relaxed text-ink-soft">
+              How {s.name} compares with neighbouring states on unused vacation payout and final-pay timing.
+              Follow a link for that state&apos;s full rules.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-surface-line text-xs uppercase tracking-wide text-ink-faint">
+                    <th scope="col" className="py-2 pr-4 font-semibold">State</th>
+                    <th scope="col" className="py-2 pr-4 font-semibold">PTO payout rule</th>
+                    <th scope="col" className="py-2 pr-4 font-semibold">If fired</th>
+                    <th scope="col" className="py-2 font-semibold">If resigned</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-surface-line bg-surface-muted/40">
+                    <th scope="row" className="py-2 pr-4 font-semibold text-ink">{s.name} (this page)</th>
+                    <td className="py-2 pr-4 text-ink-soft">{RULE_LABEL[s.pto.rule]}</td>
+                    <td className="py-2 pr-4 text-ink-soft">{s.finalPaycheckTerminated}</td>
+                    <td className="py-2 text-ink-soft">{s.finalPaycheckResigned}</td>
+                  </tr>
+                  {nearbyStates.map((nearby) => (
+                    <tr key={nearby.slug} className="border-b border-surface-line last:border-0">
+                      <th scope="row" className="py-2 pr-4 font-medium">
+                        <Link href={`/us/states/${nearby.slug}/pto-payout`} className="text-brand-600 hover:underline">
+                          {nearby.name}
+                        </Link>
+                      </th>
+                      <td className="py-2 pr-4 text-ink-soft">{RULE_LABEL[nearby.pto.rule]}</td>
+                      <td className="py-2 pr-4 text-ink-soft">{nearby.finalPaycheckTerminated}</td>
+                      <td className="py-2 text-ink-soft">{nearby.finalPaycheckResigned}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
 
         <section className="mb-10 rounded-xl border border-brand-100 bg-brand-50 p-5">
           <h2 className="text-base font-semibold text-ink">Calculate and compare</h2>
@@ -400,26 +432,6 @@ export default async function Page({ params }: Props) {
             ))}
           </div>
         </section>
-
-        {nearbyStates.length > 0 && (
-          <section className="mb-10" aria-labelledby="nearby-heading">
-            <h2 id="nearby-heading" className="mb-4 text-base font-semibold text-ink">
-              Compare nearby state PTO rules
-            </h2>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {nearbyStates.map((nearby) => (
-                <Link
-                  key={nearby.slug}
-                  href={`/us/states/${nearby.slug}/pto-payout`}
-                  className="rounded-lg border border-surface-line bg-white p-4 hover:bg-surface-muted"
-                >
-                  <p className="text-sm font-semibold text-ink">{nearby.name}</p>
-                  <p className="mt-1 text-xs text-ink-soft">{RULE_LABEL[nearby.pto.rule]}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
 
         <div className="border-t border-surface-line pt-6 text-xs text-ink-faint">
           Sources:{" "}
