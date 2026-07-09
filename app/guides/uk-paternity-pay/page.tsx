@@ -9,9 +9,9 @@ const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "UK Paternity Pay & Leave 2026 — SPP Rates, Qualifying Conditions & New Rights",
+  title: "UK Paternity Pay & Leave 2026",
   description:
-    "Statutory Paternity Pay (SPP) is £194.32/week or 90% of AWE (whichever is lower) for up to 2 weeks. How to qualify, when to apply, and the extended rights from April 2025.",
+    "Statutory Paternity Pay is £194.32/week or 90% of AWE for up to 2 weeks. How to qualify, when to apply, and current leave rights.",
   alternates: { canonical: url },
   openGraph: { title: "UK Paternity Pay & Leave 2026", description: "How SPP works, who qualifies, the 2-week entitlement, and new expanded rights.", url },
 };

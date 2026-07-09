@@ -9,7 +9,7 @@ const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "UK Redundancy Pay: Complete Guide 2026 — Statutory Entitlement Explained",
+  title: "UK Redundancy Pay Guide 2026",
   description: clampMetaDescription(
     "How UK statutory redundancy pay is calculated, who qualifies, the weekly pay cap for 2026/27 (£751), the tax-free threshold (£30,000), and what to do if your employer refuses to pay.",
   ),

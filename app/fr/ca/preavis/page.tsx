@@ -8,7 +8,7 @@ const url = `${SITE.url}/fr/ca/preavis`;
 export const metadata: Metadata = {
   title: "Calculateur de préavis de licenciement — Québec 2026",
   description:
-    "Calculez le préavis minimal que votre employeur doit vous donner en cas de congédiement au Québec. Conforme à la Loi sur les normes du travail et au Code canadien du travail.",
+    "Calculez le préavis minimal dû en cas de congédiement au Québec selon la Loi sur les normes du travail.",
   alternates: {
     canonical: url,
     languages: { "fr-CA": url, "en-CA": `${SITE.url}/notice-period-calculator` },

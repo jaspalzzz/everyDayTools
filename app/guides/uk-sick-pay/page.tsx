@@ -9,7 +9,7 @@ const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "UK Sick Pay Guide 2026 — SSP from Day 1, Qualifying Conditions & When It Runs Out",
+  title: "UK Sick Pay Guide 2026",
   description: clampMetaDescription(
     "Statutory Sick Pay is £123.25/week from day one of illness in 2026 — the three waiting days were abolished by the Employment Rights Act 2025. How long SSP lasts, what to do when it ends, and enhanced sick pay.",
   ),

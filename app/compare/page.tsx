@@ -6,9 +6,9 @@ import { COMPARISONS } from "@/data/comparisons";
 const url = `${SITE.url}/compare`;
 
 export const metadata: Metadata = {
-  title: "Employment Law Comparisons — Understand Your Rights | MyPayRights",
+  title: "Employment Law Comparisons — Understand Your Rights",
   description:
-    "Clear side-by-side comparisons of the employment law concepts workers confuse most: PILON vs garden leave, unfair vs wrongful dismissal, redundancy vs dismissal, and more.",
+    "Side-by-side comparisons of employment law concepts: PILON vs garden leave, unfair vs wrongful dismissal, redundancy vs dismissal, and more.",
   alternates: { canonical: url },
   openGraph: {
     title: "Employment Law Comparisons | MyPayRights",

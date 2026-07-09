@@ -9,7 +9,7 @@ const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "UK Notice Period Law 2026: Statutory Rights, Garden Leave & PILON Explained",
+  title: "UK Notice Period Law 2026",
   description: clampMetaDescription(
     "How statutory minimum notice works in the UK under the Employment Rights Act 1996, the difference between statutory and contractual notice, garden leave, payment in lieu of notice, and what to do if your employer ignores your entitlement.",
   ),

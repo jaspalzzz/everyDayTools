@@ -6,12 +6,12 @@ const url = `${SITE.url}/situations/made-redundant-uk`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "Made Redundant in the UK? Here's Exactly What You're Owed — 2026",
+  title: "Made Redundant in the UK? What You're Owed 2026",
   description:
     "Step-by-step guide: statutory redundancy pay, notice entitlement, PILON vs garden leave, accrued holiday, and settlement agreement rights. Calculate every figure.",
   alternates: { canonical: url },
   openGraph: {
-    title: "Made Redundant in the UK? Here's Exactly What You're Owed — 2026",
+    title: "Made Redundant in the UK? What You're Owed 2026",
     description:
       "Just been made redundant? This step-by-step guide walks through every payment you're entitled to — with free calculators for each one.",
     url,

@@ -9,7 +9,7 @@ const url = `${SITE.url}/us/overtime`;
 export const metadata: Metadata = {
   title: "US Overtime Law 2026 — Who Qualifies, How to Calculate & Claim",
   description:
-    "FLSA overtime rules for 2026: who is exempt vs non-exempt, how to calculate overtime pay, the salary threshold ($684/week), state overtime laws, and how to recover unpaid overtime.",
+    "FLSA overtime rules for 2026: exempt vs non-exempt workers, overtime pay calculation, salary threshold, state laws, and unpaid overtime claims.",
   alternates: { canonical: url },
   openGraph: {
     title: "US Overtime Law 2026 — FLSA Overtime Pay Rules Explained",

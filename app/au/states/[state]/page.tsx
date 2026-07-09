@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = getAuState(slug);
   if (!s) return {};
 
-  const title = `${s.name} Employment Law 2026 — Minimum Wage & Long Service Leave`;
+  const title = `${s.name} Employment Law 2026`;
   const description = `${s.name} employment law: national minimum wage ${s.nationalMinWage.split(" (")[0]}, long service leave ${s.lslEntitlementWeeks} weeks after ${s.lslQualifyingYears} years under the ${s.lslLegislation}. Workers compensation via ${s.workersCompAuthority}.`;
   const url = `${SITE.url}/au/states/${s.slug}`;
 

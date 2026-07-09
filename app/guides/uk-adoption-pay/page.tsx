@@ -9,7 +9,7 @@ const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "UK Adoption Pay & Leave 2026 — SAP Rates, Qualifying Conditions & Paternity Rights",
+  title: "UK Adoption Pay & Leave 2026",
   description: clampMetaDescription(
     "Statutory Adoption Pay (SAP) is £194.32/week for up to 39 weeks in 2026/27. How adoption leave works, who qualifies, the partner's 2-week entitlement, and how to elect which parent takes primary leave.",
   ),

@@ -10,9 +10,9 @@ const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "US PTO Payout Laws by State 2026: Which States Require Vacation Payout?",
+  title: "US PTO Payout Laws by State 2026",
   description:
-    "No federal law requires employers to pay out unused vacation. Whether you get paid depends on your state. Here are the PTO payout rules for all 50 US states — updated for 2026.",
+    "No federal law requires unused vacation payout. Whether you get paid depends on state law. PTO payout rules for all 50 US states, updated for 2026.",
   alternates: { canonical: url },
   openGraph: {
     title: "US PTO Payout Laws by State 2026",

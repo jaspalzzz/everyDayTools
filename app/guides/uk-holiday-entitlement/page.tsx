@@ -9,7 +9,7 @@ const url = `${SITE.url}/guides/${SLUG}`;
 const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
-  title: "UK Holiday Entitlement 2026 — 28 Days, Part-Time & Carry-Over Rules",
+  title: "UK Holiday Entitlement 2026",
   description: clampMetaDescription(
     "UK workers are entitled to at least 28 days' paid holiday per year (including 8 bank holidays). How part-time and irregular-hours workers accrue leave, rolled-up holiday pay, and carry-over rules.",
   ),

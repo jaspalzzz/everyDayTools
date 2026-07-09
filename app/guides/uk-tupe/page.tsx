@@ -11,7 +11,7 @@ const DATE = "2026-06-27";
 export const metadata: Metadata = {
   title: "TUPE UK: Your Rights When Your Employer Changes 2026",
   description:
-    "What TUPE is, when it applies (business transfers and service provision changes), what it protects, how redundancy interacts with TUPE, and what to do if your employer breaches it.",
+    "What TUPE is, when it applies, what it protects, how redundancy interacts with TUPE, and what to do if your employer breaches it.",
   alternates: { canonical: url },
   openGraph: {
     title: "TUPE UK: Your Rights When Your Employer Changes 2026",
