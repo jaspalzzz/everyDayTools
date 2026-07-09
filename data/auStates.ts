@@ -5,8 +5,8 @@
  * area where state/territory law still varies significantly.
  *
  * Sources:
- * - National Minimum Wage: Fair Work Commission Annual Wage Review 2025-26 ($24.10/hr from 1 July 2025)
- * - Long service leave: state/territory LSL Acts (verified 2025)
+ * - National Minimum Wage: Fair Work Commission Annual Wage Review 2026-27 ($26.44/hr from 1 July 2026)
+ * - Long service leave: state/territory LSL Acts (verified 2025; wage reviewed 2026)
  * - Workers comp authority: state/territory gov websites (verified 2025)
  */
 
@@ -45,7 +45,7 @@ export const AU_STATES: AuStateData[] = [
     slug: "new-south-wales",
     code: "NSW",
     name: "New South Wales",
-    nationalMinWage: "$24.10/hr (national minimum from 1 July 2025)",
+    nationalMinWage: "$26.44/hr (national minimum from 1 July 2026)",
     hasStateIrSystem: false,
     lslSummary: "2 months (8.67 weeks) after 10 years of continuous service. Pro-rata entitlement if dismissed or constructively dismissed after 5 years.",
     lslQualifyingYears: 10,
@@ -55,13 +55,13 @@ export const AU_STATES: AuStateData[] = [
     workersCompAuthority: "SIRA (State Insurance Regulatory Authority)",
     workersCompUrl: "https://www.sira.nsw.gov.au",
     employmentAuthorityUrl: "https://www.fairwork.gov.au",
-    verifiedYear: 2025,
+    verifiedYear: 2026,
   },
   {
     slug: "victoria",
     code: "VIC",
     name: "Victoria",
-    nationalMinWage: "$24.10/hr (national minimum from 1 July 2025)",
+    nationalMinWage: "$26.44/hr (national minimum from 1 July 2026)",
     hasStateIrSystem: false,
     lslSummary: "6 weeks after 7 years of continuous service, then 1 additional week for each subsequent 60 weeks. Pro-rata after 7 years on any separation; after 1 year if employer dismisses or constructively dismisses.",
     lslQualifyingYears: 7,
@@ -71,13 +71,13 @@ export const AU_STATES: AuStateData[] = [
     workersCompAuthority: "WorkSafe Victoria",
     workersCompUrl: "https://www.worksafe.vic.gov.au",
     employmentAuthorityUrl: "https://www.fairwork.gov.au",
-    verifiedYear: 2025,
+    verifiedYear: 2026,
   },
   {
     slug: "queensland",
     code: "QLD",
     name: "Queensland",
-    nationalMinWage: "$24.10/hr (national minimum from 1 July 2025)",
+    nationalMinWage: "$26.44/hr (national minimum from 1 July 2026)",
     hasStateIrSystem: false,
     lslSummary: "8.67 weeks after 10 years of continuous service. Pro-rata payable on termination after 7 years if employer-initiated or after 10 years for any reason.",
     lslQualifyingYears: 10,
@@ -87,13 +87,13 @@ export const AU_STATES: AuStateData[] = [
     workersCompAuthority: "WorkCover Queensland",
     workersCompUrl: "https://www.workcoverqld.com.au",
     employmentAuthorityUrl: "https://www.fairwork.gov.au",
-    verifiedYear: 2025,
+    verifiedYear: 2026,
   },
   {
     slug: "western-australia",
     code: "WA",
     name: "Western Australia",
-    nationalMinWage: "$24.10/hr (national minimum from 1 July 2025)",
+    nationalMinWage: "$26.44/hr (national minimum from 1 July 2026)",
     hasStateIrSystem: true,
     stateMinWage: "$25.00/hr (WA State Wage Order 2024 — applies to state system employees)",
     lslSummary: "8.67 weeks after 10 years of continuous service. Pro-rata payable if dismissed without fault after 7 years, or if employee resigns due to illness, domestic pressing necessity, or end of fixed-term contract after 7 years.",
@@ -104,13 +104,13 @@ export const AU_STATES: AuStateData[] = [
     workersCompAuthority: "WorkCover WA",
     workersCompUrl: "https://www.workcover.wa.gov.au",
     employmentAuthorityUrl: "https://www.commerce.wa.gov.au/labour-relations",
-    verifiedYear: 2025,
+    verifiedYear: 2026,
   },
   {
     slug: "south-australia",
     code: "SA",
     name: "South Australia",
-    nationalMinWage: "$24.10/hr (national minimum from 1 July 2025)",
+    nationalMinWage: "$26.44/hr (national minimum from 1 July 2026)",
     hasStateIrSystem: false,
     lslSummary: "9.33 weeks after 10 years of continuous service. Pro-rata on termination after 7 years (any reason).",
     lslQualifyingYears: 10,
@@ -120,13 +120,13 @@ export const AU_STATES: AuStateData[] = [
     workersCompAuthority: "ReturnToWorkSA",
     workersCompUrl: "https://www.rtwsa.com",
     employmentAuthorityUrl: "https://www.fairwork.gov.au",
-    verifiedYear: 2025,
+    verifiedYear: 2026,
   },
   {
     slug: "tasmania",
     code: "TAS",
     name: "Tasmania",
-    nationalMinWage: "$24.10/hr (national minimum from 1 July 2025)",
+    nationalMinWage: "$26.44/hr (national minimum from 1 July 2026)",
     hasStateIrSystem: false,
     lslSummary: "8.67 weeks after 10 years of continuous service. Pro-rata payable if dismissed after 7 years, or if employee dies.",
     lslQualifyingYears: 10,
@@ -136,13 +136,13 @@ export const AU_STATES: AuStateData[] = [
     workersCompAuthority: "WorkSafe Tasmania",
     workersCompUrl: "https://worksafe.tas.gov.au",
     employmentAuthorityUrl: "https://www.fairwork.gov.au",
-    verifiedYear: 2025,
+    verifiedYear: 2026,
   },
   {
     slug: "australian-capital-territory",
     code: "ACT",
     name: "Australian Capital Territory",
-    nationalMinWage: "$24.10/hr (national minimum from 1 July 2025)",
+    nationalMinWage: "$26.44/hr (national minimum from 1 July 2026)",
     hasStateIrSystem: false,
     lslSummary: "6.067 weeks after 7 years of continuous service, then an additional 0.867 weeks for each subsequent year. Pro-rata on termination after 1 year if employer-initiated.",
     lslQualifyingYears: 7,
@@ -152,13 +152,13 @@ export const AU_STATES: AuStateData[] = [
     workersCompAuthority: "WorkSafe ACT",
     workersCompUrl: "https://www.worksafe.act.gov.au",
     employmentAuthorityUrl: "https://www.fairwork.gov.au",
-    verifiedYear: 2025,
+    verifiedYear: 2026,
   },
   {
     slug: "northern-territory",
     code: "NT",
     name: "Northern Territory",
-    nationalMinWage: "$24.10/hr (national minimum from 1 July 2025)",
+    nationalMinWage: "$26.44/hr (national minimum from 1 July 2026)",
     hasStateIrSystem: false,
     lslSummary: "6 weeks after 7 years of continuous service. Pro-rata payable on termination after 4 years if employer-initiated or by death; after 6 years for any reason.",
     lslQualifyingYears: 7,
@@ -168,7 +168,7 @@ export const AU_STATES: AuStateData[] = [
     workersCompAuthority: "NT WorkSafe",
     workersCompUrl: "https://worksafe.nt.gov.au",
     employmentAuthorityUrl: "https://www.fairwork.gov.au",
-    verifiedYear: 2025,
+    verifiedYear: 2026,
   },
 ];
 

@@ -2,11 +2,85 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
-import { AU_STATES, getAuState } from "@/data/auStates";
+import { AU_STATES, getAuState, type AuStateData } from "@/data/auStates";
 import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
+import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
 import type { FaqItem } from "@/lib/types";
 
 type Props = { params: Promise<{ state: string }> };
+
+const AU_ALL_SLUGS = AU_STATES.map((s) => s.slug);
+
+// Rank-based phrasing variants (arrays of different lengths so no two of the
+// 8 states collide on every answer). The national minimum wage, Fair Work
+// coverage and max-hours answers are otherwise identical across states.
+const AU_MINWAGE = [
+  (s: AuStateData) => `The national minimum wage in ${s.name} is $26.44 per hour, effective 1 July 2026 following the Fair Work Commission's Annual Wage Review 2026-27.`,
+  (s: AuStateData) => `As of 1 July 2026, workers in ${s.name} on the national minimum wage earn $26.44 per hour — the rate set by the Fair Work Commission's 2026-27 review.`,
+  (s: AuStateData) => `${s.name} follows the national minimum wage of $26.44/hour from 1 July 2026 (Fair Work Commission Annual Wage Review 2026-27).`,
+  (s: AuStateData) => `In ${s.name}, the national minimum wage is $26.44 per hour from the first full pay period on or after 1 July 2026, per the Fair Work Commission.`,
+  (s: AuStateData) => `The Fair Work Commission set the national minimum wage at $26.44/hour from 1 July 2026, and that rate applies to national-system employees in ${s.name}.`,
+] as const;
+
+const AU_COVERAGE = [
+  (s: AuStateData) => `Most private sector employees in ${s.name} are covered by the Fair Work Act 2009 (Cth) — the "national system." This includes employees of constitutional corporations, the Commonwealth, and territory employers.`,
+  (s: AuStateData) => `In ${s.name}, the Fair Work Act 2009 (Cth) covers most private sector workers as national-system employees, including those employed by constitutional corporations and the Commonwealth.`,
+  (s: AuStateData) => `The national system under the Fair Work Act 2009 (Cth) covers the large majority of ${s.name} private sector employees — constitutional corporations, Commonwealth and territory employers included.`,
+  (s: AuStateData) => `${s.name} workers in the private sector are, for the most part, national-system employees under the Fair Work Act 2009 (Cth), which reaches constitutional corporations and Commonwealth employers.`,
+  (s: AuStateData) => `Coverage in ${s.name} runs mainly through the Fair Work Act 2009 (Cth): most private sector staff are national-system employees, as are Commonwealth and constitutional-corporation employees.`,
+  (s: AuStateData) => `For ${s.name}, the Fair Work Act 2009 (Cth) is the primary source of coverage — most private employees fall under the national system, alongside Commonwealth and territory employers.`,
+] as const;
+
+const AU_COVERAGE_TAIL = (s: AuStateData) =>
+  s.hasStateIrSystem
+    ? ` ${s.name} is unusual in also running a state industrial relations system (Industrial Relations Act 1979 (WA)) that covers employees of non-constitutional corporations such as sole traders, partnerships and non-corporate trusts.`
+    : ` State and local government employees in ${s.name} are covered by state public sector employment laws rather than the Fair Work Act.`;
+
+const AU_MAXHOURS = [
+  (s: AuStateData) => `Under the Fair Work Act 2009 (NES), full-time employees in ${s.name} have a maximum of 38 ordinary hours per week. An employer can request reasonable additional hours, but employees can refuse unreasonable requests.`,
+  (s: AuStateData) => `The NES caps ordinary hours at 38 per week for full-time employees in ${s.name}. Reasonable additional hours can be asked for, but you can decline requests that are unreasonable.`,
+  (s: AuStateData) => `In ${s.name}, the National Employment Standards set 38 ordinary hours a week for full-time staff. Extra hours must be reasonable, and an employee may refuse if they are not.`,
+  (s: AuStateData) => `Full-time employees in ${s.name} work a maximum of 38 ordinary hours per week under the NES. Employers may request reasonable extra hours; unreasonable requests can be refused.`,
+  (s: AuStateData) => `The 38-hour ordinary week from the National Employment Standards applies to full-time employees in ${s.name}. Additional hours are only required where they are reasonable.`,
+  (s: AuStateData) => `${s.name} full-time employees are subject to the NES 38-hour ordinary week. An employer can seek reasonable additional hours, but an employee is entitled to refuse unreasonable ones.`,
+  (s: AuStateData) => `Under the National Employment Standards, the ordinary-hours ceiling for full-time employees in ${s.name} is 38 hours a week, with any extra hours needing to be reasonable.`,
+] as const;
+
+const AU_MAXHOURS_TAIL =
+  ` What counts as "reasonable" depends on health and safety, personal circumstances, the role, and usual industry patterns. Modern awards and enterprise agreements may set additional daily and weekly limits.`;
+
+const AU_INTRO = [
+  (s: AuStateData) => `Minimum wage, long service leave entitlements, workers compensation, and key employment rights for workers in ${s.name}.`,
+  (s: AuStateData) => `What ${s.name} workers need to know: the national minimum wage, long service leave, workers compensation, and core Fair Work rights.`,
+  (s: AuStateData) => `A quick guide to pay and entitlements in ${s.name} — minimum wage, long service leave, workers comp, and your rights under the Fair Work Act.`,
+  (s: AuStateData) => `Key employment facts for ${s.name}: minimum wage, long service leave, workers compensation, and the Fair Work protections that apply.`,
+] as const;
+
+const AU_LSL = [
+  (s: AuStateData) => `In ${s.name}, long service leave is governed by the ${s.lslLegislation}. You qualify after ${s.lslQualifyingYears} years of continuous service with the same employer and receive ${s.lslEntitlementWeeks} weeks of paid leave.`,
+  (s: AuStateData) => `Long service leave in ${s.name} comes from the ${s.lslLegislation}: ${s.lslEntitlementWeeks} weeks of paid leave once you reach ${s.lslQualifyingYears} years of continuous service with one employer.`,
+  (s: AuStateData) => `Under ${s.name}'s ${s.lslLegislation}, continuous service of ${s.lslQualifyingYears} years with the same employer earns ${s.lslEntitlementWeeks} weeks of long service leave.`,
+  (s: AuStateData) => `${s.name} sets long service leave through the ${s.lslLegislation} — after ${s.lslQualifyingYears} years with the same employer you accrue ${s.lslEntitlementWeeks} weeks of paid leave.`,
+  (s: AuStateData) => `The ${s.lslLegislation} gives ${s.name} employees ${s.lslEntitlementWeeks} weeks of long service leave after ${s.lslQualifyingYears} years of unbroken service with the same employer.`,
+  (s: AuStateData) => `For ${s.name}, long service leave sits under the ${s.lslLegislation}: reach ${s.lslQualifyingYears} years of continuous service and you're entitled to ${s.lslEntitlementWeeks} weeks' paid leave.`,
+  (s: AuStateData) => `${s.name}'s long service leave rules (the ${s.lslLegislation}) provide ${s.lslEntitlementWeeks} weeks of paid leave at ${s.lslQualifyingYears} years of continuous service with one employer.`,
+  (s: AuStateData) => `Employees in ${s.name} accrue long service leave under the ${s.lslLegislation} — ${s.lslEntitlementWeeks} weeks after ${s.lslQualifyingYears} years of continuous service with the same employer.`,
+] as const;
+
+const AU_WORKERSCOMP = [
+  (s: AuStateData) => `Workers compensation in ${s.name} is administered by ${s.workersCompAuthority} (${s.workersCompUrl}). If you're injured at work, notify your employer as soon as possible, get medical treatment and a certificate, and lodge a claim with the employer's insurer.`,
+  (s: AuStateData) => `${s.workersCompAuthority} administers workers compensation in ${s.name} (${s.workersCompUrl}). After a work injury, tell your employer promptly, obtain a medical certificate, and lodge a claim through their insurer.`,
+  (s: AuStateData) => `In ${s.name}, workers compensation runs through ${s.workersCompAuthority} (${s.workersCompUrl}). The steps after a workplace injury: notify your employer, seek treatment and a certificate, then lodge a claim with the insurer.`,
+  (s: AuStateData) => `If you're hurt at work in ${s.name}, workers compensation is handled by ${s.workersCompAuthority} (${s.workersCompUrl}). Report the injury to your employer, get a medical certificate, and file a claim with their insurer.`,
+  (s: AuStateData) => `${s.name}'s workers compensation scheme is administered by ${s.workersCompAuthority} (${s.workersCompUrl}). Notify your employer quickly after an injury, get medical evidence, and lodge the claim via the employer's insurer.`,
+  (s: AuStateData) => `Workers comp claims in ${s.name} go through ${s.workersCompAuthority} (${s.workersCompUrl}). Following a work injury you should inform your employer, obtain a medical certificate, and submit a claim to their insurer.`,
+  (s: AuStateData) => `To claim workers compensation in ${s.name}, deal with ${s.workersCompAuthority} (${s.workersCompUrl}): report the injury to your employer, get treated and certified, and lodge with the insurer.`,
+  (s: AuStateData) => `In ${s.name}, ${s.workersCompAuthority} (${s.workersCompUrl}) oversees workers compensation. After a workplace injury, notify your employer, secure a medical certificate, and lodge your claim through the employer's insurer.`,
+  (s: AuStateData) => `${s.name} workers injured on the job claim through ${s.workersCompAuthority} (${s.workersCompUrl}). Report promptly to your employer, get a medical certificate, and lodge the claim with their workers-comp insurer.`,
+] as const;
+
+const AU_WORKERSCOMP_TAIL =
+  " Most employers must hold workers compensation insurance, and claims cover medical expenses, rehabilitation, and income replacement while you can't work.";
 
 export async function generateStaticParams() {
   return AU_STATES.map((s) => ({ state: s.slug }));
@@ -30,31 +104,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function generateFaqs(s: AuStateData): FaqItem[] {
+  const rank = clusterRank(AU_ALL_SLUGS, s.slug);
+  const minWageTail = s.hasStateIrSystem
+    ? ` Note: ${s.name} also runs a state industrial relations system for non-constitutional corporations — the ${s.stateMinWage ?? "WA state minimum wage"} may apply to state-system employees; check with the WA Industrial Relations Commission.`
+    : ` The national minimum wage is set by the Fair Work Commission and applies across all sectors covered by the national system in ${s.name}.`;
   return [
     {
       question: `What is the minimum wage in ${s.name} in 2026?`,
-      answer: `The national minimum wage in ${s.name} is $24.10 per hour (effective 1 July 2025, following the Fair Work Commission's Annual Wage Review 2025-26). ${s.hasStateIrSystem ? `Note: ${s.name} also has a state industrial relations system for non-constitutional corporations. The ${s.stateMinWage ?? "WA state minimum wage"} may apply to state system employees — check with the WA Industrial Relations Commission for your situation.` : "The national minimum wage is set by the Fair Work Commission and applies across all sectors covered by the national system in " + s.name + "."}`,
+      answer: `${pickVariantByPosition(rank, AU_MINWAGE)(s)}${minWageTail}`,
     },
     {
       question: `How much long service leave am I entitled to in ${s.name}?`,
-      answer: `In ${s.name}, employees are entitled to long service leave under the ${s.lslLegislation}. You qualify after ${s.lslQualifyingYears} years of continuous service with the same employer and receive ${s.lslEntitlementWeeks} weeks of paid leave. ${s.lslProRataOnTermination ? `Pro-rata entitlement: ${s.lslProRataOnTermination}.` : ""}`,
+      answer: `${pickVariantByPosition(rank, AU_LSL)(s)}${s.lslProRataOnTermination ? ` Pro-rata entitlement: ${s.lslProRataOnTermination}.` : ""}`,
     },
     {
       question: `Who is covered by the Fair Work Act in ${s.name}?`,
-      answer: `Most private sector employees in ${s.name} are covered by the Fair Work Act 2009 (Cth) — referred to as "national system employees." This includes employees of constitutional corporations, the Commonwealth, and territory employers. ${s.hasStateIrSystem ? `${s.name} is unique in that it also has a state industrial relations system (under the Industrial Relations Act 1979 (WA)) that covers employees of non-constitutional corporations (such as sole traders, partnerships, and non-corporate trusts) operating in WA.` : `State and local government employees in ${s.name} are covered by state public sector employment laws rather than the Fair Work Act.`}`,
+      answer: `${pickVariantByPosition(rank, AU_COVERAGE)(s)}${AU_COVERAGE_TAIL(s)}`,
     },
     {
       question: `How do I claim workers compensation in ${s.name}?`,
-      answer: `Workers compensation in ${s.name} is administered by ${s.workersCompAuthority} (${s.workersCompUrl}). If you are injured at work, you must notify your employer as soon as possible, seek medical treatment and obtain a medical certificate, and lodge a workers compensation claim with your employer's insurer. Most employers are required by law to hold workers compensation insurance. Claims cover medical expenses, rehabilitation, and income replacement while you cannot work.`,
+      answer: `${pickVariantByPosition(rank, AU_WORKERSCOMP)(s)}${AU_WORKERSCOMP_TAIL}`,
     },
     {
       question: `What are the maximum working hours in ${s.name}?`,
-      answer: `Under the Fair Work Act 2009 (NES), full-time employees in ${s.name} have a maximum of 38 ordinary hours per week. An employer can request reasonable additional hours, but employees can refuse unreasonable requests. What counts as "reasonable" depends on factors like health and safety, personal circumstances, the nature of the role, and usual working patterns in the industry. Modern awards and enterprise agreements may also set daily and weekly maximum hours relevant to your specific occupation.`,
+      answer: `${pickVariantByPosition(rank, AU_MAXHOURS)(s)}${AU_MAXHOURS_TAIL}`,
     },
   ];
 }
-
-import type { AuStateData } from "@/data/auStates";
 
 export default async function Page({ params }: Props) {
   const { state: slug } = await params;
@@ -64,6 +140,7 @@ export default async function Page({ params }: Props) {
   const url = `${SITE.url}/au/states/${s.slug}`;
   const faqs = generateFaqs(s);
   const reviewedDate = `${s.verifiedYear}-01-01`;
+  const rank = clusterRank(AU_ALL_SLUGS, s.slug);
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -112,8 +189,7 @@ export default async function Page({ params }: Props) {
             {s.name} employment law
           </h1>
           <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-            Minimum wage, long service leave entitlements, workers compensation, and key employment
-            rights for workers in {s.name}.
+            {pickVariantByPosition(rank, AU_INTRO)(s)}
           </p>
         </div>
 
@@ -129,8 +205,8 @@ export default async function Page({ params }: Props) {
           <div className="grid gap-3 sm:grid-cols-3">
             <div className="rounded-xl border border-surface-line bg-surface-muted p-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint mb-1">National minimum wage</p>
-              <p className="font-bold text-ink text-lg">$24.10/hr</p>
-              <p className="text-xs text-ink-faint mt-1">From 1 July 2025</p>
+              <p className="font-bold text-ink text-lg">$26.44/hr</p>
+              <p className="text-xs text-ink-faint mt-1">From 1 July 2026</p>
             </div>
             <div className="rounded-xl border border-surface-line bg-surface-muted p-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint mb-1">Long service leave</p>
@@ -236,7 +312,7 @@ export default async function Page({ params }: Props) {
           <p>
             Data verified {s.verifiedYear}. National minimum wage from{" "}
             <a href="https://www.fairwork.gov.au" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">
-              Fair Work Commission Annual Wage Review 2025-26
+              Fair Work Commission Annual Wage Review 2026-27
             </a>. Long service leave from the {s.lslLegislation}. Employment law changes frequently —
             verify with the{" "}
             <a href={s.employmentAuthorityUrl} target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">

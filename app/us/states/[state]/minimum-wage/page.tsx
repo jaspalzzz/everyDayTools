@@ -76,6 +76,46 @@ const UNDERPAID_ANSWERS = [
   (name: string, dolUrl: string) => `Pay under ${name}'s minimum wage can be pursued through a ${name} Department of Labor complaint, the federal Wage and Hour Division, or a private lawsuit. Recoverable back pay typically covers 2–3 years, sometimes with added damages, and retaliation for complaining is illegal. File at ${dolUrl}.`,
 ] as const;
 
+// Body-prose variants (different lengths from the FAQ arrays) so the intro and
+// "who is covered" lead — otherwise identical across all 51 states — vary.
+const MW_INTRO = [
+  (name: string) => `Current rate, tipped employee rules, and what to do if you are underpaid in ${name}.`,
+  (name: string) => `The ${name} minimum wage, how tipped pay works, and your options if you're paid less than the law allows.`,
+  (name: string) => `What ${name} pays as a minimum, the rules for tipped workers, and how to recover underpaid wages.`,
+  (name: string) => `${name}'s minimum wage rate, tipped-employee treatment, and the steps to take if you've been underpaid.`,
+  (name: string) => `A rundown of the ${name} minimum wage, tipped-wage rules, and what to do about pay below the legal floor.`,
+] as const;
+
+const MW_COVERED_LEAD = [
+  (name: string) => `The minimum wage applies to most employees in ${name}. Common exemptions include:`,
+  (name: string) => `Most workers in ${name} are covered by the minimum wage, but several categories are commonly exempt:`,
+  (name: string) => `In ${name}, the minimum wage reaches the large majority of employees. The usual exceptions are:`,
+  (name: string) => `Coverage in ${name} is broad — most employees qualify — though these groups are often exempt:`,
+  (name: string) => `The ${name} minimum wage covers most employees. Watch for these common exemptions:`,
+  (name: string) => `Nearly all ${name} employees are entitled to the minimum wage, with a handful of common carve-outs:`,
+] as const;
+
+// Federal-tier states ($7.25, no higher state rate) share this card note.
+// Non-federal states (their own rate above $7.25) shared this single answer.
+const MW_NONFEDERAL_ANSWERS = [
+  (name: string, wage: string) => `The federal minimum wage of $7.25/hr applies nationwide, but ${name}'s state minimum wage of ${wage} is higher — and the higher rate must be paid. Under the Fair Labor Standards Act, when a state rate exceeds the federal rate, the state rate controls.`,
+  (name: string, wage: string) => `${name} pays above the federal floor. The federal rate is $7.25/hr, but ${name}'s ${wage} state minimum is higher, so that is what employers must pay — the FLSA gives you whichever rate is greater.`,
+  (name: string, wage: string) => `Yes, but it isn't the operative figure. The federal minimum is $7.25/hr; ${name} sets a higher state minimum of ${wage}, and under the FLSA the higher of the two applies — so ${name} workers get ${wage}.`,
+  (name: string, wage: string) => `The $7.25/hr federal rate is the national floor, but ${name} has legislated a higher state minimum of ${wage}. Because the FLSA requires the greater of federal or state, ${name}'s ${wage} rate governs.`,
+  (name: string, wage: string) => `Federal law sets $7.25/hr, yet ${name}'s own minimum of ${wage} exceeds it. When a state rate beats the federal one, the FLSA makes the state rate controlling — so ${wage} is what applies in ${name}.`,
+  (name: string, wage: string) => `The federal minimum ($7.25/hr) technically applies everywhere, but it's overridden in ${name} by the state's higher ${wage} minimum. The FLSA's greater-of rule means ${name} employers must pay ${wage}.`,
+] as const;
+
+const MW_FEDERAL_CARD = [
+  (name: string) => `${name} uses the federal minimum wage — no higher state rate has been enacted.`,
+  (name: string) => `${name} has not set a state minimum above the federal floor, so the federal rate applies.`,
+  (name: string) => `No state minimum wage higher than the federal rate has been passed in ${name}.`,
+  (name: string) => `${name} defers to the federal minimum wage — the state has not legislated a higher figure.`,
+  (name: string) => `Because ${name} has no state rate above the federal minimum, the federal figure governs.`,
+  (name: string) => `${name} relies on the federal minimum wage; no higher state rate is currently on the books.`,
+  (name: string) => `There is no ${name} state minimum above the federal rate, which is what applies here.`,
+] as const;
+
 function generateFaqs(s: ReturnType<typeof getUsState> & object): FaqItem[] {
   const isFederal = s.minimumWage.includes("federal minimum");
   // Rank within the federal-tier cluster (~20 states), not a hash of the
@@ -97,7 +137,7 @@ function generateFaqs(s: ReturnType<typeof getUsState> & object): FaqItem[] {
       question: `Does the federal minimum wage apply in ${s.name}?`,
       answer: isFederal
         ? isFederalAnswer
-        : `The federal minimum wage of $7.25/hr applies nationwide, but ${s.name}'s state minimum wage of ${s.minimumWage} is higher — and the higher rate must be paid. Under the Fair Labor Standards Act, when a state rate exceeds the federal rate, the state rate controls.`,
+        : pickVariantByPosition(globalRank, MW_NONFEDERAL_ANSWERS)(s.name, s.minimumWage),
     },
     {
       question: `What is the minimum wage for tipped employees in ${s.name}?`,
@@ -123,6 +163,11 @@ export default async function Page({ params }: Props) {
   const faqs = generateFaqs(s);
   const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
   const nearbyStates = getNearbyStates(s.slug);
+  const globalRank = clusterRank(US_STATES.map((st) => st.slug), s.slug);
+  const federalRank = clusterRank(
+    US_STATES.filter((st) => st.minimumWage.includes("federal minimum")).map((st) => st.slug),
+    s.slug,
+  );
 
   const isFederal = s.minimumWage.includes("federal minimum");
 
@@ -172,7 +217,7 @@ export default async function Page({ params }: Props) {
           {s.name} Minimum Wage 2026
         </h1>
         <p className="mb-8 text-ink-soft">
-          Current rate, tipped employee rules, and what to do if you are underpaid.
+          {pickVariantByPosition(globalRank, MW_INTRO)(s.name)}
         </p>
 
         <EditorialReview
@@ -189,7 +234,7 @@ export default async function Page({ params }: Props) {
           </p>
           {isFederal && (
             <p className="mt-2 text-sm text-ink-soft">
-              {s.name} uses the federal minimum wage — no higher state rate has been enacted.
+              {pickVariantByPosition(federalRank, MW_FEDERAL_CARD)(s.name)}
             </p>
           )}
           {s.minimumWageNote && (
@@ -215,7 +260,7 @@ export default async function Page({ params }: Props) {
         <section className="mb-8">
           <h2 className="mb-3 text-xl font-bold text-ink">Who is covered by the {s.name} minimum wage</h2>
           <p className="mb-3 text-ink-soft">
-            The minimum wage applies to most employees in {s.name}. Common exemptions include:
+            {pickVariantByPosition(globalRank, MW_COVERED_LEAD)(s.name)}
           </p>
           <ul className="space-y-2 text-ink-soft">
             {[
@@ -286,20 +331,38 @@ export default async function Page({ params }: Props) {
         {/* Nearby states */}
         {nearbyStates.length > 0 && (
           <section className="mt-8">
-            <h2 className="mb-3 text-sm font-semibold text-ink">Compare nearby states</h2>
-            <p className="mb-3 text-sm text-ink-soft">
-              Minimum wage varies by state — check the {s.region} states near {s.name}.
+            <h2 className="mb-3 text-sm font-semibold text-ink">
+              How {s.name} compares to nearby states
+            </h2>
+            <p className="mb-4 text-sm text-ink-soft">
+              Minimum wage varies across the {s.region} region. {s.name}&apos;s rate is {s.minimumWage} —
+              here is how neighbouring states compare.
             </p>
-            <div className="flex flex-wrap gap-2">
-              {nearbyStates.map((n) => (
-                <Link
-                  key={n.slug}
-                  href={`/us/states/${n.slug}/minimum-wage`}
-                  className="rounded-full border border-surface-line px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:border-brand-600 hover:text-brand-700"
-                >
-                  {n.name}
-                </Link>
-              ))}
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[24rem] border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-surface-line text-xs uppercase tracking-wide text-ink-faint">
+                    <th scope="col" className="py-2 pr-4 font-semibold">State</th>
+                    <th scope="col" className="py-2 font-semibold">Minimum wage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-surface-line bg-surface-muted/40">
+                    <th scope="row" className="py-2 pr-4 font-semibold text-ink">{s.name} (this page)</th>
+                    <td className="py-2 text-ink-soft">{s.minimumWage}</td>
+                  </tr>
+                  {nearbyStates.map((n) => (
+                    <tr key={n.slug} className="border-b border-surface-line last:border-0">
+                      <th scope="row" className="py-2 pr-4 font-medium">
+                        <Link href={`/us/states/${n.slug}/minimum-wage`} className="text-brand-600 hover:underline">
+                          {n.name}
+                        </Link>
+                      </th>
+                      <td className="py-2 text-ink-soft">{n.minimumWage}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </section>
         )}
