@@ -18,7 +18,7 @@ export interface AuStateData {
   nationalMinWage: string;
   /** State IR system for non-constitutional corporations (WA only has its own) */
   hasStateIrSystem: boolean;
-  /** WA state system minimum wage if applicable */
+  /** WA state-system wage note if applicable */
   stateMinWage?: string;
   /** Long service leave entitlement summary */
   lslSummary: string;
@@ -95,7 +95,7 @@ export const AU_STATES: AuStateData[] = [
     name: "Western Australia",
     nationalMinWage: "$26.44/hr (national minimum from 1 July 2026)",
     hasStateIrSystem: true,
-    stateMinWage: "$25.00/hr (WA State Wage Order 2024 — applies to state system employees)",
+    stateMinWage: "WA state-system minimum wage is set separately by the WA Industrial Relations Commission; verify the current State Wage Order before acting",
     lslSummary: "8.67 weeks after 10 years of continuous service. Pro-rata payable if dismissed without fault after 7 years, or if employee resigns due to illness, domestic pressing necessity, or end of fixed-term contract after 7 years.",
     lslQualifyingYears: 10,
     lslEntitlementWeeks: 8.67,

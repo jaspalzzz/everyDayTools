@@ -116,6 +116,75 @@ const MW_FEDERAL_CARD = [
   (name: string) => `There is no ${name} state minimum above the federal rate, which is what applies here.`,
 ] as const;
 
+const MW_CONTEXT = [
+  (name: string, region: string, rate: string, nearby: string, gap: string) =>
+    `${name} should be read as a ${region} wage page, not just a single hourly number. The current displayed rate is ${rate}; ${gap}. Nearby comparison matters because employers with locations in ${nearby} may run different payroll rules even when the jobs look similar.`,
+  (name: string, region: string, rate: string, nearby: string, gap: string) =>
+    `For ${name}, the practical question is which wage floor controls the actual workplace. The page rate is ${rate}, and ${gap}. In the ${region} region, compare that with ${nearby} before assuming a multi-state employer uses one uniform rate.`,
+  (name: string, region: string, rate: string, nearby: string, gap: string) =>
+    `${name}'s wage rule sits inside a wider ${region} market. Use ${rate} as the baseline for covered work in the state, then check local ordinances, tipped-credit treatment, and neighbouring-state rules in ${nearby}; ${gap}.`,
+  (name: string, region: string, rate: string, nearby: string, gap: string) =>
+    `The safest way to use this ${name} page is to separate three questions: the statewide or federal floor, any local rate, and any tipped-worker credit. The rate shown here is ${rate}; ${gap}. Regional comparisons with ${nearby} help catch payroll policies copied from the wrong state.`,
+  (name: string, region: string, rate: string, nearby: string, gap: string) =>
+    `${name} employers should not treat minimum wage as a generic national setting. This page tracks ${rate} for ${name}, while ${nearby} may impose different amounts or timing. ${gap}, so the controlling rule depends on the worker's location and coverage.`,
+] as const;
+
+const MW_ACTION_CHECKLIST = [
+  "Confirm the work location and whether a city or county ordinance applies.",
+  "Check whether the employee is paid through a valid tipped-credit arrangement.",
+  "Compare gross hourly pay before overtime premiums against the controlling minimum.",
+  "Keep pay stubs, time records, schedules, and written rate-change notices together.",
+  "Use the state labor agency link before filing so the claim goes to the right office.",
+  "For multi-state employers, verify the payroll profile was not copied from another state.",
+] as const;
+
+const MW_COVERAGE_ITEMS = [
+  "Certain agricultural or farm workers (federal FLSA exemptions may apply)",
+  "Tipped employees — a lower base rate may apply if tips close the gap",
+  "Student workers at certain educational institutions (may qualify for a subminimum rate)",
+  "Independent contractors — minimum wage laws do not apply to genuine contractors",
+  "Some trainees, learners, or workers in narrowly defined statutory programs",
+  "Family or domestic-service arrangements where a specific exemption applies",
+] as const;
+
+const MW_REPORT_STEPS = [
+  "Calculate the shortfall: hours worked multiplied by the gap between the legal minimum and actual pay.",
+  "Keep records: pay stubs, time records, schedules, text messages, and rate notices.",
+  "Check whether a state, federal, tipped-credit, or local wage rule controls the claim.",
+  "File with the state labor agency or the US DOL Wage and Hour Division when informal correction fails.",
+  "Ask whether back pay, liquidated damages, interest, or attorney-fee rules apply to the facts.",
+] as const;
+
+function parseDollarAmount(value: string): number | null {
+  const match = value.match(/\$([\d.]+)/);
+  return match ? Number(match[1]) : null;
+}
+
+function rotateItems<T>(items: readonly T[], offset: number): T[] {
+  if (items.length === 0) return [];
+  const start = offset % items.length;
+  return [...items.slice(start), ...items.slice(0, start)];
+}
+
+function variantKey(slug: string, rank: number) {
+  return slug.split("").reduce((sum, char, index) => sum + char.charCodeAt(0) * (index + 3), rank * 37);
+}
+
+function pairKey(currentSlug: string, candidateSlug: string) {
+  let hash = 2166136261;
+  for (const char of `${currentSlug}:${candidateSlug}`) {
+    hash ^= char.charCodeAt(0);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+function benchmarkStatesFor(current: (typeof US_STATES)[number]) {
+  return US_STATES.filter((state) => state.slug !== current.slug)
+    .sort((a, b) => pairKey(current.slug, a.slug) - pairKey(current.slug, b.slug))
+    .slice(0, 50);
+}
+
 function generateFaqs(s: ReturnType<typeof getUsState> & object): FaqItem[] {
   const isFederal = s.minimumWage.includes("federal minimum");
   // Rank within the federal-tier cluster (~20 states), not a hash of the
@@ -123,12 +192,14 @@ function generateFaqs(s: ReturnType<typeof getUsState> & object): FaqItem[] {
   // when many records share the same categorical value.
   const federalTierSlugs = US_STATES.filter((st) => st.minimumWage.includes("federal minimum")).map((st) => st.slug);
   const federalRank = clusterRank(federalTierSlugs, s.slug);
-  const federalClause = pickVariantByPosition(federalRank, FEDERAL_RATE_CLAUSES)(s.name);
-  const isFederalAnswer = pickVariantByPosition(federalRank, IS_FEDERAL_ANSWERS)(s.name);
+  const federalVariantRank = variantKey(s.slug, federalRank);
+  const federalClause = pickVariantByPosition(federalVariantRank, FEDERAL_RATE_CLAUSES)(s.name);
+  const isFederalAnswer = pickVariantByPosition(federalVariantRank, IS_FEDERAL_ANSWERS)(s.name);
 
   const globalRank = clusterRank(US_STATES.map((st) => st.slug), s.slug);
+  const variantRank = variantKey(s.slug, globalRank);
 
-  return [
+  return rotateItems([
     {
       question: `What is the minimum wage in ${s.name} in 2026?`,
       answer: `The minimum wage in ${s.name} is ${s.minimumWage}.${s.minimumWageNote ? ` ${s.minimumWageNote}` : ""} ${isFederal ? federalClause : ""}`,
@@ -137,21 +208,21 @@ function generateFaqs(s: ReturnType<typeof getUsState> & object): FaqItem[] {
       question: `Does the federal minimum wage apply in ${s.name}?`,
       answer: isFederal
         ? isFederalAnswer
-        : pickVariantByPosition(globalRank, MW_NONFEDERAL_ANSWERS)(s.name, s.minimumWage),
+        : pickVariantByPosition(variantRank, MW_NONFEDERAL_ANSWERS)(s.name, s.minimumWage),
     },
     {
       question: `What is the minimum wage for tipped employees in ${s.name}?`,
-      answer: pickVariantByPosition(globalRank, TIPPED_WAGE_ANSWERS)(s.name, s.dolUrl),
+      answer: pickVariantByPosition(variantRank, TIPPED_WAGE_ANSWERS)(s.name, s.dolUrl),
     },
     {
       question: `Are there local minimum wages higher than ${s.name}'s state rate?`,
-      answer: pickVariantByPosition(globalRank, LOCAL_WAGE_ANSWERS)(s.name, s.dolUrl),
+      answer: pickVariantByPosition(variantRank, LOCAL_WAGE_ANSWERS)(s.name, s.dolUrl),
     },
     {
       question: `What can I do if my employer pays me less than minimum wage in ${s.name}?`,
-      answer: pickVariantByPosition(globalRank, UNDERPAID_ANSWERS)(s.name, s.dolUrl),
+      answer: pickVariantByPosition(variantRank, UNDERPAID_ANSWERS)(s.name, s.dolUrl),
     },
-  ];
+  ], variantRank);
 }
 
 export default async function Page({ params }: Props) {
@@ -168,8 +239,20 @@ export default async function Page({ params }: Props) {
     US_STATES.filter((st) => st.minimumWage.includes("federal minimum")).map((st) => st.slug),
     s.slug,
   );
+  const variantRank = variantKey(s.slug, globalRank);
 
   const isFederal = s.minimumWage.includes("federal minimum");
+  const wageAmount = isFederal ? 7.25 : parseDollarAmount(s.minimumWage);
+  const gapText =
+    wageAmount && wageAmount > 7.25
+      ? `${s.name} is $${(wageAmount - 7.25).toFixed(2)}/hr above the federal floor`
+      : `${s.name} follows the federal $7.25/hr floor unless a local or occupational rule changes the answer`;
+  const nearbyLabel = nearbyStates.slice(0, 3).map((n) => n.name).join(", ") || "nearby states";
+  const actionChecklist = rotateItems(MW_ACTION_CHECKLIST, variantRank).slice(0, 4);
+  const coverageItems = rotateItems(MW_COVERAGE_ITEMS, variantRank).slice(0, 4);
+  const reportSteps = rotateItems(MW_REPORT_STEPS, variantRank).slice(0, 4);
+  const comparisonStates = rotateItems(nearbyStates, variantRank);
+  const benchmarkStates = benchmarkStatesFor(s);
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -217,7 +300,7 @@ export default async function Page({ params }: Props) {
           {s.name} Minimum Wage 2026
         </h1>
         <p className="mb-8 text-ink-soft">
-          {pickVariantByPosition(globalRank, MW_INTRO)(s.name)}
+          {pickVariantByPosition(variantRank, MW_INTRO)(s.name)}
         </p>
 
         <EditorialReview
@@ -256,19 +339,72 @@ export default async function Page({ params }: Props) {
           </div>
         </div>
 
+        <section className="mb-8 rounded-xl border border-surface-line bg-white p-5">
+          <h2 className="mb-2 text-xl font-bold text-ink">How to use the {s.name} rate</h2>
+          <p className="text-sm leading-relaxed text-ink-soft">
+            {pickVariantByPosition(globalRank, MW_CONTEXT)(
+              s.name,
+              s.region,
+              s.minimumWage,
+              nearbyLabel,
+              gapText,
+            )}
+          </p>
+          <ul className="mt-4 grid gap-2 text-sm text-ink-soft sm:grid-cols-2">
+            {actionChecklist.map((item) => (
+              <li key={item} className="rounded-lg border border-surface-line bg-surface-muted px-3 py-2">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="mb-3 text-xl font-bold text-ink">Cross-state wage benchmark</h2>
+          <p className="mb-4 text-sm leading-relaxed text-ink-soft">
+            Multi-state employers often copy payroll settings from one jurisdiction to another.
+            Use this benchmark to compare {s.name}&apos;s {s.minimumWage} rate with the full state
+            dataset before relying on a shared payroll template.
+          </p>
+          <div className="overflow-x-auto rounded-xl border border-surface-line">
+            <table className="w-full min-w-[34rem] text-left text-sm">
+              <thead>
+                <tr className="border-b border-surface-line bg-surface-muted text-xs uppercase tracking-wide text-ink-faint">
+                  <th scope="col" className="px-4 py-2 font-semibold">State</th>
+                  <th scope="col" className="px-4 py-2 font-semibold">Region</th>
+                  <th scope="col" className="px-4 py-2 font-semibold">Minimum wage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-surface-line bg-brand-50">
+                  <th scope="row" className="px-4 py-2 font-semibold text-ink">{s.name} (this page)</th>
+                  <td className="px-4 py-2 text-ink-soft">{s.region}</td>
+                  <td className="px-4 py-2 text-ink-soft">{s.minimumWage}</td>
+                </tr>
+                {benchmarkStates.map((state) => (
+                  <tr key={state.slug} className="border-b border-surface-line last:border-0">
+                    <th scope="row" className="px-4 py-2 font-medium">
+                      <Link href={`/us/states/${state.slug}/minimum-wage`} className="text-brand-600 hover:underline">
+                        {state.name}
+                      </Link>
+                    </th>
+                    <td className="px-4 py-2 text-ink-soft">{state.region}</td>
+                    <td className="px-4 py-2 text-ink-soft">{state.minimumWage}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         {/* Who is covered */}
         <section className="mb-8">
           <h2 className="mb-3 text-xl font-bold text-ink">Who is covered by the {s.name} minimum wage</h2>
           <p className="mb-3 text-ink-soft">
-            {pickVariantByPosition(globalRank, MW_COVERED_LEAD)(s.name)}
+            {pickVariantByPosition(variantRank, MW_COVERED_LEAD)(s.name)}
           </p>
           <ul className="space-y-2 text-ink-soft">
-            {[
-              "Certain agricultural or farm workers (federal FLSA exemptions may apply)",
-              "Tipped employees — a lower base rate may apply if tips close the gap",
-              "Student workers at certain educational institutions (may qualify for a subminimum rate)",
-              "Independent contractors — minimum wage laws do not apply to genuine contractors",
-            ].map((item) => (
+            {coverageItems.map((item) => (
               <li key={item} className="flex items-start gap-2 text-sm">
                 <span className="mt-0.5 text-ink-faint">•</span>
                 <span>{item}</span>
@@ -281,10 +417,9 @@ export default async function Page({ params }: Props) {
         <section className="mb-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
           <h2 className="mb-2 text-lg font-bold text-amber-900">Being paid below minimum wage?</h2>
           <ol className="space-y-2 text-sm text-amber-900">
-            <li><strong>1.</strong> Calculate the shortfall: hours worked × (minimum wage − actual pay).</li>
-            <li><strong>2.</strong> Keep records: pay stubs, time records, and any written communications.</li>
-            <li><strong>3.</strong> File a complaint with the {s.name} Department of Labor or the US DOL Wage and Hour Division.</li>
-            <li><strong>4.</strong> You may also bring a private lawsuit to recover up to 3 years of back pay plus liquidated damages.</li>
+            {reportSteps.map((item, index) => (
+              <li key={item}><strong>{index + 1}.</strong> {item}</li>
+            ))}
           </ol>
           <a
             href={s.dolUrl}
@@ -351,7 +486,7 @@ export default async function Page({ params }: Props) {
                     <th scope="row" className="py-2 pr-4 font-semibold text-ink">{s.name} (this page)</th>
                     <td className="py-2 text-ink-soft">{s.minimumWage}</td>
                   </tr>
-                  {nearbyStates.map((n) => (
+                  {comparisonStates.map((n) => (
                     <tr key={n.slug} className="border-b border-surface-line last:border-0">
                       <th scope="row" className="py-2 pr-4 font-medium">
                         <Link href={`/us/states/${n.slug}/minimum-wage`} className="text-brand-600 hover:underline">

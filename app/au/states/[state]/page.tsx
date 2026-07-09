@@ -82,6 +82,32 @@ const AU_WORKERSCOMP = [
 const AU_WORKERSCOMP_TAIL =
   " Most employers must hold workers compensation insurance, and claims cover medical expenses, rehabilitation, and income replacement while you can't work.";
 
+const AU_CONTEXT = [
+  (s: AuStateData, proRata: string) =>
+    `${s.name} mixes national Fair Work rules with state-based long service leave and workers compensation. The minimum wage and NES come from federal law, while long service leave is under the ${s.lslLegislation}. For pro-rata long service leave, the working note is: ${proRata}.`,
+  (s: AuStateData, proRata: string) =>
+    `For ${s.name}, do not treat every employment entitlement as federal. Pay, maximum hours, and NES leave sit in the national system, but long service leave and workers compensation use local statutes and agencies. The pro-rata long-service-leave trigger is ${proRata}.`,
+  (s: AuStateData, proRata: string) =>
+    `${s.name}'s employment-law profile is split across different sources: Fair Work for national-system pay, ${s.lslLegislation} for long service leave, and ${s.workersCompAuthority} for workplace injuries. The pro-rata LSL summary is ${proRata}.`,
+  (s: AuStateData, proRata: string) =>
+    `The practical check in ${s.name} is source-by-source: national minimum wage first, then the state long-service-leave statute, then the workers compensation authority. Under the current data, pro-rata long service leave is noted as ${proRata}.`,
+] as const;
+
+const AU_REVIEW_POINTS = [
+  "Confirm whether the worker is in the national system or a state public sector system.",
+  "Check the applicable modern award or enterprise agreement before relying on the national minimum only.",
+  "Read long service leave under the state or territory statute, not the NES.",
+  "For a workplace injury, notify the employer early and keep the medical certificate.",
+  "Treat pro-rata long service leave as a separate question from annual leave payout.",
+  "Use the listed authority link before filing a claim or making a payroll decision.",
+] as const;
+
+function rotateItems<T>(items: readonly T[], offset: number): T[] {
+  if (items.length === 0) return [];
+  const start = offset % items.length;
+  return [...items.slice(start), ...items.slice(0, start)];
+}
+
 export async function generateStaticParams() {
   return AU_STATES.map((s) => ({ state: s.slug }));
 }
@@ -106,9 +132,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 function generateFaqs(s: AuStateData): FaqItem[] {
   const rank = clusterRank(AU_ALL_SLUGS, s.slug);
   const minWageTail = s.hasStateIrSystem
-    ? ` Note: ${s.name} also runs a state industrial relations system for non-constitutional corporations — the ${s.stateMinWage ?? "WA state minimum wage"} may apply to state-system employees; check with the WA Industrial Relations Commission.`
+    ? ` Note: ${s.name} also runs a state industrial relations system for non-constitutional corporations. The state-system minimum wage is set separately by the WA Industrial Relations Commission; verify the current State Wage Order before acting.`
     : ` The national minimum wage is set by the Fair Work Commission and applies across all sectors covered by the national system in ${s.name}.`;
-  return [
+  return rotateItems([
     {
       question: `What is the minimum wage in ${s.name} in 2026?`,
       answer: `${pickVariantByPosition(rank, AU_MINWAGE)(s)}${minWageTail}`,
@@ -129,7 +155,7 @@ function generateFaqs(s: AuStateData): FaqItem[] {
       question: `What are the maximum working hours in ${s.name}?`,
       answer: `${pickVariantByPosition(rank, AU_MAXHOURS)(s)}${AU_MAXHOURS_TAIL}`,
     },
-  ];
+  ], rank);
 }
 
 export default async function Page({ params }: Props) {
@@ -141,6 +167,7 @@ export default async function Page({ params }: Props) {
   const faqs = generateFaqs(s);
   const reviewedDate = `${s.verifiedYear}-01-01`;
   const rank = clusterRank(AU_ALL_SLUGS, s.slug);
+  const reviewPoints = rotateItems(AU_REVIEW_POINTS, rank).slice(0, 4);
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -228,11 +255,26 @@ export default async function Page({ params }: Props) {
               Most private sector workers in WA are covered by the federal Fair Work Act system.
               However, employees of non-constitutional corporations (sole traders, partnerships, non-corporate
               trusts) are covered by the <strong>WA state system</strong> under the Industrial Relations Act
-              1979 (WA). The WA state minimum wage is{" "}
-              <strong>{s.stateMinWage?.split(" (")[0]}</strong> — higher than the national rate.
+              1979 (WA). The WA state-system minimum wage is set separately by the WA Industrial
+              Relations Commission, so check the current State Wage Order before making a payroll
+              or claim decision.
             </p>
           </div>
         )}
+
+        <section className="mb-8 rounded-xl border border-surface-line bg-white p-5">
+          <h2 className="mb-2 text-xl font-bold text-ink">How to read {s.name} entitlements</h2>
+          <p className="text-sm leading-relaxed text-ink-soft">
+            {pickVariantByPosition(rank, AU_CONTEXT)(s, s.lslProRataOnTermination)}
+          </p>
+          <ul className="mt-4 grid gap-2 text-sm text-ink-soft sm:grid-cols-2">
+            {reviewPoints.map((item) => (
+              <li key={item} className="rounded-lg border border-surface-line bg-surface-muted px-3 py-2">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
 
         {/* Long service leave detail */}
         <section className="mb-8">
