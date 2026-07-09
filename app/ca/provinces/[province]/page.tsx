@@ -20,11 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = `${p.name} employment standards: minimum wage ${p.minimumWage}, statutory notice periods, vacation entitlement, and severance rules under the ${p.legislationName}.`;
   const ogDescription = `Minimum wage, notice periods, and vacation entitlement for workers in ${p.name} under the ${p.legislationName}.`;
   return {
-    title: `${p.name} Employment Standards 2025 — Notice, Minimum Wage & Vacation`,
+    title: `${p.name} Employment Standards 2026 — Notice, Minimum Wage & Vacation`,
     description: clampMetaDescription(description),
     alternates: { canonical: url },
     openGraph: {
-      title: `${p.name} Employment Standards 2025`,
+      title: `${p.name} Employment Standards 2026`,
       description: clampMetaDescription(ogDescription),
       url,
     },
@@ -46,7 +46,7 @@ function generateFaqs(p: ReturnType<typeof getCaProvince>) {
   const hasSeverance = p.severancePay !== null;
   return [
     {
-      q: `What is the minimum wage in ${p.name} in 2025?`,
+      q: `What is the minimum wage in ${p.name} in 2026?`,
       a: `The general minimum wage in ${p.name} is ${p.minimumWage}${p.minimumWageNote ? ". " + p.minimumWageNote : "."}`,
     },
     {
@@ -92,7 +92,7 @@ export default async function ProvincePage({ params }: Props) {
   const webPage = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: `${p.name} Employment Standards 2025`,
+    name: `${p.name} Employment Standards 2026`,
     description: `Minimum wage, statutory notice, vacation entitlement, and severance rules in ${p.name} under the ${p.legislationName}.`,
     url,
     dateModified: DATE,
@@ -132,7 +132,7 @@ export default async function ProvincePage({ params }: Props) {
               🇨🇦 Canada · {p.name} · {p.legislationName}
             </p>
             <h1 className="mt-2 text-3xl font-medium tracking-tight text-ink sm:text-4xl">
-              {p.name} Employment Standards 2025
+              {p.name} Employment Standards 2026
             </h1>
             <p className="mt-3 text-sm leading-relaxed text-ink-soft">
               Statutory minimums for workers in {p.name} under the{" "}
