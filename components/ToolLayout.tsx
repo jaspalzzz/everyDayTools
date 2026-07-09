@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { AdSlot } from "./AdSlot";
 import { EditorialReview } from "./EditorialReview";
 import { relatedTools, CATEGORY_META, type ToolMeta } from "@/data/tools";
-import { situationsForTool } from "@/data/relatedContent";
+import { situationsForTool, guidesForTool, comparesForTool, pillarForTool } from "@/data/relatedContent";
 import type { FaqItem, SourceRef } from "@/lib/types";
 import { LEGAL_SOURCES } from "@/data/legalSources";
 import { SITE } from "@/lib/seo";
@@ -49,6 +49,10 @@ export function ToolLayout({
 }) {
   const related = relatedTools(tool.slug);
   const situations = situationsForTool(tool.slug);
+  // Derived cross-links (deduped against the manually-set learnMore guide).
+  const derivedGuides = guidesForTool(tool.slug).filter((g) => g.slug !== learnMore?.guideSlug).slice(0, 2);
+  const compares = comparesForTool(tool.slug);
+  const pillar = pillarForTool(tool.slug);
 
   const verifiedLabel = verifiedDate
     ? new Date(verifiedDate).toLocaleDateString("en-GB", {
@@ -403,7 +407,7 @@ export function ToolLayout({
         </section>
 
         {/* ── Related tools ────────────────────────────────────────────── */}
-        {(related.length > 0 || situations.length > 0 || (learnMore && (learnMore.guideSlug || learnMore.faqs.length > 0))) && (
+        {(related.length > 0 || situations.length > 0 || derivedGuides.length > 0 || compares.length > 0 || pillar || (learnMore && (learnMore.guideSlug || learnMore.faqs.length > 0))) && (
           <section
             aria-labelledby="related-heading"
             style={{
@@ -438,6 +442,29 @@ export function ToolLayout({
                   <strong style={{ color: "#102033" }}>{s.label}</strong>
                   <span style={{ display: "block", marginTop: 2, fontWeight: 600, color: "#5c7189", fontSize: 12 }}>
                     {s.blurb}
+                  </span>
+                </span>
+                <span style={{ color: "#1769e0" }}>→</span>
+              </Link>
+            ))}
+            {pillar && (
+              <Link href={pillar.href} style={RELATED_ROW_STYLE}>
+                <strong style={{ color: "#102033" }}>{pillar.label}</strong>
+                <span style={{ color: "#1769e0" }}>→</span>
+              </Link>
+            )}
+            {derivedGuides.map((g) => (
+              <Link key={g.slug} href={`/guides/${g.slug}`} style={RELATED_ROW_STYLE}>
+                <strong style={{ color: "#102033" }}>{g.title}</strong>
+                <span style={{ color: "#1769e0" }}>→</span>
+              </Link>
+            ))}
+            {compares.map((c) => (
+              <Link key={c.slug} href={`/compare/${c.slug}`} style={RELATED_ROW_STYLE}>
+                <span>
+                  <strong style={{ color: "#102033" }}>{c.label}</strong>
+                  <span style={{ display: "block", marginTop: 2, fontWeight: 600, color: "#5c7189", fontSize: 12 }}>
+                    {c.summary}
                   </span>
                 </span>
                 <span style={{ color: "#1769e0" }}>→</span>
