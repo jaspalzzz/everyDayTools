@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SituationRelated } from "@/components/SituationRelated";
 import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, jsonLd } from "@/lib/seo";
 import { AffiliateCta } from "@/components/AffiliateCta";
 
@@ -298,6 +299,8 @@ export default function UnfairDismissalUKPage() {
             ))}
           </div>
         </section>
+
+        <SituationRelated slug="unfair-dismissal-uk" />
 
         <footer className="mt-10 max-w-2xl border-t border-surface-line pt-6 text-xs text-ink-faint">
           <p>Last reviewed: {DATE}. This guide provides general information and is not legal advice. Employment situations are fact-specific — seek advice from ACAS, a trade union, or a qualified employment solicitor. Time limits for tribunal claims are strict.</p>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SituationRelated } from "@/components/SituationRelated";
 import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, jsonLd } from "@/lib/seo";
 
 const url = `${SITE.url}/situations/made-redundant-uk`;
@@ -274,6 +275,8 @@ export default function MadeRedundantUKPage() {
             ))}
           </div>
         </section>
+
+        <SituationRelated slug="made-redundant-uk" />
 
         <footer className="mt-10 max-w-2xl border-t border-surface-line pt-6 text-xs text-ink-faint">
           <p>Last reviewed: {DATE}. This guide provides general information about UK employment law and is not legal advice. Seek advice from a qualified employment solicitor for your specific situation. Time limits apply for tribunal claims.</p>

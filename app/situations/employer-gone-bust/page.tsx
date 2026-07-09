@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SituationRelated } from "@/components/SituationRelated";
 import { SITE, jsonLd } from "@/lib/seo";
 import { AffiliateCta } from "@/components/AffiliateCta";
 
@@ -192,6 +193,8 @@ export default function EmployerGoneBust() {
             Notice period calculator
           </Link>
         </section>
+
+        <SituationRelated slug="employer-gone-bust" />
       </div>
     </>
   );
