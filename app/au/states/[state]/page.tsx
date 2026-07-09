@@ -33,7 +33,7 @@ function generateFaqs(s: AuStateData): FaqItem[] {
   return [
     {
       question: `What is the minimum wage in ${s.name} in 2026?`,
-      answer: `The national minimum wage in ${s.name} is $24.10 per hour (effective 1 July 2025, following the Fair Work Commission's Annual Wage Review 2025-26). ${s.hasStateIrSystem ? `Note: ${s.name} also has a state industrial relations system for non-constitutional corporations. The ${s.stateMinWage ?? "WA state minimum wage"} may apply to state system employees — check with the WA Industrial Relations Commission for your situation.` : "The national minimum wage is set by the Fair Work Commission and applies across all sectors covered by the national system in " + s.name + "."}`,
+      answer: `The national minimum wage in ${s.name} is $26.44 per hour (effective 1 July 2026, following the Fair Work Commission's Annual Wage Review 2026-27). ${s.hasStateIrSystem ? `Note: ${s.name} also has a state industrial relations system for non-constitutional corporations. The ${s.stateMinWage ?? "WA state minimum wage"} may apply to state system employees — check with the WA Industrial Relations Commission for your situation.` : "The national minimum wage is set by the Fair Work Commission and applies across all sectors covered by the national system in " + s.name + "."}`,
     },
     {
       question: `How much long service leave am I entitled to in ${s.name}?`,
@@ -129,8 +129,8 @@ export default async function Page({ params }: Props) {
           <div className="grid gap-3 sm:grid-cols-3">
             <div className="rounded-xl border border-surface-line bg-surface-muted p-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint mb-1">National minimum wage</p>
-              <p className="font-bold text-ink text-lg">$24.10/hr</p>
-              <p className="text-xs text-ink-faint mt-1">From 1 July 2025</p>
+              <p className="font-bold text-ink text-lg">$26.44/hr</p>
+              <p className="text-xs text-ink-faint mt-1">From 1 July 2026</p>
             </div>
             <div className="rounded-xl border border-surface-line bg-surface-muted p-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint mb-1">Long service leave</p>

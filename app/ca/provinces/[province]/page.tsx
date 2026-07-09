@@ -256,7 +256,7 @@ export default async function ProvincePage({ params }: Props) {
                 {p.minimumWageNote && ` ${p.minimumWageNote}.`}
               </p>
               <p>
-                The federal minimum wage ($17.30/hr as of April 2024) applies only to federally
+                The federal minimum wage ($18.15/hr as of April 2026) applies only to federally
                 regulated workers — those in banking, airlines, railways, and telecommunications.
                 If you work for a provincially regulated employer in {p.name}, the {p.name} rate
                 applies.

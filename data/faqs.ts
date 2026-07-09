@@ -1054,7 +1054,7 @@ export const FAQS: FaqPageMeta[] = [
     answer: [
       "The Australian Government Parental Leave Pay (PLP) scheme provides government-funded paid parental leave for eligible parents. From 1 July 2025, the scheme provides up to 22 weeks (110 days) of PLP at the National Minimum Wage. The Albanese Government committed to expanding this to 26 weeks (130 days) by July 2026 as part of the 'Paid Parental Leave (Improving Flexible Work and Gender Equality) Act 2023'.",
       "To be eligible, the primary claimant must: have had a child born or adopted on or after 1 July 2023; have worked for 10 of the 13 months before the birth; have had individual adjusted taxable income of $168,865 or less in the 2025/26 financial year; be the primary carer; and be an Australian resident. Partners can share the leave, including reserved 'Dad and Partner Pay' days.",
-      "PLP is paid at the National Minimum Wage (currently $24.10/hour for a 38-hour week = $915.80/week pre-tax for 2025/26). Payments are administered through Centrelink (Services Australia) but typically flow through the employer. PLP is taxable income. Employer-funded parental leave can be taken concurrently or in addition — check your employment contract.",
+      "PLP is paid at the National Minimum Wage (currently $26.44/hour for a 38-hour week = $1,004.90/week pre-tax for 2026/27). Payments are administered through Centrelink (Services Australia) but typically flow through the employer. PLP is taxable income. Employer-funded parental leave can be taken concurrently or in addition — check your employment contract.",
     ],
     country: "AU",
     related: ["what-is-casual-employee-australia", "what-is-unfair-dismissal-australia"],

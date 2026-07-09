@@ -112,7 +112,7 @@ export default function AUPage() {
           </>
         }
         rates={[
-          { label: "National minimum wage", value: "AU$24.10/hr" },
+          { label: "National minimum wage", value: "AU$26.44/hr" },
           { label: "Casual loading", value: "25% on top of base rate" },
           { label: "Redundancy — 1 yr service", value: "4 weeks' pay" },
           { label: "Redundancy — 10 yr service", value: "12 weeks' pay (max)" },
