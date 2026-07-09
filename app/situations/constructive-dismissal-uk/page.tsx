@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SituationRelated } from "@/components/SituationRelated";
 import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { AffiliateCta } from "@/components/AffiliateCta";
 
@@ -219,6 +220,8 @@ export default function ConstructiveDismissalUk() {
             Notice period calculator
           </Link>
         </section>
+
+        <SituationRelated slug="constructive-dismissal-uk" />
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SituationRelated } from "@/components/SituationRelated";
 import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 const url = `${SITE.url}/situations/us-wrongful-termination`;
@@ -216,6 +217,8 @@ export default function UsWrongfulTermination() {
             WARN Act rights
           </Link>
         </section>
+
+        <SituationRelated slug="us-wrongful-termination" />
       </div>
     </>
   );

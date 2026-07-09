@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { AdSlot } from "./AdSlot";
 import { EditorialReview } from "./EditorialReview";
 import { relatedTools, CATEGORY_META, type ToolMeta } from "@/data/tools";
+import { situationsForTool } from "@/data/relatedContent";
 import type { FaqItem, SourceRef } from "@/lib/types";
 import { LEGAL_SOURCES } from "@/data/legalSources";
 import { SITE } from "@/lib/seo";
@@ -47,6 +48,7 @@ export function ToolLayout({
   meaningPanel?: MeaningPanel;
 }) {
   const related = relatedTools(tool.slug);
+  const situations = situationsForTool(tool.slug);
 
   const verifiedLabel = verifiedDate
     ? new Date(verifiedDate).toLocaleDateString("en-GB", {
@@ -401,7 +403,7 @@ export function ToolLayout({
         </section>
 
         {/* ── Related tools ────────────────────────────────────────────── */}
-        {(related.length > 0 || (learnMore && (learnMore.guideSlug || learnMore.faqs.length > 0))) && (
+        {(related.length > 0 || situations.length > 0 || (learnMore && (learnMore.guideSlug || learnMore.faqs.length > 0))) && (
           <section
             aria-labelledby="related-heading"
             style={{
@@ -427,6 +429,17 @@ export function ToolLayout({
             {related.map((r) => (
               <Link key={r.slug} href={`/${r.slug}`} style={RELATED_ROW_STYLE}>
                 <strong style={{ color: "#102033" }}>{r.name}</strong>
+                <span style={{ color: "#1769e0" }}>→</span>
+              </Link>
+            ))}
+            {situations.map((s) => (
+              <Link key={s.slug} href={`/situations/${s.slug}`} style={RELATED_ROW_STYLE}>
+                <span>
+                  <strong style={{ color: "#102033" }}>{s.label}</strong>
+                  <span style={{ display: "block", marginTop: 2, fontWeight: 600, color: "#5c7189", fontSize: 12 }}>
+                    {s.blurb}
+                  </span>
+                </span>
                 <span style={{ color: "#1769e0" }}>→</span>
               </Link>
             ))}

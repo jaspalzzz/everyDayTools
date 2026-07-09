@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SituationRelated } from "@/components/SituationRelated";
 import { SITE, jsonLd } from "@/lib/seo";
 import { AffiliateCta } from "@/components/AffiliateCta";
 
@@ -222,6 +223,8 @@ export default function WorkplaceDiscriminationUk() {
             Constructive dismissal guide
           </Link>
         </section>
+
+        <SituationRelated slug="workplace-discrimination-uk" />
       </div>
     </>
   );

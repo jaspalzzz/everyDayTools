@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SituationRelated } from "@/components/SituationRelated";
 import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { AffiliateCta } from "@/components/AffiliateCta";
 
@@ -194,6 +195,8 @@ export default function SackedWhilePregnantUk() {
             Unfair dismissal guide →
           </Link>
         </section>
+
+        <SituationRelated slug="sacked-while-pregnant-uk" />
       </div>
     </>
   );
