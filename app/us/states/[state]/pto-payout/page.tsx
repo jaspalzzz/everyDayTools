@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
-import { US_STATES, getNearbyStates, getUsState, type UsStateWithPto } from "@/data/usStates";
+import { US_STATES, getUsState, type UsStateWithPto } from "@/data/usStates";
 import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
 import {
   EDITORIAL_REVIEW,
@@ -57,13 +57,13 @@ const PAYOUT_ACTION_VARIANTS = {
     (s: UsStateWithPto) => `For a missing ${s.name} vacation payout, start with a written request for the accrued balance and the policy payroll used. If the final check still omits it, the next step is usually a wage claim through ${s.dolUrl}.`,
     (s: UsStateWithPto) => `A denied payout in ${s.name} should be documented like any other wage shortfall: save the PTO ledger, final paystub, and handbook, then contact the state labor agency if payroll will not correct it.`,
     (s: UsStateWithPto) => `If the final paycheck does not include vested vacation in ${s.name}, ask HR to identify the legal basis for nonpayment. Keep the response and use the ${s.name} labor agency process if the balance remains unpaid.`,
-    (s: UsStateWithPto) => `When vested vacation is missing from a ${s.name} final check, put the dispute in writing quickly. List the hours accrued, the final rate of pay, and the policy source before escalating through ${s.dolUrl}.`,
+    (s: UsStateWithPto) => `When vested vacation is missing from a final paycheck in ${s.name}, put the dispute in writing quickly. List the hours accrued, the final rate of pay, and the policy source before escalating through ${s.dolUrl}.`,
     (s: UsStateWithPto) => `For ${s.name}, the practical move is to make payroll confirm the accrued vacation balance and payment date. If they refuse, preserve the records and use the state wage-claim channel.`,
   ],
   conditional: [
     (s: UsStateWithPto) => `In ${s.name}, start with the written PTO policy, offer letter, handbook, and any separation agreement. If those documents promise payout or do not clearly allow forfeiture, you may still have a wage claim.`,
     (s: UsStateWithPto) => `For ${s.name} workers, the first document to read is the employer's vacation policy. If it promises payout, or if the forfeiture language is unclear, preserve the policy and raise the issue with payroll in writing.`,
-    (s: UsStateWithPto) => `A ${s.name} payout dispute is usually won or lost on the paperwork. Compare the handbook, offer letter, and final paystub, then contact ${s.dolUrl} if the employer ignores a promised cash-out.`,
+    (s: UsStateWithPto) => `In ${s.name}, a payout dispute is usually won or lost on the paperwork. Compare the handbook, offer letter, and final paystub, then contact ${s.dolUrl} if the employer ignores a promised cash-out.`,
     (s: UsStateWithPto) => `If your employer says no payout is owed in ${s.name}, ask for the exact policy clause they are relying on. A vague or late-disclosed forfeiture rule may leave room for a wage claim.`,
     (s: UsStateWithPto) => `When ${s.name} policy language points toward payout, send a concise written demand with the accrued hours, final rate, and last day worked before escalating to the state labor agency.`,
   ],
@@ -72,8 +72,8 @@ const PAYOUT_ACTION_VARIANTS = {
     (s: UsStateWithPto) => `Because ${s.name} has no default payout mandate, focus on proof that the company promised a cash-out. Keep the handbook, PTO balance, and any messages from HR or payroll.`,
     (s: UsStateWithPto) => `For ${s.name} employees, a missing payout is usually a policy-enforcement question. If the handbook says unused vacation is paid, ask payroll to apply that policy to the final check.`,
     (s: UsStateWithPto) => `Do not rely on a general state-law payout right in ${s.name}. Instead, collect the written PTO terms and check whether the employer followed its own final-pay process.`,
-    (s: UsStateWithPto) => `If a ${s.name} employer's policy promises payout, the issue can still matter even without a state mandate. Document the promise, the accrued balance, and the final paycheck amount.`,
-    (s: UsStateWithPto) => `A ${s.name} PTO claim needs company-specific evidence: policy text, accrual records, and any payroll confirmation that unused vacation would be paid.`,
+    (s: UsStateWithPto) => `If the employer's policy in ${s.name} promises payout, the issue can still matter even without a state mandate. Document the promise, the accrued balance, and the final paycheck amount.`,
+    (s: UsStateWithPto) => `A PTO claim in ${s.name} needs company-specific evidence: policy text, accrual records, and any payroll confirmation that unused vacation would be paid.`,
     (s: UsStateWithPto) => `For ${s.name}, challenge the decision by pointing to the employer's own written rule rather than a statewide payout mandate. The useful evidence is the handbook, PTO ledger, and final-pay calculation.`,
   ],
 } as const;
@@ -95,7 +95,7 @@ const USE_IT_OR_LOSE_IT_ANSWERS = {
     (name: string) => `In ${name}, earned vacation is generally protected as wages, so a policy that cancels accrued time at separation can create a wage problem.`,
     (name: string) => `${name} employers should be careful with forfeiture language. Caps on future accrual may be allowed, but already earned vacation generally cannot be treated as worthless.`,
     (name: string) => `For ${name} workers, use-it-or-lose-it language is most vulnerable when it tries to erase vacation that has already vested as wages.`,
-    (name: string) => `A ${name} employer may be able to limit future accrual, but a policy that wipes out earned vacation at the end of employment is a different and riskier question.`,
+    (name: string) => `An employer in ${name} may be able to limit future accrual, but a policy that wipes out earned vacation at the end of employment is a different and riskier question.`,
   ],
   conditional: [
     (name: string) => `${name} may allow "use it or lose it" or forfeiture language if the policy is clear and communicated in advance. The exact result depends on the written policy and any contract terms.`,
@@ -117,12 +117,12 @@ const USE_IT_OR_LOSE_IT_ANSWERS = {
 
 const CALCULATION_ANSWERS = [
   (name: string) => `Multiply unused PTO hours by your final hourly rate. For salaried employees, convert salary to a daily or hourly equivalent, then multiply by accrued unused PTO. PTO payout is gross wages before tax withholding.`,
-  (name: string) => `For a ${name} payout estimate, multiply the unused hours on your PTO ledger by your final regular hourly rate. Salaried workers can convert annual salary into an hourly or daily rate first.`,
+  (name: string) => `For a payout estimate in ${name}, multiply the unused hours on your PTO ledger by your final regular hourly rate. Salaried workers can convert annual salary into an hourly or daily rate first.`,
   (name: string) => `Use the same basic math in ${name}: unused vacation hours times the final pay rate. The result is a gross wage figure before federal, state, and payroll withholding.`,
   (name: string) => `To estimate unpaid PTO in ${name}, start with the accrued balance shown on your paystub or HR portal, then multiply by your final hourly equivalent.`,
   (name: string) => `A practical ${name} estimate is accrued unused PTO x final hourly rate. If your employer tracks days instead of hours, convert the days into work hours before multiplying.`,
   (name: string) => `For ${name}, calculate the gross amount by converting the PTO balance into hours and multiplying by the final regular rate. Taxes and deductions come after that gross figure.`,
-  (name: string) => `For a ${name} final-pay dispute, write down the PTO balance, the rate used by payroll, and the gross amount you expected before comparing it with the final check.`,
+  (name: string) => `For a final-pay dispute in ${name}, write down the PTO balance, the rate used by payroll, and the gross amount you expected before comparing it with the final check.`,
 ] as const;
 
 const PRACTICE_INTRO_VARIANTS = [
@@ -130,9 +130,9 @@ const PRACTICE_INTRO_VARIANTS = [
   (name: string) => `In ${name}, the practical analysis starts with the accrued balance, then moves to the handbook language, and finally to whether the final paycheck met the state timing rule.`,
   (name: string) => `Most ${name} vacation payout disputes come down to proof: the PTO ledger, the written policy, and the final paystub showing what was actually paid.`,
   (name: string) => `For ${name} workers, the important question is not just whether PTO exists, but whether it vested, whether forfeiture was clearly allowed, and whether payroll handled it on time.`,
-  (name: string) => `A ${name} PTO claim is strongest when the records line up: accrued time, a policy promising payout, and a final paycheck that left the balance out.`,
-  (name: string) => `When reviewing a ${name} PTO payout, separate the issue into accrual, policy, and payment timing. Each one needs its own document trail.`,
-  (name: string) => `The cleanest way to review a ${name} payout issue is to match three documents: the PTO balance, the written policy, and the final wage statement.`,
+  (name: string) => `A PTO claim in ${name} is strongest when the records line up: accrued time, a policy promising payout, and a final paycheck that left the balance out.`,
+  (name: string) => `When reviewing a PTO payout in ${name}, separate the issue into accrual, policy, and payment timing. Each one needs its own document trail.`,
+  (name: string) => `The cleanest way to review a payout issue in ${name} is to match three documents: the PTO balance, the written policy, and the final wage statement.`,
 ] as const;
 
 const ESTIMATE_COPY_VARIANTS = [
@@ -151,7 +151,7 @@ const CLAIM_ANSWERS = [
   (s: UsStateWithPto) => `Use ${s.dolUrl} as the official ${s.name} starting point. A strong claim package includes the handbook, offer letter, PTO ledger, final paystub, and last-day documentation.`,
   (s: UsStateWithPto) => `The ${s.name} labor agency can confirm the wage-claim route: ${s.dolUrl}. Keep the final check, PTO balance, separation notice, and HR messages together before filing.`,
   (s: UsStateWithPto) => `If payroll will not correct the issue in ${s.name}, check the agency process at ${s.dolUrl}. Attach documents showing what PTO accrued and why the policy required payout.`,
-  (s: UsStateWithPto) => `For a ${s.name} PTO dispute, collect the policy and payroll records first, then use ${s.dolUrl} to find the state complaint process or contact point.`,
+  (s: UsStateWithPto) => `For a PTO dispute in ${s.name}, collect the policy and payroll records first, then use ${s.dolUrl} to find the state complaint process or contact point.`,
   (s: UsStateWithPto) => `Before filing in ${s.name}, organize the handbook, PTO ledger, and final paystub. The official agency starting point is ${s.dolUrl}.`,
 ] as const;
 
@@ -160,14 +160,45 @@ function pickPtoVariant<T>(position: number, variants: readonly [T, ...T[]], off
   return pickVariantByPosition(adjusted + (Math.floor(adjusted / variants.length) * 4), variants);
 }
 
-function peerSortValue(seed: string, slug: string) {
-  let value = 0;
-  const text = `${seed}:${slug}`;
-  for (let index = 0; index < text.length; index += 1) {
-    value = (Math.imul(value, 33) + text.charCodeAt(index)) >>> 0;
-  }
-  return value;
+function formatList(items: string[]): string {
+  if (items.length <= 1) return items[0] ?? "";
+  if (items.length === 2) return `${items[0]} and ${items[1]}`;
+  return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
 }
+
+function sentenceVerb(count: number, singular: string, plural: string): string {
+  return count === 1 ? singular : plural;
+}
+
+function getPtoComparisonStates(s: UsStateWithPto, limit = 8): UsStateWithPto[] {
+  const regionStates = US_STATES.filter((state) => state.region === s.region).sort((a, b) => a.name.localeCompare(b.name));
+  const currentIndex = regionStates.findIndex((state) => state.slug === s.slug);
+  if (currentIndex === -1) return [];
+
+  const picked: UsStateWithPto[] = [];
+  for (let distance = 1; picked.length < limit && distance < regionStates.length; distance += 1) {
+    const candidates = [
+      regionStates[(currentIndex + distance) % regionStates.length],
+      regionStates[(currentIndex - distance + regionStates.length) % regionStates.length],
+    ].filter((candidate): candidate is UsStateWithPto => Boolean(candidate));
+
+    for (const candidate of candidates) {
+      if (candidate.slug !== s.slug && !picked.some((state) => state.slug === candidate.slug)) {
+        picked.push(candidate);
+        if (picked.length === limit) break;
+      }
+    }
+  }
+
+  return picked;
+}
+
+const REGION_LABEL: Record<UsStateWithPto["region"], string> = {
+  Northeast: "Northeast",
+  Midwest: "Midwest",
+  South: "South",
+  West: "West",
+};
 
 export function generateStaticParams() {
   return US_STATES.map((s) => ({ state: s.slug }));
@@ -194,33 +225,110 @@ function ptoVariantContext(s: UsStateWithPto) {
   const ruleSlugs = US_STATES.filter((state) => state.pto.rule === s.pto.rule).map((state) => state.slug);
   const ruleRank = clusterRank(ruleSlugs, s.slug);
   const globalRank = clusterRank(US_STATES.map((state) => state.slug), s.slug);
+  const blendedRank = globalRank + (ruleRank * 3);
 
   return {
     globalRank,
-    ruleSummary: pickPtoVariant(ruleRank, RULE_SUMMARY_VARIANTS[s.pto.rule])(s.name),
-    payoutAction: pickPtoVariant(ruleRank, PAYOUT_ACTION_VARIANTS[s.pto.rule], 2)(s),
-    useItOrLoseItAnswer: pickPtoVariant(ruleRank, USE_IT_OR_LOSE_IT_ANSWERS[s.pto.rule], 4)(s.name),
+    ruleSummary: pickPtoVariant(blendedRank, RULE_SUMMARY_VARIANTS[s.pto.rule])(s.name),
+    payoutAction: pickPtoVariant(blendedRank, PAYOUT_ACTION_VARIANTS[s.pto.rule], 2)(s),
+    useItOrLoseItAnswer: pickPtoVariant(blendedRank, USE_IT_OR_LOSE_IT_ANSWERS[s.pto.rule], 4)(s.name),
     practiceIntro: pickPtoVariant(globalRank, PRACTICE_INTRO_VARIANTS, 1)(s.name),
     estimateCopy: pickPtoVariant(globalRank, ESTIMATE_COPY_VARIANTS, 3)(s.name),
   };
+}
+
+const SAME_DEADLINE_TIMING_VARIANTS = [
+  (s: UsStateWithPto) => `${s.name} uses the same stated final-pay deadline for firings and resignations, so the timing review is straightforward once you know whether unused PTO was actually owed.`,
+  (s: UsStateWithPto) => `Because the firing and resignation deadlines match in ${s.name}, focus first on whether the PTO balance was payable, then compare the final check with that shared deadline.`,
+  (s: UsStateWithPto) => `For ${s.name}, the separation type does not change the stated final-pay deadline. The harder question is usually whether the policy made unused vacation payable at all.`,
+  (s: UsStateWithPto) => `${s.name}'s final-pay timing is symmetrical for fired and resigning workers, which makes the PTO dispute mainly a rule-and-records question.`,
+  (s: UsStateWithPto) => `In ${s.name}, the same final-pay checkpoint applies on both sides of separation. Save the PTO ledger and final paystub so the owed amount can be checked against that date.`,
+  (s: UsStateWithPto) => `When ${s.name} uses one deadline for both kinds of separation, late-payment analysis is simpler: confirm the PTO right, then confirm whether it appeared in the final wage payment.`,
+  (s: UsStateWithPto) => `${s.name} does not create a different timing track for quitting versus being fired on this page's data, so the policy language and final wage statement carry more weight.`,
+] as const;
+
+const SPLIT_DEADLINE_TIMING_VARIANTS = [
+  (s: UsStateWithPto) => `${s.name} separates the final-pay timing for firings and resignations, which makes the last-day record important when you compare the PTO balance with the final check.`,
+  (s: UsStateWithPto) => `In ${s.name}, the final-pay deadline changes with the type of separation. Keep the termination notice or resignation message with the PTO records.`,
+  (s: UsStateWithPto) => `For ${s.name}, identify whether the employer ended the job or the worker resigned before deciding which final-pay deadline controls the PTO cash-out.`,
+  (s: UsStateWithPto) => `${s.name}'s timing rule is not one-size-fits-all, so the separation reason should be part of the wage-claim file.`,
+] as const;
+
+const FAST_TERMINATION_TIMING_VARIANTS = [
+  (s: UsStateWithPto) => `${s.name} gives terminated workers a faster final-pay checkpoint than workers who resign, so document who initiated the separation before judging whether the PTO cash-out was late.`,
+  (s: UsStateWithPto) => `A firing can trigger a tighter final-pay clock in ${s.name}. If PTO is owed, keep the termination date and final check date together.`,
+  (s: UsStateWithPto) => `For ${s.name}, employer-initiated separations need extra timing attention because the final-pay deadline can arrive quickly after termination.`,
+  (s: UsStateWithPto) => `${s.name}'s termination deadline is the pressure point for many PTO disputes. The resignation deadline may be different, so do not mix the two timelines.`,
+] as const;
+
+function timingProfile(s: UsStateWithPto, position: number): string {
+  const firedDeadline = s.finalPaycheckTerminated.toLowerCase();
+  const resignedDeadline = s.finalPaycheckResigned.toLowerCase();
+
+  if (firedDeadline === resignedDeadline) {
+    return pickPtoVariant(position, SAME_DEADLINE_TIMING_VARIANTS)(s);
+  }
+
+  if (firedDeadline.includes("immediately") || firedDeadline.includes("business day") || firedDeadline.includes("3")) {
+    return pickPtoVariant(position, FAST_TERMINATION_TIMING_VARIANTS)(s);
+  }
+
+  return pickPtoVariant(position, SPLIT_DEADLINE_TIMING_VARIANTS)(s);
+}
+
+function regionalRuleSummary(s: UsStateWithPto, comparisonStates: UsStateWithPto[]): string {
+  if (comparisonStates.length === 0) return "";
+
+  const sameRule = comparisonStates.filter((state) => state.pto.rule === s.pto.rule);
+  const differentRule = comparisonStates.filter((state) => state.pto.rule !== s.pto.rule);
+  const comparisonNames = formatList(comparisonStates.map((state) => state.name));
+  const sameRuleNames = formatList(sameRule.map((state) => state.name));
+  const differentRuleNames = formatList(differentRule.map((state) => state.name));
+
+  if (sameRule.length === comparisonStates.length) {
+    return `${s.name}'s regional comparison set is ${comparisonNames}. Each listed state uses the same broad PTO payout category, so the useful distinction is the final-pay deadline rather than the payout rule label.`;
+  }
+
+  if (sameRule.length === 0) {
+    return `${s.name}'s regional comparison set is ${comparisonNames}. ${differentRuleNames} ${sentenceVerb(differentRule.length, "uses", "use")} a different PTO payout category, so workers crossing state lines should not assume the same handbook language produces the same result.`;
+  }
+
+  return `${s.name}'s regional comparison set is ${comparisonNames}. ${sameRuleNames} ${sentenceVerb(sameRule.length, "matches", "match")} ${s.name}'s payout category, while ${differentRuleNames} ${sentenceVerb(differentRule.length, "uses", "use")} a different category.`;
+}
+
+function rotateItems<T>(items: T[], position: number): T[] {
+  if (items.length === 0) return items;
+  const start = position % items.length;
+  return [...items.slice(start), ...items.slice(0, start)];
+}
+
+function documentChecklist(s: UsStateWithPto, position: number): string[] {
+  return rotateItems([
+    `${s.name} final paystub showing whether unused PTO appeared as a wage line`,
+    "Payroll or HR portal screenshot showing the accrued PTO balance",
+    "Employee handbook section or written PTO policy covering payout and forfeiture",
+    "Offer letter, contract, or separation agreement with vacation-pay terms",
+    `Messages from payroll or HR explaining the ${s.name} payout decision`,
+    `Last-day record showing whether the ${s.finalPaycheckTerminated.toLowerCase()} or ${s.finalPaycheckResigned.toLowerCase()} deadline applies`,
+    `${s.name} agency URL or filing page: ${s.dolUrl}`,
+  ], position);
 }
 
 function generateFaqs(s: UsStateWithPto): FaqItem[] {
   const stateName = s.name;
   const policy = s.pto;
   const variants = ptoVariantContext(s);
-
-  return [
-    {
-      question: `Does ${stateName} require PTO payout when I leave?`,
-      answer: `${variants.ruleSummary} ${policy.note}`,
-    },
+  const leadQuestion = {
+    question: `Does ${stateName} require PTO payout when I leave?`,
+    answer: `${variants.ruleSummary} ${policy.note}`,
+  };
+  const secondaryQuestions = rotateItems([
     {
       question: `When should unused PTO be paid in ${stateName}?`,
       answer: pickPtoVariant(variants.globalRank, TIMING_ANSWERS, 2)(s),
     },
     {
-      question: `Can a ${stateName} employer use a "use it or lose it" policy?`,
+      question: `Can employers in ${stateName} use a "use it or lose it" policy?`,
       answer: variants.useItOrLoseItAnswer,
     },
     {
@@ -231,7 +339,9 @@ function generateFaqs(s: UsStateWithPto): FaqItem[] {
       question: `Where do I file a PTO payout claim in ${stateName}?`,
       answer: pickPtoVariant(variants.globalRank, CLAIM_ANSWERS, 6)(s),
     },
-  ];
+  ], variants.globalRank);
+
+  return [leadQuestion, ...secondaryQuestions];
 }
 
 export default async function Page({ params }: Props) {
@@ -241,24 +351,21 @@ export default async function Page({ params }: Props) {
 
   const url = `${SITE.url}/us/states/${s.slug}/pto-payout`;
   const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
-  const nearbyStates = getNearbyStates(s.slug);
+  const comparisonStates = getPtoComparisonStates(s);
   const faqs = generateFaqs(s);
   const policy = s.pto;
   const variants = ptoVariantContext(s);
-  const sourceHost = new URL(s.dolUrl).hostname;
-  const comparisonPeers = US_STATES
-    .filter((state) => state.slug !== s.slug)
-    .sort((left, right) => peerSortValue(s.slug, left.slug) - peerSortValue(s.slug, right.slug))
-    .slice(0, 18);
-  const nearbyTrail = nearbyStates
-    .map((nearby) => `${nearby.code}-${nearby.slug}-${nearby.pto.rule}-${nearby.finalPaycheckTerminated}-${nearby.finalPaycheckResigned}`)
-    .join(" | ");
-  const nearbyComparison = nearbyStates
-    .map((nearby) => `${nearby.name} uses "${RULE_LABEL[nearby.pto.rule]}"; fired workers are paid ${nearby.finalPaycheckTerminated.toLowerCase()} and resigning workers are paid ${nearby.finalPaycheckResigned.toLowerCase()}`)
-    .join(". ");
-  const regionalComparison = comparisonPeers
-    .map((peer) => `${peer.name}: ${RULE_LABEL[peer.pto.rule]}, fired ${peer.finalPaycheckTerminated.toLowerCase()}, resigned ${peer.finalPaycheckResigned.toLowerCase()}`)
-    .join(". ");
+  const documentsToSave = documentChecklist(s, variants.globalRank);
+  const sameRuleComparison = comparisonStates.filter((state) => state.pto.rule === s.pto.rule).length;
+  const comparisonSummary = regionalRuleSummary(s, comparisonStates);
+  const regionalPattern =
+    comparisonStates.length === 0
+      ? ""
+      : sameRuleComparison === comparisonStates.length
+        ? `all ${comparisonStates.length} of the ${REGION_LABEL[s.region]} comparison states listed below take the same approach, so the regional pattern is consistent`
+        : sameRuleComparison === 0
+          ? `none of the ${REGION_LABEL[s.region]} comparison states below follow the same approach, so regional rules differ sharply`
+          : `${sameRuleComparison} of the ${comparisonStates.length} ${REGION_LABEL[s.region]} comparison states below ${sentenceVerb(sameRuleComparison, "shares", "share")} the same approach and the rest differ, so it is worth checking each state individually`;
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -347,33 +454,79 @@ export default async function Page({ params }: Props) {
 
           <h2 className="mt-6 text-base font-semibold text-ink">Documents to save</h2>
           <ul className="mt-2 flex flex-col gap-1.5 pl-4">
-            <li className="list-disc">Final paystub and PTO balance</li>
-            <li className="list-disc">Employee handbook or written PTO policy</li>
-            <li className="list-disc">Offer letter, contract, or separation agreement</li>
-            <li className="list-disc">Messages from payroll or HR about unused vacation</li>
+            {documentsToSave.map((item) => (
+              <li key={item} className="list-disc">{item}</li>
+            ))}
           </ul>
 
           <h2 className="mt-6 text-base font-semibold text-ink">State-specific checkpoints</h2>
           <p>
-            For this {s.code} record, cross-check the {s.region} source trail against {s.dolUrl}.
-            The final-pay timing attached to this page is {s.finalPaycheckTerminated.toLowerCase()}
-            {" "}after an employer termination and {s.finalPaycheckResigned.toLowerCase()} after a
-            resignation. The comparison set used here is{" "}
-            {nearbyStates.map((nearby) => `${nearby.code} ${nearby.slug} (${RULE_LABEL[nearby.pto.rule]})`).join("; ")}.
+            In {s.name}, a final paycheck — including any PTO payout that is owed — is due{" "}
+            {s.finalPaycheckTerminated.toLowerCase()} when the employer ends the job and{" "}
+            {s.finalPaycheckResigned.toLowerCase()} when you resign. Confirm the current rule against the{" "}
+            <a href={s.dolUrl} target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">
+              {s.name} labor agency
+            </a>{" "}
+            before you file, since deadlines and payout rules can change between legislative sessions.
           </p>
-          <p>
-            Source fingerprint: {s.code}-{s.slug}-{s.region}-{sourceHost}-{s.verifiedYear}.
-            PTO classification token: {policy.rule}-{policy.code}-{policy.name}. Final-pay token:
-            terminated={s.finalPaycheckTerminated}; resigned={s.finalPaycheckResigned}. Nearby
-            rule trail: {nearbyTrail}.
-          </p>
-          <p>
-            Nearby comparison detail: {nearbyComparison}.
-          </p>
-          <p>
-            Regional comparison trail: {regionalComparison}.
-          </p>
+          <p>{timingProfile(s, variants.globalRank)}</p>
+          {regionalPattern && (
+            <p>
+              {s.name} sits in the U.S. Census {REGION_LABEL[s.region]} region, and {regionalPattern}.
+            </p>
+          )}
+          {comparisonSummary && <p>{comparisonSummary}</p>}
         </section>
+
+        {comparisonStates.length > 0 && (
+          <section className="mb-10" aria-labelledby="comparison-heading">
+            <h2 id="comparison-heading" className="mb-2 text-base font-semibold text-ink">
+              How regional states handle PTO payout
+            </h2>
+            <p className="mb-4 text-sm leading-relaxed text-ink-soft">
+              How {s.name} compares with selected {REGION_LABEL[s.region]} states on unused vacation payout and final-pay timing.
+              Follow a link for that state&apos;s full rules.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[44rem] border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-surface-line text-xs uppercase tracking-wide text-ink-faint">
+                    <th scope="col" className="py-2 pr-4 font-semibold">State</th>
+                    <th scope="col" className="py-2 pr-4 font-semibold">Rule detail</th>
+                    <th scope="col" className="py-2 pr-4 font-semibold">If fired</th>
+                    <th scope="col" className="py-2 font-semibold">If resigned</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-surface-line bg-surface-muted/40">
+                    <th scope="row" className="py-2 pr-4 font-semibold text-ink">{s.name} (this page)</th>
+                    <td className="py-2 pr-4 text-ink-soft">
+                      <p className="font-medium text-ink">{RULE_LABEL[s.pto.rule]}</p>
+                      <p className="mt-1 text-xs leading-relaxed">{s.pto.note}</p>
+                    </td>
+                    <td className="py-2 pr-4 text-ink-soft">{s.finalPaycheckTerminated}</td>
+                    <td className="py-2 text-ink-soft">{s.finalPaycheckResigned}</td>
+                  </tr>
+                  {comparisonStates.map((nearby) => (
+                    <tr key={nearby.slug} className="border-b border-surface-line last:border-0">
+                      <th scope="row" className="py-2 pr-4 font-medium">
+                        <Link href={`/us/states/${nearby.slug}/pto-payout`} className="text-brand-600 hover:underline">
+                          {nearby.name}
+                        </Link>
+                      </th>
+                      <td className="py-2 pr-4 text-ink-soft">
+                        <p className="font-medium text-ink">{RULE_LABEL[nearby.pto.rule]}</p>
+                        <p className="mt-1 text-xs leading-relaxed">{nearby.pto.note}</p>
+                      </td>
+                      <td className="py-2 pr-4 text-ink-soft">{nearby.finalPaycheckTerminated}</td>
+                      <td className="py-2 text-ink-soft">{nearby.finalPaycheckResigned}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
 
         <section className="mb-10 rounded-xl border border-brand-100 bg-brand-50 p-5">
           <h2 className="text-base font-semibold text-ink">Calculate and compare</h2>
@@ -400,26 +553,6 @@ export default async function Page({ params }: Props) {
             ))}
           </div>
         </section>
-
-        {nearbyStates.length > 0 && (
-          <section className="mb-10" aria-labelledby="nearby-heading">
-            <h2 id="nearby-heading" className="mb-4 text-base font-semibold text-ink">
-              Compare nearby state PTO rules
-            </h2>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {nearbyStates.map((nearby) => (
-                <Link
-                  key={nearby.slug}
-                  href={`/us/states/${nearby.slug}/pto-payout`}
-                  className="rounded-lg border border-surface-line bg-white p-4 hover:bg-surface-muted"
-                >
-                  <p className="text-sm font-semibold text-ink">{nearby.name}</p>
-                  <p className="mt-1 text-xs text-ink-soft">{RULE_LABEL[nearby.pto.rule]}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
 
         <div className="border-t border-surface-line pt-6 text-xs text-ink-faint">
           Sources:{" "}
