@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE, jsonLd } from "@/lib/seo";
+import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, jsonLd } from "@/lib/seo";
 import { AffiliateCta } from "@/components/AffiliateCta";
 
 const url = `${SITE.url}/situations/employer-not-paying`;
@@ -145,18 +145,17 @@ export default function EmployerNotPayingPage() {
     ],
   };
 
-  const howTo = {
+  const article = {
     "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: "What to do if your employer is not paying you",
+    "@type": "Article",
+    headline: "What to do if your employer is not paying you",
     description: "Step-by-step guide for UK workers whose employer has not paid wages, redundancy pay, holiday pay, or notice pay.",
-    totalTime: "PT6W",
-    step: STEPS.map((s) => ({
-      "@type": "HowToStep",
-      name: s.title,
-      text: s.body,
-      position: parseInt(s.number),
-    })),
+    url,
+    datePublished: DATE,
+    dateModified: DATE,
+    author: FOUNDER_PERSON,
+    reviewedBy: EDITORIAL_REVIEW,
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   };
 
   const faqSchema = {
@@ -172,7 +171,7 @@ export default function EmployerNotPayingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(howTo)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(article)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema)} />
 
       <div className="mx-auto max-w-content px-5 py-10">

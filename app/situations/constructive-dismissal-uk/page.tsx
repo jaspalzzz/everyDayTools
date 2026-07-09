@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
+import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { AffiliateCta } from "@/components/AffiliateCta";
 
 const url = `${SITE.url}/situations/constructive-dismissal-uk`;
+const DATE = "2026-06-27";
 
 export const metadata: Metadata = {
   title: "Constructive Dismissal UK: Step-by-Step Guide 2026",
@@ -94,18 +95,17 @@ const faqs = [
 ];
 
 export default function ConstructiveDismissalUk() {
-  const howTo = {
+  const article = {
     "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: "How to make a constructive dismissal claim in the UK",
+    "@type": "Article",
+    headline: "How to make a constructive dismissal claim in the UK",
     description: "Step-by-step process for constructive dismissal from documentation through to Employment Tribunal.",
     url,
-    step: steps.map((s) => ({
-      "@type": "HowToStep",
-      position: s.number,
-      name: s.title,
-      text: s.description,
-    })),
+    datePublished: DATE,
+    dateModified: DATE,
+    author: FOUNDER_PERSON,
+    reviewedBy: EDITORIAL_REVIEW,
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   };
 
   const faqSchema = {
@@ -130,7 +130,7 @@ export default function ConstructiveDismissalUk() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(howTo)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(article)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
 

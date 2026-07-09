@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE, jsonLd } from "@/lib/seo";
+import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, jsonLd } from "@/lib/seo";
 
 const url = `${SITE.url}/situations/made-redundant-uk`;
 const DATE = "2026-06-27";
@@ -110,18 +110,17 @@ export default function MadeRedundantUKPage() {
     ],
   };
 
-  const howTo = {
+  const article = {
     "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: "What to do when made redundant in the UK",
+    "@type": "Article",
+    headline: "What to do when made redundant in the UK",
     description: "Step-by-step guide to calculating and claiming everything you're owed after redundancy in the UK.",
     url,
-    step: STEPS.map((s) => ({
-      "@type": "HowToStep",
-      name: s.title,
-      text: s.body,
-      url,
-    })),
+    datePublished: DATE,
+    dateModified: DATE,
+    author: FOUNDER_PERSON,
+    reviewedBy: EDITORIAL_REVIEW,
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   };
 
   const faqSchema = {
@@ -137,7 +136,7 @@ export default function MadeRedundantUKPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(howTo)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(article)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema)} />
 
       <div className="mx-auto max-w-content px-5 py-10">

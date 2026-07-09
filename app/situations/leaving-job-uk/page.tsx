@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE, jsonLd } from "@/lib/seo";
+import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, jsonLd } from "@/lib/seo";
 import { AffiliateCta } from "@/components/AffiliateCta";
 
 const url = `${SITE.url}/situations/leaving-job-uk`;
@@ -145,18 +145,17 @@ export default function LeavingJobUKPage() {
     ],
   };
 
-  const howTo = {
+  const article = {
     "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: "Leaving a job in the UK — what you're owed and what to check",
+    "@type": "Article",
+    headline: "Leaving a job in the UK — what you're owed and what to check",
     description: "Step-by-step guide covering notice periods, final pay, holiday, garden leave, and restrictive covenants when leaving a UK job.",
-    totalTime: "P1W",
-    step: STEPS.map((s) => ({
-      "@type": "HowToStep",
-      name: s.title,
-      text: s.body,
-      position: parseInt(s.number),
-    })),
+    url,
+    datePublished: DATE,
+    dateModified: DATE,
+    author: FOUNDER_PERSON,
+    reviewedBy: EDITORIAL_REVIEW,
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   };
 
   const faqSchema = {
@@ -172,7 +171,7 @@ export default function LeavingJobUKPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(howTo)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(article)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema)} />
 
       <div className="mx-auto max-w-content px-5 py-10">
