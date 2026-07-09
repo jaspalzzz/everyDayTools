@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState, getNearbyStates } from "@/data/usStates";
-import { pickVariant } from "@/lib/textVariants";
+import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
 import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -46,6 +46,7 @@ const IS_FEDERAL_ANSWERS = [
   (name: string) => `It does. ${name}'s legislature hasn't passed a state minimum wage above the federal Fair Labor Standards Act rate, so $7.25/hr is what employers are legally required to pay. Congress raising the federal rate would flow through to ${name} automatically.`,
   (name: string) => `Correct — ${name} has no wage floor of its own beyond what federal law sets. The Fair Labor Standards Act's $7.25/hr rate is therefore the legal minimum in ${name}, and it would only change if Congress amends the federal rate.`,
   (name: string) => `Yes, by default. With no state-level minimum wage statute on the books in ${name}, the federal Fair Labor Standards Act rate of $7.25/hr controls — and stays that way unless ${name} passes its own law or Congress moves the federal number.`,
+  (name: string) => `That's right. ${name} has never enacted a state minimum wage above the federal Fair Labor Standards Act floor, so the $7.25/hr federal rate is what applies. A future federal increase would take effect in ${name} without any state legislative action.`,
 ] as const;
 
 const TIPPED_WAGE_ANSWERS = [
@@ -59,12 +60,12 @@ const TIPPED_WAGE_ANSWERS = [
 ] as const;
 
 const LOCAL_WAGE_ANSWERS = [
-  (name: string) => `Some cities and counties in ${name} may have enacted local minimum wages higher than the state rate. Where a local ordinance applies, employers must pay the highest of federal, state, or local rates. Check with your local city or county government for any applicable local minimum wage that may apply to your job.`,
-  (name: string) => `Certain municipalities within ${name} set their own minimum wage above the statewide figure. When that happens, employers owe whichever rate is highest — federal, state, or local. Your city or county government can confirm whether a local ordinance covers your job.`,
-  (name: string) => `Yes, in some cases — a handful of ${name} cities and counties have passed local minimum wage ordinances that exceed the state rate, and employers there must pay the highest applicable rate. Check with your local government to see if one covers your workplace.`,
-  (name: string) => `Possibly — some ${name} localities set a higher minimum wage than the state floor, and where one applies, employers must pay whichever rate is highest among federal, state, and local. Confirm with your city or county whether an ordinance applies to your workplace.`,
-  (name: string) => `In a few places, yes. Select cities and counties in ${name} have adopted their own minimum wage above the state rate, and employers there owe the highest of the federal, state, or local figure. Your local government can tell you if that applies to you.`,
-  (name: string) => `It depends on where in ${name} you work — some municipalities have set a local minimum wage above the statewide rate, and employers must pay the highest rate that applies. Check with your city or county government to see if a local ordinance is in effect.`,
+  (name: string, dolUrl: string) => `Some cities and counties in ${name} may have enacted local minimum wages higher than the state rate. Where a local ordinance applies, employers must pay the highest of federal, state, or local rates. Check with your local city or county government, or ${dolUrl}, for any applicable local minimum wage that may apply to your job.`,
+  (name: string, dolUrl: string) => `Certain municipalities within ${name} set their own minimum wage above the statewide figure. When that happens, employers owe whichever rate is highest — federal, state, or local. Your city or county government, or ${dolUrl}, can confirm whether a local ordinance covers your job.`,
+  (name: string, dolUrl: string) => `Yes, in some cases — a handful of ${name} cities and counties have passed local minimum wage ordinances that exceed the state rate, and employers there must pay the highest applicable rate. Check with your local government or ${dolUrl} to see if one covers your workplace.`,
+  (name: string, dolUrl: string) => `Possibly — some ${name} localities set a higher minimum wage than the state floor, and where one applies, employers must pay whichever rate is highest among federal, state, and local. Confirm with your city or county, or via ${dolUrl}, whether an ordinance applies to your workplace.`,
+  (name: string, dolUrl: string) => `In a few places, yes. Select cities and counties in ${name} have adopted their own minimum wage above the state rate, and employers there owe the highest of the federal, state, or local figure. Your local government or ${dolUrl} can tell you if that applies to you.`,
+  (name: string, dolUrl: string) => `It depends on where in ${name} you work — some municipalities have set a local minimum wage above the statewide rate, and employers must pay the highest rate that applies. Check with your city or county government, or ${dolUrl}, to see if a local ordinance is in effect.`,
 ] as const;
 
 const UNDERPAID_ANSWERS = [
@@ -77,8 +78,16 @@ const UNDERPAID_ANSWERS = [
 
 function generateFaqs(s: ReturnType<typeof getUsState> & object): FaqItem[] {
   const isFederal = s.minimumWage.includes("federal minimum");
-  const federalClause = pickVariant(s.slug + "-fedclause", FEDERAL_RATE_CLAUSES)(s.name);
-  const isFederalAnswer = pickVariant(s.slug + "-isfedanswer", IS_FEDERAL_ANSWERS)(s.name);
+  // Rank within the federal-tier cluster (~20 states), not a hash of the
+  // slug -- see lib/textVariants.ts for why position-based beats hashing
+  // when many records share the same categorical value.
+  const federalTierSlugs = US_STATES.filter((st) => st.minimumWage.includes("federal minimum")).map((st) => st.slug);
+  const federalRank = clusterRank(federalTierSlugs, s.slug);
+  const federalClause = pickVariantByPosition(federalRank, FEDERAL_RATE_CLAUSES)(s.name);
+  const isFederalAnswer = pickVariantByPosition(federalRank, IS_FEDERAL_ANSWERS)(s.name);
+
+  const globalRank = clusterRank(US_STATES.map((st) => st.slug), s.slug);
+
   return [
     {
       question: `What is the minimum wage in ${s.name} in 2026?`,
@@ -92,15 +101,15 @@ function generateFaqs(s: ReturnType<typeof getUsState> & object): FaqItem[] {
     },
     {
       question: `What is the minimum wage for tipped employees in ${s.name}?`,
-      answer: pickVariant(s.slug + "-tipped", TIPPED_WAGE_ANSWERS)(s.name, s.dolUrl),
+      answer: pickVariantByPosition(globalRank, TIPPED_WAGE_ANSWERS)(s.name, s.dolUrl),
     },
     {
       question: `Are there local minimum wages higher than ${s.name}'s state rate?`,
-      answer: pickVariant(s.slug + "-localwage", LOCAL_WAGE_ANSWERS)(s.name),
+      answer: pickVariantByPosition(globalRank, LOCAL_WAGE_ANSWERS)(s.name, s.dolUrl),
     },
     {
       question: `What can I do if my employer pays me less than minimum wage in ${s.name}?`,
-      answer: pickVariant(s.slug + "-underpaid", UNDERPAID_ANSWERS)(s.name, s.dolUrl),
+      answer: pickVariantByPosition(globalRank, UNDERPAID_ANSWERS)(s.name, s.dolUrl),
     },
   ];
 }

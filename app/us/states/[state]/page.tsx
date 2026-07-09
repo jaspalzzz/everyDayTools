@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState, getNearbyStates, type UsStateWithPto } from "@/data/usStates";
-import { pickVariant } from "@/lib/textVariants";
+import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
 import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -93,6 +93,8 @@ const MIN_WAGE_ANSWERS = [
     `Right now, ${s.name} sets its minimum wage at ${s.minimumWage}.${s.minimumWageNote ? ` ${s.minimumWageNote}` : ""} A few ${s.name} cities or counties may require more, so verify the rate for your specific location with the ${s.name} Department of Labor.`,
   (s: UsStateWithPto) =>
     `${s.name} pegs its statewide minimum wage at ${s.minimumWage}.${s.minimumWageNote ? ` ${s.minimumWageNote}` : ""} Local governments in ${s.name} can set a higher rate, so double-check against the ${s.name} Department of Labor before assuming the statewide figure applies to you.`,
+  (s: UsStateWithPto) =>
+    `${s.name} law sets the minimum wage at ${s.minimumWage}.${s.minimumWageNote ? ` ${s.minimumWageNote}` : ""} That's the state floor only — some cities and counties inside ${s.name} may legally require more, so cross-check with the ${s.name} Department of Labor before relying on the statewide number.`,
 ] as const;
 
 const WHAT_TO_DO_ANSWERS = [
@@ -106,6 +108,10 @@ const WHAT_TO_DO_ANSWERS = [
     `You have options if your final paycheck is late in ${name}: a wage claim with the state's labor enforcement agency, a complaint to the federal Wage and Hour Division for employers covered by federal law, or a private civil lawsuit. Compensation can include the unpaid wages plus penalties or interest. Save your pay stubs, hours records, and correspondence in case you need them.`,
   (name: string) =>
     `${name} gives you several ways to chase down a late final paycheck — a state wage claim, a federal complaint to the Department of Labor's Wage and Hour Division, or a civil suit. You may recover the wages owed plus penalties or interest. Hold onto pay stubs, time records, and any written exchanges with your employer as proof.`,
+  (name: string) =>
+    `A missed final paycheck deadline in ${name} can be escalated through a state wage claim, a federal Wage and Hour Division complaint, or a civil suit — any of which can recover the unpaid wages plus penalties or interest. Document everything: pay stubs, hours worked, and dated correspondence.`,
+  (name: string) =>
+    `${name} workers with a late final paycheck can file a state wage claim, escalate to the federal Department of Labor's Wage and Hour Division, or bring a civil claim — each route can recover unpaid wages plus penalties or interest. Keep your pay stubs, hours records, and any employer correspondence as evidence.`,
 ] as const;
 
 const SICK_LEAVE_ANSWERS = [
@@ -119,11 +125,25 @@ const SICK_LEAVE_ANSWERS = [
     `Not typically. ${name}'s PTO payout requirements center on vacation time, and sick leave is its own category unless your employer combines them into a single PTO bank or your agreement vests sick time as earned wages. Your handbook or offer letter will settle which rule applies to you.`,
   (name: string) =>
     `As a rule, no — ${name} treats sick leave separately from vacation for payout purposes, unless your employer's PTO bank blends the two or your contract vests sick time as wages. Check your employee handbook to confirm how your employer structures it.`,
+  (name: string) =>
+    `No, not by default. ${name} keeps sick leave and vacation as separate categories for payout purposes, unless your employer's PTO bank combines them or your contract vests sick time as earned wages. Your handbook will say which applies.`,
+  (name: string) =>
+    `Not as a general rule. ${name} draws a line between sick leave and vacation when it comes to payout — they only merge if your employer runs a combined PTO bank or your agreement vests sick time as wages. Check your handbook for the specifics.`,
+  (name: string) =>
+    `No, unless your employer says otherwise. ${name} treats sick leave separately from vacation for payout purposes by default; it's only combined if your employer's PTO bank merges the two or your contract vests sick time as earned wages.`,
 ] as const;
 
 function generateFaqs(s: UsStateWithPto): FaqItem[] {
   const variants = PTO_RULE_ANSWERS[s.pto.rule];
-  const ruleLabel = pickVariant(s.slug + "-ptorule", variants)(s.name, s.pto.note);
+  // Rank within the same-tier cluster (e.g. all "no-requirement" states), not
+  // a hash of the slug -- guarantees every state in that ~26-state cluster
+  // gets a distinct-where-possible variant instead of risking a coincidental
+  // hash collision. See lib/textVariants.ts for why this matters.
+  const tierSlugs = US_STATES.filter((st) => st.pto.rule === s.pto.rule).map((st) => st.slug);
+  const tierRank = clusterRank(tierSlugs, s.slug);
+  const ruleLabel = pickVariantByPosition(tierRank, variants)(s.name, s.pto.note);
+
+  const globalRank = clusterRank(US_STATES.map((st) => st.slug), s.slug);
 
   const faqs: FaqItem[] = [
     {
@@ -132,19 +152,19 @@ function generateFaqs(s: UsStateWithPto): FaqItem[] {
     },
     {
       question: `How long does my employer have to pay my final paycheck in ${s.name}?`,
-      answer: pickVariant(s.slug + "-finalpaycheck", FINAL_PAYCHECK_ANSWERS)(s),
+      answer: pickVariantByPosition(globalRank, FINAL_PAYCHECK_ANSWERS)(s),
     },
     {
       question: `What is the minimum wage in ${s.name} in 2025?`,
-      answer: pickVariant(s.slug + "-minwage", MIN_WAGE_ANSWERS)(s),
+      answer: pickVariantByPosition(globalRank, MIN_WAGE_ANSWERS)(s),
     },
     {
       question: `What can I do if my employer doesn't pay my final paycheck on time in ${s.name}?`,
-      answer: pickVariant(s.slug + "-whattodo", WHAT_TO_DO_ANSWERS)(s.name),
+      answer: pickVariantByPosition(globalRank, WHAT_TO_DO_ANSWERS)(s.name),
     },
     {
       question: `Does ${s.name} require employers to include accrued sick leave in the final paycheck?`,
-      answer: pickVariant(s.slug + "-sickleave", SICK_LEAVE_ANSWERS)(s.name),
+      answer: pickVariantByPosition(globalRank, SICK_LEAVE_ANSWERS)(s.name),
     },
   ];
 
