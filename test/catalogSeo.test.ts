@@ -3,12 +3,6 @@ import sitemap from "@/app/sitemap";
 import { TOOLS } from "@/data/tools";
 import { SITE } from "@/lib/seo";
 
-const priorityByTier = {
-  1: 0.9,
-  2: 0.8,
-  3: 0.7,
-} as const;
-
 describe("tool catalogue SEO rules", () => {
   it("gives every tool an explicit launch tier", () => {
     expect(TOOLS.length).toBe(31);
@@ -21,14 +15,16 @@ describe("tool catalogue SEO rules", () => {
     }
   });
 
-  it("uses tier-based sitemap priorities for every tool", () => {
+  it("includes a sitemap entry with a lastModified date for every tool", () => {
+    // priority/changeFrequency were intentionally dropped: both are ignored
+    // by Google, and Next.js's MetadataRoute.Sitemap type doesn't require
+    // them -- lastModified is the only field Google actually uses.
     const entries = sitemap();
 
     for (const tool of TOOLS) {
       const entry = entries.find((item) => item.url === `${SITE.url}/${tool.slug}`);
       expect(entry, `${tool.slug} sitemap entry`).toBeDefined();
-      expect(entry?.changeFrequency).toBe("monthly");
-      expect(entry?.priority).toBe(priorityByTier[tool.tier!]);
+      expect(entry?.lastModified).toBeTruthy();
     }
   });
 });

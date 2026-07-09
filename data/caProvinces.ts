@@ -14,6 +14,12 @@ export interface CaProvinceData {
   legislationName: string;
   labourMinistryUrl: string;
   verifiedYear: number;
+  /**
+   * Exact date of the last genuine content/rate change, when known — falls
+   * back to `${verifiedYear}-01-01` in the sitemap and on-page freshness
+   * badge otherwise. Same pattern as UsStateData.lastContentUpdate.
+   */
+  lastContentUpdate?: string;
 }
 
 export const CA_PROVINCES: CaProvinceData[] = [
@@ -39,6 +45,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Employment Standards Act 2000 (ESA)",
     labourMinistryUrl: "https://www.ontario.ca/document/your-guide-employment-standards-act-0",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "british-columbia",
@@ -62,6 +69,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Employment Standards Act (RSBC 1996)",
     labourMinistryUrl: "https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "alberta",
@@ -83,6 +91,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Employment Standards Code (RSA 2000)",
     labourMinistryUrl: "https://www.alberta.ca/employment-standards",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "quebec",
@@ -102,6 +111,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Act Respecting Labour Standards (CQLR c N-1.1)",
     labourMinistryUrl: "https://www.cnesst.gouv.qc.ca/en",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "manitoba",
@@ -122,6 +132,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Employment Standards Code (CCSM c E110)",
     labourMinistryUrl: "https://www.gov.mb.ca/labour/standards/",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "saskatchewan",
@@ -142,6 +153,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Saskatchewan Employment Act (SS 2013, c S-15.1)",
     labourMinistryUrl: "https://www.saskatchewan.ca/business/employment-standards",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "nova-scotia",
@@ -161,6 +173,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Labour Standards Code (RSNS 1989, c 246)",
     labourMinistryUrl: "https://novascotia.ca/lae/employmentrights/",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "new-brunswick",
@@ -178,6 +191,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Employment Standards Act (RSNB 1973, c E-7.2)",
     labourMinistryUrl: "https://www2.gnb.ca/content/gnb/en/departments/post-secondary_education_training_and_labour/labour/employment_standards.html",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "prince-edward-island",
@@ -197,6 +211,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Employment Standards Act (RSPEI 1988, c E-6.2)",
     labourMinistryUrl: "https://www.princeedwardisland.ca/en/topic/employment-standards",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "newfoundland-and-labrador",
@@ -217,6 +232,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Labour Standards Act (RSNL 1990, c L-2)",
     labourMinistryUrl: "https://www.gov.nl.ca/ecc/labour/",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "northwest-territories",
@@ -240,6 +256,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Employment Standards Act (SNWT 2007, c 13)",
     labourMinistryUrl: "https://www.ece.gov.nt.ca/en/employment-standards",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "nunavut",
@@ -263,6 +280,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Labour Standards Act (NNu 2003, c 8)",
     labourMinistryUrl: "https://www.gov.nu.ca/human-resources/information/labour-standards",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
   {
     slug: "yukon",
@@ -283,6 +301,7 @@ export const CA_PROVINCES: CaProvinceData[] = [
     legislationName: "Employment Standards Act (RSY 2002, c 72)",
     labourMinistryUrl: "https://yukon.ca/en/doing-business/employer-responsibilities/understand-your-responsibilities-under-employment-standards",
     verifiedYear: 2026,
+    lastContentUpdate: "2026-07-09",
   },
 ];
 

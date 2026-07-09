@@ -76,7 +76,7 @@ export default async function ProvincePage({ params }: Props) {
   if (!p) notFound();
 
   const url = `${SITE.url}/ca/provinces/${p.slug}`;
-  const DATE = `${p.verifiedYear}-01-01`;
+  const DATE = p.lastContentUpdate ?? `${p.verifiedYear}-01-01`;
   const faqs = generateFaqs(p);
 
   const breadcrumb = {
