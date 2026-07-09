@@ -156,6 +156,9 @@ changes. Key constants to refresh:
 - `NEXT_PUBLIC_GA_ID` (e.g. `G-XXXXXXXXXX`) enables consent-gated Google Analytics 4. GA loads
   only after the visitor accepts cookies (same `ConsentBanner` choice as AdSense); if unset, no
   analytics ships. Set it in Cloudflare Pages Production/Preview to start collecting a baseline.
+- `NEXT_PUBLIC_SOCIAL_PROFILES` (comma-separated URLs) populates `Organization.sameAs` in the
+  homepage JSON-LD. Empty by default — set it only to genuine brand/social profiles (never a
+  placeholder), as an invalid `sameAs` is worse than none.
 - `public/ads.txt` contains the Google AdSense publisher record for `pub-8825078307302402`.
 - Public contact emails live in `lib/seo.ts`.
 - Analytics/Search Console are tracked in [TASKS.md](TASKS.md) under T1.3.
