@@ -1,19 +1,10 @@
 {
-  "checkedAt": "2026-07-06T08:05:55.136Z",
+  "checkedAt": "2026-07-09T01:32:34.721Z",
   "total": 224,
-  "failures": 43,
+  "failures": 44,
   "notFoundFailures": 0,
-  "warnings": 43,
+  "warnings": 44,
   "results": [
-    {
-      "url": "https://does.dc.gov/page/office-wage-hour",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://does.dc.gov/page/office-wage-hour"
-    },
     {
       "url": "https://dlt.ri.gov/employers/wage-and-hour-regulation",
       "refs": [
@@ -43,13 +34,13 @@
       "finalUrl": "https://calculate.fairwork.gov.au/FindYourAward"
     },
     {
-      "url": "https://dol.ny.gov/minimum-wage",
+      "url": "https://does.dc.gov/page/office-wage-hour",
       "refs": [
         "data/usStates.ts"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://dol.ny.gov/minimum-wage"
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://does.dc.gov/page/office-wage-hour"
     },
     {
       "url": "https://dol.georgia.gov",
@@ -61,13 +52,13 @@
       "finalUrl": "https://dol.georgia.gov/"
     },
     {
-      "url": "https://dlr.sd.gov/labor_management_assistance/labor_standards_act.aspx",
+      "url": "https://dol.ny.gov/minimum-wage",
       "refs": [
         "data/usStates.ts"
       ],
-      "ok": false,
-      "status": 503,
-      "finalUrl": "https://dlr.sd.gov/labor_management_assistance/labor_standards_act.aspx"
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://dol.ny.gov/minimum-wage"
     },
     {
       "url": "https://floridajobs.org/business-growth-and-partnerships/for-employers/labor-laws",
@@ -97,6 +88,15 @@
       "finalUrl": "https://labor.alaska.gov/lss/home.htm"
     },
     {
+      "url": "https://labor.delaware.gov",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://labor.delaware.gov/"
+    },
+    {
       "url": "https://erd.dli.mt.gov/labor-standards/wage-and-hour-payment-act",
       "refs": [
         "data/usStates.ts"
@@ -115,13 +115,13 @@
       "finalUrl": "https://labor.hawaii.gov/wsd/"
     },
     {
-      "url": "https://labor.delaware.gov",
+      "url": "https://dlr.sd.gov/labor_management_assistance/labor_standards_act.aspx",
       "refs": [
         "data/usStates.ts"
       ],
       "ok": true,
       "status": 200,
-      "finalUrl": "https://labor.delaware.gov/"
+      "finalUrl": "https://dlr.sd.gov/error.aspx?aspxerrorpath=/labor_management_assistance/labor_standards_act.aspx"
     },
     {
       "url": "https://labor.illinois.gov",
@@ -142,24 +142,6 @@
       "finalUrl": "https://labor.mo.gov/DLS"
     },
     {
-      "url": "https://labor.ky.gov/Pages/Home.aspx",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://elc.ky.gov/"
-    },
-    {
-      "url": "https://labor.wv.gov",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://labor.wv.gov/"
-    },
-    {
       "url": "https://labor.nv.gov",
       "refs": [
         "data/usStates.ts"
@@ -167,43 +149,6 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://labor.nv.gov/"
-    },
-    {
-      "url": "https://laborcommission.utah.gov/divisions/utah-antidiscrimination-and-labor-uald/",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://laborcommission.utah.gov/divisions/utah-antidiscrimination-and-labor-uald/"
-    },
-    {
-      "url": "https://dol.nebraska.gov/LaborStandards",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": false,
-      "status": "ERR",
-      "finalUrl": "https://dol.nebraska.gov/LaborStandards",
-      "error": "fetch failed"
-    },
-    {
-      "url": "https://labor.idaho.gov/dnn/",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.labor.idaho.gov/"
-    },
-    {
-      "url": "https://labor.vermont.gov/wages-and-benefits",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://labor.vermont.gov/wages-and-benefits"
     },
     {
       "url": "https://dwd.wisconsin.gov/er/laborstandards/",
@@ -216,85 +161,50 @@
       "error": "fetch failed"
     },
     {
-      "url": "https://mypayrights.com",
+      "url": "https://laborcommission.utah.gov/divisions/utah-antidiscrimination-and-labor-uald/",
       "refs": [
-        "lib/seo.ts"
+        "data/usStates.ts"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mypayrights.com/"
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://laborcommission.utah.gov/divisions/utah-antidiscrimination-and-labor-uald/"
     },
     {
-      "url": "https://mdes.ms.gov",
+      "url": "https://labor.ky.gov/Pages/Home.aspx",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://elc.ky.gov/"
+    },
+    {
+      "url": "https://labor.vermont.gov/wages-and-benefits",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://labor.vermont.gov/wages-and-benefits"
+    },
+    {
+      "url": "https://labor.wv.gov",
       "refs": [
         "data/usStates.ts"
       ],
       "ok": true,
       "status": 200,
-      "finalUrl": "https://mdes.ms.gov/"
+      "finalUrl": "https://labor.wv.gov/"
     },
     {
-      "url": "https://lni.wa.gov/workers-rights/wages/",
+      "url": "https://dol.nebraska.gov/LaborStandards",
       "refs": [
         "data/usStates.ts"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://lni.wa.gov/workers-rights/wages/minimum-wage/"
-    },
-    {
-      "url": "https://policies.google.com/technologies/ads",
-      "refs": [
-        "app/privacy/page.tsx"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://policies.google.com/technologies/ads"
-    },
-    {
-      "url": "https://novascotia.ca/lae/employmentrights/",
-      "refs": [
-        "data/caProvinces.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://novascotia.ca/lae/employmentrights/"
-    },
-    {
-      "url": "https://solicitors.lawsociety.org.uk",
-      "refs": [
-        "components/AffiliateCta.tsx"
-      ],
       "ok": false,
-      "status": 403,
-      "finalUrl": "https://solicitors.lawsociety.org.uk/"
-    },
-    {
-      "url": "https://oui.doleta.gov/unemploy/content/sigpros/2020-2029/January2026.pdf",
-      "refs": [
-        "lib/calculators/unemployment.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://oui.doleta.gov/unemploy/content/sigpros/2020-2029/January2026.pdf"
-    },
-    {
-      "url": "https://worksafe.nt.gov.au",
-      "refs": [
-        "data/auStates.ts"
-      ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://worksafe.nt.gov.au/"
-    },
-    {
-      "url": "https://laws-lois.justice.gc.ca/eng/acts/L-2/page-1.html",
-      "refs": [
-        "data/legalSources.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://laws-lois.justice.gc.ca/eng/acts/L-2/page-1.html"
+      "status": "ERR",
+      "finalUrl": "https://dol.nebraska.gov/LaborStandards",
+      "error": "fetch failed"
     },
     {
       "url": "https://laws-lois.justice.gc.ca/eng/acts/L-2/",
@@ -306,13 +216,103 @@
       "finalUrl": "https://laws-lois.justice.gc.ca/eng/acts/L-2/"
     },
     {
-      "url": "https://portal.ct.gov/dol",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/L-2/page-1.html",
+      "refs": [
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://laws-lois.justice.gc.ca/eng/acts/L-2/page-1.html"
+    },
+    {
+      "url": "https://mypayrights.com",
+      "refs": [
+        "lib/seo.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://mypayrights.com/"
+    },
+    {
+      "url": "https://novascotia.ca/lae/employmentrights/",
+      "refs": [
+        "data/caProvinces.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://novascotia.ca/lae/employmentrights/"
+    },
+    {
+      "url": "https://lni.wa.gov/workers-rights/wages/",
       "refs": [
         "data/usStates.ts"
       ],
       "ok": true,
+      "status": 200,
+      "finalUrl": "https://lni.wa.gov/workers-rights/wages/minimum-wage/"
+    },
+    {
+      "url": "https://labor.idaho.gov/dnn/",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.labor.idaho.gov/"
+    },
+    {
+      "url": "https://solicitors.lawsociety.org.uk",
+      "refs": [
+        "components/AffiliateCta.tsx"
+      ],
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://solicitors.lawsociety.org.uk/"
+    },
+    {
+      "url": "https://mdes.ms.gov",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://mdes.ms.gov/"
+    },
+    {
+      "url": "https://policies.google.com/technologies/ads",
+      "refs": [
+        "app/privacy/page.tsx"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://policies.google.com/technologies/ads"
+    },
+    {
+      "url": "https://worksafe.nt.gov.au",
+      "refs": [
+        "data/auStates.ts"
+      ],
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://worksafe.nt.gov.au/"
+    },
+    {
+      "url": "https://oui.doleta.gov/unemploy/content/sigpros/2020-2029/January2026.pdf",
+      "refs": [
+        "lib/calculators/unemployment.ts"
+      ],
+      "ok": true,
       "status": 206,
-      "finalUrl": "https://portal.ct.gov/dol"
+      "finalUrl": "https://oui.doleta.gov/unemploy/content/sigpros/2020-2029/January2026.pdf"
+    },
+    {
+      "url": "https://worksafe.tas.gov.au",
+      "refs": [
+        "data/auStates.ts"
+      ],
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://worksafe.tas.gov.au/"
     },
     {
       "url": "https://www.acas.org.uk/acas-code-of-practice-on-disciplinary-and-grievance-procedures",
@@ -322,24 +322,6 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.acas.org.uk/acas-code-of-practice-on-disciplinary-and-grievance-procedures"
-    },
-    {
-      "url": "https://www.acas.org.uk/checking-holiday-entitlement",
-      "refs": [
-        "app/guides/uk-holiday-entitlement/page.tsx"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.acas.org.uk/checking-holiday-entitlement"
-    },
-    {
-      "url": "https://www.acas.org.uk/advice",
-      "refs": [
-        "app/methodology/page.tsx"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.acas.org.uk/advice"
     },
     {
       "url": "https://www.acas.org.uk",
@@ -358,13 +340,31 @@
       "finalUrl": "https://www.acas.org.uk/"
     },
     {
-      "url": "https://worksafe.tas.gov.au",
+      "url": "https://www.acas.org.uk/advice",
       "refs": [
-        "data/auStates.ts"
+        "app/methodology/page.tsx"
       ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://worksafe.tas.gov.au/"
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.acas.org.uk/advice"
+    },
+    {
+      "url": "https://www.acas.org.uk/checking-holiday-entitlement",
+      "refs": [
+        "app/guides/uk-holiday-entitlement/page.tsx"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.acas.org.uk/checking-holiday-entitlement"
+    },
+    {
+      "url": "https://portal.ct.gov/dol",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://portal.ct.gov/dol"
     },
     {
       "url": "https://www.acas.org.uk/dismissals",
@@ -374,6 +374,15 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.acas.org.uk/dismissals"
+    },
+    {
+      "url": "https://www.acas.org.uk/checking-sick-pay/statutory-sick-pay-ssp",
+      "refs": [
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.acas.org.uk/checking-sick-pay/statutory-sick-pay-ssp"
     },
     {
       "url": "https://www.acas.org.uk/dismissals/constructive-dismissal",
@@ -394,32 +403,25 @@
       "finalUrl": "https://www.acas.org.uk/early-conciliation"
     },
     {
-      "url": "https://www.acas.org.uk/checking-sick-pay/statutory-sick-pay-ssp",
+      "url": "https://www.acas.org.uk/notice-periods",
       "refs": [
+        "app/guides/uk-notice-period-law/page.tsx",
+        "data/legalSources.ts",
+        "lib/calculators/gardenLeave.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.acas.org.uk/notice-periods"
+    },
+    {
+      "url": "https://www.acas.org.uk/if-your-wages-are-not-paid",
+      "refs": [
+        "app/uk/pay-rights/page.tsx",
         "data/legalSources.ts"
       ],
       "ok": true,
       "status": 200,
-      "finalUrl": "https://www.acas.org.uk/checking-sick-pay/statutory-sick-pay-ssp"
-    },
-    {
-      "url": "https://www.acas.org.uk/statutory-maternity-leave-and-pay",
-      "refs": [
-        "app/guides/uk-maternity-pay/page.tsx"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.acas.org.uk/statutory-maternity-leave-and-pay"
-    },
-    {
-      "url": "https://www.acas.org.uk/settlement-agreements",
-      "refs": [
-        "components/AffiliateCta.tsx",
-        "data/legalSources.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.acas.org.uk/settlement-agreements"
+      "finalUrl": "https://www.acas.org.uk/if-your-wages-are-not-paid"
     },
     {
       "url": "https://www.acas.org.uk/redundancy",
@@ -435,35 +437,13 @@
       "finalUrl": "https://www.acas.org.uk/redundancy"
     },
     {
-      "url": "https://www.acas.org.uk/if-your-wages-are-not-paid",
+      "url": "https://www.acas.org.uk/statutory-maternity-leave-and-pay",
       "refs": [
-        "app/uk/pay-rights/page.tsx",
-        "data/legalSources.ts"
+        "app/guides/uk-maternity-pay/page.tsx"
       ],
       "ok": true,
       "status": 200,
-      "finalUrl": "https://www.acas.org.uk/if-your-wages-are-not-paid"
-    },
-    {
-      "url": "https://llr.sc.gov/wage/",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": false,
-      "status": "ERR",
-      "finalUrl": "https://llr.sc.gov/wage/",
-      "error": "fetch failed"
-    },
-    {
-      "url": "https://www.acas.org.uk/notice-periods",
-      "refs": [
-        "app/guides/uk-notice-period-law/page.tsx",
-        "data/legalSources.ts",
-        "lib/calculators/gardenLeave.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.acas.org.uk/notice-periods"
+      "finalUrl": "https://www.acas.org.uk/statutory-maternity-leave-and-pay"
     },
     {
       "url": "https://www.ato.gov.au/individuals-and-families/jobs-and-employment-types/working-as-an-employee",
@@ -475,6 +455,16 @@
       "finalUrl": "https://www.ato.gov.au/individuals-and-families/jobs-and-employment-types/working-as-an-employee"
     },
     {
+      "url": "https://www.acas.org.uk/settlement-agreements",
+      "refs": [
+        "components/AffiliateCta.tsx",
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.acas.org.uk/settlement-agreements"
+    },
+    {
       "url": "https://www.azica.gov/divisions/labor-department",
       "refs": [
         "data/usStates.ts"
@@ -484,13 +474,13 @@
       "finalUrl": "https://www.azica.gov/divisions/labor-department"
     },
     {
-      "url": "https://www.bls.gov/cpi/",
+      "url": "https://www.alberta.ca/employment-standards",
       "refs": [
-        "lib/calculators/payRise.ts"
+        "data/caProvinces.ts"
       ],
       "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.bls.gov/cpi/"
+      "status": 206,
+      "finalUrl": "https://www.alberta.ca/employment-standards"
     },
     {
       "url": "https://www.ada.gov/law-and-regs/ada/",
@@ -502,13 +492,13 @@
       "finalUrl": "https://www.ada.gov/law-and-regs/ada/"
     },
     {
-      "url": "https://www.alberta.ca/employment-standards",
+      "url": "https://www.bls.gov/cpi/",
       "refs": [
-        "data/caProvinces.ts"
+        "lib/calculators/payRise.ts"
       ],
       "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.alberta.ca/employment-standards"
+      "status": 200,
+      "finalUrl": "https://www.bls.gov/cpi/"
     },
     {
       "url": "https://www.acas.org.uk/tupe",
@@ -530,15 +520,6 @@
       "finalUrl": "https://www.canada.ca/en/employment-social-development/programs/ei.html"
     },
     {
-      "url": "https://www.canada.ca/en/services/jobs/workplace.html",
-      "refs": [
-        "app/disclaimer/page.tsx"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.canada.ca/en/services/jobs/workplace.html"
-    },
-    {
       "url": "https://www.canada.ca/en/services/jobs/workplace/federal-labour-standards.html",
       "refs": [
         "app/ca/page.tsx",
@@ -558,6 +539,24 @@
       "finalUrl": "https://www.canada.ca/en/employment-social-development/services/labour-standards.html"
     },
     {
+      "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll.html",
+      "refs": [
+        "app/ca/page.tsx"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll.html"
+    },
+    {
+      "url": "https://www.canada.ca/en/services/jobs/workplace.html",
+      "refs": [
+        "app/disclaimer/page.tsx"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.canada.ca/en/services/jobs/workplace.html"
+    },
+    {
       "url": "https://www.citizensadvice.org.uk/work/",
       "refs": [
         "components/AffiliateCta.tsx"
@@ -567,13 +566,13 @@
       "finalUrl": "https://www.citizensadvice.org.uk/work/"
     },
     {
-      "url": "https://www.cnesst.gouv.qc.ca",
+      "url": "https://www.canada.ca/en/employment-social-development/programs/employment-standards.html",
       "refs": [
-        "app/fr/ca/indemnite-de-depart/page.tsx"
+        "app/ca/page.tsx"
       ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://www.cnesst.gouv.qc.ca/"
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.canada.ca/en/services/jobs/workplace/federal-labour-standards.html"
     },
     {
       "url": "https://www.cnesst.gouv.qc.ca/en",
@@ -585,13 +584,13 @@
       "finalUrl": "https://www.cnesst.gouv.qc.ca/en"
     },
     {
-      "url": "https://www.citizensadvice.org.uk/work/redundancy/",
+      "url": "https://www.cnesst.gouv.qc.ca",
       "refs": [
-        "components/AffiliateCta.tsx"
+        "app/fr/ca/indemnite-de-depart/page.tsx"
       ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.citizensadvice.org.uk/work/redundancy/"
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.cnesst.gouv.qc.ca/"
     },
     {
       "url": "https://www.cnesst.gouv.qc.ca/fr/conditions-travail/conges/vacances",
@@ -603,22 +602,23 @@
       "finalUrl": "https://www.cnesst.gouv.qc.ca/fr/conditions-travail/conges/vacances"
     },
     {
-      "url": "https://www.citizensadvice.org.uk/work/leaving-a-job/dismissal/check-if-your-dismissal-is-fair/",
+      "url": "https://llr.sc.gov/wage/",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": false,
+      "status": "ERR",
+      "finalUrl": "https://llr.sc.gov/wage/",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.citizensadvice.org.uk/work/redundancy/",
       "refs": [
         "components/AffiliateCta.tsx"
       ],
       "ok": true,
       "status": 206,
-      "finalUrl": "https://www.citizensadvice.org.uk/work/dismissal/check-your-rights-if-youre-dismissed/check-if-your-dismissal-is-fair/"
-    },
-    {
-      "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll.html",
-      "refs": [
-        "app/ca/page.tsx"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll.html"
+      "finalUrl": "https://www.citizensadvice.org.uk/work/redundancy/"
     },
     {
       "url": "https://www.canada.ca/en/services/jobs/workplace/federal-labour-standards/termination.html",
@@ -630,13 +630,22 @@
       "finalUrl": "https://www.canada.ca/en/services/jobs/workplace/federal-labour-standards/termination.html"
     },
     {
-      "url": "https://www.canada.ca/en/employment-social-development/programs/employment-standards.html",
+      "url": "https://www.citizensadvice.org.uk/work/leaving-a-job/dismissal/check-if-your-dismissal-is-fair/",
       "refs": [
-        "app/ca/page.tsx"
+        "components/AffiliateCta.tsx"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.citizensadvice.org.uk/work/dismissal/check-your-rights-if-youre-dismissed/check-if-your-dismissal-is-fair/"
+    },
+    {
+      "url": "https://www.dir.ca.gov/dlse/",
+      "refs": [
+        "data/usStates.ts"
       ],
       "ok": true,
       "status": 200,
-      "finalUrl": "https://www.canada.ca/en/services/jobs/workplace/federal-labour-standards.html"
+      "finalUrl": "https://www.dir.ca.gov/dlse/"
     },
     {
       "url": "https://www.dol.gov",
@@ -649,6 +658,15 @@
       "finalUrl": "https://www.dol.gov/"
     },
     {
+      "url": "https://www.dol.gov/agencies/whd/contact/complaints",
+      "refs": [
+        "components/AffiliateCta.tsx"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dol.gov/agencies/whd/contact/complaints"
+    },
+    {
       "url": "https://www.dol.gov/agencies/whd",
       "refs": [
         "app/about/page.tsx",
@@ -657,15 +675,6 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.dol.gov/agencies/whd"
-    },
-    {
-      "url": "https://www.dol.gov/agencies/whd/contact/complaints",
-      "refs": [
-        "components/AffiliateCta.tsx"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.dol.gov/agencies/whd/contact/complaints"
     },
     {
       "url": "https://www.dol.gov/agencies/whd/fact-sheets/22-flsa-hours-worked",
@@ -677,15 +686,6 @@
       "finalUrl": "https://www.dol.gov/agencies/whd/fact-sheets/22-flsa-hours-worked"
     },
     {
-      "url": "https://www.commerce.wa.gov.au/labour-relations",
-      "refs": [
-        "data/auStates.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.wa.gov.au/organisation/private-sector-labour-relations/private-sector-labour-relations"
-    },
-    {
       "url": "https://www.dol.gov/agencies/whd/flsa",
       "refs": [
         "app/methodology/page.tsx",
@@ -695,6 +695,15 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.dol.gov/agencies/whd/flsa"
+    },
+    {
+      "url": "https://www.dllr.state.md.us/labor/wages/",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dllr.state.md.us/labor/wages/"
     },
     {
       "url": "https://www.dol.gov/agencies/whd/overtime",
@@ -746,24 +755,6 @@
       "finalUrl": "https://www.dol.gov/general/topic/unemployment-insurance"
     },
     {
-      "url": "https://www.dli.mn.gov/business/employment-practices/minimum-wage-minnesota",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.dli.mn.gov/minwage"
-    },
-    {
-      "url": "https://www.dllr.state.md.us/labor/wages/",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.dllr.state.md.us/labor/wages/"
-    },
-    {
       "url": "https://www.dol.ks.gov",
       "refs": [
         "data/usStates.ts"
@@ -773,13 +764,13 @@
       "finalUrl": "https://www.dol.ks.gov/"
     },
     {
-      "url": "https://www.dir.ca.gov/dlse/",
+      "url": "https://www.commerce.wa.gov.au/labour-relations",
       "refs": [
-        "data/usStates.ts"
+        "data/auStates.ts"
       ],
       "ok": true,
       "status": 200,
-      "finalUrl": "https://www.dir.ca.gov/dlse/"
+      "finalUrl": "https://www.wa.gov.au/organisation/private-sector-labour-relations/private-sector-labour-relations"
     },
     {
       "url": "https://www.eeoc.gov/retaliation",
@@ -791,6 +782,15 @@
       "finalUrl": "https://www.eeoc.gov/retaliation"
     },
     {
+      "url": "https://www.dli.mn.gov/business/employment-practices/minimum-wage-minnesota",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dli.mn.gov/minwage"
+    },
+    {
       "url": "https://www.dws.state.nm.us/Labor-Relations",
       "refs": [
         "data/usStates.ts"
@@ -800,13 +800,13 @@
       "finalUrl": "https://www.dws.state.nm.us/Labor-Relations"
     },
     {
-      "url": "https://www.dli.pa.gov/Individuals/Labor-Management-Relations/llc/Pages/minimum-wage.aspx",
+      "url": "https://www.equalityhumanrights.com/guidance/employment",
       "refs": [
-        "data/usStates.ts"
+        "data/legalSources.ts"
       ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.pa.gov/agencies/dli"
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.equalityhumanrights.com/guidance/employment"
     },
     {
       "url": "https://www.employmentlawfriend.co.uk",
@@ -816,6 +816,15 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.employmentlawfriend.co.uk/"
+    },
+    {
+      "url": "https://www.ece.gov.nt.ca/en/employment-standards",
+      "refs": [
+        "data/caProvinces.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.ece.gov.nt.ca/en/employment-standards"
     },
     {
       "url": "https://www.eeoc.gov/statutes/title-vii-civil-rights-act-1964",
@@ -828,22 +837,13 @@
       "finalUrl": "https://www.eeoc.gov/statutes/title-vii-civil-rights-act-1964"
     },
     {
-      "url": "https://www.ece.gov.nt.ca/en/employment-standards",
+      "url": "https://www.dli.pa.gov/Individuals/Labor-Management-Relations/llc/Pages/minimum-wage.aspx",
       "refs": [
-        "data/caProvinces.ts"
+        "data/usStates.ts"
       ],
       "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.ece.gov.nt.ca/en/employment-standards"
-    },
-    {
-      "url": "https://www.equalityhumanrights.com/guidance/employment",
-      "refs": [
-        "data/legalSources.ts"
-      ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://www.equalityhumanrights.com/guidance/employment"
+      "status": 206,
+      "finalUrl": "https://www.pa.gov/agencies/dli"
     },
     {
       "url": "https://www.doli.virginia.gov/labor-law/",
@@ -873,15 +873,6 @@
       "finalUrl": "https://www.google.com/ads/preferences/html/blocked-cookies.html"
     },
     {
-      "url": "https://www.gov.nu.ca/human-resources/information/labour-standards",
-      "refs": [
-        "data/caProvinces.ts"
-      ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://www.gov.nu.ca/human-resources/information/labour-standards"
-    },
-    {
       "url": "https://www.gov.nl.ca/ecc/labour/",
       "refs": [
         "data/caProvinces.ts"
@@ -889,15 +880,6 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.gov.nl.ca/eccc/labour/"
-    },
-    {
-      "url": "https://www.gov.uk/adoption-pay-leave/pay",
-      "refs": [
-        "lib/rates.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.gov.uk/adoption-pay-leave/pay"
     },
     {
       "url": "https://www.gov.uk/adoption-pay-leave",
@@ -910,13 +892,22 @@
       "finalUrl": "https://www.gov.uk/adoption-pay-leave"
     },
     {
-      "url": "https://www.gov.uk/browse/employing-people",
+      "url": "https://www.gov.nu.ca/human-resources/information/labour-standards",
       "refs": [
-        "app/disclaimer/page.tsx"
+        "data/caProvinces.ts"
+      ],
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.gov.nu.ca/human-resources/information/labour-standards"
+    },
+    {
+      "url": "https://www.gov.uk/adoption-pay-leave/pay",
+      "refs": [
+        "lib/rates.ts"
       ],
       "ok": true,
       "status": 206,
-      "finalUrl": "https://www.gov.uk/browse/employing-people"
+      "finalUrl": "https://www.gov.uk/adoption-pay-leave/pay"
     },
     {
       "url": "https://www.gov.uk/bank-holidays",
@@ -929,14 +920,13 @@
       "finalUrl": "https://www.gov.uk/bank-holidays"
     },
     {
-      "url": "https://www.gov.uk/browse/working",
+      "url": "https://www.gov.uk/browse/employing-people",
       "refs": [
-        "app/about/page.tsx",
-        "app/uk/page.tsx"
+        "app/disclaimer/page.tsx"
       ],
       "ok": true,
       "status": 206,
-      "finalUrl": "https://www.gov.uk/browse/working"
+      "finalUrl": "https://www.gov.uk/browse/employing-people"
     },
     {
       "url": "https://www.gov.uk/calculate-your-holiday-entitlement",
@@ -946,6 +936,16 @@
       "ok": true,
       "status": 206,
       "finalUrl": "https://www.gov.uk/calculate-your-holiday-entitlement"
+    },
+    {
+      "url": "https://www.gov.uk/browse/working",
+      "refs": [
+        "app/about/page.tsx",
+        "app/uk/page.tsx"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.gov.uk/browse/working"
     },
     {
       "url": "https://www.gov.uk/calculate-your-redundancy-pay",
@@ -984,7 +984,7 @@
       "finalUrl": "https://www.gov.uk/dismissal"
     },
     {
-      "url": "https://www.gov.uk/dismissal/being-dismissed",
+      "url": "https://www.gov.uk/dismissal/constructive-and-wrongful-dismissal",
       "refs": [
         "data/legalSources.ts"
       ],
@@ -993,7 +993,7 @@
       "finalUrl": "https://www.gov.uk/dismissal"
     },
     {
-      "url": "https://www.gov.uk/dismissal/constructive-and-wrongful-dismissal",
+      "url": "https://www.gov.uk/dismissal/being-dismissed",
       "refs": [
         "data/legalSources.ts"
       ],
@@ -1011,15 +1011,6 @@
       "finalUrl": "https://www.gov.uk/employment-tribunals/make-a-claim"
     },
     {
-      "url": "https://www.gov.uk/employment-tribunals/what-you-can-claim",
-      "refs": [
-        "data/legalSources.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.gov.uk/employment-tribunals"
-    },
-    {
       "url": "https://www.gov.uk/government/publications/rates-and-allowances-income-tax",
       "refs": [
         "app/methodology/page.tsx",
@@ -1028,6 +1019,15 @@
       "ok": true,
       "status": 206,
       "finalUrl": "https://www.gov.uk/government/publications/rates-and-allowances-income-tax"
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunals/what-you-can-claim",
+      "refs": [
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.gov.uk/employment-tribunals"
     },
     {
       "url": "https://www.gov.uk/guidance/check-employment-status-for-tax",
@@ -1086,6 +1086,17 @@
       "finalUrl": "https://www.gov.uk/hmrc-internal-manuals/employment-income-manual/eim13505"
     },
     {
+      "url": "https://www.gov.uk/holiday-entitlement-rights",
+      "refs": [
+        "app/guides/uk-holiday-entitlement/page.tsx",
+        "data/legalSources.ts",
+        "lib/rates.ts"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.gov.uk/holiday-entitlement-rights"
+    },
+    {
       "url": "https://www.gov.uk/income-tax",
       "refs": [
         "data/legalSources.ts"
@@ -1108,17 +1119,6 @@
       "finalUrl": "https://www.gov.uk/income-tax-rates"
     },
     {
-      "url": "https://www.gov.uk/holiday-entitlement-rights",
-      "refs": [
-        "app/guides/uk-holiday-entitlement/page.tsx",
-        "data/legalSources.ts",
-        "lib/rates.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.gov.uk/holiday-entitlement-rights"
-    },
-    {
       "url": "https://www.gov.uk/make-court-claim-for-money",
       "refs": [
         "data/legalSources.ts"
@@ -1137,6 +1137,15 @@
       "finalUrl": "https://www.gov.uk/maternity-allowance"
     },
     {
+      "url": "https://www.gov.uk/maternity-allowance/how-to-claim",
+      "refs": [
+        "app/guides/uk-maternity-pay/page.tsx"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.gov.uk/maternity-allowance/how-to-claim"
+    },
+    {
       "url": "https://www.gov.uk/maternity-pay-leave",
       "refs": [
         "app/guides/uk-maternity-pay/page.tsx",
@@ -1148,13 +1157,13 @@
       "finalUrl": "https://www.gov.uk/maternity-pay-leave"
     },
     {
-      "url": "https://www.gov.uk/maternity-allowance/how-to-claim",
+      "url": "https://www.gov.uk/national-insurance-rates-letters",
       "refs": [
-        "app/guides/uk-maternity-pay/page.tsx"
+        "app/guides/uk-take-home-pay/page.tsx"
       ],
       "ok": true,
       "status": 206,
-      "finalUrl": "https://www.gov.uk/maternity-allowance/how-to-claim"
+      "finalUrl": "https://www.gov.uk/national-insurance-rates-letters"
     },
     {
       "url": "https://www.gov.uk/maternity-pay-leave/pay",
@@ -1166,13 +1175,52 @@
       "finalUrl": "https://www.gov.uk/maternity-pay-leave/pay"
     },
     {
-      "url": "https://www.gov.uk/national-insurance-rates-letters",
+      "url": "https://www.gov.uk/national-insurance/how-much-you-pay",
       "refs": [
-        "app/guides/uk-take-home-pay/page.tsx"
+        "lib/calculators/payslipAnalyser.ts",
+        "lib/rates.ts"
       ],
       "ok": true,
       "status": 206,
-      "finalUrl": "https://www.gov.uk/national-insurance-rates-letters"
+      "finalUrl": "https://www.gov.uk/national-insurance/how-much-you-pay"
+    },
+    {
+      "url": "https://www.gov.uk/national-minimum-wage-rates",
+      "refs": [
+        "app/uk/pay-rights/page.tsx"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.gov.uk/national-minimum-wage-rates"
+    },
+    {
+      "url": "https://www.gov.uk/national-minimum-wage",
+      "refs": [
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.gov.uk/national-minimum-wage"
+    },
+    {
+      "url": "https://www.gov.uk/paternity-pay-leave",
+      "refs": [
+        "app/guides/uk-paternity-pay/page.tsx",
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.gov.uk/paternity-pay-leave"
+    },
+    {
+      "url": "https://www.gov.uk/part-time-worker-rights",
+      "refs": [
+        "data/legalSources.ts",
+        "lib/calculators/proRataSalary.ts"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.gov.uk/part-time-worker-rights"
     },
     {
       "url": "https://www.fairwork.gov.au",
@@ -1188,13 +1236,24 @@
       "error": "This operation was aborted"
     },
     {
-      "url": "https://www.gov.uk/national-minimum-wage",
+      "url": "https://www.gov.uk/redundancy-your-rights",
       "refs": [
+        "app/guides/uk-redundancy-pay/page.tsx",
+        "app/uk/redundancy/page.tsx",
         "data/legalSources.ts"
       ],
       "ok": true,
       "status": 206,
-      "finalUrl": "https://www.gov.uk/national-minimum-wage"
+      "finalUrl": "https://www.gov.uk/redundancy-your-rights"
+    },
+    {
+      "url": "https://www.gov.uk/paternity-pay-leave/pay",
+      "refs": [
+        "lib/rates.ts"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.gov.uk/paternity-pay-leave/pay"
     },
     {
       "url": "https://www.fairwork.gov.au/ending-employment",
@@ -1205,35 +1264,6 @@
       "status": "ERR",
       "finalUrl": "https://www.fairwork.gov.au/ending-employment",
       "error": "This operation was aborted"
-    },
-    {
-      "url": "https://www.gov.uk/national-minimum-wage-rates",
-      "refs": [
-        "app/uk/pay-rights/page.tsx"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.gov.uk/national-minimum-wage-rates"
-    },
-    {
-      "url": "https://www.gov.uk/national-insurance/how-much-you-pay",
-      "refs": [
-        "lib/calculators/payslipAnalyser.ts",
-        "lib/rates.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.gov.uk/national-insurance/how-much-you-pay"
-    },
-    {
-      "url": "https://www.gov.uk/part-time-worker-rights",
-      "refs": [
-        "data/legalSources.ts",
-        "lib/calculators/proRataSalary.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.gov.uk/part-time-worker-rights"
     },
     {
       "url": "https://www.fairwork.gov.au/pay-and-wages",
@@ -1266,34 +1296,31 @@
       "finalUrl": "https://www.gov.uk/payslips"
     },
     {
-      "url": "https://www.gov.uk/paternity-pay-leave",
+      "url": "https://www.gov.uk/staff-redundant",
       "refs": [
-        "app/guides/uk-paternity-pay/page.tsx",
         "data/legalSources.ts"
       ],
       "ok": true,
       "status": 206,
-      "finalUrl": "https://www.gov.uk/paternity-pay-leave"
+      "finalUrl": "https://www.gov.uk/staff-redundant"
     },
     {
-      "url": "https://www.gov.uk/redundancy-your-rights",
+      "url": "https://www.gov.uk/repaying-your-student-loan/what-you-pay",
       "refs": [
-        "app/guides/uk-redundancy-pay/page.tsx",
-        "app/uk/redundancy/page.tsx",
-        "data/legalSources.ts"
+        "app/guides/uk-take-home-pay/page.tsx"
       ],
       "ok": true,
       "status": 206,
-      "finalUrl": "https://www.gov.uk/redundancy-your-rights"
+      "finalUrl": "https://www.gov.uk/repaying-your-student-loan/what-you-pay"
     },
     {
-      "url": "https://www.gov.uk/paternity-pay-leave/pay",
+      "url": "https://www.gov.uk/repaying-your-student-loan/when-you-start-repaying",
       "refs": [
-        "lib/rates.ts"
+        "lib/calculators/payslipAnalyser.ts"
       ],
       "ok": true,
       "status": 206,
-      "finalUrl": "https://www.gov.uk/paternity-pay-leave/pay"
+      "finalUrl": "https://www.gov.uk/repaying-your-student-loan/when-you-start-repaying"
     },
     {
       "url": "https://www.gov.uk/self-employed-national-insurance-rates",
@@ -1305,17 +1332,6 @@
       "ok": true,
       "status": 206,
       "finalUrl": "https://www.gov.uk/self-employed-national-insurance-rates"
-    },
-    {
-      "url": "https://www.gov.uk/shared-parental-leave-and-pay",
-      "refs": [
-        "app/guides/uk-shared-parental-leave/page.tsx",
-        "data/legalSources.ts",
-        "lib/rates.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.gov.uk/shared-parental-leave-and-pay"
     },
     {
       "url": "https://www.gov.uk/redundancy-your-rights/redundancy-pay",
@@ -1330,6 +1346,17 @@
       "finalUrl": "https://www.gov.uk/redundancy-your-rights/redundancy-pay"
     },
     {
+      "url": "https://www.gov.uk/shared-parental-leave-and-pay",
+      "refs": [
+        "app/guides/uk-shared-parental-leave/page.tsx",
+        "data/legalSources.ts",
+        "lib/rates.ts"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.gov.uk/shared-parental-leave-and-pay"
+    },
+    {
       "url": "https://www.gov.uk/staff-redundant/giving-staff-notice",
       "refs": [
         "data/legalSources.ts"
@@ -1337,60 +1364,6 @@
       "ok": true,
       "status": 206,
       "finalUrl": "https://www.gov.uk/staff-redundant/giving-staff-notice"
-    },
-    {
-      "url": "https://www.gov.uk/workplace-pensions/what-you-employer-must-do",
-      "refs": [
-        "lib/calculators/payslipAnalyser.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.gov.uk/workplace-pensions"
-    },
-    {
-      "url": "https://www.gov.uk/repaying-your-student-loan/when-you-start-repaying",
-      "refs": [
-        "lib/calculators/payslipAnalyser.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.gov.uk/repaying-your-student-loan/when-you-start-repaying"
-    },
-    {
-      "url": "https://www.gov.uk/staff-redundant",
-      "refs": [
-        "data/legalSources.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.gov.uk/staff-redundant"
-    },
-    {
-      "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title29/html/USCODE-2024-title29-chap8-sec207.htm",
-      "refs": [
-        "data/legalSources.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.govinfo.gov/content/pkg/USCODE-2024-title29/html/USCODE-2024-title29-chap8-sec207.htm"
-    },
-    {
-      "url": "https://www.gov.uk/repaying-your-student-loan/what-you-pay",
-      "refs": [
-        "app/guides/uk-take-home-pay/page.tsx"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.gov.uk/repaying-your-student-loan/what-you-pay"
-    },
-    {
-      "url": "https://www.gov.uk/your-rights-if-your-employer-is-insolvent",
-      "refs": [
-        "data/legalSources.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.gov.uk/your-rights-if-your-employer-is-insolvent"
     },
     {
       "url": "https://www.gov.uk/transfers-takeovers",
@@ -1413,6 +1386,33 @@
       "finalUrl": "https://www.gov.uk/statutory-sick-pay"
     },
     {
+      "url": "https://www.gov.uk/your-rights-if-your-employer-is-insolvent",
+      "refs": [
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.gov.uk/your-rights-if-your-employer-is-insolvent"
+    },
+    {
+      "url": "https://www.gov.uk/workplace-pensions/what-you-employer-must-do",
+      "refs": [
+        "lib/calculators/payslipAnalyser.ts"
+      ],
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.gov.uk/workplace-pensions"
+    },
+    {
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title29/html/USCODE-2024-title29-chap8-sec207.htm",
+      "refs": [
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.govinfo.gov/content/pkg/USCODE-2024-title29/html/USCODE-2024-title29-chap8-sec207.htm"
+    },
+    {
       "url": "https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes",
       "refs": [
         "data/legalSources.ts",
@@ -1422,16 +1422,6 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes"
-    },
-    {
-      "url": "https://www.irs.gov/filing/federal-income-tax-rates-and-brackets",
-      "refs": [
-        "data/legalSources.ts",
-        "lib/rates.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.irs.gov/filing/federal-income-tax-rates-and-brackets"
     },
     {
       "url": "https://www.irs.gov/publications/p15",
@@ -1447,13 +1437,23 @@
       "finalUrl": "https://www.irs.gov/publications/p15"
     },
     {
-      "url": "https://www.laworks.net",
+      "url": "https://www.irs.gov/filing/federal-income-tax-rates-and-brackets",
+      "refs": [
+        "data/legalSources.ts",
+        "lib/rates.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.irs.gov/filing/federal-income-tax-rates-and-brackets"
+    },
+    {
+      "url": "https://www.iowadivisionoflabor.gov",
       "refs": [
         "data/usStates.ts"
       ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://www.laworks.net/"
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://dial.iowa.gov/"
     },
     {
       "url": "https://www.irs.gov/taxtopics/tc751",
@@ -1463,6 +1463,25 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.irs.gov/taxtopics/tc751"
+    },
+    {
+      "url": "https://www.labor.arkansas.gov",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": false,
+      "status": "ERR",
+      "finalUrl": "https://www.labor.arkansas.gov",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.laworks.net",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.laworks.net/"
     },
     {
       "url": "https://www.legislation.gov.uk/ukpga/1986/45/contents",
@@ -1492,24 +1511,6 @@
       "finalUrl": "https://www.legislation.gov.uk/ukpga/1992/4/part/I"
     },
     {
-      "url": "https://www.legislation.gov.uk/ukpga/1992/4/part/XI",
-      "refs": [
-        "data/legalSources.ts"
-      ],
-      "ok": true,
-      "status": 202,
-      "finalUrl": "https://www.legislation.gov.uk/ukpga/1992/4/part/XI"
-    },
-    {
-      "url": "https://www.iowadivisionoflabor.gov",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://dial.iowa.gov/"
-    },
-    {
       "url": "https://www.legislation.gov.uk/ukpga/1992/4/part/XII",
       "refs": [
         "data/legalSources.ts"
@@ -1528,6 +1529,15 @@
       "finalUrl": "https://www.legislation.gov.uk/ukpga/1992/4/schedule/1"
     },
     {
+      "url": "https://www.legislation.gov.uk/ukpga/1992/4/section/171ZA",
+      "refs": [
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 202,
+      "finalUrl": "https://www.legislation.gov.uk/ukpga/1992/4/section/171ZA"
+    },
+    {
       "url": "https://www.legislation.gov.uk/ukpga/1992/4/section/171ZL",
       "refs": [
         "data/legalSources.ts"
@@ -1535,6 +1545,15 @@
       "ok": true,
       "status": 202,
       "finalUrl": "https://www.legislation.gov.uk/ukpga/1992/4/section/171ZL"
+    },
+    {
+      "url": "https://www.legislation.gov.uk/ukpga/1992/4/part/XI",
+      "refs": [
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 202,
+      "finalUrl": "https://www.legislation.gov.uk/ukpga/1992/4/part/XI"
     },
     {
       "url": "https://www.legislation.gov.uk/ukpga/1996/18",
@@ -1546,15 +1565,6 @@
       "finalUrl": "https://www.legislation.gov.uk/ukpga/1996/18"
     },
     {
-      "url": "https://www.legislation.gov.uk/ukpga/1992/4/section/171ZA",
-      "refs": [
-        "data/legalSources.ts"
-      ],
-      "ok": true,
-      "status": 202,
-      "finalUrl": "https://www.legislation.gov.uk/ukpga/1992/4/section/171ZA"
-    },
-    {
       "url": "https://www.legislation.gov.uk/ukpga/1996/18/contents",
       "refs": [
         "app/methodology/page.tsx"
@@ -1562,15 +1572,6 @@
       "ok": true,
       "status": 202,
       "finalUrl": "https://www.legislation.gov.uk/ukpga/1996/18/contents"
-    },
-    {
-      "url": "https://www.legislation.gov.uk/ukpga/1996/18/part/VIII",
-      "refs": [
-        "app/guides/uk-maternity-pay/page.tsx"
-      ],
-      "ok": true,
-      "status": 202,
-      "finalUrl": "https://www.legislation.gov.uk/ukpga/1996/18/part/VIII"
     },
     {
       "url": "https://www.legislation.gov.uk/ukpga/1996/18/part/II",
@@ -1610,6 +1611,15 @@
       "finalUrl": "https://www.legislation.gov.uk/ukpga/1996/18/part/XII"
     },
     {
+      "url": "https://www.legislation.gov.uk/ukpga/1996/18/part/VIII",
+      "refs": [
+        "app/guides/uk-maternity-pay/page.tsx"
+      ],
+      "ok": true,
+      "status": 202,
+      "finalUrl": "https://www.legislation.gov.uk/ukpga/1996/18/part/VIII"
+    },
+    {
       "url": "https://www.legislation.gov.uk/ukpga/1996/18/section/119",
       "refs": [
         "data/legalSources.ts"
@@ -1638,6 +1648,15 @@
       "finalUrl": "https://www.legislation.gov.uk/ukpga/1996/18/section/124"
     },
     {
+      "url": "https://www.legislation.gov.uk/ukpga/1996/18/section/8",
+      "refs": [
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 202,
+      "finalUrl": "https://www.legislation.gov.uk/ukpga/1996/18/section/8"
+    },
+    {
       "url": "https://www.legislation.gov.uk/ukpga/1996/18/section/86",
       "refs": [
         "app/guides/uk-notice-period-law/page.tsx",
@@ -1648,13 +1667,13 @@
       "finalUrl": "https://www.legislation.gov.uk/ukpga/1996/18/section/86"
     },
     {
-      "url": "https://www.legislation.gov.uk/ukpga/1996/18/section/8",
+      "url": "https://www.legislation.gov.uk/ukpga/1996/18/section/99",
       "refs": [
         "data/legalSources.ts"
       ],
       "ok": true,
       "status": 202,
-      "finalUrl": "https://www.legislation.gov.uk/ukpga/1996/18/section/8"
+      "finalUrl": "https://www.legislation.gov.uk/ukpga/1996/18/section/99"
     },
     {
       "url": "https://www.legislation.gov.uk/ukpga/1996/18/section/95",
@@ -1664,15 +1683,6 @@
       "ok": true,
       "status": 202,
       "finalUrl": "https://www.legislation.gov.uk/ukpga/1996/18/section/95"
-    },
-    {
-      "url": "https://www.legislation.gov.uk/ukpga/1996/18/section/99",
-      "refs": [
-        "data/legalSources.ts"
-      ],
-      "ok": true,
-      "status": 202,
-      "finalUrl": "https://www.legislation.gov.uk/ukpga/1996/18/section/99"
     },
     {
       "url": "https://www.legislation.gov.uk/ukpga/1998/39",
@@ -1739,6 +1749,15 @@
       "finalUrl": "https://www.legislation.gov.uk/ukpga/2010/15/section/124"
     },
     {
+      "url": "https://www.legislation.gov.uk/ukpga/2010/15/section/18",
+      "refs": [
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 202,
+      "finalUrl": "https://www.legislation.gov.uk/ukpga/2010/15/section/18"
+    },
+    {
       "url": "https://www.legislation.gov.uk/ukpga/2014/6/part/7",
       "refs": [
         "data/legalSources.ts"
@@ -1757,15 +1776,6 @@
       "ok": true,
       "status": 202,
       "finalUrl": "https://www.legislation.gov.uk/ukpga/2025/15"
-    },
-    {
-      "url": "https://www.legislation.gov.uk/ukpga/2010/15/section/18",
-      "refs": [
-        "data/legalSources.ts"
-      ],
-      "ok": true,
-      "status": 202,
-      "finalUrl": "https://www.legislation.gov.uk/ukpga/2010/15/section/18"
     },
     {
       "url": "https://www.legislation.gov.uk/uksi/1986/1960/contents",
@@ -1796,15 +1806,6 @@
       "finalUrl": "https://www.legislation.gov.uk/uksi/1998/1833/contents"
     },
     {
-      "url": "https://www.legislation.gov.uk/uksi/1998/1833/regulation/13",
-      "refs": [
-        "data/legalSources.ts"
-      ],
-      "ok": true,
-      "status": 202,
-      "finalUrl": "https://www.legislation.gov.uk/uksi/1998/1833/regulation/13"
-    },
-    {
       "url": "https://www.legislation.gov.uk/uksi/2002/2788",
       "refs": [
         "app/guides/uk-adoption-pay/page.tsx",
@@ -1813,6 +1814,15 @@
       "ok": true,
       "status": 202,
       "finalUrl": "https://www.legislation.gov.uk/uksi/2002/2788"
+    },
+    {
+      "url": "https://www.legislation.gov.uk/uksi/1998/1833/regulation/13",
+      "refs": [
+        "data/legalSources.ts"
+      ],
+      "ok": true,
+      "status": 202,
+      "finalUrl": "https://www.legislation.gov.uk/uksi/1998/1833/regulation/13"
     },
     {
       "url": "https://www.legislation.gov.uk/uksi/2014/3050",
@@ -1833,24 +1843,6 @@
       "finalUrl": "https://www.legislation.gov.uk/uksi/2024/132"
     },
     {
-      "url": "https://www.labor.nc.gov/workplace-rights/employee-rights-regarding-time-worked-and-wages-earned",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.labor.nc.gov/workplace-rights/employee-rights-regarding-time-worked-and-wages-earned"
-    },
-    {
-      "url": "https://www.labor.arkansas.gov",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://labor.arkansas.gov/"
-    },
-    {
       "url": "https://www.michigan.gov/leo/bureaus-agencies/ors/wh",
       "refs": [
         "data/usStates.ts"
@@ -1858,15 +1850,6 @@
       "ok": false,
       "status": 403,
       "finalUrl": "https://www.michigan.gov/leo/bureaus-agencies/ors/wh"
-    },
-    {
-      "url": "https://www.mass.gov/orgs/department-of-labor-standards",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://www.mass.gov/orgs/department-of-labor-standards"
     },
     {
       "url": "https://www.legislation.gov.au/C2009A00028/latest/text",
@@ -1882,6 +1865,15 @@
       "finalUrl": "https://www.legislation.gov.au/C2009A00028/latest/text"
     },
     {
+      "url": "https://www.labor.nc.gov/workplace-rights/employee-rights-regarding-time-worked-and-wages-earned",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.labor.nc.gov/workplace-rights/employee-rights-regarding-time-worked-and-wages-earned"
+    },
+    {
       "url": "https://www.maine.gov/labor/labor_laws/",
       "refs": [
         "data/usStates.ts"
@@ -1889,24 +1881,6 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.maine.gov/labor/labor_laws/"
-    },
-    {
-      "url": "https://www.nj.gov/labor/wageandhour/",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.nj.gov/labor/wageandhour/"
-    },
-    {
-      "url": "https://www.nh.gov/labor/",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://www.nh.gov/labor/"
     },
     {
       "url": "https://www.nelp.org",
@@ -1918,6 +1892,15 @@
       "finalUrl": "https://www.nelp.org/"
     },
     {
+      "url": "https://www.mass.gov/orgs/department-of-labor-standards",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.mass.gov/orgs/department-of-labor-standards"
+    },
+    {
       "url": "https://www.nd.gov/labor/",
       "refs": [
         "data/usStates.ts"
@@ -1925,6 +1908,24 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.nd.gov/labor/"
+    },
+    {
+      "url": "https://www.nh.gov/labor/",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.nh.gov/labor/"
+    },
+    {
+      "url": "https://www.nj.gov/labor/wageandhour/",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nj.gov/labor/wageandhour/"
     },
     {
       "url": "https://www.ontario.ca/document/your-guide-employment-standards-act-0",
@@ -1945,33 +1946,6 @@
       "finalUrl": "https://www.ontario.ca/document/your-guide-employment-standards-act-0/termination-employment"
     },
     {
-      "url": "https://www.oregon.gov/boli/workers/Pages/paychecks.aspx",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": true,
-      "status": 206,
-      "finalUrl": "https://www.oregon.gov/boli/workers/Pages/paychecks.aspx"
-    },
-    {
-      "url": "https://www.sira.nsw.gov.au",
-      "refs": [
-        "data/auStates.ts"
-      ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://www.sira.nsw.gov.au/"
-    },
-    {
-      "url": "https://www.ssa.gov/oact/cola/cbb.html",
-      "refs": [
-        "app/methodology/page.tsx"
-      ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://www.ssa.gov/oact/cola/cbb.html"
-    },
-    {
       "url": "https://www.princeedwardisland.ca/en/topic/employment-standards",
       "refs": [
         "data/caProvinces.ts"
@@ -1981,13 +1955,13 @@
       "finalUrl": "https://www.princeedwardisland.ca/en/topic/employment-standards"
     },
     {
-      "url": "https://www.ssa.gov/OP_Home/ssact/title03/0300.htm",
+      "url": "https://www.oregon.gov/boli/workers/Pages/paychecks.aspx",
       "refs": [
-        "data/legalSources.ts"
+        "data/usStates.ts"
       ],
-      "ok": false,
-      "status": 403,
-      "finalUrl": "https://www.ssa.gov/OP_Home/ssact/title03/0300.htm"
+      "ok": true,
+      "status": 206,
+      "finalUrl": "https://www.oregon.gov/boli/workers/Pages/paychecks.aspx"
     },
     {
       "url": "https://www.saskatchewan.ca/business/employment-standards",
@@ -2008,13 +1982,31 @@
       "finalUrl": "https://www.rtwsa.com/"
     },
     {
-      "url": "https://www.workcoverqld.com.au",
+      "url": "https://www.sira.nsw.gov.au",
       "refs": [
         "data/auStates.ts"
       ],
       "ok": false,
       "status": 403,
-      "finalUrl": "https://www.workcoverqld.com.au/"
+      "finalUrl": "https://www.sira.nsw.gov.au/"
+    },
+    {
+      "url": "https://www.ssa.gov/OP_Home/ssact/title03/0300.htm",
+      "refs": [
+        "data/legalSources.ts"
+      ],
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.ssa.gov/OP_Home/ssact/title03/0300.htm"
+    },
+    {
+      "url": "https://www.ssa.gov/oact/cola/cbb.html",
+      "refs": [
+        "app/methodology/page.tsx"
+      ],
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.ssa.gov/oact/cola/cbb.html"
     },
     {
       "url": "https://www.workcover.wa.gov.au",
@@ -2026,22 +2018,22 @@
       "finalUrl": "https://www.workcover.wa.gov.au/"
     },
     {
+      "url": "https://www.workcoverqld.com.au",
+      "refs": [
+        "data/auStates.ts"
+      ],
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.workcoverqld.com.au/"
+    },
+    {
       "url": "https://www.worksafe.act.gov.au",
       "refs": [
         "data/auStates.ts"
       ],
-      "ok": true,
-      "status": 200,
+      "ok": false,
+      "status": 403,
       "finalUrl": "https://www.worksafe.act.gov.au/"
-    },
-    {
-      "url": "https://www.tn.gov/workforce/employees/labor-laws.html",
-      "refs": [
-        "data/usStates.ts"
-      ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.tn.gov/workforce/employees/labor-laws.html"
     },
     {
       "url": "https://www2.gnb.ca/content/gnb/en/departments/post-secondary_education_training_and_labour/labour/employment_standards.html",
@@ -2062,6 +2054,15 @@
       "finalUrl": "https://www.worksafe.vic.gov.au/"
     },
     {
+      "url": "https://www.tn.gov/workforce/employees/labor-laws.html",
+      "refs": [
+        "data/usStates.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.tn.gov/workforce/employees/labor-laws.html"
+    },
+    {
       "url": "https://yukon.ca/en/doing-business/employer-responsibilities/understand-your-responsibilities-under-employment-standards",
       "refs": [
         "data/caProvinces.ts"
@@ -2069,16 +2070,6 @@
       "ok": false,
       "status": 403,
       "finalUrl": "https://yukon.ca/en/doing-business/employer-responsibilities/understand-your-responsibilities-under-employment-standards"
-    },
-    {
-      "url": "https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice",
-      "refs": [
-        "data/caProvinces.ts"
-      ],
-      "ok": false,
-      "status": "ERR",
-      "finalUrl": "https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice",
-      "error": "fetch failed"
     },
     {
       "url": "https://www.in.gov/dol/",
@@ -2089,6 +2080,15 @@
       "status": "ERR",
       "finalUrl": "https://www.in.gov/dol/",
       "error": "fetch failed"
+    },
+    {
+      "url": "https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice",
+      "refs": [
+        "data/caProvinces.ts"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice"
     },
     {
       "url": "https://wyomingworkforce.org/businesses/labor-standards/",
