@@ -45,6 +45,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${SITE.url}/us/states/${s.slug}/minimum-wage`,
         lastModified,
       },
+      {
+        url: `${SITE.url}/us/states/${s.slug}/pto-payout`,
+        lastModified,
+      },
     ];
   });
 
