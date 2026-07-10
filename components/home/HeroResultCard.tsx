@@ -18,7 +18,7 @@ export function HeroResultCard() {
         style={{ top: 58, right: 0, width: 190, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", boxShadow: "0 10px 28px rgba(16,32,51,.08)", padding: 12, color: "#52616f", fontSize: 12, fontWeight: 700 }}
       >
         <span style={{ width: 34, height: 34, flex: "0 0 auto", display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontWeight: 900 }}>§</span>
-        <span>Jurisdiction-aware pay rules</span>
+        <span>Country and state rules</span>
       </div>
 
       {/* Floating note 2 */}
@@ -27,7 +27,7 @@ export function HeroResultCard() {
         style={{ top: 142, right: -22, width: 190, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", boxShadow: "0 10px 28px rgba(16,32,51,.08)", padding: 12, color: "#52616f", fontSize: 12, fontWeight: 700 }}
       >
         <span style={{ width: 34, height: 34, flex: "0 0 auto", display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontWeight: 900 }}>!</span>
-        <span>Deadline and notice checks</span>
+        <span>Official-source checks</span>
       </div>
 
       {/* Floating note 3 */}
@@ -36,7 +36,7 @@ export function HeroResultCard() {
         style={{ bottom: 82, right: 0, width: 190, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", boxShadow: "0 10px 28px rgba(16,32,51,.08)", padding: 12, color: "#52616f", fontSize: 12, fontWeight: 700 }}
       >
         <span style={{ width: 34, height: 34, flex: "0 0 auto", display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontWeight: 900 }}>✓</span>
-        <span>Private estimate, no account</span>
+        <span>No account required</span>
       </div>
 
       {/* Estimate card */}
@@ -77,7 +77,7 @@ export function HeroResultCard() {
         <div style={{ margin: "0 20px 20px", border: "1px solid #bcd4ec", borderRadius: 8, background: "#f5f9fe", padding: 14 }}>
           <strong style={{ display: "block", color: "#16324f", fontSize: 14, marginBottom: 3 }}>Based on your answers</strong>
           <p style={{ margin: 0, color: "#52616f", fontSize: 13 }}>
-            This estimate uses country-specific rules and common payroll assumptions. It is educational, not legal advice.
+            This estimate separates statutory figures, assumptions and next steps. It is educational, not legal advice.
           </p>
         </div>
       </article>

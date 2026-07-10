@@ -29,10 +29,10 @@ const TOOLS = [
 ] as const;
 
 const RIGHTS_ITEMS = [
-  "Country-aware estimates",
+  "Official-source rate checks",
+  "Country-aware calculation logic",
   "Private calculation flow",
   "Clear assumptions and next steps",
-  "Practical payroll language",
 ] as const;
 
 export function PopularCalculators() {
@@ -101,10 +101,10 @@ export function PopularCalculators() {
           />
 
           <h2 className="relative mb-3 text-[1.875rem] font-bold leading-[1.1]">
-            Built for pay questions that feel urgent.
+            Serious tools for sensitive pay questions.
           </h2>
           <p className="relative mb-5 text-[15px] leading-[1.62]" style={{ color: "#dce8f4" }}>
-            Employment pay issues are rarely abstract. The design should guide people quickly, privately and without making legal language feel heavier than it needs to be.
+            Employment pay issues are personal. The product should feel calm, precise and usable enough to share with someone who needs a straight answer before taking the next step.
           </p>
 
           <ul className="relative mb-6 flex flex-col gap-2.5">

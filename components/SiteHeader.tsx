@@ -279,6 +279,7 @@ export function SiteHeader() {
             </div>
 
             <Link href="/guides" style={{ fontSize: 14, fontWeight: 700, color: "#25384c" }} className="hover:text-brand-600 transition-colors">Guides</Link>
+            <Link href="/methodology" style={{ fontSize: 14, fontWeight: 700, color: "#25384c" }} className="hover:text-brand-600 transition-colors">Methodology</Link>
 
             {/* Countries dropdown */}
             <div
