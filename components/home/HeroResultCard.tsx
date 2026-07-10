@@ -15,27 +15,27 @@ export function HeroResultCard() {
       {/* Floating note 1 */}
       <div
         className="absolute flex items-center gap-2.5"
-        style={{ top: 58, right: 0, width: 190, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", boxShadow: "0 10px 28px rgba(16,32,51,.08)", padding: 12, color: "#52616f", fontSize: 12, fontWeight: 700 }}
+        style={{ top: 58, right: 0, width: 190, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", boxShadow: "0 10px 28px rgba(16,32,51,.08)", padding: 12, color: "#52616f", fontSize: 12, fontWeight: 700 }}
       >
-        <span style={{ width: 34, height: 34, flex: "0 0 auto", display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontWeight: 900 }}>§</span>
+        <span style={{ width: 34, height: 34, flex: "0 0 auto", display: "grid", placeItems: "center", borderRadius: 8, background: "#EAF0F8", color: "#1E4E8C", fontWeight: 900 }}>§</span>
         <span>Country and state rules</span>
       </div>
 
       {/* Floating note 2 */}
       <div
         className="absolute flex items-center gap-2.5"
-        style={{ top: 142, right: -22, width: 190, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", boxShadow: "0 10px 28px rgba(16,32,51,.08)", padding: 12, color: "#52616f", fontSize: 12, fontWeight: 700 }}
+        style={{ top: 142, right: -22, width: 190, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", boxShadow: "0 10px 28px rgba(16,32,51,.08)", padding: 12, color: "#52616f", fontSize: 12, fontWeight: 700 }}
       >
-        <span style={{ width: 34, height: 34, flex: "0 0 auto", display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontWeight: 900 }}>!</span>
+        <span style={{ width: 34, height: 34, flex: "0 0 auto", display: "grid", placeItems: "center", borderRadius: 8, background: "#EAF0F8", color: "#1E4E8C", fontWeight: 900 }}>!</span>
         <span>Official-source checks</span>
       </div>
 
       {/* Floating note 3 */}
       <div
         className="absolute flex items-center gap-2.5"
-        style={{ bottom: 82, right: 0, width: 190, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", boxShadow: "0 10px 28px rgba(16,32,51,.08)", padding: 12, color: "#52616f", fontSize: 12, fontWeight: 700 }}
+        style={{ bottom: 82, right: 0, width: 190, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", boxShadow: "0 10px 28px rgba(16,32,51,.08)", padding: 12, color: "#52616f", fontSize: 12, fontWeight: 700 }}
       >
-        <span style={{ width: 34, height: 34, flex: "0 0 auto", display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontWeight: 900 }}>✓</span>
+        <span style={{ width: 34, height: 34, flex: "0 0 auto", display: "grid", placeItems: "center", borderRadius: 8, background: "#EAF0F8", color: "#1E4E8C", fontWeight: 900 }}>✓</span>
         <span>No account required</span>
       </div>
 
@@ -44,7 +44,7 @@ export function HeroResultCard() {
         style={{ width: "min(100%,430px)", border: "1px solid #c5d6e8", borderRadius: 12, background: "#fff", boxShadow: "0 18px 42px rgba(16,32,51,.11)", overflow: "hidden" }}
       >
         {/* Head */}
-        <div style={{ padding: 20, background: "linear-gradient(180deg,#f8fbff 0%,#fff 100%)", borderBottom: "1px solid #e7edf3" }}>
+        <div style={{ padding: 20, background: "linear-gradient(180deg,#f8fbff 0%,#fff 100%)", borderBottom: "1px solid #EAE5D8" }}>
           <p style={{ margin: "0 0 6px", color: "#52616f", fontSize: 13, fontWeight: 750 }}>
             Estimated amount potentially owed
           </p>
@@ -63,7 +63,7 @@ export function HeroResultCard() {
               key={line.label}
               style={{
                 display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16,
-                padding: "13px 0", borderBottom: i < PAY_LINES.length - 1 ? "1px solid #e7edf3" : "none",
+                padding: "13px 0", borderBottom: i < PAY_LINES.length - 1 ? "1px solid #EAE5D8" : "none",
                 color: "#52616f", fontSize: 14, fontWeight: 700,
               }}
             >

@@ -71,9 +71,9 @@ export function ToolLayout({
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section
         style={{
-          borderBottom: "1px solid #e7edf3",
+          borderBottom: "1px solid #EAE5D8",
           background:
-            "radial-gradient(circle at 82% 18%,rgba(23,105,224,.10),transparent 30%),linear-gradient(180deg,#fff 0%,#f7fbff 100%)",
+            "radial-gradient(circle at 82% 18%,rgba(30,78,140,.10),transparent 30%),linear-gradient(180deg,#fff 0%,#FBF9F3 100%)",
         }}
       >
         <div className="mx-auto" style={{ maxWidth: 1180, padding: "46px 24px 34px" }}>
@@ -133,10 +133,10 @@ export function ToolLayout({
             )}
             <span style={PILL_STYLE}>Private estimate</span>
             <span style={PILL_STYLE}>No signup</span>
-            <Link href="/methodology" style={{ ...PILL_STYLE, color: "#1769e0", borderColor: "#a8c9ef", background: "#eaf3ff" }}>
+            <Link href="/methodology" style={{ ...PILL_STYLE, color: "#1E4E8C", borderColor: "#A6C2E0", background: "#EAF0F8" }}>
               Methodology →
             </Link>
-            <Link href="/editorial-policy" style={{ ...PILL_STYLE, color: "#1769e0", borderColor: "#a8c9ef", background: "#eaf3ff" }}>
+            <Link href="/editorial-policy" style={{ ...PILL_STYLE, color: "#1E4E8C", borderColor: "#A6C2E0", background: "#EAF0F8" }}>
               Editorial review →
             </Link>
           </div>
@@ -172,7 +172,7 @@ export function ToolLayout({
           </div>
           <div style={TRUST_CARD_STYLE}>
             <strong style={TRUST_CARD_TITLE_STYLE}>Corrections</strong>
-            <Link href="/contact" style={{ ...TRUST_CARD_TEXT_STYLE, color: "#0f56bd", fontWeight: 850 }}>
+            <Link href="/contact" style={{ ...TRUST_CARD_TEXT_STYLE, color: "#163C6B", fontWeight: 850 }}>
               Report a calculation or source issue
             </Link>
           </div>
@@ -183,8 +183,8 @@ export function ToolLayout({
           <section
             aria-label="What this estimate means"
             style={{
-              marginTop: 24, border: "1px solid #c8d9ea", borderRadius: 10,
-              background: "#f1f7ff", boxShadow: "0 10px 24px rgba(16,32,51,.05)", padding: 18,
+              marginTop: 24, border: "1px solid #E4DECF", borderRadius: 10,
+              background: "#F5F1E8", boxShadow: "0 10px 24px rgba(16,32,51,.05)", padding: 18,
             }}
           >
             <h2 style={{ margin: "0 0 12px", color: "#102033", fontSize: 22, lineHeight: 1.2 }}>
@@ -195,7 +195,7 @@ export function ToolLayout({
                 <div
                   key={tier}
                   style={{
-                    border: "1px solid #c8d9ea", borderRadius: 8,
+                    border: "1px solid #E4DECF", borderRadius: 8,
                     background: "#fff", padding: 13,
                     color: "#52616f", fontSize: 13,
                   }}
@@ -244,7 +244,7 @@ export function ToolLayout({
         <section
           aria-labelledby="methodology-heading"
           style={{
-            border: "1px solid #c8d9ea", borderRadius: 10,
+            border: "1px solid #E4DECF", borderRadius: 10,
             background: "#fff", boxShadow: "0 10px 24px rgba(16,32,51,.05)", padding: 22,
           }}
         >
@@ -258,8 +258,8 @@ export function ToolLayout({
                 <div
                   key={card.title}
                   style={{
-                    border: "1px solid #e7edf3", borderRadius: 8,
-                    background: "#f6f9fc", padding: 14,
+                    border: "1px solid #EAE5D8", borderRadius: 8,
+                    background: "#F4F1E9", padding: 14,
                     color: "#52616f", fontSize: 13,
                   }}
                 >
@@ -276,7 +276,7 @@ export function ToolLayout({
           <section
             aria-labelledby="faq-heading"
             style={{
-              marginTop: 28, border: "1px solid #c8d9ea", borderRadius: 10,
+              marginTop: 28, border: "1px solid #E4DECF", borderRadius: 10,
               background: "#fff", boxShadow: "0 10px 24px rgba(16,32,51,.05)", padding: 22,
             }}
           >
@@ -286,7 +286,7 @@ export function ToolLayout({
             {faqs.map((item, i) => (
               <details
                 key={item.question}
-                style={{ borderTop: i === 0 ? "none" : "1px solid #e7edf3" }}
+                style={{ borderTop: i === 0 ? "none" : "1px solid #EAE5D8" }}
                 className="group"
               >
                 <summary
@@ -299,8 +299,8 @@ export function ToolLayout({
                   className="[&::-webkit-details-marker]:hidden"
                 >
                   {item.question}
-                  <span style={{ color: "#1769e0", fontWeight: 900, flexShrink: 0, fontSize: 20, lineHeight: 1 }} className="group-open:hidden">+</span>
-                  <span style={{ color: "#1769e0", fontWeight: 900, flexShrink: 0, fontSize: 20, lineHeight: 1 }} className="hidden group-open:block">−</span>
+                  <span style={{ color: "#1E4E8C", fontWeight: 900, flexShrink: 0, fontSize: 20, lineHeight: 1 }} className="group-open:hidden">+</span>
+                  <span style={{ color: "#1E4E8C", fontWeight: 900, flexShrink: 0, fontSize: 20, lineHeight: 1 }} className="hidden group-open:block">−</span>
                 </summary>
                 <p style={{ margin: "0 0 15px", color: "#52616f", fontSize: 14, lineHeight: 1.65 }}>
                   {item.answer}
@@ -315,7 +315,7 @@ export function ToolLayout({
           <section
             aria-labelledby="sources-heading"
             style={{
-              marginTop: 28, border: "1px solid #c8d9ea", borderRadius: 10,
+              marginTop: 28, border: "1px solid #E4DECF", borderRadius: 10,
               background: "#fff", boxShadow: "0 10px 24px rgba(16,32,51,.05)", padding: 22,
             }}
           >
@@ -327,7 +327,7 @@ export function ToolLayout({
                 key={src.url}
                 className="grid grid-cols-1 sm:grid-cols-[130px_1fr_auto] gap-2 sm:gap-3 items-start sm:items-center"
                 style={{
-                  borderTop: i === 0 ? "none" : "1px solid #e7edf3",
+                  borderTop: i === 0 ? "none" : "1px solid #EAE5D8",
                   padding: "12px 0",
                   color: "#52616f", fontSize: 13,
                 }}
@@ -335,7 +335,7 @@ export function ToolLayout({
                 <span
                   style={{
                     display: "inline-flex", alignItems: "center",
-                    border: "1px solid #c8d9ea", borderRadius: 999,
+                    border: "1px solid #E4DECF", borderRadius: 999,
                     background: "#f8fbff", color: "#16324f",
                     padding: "5px 8px", fontSize: 11,
                     textTransform: "uppercase", letterSpacing: ".04em",
@@ -348,7 +348,7 @@ export function ToolLayout({
                   href={src.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: "#1769e0", fontWeight: 700, fontSize: 13 }}
+                  style={{ color: "#1E4E8C", fontWeight: 700, fontSize: 13 }}
                 >
                   {src.label}
                 </a>
@@ -359,7 +359,7 @@ export function ToolLayout({
             ))}
             <p style={{ margin: "12px 0 0", color: "#7a8794", fontSize: 11, lineHeight: 1.6 }}>
               All statutory figures are sourced directly from official government legislation and guidance.{" "}
-              <Link href="/methodology" style={{ color: "#1769e0" }}>See our methodology →</Link>
+              <Link href="/methodology" style={{ color: "#1E4E8C" }}>See our methodology →</Link>
             </p>
           </section>
         )}
@@ -367,7 +367,7 @@ export function ToolLayout({
         <section
           aria-labelledby="review-history-heading"
           style={{
-            marginTop: 28, border: "1px solid #c8d9ea", borderRadius: 10,
+            marginTop: 28, border: "1px solid #E4DECF", borderRadius: 10,
             background: "#fff", boxShadow: "0 10px 24px rgba(16,32,51,.05)", padding: 22,
           }}
         >
@@ -388,7 +388,7 @@ export function ToolLayout({
               <span style={{ color: "#52616f" }}>
                 Calculator logic is built from public legislation, government guidance, and regulator material.
                 Advertising relationships do not influence statutory figures.{" "}
-                <Link href="/editorial-policy" style={{ color: "#0f56bd", fontWeight: 850 }}>
+                <Link href="/editorial-policy" style={{ color: "#163C6B", fontWeight: 850 }}>
                   Read the editorial policy.
                 </Link>
               </span>
@@ -397,7 +397,7 @@ export function ToolLayout({
               <strong style={{ color: "#102033" }}>Correction path</strong>
               <span style={{ color: "#52616f" }}>
                 If a rate or source has changed, email{" "}
-                <a href={`mailto:${SITE.contactEmail}`} style={{ color: "#0f56bd", fontWeight: 850, overflowWrap: "anywhere" }}>
+                <a href={`mailto:${SITE.contactEmail}`} style={{ color: "#163C6B", fontWeight: 850, overflowWrap: "anywhere" }}>
                   {SITE.contactEmail}
                 </a>{" "}
                 with the page URL and official source.
@@ -411,7 +411,7 @@ export function ToolLayout({
           <section
             aria-labelledby="related-heading"
             style={{
-              marginTop: 28, border: "1px solid #c8d9ea", borderRadius: 10,
+              marginTop: 28, border: "1px solid #E4DECF", borderRadius: 10,
               background: "#fff", boxShadow: "0 10px 24px rgba(16,32,51,.05)", padding: 22,
             }}
           >
@@ -421,19 +421,19 @@ export function ToolLayout({
             {learnMore?.guideSlug && learnMore.guideTitle && (
               <Link href={`/guides/${learnMore.guideSlug}`} style={RELATED_ROW_STYLE}>
                 <strong style={{ color: "#102033" }}>{learnMore.guideTitle}</strong>
-                <span style={{ color: "#1769e0" }}>→</span>
+                <span style={{ color: "#1E4E8C" }}>→</span>
               </Link>
             )}
             {learnMore?.faqs.map((faq) => (
               <Link key={faq.slug} href={`/faq/${faq.slug}`} style={RELATED_ROW_STYLE}>
                 <strong style={{ color: "#102033" }}>{faq.question}</strong>
-                <span style={{ color: "#1769e0" }}>→</span>
+                <span style={{ color: "#1E4E8C" }}>→</span>
               </Link>
             ))}
             {related.map((r) => (
               <Link key={r.slug} href={`/${r.slug}`} style={RELATED_ROW_STYLE}>
                 <strong style={{ color: "#102033" }}>{r.name}</strong>
-                <span style={{ color: "#1769e0" }}>→</span>
+                <span style={{ color: "#1E4E8C" }}>→</span>
               </Link>
             ))}
             {situations.map((s) => (
@@ -444,19 +444,19 @@ export function ToolLayout({
                     {s.blurb}
                   </span>
                 </span>
-                <span style={{ color: "#1769e0" }}>→</span>
+                <span style={{ color: "#1E4E8C" }}>→</span>
               </Link>
             ))}
             {pillar && (
               <Link href={pillar.href} style={RELATED_ROW_STYLE}>
                 <strong style={{ color: "#102033" }}>{pillar.label}</strong>
-                <span style={{ color: "#1769e0" }}>→</span>
+                <span style={{ color: "#1E4E8C" }}>→</span>
               </Link>
             )}
             {derivedGuides.map((g) => (
               <Link key={g.slug} href={`/guides/${g.slug}`} style={RELATED_ROW_STYLE}>
                 <strong style={{ color: "#102033" }}>{g.title}</strong>
-                <span style={{ color: "#1769e0" }}>→</span>
+                <span style={{ color: "#1E4E8C" }}>→</span>
               </Link>
             ))}
             {compares.map((c) => (
@@ -467,7 +467,7 @@ export function ToolLayout({
                     {c.summary}
                   </span>
                 </span>
-                <span style={{ color: "#1769e0" }}>→</span>
+                <span style={{ color: "#1E4E8C" }}>→</span>
               </Link>
             ))}
           </section>
@@ -495,7 +495,7 @@ export function ToolLayout({
 
 const PILL_STYLE: React.CSSProperties = {
   display: "inline-flex", alignItems: "center",
-  minHeight: 34, border: "1px solid #c8d9ea", borderRadius: 999,
+  minHeight: 34, border: "1px solid #E4DECF", borderRadius: 999,
   background: "#fff", color: "#25384c",
   padding: "0 11px", fontSize: 12, fontWeight: 850,
   whiteSpace: "nowrap",
@@ -503,14 +503,14 @@ const PILL_STYLE: React.CSSProperties = {
 
 const RELATED_ROW_STYLE: React.CSSProperties = {
   display: "flex", alignItems: "center", justifyContent: "space-between",
-  gap: 12, border: "1px solid #e7edf3", borderRadius: 8,
-  background: "#f6f9fc", padding: "13px 14px",
+  gap: 12, border: "1px solid #EAE5D8", borderRadius: 8,
+  background: "#F4F1E9", padding: "13px 14px",
   color: "#25384c", fontSize: 13, fontWeight: 850,
   marginTop: 10, textDecoration: "none",
 };
 
 const TRUST_CARD_STYLE: React.CSSProperties = {
-  border: "1px solid #d8e2ec",
+  border: "1px solid #E4DECF",
   borderRadius: 8,
   background: "#fff",
   padding: 14,
@@ -531,7 +531,7 @@ const TRUST_CARD_TEXT_STYLE: React.CSSProperties = {
 };
 
 const ACTION_BOX_STYLE: React.CSSProperties = {
-  border: "1px solid #c8d9ea",
+  border: "1px solid #E4DECF",
   borderRadius: 10,
   background: "#f8fbff",
   padding: 18,
@@ -553,9 +553,9 @@ const ACTION_BOX_TEXT_STYLE: React.CSSProperties = {
 
 const CHANGELOG_ROW_STYLE: React.CSSProperties = {
   gap: 12,
-  border: "1px solid #e7edf3",
+  border: "1px solid #EAE5D8",
   borderRadius: 8,
-  background: "#f6f9fc",
+  background: "#F4F1E9",
   padding: 12,
   fontSize: 13,
   lineHeight: 1.55,

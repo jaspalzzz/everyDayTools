@@ -41,7 +41,7 @@ export function ResultPanel({
   return (
     <div
       style={{
-        border: "1px solid #c8d9ea",
+        border: "1px solid #E4DECF",
         borderRadius: 10,
         background: "#fff",
         boxShadow: "0 10px 24px rgba(16,32,51,.05)",
@@ -52,7 +52,7 @@ export function ResultPanel({
       <div
         style={{
           padding: "22px 22px 18px",
-          borderBottom: "1px solid #e7edf3",
+          borderBottom: "1px solid #EAE5D8",
           background: "#f8fbff",
         }}
       >
@@ -62,7 +62,7 @@ export function ResultPanel({
         <p
           style={{
             margin: 0,
-            color: result.valid ? "#0f56bd" : "#8795a3",
+            color: result.valid ? "#163C6B" : "#8795a3",
             fontSize: 44,
             lineHeight: 1,
             fontWeight: 900,
@@ -89,7 +89,7 @@ export function ResultPanel({
                 display: "flex",
                 justifyContent: "space-between",
                 gap: 16,
-                borderBottom: line.emphasis ? "none" : "1px solid #e7edf3",
+                borderBottom: line.emphasis ? "none" : "1px solid #EAE5D8",
                 padding: "11px 0",
                 color: line.emphasis ? "#102033" : "#52616f",
                 fontSize: 13,
@@ -98,7 +98,7 @@ export function ResultPanel({
                   ? {
                       margin: "4px -10px 0",
                       borderRadius: 8,
-                      background: "#eaf3ff",
+                      background: "#EAF0F8",
                       padding: "11px 10px",
                     }
                   : {}),
@@ -126,7 +126,7 @@ export function ResultPanel({
               key={i}
               style={{ color: "#52616f", fontSize: 12, lineHeight: 1.5, paddingLeft: 14, position: "relative" }}
             >
-              <span style={{ position: "absolute", left: 0, top: 1, color: "#1769e0" }}>·</span>
+              <span style={{ position: "absolute", left: 0, top: 1, color: "#1E4E8C" }}>·</span>
               {note}
             </li>
           ))}
@@ -144,7 +144,7 @@ export function ResultPanel({
               minHeight: 46, display: "flex", alignItems: "center",
               justifyContent: "center", gap: 8,
               borderRadius: 8, border: "none",
-              background: generating ? "#6b9fd4" : "#1769e0",
+              background: generating ? "#6b9fd4" : "#1E4E8C",
               color: "#fff", fontSize: 14, fontWeight: 900,
               cursor: generating ? "default" : "pointer",
               transition: "background 150ms",
@@ -158,7 +158,7 @@ export function ResultPanel({
             style={{
               minHeight: 46, display: "flex", alignItems: "center",
               justifyContent: "center", gap: 8,
-              borderRadius: 8, border: "1px solid #d8e2ec",
+              borderRadius: 8, border: "1px solid #E4DECF",
               background: "#fff", color: "#25384c",
               fontSize: 14, fontWeight: 900,
               cursor: "pointer",

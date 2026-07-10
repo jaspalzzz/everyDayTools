@@ -49,11 +49,11 @@ function LogoMark() {
     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 84 84" aria-hidden="true">
       <g transform="translate(6 6) scale(.75)">
         <path d="M26 14h30l16 16v48H26z" fill="#FFFFFF"/>
-        <path d="M56 14v16h16" fill="#EAF3FF"/>
+        <path d="M56 14v16h16" fill="#EAF0F8"/>
         <path d="M26 14h30l16 16v48H26z" fill="none" stroke="#16324F" strokeWidth="5" strokeLinejoin="round"/>
         <path d="M56 14v16h16" fill="none" stroke="#16324F" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M36 35h18M36 47h22M36 59h14" fill="none" stroke="#16324F" strokeWidth="4" strokeLinecap="round"/>
-        <circle cx="67" cy="66" r="16" fill="#1769E0"/>
+        <circle cx="67" cy="66" r="16" fill="#1E4E8C"/>
         <path d="M59 66l6 6 12-14" fill="none" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
       </g>
     </svg>
@@ -129,7 +129,7 @@ export function SiteHeader() {
           <Link href="/" className="inline-flex shrink-0 items-center whitespace-nowrap" style={{ gap: 10 }} onClick={() => setOpen(false)}>
             <LogoMark />
             <span style={{ fontWeight: 800, fontSize: 17 }}>
-              <span style={{ color: "#102033" }}>MyPay</span><span style={{ color: "#1769e0" }}>Rights</span>
+              <span style={{ color: "#102033" }}>MyPay</span><span style={{ color: "#1E4E8C" }}>Rights</span>
             </span>
           </Link>
 
@@ -150,8 +150,8 @@ export function SiteHeader() {
                   height: 40, display: "inline-flex", alignItems: "center", gap: 7,
                   border: menu === "calculators" ? "1px solid #b8d3f1" : "1px solid transparent",
                   borderRadius: 8,
-                  color: menu === "calculators" ? "#0f56bd" : "#25384c",
-                  background: menu === "calculators" ? "#f7fbff" : "transparent",
+                  color: menu === "calculators" ? "#163C6B" : "#25384c",
+                  background: menu === "calculators" ? "#FBF9F3" : "transparent",
                   padding: "0 11px", cursor: "pointer", fontWeight: 850, fontSize: 14,
                 }}
               >
@@ -202,11 +202,11 @@ export function SiteHeader() {
                               onClick={() => setMenu(null)}
                               style={{
                                 minHeight: 98, display: "grid", gridTemplateColumns: "38px 1fr", gap: 12,
-                                border: "1px solid #e7edf3", borderRadius: 8, background: "#f6f9fc",
+                                border: "1px solid #EAE5D8", borderRadius: 8, background: "#F4F1E9",
                                 padding: 13, textDecoration: "none",
                               }}
                             >
-                              <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontSize: 13, fontWeight: 900 }}>
+                              <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#EAF0F8", color: "#1E4E8C", fontSize: 13, fontWeight: 900 }}>
                                 {cat.icon}
                               </span>
                               <span>
@@ -219,7 +219,7 @@ export function SiteHeader() {
                       </div>
 
                       {/* Right: most-used + countries + CTA */}
-                      <div style={{ borderLeft: "1px solid #e7edf3", background: "#f8fbff", padding: 22 }}>
+                      <div style={{ borderLeft: "1px solid #EAE5D8", background: "#f8fbff", padding: 22 }}>
                         <h3 style={{ margin: "0 0 12px", color: "#102033", fontSize: 15, fontWeight: 800 }}>Most used calculators</h3>
                         <div style={{ display: "grid", gap: 8, marginBottom: 18 }}>
                           {MEGA_TOOLS.map((t) => (
@@ -234,7 +234,7 @@ export function SiteHeader() {
                               }}
                             >
                               {t.label}
-                              <span style={{ color: "#0f56bd" }}>→</span>
+                              <span style={{ color: "#163C6B" }}>→</span>
                             </Link>
                           ))}
                         </div>
@@ -295,8 +295,8 @@ export function SiteHeader() {
                   height: 40, display: "inline-flex", alignItems: "center", gap: 7,
                   border: menu === "countries" ? "1px solid #b8d3f1" : "1px solid transparent",
                   borderRadius: 8,
-                  color: menu === "countries" ? "#0f56bd" : "#25384c",
-                  background: menu === "countries" ? "#f7fbff" : "transparent",
+                  color: menu === "countries" ? "#163C6B" : "#25384c",
+                  background: menu === "countries" ? "#FBF9F3" : "transparent",
                   padding: "0 11px", cursor: "pointer", fontWeight: 850, fontSize: 14,
                 }}
               >
@@ -327,7 +327,7 @@ export function SiteHeader() {
                           alignItems: "center", minHeight: 54, borderRadius: 8,
                           padding: "8px 10px", color: "#25384c", fontSize: 14, fontWeight: 850, textDecoration: "none",
                         }}
-                        className="hover:bg-[#f6f9fc] hover:text-[#0f56bd]"
+                        className="hover:bg-[#F4F1E9] hover:text-[#163C6B]"
                       >
                         <span style={{
                           width: 38, height: 32, display: "grid", placeItems: "center",
@@ -366,12 +366,12 @@ export function SiteHeader() {
                 aria-label="Switch country"
                 onClick={() => showMenu("region")}
                 style={{
-                  height: 38, border: "1px solid #d8e2ec", borderRadius: 8,
-                  background: menu === "region" ? "#f7fbff" : "#fff",
+                  height: 38, border: "1px solid #E4DECF", borderRadius: 8,
+                  background: menu === "region" ? "#FBF9F3" : "#fff",
                   color: "#25384c", display: "inline-flex", alignItems: "center",
                   justifyContent: "center", gap: 6, padding: "0 12px",
                   fontSize: 13, fontWeight: 800, cursor: "pointer",
-                  borderColor: menu === "region" ? "#b8d3f1" : "#d8e2ec",
+                  borderColor: menu === "region" ? "#b8d3f1" : "#E4DECF",
                 }}
               >
                 UK
@@ -402,7 +402,7 @@ export function SiteHeader() {
                           borderRadius: 7, padding: "8px 10px",
                           textDecoration: "none",
                         }}
-                        className="hover:bg-[#f6f9fc]"
+                        className="hover:bg-[#F4F1E9]"
                       >
                         <span style={{
                           width: 36, height: 30, flexShrink: 0, display: "grid", placeItems: "center",
@@ -429,10 +429,10 @@ export function SiteHeader() {
               aria-label="Search calculators"
               aria-expanded={searchOpen}
               style={{
-                width: 38, height: 38, border: "1px solid #d8e2ec", borderRadius: 8,
-                background: searchOpen ? "#f7fbff" : "#fff",
-                borderColor: searchOpen ? "#b8d3f1" : "#d8e2ec",
-                color: searchOpen ? "#0f56bd" : "#25384c",
+                width: 38, height: 38, border: "1px solid #E4DECF", borderRadius: 8,
+                background: searchOpen ? "#FBF9F3" : "#fff",
+                borderColor: searchOpen ? "#b8d3f1" : "#E4DECF",
+                color: searchOpen ? "#163C6B" : "#25384c",
                 display: "inline-flex", alignItems: "center", justifyContent: "center",
                 fontSize: 18, cursor: "pointer",
               }}
@@ -448,7 +448,7 @@ export function SiteHeader() {
                 background: "#fff", boxShadow: "0 16px 48px rgba(16,32,51,.14)",
                 zIndex: 100, overflow: "hidden",
               }}>
-                <div style={{ padding: "10px 12px", borderBottom: "1px solid #e7edf3" }}>
+                <div style={{ padding: "10px 12px", borderBottom: "1px solid #EAE5D8" }}>
                   <input
                     ref={searchRef}
                     type="search"
@@ -456,7 +456,7 @@ export function SiteHeader() {
                     onChange={(e) => setSearchQ(e.target.value)}
                     placeholder="Search calculators…"
                     style={{
-                      width: "100%", height: 40, border: "1px solid #d8e2ec", borderRadius: 7,
+                      width: "100%", height: 40, border: "1px solid #E4DECF", borderRadius: 7,
                       padding: "0 12px", fontSize: 14, color: "#102033", outline: "none",
                       background: "#f8fbff",
                     }}
@@ -476,10 +476,10 @@ export function SiteHeader() {
                             padding: "9px 10px", borderRadius: 7, fontSize: 13,
                             fontWeight: 700, color: "#25384c", textDecoration: "none",
                           }}
-                          className="hover:bg-[#f6f9fc]"
+                          className="hover:bg-[#F4F1E9]"
                         >
                           {t.label}
-                          <span style={{ color: "#1769e0", fontSize: 12 }}>→</span>
+                          <span style={{ color: "#1E4E8C", fontSize: 12 }}>→</span>
                         </Link>
                       ))}
                     </div>
@@ -500,7 +500,7 @@ export function SiteHeader() {
                           alignItems: "center", gap: 10, padding: "10px 14px",
                           textDecoration: "none", borderBottom: "1px solid #f1f5f9",
                         }}
-                        className="hover:bg-[#f6f9fc]"
+                        className="hover:bg-[#F4F1E9]"
                       >
                         <span>
                           <strong style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#102033" }}>{t.name}</strong>
@@ -508,7 +508,7 @@ export function SiteHeader() {
                         </span>
                         <span style={{
                           fontSize: 10, fontWeight: 900, color: "#16324f", letterSpacing: ".04em",
-                          background: "#eaf3ff", borderRadius: 5, padding: "3px 6px",
+                          background: "#EAF0F8", borderRadius: 5, padding: "3px 6px",
                         }}>
                           {t.region.slice(0, 2)}
                         </span>

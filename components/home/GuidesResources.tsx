@@ -10,27 +10,27 @@ function SketchPayslip() {
       <path d="M140 18 L165 18 L165 43 Z" fill="#c8dff2" stroke="#7aaedc" strokeWidth="1.5"/>
       <path d="M140 18 L140 43 L165 43" fill="none" stroke="#7aaedc" strokeWidth="1.5"/>
       {/* Header bar */}
-      <rect x="55" y="18" width="110" height="24" rx="5" fill="#1769e0" opacity="0.12"/>
+      <rect x="55" y="18" width="110" height="24" rx="5" fill="#1E4E8C" opacity="0.12"/>
       {/* Lines of text */}
       <line x1="70" y1="55" x2="155" y2="55" stroke="#a0bcd8" strokeWidth="2.5" strokeLinecap="round"/>
       <line x1="70" y1="67" x2="140" y2="67" stroke="#a0bcd8" strokeWidth="2" strokeLinecap="round"/>
       {/* Row items */}
       <line x1="70" y1="82" x2="115" y2="82" stroke="#c2d8ec" strokeWidth="1.5" strokeLinecap="round"/>
-      <line x1="130" y1="82" x2="155" y2="82" stroke="#1769e0" strokeWidth="1.5" strokeLinecap="round" opacity="0.7"/>
+      <line x1="130" y1="82" x2="155" y2="82" stroke="#1E4E8C" strokeWidth="1.5" strokeLinecap="round" opacity="0.7"/>
       <line x1="70" y1="93" x2="110" y2="93" stroke="#c2d8ec" strokeWidth="1.5" strokeLinecap="round"/>
-      <line x1="130" y1="93" x2="152" y2="93" stroke="#1769e0" strokeWidth="1.5" strokeLinecap="round" opacity="0.7"/>
+      <line x1="130" y1="93" x2="152" y2="93" stroke="#1E4E8C" strokeWidth="1.5" strokeLinecap="round" opacity="0.7"/>
       <line x1="70" y1="104" x2="118" y2="104" stroke="#c2d8ec" strokeWidth="1.5" strokeLinecap="round"/>
-      <line x1="130" y1="104" x2="155" y2="104" stroke="#1769e0" strokeWidth="1.5" strokeLinecap="round" opacity="0.7"/>
+      <line x1="130" y1="104" x2="155" y2="104" stroke="#1E4E8C" strokeWidth="1.5" strokeLinecap="round" opacity="0.7"/>
       {/* Divider */}
       <line x1="65" y1="113" x2="160" y2="113" stroke="#b3ceea" strokeWidth="1" strokeDasharray="4 3"/>
       {/* Total */}
       <line x1="70" y1="122" x2="108" y2="122" stroke="#7aaedc" strokeWidth="2" strokeLinecap="round"/>
-      <rect x="126" y="117" width="32" height="10" rx="3" fill="#1769e0" opacity="0.18"/>
+      <rect x="126" y="117" width="32" height="10" rx="3" fill="#1E4E8C" opacity="0.18"/>
       {/* Coins bottom right */}
       <circle cx="205" cy="110" r="22" fill="#dceef9" stroke="#7aaedc" strokeWidth="1.5"/>
       <circle cx="205" cy="110" r="15" fill="white" stroke="#7aaedc" strokeWidth="1.5"/>
-      <text x="205" y="115" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1769e0">£</text>
-      <circle cx="222" cy="95" r="14" fill="#eaf3ff" stroke="#7aaedc" strokeWidth="1.5"/>
+      <text x="205" y="115" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1E4E8C">£</text>
+      <circle cx="222" cy="95" r="14" fill="#EAF0F8" stroke="#7aaedc" strokeWidth="1.5"/>
     </svg>
   );
 }
@@ -85,8 +85,8 @@ function SketchGlobe() {
       {/* Equator */}
       <line x1="68" y1="75" x2="172" y2="75" stroke="#a3d4bf" strokeWidth="1"/>
       {/* Country pins */}
-      <circle cx="108" cy="62" r="5" fill="#1769e0"/>
-      <line x1="108" y1="62" x2="108" y2="50" stroke="#1769e0" strokeWidth="1.5"/>
+      <circle cx="108" cy="62" r="5" fill="#1E4E8C"/>
+      <line x1="108" y1="62" x2="108" y2="50" stroke="#1E4E8C" strokeWidth="1.5"/>
       <circle cx="133" cy="70" r="5" fill="#16835b"/>
       <line x1="133" y1="70" x2="133" y2="58" stroke="#16835b" strokeWidth="1.5"/>
       <circle cx="120" cy="88" r="5" fill="#b7791f"/>
@@ -143,14 +143,14 @@ export function GuidesResources() {
             Plain-English guides to employment law — understand your rights before taking action.
           </p>
         </div>
-        <Link href="/guides" style={{ color: "#0f56bd", fontSize: 14, fontWeight: 850, whiteSpace: "nowrap" }}>
+        <Link href="/guides" style={{ color: "#163C6B", fontSize: 14, fontWeight: 850, whiteSpace: "nowrap" }}>
           View all guides →
         </Link>
       </div>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:gap-6">
         {GUIDES.map((g) => (
-          <article key={g.title} style={{ border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", overflow: "hidden" }}>
+          <article key={g.title} style={{ border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", overflow: "hidden" }}>
             {/* Sketch illustration area */}
             <div style={{ position: "relative", height: 150, background: g.bg }}>
               <g.Illustration />
@@ -168,7 +168,7 @@ export function GuidesResources() {
               <p style={{ margin: "0 0 14px", color: "#52616f", fontSize: 14 }}>
                 {g.desc}
               </p>
-              <Link href={g.href} style={{ color: "#0f56bd", fontSize: 13, fontWeight: 850 }}>
+              <Link href={g.href} style={{ color: "#163C6B", fontSize: 13, fontWeight: 850 }}>
                 Read guide →
               </Link>
             </div>

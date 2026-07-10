@@ -144,7 +144,7 @@ export function FormPanel({ children, label }: { children: ReactNode; label?: st
     <form
       aria-label={label}
       style={{
-        border: "1px solid #c8d9ea",
+        border: "1px solid #E4DECF",
         borderRadius: 10,
         background: "#fff",
         boxShadow: "0 10px 24px rgba(16,32,51,.05)",
@@ -164,7 +164,7 @@ export function FormSection({ title, children }: { title?: string; children: Rea
   return (
     <div
       style={{
-        borderTop: title ? "1px solid #e7edf3" : "none",
+        borderTop: title ? "1px solid #EAE5D8" : "none",
         paddingTop: title ? 18 : 0,
       }}
     >

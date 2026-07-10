@@ -26,7 +26,7 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(orgSchema)} />
 
       {/* ── Hero ── */}
-      <section style={{ background: "radial-gradient(circle at 78% 20%,rgba(23,105,224,.10),transparent 28%),linear-gradient(180deg,#ffffff 0%,#f8fbff 74%,#f7fafc 100%)", borderBottom: "1px solid #e7edf3" }}>
+      <section style={{ background: "radial-gradient(circle at 78% 20%,rgba(30,78,140,.10),transparent 28%),linear-gradient(180deg,#ffffff 0%,#f8fbff 74%,#f7fafc 100%)", borderBottom: "1px solid #EAE5D8" }}>
         <div className="mx-auto grid grid-cols-1 lg:grid-cols-[1.02fr_0.78fr] items-center gap-8 lg:gap-12" style={{ maxWidth: 1180, padding: "44px 24px 36px" }}>
 
           {/* Left column */}
@@ -54,7 +54,7 @@ export default function HomePage() {
             {/* Trust row */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-5" style={{ maxWidth: 640 }}>
               {TRUST_ROW.map((t) => (
-                <div key={t.title} style={{ border: "1px solid #e7edf3", borderRadius: 8, background: "rgba(255,255,255,.78)", padding: 12, color: "#52616f", fontSize: 12, fontWeight: 700 }}>
+                <div key={t.title} style={{ border: "1px solid #EAE5D8", borderRadius: 8, background: "rgba(255,255,255,.78)", padding: 12, color: "#52616f", fontSize: 12, fontWeight: 700 }}>
                   <strong style={{ display: "block", color: "#102033", fontSize: 13, marginBottom: 2 }}>{t.title}</strong>
                   {t.sub}
                 </div>

@@ -47,7 +47,7 @@ export function ConsentBanner() {
         zIndex: 80,
         maxWidth: 760,
         margin: "0 auto",
-        border: "1px solid #c8d9ea",
+        border: "1px solid #E4DECF",
         borderRadius: 10,
         background: "#fff",
         boxShadow: "0 18px 44px rgba(16,32,51,.16)",
@@ -58,7 +58,7 @@ export function ConsentBanner() {
         <p style={{ margin: 0, color: "#25384c", fontSize: 13, lineHeight: 1.55 }}>
           My Pay Rights uses essential cookies for the site to work. Analytics and, if advertising
           is enabled, Google ad cookies load only after you accept.{" "}
-          <Link href="/privacy" style={{ color: "#0f56bd", fontWeight: 850 }}>
+          <Link href="/privacy" style={{ color: "#163C6B", fontWeight: 850 }}>
             Privacy policy
           </Link>
         </p>
@@ -68,7 +68,7 @@ export function ConsentBanner() {
             onClick={() => save("rejected")}
             style={{
               minHeight: 40,
-              border: "1px solid #d8e2ec",
+              border: "1px solid #E4DECF",
               borderRadius: 8,
               background: "#fff",
               color: "#25384c",
@@ -86,7 +86,7 @@ export function ConsentBanner() {
               minHeight: 40,
               border: "none",
               borderRadius: 8,
-              background: "#1769e0",
+              background: "#1E4E8C",
               color: "#fff",
               padding: "0 14px",
               fontSize: 13,

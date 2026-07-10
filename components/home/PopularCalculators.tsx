@@ -47,7 +47,7 @@ export function PopularCalculators() {
           className="overflow-hidden rounded-lg border bg-white"
           style={{ borderColor: "#c6d8ea", boxShadow: "0 10px 28px rgba(16,32,51,.08)" }}
         >
-          <div className="flex items-center justify-between gap-4 border-b p-5" style={{ borderColor: "#e7edf3" }}>
+          <div className="flex items-center justify-between gap-4 border-b p-5" style={{ borderColor: "#EAE5D8" }}>
             <h2 id="popular-title" className="text-[1.375rem] font-bold text-ink">
               Most used calculators
             </h2>
@@ -65,11 +65,11 @@ export function PopularCalculators() {
                 key={tool.title}
                 href={tool.href}
                 className="group flex min-h-[86px] items-center gap-3.5 border-b px-5 py-3.5 transition-colors last:border-b-0 hover:bg-[#f5f9fe]"
-                style={{ borderColor: "#e7edf3" }}
+                style={{ borderColor: "#EAE5D8" }}
               >
                 <span
                   className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-lg text-[15px] font-black"
-                  style={{ background: "#eaf3ff", color: "#1769e0" }}
+                  style={{ background: "#EAF0F8", color: "#1E4E8C" }}
                 >
                   {tool.icon}
                 </span>
@@ -78,8 +78,8 @@ export function PopularCalculators() {
                   <p className="mt-0.5 text-[13px] text-ink-soft">{tool.desc}</p>
                 </span>
                 <span
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-bold text-[#1769e0]"
-                  style={{ background: "#eaf3ff" }}
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-bold text-[#1E4E8C]"
+                  style={{ background: "#EAF0F8" }}
                   aria-hidden="true"
                 >
                   →

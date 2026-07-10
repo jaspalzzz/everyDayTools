@@ -48,8 +48,8 @@ function MiniIcon({ letter }: { letter: string }) {
       style={{
         width: 34, height: 34, flexShrink: 0,
         display: "grid", placeItems: "center",
-        borderRadius: 8, background: "#eaf3ff",
-        color: "#1769e0", fontSize: 13, fontWeight: 900,
+        borderRadius: 8, background: "#EAF0F8",
+        color: "#1E4E8C", fontSize: 13, fontWeight: 900,
       }}
     >
       {letter}
@@ -64,8 +64,8 @@ function ToolIcon({ letter, featured }: { letter: string; featured: boolean }) {
         width: 40, height: 40, flexShrink: 0,
         display: "grid", placeItems: "center",
         borderRadius: 8,
-        background: featured ? "#dbeafe" : "#eaf3ff",
-        color: featured ? "#1d4ed8" : "#1769e0",
+        background: featured ? "#dbeafe" : "#EAF0F8",
+        color: featured ? "#1d4ed8" : "#1E4E8C",
         fontSize: 15, fontWeight: 900,
       }}
     >
@@ -101,8 +101,8 @@ export function CountryPage({
       {/* ── Hero ── */}
       <section
         style={{
-          borderBottom: "1px solid #e7edf3",
-          background: "radial-gradient(circle at 84% 18%,rgba(23,105,224,.11),transparent 31%),linear-gradient(180deg,#fff 0%,#f7fbff 100%)",
+          borderBottom: "1px solid #EAE5D8",
+          background: "radial-gradient(circle at 84% 18%,rgba(30,78,140,.11),transparent 31%),linear-gradient(180deg,#fff 0%,#FBF9F3 100%)",
         }}
       >
         <div
@@ -127,7 +127,7 @@ export function CountryPage({
               <span
                 style={{
                   width: 54, height: 54, flexShrink: 0, display: "grid", placeItems: "center",
-                  border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff",
+                  border: "1px solid #E4DECF", borderRadius: 10, background: "#fff",
                   color: "#16324f", fontSize: 16, fontWeight: 950, letterSpacing: ".04em",
                   boxShadow: "0 10px 26px rgba(16,32,51,.07)",
                 }}
@@ -153,7 +153,7 @@ export function CountryPage({
               onSubmit={(e) => e.preventDefault()}
               aria-label={`Search ${name} calculators`}
               className="grid grid-cols-[minmax(0,1fr)_46px] gap-2 sm:grid-cols-[minmax(0,1fr)_auto_46px]"
-              style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 4px 20px rgba(16,32,51,.08)", padding: 10, maxWidth: 640 }}
+              style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", boxShadow: "0 4px 20px rgba(16,32,51,.08)", padding: 10, maxWidth: 640 }}
             >
               <input
                 type="search"
@@ -162,14 +162,14 @@ export function CountryPage({
                 value={searchQ}
                 onChange={(e) => setSearchQ(e.target.value)}
                 className="col-span-2 min-w-0 sm:col-span-1"
-                style={{ minHeight: 46, border: "1px solid #d8e2ec", borderRadius: 8, background: "#f8fbff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
+                style={{ minHeight: 46, border: "1px solid #E4DECF", borderRadius: 8, background: "#f8fbff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
               />
               <select
                 aria-label="Topic"
                 value={activeTab}
                 onChange={(e) => setActiveTab(e.target.value as TabKey)}
                 className="min-w-0"
-                style={{ width: "100%", minHeight: 46, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 12px", outline: "none", fontSize: 13 }}
+                style={{ width: "100%", minHeight: 46, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 12px", outline: "none", fontSize: 13 }}
               >
                 {TABS.map((t) => (
                   <option key={t.key} value={t.key}>{t.label}</option>
@@ -178,7 +178,7 @@ export function CountryPage({
               <button
                 type="submit"
                 aria-label="Search"
-                style={{ minHeight: 46, width: 46, border: 0, borderRadius: 8, background: "#1769e0", color: "#fff", fontSize: 18, fontWeight: 900, cursor: "pointer" }}
+                style={{ minHeight: 46, width: 46, border: 0, borderRadius: 8, background: "#1E4E8C", color: "#fff", fontSize: 18, fontWeight: 900, cursor: "pointer" }}
               >
                 →
               </button>
@@ -188,10 +188,10 @@ export function CountryPage({
           {/* Right column: rate panel only */}
           <aside
             className="hidden lg:block"
-            style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", overflow: "hidden" }}
+            style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", overflow: "hidden" }}
             aria-label={`Key ${code} statutory rates`}
           >
-            <div style={{ padding: "18px 20px", borderBottom: "1px solid #e7edf3", background: "#f8fbff" }}>
+            <div style={{ padding: "18px 20px", borderBottom: "1px solid #EAE5D8", background: "#f8fbff" }}>
               <h2 style={{ margin: "0 0 4px", fontSize: 18, color: "#102033", fontWeight: 850 }}>Key 2026 rates</h2>
               <p style={{ margin: 0, color: "#52616f", fontSize: 13, fontWeight: 700 }}>{ratesNote}</p>
             </div>
@@ -201,7 +201,7 @@ export function CountryPage({
                   key={i}
                   style={{
                     display: "flex", justifyContent: "space-between", gap: 16,
-                    borderBottom: i < rates.length - 1 ? "1px solid #e7edf3" : "none",
+                    borderBottom: i < rates.length - 1 ? "1px solid #EAE5D8" : "none",
                     padding: "12px 0", color: "#52616f", fontSize: 13, fontWeight: 700,
                   }}
                 >
@@ -229,9 +229,9 @@ export function CountryPage({
               type="button"
               onClick={() => setActiveTab(tab.key)}
               style={{
-                flexShrink: 0, border: activeTab === tab.key ? "1px solid #a8c9ef" : "1px solid #d8e2ec",
-                borderRadius: 999, background: activeTab === tab.key ? "#eaf3ff" : "#fff",
-                color: activeTab === tab.key ? "#0f56bd" : "#25384c",
+                flexShrink: 0, border: activeTab === tab.key ? "1px solid #A6C2E0" : "1px solid #E4DECF",
+                borderRadius: 999, background: activeTab === tab.key ? "#EAF0F8" : "#fff",
+                color: activeTab === tab.key ? "#163C6B" : "#25384c",
                 padding: "8px 14px", fontSize: 13, fontWeight: 850, cursor: "pointer",
               }}
             >
@@ -257,7 +257,7 @@ export function CountryPage({
                     key={tool.slug}
                     href={`/${tool.slug}`}
                     style={{
-                      minHeight: 176, border: "1px solid #c8d9ea", borderRadius: 10,
+                      minHeight: 176, border: "1px solid #E4DECF", borderRadius: 10,
                       background: "#fff", boxShadow: "0 10px 24px rgba(16,32,51,.06)",
                       padding: 17, display: "flex", flexDirection: "column",
                       justifyContent: "space-between", textDecoration: "none",
@@ -272,7 +272,7 @@ export function CountryPage({
                         {tool.description}
                       </p>
                     </div>
-                    <span style={{ color: "#0f56bd", fontSize: 13, fontWeight: 900, marginTop: 16 }}>
+                    <span style={{ color: "#163C6B", fontSize: 13, fontWeight: 900, marginTop: 16 }}>
                       Calculate →
                     </span>
                   </Link>
@@ -303,9 +303,9 @@ export function CountryPage({
                           gap: 14,
                           alignItems: "center",
                           minHeight: 76,
-                          border: tool.hero ? "1px solid #bad7f7" : "1px solid #d8e2ec",
+                          border: tool.hero ? "1px solid #bad7f7" : "1px solid #E4DECF",
                           borderRadius: 8,
-                          background: tool.hero ? "#f1f7ff" : "#fff",
+                          background: tool.hero ? "#F5F1E8" : "#fff",
                           padding: "13px 14px",
                           textDecoration: "none",
                         }}
@@ -321,7 +321,7 @@ export function CountryPage({
                         </span>
                         <span
                           className="hidden sm:grid"
-                          style={{ width: 30, height: 30, placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#0f56bd", fontWeight: 900, fontSize: 14 }}
+                          style={{ width: 30, height: 30, placeItems: "center", borderRadius: 8, background: "#EAF0F8", color: "#163C6B", fontWeight: 900, fontSize: 14 }}
                         >
                           →
                         </span>
@@ -340,7 +340,7 @@ export function CountryPage({
 
             {/* Extra content slot (US states, CA provinces, etc.) */}
             {extraContent && activeTab === "all" && !searchQ && (
-              <div style={{ marginTop: 32, borderTop: "1px solid #e7edf3", paddingTop: 32 }}>
+              <div style={{ marginTop: 32, borderTop: "1px solid #EAE5D8", paddingTop: 32 }}>
                 {extraContent}
               </div>
             )}
@@ -353,7 +353,7 @@ export function CountryPage({
             aria-label="Sources and notes"
           >
             {/* Authority card */}
-            <section style={{ border: "1px solid #d8e2ec", borderRadius: 10, background: "#fff", padding: 18 }}>
+            <section style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", padding: 18 }}>
               <h2 style={{ margin: "0 0 10px", color: "#102033", fontSize: 18, lineHeight: 1.2, fontWeight: 850 }}>Source basis</h2>
               <p style={{ margin: "0 0 13px", color: "#52616f", fontSize: 13 }}>
                 Figures are verified against official government publications and updated when rates change.
@@ -367,13 +367,13 @@ export function CountryPage({
                     rel="noopener noreferrer"
                     style={{
                       display: "flex", justifyContent: "space-between", gap: 10,
-                      border: "1px solid #e7edf3", borderRadius: 8,
-                      background: "#f6f9fc", padding: "9px 10px",
+                      border: "1px solid #EAE5D8", borderRadius: 8,
+                      background: "#F4F1E9", padding: "9px 10px",
                       color: "#25384c", fontSize: 13, fontWeight: 850, textDecoration: "none",
                     }}
                   >
                     {s.label}
-                    <span style={{ color: "#0f56bd" }}>→</span>
+                    <span style={{ color: "#163C6B" }}>→</span>
                   </a>
                 ))}
               </div>
@@ -387,7 +387,7 @@ export function CountryPage({
             </section>
 
             {/* Other country shortcuts */}
-            <section style={{ border: "1px solid #d8e2ec", borderRadius: 10, background: "#fff", padding: 18 }}>
+            <section style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", padding: 18 }}>
               <h2 style={{ margin: "0 0 10px", color: "#102033", fontSize: 15, fontWeight: 850 }}>Other jurisdictions</h2>
               <div style={{ display: "grid", gap: 7 }}>
                 {(["UK", "US", "CA", "AU"] as const).filter((c) => c !== code).map((c) => {
@@ -399,7 +399,7 @@ export function CountryPage({
                       style={{
                         display: "grid", gridTemplateColumns: "38px 1fr", gap: 10,
                         alignItems: "center", minHeight: 44, borderRadius: 8,
-                        border: "1px solid #e7edf3", background: "#f6f9fc",
+                        border: "1px solid #EAE5D8", background: "#F4F1E9",
                         padding: "8px 10px", textDecoration: "none",
                       }}
                     >

@@ -53,7 +53,7 @@ export function BrowseBySituation() {
         <Link
           href="/#all-calculators"
           className="hidden shrink-0 text-[14px] font-bold hover:underline sm:block"
-          style={{ color: "#0f56bd" }}
+          style={{ color: "#163C6B" }}
         >
           View all situations →
         </Link>
@@ -65,18 +65,18 @@ export function BrowseBySituation() {
             key={s.title}
             href={s.href}
             className="group flex min-h-[166px] flex-col justify-between rounded-lg border bg-white p-4 transition-shadow hover:shadow-md"
-            style={{ borderColor: "#d8e2ec", boxShadow: "0 1px 0 rgba(16,32,51,.02)" }}
+            style={{ borderColor: "#E4DECF", boxShadow: "0 1px 0 rgba(16,32,51,.02)" }}
           >
             <span
               className="flex h-9 w-9 items-center justify-center rounded-lg text-base font-black"
-              style={{ background: "#eaf3ff", color: "#1769e0" }}
+              style={{ background: "#EAF0F8", color: "#1E4E8C" }}
             >
               {s.icon}
             </span>
             <div>
               <strong className="block text-[15px] font-bold leading-snug text-ink">{s.title}</strong>
               <p className="mb-3.5 mt-2 text-[13px] leading-snug text-ink-soft">{s.desc}</p>
-              <span className="text-[13px] font-bold" style={{ color: "#0f56bd" }}>
+              <span className="text-[13px] font-bold" style={{ color: "#163C6B" }}>
                 {s.cta} →
               </span>
             </div>

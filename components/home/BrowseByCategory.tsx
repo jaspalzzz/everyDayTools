@@ -209,10 +209,10 @@ export function BrowseByCategory() {
             onClick={() => setActive(tab.id)}
             style={{
               minHeight: 66, display: "grid", placeItems: "center",
-              borderRight: "1px solid #e7edf3", borderBottom: "1px solid #e7edf3", borderTop: "none", borderLeft: "none",
+              borderRight: "1px solid #EAE5D8", borderBottom: "1px solid #EAE5D8", borderTop: "none", borderLeft: "none",
               background: active === tab.id ? "#fff" : "transparent",
-              boxShadow: active === tab.id ? "inset 0 -3px 0 #1769e0" : "none",
-              color: active === tab.id ? "#0f56bd" : "#25384c",
+              boxShadow: active === tab.id ? "inset 0 -3px 0 #1E4E8C" : "none",
+              color: active === tab.id ? "#163C6B" : "#25384c",
               fontSize: 13, fontWeight: 850, textAlign: "center", padding: 8, cursor: "pointer",
             }}
           >
@@ -240,9 +240,9 @@ export function BrowseByCategory() {
             <Link
               key={tool.href + tool.title}
               href={tool.href}
-              style={{ minHeight: 78, border: "1px solid #e7edf3", borderRadius: 8, background: "#f5f9fe", padding: 13, display: "grid", gridTemplateColumns: "34px 1fr", gap: 12, alignItems: "start", textDecoration: "none" }}
+              style={{ minHeight: 78, border: "1px solid #EAE5D8", borderRadius: 8, background: "#f5f9fe", padding: 13, display: "grid", gridTemplateColumns: "34px 1fr", gap: 12, alignItems: "start", textDecoration: "none" }}
             >
-              <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontWeight: 900, fontSize: 14 }}>
+              <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#EAF0F8", color: "#1E4E8C", fontWeight: 900, fontSize: 14 }}>
                 {tool.icon}
               </span>
               <span>
