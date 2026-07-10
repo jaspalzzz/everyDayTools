@@ -5,13 +5,14 @@ import { BrowseBySituation } from "@/components/home/BrowseBySituation";
 import { PopularCalculators } from "@/components/home/PopularCalculators";
 import { BrowseByCategory } from "@/components/home/BrowseByCategory";
 import { GuidesResources } from "@/components/home/GuidesResources";
+import { OperatingStandard } from "@/components/home/OperatingStandard";
 import { homepageSchemas, jsonLd } from "@/lib/seo";
 
 const TRUST_ROW = [
-  { title: "No signup", sub: "Start privately" },
-  { title: "Law-based", sub: "By country" },
-  { title: "Updated", sub: "2026 rules" },
-  { title: "Clear next step", sub: "Know what to ask" },
+  { title: "Primary sources", sub: "Official rate checks" },
+  { title: "No signup", sub: "Private estimate" },
+  { title: "Reviewed", sub: "Dated source trail" },
+  { title: "Corrections", sub: "Published path" },
 ] as const;
 
 export default function HomePage() {
@@ -33,7 +34,7 @@ export default function HomePage() {
             {/* Eyebrow */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#16835b", fontSize: 12, fontWeight: 850, letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 0 }}>
               <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#16835b", boxShadow: "0 0 0 5px rgba(22,131,91,.12)", flexShrink: 0 }} />
-              Private pay-rights calculators
+              Source-led pay-rights calculators
             </div>
 
             <h1 style={{ maxWidth: 650, margin: "14px 0 14px", color: "#102033", fontSize: "clamp(38px,5vw,66px)", lineHeight: .96, letterSpacing: 0, fontWeight: 800 }}>
@@ -68,6 +69,7 @@ export default function HomePage() {
 
       {/* ── Main ── */}
       <main style={{ maxWidth: 1180, margin: "0 auto", padding: "54px 24px 76px" }}>
+        <OperatingStandard />
 
         {/* Start with what happened */}
         <BrowseBySituation />

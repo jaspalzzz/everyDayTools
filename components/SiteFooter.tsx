@@ -25,7 +25,7 @@ export function SiteFooter() {
             </span>
           </Link>
           <p className="mt-2.5 max-w-[330px] text-[13px] leading-relaxed" style={{ color: "#52616f" }}>
-            Private educational calculators for pay, leave, termination and workplace money questions. Estimates are not legal advice.
+            Source-led employment pay calculators for the UK, US, Canada and Australia. Built to show assumptions, review dates and correction paths.
           </p>
         </div>
 
@@ -82,7 +82,7 @@ export function SiteFooter() {
       <div className="border-t" style={{ borderColor: "#e7edf3" }}>
         <p className="mx-auto max-w-[1180px] px-6 py-4 text-[12px]" style={{ color: "#52616f" }}>
           © 2026 MyPayRights. All figures are educational estimates and are not legal or financial advice.{" "}
-          Figures are reviewed against official sources and corrected through the published correction path.{" "}
+          Figures are reviewed against official sources, labelled with assumptions and corrected through the published correction path.{" "}
           <Link href="/methodology" className="underline-offset-2 hover:underline">Methodology</Link>
           {" · "}
           <Link href="/editorial-policy" className="underline-offset-2 hover:underline">Editorial policy</Link>
