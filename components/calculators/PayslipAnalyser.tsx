@@ -48,7 +48,7 @@ function NumberInput({
           step={0.01}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full rounded-lg border border-surface-line bg-white py-2 pl-7 pr-3 text-sm text-ink focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
+          className="w-full rounded-lg border border-surface-control bg-white py-2 pl-7 pr-3 text-sm text-ink focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
         />
       </div>
       {hint && <p className="mt-1 text-xs text-ink-faint">{hint}</p>}
@@ -138,7 +138,7 @@ export function PayslipAnalyser() {
                   placeholder="Deduction label (e.g. Income Tax)"
                   value={d.label}
                   onChange={(e) => updateDeduction(i, "label", e.target.value)}
-                  className="flex-1 rounded-lg border border-surface-line bg-white px-3 py-2 text-sm text-ink focus:border-brand-600 focus:outline-none"
+                  className="flex-1 rounded-lg border border-surface-control bg-white px-3 py-2 text-sm text-ink focus:border-brand-600 focus:outline-none"
                 />
                 <div className="relative w-28">
                   <span className="absolute inset-y-0 left-3 flex items-center text-ink-faint text-sm">£</span>
@@ -149,7 +149,7 @@ export function PayslipAnalyser() {
                     placeholder="0.00"
                     value={d.amount}
                     onChange={(e) => updateDeduction(i, "amount", e.target.value)}
-                    className="w-full rounded-lg border border-surface-line bg-white py-2 pl-7 pr-3 text-sm text-ink focus:border-brand-600 focus:outline-none"
+                    className="w-full rounded-lg border border-surface-control bg-white py-2 pl-7 pr-3 text-sm text-ink focus:border-brand-600 focus:outline-none"
                   />
                 </div>
                 <button

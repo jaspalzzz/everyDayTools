@@ -104,7 +104,7 @@ export function TribunalCalculator() {
                 type="checkbox"
                 checked={acasBreach}
                 onChange={(e) => setAcasBreach(e.target.checked)}
-                className="h-4 w-4 rounded border-surface-line text-brand-600 focus:ring-brand-600"
+                className="h-4 w-4 rounded border-surface-control text-brand-600 focus:ring-brand-600"
               />
               <span className="text-sm text-ink-soft">
                 Yes — employer did not follow a fair disciplinary/grievance process (adds up to 25%)

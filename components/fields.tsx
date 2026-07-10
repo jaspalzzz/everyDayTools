@@ -38,7 +38,7 @@ export function NumberField({
       <label htmlFor={id} className="text-sm font-medium text-ink">
         {label}
       </label>
-      <div className="flex items-center rounded-md border border-surface-line bg-white focus-within:border-brand-600 focus-within:ring-2 focus-within:ring-brand-50">
+      <div className="flex items-center rounded-md border border-surface-control bg-white focus-within:border-brand-600 focus-within:ring-2 focus-within:ring-brand-50">
         {prefix && <span className="pl-3 text-sm text-ink-faint">{prefix}</span>}
         <input
           id={id}
@@ -85,7 +85,7 @@ export function SelectField({ id, label, value, onChange, options, hint }: Selec
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="rounded-md border border-surface-line bg-white px-3 py-2.5 text-sm text-ink outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-50"
+        className="rounded-md border border-surface-control bg-white px-3 py-2.5 text-sm text-ink outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-50"
         aria-describedby={hint ? `${id}-hint` : undefined}
       >
         {options.map((o) => (
@@ -122,7 +122,7 @@ export function DateField({ id, label, value, onChange, hint }: DateFieldProps) 
         type="date"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-md border border-surface-line bg-white px-3 py-2.5 text-sm text-ink outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-50"
+        className="w-full rounded-md border border-surface-control bg-white px-3 py-2.5 text-sm text-ink outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-50"
         aria-describedby={hint ? `${id}-hint` : undefined}
       />
       {hint && (
@@ -185,7 +185,7 @@ export function AssumptionBox({ children }: { children: ReactNode }) {
       style={{
         border: "1px solid #d9e7f5",
         borderRadius: 8,
-        background: "#f8fbff",
+        background: "#FBF9F3",
         color: "#52616f",
         padding: 13,
         fontSize: 13,

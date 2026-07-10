@@ -148,7 +148,7 @@ export function SiteHeader() {
                 onClick={() => showMenu("calculators")}
                 style={{
                   height: 40, display: "inline-flex", alignItems: "center", gap: 7,
-                  border: menu === "calculators" ? "1px solid #b8d3f1" : "1px solid transparent",
+                  border: menu === "calculators" ? "1px solid #A6C2E0" : "1px solid transparent",
                   borderRadius: 8,
                   color: menu === "calculators" ? "#163C6B" : "#25384c",
                   background: menu === "calculators" ? "#FBF9F3" : "transparent",
@@ -219,7 +219,7 @@ export function SiteHeader() {
                       </div>
 
                       {/* Right: most-used + countries + CTA */}
-                      <div style={{ borderLeft: "1px solid #EAE5D8", background: "#f8fbff", padding: 22 }}>
+                      <div style={{ borderLeft: "1px solid #EAE5D8", background: "#FBF9F3", padding: 22 }}>
                         <h3 style={{ margin: "0 0 12px", color: "#102033", fontSize: 15, fontWeight: 800 }}>Most used calculators</h3>
                         <div style={{ display: "grid", gap: 8, marginBottom: 18 }}>
                           {MEGA_TOOLS.map((t) => (
@@ -293,7 +293,7 @@ export function SiteHeader() {
                 onClick={() => showMenu("countries")}
                 style={{
                   height: 40, display: "inline-flex", alignItems: "center", gap: 7,
-                  border: menu === "countries" ? "1px solid #b8d3f1" : "1px solid transparent",
+                  border: menu === "countries" ? "1px solid #A6C2E0" : "1px solid transparent",
                   borderRadius: 8,
                   color: menu === "countries" ? "#163C6B" : "#25384c",
                   background: menu === "countries" ? "#FBF9F3" : "transparent",
@@ -331,7 +331,7 @@ export function SiteHeader() {
                       >
                         <span style={{
                           width: 38, height: 32, display: "grid", placeItems: "center",
-                          border: "1px solid #bfd3e8", borderRadius: 7, background: "#f8fbff",
+                          border: "1px solid #A6C2E0", borderRadius: 7, background: "#FBF9F3",
                           color: "#16324f", fontSize: 12, fontWeight: 900, letterSpacing: ".04em",
                         }}>
                           {c.code}
@@ -371,7 +371,7 @@ export function SiteHeader() {
                   color: "#25384c", display: "inline-flex", alignItems: "center",
                   justifyContent: "center", gap: 6, padding: "0 12px",
                   fontSize: 13, fontWeight: 800, cursor: "pointer",
-                  borderColor: menu === "region" ? "#b8d3f1" : "#E4DECF",
+                  borderColor: menu === "region" ? "#A6C2E0" : "#E4DECF",
                 }}
               >
                 UK
@@ -406,7 +406,7 @@ export function SiteHeader() {
                       >
                         <span style={{
                           width: 36, height: 30, flexShrink: 0, display: "grid", placeItems: "center",
-                          border: "1px solid #bfd3e8", borderRadius: 6, background: "#f8fbff",
+                          border: "1px solid #A6C2E0", borderRadius: 6, background: "#FBF9F3",
                           color: "#16324f", fontSize: 11, fontWeight: 900, letterSpacing: ".04em",
                         }}>
                           {c.code}
@@ -431,7 +431,7 @@ export function SiteHeader() {
               style={{
                 width: 38, height: 38, border: "1px solid #E4DECF", borderRadius: 8,
                 background: searchOpen ? "#FBF9F3" : "#fff",
-                borderColor: searchOpen ? "#b8d3f1" : "#E4DECF",
+                borderColor: searchOpen ? "#A6C2E0" : "#E4DECF",
                 color: searchOpen ? "#163C6B" : "#25384c",
                 display: "inline-flex", alignItems: "center", justifyContent: "center",
                 fontSize: 18, cursor: "pointer",
@@ -456,9 +456,9 @@ export function SiteHeader() {
                     onChange={(e) => setSearchQ(e.target.value)}
                     placeholder="Search calculators…"
                     style={{
-                      width: "100%", height: 40, border: "1px solid #E4DECF", borderRadius: 7,
+                      width: "100%", height: 40, border: "1px solid var(--color-control-border)", borderRadius: 7,
                       padding: "0 12px", fontSize: 14, color: "#102033", outline: "none",
-                      background: "#f8fbff",
+                      background: "#FBF9F3",
                     }}
                   />
                 </div>

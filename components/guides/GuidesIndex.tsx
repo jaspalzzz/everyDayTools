@@ -289,13 +289,13 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
             placeholder="Search guides: unpaid wages, notice pay, redundancy, sick pay"
             value={searchQ}
             onChange={(e) => setSearchQ(e.target.value)}
-            style={{ minHeight: 50, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
+            style={{ minHeight: 50, border: "1px solid var(--color-control-border)", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
           />
           <select
             aria-label="Country"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
-            style={{ minHeight: 50, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
+            style={{ minHeight: 50, border: "1px solid var(--color-control-border)", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
           >
             <option value="all">All countries</option>
             <option value="UK">United Kingdom</option>
@@ -307,7 +307,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
             aria-label="Topic"
             value={topic}
             onChange={(e) => setTopicFilter(e.target.value)}
-            style={{ minHeight: 50, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
+            style={{ minHeight: 50, border: "1px solid var(--color-control-border)", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
           >
             <option value="all">All topics</option>
             <option value="leaving">Leaving a job</option>

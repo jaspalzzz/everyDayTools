@@ -229,7 +229,7 @@ export default function MadeRedundantUKPage() {
               "File a tribunal claim within 3 months if any payment is disputed",
             ].map((item) => (
               <label key={item} className="flex cursor-pointer items-start gap-3 px-4 py-3 text-sm text-ink-soft hover:bg-surface-muted/40">
-                <input type="checkbox" className="mt-0.5 h-4 w-4 shrink-0 rounded border-surface-line accent-brand-600" />
+                <input type="checkbox" className="mt-0.5 h-4 w-4 shrink-0 rounded border-surface-control accent-brand-600" />
                 {item}
               </label>
             ))}

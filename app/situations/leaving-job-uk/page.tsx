@@ -247,7 +247,7 @@ export default function LeavingJobUKPage() {
             <ul className="space-y-2.5">
               {CHECKLIST.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-ink-soft">
-                  <input type="checkbox" className="mt-0.5 h-4 w-4 shrink-0 rounded border-surface-line accent-brand-600" aria-label={item} />
+                  <input type="checkbox" className="mt-0.5 h-4 w-4 shrink-0 rounded border-surface-control accent-brand-600" aria-label={item} />
                   <span>{item}</span>
                 </li>
               ))}

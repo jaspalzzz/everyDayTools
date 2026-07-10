@@ -89,7 +89,7 @@ export function AuAnnualLeaveCalculator() {
               type="checkbox"
               checked={isShiftWorker}
               onChange={(e) => setIsShiftWorker(e.target.checked)}
-              className="h-4 w-4 rounded accent-brand-600"
+              className="h-4 w-4 rounded border-surface-control accent-brand-600"
             />
             Shift worker (entitled to 5 weeks leave instead of 4)
           </label>
@@ -98,7 +98,7 @@ export function AuAnnualLeaveCalculator() {
               type="checkbox"
               checked={hasLeaveLoading}
               onChange={(e) => setHasLeaveLoading(e.target.checked)}
-              className="h-4 w-4 rounded accent-brand-600"
+              className="h-4 w-4 rounded border-surface-control accent-brand-600"
             />
             Annual leave loading applies (17.5% — check your award or contract)
           </label>

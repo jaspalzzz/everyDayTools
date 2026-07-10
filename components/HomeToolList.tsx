@@ -131,7 +131,7 @@ export function HomeToolList() {
           onChange={(e) => setQuery(e.target.value)}
           placeholder='Search calculators… e.g. "redundancy" or "overtime"'
           aria-label="Search calculators"
-          className="w-full rounded-lg border border-surface-line bg-white py-3 pl-11 pr-4 text-sm text-ink outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-50"
+          className="w-full rounded-lg border border-surface-control bg-white py-3 pl-11 pr-4 text-sm text-ink outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-50"
         />
       </div>
 

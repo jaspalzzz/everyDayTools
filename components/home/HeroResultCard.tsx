@@ -41,10 +41,10 @@ export function HeroResultCard() {
 
       {/* Estimate card */}
       <article
-        style={{ width: "min(100%,430px)", border: "1px solid #c5d6e8", borderRadius: 12, background: "#fff", boxShadow: "0 18px 42px rgba(16,32,51,.11)", overflow: "hidden" }}
+        style={{ width: "min(100%,430px)", border: "1px solid #E4DECF", borderRadius: 12, background: "#fff", boxShadow: "0 18px 42px rgba(16,32,51,.11)", overflow: "hidden" }}
       >
         {/* Head */}
-        <div style={{ padding: 20, background: "linear-gradient(180deg,#f8fbff 0%,#fff 100%)", borderBottom: "1px solid #EAE5D8" }}>
+        <div style={{ padding: 20, background: "linear-gradient(180deg,#FBF9F3 0%,#fff 100%)", borderBottom: "1px solid #EAE5D8" }}>
           <p style={{ margin: "0 0 6px", color: "#52616f", fontSize: 13, fontWeight: 750 }}>
             Estimated amount potentially owed
           </p>
@@ -74,7 +74,7 @@ export function HeroResultCard() {
         </div>
 
         {/* Case panel */}
-        <div style={{ margin: "0 20px 20px", border: "1px solid #bcd4ec", borderRadius: 8, background: "#f5f9fe", padding: 14 }}>
+        <div style={{ margin: "0 20px 20px", border: "1px solid #A6C2E0", borderRadius: 8, background: "#FBF9F3", padding: 14 }}>
           <strong style={{ display: "block", color: "#16324f", fontSize: 14, marginBottom: 3 }}>Based on your answers</strong>
           <p style={{ margin: 0, color: "#52616f", fontSize: 13 }}>
             This estimate separates statutory figures, assumptions and next steps. It is educational, not legal advice.

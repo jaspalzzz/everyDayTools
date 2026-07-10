@@ -110,17 +110,35 @@ test.describe("responsive layout audit", () => {
             .sort((a, b) => b.overflow - a.overflow)
             .slice(0, 4);
 
+          const clippedInteractive = Array.from(
+            document.body.querySelectorAll("a, button, [role='button']"),
+          )
+            .filter((el) => {
+              const element = el as HTMLElement;
+              const rect = element.getBoundingClientRect();
+              return rect.width > 0 && rect.height > 0 && element.scrollWidth > element.clientWidth + 1;
+            })
+            .map((el) => ({
+              tag: el.tagName.toLowerCase(),
+              className: typeof el.className === "string" ? el.className.slice(0, 120) : "",
+              text: (el.textContent ?? "").replace(/\s+/g, " ").trim().slice(0, 90),
+              clientWidth: (el as HTMLElement).clientWidth,
+              scrollWidth: (el as HTMLElement).scrollWidth,
+            }))
+            .slice(0, 8);
+
           return {
             viewportWidth,
             documentWidth,
             overflow: documentWidth - viewportWidth,
             offenders,
+            clippedInteractive,
           };
         });
 
-        if (result.overflow > 1) {
+        if (result.overflow > 1 || result.clippedInteractive.length > 0) {
           failures.push(
-            `${route} overflowed by ${result.overflow}px at ${viewport.width}px; offenders=${JSON.stringify(result.offenders)}`,
+            `${route} failed responsive sizing at ${viewport.width}px; overflow=${result.overflow}px; offenders=${JSON.stringify(result.offenders)}; clippedInteractive=${JSON.stringify(result.clippedInteractive)}`,
           );
         }
       }
