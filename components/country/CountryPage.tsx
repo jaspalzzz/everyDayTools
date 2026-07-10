@@ -64,8 +64,8 @@ function ToolIcon({ letter, featured }: { letter: string; featured: boolean }) {
         width: 40, height: 40, flexShrink: 0,
         display: "grid", placeItems: "center",
         borderRadius: 8,
-        background: featured ? "#dbeafe" : "#EAF0F8",
-        color: featured ? "#1d4ed8" : "#1E4E8C",
+        background: featured ? "#CFDEEF" : "#EAF0F8",
+        color: featured ? "#163C6B" : "#1E4E8C",
         fontSize: 15, fontWeight: 900,
       }}
     >
@@ -162,14 +162,14 @@ export function CountryPage({
                 value={searchQ}
                 onChange={(e) => setSearchQ(e.target.value)}
                 className="col-span-2 min-w-0 sm:col-span-1"
-                style={{ minHeight: 46, border: "1px solid #E4DECF", borderRadius: 8, background: "#f8fbff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
+                style={{ minHeight: 46, border: "1px solid var(--color-control-border)", borderRadius: 8, background: "#FBF9F3", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
               />
               <select
                 aria-label="Topic"
                 value={activeTab}
                 onChange={(e) => setActiveTab(e.target.value as TabKey)}
                 className="min-w-0"
-                style={{ width: "100%", minHeight: 46, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 12px", outline: "none", fontSize: 13 }}
+                style={{ width: "100%", minHeight: 46, border: "1px solid var(--color-control-border)", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 12px", outline: "none", fontSize: 13 }}
               >
                 {TABS.map((t) => (
                   <option key={t.key} value={t.key}>{t.label}</option>
@@ -191,7 +191,7 @@ export function CountryPage({
             style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", overflow: "hidden" }}
             aria-label={`Key ${code} statutory rates`}
           >
-            <div style={{ padding: "18px 20px", borderBottom: "1px solid #EAE5D8", background: "#f8fbff" }}>
+            <div style={{ padding: "18px 20px", borderBottom: "1px solid #EAE5D8", background: "#FBF9F3" }}>
               <h2 style={{ margin: "0 0 4px", fontSize: 18, color: "#102033", fontWeight: 850 }}>Key 2026 rates</h2>
               <p style={{ margin: 0, color: "#52616f", fontSize: 13, fontWeight: 700 }}>{ratesNote}</p>
             </div>
@@ -221,7 +221,7 @@ export function CountryPage({
         <nav
           aria-label="Category filter"
           className="flex flex-wrap gap-2 pb-4 mb-5"
-          style={{ position: "sticky", top: 68, zIndex: 5, background: "#f7fafc", scrollbarWidth: "none" }}
+          style={{ position: "sticky", top: 68, zIndex: 5, background: "#FBF9F3", scrollbarWidth: "none" }}
         >
           {TABS.map((tab) => (
             <button
@@ -303,7 +303,7 @@ export function CountryPage({
                           gap: 14,
                           alignItems: "center",
                           minHeight: 76,
-                          border: tool.hero ? "1px solid #bad7f7" : "1px solid #E4DECF",
+                          border: tool.hero ? "1px solid #A6C2E0" : "1px solid #E4DECF",
                           borderRadius: 8,
                           background: tool.hero ? "#F5F1E8" : "#fff",
                           padding: "13px 14px",
@@ -406,7 +406,7 @@ export function CountryPage({
                       <span
                         style={{
                           display: "grid", placeItems: "center",
-                          border: "1px solid #bfd3e8", borderRadius: 7, background: "#fff",
+                          border: "1px solid #A6C2E0", borderRadius: 7, background: "#fff",
                           color: "#16324f", fontSize: 11, fontWeight: 900, letterSpacing: ".04em",
                           height: 28,
                         }}

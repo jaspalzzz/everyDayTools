@@ -198,10 +198,10 @@ export function BrowseByCategory() {
   return (
     <section
       aria-labelledby="directory-title"
-      style={{ marginTop: 58, border: "1px solid #cdddeb", borderRadius: 8, background: "#fff", overflow: "hidden" }}
+      style={{ marginTop: 58, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", overflow: "hidden" }}
     >
       {/* Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 bg-[#f8fbff] border-b border-surface-line">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 bg-[#FBF9F3] border-b border-surface-line">
         {TABS.map((tab) => (
           <button
             key={tab.id}
@@ -240,7 +240,7 @@ export function BrowseByCategory() {
             <Link
               key={tool.href + tool.title}
               href={tool.href}
-              style={{ minHeight: 78, border: "1px solid #EAE5D8", borderRadius: 8, background: "#f5f9fe", padding: 13, display: "grid", gridTemplateColumns: "34px 1fr", gap: 12, alignItems: "start", textDecoration: "none" }}
+              style={{ minHeight: 78, border: "1px solid #EAE5D8", borderRadius: 8, background: "#FBF9F3", padding: 13, display: "grid", gridTemplateColumns: "34px 1fr", gap: 12, alignItems: "start", textDecoration: "none" }}
             >
               <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#EAF0F8", color: "#1E4E8C", fontWeight: 900, fontSize: 14 }}>
                 {tool.icon}

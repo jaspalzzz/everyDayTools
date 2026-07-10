@@ -161,7 +161,7 @@ export default function ContactPage() {
                       gap: 10,
                       border: "1px solid #E4DECF",
                       borderRadius: 8,
-                      background: "#f8fbff",
+                      background: "#FBF9F3",
                       padding: 13,
                       color: "#25384c",
                       fontSize: 14,

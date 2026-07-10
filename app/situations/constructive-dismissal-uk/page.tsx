@@ -187,7 +187,7 @@ export default function ConstructiveDismissalUk() {
           <div className="space-y-2">
             {checklist.map((item) => (
               <label key={item} className="flex cursor-pointer items-start gap-3 rounded-lg border border-surface-line p-3 hover:bg-surface-muted">
-                <input type="checkbox" className="mt-0.5 h-4 w-4 rounded accent-brand-600" />
+                <input type="checkbox" className="mt-0.5 h-4 w-4 rounded border-surface-control accent-brand-600" />
                 <span className="text-sm text-ink-soft">{item}</span>
               </label>
             ))}

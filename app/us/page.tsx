@@ -77,9 +77,9 @@ function USStatesGrid() {
             key={s.slug}
             href={`/us/states/${s.slug}`}
             style={{
-              display: "flex", alignItems: "center", gap: 8,
+              display: "flex", alignItems: "center", gap: 6,
               border: "1px solid #EAE5D8", borderRadius: 8,
-              background: "#fff", padding: "10px 12px",
+              background: "#fff", padding: "9px 10px",
               textDecoration: "none",
             }}
           >
@@ -89,8 +89,8 @@ function USStatesGrid() {
                 background: s.pto.rule === "required" ? "#10b981" : s.pto.rule === "conditional" ? "#f59e0b" : "#d1d5db",
               }}
             />
-            <span style={{ fontSize: 13, fontWeight: 700, color: "#102033", flex: 1 }}>{s.name}</span>
-            <span style={{ fontSize: 11, fontWeight: 900, color: "#52616f" }}>{s.code}</span>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#102033", flex: 1, minWidth: 0 }}>{s.name}</span>
+            <span className="hidden min-[400px]:inline" style={{ fontSize: 11, fontWeight: 900, color: "#52616f" }}>{s.code}</span>
           </Link>
         ))}
       </div>

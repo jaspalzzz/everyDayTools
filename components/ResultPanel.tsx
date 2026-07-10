@@ -53,7 +53,7 @@ export function ResultPanel({
         style={{
           padding: "22px 22px 18px",
           borderBottom: "1px solid #EAE5D8",
-          background: "#f8fbff",
+          background: "#FBF9F3",
         }}
       >
         <p style={{ margin: "0 0 6px", color: "#52616f", fontSize: 13, fontWeight: 850 }}>

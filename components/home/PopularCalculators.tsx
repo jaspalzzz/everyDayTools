@@ -45,7 +45,7 @@ export function PopularCalculators() {
         {/* Left: featured tool list */}
         <div
           className="overflow-hidden rounded-lg border bg-white"
-          style={{ borderColor: "#c6d8ea", boxShadow: "0 10px 28px rgba(16,32,51,.08)" }}
+          style={{ borderColor: "#E4DECF", boxShadow: "0 10px 28px rgba(16,32,51,.08)" }}
         >
           <div className="flex items-center justify-between gap-4 border-b p-5" style={{ borderColor: "#EAE5D8" }}>
             <h2 id="popular-title" className="text-[1.375rem] font-bold text-ink">
@@ -64,7 +64,7 @@ export function PopularCalculators() {
               <Link
                 key={tool.title}
                 href={tool.href}
-                className="group flex min-h-[86px] items-center gap-3.5 border-b px-5 py-3.5 transition-colors last:border-b-0 hover:bg-[#f5f9fe]"
+                className="group flex min-h-[86px] items-center gap-3.5 border-b px-5 py-3.5 transition-colors last:border-b-0 hover:bg-[#FBF9F3]"
                 style={{ borderColor: "#EAE5D8" }}
               >
                 <span

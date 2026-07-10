@@ -336,7 +336,7 @@ export function ToolLayout({
                   style={{
                     display: "inline-flex", alignItems: "center",
                     border: "1px solid #E4DECF", borderRadius: 999,
-                    background: "#f8fbff", color: "#16324f",
+                    background: "#FBF9F3", color: "#16324f",
                     padding: "5px 8px", fontSize: 11,
                     textTransform: "uppercase", letterSpacing: ".04em",
                     fontWeight: 700, whiteSpace: "nowrap",
@@ -533,7 +533,7 @@ const TRUST_CARD_TEXT_STYLE: React.CSSProperties = {
 const ACTION_BOX_STYLE: React.CSSProperties = {
   border: "1px solid #E4DECF",
   borderRadius: 10,
-  background: "#f8fbff",
+  background: "#FBF9F3",
   padding: 18,
 };
 

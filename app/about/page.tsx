@@ -121,7 +121,7 @@ export default function AboutPage() {
             style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", overflow: "hidden" }}
             aria-label="MyPayRights operating standards"
           >
-            <header style={{ padding: "18px 20px", borderBottom: "1px solid #EAE5D8", background: "#f8fbff" }}>
+            <header style={{ padding: "18px 20px", borderBottom: "1px solid #EAE5D8", background: "#FBF9F3" }}>
               <h2 style={{ margin: "0 0 4px", color: "#102033", fontSize: 18, fontWeight: 850 }}>Operating standard</h2>
               <p style={{ margin: 0, color: "#52616f", fontSize: 13, fontWeight: 700 }}>What the product must prove quickly.</p>
             </header>

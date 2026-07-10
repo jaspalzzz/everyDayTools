@@ -38,7 +38,7 @@ export function OperatingStandard() {
   return (
     <section aria-labelledby="operating-standard-title" className="mb-14">
       <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="rounded-lg border border-surface-line bg-white p-6">
+        <div className="min-w-0 rounded-lg border border-surface-line bg-white p-4 sm:p-6">
           <p className="mb-2 text-[11px] font-black uppercase tracking-[.12em] text-brand-600">
             Operating standard
           </p>
@@ -51,18 +51,18 @@ export function OperatingStandard() {
             reviews, clear assumptions, and a correction route when something changes.
           </p>
           <div className="mt-5 overflow-hidden rounded-lg border border-surface-line">
-            <table className="w-full text-left text-sm">
+            <table className="w-full table-fixed text-left text-sm">
               <thead>
                 <tr className="border-b border-surface-line bg-surface-muted text-[11px] uppercase tracking-[.08em] text-ink-faint">
-                  <th scope="col" className="px-4 py-2 font-bold">Country</th>
-                  <th scope="col" className="px-4 py-2 font-bold">Typical source base</th>
+                  <th scope="col" className="w-[64px] px-2 py-2 font-bold sm:w-[88px] sm:px-4">Country</th>
+                  <th scope="col" className="px-2 py-2 font-bold sm:px-4">Typical source base</th>
                 </tr>
               </thead>
               <tbody>
                 {SOURCE_ROWS.map(([country, source]) => (
                   <tr key={country} className="border-b border-surface-line last:border-0">
-                    <th scope="row" className="px-4 py-2.5 font-bold text-ink">{country}</th>
-                    <td className="px-4 py-2.5 text-ink-soft">{source}</td>
+                    <th scope="row" className="px-2 py-2.5 font-bold text-ink sm:px-4">{country}</th>
+                    <td className="break-words px-2 py-2.5 text-ink-soft sm:px-4">{source}</td>
                   </tr>
                 ))}
               </tbody>

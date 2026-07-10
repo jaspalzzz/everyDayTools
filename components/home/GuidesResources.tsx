@@ -5,10 +5,10 @@ function SketchPayslip() {
     <svg viewBox="0 0 260 150" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style={{ position: "absolute", inset: 0 }}>
       <rect width="260" height="150" fill="#e8f2fb"/>
       {/* Document outline */}
-      <rect x="55" y="18" width="110" height="114" rx="5" fill="white" stroke="#7aaedc" strokeWidth="2"/>
+      <rect x="55" y="18" width="110" height="114" rx="5" fill="white" stroke="#6E97C6" strokeWidth="2"/>
       {/* Fold corner */}
-      <path d="M140 18 L165 18 L165 43 Z" fill="#c8dff2" stroke="#7aaedc" strokeWidth="1.5"/>
-      <path d="M140 18 L140 43 L165 43" fill="none" stroke="#7aaedc" strokeWidth="1.5"/>
+      <path d="M140 18 L165 18 L165 43 Z" fill="#CFDEEF" stroke="#6E97C6" strokeWidth="1.5"/>
+      <path d="M140 18 L140 43 L165 43" fill="none" stroke="#6E97C6" strokeWidth="1.5"/>
       {/* Header bar */}
       <rect x="55" y="18" width="110" height="24" rx="5" fill="#1E4E8C" opacity="0.12"/>
       {/* Lines of text */}
@@ -24,13 +24,13 @@ function SketchPayslip() {
       {/* Divider */}
       <line x1="65" y1="113" x2="160" y2="113" stroke="#b3ceea" strokeWidth="1" strokeDasharray="4 3"/>
       {/* Total */}
-      <line x1="70" y1="122" x2="108" y2="122" stroke="#7aaedc" strokeWidth="2" strokeLinecap="round"/>
+      <line x1="70" y1="122" x2="108" y2="122" stroke="#6E97C6" strokeWidth="2" strokeLinecap="round"/>
       <rect x="126" y="117" width="32" height="10" rx="3" fill="#1E4E8C" opacity="0.18"/>
       {/* Coins bottom right */}
-      <circle cx="205" cy="110" r="22" fill="#dceef9" stroke="#7aaedc" strokeWidth="1.5"/>
-      <circle cx="205" cy="110" r="15" fill="white" stroke="#7aaedc" strokeWidth="1.5"/>
+      <circle cx="205" cy="110" r="22" fill="#EAF0F8" stroke="#6E97C6" strokeWidth="1.5"/>
+      <circle cx="205" cy="110" r="15" fill="white" stroke="#6E97C6" strokeWidth="1.5"/>
       <text x="205" y="115" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1E4E8C">£</text>
-      <circle cx="222" cy="95" r="14" fill="#EAF0F8" stroke="#7aaedc" strokeWidth="1.5"/>
+      <circle cx="222" cy="95" r="14" fill="#EAF0F8" stroke="#6E97C6" strokeWidth="1.5"/>
     </svg>
   );
 }

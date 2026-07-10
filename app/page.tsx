@@ -26,7 +26,7 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(orgSchema)} />
 
       {/* ── Hero ── */}
-      <section style={{ background: "radial-gradient(circle at 78% 20%,rgba(30,78,140,.10),transparent 28%),linear-gradient(180deg,#ffffff 0%,#f8fbff 74%,#f7fafc 100%)", borderBottom: "1px solid #EAE5D8" }}>
+      <section style={{ background: "radial-gradient(circle at 78% 20%,rgba(30,78,140,.10),transparent 28%),linear-gradient(180deg,#ffffff 0%,#FBF9F3 74%,#F4F1E9 100%)", borderBottom: "1px solid #EAE5D8" }}>
         <div className="mx-auto grid grid-cols-1 lg:grid-cols-[1.02fr_0.78fr] items-center gap-8 lg:gap-12" style={{ maxWidth: 1180, padding: "44px 24px 36px" }}>
 
           {/* Left column */}

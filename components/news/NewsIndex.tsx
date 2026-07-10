@@ -54,7 +54,7 @@ const CALC_LINKS = [
 function CountryBadge({ region }: { region: string }) {
   return (
     <span style={{
-      border: "1px solid #bfd3e8", borderRadius: 7, background: "#f8fbff",
+      border: "1px solid #A6C2E0", borderRadius: 7, background: "#FBF9F3",
       color: "#16324f", padding: "4px 7px", fontSize: 11, fontWeight: 950,
       letterSpacing: ".04em", textTransform: "uppercase" as const,
     }}>
@@ -192,7 +192,7 @@ export function NewsIndex() {
             placeholder="Search: redundancy, PTO payout, final paycheck, sick pay"
             aria-label="Search news"
             style={{
-              minHeight: 50, border: "1px solid #E4DECF", borderRadius: 8,
+              minHeight: 50, border: "1px solid var(--color-control-border)", borderRadius: 8,
               background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 14,
             }}
           />
@@ -201,7 +201,7 @@ export function NewsIndex() {
             onChange={(e) => setCountry(e.target.value)}
             aria-label="Country"
             style={{
-              minHeight: 50, border: "1px solid #E4DECF", borderRadius: 8,
+              minHeight: 50, border: "1px solid var(--color-control-border)", borderRadius: 8,
               background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 14,
             }}
           >
@@ -212,7 +212,7 @@ export function NewsIndex() {
             onChange={(e) => setTopic(e.target.value)}
             aria-label="Topic"
             style={{
-              minHeight: 50, border: "1px solid #E4DECF", borderRadius: 8,
+              minHeight: 50, border: "1px solid var(--color-control-border)", borderRadius: 8,
               background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 14,
             }}
           >
@@ -336,7 +336,7 @@ export function NewsIndex() {
         >
           {/* Read by country */}
           <section style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", overflow: "hidden" }}>
-            <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid #EAE5D8", background: "#f8fbff" }}>
+            <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid #EAE5D8", background: "#FBF9F3" }}>
               <h2 style={{ margin: 0, color: "#102033", fontSize: 15, fontWeight: 850 }}>Read by country</h2>
             </div>
             <div className="grid grid-cols-2 gap-2" style={{ padding: 14 }}>
@@ -351,7 +351,7 @@ export function NewsIndex() {
                   href={c.href}
                   style={{
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    border: "1px solid #EAE5D8", borderRadius: 8, background: "#f8fbff",
+                    border: "1px solid #EAE5D8", borderRadius: 8, background: "#FBF9F3",
                     padding: "10px 0", textDecoration: "none",
                     fontSize: 13, fontWeight: 900, color: "#16324f",
                   }}
@@ -365,7 +365,7 @@ export function NewsIndex() {
 
           {/* Use a calculator next */}
           <section style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", overflow: "hidden" }}>
-            <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid #EAE5D8", background: "#f8fbff" }}>
+            <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid #EAE5D8", background: "#FBF9F3" }}>
               <h2 style={{ margin: 0, color: "#102033", fontSize: 15, fontWeight: 850 }}>Use a calculator next</h2>
             </div>
             <div style={{ padding: "6px 0" }}>
@@ -378,7 +378,7 @@ export function NewsIndex() {
                     padding: "11px 16px", borderBottom: "1px solid #f1f5f9",
                     textDecoration: "none", fontSize: 13, fontWeight: 700, color: "#102033",
                   }}
-                  className="hover:bg-[#f8fbff] transition-colors"
+                  className="hover:bg-[#FBF9F3] transition-colors"
                 >
                   <span>{l.label}</span>
                   <span style={{ color: "#1E4E8C", fontWeight: 900 }}>→</span>

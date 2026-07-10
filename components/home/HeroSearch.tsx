@@ -140,14 +140,14 @@ export function HeroSearch() {
   return (
     <div
       className="overflow-hidden rounded-lg border bg-white"
-      style={{ borderColor: "#cdddeb", boxShadow: "0 10px 28px rgba(16,32,51,.08)" }}
+      style={{ borderColor: "#E4DECF", boxShadow: "0 10px 28px rgba(16,32,51,.08)" }}
       aria-label="Start a pay rights check"
     >
       <Suspense fallback={null}>
         <QueryParamSync onQuery={openSearchResult} setQuery={setQuery} />
       </Suspense>
       {/* Country tabs */}
-      <div className="grid grid-cols-4 border-b" style={{ background: "#f8fbff", borderColor: "#EAE5D8" }}>
+      <div className="grid grid-cols-4 border-b" style={{ background: "#FBF9F3", borderColor: "#EAE5D8" }}>
         {COUNTRIES.map((c) => (
           <button
             key={c.code}
@@ -159,7 +159,7 @@ export function HeroSearch() {
               background: active === c.code ? "#ffffff" : "transparent",
               color: active === c.code ? "#16324f" : "#52616f",
             }}
-            className="min-h-[46px] px-2 text-[13px] font-bold transition-colors last:border-r-0"
+            className="min-h-[46px] px-1 text-[12px] font-bold transition-colors last:border-r-0 min-[360px]:px-2 min-[360px]:text-[13px]"
           >
             {c.label}
           </button>
@@ -171,7 +171,7 @@ export function HeroSearch() {
         <select
           aria-label="Country"
           className="col-span-2 sm:col-span-1 min-h-[52px] rounded-lg border px-3.5 text-[13px] font-medium text-ink outline-none"
-          style={{ borderColor: "#E4DECF" }}
+          style={{ borderColor: "var(--color-control-border)" }}
           value={active}
           onChange={(e) => setActive(e.target.value as typeof active)}
         >
@@ -185,7 +185,7 @@ export function HeroSearch() {
           aria-label="Search calculator"
           placeholder='Describe your issue: unpaid wages, notice pay…'
           className="min-h-[52px] rounded-lg border px-3.5 text-[13px] text-ink outline-none placeholder:text-[#8795a3]"
-          style={{ borderColor: "#E4DECF" }}
+          style={{ borderColor: "var(--color-control-border)" }}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -210,7 +210,7 @@ export function HeroSearch() {
               openSearchResult(q.label);
             }}
             className="rounded-full border px-2.5 py-[7px] text-[12px] font-bold text-ink-soft transition-colors hover:border-brand-300 hover:text-ink"
-            style={{ borderColor: "#cfe0f1", background: "#FBF9F3" }}
+            style={{ borderColor: "#E4DECF", background: "#FBF9F3" }}
           >
             {q.label}
           </button>

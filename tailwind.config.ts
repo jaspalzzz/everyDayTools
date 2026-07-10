@@ -29,6 +29,7 @@ const config: Config = {
           paper: "#FAF8F2",
           muted: "#F4F1E9",
           line: "#E4DECF",
+          control: "var(--color-control-border)",
         },
         success: {
           DEFAULT: "#16835B",
