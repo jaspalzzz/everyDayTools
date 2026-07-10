@@ -395,12 +395,12 @@ export function SiteHeader() {
                 aria-label="Switch country"
                 onClick={() => showMenu("region")}
                 style={{
-                  height: 38, border: "1px solid #E4DECF", borderRadius: 8,
+                  height: 38, border: "1px solid var(--color-control-border)", borderRadius: 8,
                   background: menu === "region" ? "#FBF9F3" : "#fff",
                   color: "#25384c", display: "inline-flex", alignItems: "center",
                   justifyContent: "center", gap: 6, padding: "0 12px",
                   fontSize: 13, fontWeight: 800, cursor: "pointer",
-                  borderColor: menu === "region" ? "#A6C2E0" : "#E4DECF",
+                  borderColor: menu === "region" ? "#A6C2E0" : "var(--color-control-border)",
                 }}
               >
                 UK
@@ -458,9 +458,9 @@ export function SiteHeader() {
               aria-label="Search calculators"
               aria-expanded={searchOpen}
               style={{
-                width: 38, height: 38, border: "1px solid #E4DECF", borderRadius: 8,
+                width: 38, height: 38, border: "1px solid var(--color-control-border)", borderRadius: 8,
                 background: searchOpen ? "#FBF9F3" : "#fff",
-                borderColor: searchOpen ? "#A6C2E0" : "#E4DECF",
+                borderColor: searchOpen ? "#A6C2E0" : "var(--color-control-border)",
                 color: searchOpen ? "#163C6B" : "#25384c",
                 display: "inline-flex", alignItems: "center", justifyContent: "center",
                 fontSize: 18, cursor: "pointer",
