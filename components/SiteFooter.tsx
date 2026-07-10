@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t bg-white" style={{ borderColor: "#e7edf3" }}>
+    <footer className="border-t bg-white" style={{ borderColor: "#EAE5D8" }}>
       <div
         className="mx-auto grid max-w-[1180px] grid-cols-2 md:grid-cols-5 gap-8 px-6 py-9"
       >
@@ -12,16 +12,16 @@ export function SiteFooter() {
             <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 84 84" aria-hidden="true">
               <g transform="translate(6 6) scale(.75)">
                 <path d="M26 14h30l16 16v48H26z" fill="#FFFFFF"/>
-                <path d="M56 14v16h16" fill="#EAF3FF"/>
+                <path d="M56 14v16h16" fill="#EAF0F8"/>
                 <path d="M26 14h30l16 16v48H26z" fill="none" stroke="#16324F" strokeWidth="5" strokeLinejoin="round"/>
                 <path d="M56 14v16h16" fill="none" stroke="#16324F" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M36 35h18M36 47h22M36 59h14" fill="none" stroke="#16324F" strokeWidth="4" strokeLinecap="round"/>
-                <circle cx="67" cy="66" r="16" fill="#1769E0"/>
+                <circle cx="67" cy="66" r="16" fill="#1E4E8C"/>
                 <path d="M59 66l6 6 12-14" fill="none" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
               </g>
             </svg>
             <span style={{ fontWeight: 800, fontSize: 16 }}>
-              <span style={{ color: "#102033" }}>MyPay</span><span style={{ color: "#1769e0" }}>Rights</span>
+              <span style={{ color: "#102033" }}>MyPay</span><span style={{ color: "#1E4E8C" }}>Rights</span>
             </span>
           </Link>
           <p className="mt-2.5 max-w-[330px] text-[13px] leading-relaxed" style={{ color: "#52616f" }}>
@@ -79,7 +79,7 @@ export function SiteFooter() {
       </div>
 
       {/* Bottom note */}
-      <div className="border-t" style={{ borderColor: "#e7edf3" }}>
+      <div className="border-t" style={{ borderColor: "#EAE5D8" }}>
         <p className="mx-auto max-w-[1180px] px-6 py-4 text-[12px]" style={{ color: "#52616f" }}>
           © 2026 MyPayRights. All figures are educational estimates and are not legal or financial advice.{" "}
           Figures are reviewed against official sources, labelled with assumptions and corrected through the published correction path.{" "}

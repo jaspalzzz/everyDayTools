@@ -69,11 +69,11 @@ function ArticleCard({ post }: { post: BlogPost }) {
     <Link
       href={`/blog/${post.slug}`}
       style={{
-        minHeight: 190, border: "1px solid #d8e2ec", borderRadius: 10, background: "#fff",
+        minHeight: 190, border: "1px solid #E4DECF", borderRadius: 10, background: "#fff",
         padding: 17, display: "flex", flexDirection: "column", justifyContent: "space-between",
         textDecoration: "none",
       }}
-      className="hover:border-[#a8c9ef] transition-colors"
+      className="hover:border-[#A6C2E0] transition-colors"
     >
       <div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 10, color: "#52616f", fontSize: 12, fontWeight: 800 }}>
@@ -87,7 +87,7 @@ function ArticleCard({ post }: { post: BlogPost }) {
           {post.excerpt}
         </p>
       </div>
-      <span style={{ marginTop: 16, color: "#0f56bd", fontSize: 13, fontWeight: 900 }}>
+      <span style={{ marginTop: 16, color: "#163C6B", fontSize: 13, fontWeight: 900 }}>
         Read article →
       </span>
     </Link>
@@ -128,8 +128,8 @@ export function NewsIndex() {
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section
         style={{
-          borderBottom: "1px solid #e7edf3",
-          background: "radial-gradient(circle at 84% 16%,rgba(23,105,224,.10),transparent 30%),linear-gradient(180deg,#fff 0%,#f7fbff 100%)",
+          borderBottom: "1px solid #EAE5D8",
+          background: "radial-gradient(circle at 84% 16%,rgba(30,78,140,.10),transparent 30%),linear-gradient(180deg,#fff 0%,#FBF9F3 100%)",
         }}
       >
         <div
@@ -143,8 +143,8 @@ export function NewsIndex() {
               <span style={{ color: "#102033" }}>News</span>
             </nav>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#1769e0", display: "inline-block", flexShrink: 0 }} />
-              <span style={{ fontSize: 12, fontWeight: 900, color: "#1769e0", letterSpacing: ".08em", textTransform: "uppercase" as const }}>
+              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#1E4E8C", display: "inline-block", flexShrink: 0 }} />
+              <span style={{ fontSize: 12, fontWeight: 900, color: "#1E4E8C", letterSpacing: ".08em", textTransform: "uppercase" as const }}>
                 Employment law updates, explained
               </span>
             </div>
@@ -162,7 +162,7 @@ export function NewsIndex() {
           {/* Editorial standard card */}
           <aside
             className="hidden lg:block"
-            style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", padding: 20 }}
+            style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", padding: 20 }}
           >
             <h2 style={{ margin: "0 0 10px", color: "#102033", fontSize: 18, lineHeight: 1.2, fontWeight: 850 }}>
               Editorial standard
@@ -181,7 +181,7 @@ export function NewsIndex() {
           onSubmit={handleSearch}
           className="grid grid-cols-1 sm:grid-cols-[1fr_160px_180px_52px]"
           style={{
-            border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff",
+            border: "1px solid #E4DECF", borderRadius: 10, background: "#fff",
             boxShadow: "0 14px 32px rgba(16,32,51,.08)", padding: 14, gap: 10,
           }}
         >
@@ -192,7 +192,7 @@ export function NewsIndex() {
             placeholder="Search: redundancy, PTO payout, final paycheck, sick pay"
             aria-label="Search news"
             style={{
-              minHeight: 50, border: "1px solid #d8e2ec", borderRadius: 8,
+              minHeight: 50, border: "1px solid #E4DECF", borderRadius: 8,
               background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 14,
             }}
           />
@@ -201,7 +201,7 @@ export function NewsIndex() {
             onChange={(e) => setCountry(e.target.value)}
             aria-label="Country"
             style={{
-              minHeight: 50, border: "1px solid #d8e2ec", borderRadius: 8,
+              minHeight: 50, border: "1px solid #E4DECF", borderRadius: 8,
               background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 14,
             }}
           >
@@ -212,7 +212,7 @@ export function NewsIndex() {
             onChange={(e) => setTopic(e.target.value)}
             aria-label="Topic"
             style={{
-              minHeight: 50, border: "1px solid #d8e2ec", borderRadius: 8,
+              minHeight: 50, border: "1px solid #E4DECF", borderRadius: 8,
               background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 14,
             }}
           >
@@ -222,7 +222,7 @@ export function NewsIndex() {
             type="submit"
             aria-label="Search"
             style={{
-              minHeight: 50, borderRadius: 8, background: "#1769e0", color: "#fff",
+              minHeight: 50, borderRadius: 8, background: "#1E4E8C", color: "#fff",
               border: "none", fontSize: 20, fontWeight: 900, cursor: "pointer", display: "flex",
               alignItems: "center", justifyContent: "center",
             }}
@@ -245,7 +245,7 @@ export function NewsIndex() {
             <Link
               href={`/blog/${featuredPost.slug}`}
               style={{
-                display: "block", border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff",
+                display: "block", border: "1px solid #E4DECF", borderRadius: 10, background: "#fff",
                 boxShadow: "0 18px 44px rgba(16,32,51,.10)", overflow: "hidden", marginBottom: 24,
                 textDecoration: "none",
               }}
@@ -253,7 +253,7 @@ export function NewsIndex() {
               <div style={{
                 position: "relative", overflow: "hidden",
                 minHeight: 230, display: "grid", alignContent: "end", padding: 24, color: "#fff",
-                background: "linear-gradient(180deg,rgba(16,32,51,.18) 0%,rgba(16,32,51,.86) 100%),linear-gradient(135deg,#0f2338 0%,#16324f 55%,#1769e0 100%)",
+                background: "linear-gradient(180deg,rgba(16,32,51,.18) 0%,rgba(16,32,51,.86) 100%),linear-gradient(135deg,#0f2338 0%,#16324f 55%,#1E4E8C 100%)",
               }}>
                 <HeroSketchScene />
                 <div style={{ position: "relative", display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 12, alignItems: "center" }}>
@@ -280,7 +280,7 @@ export function NewsIndex() {
                 </p>
                 <span style={{
                   flexShrink: 0, minHeight: 44, display: "inline-flex", alignItems: "center",
-                  justifyContent: "center", borderRadius: 8, background: "#1769e0",
+                  justifyContent: "center", borderRadius: 8, background: "#1E4E8C",
                   color: "#fff", padding: "0 15px", fontSize: 13, fontWeight: 900, whiteSpace: "nowrap",
                 }}>
                   Read article →
@@ -335,8 +335,8 @@ export function NewsIndex() {
           aria-label="Browse and tools"
         >
           {/* Read by country */}
-          <section style={{ border: "1px solid #d8e2ec", borderRadius: 10, background: "#fff", overflow: "hidden" }}>
-            <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid #e7edf3", background: "#f8fbff" }}>
+          <section style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", overflow: "hidden" }}>
+            <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid #EAE5D8", background: "#f8fbff" }}>
               <h2 style={{ margin: 0, color: "#102033", fontSize: 15, fontWeight: 850 }}>Read by country</h2>
             </div>
             <div className="grid grid-cols-2 gap-2" style={{ padding: 14 }}>
@@ -351,11 +351,11 @@ export function NewsIndex() {
                   href={c.href}
                   style={{
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    border: "1px solid #e7edf3", borderRadius: 8, background: "#f8fbff",
+                    border: "1px solid #EAE5D8", borderRadius: 8, background: "#f8fbff",
                     padding: "10px 0", textDecoration: "none",
                     fontSize: 13, fontWeight: 900, color: "#16324f",
                   }}
-                  className="hover:border-[#a8c9ef] transition-colors"
+                  className="hover:border-[#A6C2E0] transition-colors"
                 >
                   {c.code}
                 </Link>
@@ -364,8 +364,8 @@ export function NewsIndex() {
           </section>
 
           {/* Use a calculator next */}
-          <section style={{ border: "1px solid #d8e2ec", borderRadius: 10, background: "#fff", overflow: "hidden" }}>
-            <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid #e7edf3", background: "#f8fbff" }}>
+          <section style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", overflow: "hidden" }}>
+            <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid #EAE5D8", background: "#f8fbff" }}>
               <h2 style={{ margin: 0, color: "#102033", fontSize: 15, fontWeight: 850 }}>Use a calculator next</h2>
             </div>
             <div style={{ padding: "6px 0" }}>
@@ -381,7 +381,7 @@ export function NewsIndex() {
                   className="hover:bg-[#f8fbff] transition-colors"
                 >
                   <span>{l.label}</span>
-                  <span style={{ color: "#1769e0", fontWeight: 900 }}>→</span>
+                  <span style={{ color: "#1E4E8C", fontWeight: 900 }}>→</span>
                 </Link>
               ))}
             </div>

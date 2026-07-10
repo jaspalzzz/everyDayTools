@@ -15,19 +15,20 @@ const config: Config = {
           faint: "#8A9BA8",
         },
         brand: {
-          50:  "#EAF3FF",
-          100: "#C8E0FB",
-          200: "#A8C8F0",
-          300: "#7AB5F5",
-          600: "#1769E0",
-          700: "#1458BA",
-          800: "#16324F",
-          900: "#0D1F30",
+          50:  "#EAF0F8",
+          100: "#CFDEEF",
+          200: "#A6C2E0",
+          300: "#6E97C6",
+          600: "#1E4E8C",
+          700: "#163C6B",
+          800: "#12294A",
+          900: "#0C1B33",
         },
         surface: {
           DEFAULT: "#ffffff",
-          muted: "#F6F9FC",
-          line: "#D8E2EC",
+          paper: "#FAF8F2",
+          muted: "#F4F1E9",
+          line: "#E4DECF",
         },
         success: {
           DEFAULT: "#16835B",
@@ -41,6 +42,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
       },
       borderRadius: {
         md: "8px",

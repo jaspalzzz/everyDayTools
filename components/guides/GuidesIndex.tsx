@@ -221,8 +221,8 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
       {/* ── Hero ── */}
       <section
         style={{
-          background: "radial-gradient(circle at 84% 14%,rgba(23,105,224,.10),transparent 30%),linear-gradient(180deg,#fff 0%,#f7fbff 100%)",
-          borderBottom: "1px solid #e7edf3",
+          background: "radial-gradient(circle at 84% 14%,rgba(30,78,140,.10),transparent 30%),linear-gradient(180deg,#fff 0%,#FBF9F3 100%)",
+          borderBottom: "1px solid #EAE5D8",
         }}
       >
         <div
@@ -255,7 +255,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
           {/* Trust card */}
           <aside
             className="hidden lg:block"
-            style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", padding: 20 }}
+            style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", padding: 20 }}
             aria-label="Guide standards"
           >
             <h2 style={{ margin: "0 0 12px", color: "#16324f", fontSize: 18, lineHeight: 1.2, fontWeight: 850 }}>Guide standards</h2>
@@ -281,7 +281,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
           onSubmit={handleSubmit}
           aria-label="Find a guide"
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_170px_170px_52px] gap-2.5"
-          style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 14px 32px rgba(16,32,51,.08)", padding: 14 }}
+          style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", boxShadow: "0 14px 32px rgba(16,32,51,.08)", padding: 14 }}
         >
           <input
             type="search"
@@ -289,13 +289,13 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
             placeholder="Search guides: unpaid wages, notice pay, redundancy, sick pay"
             value={searchQ}
             onChange={(e) => setSearchQ(e.target.value)}
-            style={{ minHeight: 50, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
+            style={{ minHeight: 50, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
           />
           <select
             aria-label="Country"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
-            style={{ minHeight: 50, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
+            style={{ minHeight: 50, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
           >
             <option value="all">All countries</option>
             <option value="UK">United Kingdom</option>
@@ -307,7 +307,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
             aria-label="Topic"
             value={topic}
             onChange={(e) => setTopicFilter(e.target.value)}
-            style={{ minHeight: 50, border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
+            style={{ minHeight: 50, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", color: "#102033", padding: "0 14px", outline: "none", fontSize: 13 }}
           >
             <option value="all">All topics</option>
             <option value="leaving">Leaving a job</option>
@@ -318,7 +318,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
           <button
             type="submit"
             aria-label="Search"
-            style={{ minHeight: 50, border: 0, borderRadius: 8, background: "#1769e0", color: "#fff", fontSize: 18, fontWeight: 900, cursor: "pointer" }}
+            style={{ minHeight: 50, border: 0, borderRadius: 8, background: "#1E4E8C", color: "#fff", fontSize: 18, fontWeight: 900, cursor: "pointer" }}
             className="col-span-1"
           >
             →
@@ -345,18 +345,18 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
               aria-pressed={activeTab === tab.key}
               style={{
                 flexShrink: 0, minHeight: 72,
-                border: activeTab === tab.key ? "1px solid #a8c9ef" : "1px solid #d8e2ec",
+                border: activeTab === tab.key ? "1px solid #A6C2E0" : "1px solid #E4DECF",
                 borderRadius: 8, background: "#fff",
                 padding: 12,
                 display: "flex", flexDirection: "column", justifyContent: "center",
-                color: activeTab === tab.key ? "#0f56bd" : "#25384c",
+                color: activeTab === tab.key ? "#163C6B" : "#25384c",
                 fontSize: 13, fontWeight: 850, cursor: "pointer",
                 textAlign: "left", minWidth: 140,
-                boxShadow: activeTab === tab.key ? "inset 0 -3px 0 #1769e0" : "none",
+                boxShadow: activeTab === tab.key ? "inset 0 -3px 0 #1E4E8C" : "none",
               }}
             >
               {tab.label}
-              <span style={{ marginTop: 2, color: activeTab === tab.key ? "#0f56bd" : "#52616f", fontSize: 12, fontWeight: 650, display: "block" }}>
+              <span style={{ marginTop: 2, color: activeTab === tab.key ? "#163C6B" : "#52616f", fontSize: 12, fontWeight: 650, display: "block" }}>
                 {tab.sub}
               </span>
             </button>
@@ -385,14 +385,14 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
             {featuredGuide && (
               <Link
                 href={`/guides/${featuredGuide.slug}`}
-                style={{ display: "block", border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", overflow: "hidden", marginBottom: 20, textDecoration: "none" }}
+                style={{ display: "block", border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", overflow: "hidden", marginBottom: 20, textDecoration: "none" }}
               >
                 {/* Gradient top */}
                 <div
                   style={{
                     position: "relative", overflow: "hidden",
                     minHeight: 210, display: "grid", alignContent: "end", padding: 24, color: "#fff",
-                    background: "linear-gradient(180deg,rgba(16,32,51,.20) 0%,rgba(16,32,51,.84) 100%),linear-gradient(135deg,#0f2338 0%,#16324f 55%,#1769e0 100%)",
+                    background: "linear-gradient(180deg,rgba(16,32,51,.20) 0%,rgba(16,32,51,.84) 100%),linear-gradient(135deg,#0f2338 0%,#16324f 55%,#1E4E8C 100%)",
                   }}
                 >
                   <HeroSketchScene />
@@ -416,7 +416,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
                   <span
                     style={{
                       flexShrink: 0, minHeight: 44, display: "inline-flex", alignItems: "center",
-                      justifyContent: "center", borderRadius: 8, background: "#1769e0",
+                      justifyContent: "center", borderRadius: 8, background: "#1E4E8C",
                       color: "#fff", padding: "0 15px", fontSize: 13, fontWeight: 900, whiteSpace: "nowrap",
                     }}
                   >
@@ -433,14 +433,14 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
                   <Link
                     key={guide.slug}
                     href={`/guides/${guide.slug}`}
-                    style={{ display: "block", border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", padding: 17, textDecoration: "none" }}
-                    className="hover:border-[#a8c9ef] transition-colors"
+                    style={{ display: "block", border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", padding: 17, textDecoration: "none" }}
+                    className="hover:border-[#A6C2E0] transition-colors"
                   >
                     <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8, marginBottom: 10 }}>
                       <span
                         style={{
                           display: "inline-flex", alignItems: "center", borderRadius: 999,
-                          background: "#eaf3ff", color: "#16324f",
+                          background: "#EAF0F8", color: "#16324f",
                           padding: "5px 9px", fontSize: 11, fontWeight: 900,
                           textTransform: "uppercase", letterSpacing: ".03em",
                         }}
@@ -450,7 +450,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
                       <span
                         style={{
                           display: "inline-flex", alignItems: "center", borderRadius: 999,
-                          background: "#f6f9fc", color: "#16324f",
+                          background: "#F4F1E9", color: "#16324f",
                           padding: "5px 9px", fontSize: 11, fontWeight: 900,
                           textTransform: "uppercase", letterSpacing: ".03em",
                         }}
@@ -464,7 +464,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
                     <p style={{ margin: "0 0 14px", color: "#52616f", fontSize: 13 }}>
                       {guide.description}
                     </p>
-                    <span style={{ color: "#0f56bd", fontSize: 13, fontWeight: 900 }}>
+                    <span style={{ color: "#163C6B", fontSize: 13, fontWeight: 900 }}>
                       Read guide →
                     </span>
                   </Link>
@@ -485,7 +485,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
             style={{ position: "sticky", top: 88 }}
             aria-label="Quick calculator links"
           >
-            <section style={{ border: "1px solid #d8e2ec", borderRadius: 10, background: "#fff", padding: 18 }}>
+            <section style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", padding: 18 }}>
               <h2 style={{ margin: "0 0 12px", color: "#102033", fontSize: 18, lineHeight: 1.2, fontWeight: 850 }}>Use a calculator next</h2>
               <div style={{ display: "grid", gap: 8 }}>
                 {CALCULATOR_LINKS.map((link) => (
@@ -494,13 +494,13 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
                     href={link.href}
                     style={{
                       display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12,
-                      minHeight: 42, border: "1px solid #e7edf3", borderRadius: 8,
-                      background: "#f6f9fc", color: "#25384c",
+                      minHeight: 42, border: "1px solid #EAE5D8", borderRadius: 8,
+                      background: "#F4F1E9", color: "#25384c",
                       padding: "9px 11px", fontSize: 13, fontWeight: 850, textDecoration: "none",
                     }}
                   >
                     {link.label}
-                    <span style={{ color: "#0f56bd" }}>→</span>
+                    <span style={{ color: "#163C6B" }}>→</span>
                   </Link>
                 ))}
               </div>

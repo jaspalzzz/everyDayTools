@@ -57,7 +57,7 @@ function AUStatesGrid() {
             href={`/au/states/${s.slug}`}
             style={{
               display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8,
-              border: "1px solid #e7edf3", borderRadius: 8, background: "#fff",
+              border: "1px solid #EAE5D8", borderRadius: 8, background: "#fff",
               padding: "10px 12px", textDecoration: "none",
             }}
           >

@@ -80,8 +80,8 @@ export default function AboutPage() {
       {/* ── Hero ── */}
       <section
         style={{
-          borderBottom: "1px solid #e7edf3",
-          background: "radial-gradient(circle at 82% 14%,rgba(23,105,224,.10),transparent 30%),linear-gradient(180deg,#fff 0%,#f7fbff 100%)",
+          borderBottom: "1px solid #EAE5D8",
+          background: "radial-gradient(circle at 82% 14%,rgba(30,78,140,.10),transparent 30%),linear-gradient(180deg,#fff 0%,#FBF9F3 100%)",
         }}
       >
         <div
@@ -118,10 +118,10 @@ export default function AboutPage() {
           {/* Credibility card */}
           <aside
             className="hidden lg:block"
-            style={{ border: "1px solid #c8d9ea", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", overflow: "hidden" }}
+            style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", overflow: "hidden" }}
             aria-label="MyPayRights operating standards"
           >
-            <header style={{ padding: "18px 20px", borderBottom: "1px solid #e7edf3", background: "#f8fbff" }}>
+            <header style={{ padding: "18px 20px", borderBottom: "1px solid #EAE5D8", background: "#f8fbff" }}>
               <h2 style={{ margin: "0 0 4px", color: "#102033", fontSize: 18, fontWeight: 850 }}>Operating standard</h2>
               <p style={{ margin: 0, color: "#52616f", fontSize: 13, fontWeight: 700 }}>What the product must prove quickly.</p>
             </header>
@@ -131,7 +131,7 @@ export default function AboutPage() {
                   key={row.label}
                   style={{
                     display: "flex", justifyContent: "space-between", gap: 16,
-                    borderBottom: i < CREDIBILITY_ROWS.length - 1 ? "1px solid #e7edf3" : "none",
+                    borderBottom: i < CREDIBILITY_ROWS.length - 1 ? "1px solid #EAE5D8" : "none",
                     padding: "12px 0", color: "#52616f", fontSize: 13, fontWeight: 700,
                   }}
                 >
@@ -153,11 +153,11 @@ export default function AboutPage() {
             <article
               key={card.n}
               style={{
-                minHeight: 164, border: "1px solid #c8d9ea", borderRadius: 10,
+                minHeight: 164, border: "1px solid #E4DECF", borderRadius: 10,
                 background: "#fff", boxShadow: "0 10px 24px rgba(16,32,51,.06)", padding: 17,
               }}
             >
-              <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontSize: 13, fontWeight: 900 }}>
+              <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#EAF0F8", color: "#1E4E8C", fontSize: 13, fontWeight: 900 }}>
                 {card.n}
               </span>
               <strong style={{ display: "block", color: "#102033", fontSize: 18, lineHeight: 1.2, margin: "12px 0 7px", fontWeight: 850 }}>
@@ -174,7 +174,7 @@ export default function AboutPage() {
           {/* Main prose column */}
           <div>
             {/* Why this exists */}
-            <section style={{ paddingBottom: 30, marginBottom: 30, borderBottom: "1px solid #e7edf3" }}>
+            <section style={{ paddingBottom: 30, marginBottom: 30, borderBottom: "1px solid #EAE5D8" }}>
               <h2 style={{ margin: "0 0 12px", color: "#102033", fontSize: 28, lineHeight: 1.15, fontWeight: 850 }}>Why this exists</h2>
               <p style={{ margin: "0 0 15px", color: "#25384c", fontSize: 16, lineHeight: 1.72 }}>
                 Most employment pay problems begin with a simple question: am I owed money? The hard part
@@ -189,7 +189,7 @@ export default function AboutPage() {
             </section>
 
             {/* Who built this */}
-            <section style={{ paddingBottom: 30, marginBottom: 30, borderBottom: "1px solid #e7edf3" }}>
+            <section style={{ paddingBottom: 30, marginBottom: 30, borderBottom: "1px solid #EAE5D8" }}>
               <h2 style={{ margin: "0 0 12px", color: "#102033", fontSize: 28, lineHeight: 1.15, fontWeight: 850 }}>Who built this</h2>
               <p style={{ margin: "0 0 15px", color: "#25384c", fontSize: 16, lineHeight: 1.72 }}>
                 MyPayRights was founded by Jaspal Singh, a software engineer focused on making employment
@@ -198,7 +198,7 @@ export default function AboutPage() {
               <p style={{ margin: 0, color: "#25384c", fontSize: 16, lineHeight: 1.72 }}>
                 The credibility comes from disciplined sources, careful assumptions, and fast correction
                 when a rate or rule is wrong. If you spot a figure that looks off, email{" "}
-                <a href={`mailto:${SITE.contactEmail}`} style={{ color: "#0f56bd", fontWeight: 800, textDecoration: "underline", textUnderlineOffset: 3 }}>
+                <a href={`mailto:${SITE.contactEmail}`} style={{ color: "#163C6B", fontWeight: 800, textDecoration: "underline", textUnderlineOffset: 3 }}>
                   {SITE.contactEmail}
                 </a>{" "}
                 — errors are investigated within one working day.
@@ -206,7 +206,7 @@ export default function AboutPage() {
             </section>
 
             {/* How rates are verified */}
-            <section style={{ paddingBottom: 30, marginBottom: 30, borderBottom: "1px solid #e7edf3" }}>
+            <section style={{ paddingBottom: 30, marginBottom: 30, borderBottom: "1px solid #EAE5D8" }}>
               <h2 style={{ margin: "0 0 12px", color: "#102033", fontSize: 28, lineHeight: 1.15, fontWeight: 850 }}>How rates are verified</h2>
               <p style={{ margin: "0 0 18px", color: "#25384c", fontSize: 16, lineHeight: 1.72 }}>
                 Statutory figures are sourced from official government publications wherever possible —
@@ -220,10 +220,10 @@ export default function AboutPage() {
                     key={step.key}
                     style={{
                       display: "grid", gridTemplateColumns: "40px 1fr", gap: 14,
-                      border: "1px solid #d8e2ec", borderRadius: 8, background: "#fff", padding: 14,
+                      border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", padding: 14,
                     }}
                   >
-                    <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#eaf3ff", color: "#1769e0", fontSize: 13, fontWeight: 900 }}>
+                    <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#EAF0F8", color: "#1E4E8C", fontSize: 13, fontWeight: 900 }}>
                       {step.key}
                     </span>
                     <span>
@@ -236,7 +236,7 @@ export default function AboutPage() {
             </section>
 
             {/* Why country-aware matters */}
-            <section style={{ paddingBottom: 30, marginBottom: 30, borderBottom: "1px solid #e7edf3" }}>
+            <section style={{ paddingBottom: 30, marginBottom: 30, borderBottom: "1px solid #EAE5D8" }}>
               <h2 style={{ margin: "0 0 12px", color: "#102033", fontSize: 28, lineHeight: 1.15, fontWeight: 850 }}>Why country-aware matters</h2>
               <p style={{ margin: "0 0 15px", color: "#25384c", fontSize: 16, lineHeight: 1.72 }}>
                 A PTO payout rule in California, a redundancy cap in the UK, a provincial termination
@@ -277,7 +277,7 @@ export default function AboutPage() {
             aria-label="Trust signals and sources"
           >
             {/* Trust signals */}
-            <section style={{ border: "1px solid #d8e2ec", borderRadius: 10, background: "#fff", padding: 18 }}>
+            <section style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", padding: 18 }}>
               <h2 style={{ margin: "0 0 12px", color: "#102033", fontSize: 18, lineHeight: 1.2, fontWeight: 850 }}>Trust signals</h2>
               <div style={{ display: "grid", gap: 8 }}>
                 {TRUST_SIGNALS.map((s) => (
@@ -285,20 +285,20 @@ export default function AboutPage() {
                     key={s.label}
                     style={{
                       display: "flex", justifyContent: "space-between", gap: 10,
-                      border: "1px solid #e7edf3", borderRadius: 8,
-                      background: "#f6f9fc", padding: "9px 10px",
+                      border: "1px solid #EAE5D8", borderRadius: 8,
+                      background: "#F4F1E9", padding: "9px 10px",
                       color: "#25384c", fontSize: 13, fontWeight: 850,
                     }}
                   >
                     {s.label}
-                    <span style={{ color: "#0f56bd", fontWeight: 900 }}>{s.tag}</span>
+                    <span style={{ color: "#163C6B", fontWeight: 900 }}>{s.tag}</span>
                   </div>
                 ))}
               </div>
             </section>
 
             {/* Source examples */}
-            <section style={{ border: "1px solid #d8e2ec", borderRadius: 10, background: "#fff", padding: 18 }}>
+            <section style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", padding: 18 }}>
               <h2 style={{ margin: "0 0 10px", color: "#102033", fontSize: 18, lineHeight: 1.2, fontWeight: 850 }}>Source examples</h2>
               <p style={{ margin: "0 0 13px", color: "#52616f", fontSize: 13 }}>
                 Proof points used near relevant calculators and guide pages — not buried in a footer.
@@ -312,13 +312,13 @@ export default function AboutPage() {
                     rel="noopener noreferrer"
                     style={{
                       display: "flex", justifyContent: "space-between", gap: 10,
-                      border: "1px solid #e7edf3", borderRadius: 8,
-                      background: "#f6f9fc", padding: "9px 10px",
+                      border: "1px solid #EAE5D8", borderRadius: 8,
+                      background: "#F4F1E9", padding: "9px 10px",
                       color: "#25384c", fontSize: 13, fontWeight: 850, textDecoration: "none",
                     }}
                   >
                     {s.label}
-                    <span style={{ color: "#0f56bd" }}>→</span>
+                    <span style={{ color: "#163C6B" }}>→</span>
                   </a>
                 ))}
               </div>

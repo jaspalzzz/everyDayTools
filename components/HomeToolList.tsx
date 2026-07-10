@@ -185,7 +185,7 @@ function ToolCard({ tool }: { tool: (typeof TOOLS)[number] }) {
   return (
     <Link
       href={`/${tool.slug}`}
-      className="group flex items-center gap-3.5 rounded-xl border border-surface-line bg-white px-4 py-3 transition-all hover:border-brand-600 hover:shadow-[0_2px_8px_rgba(23,105,224,0.08)]"
+      className="group flex items-center gap-3.5 rounded-xl border border-surface-line bg-white px-4 py-3 transition-all hover:border-brand-600 hover:shadow-[0_2px_8px_rgba(30,78,140,0.08)]"
     >
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
         <TablerIcon name={tool.icon} size={17} aria-hidden="true" />

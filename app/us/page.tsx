@@ -78,7 +78,7 @@ function USStatesGrid() {
             href={`/us/states/${s.slug}`}
             style={{
               display: "flex", alignItems: "center", gap: 8,
-              border: "1px solid #e7edf3", borderRadius: 8,
+              border: "1px solid #EAE5D8", borderRadius: 8,
               background: "#fff", padding: "10px 12px",
               textDecoration: "none",
             }}

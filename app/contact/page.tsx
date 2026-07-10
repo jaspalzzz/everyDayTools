@@ -82,9 +82,9 @@ export default function ContactPage() {
 
       <section
         style={{
-          borderBottom: "1px solid #e7edf3",
+          borderBottom: "1px solid #EAE5D8",
           background:
-            "radial-gradient(circle at 82% 14%,rgba(23,105,224,.10),transparent 30%),linear-gradient(180deg,#fff 0%,#f7fbff 100%)",
+            "radial-gradient(circle at 82% 14%,rgba(30,78,140,.10),transparent 30%),linear-gradient(180deg,#fff 0%,#FBF9F3 100%)",
         }}
       >
         <div style={{ maxWidth: 1180, margin: "0 auto", padding: "56px 24px 44px" }}>
@@ -119,7 +119,7 @@ export default function ContactPage() {
                 <article
                   key={option.email}
                   style={{
-                    border: "1px solid #c8d9ea",
+                    border: "1px solid #E4DECF",
                     borderRadius: 10,
                     background: "#fff",
                     boxShadow: "0 10px 24px rgba(16,32,51,.06)",
@@ -134,7 +134,7 @@ export default function ContactPage() {
                   </p>
                   <a
                     href={`mailto:${option.email}`}
-                    style={{ color: "#0f56bd", fontSize: 14, fontWeight: 850, textDecoration: "underline", textUnderlineOffset: 3 }}
+                    style={{ color: "#163C6B", fontSize: 14, fontWeight: 850, textDecoration: "underline", textUnderlineOffset: 3 }}
                   >
                     {option.email}
                   </a>
@@ -142,7 +142,7 @@ export default function ContactPage() {
               ))}
             </section>
 
-            <section style={{ marginTop: 34, paddingTop: 30, borderTop: "1px solid #e7edf3" }}>
+            <section style={{ marginTop: 34, paddingTop: 30, borderTop: "1px solid #EAE5D8" }}>
               <h2 style={{ margin: "0 0 12px", color: "#102033", fontSize: 28, lineHeight: 1.15, fontWeight: 850 }}>
                 What to include
               </h2>
@@ -159,7 +159,7 @@ export default function ContactPage() {
                       display: "grid",
                       gridTemplateColumns: "24px 1fr",
                       gap: 10,
-                      border: "1px solid #d8e2ec",
+                      border: "1px solid #E4DECF",
                       borderRadius: 8,
                       background: "#f8fbff",
                       padding: 13,
@@ -177,7 +177,7 @@ export default function ContactPage() {
               </ul>
             </section>
 
-            <section style={{ marginTop: 34, paddingTop: 30, borderTop: "1px solid #e7edf3" }}>
+            <section style={{ marginTop: 34, paddingTop: 30, borderTop: "1px solid #EAE5D8" }}>
               <h2 style={{ margin: "0 0 12px", color: "#102033", fontSize: 28, lineHeight: 1.15, fontWeight: 850 }}>
                 Response standard
               </h2>
@@ -200,7 +200,7 @@ export default function ContactPage() {
               agency, a union representative, or a qualified employment lawyer.
             </section>
 
-            <section style={{ border: "1px solid #d8e2ec", borderRadius: 10, background: "#fff", padding: 18 }}>
+            <section style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", padding: 18 }}>
               <h2 style={{ margin: "0 0 10px", color: "#102033", fontSize: 17, fontWeight: 850 }}>
                 Related pages
               </h2>
@@ -213,9 +213,9 @@ export default function ContactPage() {
                       display: "flex",
                       justifyContent: "space-between",
                       gap: 10,
-                      border: "1px solid #e7edf3",
+                      border: "1px solid #EAE5D8",
                       borderRadius: 8,
-                      background: "#f6f9fc",
+                      background: "#F4F1E9",
                       padding: "9px 10px",
                       color: "#25384c",
                       fontSize: 13,
@@ -224,7 +224,7 @@ export default function ContactPage() {
                     }}
                   >
                     {link.label}
-                    <span style={{ color: "#0f56bd" }}>-&gt;</span>
+                    <span style={{ color: "#163C6B" }}>-&gt;</span>
                   </Link>
                 ))}
               </div>

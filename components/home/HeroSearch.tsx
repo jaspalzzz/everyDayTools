@@ -147,15 +147,15 @@ export function HeroSearch() {
         <QueryParamSync onQuery={openSearchResult} setQuery={setQuery} />
       </Suspense>
       {/* Country tabs */}
-      <div className="grid grid-cols-4 border-b" style={{ background: "#f8fbff", borderColor: "#e7edf3" }}>
+      <div className="grid grid-cols-4 border-b" style={{ background: "#f8fbff", borderColor: "#EAE5D8" }}>
         {COUNTRIES.map((c) => (
           <button
             key={c.code}
             type="button"
             onClick={() => setActive(c.code)}
             style={{
-              borderRight: "1px solid #e7edf3",
-              borderBottom: active === c.code ? "3px solid #1769e0" : "3px solid transparent",
+              borderRight: "1px solid #EAE5D8",
+              borderBottom: active === c.code ? "3px solid #1E4E8C" : "3px solid transparent",
               background: active === c.code ? "#ffffff" : "transparent",
               color: active === c.code ? "#16324f" : "#52616f",
             }}
@@ -171,7 +171,7 @@ export function HeroSearch() {
         <select
           aria-label="Country"
           className="col-span-2 sm:col-span-1 min-h-[52px] rounded-lg border px-3.5 text-[13px] font-medium text-ink outline-none"
-          style={{ borderColor: "#d8e2ec" }}
+          style={{ borderColor: "#E4DECF" }}
           value={active}
           onChange={(e) => setActive(e.target.value as typeof active)}
         >
@@ -185,7 +185,7 @@ export function HeroSearch() {
           aria-label="Search calculator"
           placeholder='Describe your issue: unpaid wages, notice pay…'
           className="min-h-[52px] rounded-lg border px-3.5 text-[13px] text-ink outline-none placeholder:text-[#8795a3]"
-          style={{ borderColor: "#d8e2ec" }}
+          style={{ borderColor: "#E4DECF" }}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -193,7 +193,7 @@ export function HeroSearch() {
           type="submit"
           aria-label="Find calculator"
           className="flex min-h-[52px] w-[54px] items-center justify-center rounded-lg text-white text-lg font-bold transition-colors"
-          style={{ background: "#1769e0", boxShadow: "0 10px 20px rgba(23,105,224,.22)" }}
+          style={{ background: "#1E4E8C", boxShadow: "0 10px 20px rgba(30,78,140,.22)" }}
         >
           →
         </button>
@@ -210,7 +210,7 @@ export function HeroSearch() {
               openSearchResult(q.label);
             }}
             className="rounded-full border px-2.5 py-[7px] text-[12px] font-bold text-ink-soft transition-colors hover:border-brand-300 hover:text-ink"
-            style={{ borderColor: "#cfe0f1", background: "#f7fbff" }}
+            style={{ borderColor: "#cfe0f1", background: "#FBF9F3" }}
           >
             {q.label}
           </button>
