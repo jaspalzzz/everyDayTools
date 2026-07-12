@@ -6,6 +6,9 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  // Inline the small route stylesheet into static HTML. This removes an
+  // additional render-blocking request on throttled mobile connections.
+  experimental: { inlineCss: true },
   // next/image's default optimizer needs a server; disable it for static export.
   images: { unoptimized: true },
 };
