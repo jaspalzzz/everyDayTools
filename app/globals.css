@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font families are provided as CSS variables by next/font (see layout.tsx):
-   --font-display = Fraunces (serif, headlines), --font-sans = Inter (body/UI). */
+/* System stacks avoid font downloads on the critical rendering path. */
 :root {
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-display: Georgia, "Times New Roman", serif;

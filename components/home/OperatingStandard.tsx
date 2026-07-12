@@ -53,7 +53,7 @@ export function OperatingStandard() {
           <div className="mt-5 overflow-hidden rounded-lg border border-surface-line">
             <table className="w-full table-fixed text-left text-sm">
               <thead>
-                <tr className="border-b border-surface-line bg-surface-muted text-[11px] uppercase tracking-[.08em] text-ink-faint">
+                <tr className="border-b border-surface-line bg-surface-muted text-[11px] uppercase tracking-[.08em] text-ink-soft">
                   <th scope="col" className="w-[64px] px-2 py-2 font-bold sm:w-[88px] sm:px-4">Country</th>
                   <th scope="col" className="px-2 py-2 font-bold sm:px-4">Typical source base</th>
                 </tr>

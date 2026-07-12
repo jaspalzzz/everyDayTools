@@ -50,7 +50,7 @@ export function HeroResultCard() {
           </p>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12 }}>
             <strong style={{ color: "#102033", fontSize: 42, lineHeight: 1, letterSpacing: 0 }}>£8,420.00</strong>
-            <span style={{ borderRadius: 999, background: "#e9f7f1", color: "#16835b", padding: "7px 10px", fontSize: 12, fontWeight: 850 }}>
+            <span style={{ borderRadius: 999, background: "#e9f7f1", color: "#0b6848", padding: "7px 10px", fontSize: 12, fontWeight: 850 }}>
               Eligible estimate
             </span>
           </div>
