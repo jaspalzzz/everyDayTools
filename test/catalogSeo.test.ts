@@ -7,7 +7,7 @@ import { SITE } from "@/lib/seo";
 
 describe("tool catalogue SEO rules", () => {
   it("gives every tool an explicit launch tier", () => {
-    expect(TOOLS.length).toBe(31);
+    expect(TOOLS.length).toBe(33);
     expect(TOOLS.every((tool) => tool.tier !== undefined)).toBe(true);
   });
 

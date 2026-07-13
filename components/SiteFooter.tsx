@@ -70,6 +70,8 @@ export function SiteFooter() {
           <Link href="/about" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>About</Link>
           <Link href="/methodology" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Methodology</Link>
           <Link href="/editorial-policy" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Editorial policy</Link>
+          <Link href="/updates" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Update log</Link>
+          <Link href="/research/us-final-paycheck-laws" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>US law dataset</Link>
           <Link href="/contact" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Contact</Link>
           <Link href="/contact" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Corrections</Link>
           <Link href="/privacy" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Privacy</Link>
@@ -86,6 +88,8 @@ export function SiteFooter() {
           <Link href="/methodology" className="underline-offset-2 hover:underline">Methodology</Link>
           {" · "}
           <Link href="/editorial-policy" className="underline-offset-2 hover:underline">Editorial policy</Link>
+          {" · "}
+          <Link href="/updates" className="underline-offset-2 hover:underline">Update log</Link>
           {" · "}
           <Link href="/disclaimer" className="underline-offset-2 hover:underline">Disclaimer</Link>
         </p>

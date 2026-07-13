@@ -4,6 +4,13 @@ This is the execution backlog. Tasks are ordered by priority tier. Each task is
 self-contained: what, where (file paths), how, and acceptance criteria. Read
 [PROJECT.md](PROJECT.md) for the strategy first.
 
+> **Status — 13 July 2026:** The implementation items below are complete in the
+> current workspace, including 33 tools, 51-jurisdiction unemployment coverage,
+> row-level PTO/final-pay provenance, personalised multi-format PDFs, and PDF
+> text-level e2e checks. Search Console/CrUX access and commissioning a genuine
+> independent legal reviewer remain external operational tasks; no credentials or
+> review claims should be invented.
+
 ---
 
 ## 0 · Conventions every task MUST follow
@@ -70,9 +77,8 @@ statutory figure with its effective date and source.
   the one-line disclaimer; pages in sitemap.
 
 ### T0.3 — Update README
-- **File:** `README.md`. Replace "Tier 1 launch set" with the true status (16 tools,
-  Tiers 1–3 complete; PTO + final-paycheck cover 50 states + DC; unemployment 4
-  states). Keep architecture section accurate. Add a "Quality gate" run section.
+- **Status:** Complete — README and PROJECT now reflect 33 registered tools, 51-jurisdiction US coverage and the current test/PDF contracts.
+- **File:** `README.md`. Keep architecture, catalogue totals and quality-gate counts current.
 - **Accept:** README matches [PROJECT.md](PROJECT.md) §10.
 
 ### T0.4 — Open Graph image + metadata polish
@@ -140,10 +146,12 @@ Three tools, same full pattern each:
 - Same full pattern; rates in `lib/rates.ts`; companions to the maternity tool.
 
 ### T2.4 — Remaining termination & admin tools
+- **Status:** Complete — settlement, tribunal, continuous-service and probation-date tools are registered with engines, pages and regression tests.
 - Settlement agreement estimator; tribunal / unfair-dismissal award; continuous-
   service length; probation end date. Full pattern each.
 
 ### T2.5 — Unemployment → 50 states *(slow, careful)*
+- **Status:** Complete — all 50 states + DC are represented with a 2026 DOL data vintage and explicit caveats for non-divisor formulas.
 - **File:** `lib/calculators/unemployment.ts` `UNEMPLOYMENT_STATES`.
 - **Do:** expand from 4 to 50 + DC. **Per state**, source from the official state
   workforce agency: WBA formula (divisor or % basis), min/max WBA, max weeks, and
@@ -153,6 +161,7 @@ Three tools, same full pattern each:
   updated honestly; **plan a yearly refresh** (these figures drift annually).
 
 ### T2.6 — PDF moat improvements
+- **Status:** Complete — optional name/employer/reference date, estimate/worksheet/employer-request variants, and branded page footers are implemented client-side.
 - **File:** `lib/pdf.ts` + `components/ResultPanel.tsx`.
 - **Do:** branded header/footer; **optional** user-entered name/employer/date fields
   that flow into the PDF; multiple document types where it fits ("summary",
@@ -160,6 +169,7 @@ Three tools, same full pattern each:
 - **Accept:** optional fields don't break the default flow; PDF still valid.
 
 ### T2.7 — E2E that inspects PDF text
+- **Status:** Complete — the catalogue-driven PDF test now extracts literal PDF text and asserts a live breakdown label for every registered tool; a personalised employer-request journey verifies document-specific text.
 - **File:** `e2e/`. Extend the download test to parse the PDF and assert the headline
   figure/labels appear *inside* it (not just `%PDF` bytes). Use a lightweight PDF
   text extractor in the test only.
@@ -184,6 +194,8 @@ Three tools, same full pattern each:
 ---
 
 ## T1.4 · Certify state-law datasets against primary sources
+
+**Status:** Data-contract implementation complete — every exported PTO and final-pay row carries an official authority URL and ISO `lastVerified` date, enforced by regression tests. Substantive legal re-verification and human sign-off remain recurring editorial work.
 
 **What:** The PTO-payout (`lib/calculators/ptoPayout.ts`) and final-paycheck
 (`lib/calculators/finalPaycheck.ts`) datasets cover all 50 states + DC but are

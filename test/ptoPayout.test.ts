@@ -50,6 +50,8 @@ describe("US PTO payout", () => {
       expect(s.code).toHaveLength(2);
       expect(s.note.length).toBeGreaterThan(10);
       expect(["required", "conditional", "no-requirement"]).toContain(s.rule);
+      expect(s.sourceUrl, `${s.code} needs an official source`).toMatch(/^https:\/\//);
+      expect(s.lastVerified, `${s.code} needs an ISO verification date`).toMatch(/^20\d{2}-\d{2}-\d{2}$/);
     }
   });
 });

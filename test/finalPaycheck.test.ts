@@ -58,6 +58,8 @@ describe("US final paycheck deadline", () => {
       expect(s.fired.length).toBeGreaterThan(3);
       expect(s.quit.length).toBeGreaterThan(3);
       expect(s.name.length).toBeGreaterThan(3);
+      expect(s.sourceUrl, `${s.code} needs an official source`).toMatch(/^https:\/\//);
+      expect(s.lastVerified, `${s.code} needs an ISO verification date`).toMatch(/^20\d{2}-\d{2}-\d{2}$/);
     }
   });
 });

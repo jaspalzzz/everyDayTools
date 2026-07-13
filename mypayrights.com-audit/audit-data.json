@@ -1,0 +1,189 @@
+{
+  "summary": {
+    "health_score": 84,
+    "business_type": "Content/utility site — free employment-law calculators (YMYL-adjacent, pre-monetization)",
+    "top_findings": [
+      "No real Core Web Vitals field data available (CrUX/GSC/Lighthouse not accessible in this environment) — lab-only technical signals are strong but should be confirmed with real PageSpeed Insights runs",
+      "Zero raster images site-wide (fully SVG/CSS) — eliminates image-weight risk but forgoes image-search visibility entirely",
+      "Sitemap lastmod dates are inconsistent in granularity — some pages stamped per-real-edit, ~150+ US state pages share a single generic 2025-01-01 verifiedYear constant",
+      "AdSense was not yet live at audit time (correctly consent + readiness gated) — ads.txt and publisher ID are in place for when it goes live; re-confirmed live via network check that adsbygoogle.js is absent from the DOM both before and after accepting the cookie banner",
+      "Excellent international SEO: complete reciprocal hreflang set (en-GB/en-US/en-CA/en-AU/fr-CA/x-default) verified live on both homepage and the fr-CA hub",
+      "Strong content depth on programmatic pages — spot-checked CA vs TX minimum-wage pages have genuinely differentiated, state-specific content, not templated filler"
+    ],
+    "quick_wins": [
+      "Run a real PageSpeed Insights / Lighthouse pass once the site has real traffic (CrUX needs a traffic threshold) to replace lab estimates with field data",
+      "Add an XML image sitemap only if/when image content is introduced — not needed today given zero raster images",
+      "Differentiate sitemap lastmod granularity for the ~150 US state pages currently sharing one generic verifiedYear-based date",
+      "Consider adding FAQPage schema validation via Google's Rich Results Test on a sample of calculator pages to confirm eligibility for FAQ rich snippets"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 92,
+      "what_works": [
+        "robots.txt correctly allows all major crawlers plus explicit AI crawler allowlisting (GPTBot, ClaudeBot, PerplexityBot, CCBot, Google-Extended) — strong AI-search/GEO posture",
+        "Single canonical host: www redirects to non-www in one hop (301), http upgrades to https correctly",
+        "Canonical tags present and self-referencing correctly on every page checked",
+        "No X-Robots-Tag noindex header anywhere; meta robots explicitly 'index, follow' on calculator pages",
+        "Real 404 status (not soft-404) confirmed on unknown paths",
+        "Strong security headers: HSTS (2yr, includeSubDomains, preload), CSP, X-Content-Type-Options: nosniff, X-Frame-Options: DENY, Permissions-Policy",
+        "358 URLs in sitemap.xml, single sitemap file (no need for a sitemap index at this scale)",
+        "Complete, verified hreflang implementation (6-way reciprocal set including x-default) on both homepage and fr-CA page"
+      ],
+      "findings": [
+        {
+          "title": "No real Core Web Vitals field data",
+          "severity": "Medium",
+          "description": "This audit environment cannot run Lighthouse or query CrUX/PSI APIs. Lab signals (single render-blocking stylesheet, async-loaded JS chunks, zero raster images) suggest strong LCP/CLS potential, but this is unverified against real user data.",
+          "recommendation": "Run PageSpeed Insights (pagespeed.web.dev) against the live URL once real traffic exists for CrUX to populate; re-audit performance category with field data."
+        },
+        {
+          "title": "Sitemap lastmod granularity inconsistent across page types",
+          "severity": "Low",
+          "description": "Guide/blog/FAQ pages show real per-page dateModified values (e.g. 2026-06-27). ~150+ US state pages all share a single date derived from a generic verifiedYear constant (2025-01-01) rather than genuine per-edit tracking.",
+          "recommendation": "Not urgent — the underlying content is genuinely state-specific and not stale, this only affects the freshness signal's precision. Consider deriving lastmod from git history or a real per-page edit timestamp if state-page content starts changing independently."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 88,
+      "what_works": [
+        "Spot-checked programmatic state pages (CA vs TX minimum wage) have genuinely different, state-specific figures and context — not templated filler with swapped placeholders",
+        "Every calculator page cites named primary/official sources (legislation.gov.uk, gov.uk, irs.gov, dol.gov, canada.ca, fairwork.gov.au style domains) directly beside the claim",
+        "Extensive same-session fact verification found and fixed several real stale/wrong figures (see Critical Issues) — remaining live figures have now been checked against primary sources",
+        "EditorialReview component correctly avoids asserting a review date it can't back up — omits the date claim entirely on pages without a real verifiedDate rather than showing vague reassurance text",
+        "Real named authorship (Jaspal Singh, Founder) consistent across About page, footer, and schema.org author/reviewedBy fields — not a fabricated 'editorial team'"
+      ],
+      "findings": [
+        {
+          "title": "No independent readability/reading-level scoring tool available in this environment",
+          "severity": "Info",
+          "description": "Could not run a Flesch-Kincaid or similar automated readability pass. Manual spot-reads of calculator FAQ copy suggest plain-English, appropriately scoped for a general consumer audience.",
+          "recommendation": "Low priority — content reads clearly in manual review. Revisit if a readability tool becomes available."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 90,
+      "what_works": [
+        "Single H1 per page, logical H2 hierarchy observed on every page sampled (redundancy calculator, guides, state pages)",
+        "Title tags and meta descriptions are unique and specific per page, not templated boilerplate (verified across calculator, state, and guide page types)",
+        "Breadcrumb navigation present and marked up on tool pages",
+        "Internal linking is dense and relevant — Related tools/guides sections, footer category links, mega-menu, all cross-link real, live pages (verified extensively this session — several previously-broken internal links were found and fixed)"
+      ],
+      "findings": []
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 85,
+      "what_works": [
+        "Multiple JSON-LD blocks per page (BreadcrumbList, WebApplication, FAQPage confirmed present via source review)",
+        "Article/Guide schema includes both author (Person, real named founder) and reviewedBy (Organization) fields",
+        "WebApplication schema includes isAccessibleForFree: true and an offers block with correct currency-by-region logic"
+      ],
+      "findings": [
+        {
+          "title": "Schema validity not run through Google's Rich Results Test in this session",
+          "severity": "Low",
+          "description": "JSON-LD structure was reviewed in source and confirmed present on rendered pages, but not validated against Google's live Rich Results Test tool, which can catch subtle type/property errors static review misses.",
+          "recommendation": "Spot-check 3-5 representative page types (calculator, guide, FAQ, blog, state page) through search.google.com/test/rich-results before the next major schema change."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 78,
+      "what_works": [
+        "Zero raster images site-wide — no LCP risk from unoptimized images, no CLS risk from image loading",
+        "Single render-blocking stylesheet in <head>; all JS chunks load async",
+        "Static export (Next.js output: 'export') served from Cloudflare's edge — no server-side render latency"
+      ],
+      "findings": [
+        {
+          "title": "No field data (CrUX) or lab data (Lighthouse) available to score this category directly",
+          "severity": "Medium",
+          "description": "Score above is inferred from structural/lab-adjacent signals only (resource loading pattern, response times observed via curl: 0.49s-1.82s across 3 samples, likely reflecting CDN cache state rather than app performance).",
+          "recommendation": "Run a real PageSpeed Insights test post-launch/at-traffic to replace this inferred score with real LCP/INP/CLS numbers."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 91,
+      "what_works": [
+        "robots.txt explicitly allows GPTBot, ClaudeBot, PerplexityBot, CCBot, and Google-Extended — deliberate GEO/AI-citation posture, not accidental",
+        "Every calculator page structures content as: direct answer/estimate, named source, FAQ Q&A pairs — highly extractable format for AI Overviews/answer engines",
+        "FAQPage schema present, giving AI crawlers structured Q&A pairs directly",
+        "Source-adjacent citation pattern (source link placed immediately next to the specific claim it supports) mirrors what AI answer engines look for when selecting a citable passage"
+      ],
+      "findings": [
+        {
+          "title": "No llms.txt file",
+          "severity": "Low",
+          "description": "llms.txt is an emerging, not-yet-standardized convention some sites use to guide AI crawlers to canonical content. Not having one is not a real deficiency today.",
+          "recommendation": "Optional. Low priority — monitor adoption before investing here."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 95,
+      "what_works": [
+        "Zero raster <img> tags found across every page sampled (homepage, blog, guides, about) — site is built entirely with inline SVG and CSS",
+        "No missing-alt-text risk since there are no raster images to caption",
+        "OG/Twitter card images are dynamically generated (Next.js opengraph-image route) at correct 1200x630 dimensions with alt text set"
+      ],
+      "findings": [
+        {
+          "title": "No opportunity for image-search traffic",
+          "severity": "Info",
+          "description": "The all-SVG approach is a deliberate, reasonable performance tradeoff, but it means the site captures zero Google Images search traffic, which can be a meaningful channel for some illustrative/explainer content.",
+          "recommendation": "Not a fix — a product decision. Worth revisiting only if image-search traffic becomes a stated growth goal."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "None outstanding — the critical-severity issues found across this session's broader audit work (stale tribunal compensation cap, stale Vento bands, wrong Class 4 NI rate, dead source links, AdSense consent-gate regression) have already been found and fixed in prior commits this session."
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Run a real PageSpeed Insights / Lighthouse audit once traffic exists to replace lab-inferred performance scores with field data",
+          "Validate JSON-LD on 3-5 representative page types via Google's Rich Results Test"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Consider deriving US state page lastmod dates from real per-edit history rather than the shared generic verifiedYear constant",
+          "Continue the calculator-by-calculator source verification sweep for the ~15 calculators not yet individually re-checked against live official sources this session"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Once AdSense goes fully live, re-verify the consent gate is still enforced after any future refactor (this was found broken and fixed once already this session)",
+          "Re-run this audit quarterly, or after any major template/schema change"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/",
+    "notes": "Desktop (1280px) and mobile (375px) above-the-fold screenshots of the homepage and a calculator page were captured and reviewed for this pass but are not persisted as PNG files -- this environment has no binary file-write path from the screenshot tool to disk. See findings/visual.md for the written findings from that review."
+  }
+}

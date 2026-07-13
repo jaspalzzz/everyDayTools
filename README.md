@@ -1,7 +1,7 @@
 # My Pay Rights
 
 Law-backed calculators for pay, leave, and final wages with instant document output.
-Single-vertical SEO tool site — **16 tools live across Tiers 1–3**.
+Single-vertical SEO tool site — **33 tools live across Tiers 1–3**.
 
 ## Stack
 
@@ -25,52 +25,36 @@ components/ResultPanel    Live headline, breakdown, notes, PDF CTA.
 components/fields.tsx     Accessible primitives: NumberField, SelectField, DateField, FieldGrid.
 components/calculators/   One client component per tool (inputs → live result → PDF).
 app/<slug>/page.tsx       Server page: metadata, schema, 300-word block, 6 FAQs, source.
-test/                     100 Vitest unit/component tests.
-e2e/                      33 Playwright tests — PDF bytes + live-result contract per tool.
+test/                     203 Vitest unit/component regression tests.
+e2e/                      Playwright journeys + PDF bytes/text contract per registered tool.
 ```
 
-## All 16 tools
+## Current catalogue — 33 tools
 
-**Tier 1 — hero launch set**
+`data/tools.ts` is the authoritative catalogue. The current product groups are:
 
-| Tool | Region | Engine |
-|------|--------|--------|
-| Redundancy pay | UK | `lib/calculators/redundancy.ts` |
-| PTO payout | US — 50 states + DC | `lib/calculators/ptoPayout.ts` |
-| Notice period | UK / CA | `lib/calculators/noticePeriod.ts` |
-| Severance pay | US / UK / CA | `lib/calculators/severance.ts` |
-| Overtime pay | US / UK / CA / AU | `lib/calculators/overtime.ts` |
+- **Leaving a job (15):** redundancy, settlement, tribunal, severance, notice,
+  continuous service, probation dates, garden leave, employer exit-cost tools,
+  US PTO/final-paycheck/unemployment, and Australian redundancy/notice.
+- **Pay and tax (10):** take-home pay, overtime, salary/hourly, pay rise, pro-rata,
+  bonus tax, IR35, day rate, self-employment tax, and payslip analysis.
+- **Parental leave (4):** maternity, paternity, adoption, and shared parental pay.
+- **Benefits and entitlements (4):** holiday entitlement, statutory sick pay,
+  working days, and Australian annual leave.
 
-**Tier 2 — expansion**
-
-| Tool | Region | Engine |
-|------|--------|--------|
-| Salary → hourly | US / UK / CA / AU | `lib/calculators/salaryToHourly.ts` |
-| Holiday entitlement | UK | `lib/calculators/holidayAccrual.ts` |
-| Maternity pay (SMP) | UK | `lib/calculators/maternityPay.ts` |
-| Statutory sick pay (SSP) | UK | `lib/calculators/sickPay.ts` |
-| Final paycheck deadline | US — 50 states + DC | `lib/calculators/finalPaycheck.ts` |
-| Unemployment benefit | US — 4 verified states | `lib/calculators/unemployment.ts` |
-
-**Tier 3 — long-tail funnel**
-
-| Tool | Region | Engine |
-|------|--------|--------|
-| Pay rise | US / UK / CA / AU | `lib/calculators/payRise.ts` |
-| Pro-rata salary | US / UK / CA / AU | `lib/calculators/proRataSalary.ts` |
-| Bonus tax | US / UK / CA / AU | `lib/calculators/bonusTax.ts` |
-| Working days | US / UK / CA / AU | `lib/calculators/workingDays.ts` |
-| Garden leave | UK | `lib/calculators/gardenLeave.ts` |
+PTO payout, final-paycheck deadlines, and unemployment benefits cover all 50 US
+states plus Washington, DC. State PTO/final-pay rows include an official authority
+URL and ISO verification date.
 
 ## Quality gate
 
 Every push runs:
 
 ```bash
-npm run test        # 104 Vitest unit/component tests
+npm run test        # 203 Vitest unit/component tests
 npm run typecheck   # tsc --noEmit, strict mode
 npm run build       # static export → out/
-npm run e2e         # 33 Playwright tests
+npm run e2e         # journeys + PDF bytes/text checks for every registered tool
 ```
 
 Run locally before pushing:
@@ -114,6 +98,11 @@ NEXT_PUBLIC_SITE_URL=https://mypayrights.com
 GOOGLE_SITE_VERIFICATION=google-site-verification-token
 NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-8825078307302402
 NEXT_PUBLIC_ADSENSE_READY=false
+# Optional; all four are required before independent-review claims are shown
+NEXT_PUBLIC_LEGAL_REVIEWER_NAME=
+NEXT_PUBLIC_LEGAL_REVIEWER_CREDENTIAL=
+NEXT_PUBLIC_LEGAL_REVIEWER_URL=
+NEXT_PUBLIC_LEGAL_REVIEWER_JURISDICTIONS=
 ```
 
 This drives metadata, sitemap, robots, canonical URLs, and structured data. If unset, it falls

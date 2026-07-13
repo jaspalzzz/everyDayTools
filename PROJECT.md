@@ -4,7 +4,7 @@
 > deeply built, where every tool turns a number into a **downloadable document**.
 > This is the moat: a calculator AI can copy, a cited letter it won't.
 
-**Live:** 16 tools on `main`, CI-verified.
+**Current workspace:** 33 registered tools, CI-contract verified.
 **Stack:** Next.js 15 (App Router) · TypeScript (strict) · Tailwind v3 · client-side PDF (jsPDF).
 **Repo:** `github.com/jaspalzzz/everyDayTools`
 
@@ -25,7 +25,8 @@ Each tool is built to the same contract:
 1. **The tool is the page** — live-updating result above the fold, no signup, no clutter.
 2. **It produces a document** — a dated, source-cited PDF (a settlement-figure
    breakdown, a demand letter, a notice summary). This is the workflow that makes
-   the tool sticky and trustworthy.
+  the tool sticky and trustworthy. Users can choose an estimate, calculation
+  worksheet or employer-review request and optionally add a name, employer and date.
 3. **It cites the law** — GOV.UK, US DOL, IRS, state agencies — for credibility
    (E-E-A-T) and AdSense approval.
 
@@ -58,7 +59,7 @@ tip splitter) that diluted the cluster, and concentrate entirely on employment.
   rules — narrow, specific, hard to do generically.
 - **High-stakes, low-volume-per-query, high-value.** These aren't 8M-search/month
   vanity terms; they're the queries that decide whether someone gets paid correctly.
-- **Long-tail depth.** 16 interlinked tools covering redundancy → notice →
+- **Long-tail depth.** 33 interlinked tools covering redundancy → notice →
   severance → final pay → unemployment form a dense topical web that a broad site
   can't match.
 
@@ -125,7 +126,7 @@ promote a new domain, not treat it as another saturated clone:
    calculator", etc. Each tool is a dedicated landing page.
 2. **People Also Ask / FAQ rich results.** 6 schema-marked FAQs per tool surface
    in PAA boxes and FAQ rich snippets.
-3. **Long-tail capture.** 16 tools × (per-country variants + FAQ questions) = a wide
+3. **Long-tail capture.** 33 tools × (per-country variants + FAQ questions) = a wide
    net of low-competition long-tail terms.
 4. **Topical authority compounding.** As the cluster deepens, Google increasingly
    treats the domain as *the* employment-calculator authority, lifting all pages.
@@ -182,51 +183,28 @@ demand in the niche.
 - `components/calculators/*` — the 16 interactive tools.
 - `components/SiteHeader/SiteFooter/HomeToolList/Faq`.
 
-### The five sections (within the employment vertical)
+### The four catalogue sections (within the employment vertical)
 
 The site has **one top-level section by design** — employment. Internally it
 organises into five sub-sections. (Other verticals like housing or finance are
 deliberately out of scope; they'd be separate sister-sites, never sections here.)
 
-| Section | Built | Pending |
-|---|---|---|
-| 1 · Termination & exit | 7 | 2 |
-| 2 · Pay & earnings | 5 | 3 |
-| 3 · Leave & time off | 3 | 3 |
-| 4 · Dates & admin | 1 | 2 |
-| 5 · Contractor / self-employed | 0 | 3 |
-| **Total** | **16** | **13** |
+| Section | Built |
+|---|---:|
+| Leaving a job | 15 |
+| Pay & tax | 10 |
+| Parental leave | 4 |
+| Benefits & entitlements | 4 |
+| **Total** | **33** |
 
-Planned roadmap (Tiers 1–3 = 16 tools) is **100% complete**. Against a
-*fully-built* employment hub (~29 tools), coverage is **≈55%**.
-
-### The 16 tools
-
-**Tier 1 — hero launch set (highest RPM + document output)**
-1. Redundancy pay calculator (UK)
-2. PTO payout calculator (US — 50 states + DC)
-3. Notice period calculator (UK / CA)
-4. Severance pay estimator (US / UK / CA)
-5. Overtime pay calculator (US / UK / CA / AU)
-
-**Tier 2 — expansion**
-6. Salary → hourly calculator
-7. Holiday entitlement calculator (UK)
-8. Maternity pay / SMP calculator (UK)
-9. Statutory sick pay / SSP calculator (UK)
-10. Final paycheck deadline calculator (US — 50 states + DC)
-11. Unemployment benefit calculator (US — 4 verified states)
-
-**Tier 3 — long-tail funnel**
-12. Pay rise calculator
-13. Pro-rata salary calculator
-14. Bonus tax calculator
-15. Working days calculator
-16. Garden leave calculator
+The original 16-tool roadmap is complete and has expanded to **33 registered
+tools**. `data/tools.ts` is the authoritative inventory; it drives navigation,
+internal links, sitemap generation, and the per-tool Playwright contract.
 
 ### Quality / infra
-- `test/*` — 100 unit/component tests (Vitest + jsdom + Testing Library).
-- `e2e/*` — 33 Playwright tests (real PDF-bytes + live-result contract per tool).
+- `test/*` — 203 unit/component tests (Vitest + jsdom + Testing Library).
+- `e2e/*` — Playwright journeys plus real PDF bytes/text and live-result contracts
+  generated from the current tool catalogue.
 - `.github/workflows/ci.yml` — two-stage gate (`quality-gate` → `e2e`) on every
   push/PR to `main`.
 
@@ -251,9 +229,9 @@ Planned roadmap (Tiers 1–3 = 16 tools) is **100% complete**. Against a
 
 ## 10. What we've completed
 
-**Product: 100% of the planned 16-tool roadmap (Tiers 1–3) — live on `main`.**
+**Product: 33 registered tools across Tiers 1–3.**
 
-- ✅ 16 country-aware tools, each with the full ranking kit (live tool, PDF,
+- ✅ 33 country-aware tools, each following the ranking kit (live tool, PDF,
   6 FAQs, ~300-word block, law source, schema).
 - ✅ **PTO + final-paycheck expanded to all 50 states + DC** (sourced from
   payroll-law aggregators cross-checked with primary sources; demand-triggered
@@ -261,8 +239,8 @@ Planned roadmap (Tiers 1–3 = 16 tools) is **100% complete**. Against a
 - ✅ **Calculation audit** of all 16 engines against source rules. Found and fixed
   a real **daylight-saving bug** in the working-days counter (now iterates by
   calendar date; verified in a DST timezone).
-- ✅ **Quality gate, CI-enforced:** 100 unit/component + 33 e2e · `tsc` strict ·
-  production build (23 routes) — green on every push.
+- ✅ **Quality gate, CI-enforced:** 203 unit/component tests + catalogue-driven e2e ·
+  `tsc` strict · production static export — green before release.
 - ✅ **UX/UI/responsive/a11y verified:** live recompute, invalid-state hides the
   PDF CTA, currency switching, no console errors, labelled inputs, zero horizontal
   overflow at 320 & 375 on all pages.
@@ -274,28 +252,15 @@ Planned roadmap (Tiers 1–3 = 16 tools) is **100% complete**. Against a
 
 ## 11. What's still down the line
 
-**Depth, not breadth** (the breadth is done).
+The planned calculator breadth is complete. Remaining work is maintenance,
+external verification and evidence-backed authority building:
 
-### Pending tools by section (13 — to go from "launch set" to "definitive hub")
-
-- **Pay & earnings (3):** Take-home / net pay (tax + NI/FICA) ← *biggest gap, highest volume*; Pension contribution; Commission / tronc.
-- **Contractor / self-employed (3):** IR35 / W-2 vs 1099; Day-rate ↔ salary; Self-employment tax. ← *entire empty section, high-RPM, low competition.*
-- **Leave & time off (3):** Paternity / adoption pay; Shared parental pay; Holiday carry-over / accrual.
-- **Termination & exit (2):** Settlement agreement; Tribunal / unfair-dismissal award.
-- **Dates & admin (2):** Continuous-service length; Probation end date.
-
-Top priority if expanding: the **take-home / net-pay** tool (it's the highest-volume
-employment search and we currently do gross only) and the **contractor section**
-(empty today, high earner CPC). Both are harder — real tax tables that drift yearly.
-
-### Maintenance & growth
-
-1. **Unemployment → 50 states.** Currently 4 verified states. Needs a dedicated
-   sourcing pass for each state's weekly-benefit formula, min/max, and max weeks —
-   *and a yearly refresh plan*, since these dollar figures drift every benefit year.
-2. **Annual data refresh.** The single-source statutory constants (UK redundancy
+1. **Annual data refresh.** The single-source statutory constants (UK redundancy
    cap, SMP/SSP rates, US state caps) need a re-verify each April / benefit year.
    This is the maintenance cost of the "drift moat".
+2. **State-law editorial sign-off.** PTO and final-pay rows now carry official
+   authority URLs and verification dates; a qualified human review remains a
+   recurring editorial responsibility.
 3. **Content / topical-authority layer.** Supporting blog/guide articles
    (e.g. "Your rights when made redundant") to deepen authority and capture
    informational queries that funnel into the tools.
@@ -304,8 +269,8 @@ employment search and we currently do gross only) and the **contractor section**
    affiliate / premium-template upsells.
 6. **Analytics + Search Console.** Wire up to track rankings, CWV field data, and
    which tools earn — to guide the next expansion.
-7. **E2E depth.** Assert specific figures *inside* the generated PDF, not just that
-   valid PDF bytes are produced.
+7. **Independent reviewer.** The UI/schema integration is ready, but it must remain
+   unset until a genuine qualified reviewer supplies verifiable credentials.
 
 ---
 
@@ -317,8 +282,8 @@ employment search and we currently do gross only) and the **contractor section**
 - **Honesty as a feature.** Every estimate carries its assumptions, effective dates,
   and a "confirm with the authority" disclaimer. For a legal-information product this
   *builds* the trust that drives repeat visits — don't dilute it.
-- **No silent caps.** Where coverage is partial (unemployment's 4 states), the tool
-  says so on-screen. Never imply full coverage you don't have.
+- **No silent caps.** Where a state uses a formula this estimator cannot reproduce
+  exactly, the tool shows a capped estimate and directs the user to the agency.
 - **The site is a portfolio asset, not a primary business** — strong side income if
   it ranks, with real SEO uncertainty. Plan cashflow on the conservative ramp.
 

@@ -24,15 +24,62 @@ export interface LetterMeta {
   disclaimer?: string;
 }
 
+export type PdfDocumentType = "estimate" | "worksheet" | "employer-request";
+
+export interface PdfPersonalization {
+  personName?: string;
+  employerName?: string;
+  referenceDate?: string;
+}
+
+export interface PdfGenerationOptions {
+  documentType?: PdfDocumentType;
+  personalization?: PdfPersonalization;
+}
+
+export interface PdfDocumentCopy {
+  title: string;
+  intro: string;
+  filenameSuffix: string;
+}
+
+export function buildPdfDocumentCopy(
+  meta: LetterMeta,
+  documentType: PdfDocumentType = "estimate",
+): PdfDocumentCopy {
+  if (documentType === "worksheet") {
+    return {
+      title: `${meta.title} — Calculation Worksheet`,
+      intro: `This calculation worksheet records the inputs, result, assumptions and source used for the estimate. ${meta.intro}`,
+      filenameSuffix: "calculation-worksheet",
+    };
+  }
+  if (documentType === "employer-request") {
+    return {
+      title: `${meta.title} — Employer Review Request`,
+      intro: `Please review the pay or entitlement calculation recorded in this document and confirm the inputs, applicable rule, any deductions, and the expected payment or review date. ${meta.intro}`,
+      filenameSuffix: "employer-review-request",
+    };
+  }
+  return { title: meta.title, intro: meta.intro, filenameSuffix: "estimate" };
+}
+
 const MARGIN = 20;
 const LINE = 7;
 
-export async function generateLetter(result: CalcResult, meta: LetterMeta): Promise<void> {
+export async function generateLetter(
+  result: CalcResult,
+  meta: LetterMeta,
+  options: PdfGenerationOptions = {},
+): Promise<void> {
   // Lazy-load jsPDF so it stays out of the initial page bundle (Core Web Vitals).
   const { jsPDF } = await import("jspdf");
   const doc = new jsPDF({ unit: "mm", format: "a4" });
   const pageWidth = doc.internal.pageSize.getWidth();
   const usableWidth = pageWidth - MARGIN * 2;
+  const documentType = options.documentType ?? "estimate";
+  const copy = buildPdfDocumentCopy(meta, documentType);
+  const personalization = options.personalization ?? {};
   let y = MARGIN;
 
   const today = new Intl.DateTimeFormat("en-GB", {
@@ -65,7 +112,7 @@ export async function generateLetter(result: CalcResult, meta: LetterMeta): Prom
   // Header
   doc.setFont("helvetica", "bold");
   doc.setFontSize(16);
-  doc.text(meta.title, MARGIN, y);
+  doc.text(copy.title, MARGIN, y);
   y += LINE + 2;
 
   doc.setFont("helvetica", "normal");
@@ -75,8 +122,34 @@ export async function generateLetter(result: CalcResult, meta: LetterMeta): Prom
   doc.setTextColor(0);
   y += LINE + 3;
 
-  writeWrapped(meta.intro, 11);
+  writeWrapped(copy.intro, 11);
   y += 2;
+
+  const documentDetails = [
+    personalization.personName?.trim()
+      ? { label: "Prepared for", value: personalization.personName.trim() }
+      : null,
+    personalization.employerName?.trim()
+      ? { label: "Employer", value: personalization.employerName.trim() }
+      : null,
+    personalization.referenceDate
+      ? { label: "Reference date", value: personalization.referenceDate }
+      : null,
+  ].filter((item): item is { label: string; value: string } => Boolean(item));
+
+  if (documentDetails.length) {
+    writeWrapped("Document details", 12, true);
+    y += 1;
+    for (const detail of documentDetails) {
+      ensureSpace();
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      doc.text(detail.label, MARGIN, y);
+      doc.text(detail.value, pageWidth - MARGIN, y, { align: "right" });
+      y += LINE;
+    }
+    y += 3;
+  }
 
   if (meta.inputs?.length) {
     writeWrapped("Your inputs", 12, true);
@@ -149,6 +222,22 @@ export async function generateLetter(result: CalcResult, meta: LetterMeta): Prom
     9,
   );
 
-  const filename = meta.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  const totalPages = doc.getNumberOfPages();
+  for (let page = 1; page <= totalPages; page += 1) {
+    doc.setPage(page);
+    doc.setDrawColor(220);
+    doc.line(MARGIN, 285, pageWidth - MARGIN, 285);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(8);
+    doc.setTextColor(110);
+    doc.text(`${SITE.name} · Private, client-side document`, MARGIN, 290);
+    doc.text(`Page ${page} of ${totalPages}`, pageWidth - MARGIN, 290, { align: "right" });
+    doc.setTextColor(0);
+  }
+
+  const filename = `${meta.title}-${copy.filenameSuffix}`
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
   doc.save(`${filename}.pdf`);
 }

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { CalcResult } from "@/lib/types";
-import type { LetterMeta } from "@/lib/pdf";
+import type { LetterMeta, PdfDocumentType } from "@/lib/pdf";
 import { generateLetter } from "@/lib/pdf";
 
 export function ResultPanel({
@@ -15,6 +15,10 @@ export function ResultPanel({
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [documentType, setDocumentType] = useState<PdfDocumentType>("estimate");
+  const [personName, setPersonName] = useState("");
+  const [employerName, setEmployerName] = useState("");
+  const [referenceDate, setReferenceDate] = useState("");
 
   const handleShare = async () => {
     try {
@@ -30,7 +34,10 @@ export function ResultPanel({
     setError(false);
     setGenerating(true);
     try {
-      await generateLetter(result, letterMeta);
+      await generateLetter(result, letterMeta, {
+        documentType,
+        personalization: { personName, employerName, referenceDate },
+      });
     } catch {
       setError(true);
     } finally {
@@ -40,6 +47,7 @@ export function ResultPanel({
 
   return (
     <div
+      data-testid="result-panel"
       style={{
         border: "1px solid #E4DECF",
         borderRadius: 10,
@@ -60,6 +68,7 @@ export function ResultPanel({
           Your estimate
         </p>
         <p
+          data-testid="result-headline"
           style={{
             margin: 0,
             color: result.valid ? "#163C6B" : "#8795a3",
@@ -104,7 +113,7 @@ export function ResultPanel({
                   : {}),
               }}
             >
-              <span>{line.label}</span>
+              <span data-testid="result-breakdown-label">{line.label}</span>
               <strong style={{ color: "#102033", textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
                 {line.value}
               </strong>
@@ -136,6 +145,61 @@ export function ResultPanel({
       {/* Actions */}
       {result.valid && (
         <div style={{ display: "grid", gap: 10, padding: "0 22px 22px" }}>
+          <details
+            style={{
+              border: "1px solid #E4DECF", borderRadius: 8,
+              background: "#FBF9F3", padding: "12px 14px",
+            }}
+          >
+            <summary style={{ color: "#25384c", cursor: "pointer", fontSize: 13, fontWeight: 850 }}>
+              Personalise PDF or choose document type
+            </summary>
+            <div style={{ display: "grid", gap: 12, marginTop: 14 }}>
+              <label style={PDF_FIELD_LABEL_STYLE}>
+                Document type
+                <select
+                  aria-label="PDF document type"
+                  value={documentType}
+                  onChange={(event) => setDocumentType(event.target.value as PdfDocumentType)}
+                  style={PDF_FIELD_STYLE}
+                >
+                  <option value="estimate">Private estimate</option>
+                  <option value="worksheet">Calculation worksheet</option>
+                  <option value="employer-request">Employer review request</option>
+                </select>
+              </label>
+              <label style={PDF_FIELD_LABEL_STYLE}>
+                Your name (optional)
+                <input
+                  value={personName}
+                  onChange={(event) => setPersonName(event.target.value)}
+                  autoComplete="name"
+                  style={PDF_FIELD_STYLE}
+                />
+              </label>
+              <label style={PDF_FIELD_LABEL_STYLE}>
+                Employer (optional)
+                <input
+                  value={employerName}
+                  onChange={(event) => setEmployerName(event.target.value)}
+                  autoComplete="organization"
+                  style={PDF_FIELD_STYLE}
+                />
+              </label>
+              <label style={PDF_FIELD_LABEL_STYLE}>
+                Reference date (optional)
+                <input
+                  type="date"
+                  value={referenceDate}
+                  onChange={(event) => setReferenceDate(event.target.value)}
+                  style={PDF_FIELD_STYLE}
+                />
+              </label>
+              <p style={{ margin: 0, color: "#6b7885", fontSize: 11, lineHeight: 1.5 }}>
+                These details stay in your browser and are used only to create the downloaded PDF.
+              </p>
+            </div>
+          </details>
           <button
             type="button"
             onClick={handleDownload}
@@ -176,3 +240,22 @@ export function ResultPanel({
     </div>
   );
 }
+
+const PDF_FIELD_LABEL_STYLE = {
+  display: "grid",
+  gap: 5,
+  color: "#52616f",
+  fontSize: 12,
+  fontWeight: 750,
+} as const;
+
+const PDF_FIELD_STYLE = {
+  width: "100%",
+  minHeight: 40,
+  border: "1px solid #C9D0D6",
+  borderRadius: 7,
+  background: "#fff",
+  color: "#102033",
+  padding: "8px 10px",
+  fontSize: 13,
+} as const;

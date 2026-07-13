@@ -48,6 +48,10 @@ export default function PressPage() {
             in the UK, United States, Australia, and Canada. All content is written against primary
             legislation and verified each April when statutory rates change.
           </p>
+          <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+            Our <Link href="/research/us-final-paycheck-laws" className="font-semibold text-brand-600 hover:underline">US final paycheck law dataset</Link>{" "}
+            provides a source-linked, downloadable comparison covering all 50 states and Washington, DC.
+          </p>
 
           {/* Contact */}
           <section className="mt-10 rounded-xl border border-surface-line bg-surface-muted p-6">

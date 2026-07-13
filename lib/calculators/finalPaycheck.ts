@@ -1,4 +1,5 @@
 import type { CalcResult, SourceRef } from "../types";
+import { getUsStateAuthoritySource } from "@/data/usStateAuthoritySources";
 
 /**
  * US final-paycheck deadline by state and separation type. These are statutory
@@ -16,7 +17,7 @@ export const FINAL_PAY_SOURCE: SourceRef = {
 
 export type SeparationType = "fired" | "quit";
 
-interface StateFinalPay {
+export interface StateFinalPay {
   code: string;
   name: string;
   /** Deadline phrase when the employee is dismissed/laid off. */
@@ -27,9 +28,15 @@ interface StateFinalPay {
   noLaw?: boolean;
   /** Extra caveat for special cases (e.g. demand-triggered deadlines). */
   caveat?: string;
+  /** Official state labour-agency or statute endpoint for this row. */
+  sourceUrl: string;
+  /** ISO date on which the official authority endpoint was checked. */
+  lastVerified: string;
 }
 
-export const STATE_FINAL_PAY: StateFinalPay[] = [
+type StateFinalPaySeed = Omit<StateFinalPay, "sourceUrl" | "lastVerified">;
+
+const STATE_FINAL_PAY_RULES: StateFinalPaySeed[] = [
   { code: "AL", name: "Alabama", fired: "Next regular payday", quit: "Next regular payday", noLaw: true },
   { code: "AK", name: "Alaska", fired: "Within 3 days", quit: "Next regular payday" },
   { code: "AZ", name: "Arizona", fired: "Next payday or 7 days", quit: "Next regular payday" },
@@ -94,6 +101,11 @@ export const STATE_FINAL_PAY: StateFinalPay[] = [
   { code: "WI", name: "Wisconsin", fired: "Next regular payday", quit: "Next regular payday" },
   { code: "WY", name: "Wyoming", fired: "Next regular payday", quit: "Next regular payday" },
 ];
+
+export const STATE_FINAL_PAY: StateFinalPay[] = STATE_FINAL_PAY_RULES.map((rule) => {
+  const authority = getUsStateAuthoritySource(rule.code);
+  return { ...rule, sourceUrl: authority.sourceUrl, lastVerified: authority.lastVerified };
+});
 
 export interface FinalPaycheckInput {
   stateCode: string;

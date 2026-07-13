@@ -58,6 +58,34 @@ export const LEGAL_SOURCES: Record<string, LegalSource[]> = {
     },
   ],
 
+  "continuous-service-calculator": [
+    {
+      label: "Employment Rights Act 1996",
+      section: "ss.210–219 (Continuous employment)",
+      url: "https://www.legislation.gov.uk/ukpga/1996/18/part/XIV/chapter/I",
+      type: "legislation",
+    },
+    {
+      label: "GOV.UK — Continuous employment",
+      url: "https://www.gov.uk/continuous-employment-what-it-is",
+      type: "guidance",
+    },
+  ],
+
+  "probation-end-date-calculator": [
+    {
+      label: "Employment Rights Act 1996",
+      section: "s.1 (Written statement of employment particulars)",
+      url: "https://www.legislation.gov.uk/ukpga/1996/18/section/1",
+      type: "legislation",
+    },
+    {
+      label: "GOV.UK — Employment contracts and conditions",
+      url: "https://www.gov.uk/employment-contracts-and-conditions",
+      type: "guidance",
+    },
+  ],
+
   "garden-leave-calculator": [
     {
       label: "Employment Rights Act 1996",

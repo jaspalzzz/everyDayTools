@@ -1,5 +1,6 @@
 import { formatCurrency, pluralUnit, safeNumber } from "../format";
 import type { CalcResult, SourceRef } from "../types";
+import { getUsStateAuthoritySource } from "@/data/usStateAuthoritySources";
 
 /**
  * US PTO (paid time off) payout at termination.
@@ -19,6 +20,10 @@ export interface StatePtoPolicy {
   name: string;
   rule: PtoRule;
   note: string;
+  /** Official state labour-agency or statute endpoint for this row. */
+  sourceUrl: string;
+  /** ISO date on which the official authority endpoint was checked. */
+  lastVerified: string;
 }
 
 /**
@@ -28,7 +33,9 @@ export interface StatePtoPolicy {
  * forfeited; "conditional" = a compliant written policy can limit/defeat the
  * payout; "no-requirement" = no state law mandates payout.
  */
-export const STATE_PTO: StatePtoPolicy[] = [
+type StatePtoPolicySeed = Omit<StatePtoPolicy, "sourceUrl" | "lastVerified">;
+
+const STATE_PTO_RULES: StatePtoPolicySeed[] = [
   { code: "AL", name: "Alabama", rule: "no-requirement", note: "No statute requires vacation payout; governed by employer policy or contract." },
   { code: "AK", name: "Alaska", rule: "no-requirement", note: "No state law mandates payout of accrued unused vacation; policy controls." },
   { code: "AZ", name: "Arizona", rule: "no-requirement", note: "No payout requirement; use-it-or-lose-it is permitted if disclosed." },
@@ -81,6 +88,11 @@ export const STATE_PTO: StatePtoPolicy[] = [
   { code: "WI", name: "Wisconsin", rule: "conditional", note: "Accrued vacation is payable as wages unless a written forfeiture policy provides otherwise." },
   { code: "WY", name: "Wyoming", rule: "conditional", note: "Accrued vacation must be paid unless a written forfeiture policy was provided and acknowledged." },
 ];
+
+export const STATE_PTO: StatePtoPolicy[] = STATE_PTO_RULES.map((policy) => {
+  const authority = getUsStateAuthoritySource(policy.code);
+  return { ...policy, sourceUrl: authority.sourceUrl, lastVerified: authority.lastVerified };
+});
 
 export interface PtoInput {
   stateCode: string;

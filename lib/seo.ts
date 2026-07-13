@@ -32,9 +32,31 @@ export const SOCIAL_PROFILES: string[] = (process.env.NEXT_PUBLIC_SOCIAL_PROFILE
 
 export const EDITORIAL_REVIEW = {
   "@type": "Organization",
-  name: `${SITE.name} editorial review`,
+  name: `${SITE.name} editorial team`,
   url: `${SITE.url}/editorial-policy`,
 } as const;
+
+/**
+ * Optional independent legal reviewer. All four fields are required before a
+ * reviewer is shown or emitted in schema, preventing partial or invented
+ * credentials from reaching production.
+ */
+const reviewerFields = {
+  name: process.env.NEXT_PUBLIC_LEGAL_REVIEWER_NAME?.trim(),
+  credential: process.env.NEXT_PUBLIC_LEGAL_REVIEWER_CREDENTIAL?.trim(),
+  url: process.env.NEXT_PUBLIC_LEGAL_REVIEWER_URL?.trim(),
+  jurisdictions: process.env.NEXT_PUBLIC_LEGAL_REVIEWER_JURISDICTIONS?.trim(),
+};
+
+export const LEGAL_REVIEWER = Object.values(reviewerFields).every(Boolean)
+  ? {
+      "@type": "Person" as const,
+      name: reviewerFields.name as string,
+      jobTitle: reviewerFields.credential as string,
+      url: reviewerFields.url as string,
+      knowsAbout: (reviewerFields.jurisdictions as string).split(",").map((item) => item.trim()).filter(Boolean),
+    }
+  : null;
 
 export function clampMetaDescription(text: string, max = 160): string {
   const normalized = text.replace(/\s+/g, " ").trim();
@@ -226,7 +248,7 @@ export function articleSchema(params: {
     datePublished: params.datePublished,
     dateModified: params.dateModified,
     author: FOUNDER_PERSON,
-    reviewedBy: EDITORIAL_REVIEW,
+    ...(LEGAL_REVIEWER ? { reviewedBy: LEGAL_REVIEWER } : {}),
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
     ...(params.keywords ? { keywords: params.keywords } : {}),
   };
@@ -253,7 +275,7 @@ export function guideSchema(params: {
     datePublished: params.datePublished,
     dateModified: params.dateModified,
     author: FOUNDER_PERSON,
-    reviewedBy: EDITORIAL_REVIEW,
+    ...(LEGAL_REVIEWER ? { reviewedBy: LEGAL_REVIEWER } : {}),
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
     about: { "@type": "Thing", name: params.legalTopic },
   };

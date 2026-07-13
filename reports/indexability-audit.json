@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-07-09T02:52:55.974Z",
+  "checkedAt": "2026-07-13T06:58:40.861Z",
   "siteUrl": "https://mypayrights.com",
-  "sitemapRoutes": 407,
+  "sitemapRoutes": 411,
   "failures": [],
   "warnings": [],
   "results": [
@@ -14,7 +14,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Know what your employer owes you.",
-      "words": 668,
+      "words": 848,
       "minimumWords": 180
     },
     {
@@ -26,7 +26,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "United Kingdom",
-      "words": 1043,
+      "words": 1108,
       "minimumWords": 150
     },
     {
@@ -38,7 +38,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "United States",
-      "words": 876,
+      "words": 890,
       "minimumWords": 150
     },
     {
@@ -50,7 +50,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Canada",
-      "words": 708,
+      "words": 722,
       "minimumWords": 150
     },
     {
@@ -62,7 +62,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Australia",
-      "words": 593,
+      "words": 607,
       "minimumWords": 150
     },
     {
@@ -74,7 +74,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Guides for pay problems that need a clear answer.",
-      "words": 468,
+      "words": 482,
       "minimumWords": 150
     },
     {
@@ -86,19 +86,19 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Employment law comparisons",
-      "words": 356,
+      "words": 370,
       "minimumWords": 150
     },
     {
       "route": "/faq",
       "htmlPath": "out/faq.html",
       "title": "Employment Law FAQ — Quick Answers to Common Questions | MyPayRights",
-      "descriptionLength": 163,
+      "descriptionLength": 154,
       "canonical": "https://mypayrights.com/faq",
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Frequently asked questions",
-      "words": 2670,
+      "words": 3373,
       "minimumWords": 150
     },
     {
@@ -110,7 +110,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "UK Redundancy Pay: Complete Guide 2026",
-      "words": 1387,
+      "words": 1401,
       "minimumWords": 220
     },
     {
@@ -122,7 +122,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "UK Notice Period Law: Your Rights Explained 2026",
-      "words": 1264,
+      "words": 1278,
       "minimumWords": 220
     },
     {
@@ -134,7 +134,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "US PTO Payout Laws by State 2026",
-      "words": 1269,
+      "words": 1310,
       "minimumWords": 220
     },
     {
@@ -146,7 +146,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How to Calculate UK Take-Home Pay 2026/27",
-      "words": 909,
+      "words": 923,
       "minimumWords": 220
     },
     {
@@ -158,7 +158,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "UK Maternity Pay: Complete Guide to SMP 2026/27",
-      "words": 1243,
+      "words": 1257,
       "minimumWords": 220
     },
     {
@@ -170,7 +170,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Constructive dismissal: your rights in 2026",
-      "words": 1585,
+      "words": 1599,
       "minimumWords": 220
     },
     {
@@ -182,7 +182,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "UK settlement agreements: what you're owed in 2026",
-      "words": 1408,
+      "words": 1422,
       "minimumWords": 220
     },
     {
@@ -194,7 +194,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "PILON: pay in lieu of notice explained",
-      "words": 1224,
+      "words": 1238,
       "minimumWords": 220
     },
     {
@@ -206,7 +206,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Unfair dismissal: your rights in 2026",
-      "words": 1731,
+      "words": 1745,
       "minimumWords": 220
     },
     {
@@ -218,7 +218,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "TUPE: your rights when your employer changes",
-      "words": 1581,
+      "words": 1622,
       "minimumWords": 220
     },
     {
@@ -230,7 +230,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "UK Paternity Pay & Leave 2026",
-      "words": 623,
+      "words": 637,
       "minimumWords": 220
     },
     {
@@ -242,7 +242,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "UK Holiday Entitlement 2026",
-      "words": 741,
+      "words": 755,
       "minimumWords": 220
     },
     {
@@ -254,7 +254,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "UK Sick Pay 2026",
-      "words": 702,
+      "words": 716,
       "minimumWords": 220
     },
     {
@@ -266,7 +266,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "UK Adoption Pay & Leave 2026",
-      "words": 519,
+      "words": 533,
       "minimumWords": 220
     },
     {
@@ -278,7 +278,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "UK Shared Parental Leave 2026",
-      "words": 604,
+      "words": 618,
       "minimumWords": 220
     },
     {
@@ -290,7 +290,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Made redundant? Here's exactly what you're owed",
-      "words": 1087,
+      "words": 1163,
       "minimumWords": 180
     },
     {
@@ -302,7 +302,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Unfairly dismissed? Here's what to do",
-      "words": 1501,
+      "words": 1566,
       "minimumWords": 180
     },
     {
@@ -314,7 +314,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Leaving a job? Here's everything you're owed",
-      "words": 1536,
+      "words": 1610,
       "minimumWords": 180
     },
     {
@@ -326,7 +326,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Employer not paying you? Here's what to do",
-      "words": 1581,
+      "words": 1654,
       "minimumWords": 180
     },
     {
@@ -338,7 +338,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Constructive dismissal UK: step-by-step guide",
-      "words": 1190,
+      "words": 1256,
       "minimumWords": 180
     },
     {
@@ -350,7 +350,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Sacked while pregnant UK: your rights explained",
-      "words": 1077,
+      "words": 1143,
       "minimumWords": 180
     },
     {
@@ -362,7 +362,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Employer gone bust: what you're owed and how to claim",
-      "words": 1059,
+      "words": 1127,
       "minimumWords": 180
     },
     {
@@ -374,7 +374,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Workplace discrimination UK: your rights under the Equality Act 2010",
-      "words": 998,
+      "words": 1064,
       "minimumWords": 180
     },
     {
@@ -386,7 +386,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "US wrongful termination: your legal protections",
-      "words": 991,
+      "words": 1016,
       "minimumWords": 180
     },
     {
@@ -398,7 +398,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Calculateurs de droits au travail",
-      "words": 481,
+      "words": 495,
       "minimumWords": 150
     },
     {
@@ -410,7 +410,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Indemnité de départ — Québec et Canada 2026",
-      "words": 747,
+      "words": 761,
       "minimumWords": 180
     },
     {
@@ -422,7 +422,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Préavis de licenciement au Québec 2026",
-      "words": 473,
+      "words": 487,
       "minimumWords": 180
     },
     {
@@ -434,7 +434,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Paie de vacances au Québec 2026",
-      "words": 486,
+      "words": 500,
       "minimumWords": 180
     },
     {
@@ -446,7 +446,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Does TUPE apply to me?",
-      "words": 425,
+      "words": 439,
       "minimumWords": 180
     },
     {
@@ -458,7 +458,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "News that helps people understand pay rights.",
-      "words": 824,
+      "words": 838,
       "minimumWords": 150
     },
     {
@@ -470,7 +470,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "Data methodology",
-      "words": 992,
+      "words": 1006,
       "minimumWords": 140
     },
     {
@@ -482,8 +482,20 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "Editorial policy",
-      "words": 876,
+      "words": 911,
       "minimumWords": 140
+    },
+    {
+      "route": "/updates",
+      "htmlPath": "out/updates.html",
+      "title": "Content & Rate Update Log — My Pay Rights",
+      "descriptionLength": 131,
+      "canonical": "https://mypayrights.com/updates",
+      "robots": "index, follow",
+      "jsonLdCount": 1,
+      "h1": "Content and rate update log",
+      "words": 346,
+      "minimumWords": 180
     },
     {
       "route": "/about",
@@ -494,7 +506,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "Built to make pay rights easier to check.",
-      "words": 722,
+      "words": 736,
       "minimumWords": 140
     },
     {
@@ -506,7 +518,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Contact My Pay Rights.",
-      "words": 370,
+      "words": 384,
       "minimumWords": 140
     },
     {
@@ -518,7 +530,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "Privacy Policy",
-      "words": 457,
+      "words": 471,
       "minimumWords": 100
     },
     {
@@ -530,7 +542,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "Terms of Use",
-      "words": 496,
+      "words": 510,
       "minimumWords": 100
     },
     {
@@ -542,7 +554,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "Disclaimer",
-      "words": 347,
+      "words": 361,
       "minimumWords": 100
     },
     {
@@ -554,7 +566,19 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "Press & Media",
-      "words": 410,
+      "words": 442,
+      "minimumWords": 180
+    },
+    {
+      "route": "/research/us-final-paycheck-laws",
+      "htmlPath": "out/research/us-final-paycheck-laws.html",
+      "title": "US Final Paycheck Law Dataset — All 50 States + DC",
+      "descriptionLength": 122,
+      "canonical": "https://mypayrights.com/research/us-final-paycheck-laws",
+      "robots": "index, follow",
+      "jsonLdCount": 2,
+      "h1": "US final paycheck law dataset",
+      "words": 901,
       "minimumWords": 180
     },
     {
@@ -566,7 +590,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "UK Redundancy Rights 2026",
-      "words": 985,
+      "words": 999,
       "minimumWords": 180
     },
     {
@@ -578,7 +602,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "UK Maternity Leave & Pay 2026",
-      "words": 762,
+      "words": 776,
       "minimumWords": 180
     },
     {
@@ -590,7 +614,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "UK Pay Rights 2026",
-      "words": 844,
+      "words": 858,
       "minimumWords": 180
     },
     {
@@ -602,7 +626,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "UK leaving a job pay checklist",
-      "words": 435,
+      "words": 449,
       "minimumWords": 180
     },
     {
@@ -614,7 +638,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "US Overtime Law 2026",
-      "words": 742,
+      "words": 756,
       "minimumWords": 180
     },
     {
@@ -626,7 +650,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "US PTO Payout Laws 2026",
-      "words": 652,
+      "words": 666,
       "minimumWords": 180
     },
     {
@@ -638,7 +662,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "US final paycheck laws and late-paycheck checker",
-      "words": 481,
+      "words": 533,
       "minimumWords": 180
     },
     {
@@ -650,7 +674,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "Was my final paycheck late?",
-      "words": 480,
+      "words": 532,
       "minimumWords": 180
     },
     {
@@ -662,7 +686,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "Can my employer deduct from my final paycheck?",
-      "words": 500,
+      "words": 552,
       "minimumWords": 180
     },
     {
@@ -674,7 +698,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "New York PTO payout calculator",
-      "words": 486,
+      "words": 538,
       "minimumWords": 180
     },
     {
@@ -686,7 +710,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Take-home pay calculator",
-      "words": 1252,
+      "words": 1348,
       "minimumWords": 180
     },
     {
@@ -698,7 +722,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Self-employment tax calculator",
-      "words": 1179,
+      "words": 1247,
       "minimumWords": 180
     },
     {
@@ -710,7 +734,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Day rate calculator",
-      "words": 1108,
+      "words": 1176,
       "minimumWords": 180
     },
     {
@@ -722,7 +746,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "IR35 calculator",
-      "words": 1220,
+      "words": 1288,
       "minimumWords": 180
     },
     {
@@ -734,7 +758,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Settlement agreement calculator",
-      "words": 1487,
+      "words": 1583,
       "minimumWords": 180
     },
     {
@@ -746,7 +770,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Employment tribunal compensation calculator",
-      "words": 1420,
+      "words": 1515,
       "minimumWords": 180
     },
     {
@@ -758,7 +782,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Redundancy pay calculator",
-      "words": 1177,
+      "words": 1327,
       "minimumWords": 180
     },
     {
@@ -770,7 +794,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Australia redundancy pay calculator",
-      "words": 1246,
+      "words": 1314,
       "minimumWords": 180
     },
     {
@@ -782,7 +806,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "PTO payout calculator",
-      "words": 1150,
+      "words": 1251,
       "minimumWords": 180
     },
     {
@@ -794,7 +818,31 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Notice period calculator",
-      "words": 1095,
+      "words": 1237,
+      "minimumWords": 180
+    },
+    {
+      "route": "/continuous-service-calculator",
+      "htmlPath": "out/continuous-service-calculator.html",
+      "title": "Continuous employment calculator",
+      "descriptionLength": 134,
+      "canonical": "https://mypayrights.com/continuous-service-calculator",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Continuous employment calculator",
+      "words": 1217,
+      "minimumWords": 180
+    },
+    {
+      "route": "/probation-end-date-calculator",
+      "htmlPath": "out/probation-end-date-calculator.html",
+      "title": "Probation end date calculator",
+      "descriptionLength": 134,
+      "canonical": "https://mypayrights.com/probation-end-date-calculator",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Probation end date calculator",
+      "words": 1228,
       "minimumWords": 180
     },
     {
@@ -806,7 +854,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Severance pay estimator",
-      "words": 1094,
+      "words": 1184,
       "minimumWords": 180
     },
     {
@@ -818,7 +866,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Overtime pay calculator",
-      "words": 961,
+      "words": 1033,
       "minimumWords": 180
     },
     {
@@ -830,7 +878,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Salary to hourly calculator",
-      "words": 942,
+      "words": 1010,
       "minimumWords": 180
     },
     {
@@ -842,7 +890,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Holiday entitlement calculator",
-      "words": 960,
+      "words": 1064,
       "minimumWords": 180
     },
     {
@@ -854,7 +902,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Maternity pay calculator",
-      "words": 1004,
+      "words": 1096,
       "minimumWords": 180
     },
     {
@@ -866,7 +914,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Paternity pay calculator",
-      "words": 1376,
+      "words": 1458,
       "minimumWords": 180
     },
     {
@@ -878,7 +926,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Adoption pay calculator",
-      "words": 1296,
+      "words": 1378,
       "minimumWords": 180
     },
     {
@@ -890,7 +938,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Shared parental leave pay calculator",
-      "words": 1337,
+      "words": 1420,
       "minimumWords": 180
     },
     {
@@ -902,7 +950,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Statutory sick pay calculator",
-      "words": 1034,
+      "words": 1116,
       "minimumWords": 180
     },
     {
@@ -914,7 +962,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Final paycheck deadline calculator",
-      "words": 1128,
+      "words": 1196,
       "minimumWords": 180
     },
     {
@@ -926,7 +974,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Unemployment benefit calculator",
-      "words": 1162,
+      "words": 1242,
       "minimumWords": 180
     },
     {
@@ -938,7 +986,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Pay rise calculator",
-      "words": 936,
+      "words": 1004,
       "minimumWords": 180
     },
     {
@@ -950,7 +998,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Pro-rata salary calculator",
-      "words": 900,
+      "words": 968,
       "minimumWords": 180
     },
     {
@@ -962,7 +1010,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Bonus tax calculator",
-      "words": 1012,
+      "words": 1080,
       "minimumWords": 180
     },
     {
@@ -974,7 +1022,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Working days calculator",
-      "words": 832,
+      "words": 862,
       "minimumWords": 180
     },
     {
@@ -986,7 +1034,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Garden leave calculator",
-      "words": 1025,
+      "words": 1107,
       "minimumWords": 180
     },
     {
@@ -998,7 +1046,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Australia notice period calculator",
-      "words": 1189,
+      "words": 1257,
       "minimumWords": 180
     },
     {
@@ -1010,7 +1058,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Australia annual leave calculator",
-      "words": 1096,
+      "words": 1164,
       "minimumWords": 180
     },
     {
@@ -1022,7 +1070,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Employer redundancy cost calculator",
-      "words": 1238,
+      "words": 1306,
       "minimumWords": 180
     },
     {
@@ -1034,7 +1082,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Employer notice pay calculator",
-      "words": 1179,
+      "words": 1247,
       "minimumWords": 180
     },
     {
@@ -1046,7 +1094,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Payslip deduction analyser",
-      "words": 1038,
+      "words": 1090,
       "minimumWords": 180
     },
     {
@@ -1058,7 +1106,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Alabama<!-- --> PTO payout law & pay rights",
-      "words": 747,
+      "words": 777,
       "minimumWords": 180
     },
     {
@@ -1070,7 +1118,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Alabama<!-- --> Final Paycheck Law 2026",
-      "words": 771,
+      "words": 1457,
       "minimumWords": 180
     },
     {
@@ -1082,7 +1130,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Alabama<!-- --> Minimum Wage 2026",
-      "words": 753,
+      "words": 1214,
       "minimumWords": 180
     },
     {
@@ -1094,7 +1142,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Alabama<!-- --> PTO Payout Law 2026",
-      "words": 1192,
+      "words": 1097,
       "minimumWords": 180
     },
     {
@@ -1106,7 +1154,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Alaska<!-- --> PTO payout law & pay rights",
-      "words": 732,
+      "words": 762,
       "minimumWords": 180
     },
     {
@@ -1118,7 +1166,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Alaska<!-- --> Final Paycheck Law 2026",
-      "words": 785,
+      "words": 1550,
       "minimumWords": 180
     },
     {
@@ -1130,7 +1178,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Alaska<!-- --> Minimum Wage 2026",
-      "words": 670,
+      "words": 1149,
       "minimumWords": 180
     },
     {
@@ -1142,7 +1190,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Alaska<!-- --> PTO Payout Law 2026",
-      "words": 1333,
+      "words": 1175,
       "minimumWords": 180
     },
     {
@@ -1154,7 +1202,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Arizona<!-- --> PTO payout law & pay rights",
-      "words": 728,
+      "words": 758,
       "minimumWords": 180
     },
     {
@@ -1166,7 +1214,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Arizona<!-- --> Final Paycheck Law 2026",
-      "words": 801,
+      "words": 1607,
       "minimumWords": 180
     },
     {
@@ -1178,7 +1226,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Arizona<!-- --> Minimum Wage 2026",
-      "words": 651,
+      "words": 1125,
       "minimumWords": 180
     },
     {
@@ -1190,7 +1238,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Arizona<!-- --> PTO Payout Law 2026",
-      "words": 1381,
+      "words": 1212,
       "minimumWords": 180
     },
     {
@@ -1202,7 +1250,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Arkansas<!-- --> PTO payout law & pay rights",
-      "words": 703,
+      "words": 733,
       "minimumWords": 180
     },
     {
@@ -1214,7 +1262,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Arkansas<!-- --> Final Paycheck Law 2026",
-      "words": 779,
+      "words": 1534,
       "minimumWords": 180
     },
     {
@@ -1226,7 +1274,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Arkansas<!-- --> Minimum Wage 2026",
-      "words": 643,
+      "words": 1146,
       "minimumWords": 180
     },
     {
@@ -1238,7 +1286,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Arkansas<!-- --> PTO Payout Law 2026",
-      "words": 1193,
+      "words": 1087,
       "minimumWords": 180
     },
     {
@@ -1250,7 +1298,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "California<!-- --> PTO payout law & pay rights",
-      "words": 830,
+      "words": 860,
       "minimumWords": 180
     },
     {
@@ -1262,7 +1310,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "California<!-- --> Final Paycheck Law 2026",
-      "words": 924,
+      "words": 1790,
       "minimumWords": 180
     },
     {
@@ -1274,7 +1322,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "California<!-- --> Minimum Wage 2026",
-      "words": 663,
+      "words": 1190,
       "minimumWords": 180
     },
     {
@@ -1286,7 +1334,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "California<!-- --> PTO Payout Law 2026",
-      "words": 1363,
+      "words": 1240,
       "minimumWords": 180
     },
     {
@@ -1298,7 +1346,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Colorado<!-- --> PTO payout law & pay rights",
-      "words": 728,
+      "words": 758,
       "minimumWords": 180
     },
     {
@@ -1310,7 +1358,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Colorado<!-- --> Final Paycheck Law 2026",
-      "words": 793,
+      "words": 1571,
       "minimumWords": 180
     },
     {
@@ -1322,7 +1370,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Colorado<!-- --> Minimum Wage 2026",
-      "words": 680,
+      "words": 1145,
       "minimumWords": 180
     },
     {
@@ -1334,7 +1382,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Colorado<!-- --> PTO Payout Law 2026",
-      "words": 1368,
+      "words": 1201,
       "minimumWords": 180
     },
     {
@@ -1346,7 +1394,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Connecticut<!-- --> PTO payout law & pay rights",
-      "words": 703,
+      "words": 733,
       "minimumWords": 180
     },
     {
@@ -1358,7 +1406,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Connecticut<!-- --> Final Paycheck Law 2026",
-      "words": 774,
+      "words": 1440,
       "minimumWords": 180
     },
     {
@@ -1370,7 +1418,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Connecticut<!-- --> Minimum Wage 2026",
-      "words": 674,
+      "words": 1132,
       "minimumWords": 180
     },
     {
@@ -1382,7 +1430,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Connecticut<!-- --> PTO Payout Law 2026",
-      "words": 1199,
+      "words": 1138,
       "minimumWords": 180
     },
     {
@@ -1394,7 +1442,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Delaware<!-- --> PTO payout law & pay rights",
-      "words": 713,
+      "words": 743,
       "minimumWords": 180
     },
     {
@@ -1406,7 +1454,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Delaware<!-- --> Final Paycheck Law 2026",
-      "words": 771,
+      "words": 1466,
       "minimumWords": 180
     },
     {
@@ -1418,7 +1466,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Delaware<!-- --> Minimum Wage 2026",
-      "words": 670,
+      "words": 1164,
       "minimumWords": 180
     },
     {
@@ -1430,7 +1478,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Delaware<!-- --> PTO Payout Law 2026",
-      "words": 1264,
+      "words": 1113,
       "minimumWords": 180
     },
     {
@@ -1442,7 +1490,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "District of Columbia<!-- --> PTO payout law & pay rights",
-      "words": 786,
+      "words": 816,
       "minimumWords": 180
     },
     {
@@ -1454,7 +1502,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "District of Columbia<!-- --> Final Paycheck Law 2026",
-      "words": 831,
+      "words": 1508,
       "minimumWords": 180
     },
     {
@@ -1466,7 +1514,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "District of Columbia<!-- --> Minimum Wage 2026",
-      "words": 698,
+      "words": 1207,
       "minimumWords": 180
     },
     {
@@ -1478,7 +1526,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "District of Columbia<!-- --> PTO Payout Law 2026",
-      "words": 1289,
+      "words": 1212,
       "minimumWords": 180
     },
     {
@@ -1490,7 +1538,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Florida<!-- --> PTO payout law & pay rights",
-      "words": 785,
+      "words": 815,
       "minimumWords": 180
     },
     {
@@ -1502,7 +1550,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Florida<!-- --> Final Paycheck Law 2026",
-      "words": 777,
+      "words": 1468,
       "minimumWords": 180
     },
     {
@@ -1514,7 +1562,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Florida<!-- --> Minimum Wage 2026",
-      "words": 667,
+      "words": 1174,
       "minimumWords": 180
     },
     {
@@ -1526,7 +1574,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Florida<!-- --> PTO Payout Law 2026",
-      "words": 1240,
+      "words": 1114,
       "minimumWords": 180
     },
     {
@@ -1538,7 +1586,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Georgia<!-- --> PTO payout law & pay rights",
-      "words": 735,
+      "words": 765,
       "minimumWords": 180
     },
     {
@@ -1550,7 +1598,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Georgia<!-- --> Final Paycheck Law 2026",
-      "words": 771,
+      "words": 1418,
       "minimumWords": 180
     },
     {
@@ -1562,7 +1610,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Georgia<!-- --> Minimum Wage 2026",
-      "words": 748,
+      "words": 1228,
       "minimumWords": 180
     },
     {
@@ -1574,7 +1622,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Georgia<!-- --> PTO Payout Law 2026",
-      "words": 1228,
+      "words": 1107,
       "minimumWords": 180
     },
     {
@@ -1586,7 +1634,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Hawaii<!-- --> PTO payout law & pay rights",
-      "words": 704,
+      "words": 734,
       "minimumWords": 180
     },
     {
@@ -1598,7 +1646,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Hawaii<!-- --> Final Paycheck Law 2026",
-      "words": 775,
+      "words": 1510,
       "minimumWords": 180
     },
     {
@@ -1610,7 +1658,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Hawaii<!-- --> Minimum Wage 2026",
-      "words": 669,
+      "words": 1106,
       "minimumWords": 180
     },
     {
@@ -1622,7 +1670,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Hawaii<!-- --> PTO Payout Law 2026",
-      "words": 1323,
+      "words": 1175,
       "minimumWords": 180
     },
     {
@@ -1634,7 +1682,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Idaho<!-- --> PTO payout law & pay rights",
-      "words": 707,
+      "words": 737,
       "minimumWords": 180
     },
     {
@@ -1646,7 +1694,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Idaho<!-- --> Final Paycheck Law 2026",
-      "words": 799,
+      "words": 1602,
       "minimumWords": 180
     },
     {
@@ -1658,7 +1706,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Idaho<!-- --> Minimum Wage 2026",
-      "words": 710,
+      "words": 1226,
       "minimumWords": 180
     },
     {
@@ -1670,7 +1718,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Idaho<!-- --> PTO Payout Law 2026",
-      "words": 1343,
+      "words": 1217,
       "minimumWords": 180
     },
     {
@@ -1682,7 +1730,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Illinois<!-- --> PTO payout law & pay rights",
-      "words": 703,
+      "words": 733,
       "minimumWords": 180
     },
     {
@@ -1694,7 +1742,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Illinois<!-- --> Final Paycheck Law 2026",
-      "words": 769,
+      "words": 1397,
       "minimumWords": 180
     },
     {
@@ -1706,7 +1754,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Illinois<!-- --> Minimum Wage 2026",
-      "words": 638,
+      "words": 1143,
       "minimumWords": 180
     },
     {
@@ -1718,7 +1766,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Illinois<!-- --> PTO Payout Law 2026",
-      "words": 1211,
+      "words": 1076,
       "minimumWords": 180
     },
     {
@@ -1730,7 +1778,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Indiana<!-- --> PTO payout law & pay rights",
-      "words": 718,
+      "words": 748,
       "minimumWords": 180
     },
     {
@@ -1742,7 +1790,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Indiana<!-- --> Final Paycheck Law 2026",
-      "words": 771,
+      "words": 1481,
       "minimumWords": 180
     },
     {
@@ -1754,7 +1802,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Indiana<!-- --> Minimum Wage 2026",
-      "words": 697,
+      "words": 1212,
       "minimumWords": 180
     },
     {
@@ -1766,7 +1814,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Indiana<!-- --> PTO Payout Law 2026",
-      "words": 1214,
+      "words": 1086,
       "minimumWords": 180
     },
     {
@@ -1778,7 +1826,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Iowa<!-- --> PTO payout law & pay rights",
-      "words": 703,
+      "words": 733,
       "minimumWords": 180
     },
     {
@@ -1790,7 +1838,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Iowa<!-- --> Final Paycheck Law 2026",
-      "words": 769,
+      "words": 1432,
       "minimumWords": 180
     },
     {
@@ -1802,7 +1850,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Iowa<!-- --> Minimum Wage 2026",
-      "words": 719,
+      "words": 1200,
       "minimumWords": 180
     },
     {
@@ -1814,7 +1862,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Iowa<!-- --> PTO Payout Law 2026",
-      "words": 1204,
+      "words": 1080,
       "minimumWords": 180
     },
     {
@@ -1826,7 +1874,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Kansas<!-- --> PTO payout law & pay rights",
-      "words": 708,
+      "words": 738,
       "minimumWords": 180
     },
     {
@@ -1838,7 +1886,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Kansas<!-- --> Final Paycheck Law 2026",
-      "words": 769,
+      "words": 1515,
       "minimumWords": 180
     },
     {
@@ -1850,7 +1898,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Kansas<!-- --> Minimum Wage 2026",
-      "words": 694,
+      "words": 1224,
       "minimumWords": 180
     },
     {
@@ -1862,7 +1910,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Kansas<!-- --> PTO Payout Law 2026",
-      "words": 1177,
+      "words": 1055,
       "minimumWords": 180
     },
     {
@@ -1874,7 +1922,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Kentucky<!-- --> PTO payout law & pay rights",
-      "words": 728,
+      "words": 758,
       "minimumWords": 180
     },
     {
@@ -1886,7 +1934,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Kentucky<!-- --> Final Paycheck Law 2026",
-      "words": 803,
+      "words": 1557,
       "minimumWords": 180
     },
     {
@@ -1898,7 +1946,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Kentucky<!-- --> Minimum Wage 2026",
-      "words": 691,
+      "words": 1197,
       "minimumWords": 180
     },
     {
@@ -1910,7 +1958,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Kentucky<!-- --> PTO Payout Law 2026",
-      "words": 1273,
+      "words": 1173,
       "minimumWords": 180
     },
     {
@@ -1922,7 +1970,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Louisiana<!-- --> PTO payout law & pay rights",
-      "words": 723,
+      "words": 753,
       "minimumWords": 180
     },
     {
@@ -1934,7 +1982,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Louisiana<!-- --> Final Paycheck Law 2026",
-      "words": 779,
+      "words": 1428,
       "minimumWords": 180
     },
     {
@@ -1946,7 +1994,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Louisiana<!-- --> Minimum Wage 2026",
-      "words": 704,
+      "words": 1176,
       "minimumWords": 180
     },
     {
@@ -1958,7 +2006,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Louisiana<!-- --> PTO Payout Law 2026",
-      "words": 1249,
+      "words": 1149,
       "minimumWords": 180
     },
     {
@@ -1970,7 +2018,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Maine<!-- --> PTO payout law & pay rights",
-      "words": 718,
+      "words": 748,
       "minimumWords": 180
     },
     {
@@ -1982,7 +2030,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Maine<!-- --> Final Paycheck Law 2026",
-      "words": 778,
+      "words": 1394,
       "minimumWords": 180
     },
     {
@@ -1994,7 +2042,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Maine<!-- --> Minimum Wage 2026",
-      "words": 645,
+      "words": 1167,
       "minimumWords": 180
     },
     {
@@ -2006,7 +2054,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Maine<!-- --> PTO Payout Law 2026",
-      "words": 1266,
+      "words": 1166,
       "minimumWords": 180
     },
     {
@@ -2018,7 +2066,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Maryland<!-- --> PTO payout law & pay rights",
-      "words": 709,
+      "words": 739,
       "minimumWords": 180
     },
     {
@@ -2030,7 +2078,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Maryland<!-- --> Final Paycheck Law 2026",
-      "words": 775,
+      "words": 1438,
       "minimumWords": 180
     },
     {
@@ -2042,7 +2090,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Maryland<!-- --> Minimum Wage 2026",
-      "words": 681,
+      "words": 1131,
       "minimumWords": 180
     },
     {
@@ -2054,7 +2102,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Maryland<!-- --> PTO Payout Law 2026",
-      "words": 1263,
+      "words": 1154,
       "minimumWords": 180
     },
     {
@@ -2066,7 +2114,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Massachusetts<!-- --> PTO payout law & pay rights",
-      "words": 734,
+      "words": 764,
       "minimumWords": 180
     },
     {
@@ -2078,7 +2126,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Massachusetts<!-- --> Final Paycheck Law 2026",
-      "words": 776,
+      "words": 1434,
       "minimumWords": 180
     },
     {
@@ -2090,7 +2138,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Massachusetts<!-- --> Minimum Wage 2026",
-      "words": 690,
+      "words": 1149,
       "minimumWords": 180
     },
     {
@@ -2102,7 +2150,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Massachusetts<!-- --> PTO Payout Law 2026",
-      "words": 1236,
+      "words": 1124,
       "minimumWords": 180
     },
     {
@@ -2114,7 +2162,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Michigan<!-- --> PTO payout law & pay rights",
-      "words": 699,
+      "words": 729,
       "minimumWords": 180
     },
     {
@@ -2126,7 +2174,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Michigan<!-- --> Final Paycheck Law 2026",
-      "words": 777,
+      "words": 1452,
       "minimumWords": 180
     },
     {
@@ -2138,7 +2186,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Michigan<!-- --> Minimum Wage 2026",
-      "words": 669,
+      "words": 1133,
       "minimumWords": 180
     },
     {
@@ -2150,7 +2198,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Michigan<!-- --> PTO Payout Law 2026",
-      "words": 1224,
+      "words": 1103,
       "minimumWords": 180
     },
     {
@@ -2162,7 +2210,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Minnesota<!-- --> PTO payout law & pay rights",
-      "words": 738,
+      "words": 768,
       "minimumWords": 180
     },
     {
@@ -2174,7 +2222,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Minnesota<!-- --> Final Paycheck Law 2026",
-      "words": 797,
+      "words": 1520,
       "minimumWords": 180
     },
     {
@@ -2186,7 +2234,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Minnesota<!-- --> Minimum Wage 2026",
-      "words": 650,
+      "words": 1147,
       "minimumWords": 180
     },
     {
@@ -2198,7 +2246,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Minnesota<!-- --> PTO Payout Law 2026",
-      "words": 1272,
+      "words": 1143,
       "minimumWords": 180
     },
     {
@@ -2210,7 +2258,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Mississippi<!-- --> PTO payout law & pay rights",
-      "words": 709,
+      "words": 739,
       "minimumWords": 180
     },
     {
@@ -2222,7 +2270,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Mississippi<!-- --> Final Paycheck Law 2026",
-      "words": 771,
+      "words": 1420,
       "minimumWords": 180
     },
     {
@@ -2234,7 +2282,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Mississippi<!-- --> Minimum Wage 2026",
-      "words": 691,
+      "words": 1206,
       "minimumWords": 180
     },
     {
@@ -2246,7 +2294,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Mississippi<!-- --> PTO Payout Law 2026",
-      "words": 1242,
+      "words": 1128,
       "minimumWords": 180
     },
     {
@@ -2258,7 +2306,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Missouri<!-- --> PTO payout law & pay rights",
-      "words": 726,
+      "words": 756,
       "minimumWords": 180
     },
     {
@@ -2270,7 +2318,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Missouri<!-- --> Final Paycheck Law 2026",
-      "words": 777,
+      "words": 1426,
       "minimumWords": 180
     },
     {
@@ -2282,7 +2330,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Missouri<!-- --> Minimum Wage 2026",
-      "words": 697,
+      "words": 1173,
       "minimumWords": 180
     },
     {
@@ -2294,7 +2342,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Missouri<!-- --> PTO Payout Law 2026",
-      "words": 1171,
+      "words": 1095,
       "minimumWords": 180
     },
     {
@@ -2306,7 +2354,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Montana<!-- --> PTO payout law & pay rights",
-      "words": 713,
+      "words": 743,
       "minimumWords": 180
     },
     {
@@ -2318,7 +2366,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Montana<!-- --> Final Paycheck Law 2026",
-      "words": 789,
+      "words": 1588,
       "minimumWords": 180
     },
     {
@@ -2330,7 +2378,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Montana<!-- --> Minimum Wage 2026",
-      "words": 666,
+      "words": 1153,
       "minimumWords": 180
     },
     {
@@ -2342,7 +2390,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Montana<!-- --> PTO Payout Law 2026",
-      "words": 1337,
+      "words": 1186,
       "minimumWords": 180
     },
     {
@@ -2354,7 +2402,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Nebraska<!-- --> PTO payout law & pay rights",
-      "words": 730,
+      "words": 760,
       "minimumWords": 180
     },
     {
@@ -2366,7 +2414,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Nebraska<!-- --> Final Paycheck Law 2026",
-      "words": 771,
+      "words": 1408,
       "minimumWords": 180
     },
     {
@@ -2378,7 +2426,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Nebraska<!-- --> Minimum Wage 2026",
-      "words": 671,
+      "words": 1127,
       "minimumWords": 180
     },
     {
@@ -2390,7 +2438,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Nebraska<!-- --> PTO Payout Law 2026",
-      "words": 1193,
+      "words": 1116,
       "minimumWords": 180
     },
     {
@@ -2402,7 +2450,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Nevada<!-- --> PTO payout law & pay rights",
-      "words": 726,
+      "words": 756,
       "minimumWords": 180
     },
     {
@@ -2414,7 +2462,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Nevada<!-- --> Final Paycheck Law 2026",
-      "words": 787,
+      "words": 1559,
       "minimumWords": 180
     },
     {
@@ -2426,7 +2474,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Nevada<!-- --> Minimum Wage 2026",
-      "words": 668,
+      "words": 1129,
       "minimumWords": 180
     },
     {
@@ -2438,7 +2486,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Nevada<!-- --> PTO Payout Law 2026",
-      "words": 1316,
+      "words": 1178,
       "minimumWords": 180
     },
     {
@@ -2450,7 +2498,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Hampshire<!-- --> PTO payout law & pay rights",
-      "words": 738,
+      "words": 768,
       "minimumWords": 180
     },
     {
@@ -2462,7 +2510,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Hampshire<!-- --> Final Paycheck Law 2026",
-      "words": 804,
+      "words": 1513,
       "minimumWords": 180
     },
     {
@@ -2474,7 +2522,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Hampshire<!-- --> Minimum Wage 2026",
-      "words": 723,
+      "words": 1251,
       "minimumWords": 180
     },
     {
@@ -2486,7 +2534,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Hampshire<!-- --> PTO Payout Law 2026",
-      "words": 1260,
+      "words": 1157,
       "minimumWords": 180
     },
     {
@@ -2498,7 +2546,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Jersey<!-- --> PTO payout law & pay rights",
-      "words": 755,
+      "words": 785,
       "minimumWords": 180
     },
     {
@@ -2510,7 +2558,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Jersey<!-- --> Final Paycheck Law 2026",
-      "words": 802,
+      "words": 1434,
       "minimumWords": 180
     },
     {
@@ -2522,7 +2570,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Jersey<!-- --> Minimum Wage 2026",
-      "words": 733,
+      "words": 1182,
       "minimumWords": 180
     },
     {
@@ -2534,7 +2582,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Jersey<!-- --> PTO Payout Law 2026",
-      "words": 1215,
+      "words": 1162,
       "minimumWords": 180
     },
     {
@@ -2546,7 +2594,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Mexico<!-- --> PTO payout law & pay rights",
-      "words": 739,
+      "words": 769,
       "minimumWords": 180
     },
     {
@@ -2558,7 +2606,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Mexico<!-- --> Final Paycheck Law 2026",
-      "words": 806,
+      "words": 1572,
       "minimumWords": 180
     },
     {
@@ -2570,7 +2618,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Mexico<!-- --> Minimum Wage 2026",
-      "words": 679,
+      "words": 1153,
       "minimumWords": 180
     },
     {
@@ -2582,7 +2630,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Mexico<!-- --> PTO Payout Law 2026",
-      "words": 1325,
+      "words": 1193,
       "minimumWords": 180
     },
     {
@@ -2594,7 +2642,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New York<!-- --> PTO payout law & pay rights",
-      "words": 869,
+      "words": 899,
       "minimumWords": 180
     },
     {
@@ -2606,7 +2654,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New York<!-- --> Final Paycheck Law 2026",
-      "words": 800,
+      "words": 1467,
       "minimumWords": 180
     },
     {
@@ -2618,7 +2666,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New York<!-- --> Minimum Wage 2026",
-      "words": 730,
+      "words": 1230,
       "minimumWords": 180
     },
     {
@@ -2630,7 +2678,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New York<!-- --> PTO Payout Law 2026",
-      "words": 1259,
+      "words": 1177,
       "minimumWords": 180
     },
     {
@@ -2642,7 +2690,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "North Carolina<!-- --> PTO payout law & pay rights",
-      "words": 727,
+      "words": 757,
       "minimumWords": 180
     },
     {
@@ -2654,7 +2702,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "North Carolina<!-- --> Final Paycheck Law 2026",
-      "words": 802,
+      "words": 1461,
       "minimumWords": 180
     },
     {
@@ -2666,7 +2714,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "North Carolina<!-- --> Minimum Wage 2026",
-      "words": 712,
+      "words": 1240,
       "minimumWords": 180
     },
     {
@@ -2678,7 +2726,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "North Carolina<!-- --> PTO Payout Law 2026",
-      "words": 1261,
+      "words": 1194,
       "minimumWords": 180
     },
     {
@@ -2690,7 +2738,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "North Dakota<!-- --> PTO payout law & pay rights",
-      "words": 723,
+      "words": 753,
       "minimumWords": 180
     },
     {
@@ -2702,7 +2750,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "North Dakota<!-- --> Final Paycheck Law 2026",
-      "words": 806,
+      "words": 1468,
       "minimumWords": 180
     },
     {
@@ -2714,7 +2762,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "North Dakota<!-- --> Minimum Wage 2026",
-      "words": 696,
+      "words": 1245,
       "minimumWords": 180
     },
     {
@@ -2726,7 +2774,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "North Dakota<!-- --> PTO Payout Law 2026",
-      "words": 1238,
+      "words": 1179,
       "minimumWords": 180
     },
     {
@@ -2738,7 +2786,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Ohio<!-- --> PTO payout law & pay rights",
-      "words": 755,
+      "words": 785,
       "minimumWords": 180
     },
     {
@@ -2750,7 +2798,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Ohio<!-- --> Final Paycheck Law 2026",
-      "words": 777,
+      "words": 1430,
       "minimumWords": 180
     },
     {
@@ -2762,7 +2810,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Ohio<!-- --> Minimum Wage 2026",
-      "words": 734,
+      "words": 1198,
       "minimumWords": 180
     },
     {
@@ -2774,7 +2822,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Ohio<!-- --> PTO Payout Law 2026",
-      "words": 1207,
+      "words": 1121,
       "minimumWords": 180
     },
     {
@@ -2786,7 +2834,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Oklahoma<!-- --> PTO payout law & pay rights",
-      "words": 704,
+      "words": 734,
       "minimumWords": 180
     },
     {
@@ -2798,7 +2846,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Oklahoma<!-- --> Final Paycheck Law 2026",
-      "words": 773,
+      "words": 1427,
       "minimumWords": 180
     },
     {
@@ -2810,7 +2858,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Oklahoma<!-- --> Minimum Wage 2026",
-      "words": 717,
+      "words": 1198,
       "minimumWords": 180
     },
     {
@@ -2822,7 +2870,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Oklahoma<!-- --> PTO Payout Law 2026",
-      "words": 1247,
+      "words": 1127,
       "minimumWords": 180
     },
     {
@@ -2834,7 +2882,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Oregon<!-- --> PTO payout law & pay rights",
-      "words": 762,
+      "words": 792,
       "minimumWords": 180
     },
     {
@@ -2846,7 +2894,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Oregon<!-- --> Final Paycheck Law 2026",
-      "words": 809,
+      "words": 1605,
       "minimumWords": 180
     },
     {
@@ -2858,7 +2906,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Oregon<!-- --> Minimum Wage 2026",
-      "words": 676,
+      "words": 1158,
       "minimumWords": 180
     },
     {
@@ -2870,7 +2918,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Oregon<!-- --> PTO Payout Law 2026",
-      "words": 1354,
+      "words": 1227,
       "minimumWords": 180
     },
     {
@@ -2882,7 +2930,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Pennsylvania<!-- --> PTO payout law & pay rights",
-      "words": 703,
+      "words": 733,
       "minimumWords": 180
     },
     {
@@ -2894,7 +2942,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Pennsylvania<!-- --> Final Paycheck Law 2026",
-      "words": 781,
+      "words": 1431,
       "minimumWords": 180
     },
     {
@@ -2906,7 +2954,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Pennsylvania<!-- --> Minimum Wage 2026",
-      "words": 694,
+      "words": 1233,
       "minimumWords": 180
     },
     {
@@ -2918,7 +2966,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Pennsylvania<!-- --> PTO Payout Law 2026",
-      "words": 1239,
+      "words": 1116,
       "minimumWords": 180
     },
     {
@@ -2930,7 +2978,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Rhode Island<!-- --> PTO payout law & pay rights",
-      "words": 729,
+      "words": 759,
       "minimumWords": 180
     },
     {
@@ -2942,7 +2990,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Rhode Island<!-- --> Final Paycheck Law 2026",
-      "words": 802,
+      "words": 1497,
       "minimumWords": 180
     },
     {
@@ -2954,7 +3002,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Rhode Island<!-- --> Minimum Wage 2026",
-      "words": 669,
+      "words": 1194,
       "minimumWords": 180
     },
     {
@@ -2966,7 +3014,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Rhode Island<!-- --> PTO Payout Law 2026",
-      "words": 1209,
+      "words": 1152,
       "minimumWords": 180
     },
     {
@@ -2978,7 +3026,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "South Carolina<!-- --> PTO payout law & pay rights",
-      "words": 773,
+      "words": 803,
       "minimumWords": 180
     },
     {
@@ -2990,7 +3038,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "South Carolina<!-- --> Final Paycheck Law 2026",
-      "words": 828,
+      "words": 1566,
       "minimumWords": 180
     },
     {
@@ -3002,7 +3050,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "South Carolina<!-- --> Minimum Wage 2026",
-      "words": 754,
+      "words": 1232,
       "minimumWords": 180
     },
     {
@@ -3014,7 +3062,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "South Carolina<!-- --> PTO Payout Law 2026",
-      "words": 1301,
+      "words": 1226,
       "minimumWords": 180
     },
     {
@@ -3026,7 +3074,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "South Dakota<!-- --> PTO payout law & pay rights",
-      "words": 716,
+      "words": 746,
       "minimumWords": 180
     },
     {
@@ -3038,7 +3086,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "South Dakota<!-- --> Final Paycheck Law 2026",
-      "words": 808,
+      "words": 1481,
       "minimumWords": 180
     },
     {
@@ -3050,7 +3098,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "South Dakota<!-- --> Minimum Wage 2026",
-      "words": 700,
+      "words": 1196,
       "minimumWords": 180
     },
     {
@@ -3062,7 +3110,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "South Dakota<!-- --> PTO Payout Law 2026",
-      "words": 1196,
+      "words": 1121,
       "minimumWords": 180
     },
     {
@@ -3074,7 +3122,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Tennessee<!-- --> PTO payout law & pay rights",
-      "words": 751,
+      "words": 781,
       "minimumWords": 180
     },
     {
@@ -3086,7 +3134,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Tennessee<!-- --> Final Paycheck Law 2026",
-      "words": 805,
+      "words": 1522,
       "minimumWords": 180
     },
     {
@@ -3098,7 +3146,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Tennessee<!-- --> Minimum Wage 2026",
-      "words": 733,
+      "words": 1179,
       "minimumWords": 180
     },
     {
@@ -3110,7 +3158,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Tennessee<!-- --> PTO Payout Law 2026",
-      "words": 1321,
+      "words": 1181,
       "minimumWords": 180
     },
     {
@@ -3122,7 +3170,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Texas<!-- --> PTO payout law & pay rights",
-      "words": 804,
+      "words": 834,
       "minimumWords": 180
     },
     {
@@ -3134,7 +3182,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Texas<!-- --> Final Paycheck Law 2026",
-      "words": 906,
+      "words": 1613,
       "minimumWords": 180
     },
     {
@@ -3146,7 +3194,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Texas<!-- --> Minimum Wage 2026",
-      "words": 704,
+      "words": 1225,
       "minimumWords": 180
     },
     {
@@ -3158,7 +3206,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Texas<!-- --> PTO Payout Law 2026",
-      "words": 1246,
+      "words": 1136,
       "minimumWords": 180
     },
     {
@@ -3170,7 +3218,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Utah<!-- --> PTO payout law & pay rights",
-      "words": 695,
+      "words": 725,
       "minimumWords": 180
     },
     {
@@ -3182,7 +3230,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Utah<!-- --> Final Paycheck Law 2026",
-      "words": 781,
+      "words": 1538,
       "minimumWords": 180
     },
     {
@@ -3194,7 +3242,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Utah<!-- --> Minimum Wage 2026",
-      "words": 671,
+      "words": 1193,
       "minimumWords": 180
     },
     {
@@ -3206,7 +3254,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Utah<!-- --> PTO Payout Law 2026",
-      "words": 1326,
+      "words": 1170,
       "minimumWords": 180
     },
     {
@@ -3218,7 +3266,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Vermont<!-- --> PTO payout law & pay rights",
-      "words": 703,
+      "words": 733,
       "minimumWords": 180
     },
     {
@@ -3230,7 +3278,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Vermont<!-- --> Final Paycheck Law 2026",
-      "words": 781,
+      "words": 1481,
       "minimumWords": 180
     },
     {
@@ -3242,7 +3290,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Vermont<!-- --> Minimum Wage 2026",
-      "words": 678,
+      "words": 1135,
       "minimumWords": 180
     },
     {
@@ -3254,7 +3302,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Vermont<!-- --> PTO Payout Law 2026",
-      "words": 1244,
+      "words": 1154,
       "minimumWords": 180
     },
     {
@@ -3266,7 +3314,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Virginia<!-- --> PTO payout law & pay rights",
-      "words": 692,
+      "words": 722,
       "minimumWords": 180
     },
     {
@@ -3278,7 +3326,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Virginia<!-- --> Final Paycheck Law 2026",
-      "words": 773,
+      "words": 1441,
       "minimumWords": 180
     },
     {
@@ -3290,7 +3338,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Virginia<!-- --> Minimum Wage 2026",
-      "words": 671,
+      "words": 1124,
       "minimumWords": 180
     },
     {
@@ -3302,7 +3350,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Virginia<!-- --> PTO Payout Law 2026",
-      "words": 1230,
+      "words": 1127,
       "minimumWords": 180
     },
     {
@@ -3314,7 +3362,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Washington<!-- --> PTO payout law & pay rights",
-      "words": 690,
+      "words": 720,
       "minimumWords": 180
     },
     {
@@ -3326,7 +3374,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Washington<!-- --> Final Paycheck Law 2026",
-      "words": 785,
+      "words": 1554,
       "minimumWords": 180
     },
     {
@@ -3338,7 +3386,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Washington<!-- --> Minimum Wage 2026",
-      "words": 656,
+      "words": 1154,
       "minimumWords": 180
     },
     {
@@ -3350,7 +3398,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Washington<!-- --> PTO Payout Law 2026",
-      "words": 1350,
+      "words": 1187,
       "minimumWords": 180
     },
     {
@@ -3362,7 +3410,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "West Virginia<!-- --> PTO payout law & pay rights",
-      "words": 753,
+      "words": 783,
       "minimumWords": 180
     },
     {
@@ -3374,7 +3422,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "West Virginia<!-- --> Final Paycheck Law 2026",
-      "words": 806,
+      "words": 1510,
       "minimumWords": 180
     },
     {
@@ -3386,7 +3434,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "West Virginia<!-- --> Minimum Wage 2026",
-      "words": 674,
+      "words": 1186,
       "minimumWords": 180
     },
     {
@@ -3398,7 +3446,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "West Virginia<!-- --> PTO Payout Law 2026",
-      "words": 1299,
+      "words": 1196,
       "minimumWords": 180
     },
     {
@@ -3410,7 +3458,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Wisconsin<!-- --> PTO payout law & pay rights",
-      "words": 729,
+      "words": 759,
       "minimumWords": 180
     },
     {
@@ -3422,7 +3470,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Wisconsin<!-- --> Final Paycheck Law 2026",
-      "words": 773,
+      "words": 1418,
       "minimumWords": 180
     },
     {
@@ -3434,7 +3482,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Wisconsin<!-- --> Minimum Wage 2026",
-      "words": 694,
+      "words": 1204,
       "minimumWords": 180
     },
     {
@@ -3446,7 +3494,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Wisconsin<!-- --> PTO Payout Law 2026",
-      "words": 1206,
+      "words": 1091,
       "minimumWords": 180
     },
     {
@@ -3458,7 +3506,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Wyoming<!-- --> PTO payout law & pay rights",
-      "words": 761,
+      "words": 791,
       "minimumWords": 180
     },
     {
@@ -3470,7 +3518,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Wyoming<!-- --> Final Paycheck Law 2026",
-      "words": 777,
+      "words": 1527,
       "minimumWords": 180
     },
     {
@@ -3482,7 +3530,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Wyoming<!-- --> Minimum Wage 2026",
-      "words": 752,
+      "words": 1219,
       "minimumWords": 180
     },
     {
@@ -3494,7 +3542,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Wyoming<!-- --> PTO Payout Law 2026",
-      "words": 1303,
+      "words": 1194,
       "minimumWords": 180
     },
     {
@@ -3506,7 +3554,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Ontario<!-- --> Employment Standards 2026",
-      "words": 885,
+      "words": 1002,
       "minimumWords": 180
     },
     {
@@ -3518,7 +3566,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "British Columbia<!-- --> Employment Standards 2026",
-      "words": 900,
+      "words": 987,
       "minimumWords": 180
     },
     {
@@ -3530,7 +3578,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Alberta<!-- --> Employment Standards 2026",
-      "words": 872,
+      "words": 1006,
       "minimumWords": 180
     },
     {
@@ -3542,7 +3590,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Quebec<!-- --> Employment Standards 2026",
-      "words": 883,
+      "words": 986,
       "minimumWords": 180
     },
     {
@@ -3554,7 +3602,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Manitoba<!-- --> Employment Standards 2026",
-      "words": 883,
+      "words": 962,
       "minimumWords": 180
     },
     {
@@ -3566,7 +3614,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Saskatchewan<!-- --> Employment Standards 2026",
-      "words": 900,
+      "words": 977,
       "minimumWords": 180
     },
     {
@@ -3578,7 +3626,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Nova Scotia<!-- --> Employment Standards 2026",
-      "words": 900,
+      "words": 995,
       "minimumWords": 180
     },
     {
@@ -3590,7 +3638,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New Brunswick<!-- --> Employment Standards 2026",
-      "words": 868,
+      "words": 956,
       "minimumWords": 180
     },
     {
@@ -3602,7 +3650,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Prince Edward Island<!-- --> Employment Standards 2026",
-      "words": 918,
+      "words": 998,
       "minimumWords": 180
     },
     {
@@ -3614,7 +3662,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Newfoundland & Labrador<!-- --> Employment Standards 2026",
-      "words": 886,
+      "words": 959,
       "minimumWords": 180
     },
     {
@@ -3626,7 +3674,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Northwest Territories<!-- --> Employment Standards 2026",
-      "words": 931,
+      "words": 1029,
       "minimumWords": 180
     },
     {
@@ -3638,7 +3686,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Nunavut<!-- --> Employment Standards 2026",
-      "words": 919,
+      "words": 1009,
       "minimumWords": 180
     },
     {
@@ -3650,7 +3698,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Yukon<!-- --> Employment Standards 2026",
-      "words": 893,
+      "words": 979,
       "minimumWords": 180
     },
     {
@@ -3662,7 +3710,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "New South Wales<!-- --> employment law",
-      "words": 763,
+      "words": 859,
       "minimumWords": 180
     },
     {
@@ -3674,7 +3722,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Victoria<!-- --> employment law",
-      "words": 737,
+      "words": 832,
       "minimumWords": 180
     },
     {
@@ -3686,7 +3734,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Queensland<!-- --> employment law",
-      "words": 740,
+      "words": 832,
       "minimumWords": 180
     },
     {
@@ -3698,7 +3746,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Western Australia<!-- --> employment law",
-      "words": 840,
+      "words": 920,
       "minimumWords": 180
     },
     {
@@ -3710,7 +3758,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "South Australia<!-- --> employment law",
-      "words": 726,
+      "words": 815,
       "minimumWords": 180
     },
     {
@@ -3722,7 +3770,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Tasmania<!-- --> employment law",
-      "words": 711,
+      "words": 801,
       "minimumWords": 180
     },
     {
@@ -3734,7 +3782,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Australian Capital Territory<!-- --> employment law",
-      "words": 755,
+      "words": 871,
       "minimumWords": 180
     },
     {
@@ -3746,7 +3794,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Northern Territory<!-- --> employment law",
-      "words": 749,
+      "words": 837,
       "minimumWords": 180
     },
     {
@@ -3758,7 +3806,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "PILON vs garden leave: what's the difference?",
-      "words": 949,
+      "words": 979,
       "minimumWords": 220
     },
     {
@@ -3770,7 +3818,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Unfair dismissal vs wrongful dismissal: what's the difference?",
-      "words": 947,
+      "words": 977,
       "minimumWords": 220
     },
     {
@@ -3782,7 +3830,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Redundancy vs dismissal: what's the difference?",
-      "words": 1006,
+      "words": 1036,
       "minimumWords": 220
     },
     {
@@ -3794,7 +3842,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Statutory vs enhanced redundancy pay: what are you owed?",
-      "words": 945,
+      "words": 975,
       "minimumWords": 220
     },
     {
@@ -3806,7 +3854,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Constructive dismissal vs unfair dismissal: what's the difference?",
-      "words": 1054,
+      "words": 1084,
       "minimumWords": 220
     },
     {
@@ -3818,7 +3866,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Gross misconduct vs misconduct: what's the difference?",
-      "words": 1056,
+      "words": 1086,
       "minimumWords": 220
     },
     {
@@ -3830,7 +3878,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Resignation vs redundancy: how your rights differ",
-      "words": 1004,
+      "words": 1034,
       "minimumWords": 220
     },
     {
@@ -3842,7 +3890,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "TUPE vs standard redundancy: different rules, different rights",
-      "words": 1072,
+      "words": 1102,
       "minimumWords": 220
     },
     {
@@ -3854,7 +3902,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "PTO vs vacation: what's the difference and what gets paid out?",
-      "words": 1047,
+      "words": 1077,
       "minimumWords": 220
     },
     {
@@ -3866,7 +3914,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Severance pay vs redundancy pay: are they the same thing?",
-      "words": 1032,
+      "words": 1062,
       "minimumWords": 220
     },
     {
@@ -3878,7 +3926,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can my employer refuse to pay redundancy pay?",
-      "words": 484,
+      "words": 514,
       "minimumWords": 170
     },
     {
@@ -3890,7 +3938,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Is redundancy pay tax free?",
-      "words": 468,
+      "words": 498,
       "minimumWords": 170
     },
     {
@@ -3902,7 +3950,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How long does an employer have to pay redundancy pay?",
-      "words": 477,
+      "words": 507,
       "minimumWords": 170
     },
     {
@@ -3914,7 +3962,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can I be made redundant while on sick leave?",
-      "words": 504,
+      "words": 534,
       "minimumWords": 170
     },
     {
@@ -3926,7 +3974,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Does TUPE protect my redundancy rights?",
-      "words": 503,
+      "words": 533,
       "minimumWords": 170
     },
     {
@@ -3938,7 +3986,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is the redundancy pay cap in the UK?",
-      "words": 487,
+      "words": 517,
       "minimumWords": 170
     },
     {
@@ -3950,7 +3998,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can I be made redundant while on maternity leave?",
-      "words": 503,
+      "words": 533,
       "minimumWords": 170
     },
     {
@@ -3962,7 +4010,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Do I get notice pay if I'm made redundant?",
-      "words": 485,
+      "words": 515,
       "minimumWords": 170
     },
     {
@@ -3974,7 +4022,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What happens to my pension if I'm made redundant?",
-      "words": 499,
+      "words": 529,
       "minimumWords": 170
     },
     {
@@ -3986,7 +4034,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can I be made redundant and then rehired by the same employer?",
-      "words": 522,
+      "words": 552,
       "minimumWords": 170
     },
     {
@@ -3998,7 +4046,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How is a week's pay calculated for redundancy purposes?",
-      "words": 493,
+      "words": 523,
       "minimumWords": 170
     },
     {
@@ -4010,7 +4058,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What makes a redundancy selection unfair?",
-      "words": 489,
+      "words": 519,
       "minimumWords": 170
     },
     {
@@ -4022,7 +4070,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is ACAS early conciliation and do I have to do it?",
-      "words": 514,
+      "words": 544,
       "minimumWords": 170
     },
     {
@@ -4034,7 +4082,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can my new employer change my terms after a TUPE transfer?",
-      "words": 538,
+      "words": 568,
       "minimumWords": 170
     },
     {
@@ -4046,7 +4094,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Does my employer have to pay out unused PTO when I leave?",
-      "words": 500,
+      "words": 530,
       "minimumWords": 170
     },
     {
@@ -4058,7 +4106,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is the WARN Act and does it apply to me?",
-      "words": 513,
+      "words": 543,
       "minimumWords": 170
     },
     {
@@ -4070,7 +4118,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How long does COBRA coverage last?",
-      "words": 515,
+      "words": 545,
       "minimumWords": 170
     },
     {
@@ -4082,7 +4130,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Is severance pay taxable in the US?",
-      "words": 515,
+      "words": 545,
       "minimumWords": 170
     },
     {
@@ -4094,7 +4142,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can my employer withhold my final paycheck?",
-      "words": 549,
+      "words": 579,
       "minimumWords": 170
     },
     {
@@ -4106,7 +4154,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is at-will employment and what does it mean for me?",
-      "words": 530,
+      "words": 560,
       "minimumWords": 170
     },
     {
@@ -4118,7 +4166,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is constructive dismissal in the UK?",
-      "words": 518,
+      "words": 548,
       "minimumWords": 170
     },
     {
@@ -4130,7 +4178,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can my employer cut my pay without my agreement?",
-      "words": 531,
+      "words": 561,
       "minimumWords": 170
     },
     {
@@ -4142,7 +4190,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can I be sacked while pregnant in the UK?",
-      "words": 558,
+      "words": 588,
       "minimumWords": 170
     },
     {
@@ -4154,7 +4202,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How long do I have to bring an unfair dismissal claim?",
-      "words": 532,
+      "words": 562,
       "minimumWords": 170
     },
     {
@@ -4166,7 +4214,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can I be made redundant while on sick leave in the UK?",
-      "words": 544,
+      "words": 574,
       "minimumWords": 170
     },
     {
@@ -4178,7 +4226,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What happens to my wages if my employer goes bust in the UK?",
-      "words": 528,
+      "words": 558,
       "minimumWords": 170
     },
     {
@@ -4190,7 +4238,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How is Statutory Sick Pay calculated in the UK?",
-      "words": 534,
+      "words": 564,
       "minimumWords": 170
     },
     {
@@ -4202,7 +4250,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is the minimum wage in the UK in 2026?",
-      "words": 519,
+      "words": 549,
       "minimumWords": 170
     },
     {
@@ -4214,7 +4262,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is a settlement agreement in the UK?",
-      "words": 465,
+      "words": 495,
       "minimumWords": 170
     },
     {
@@ -4226,7 +4274,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How much is a settlement agreement worth?",
-      "words": 469,
+      "words": 499,
       "minimumWords": 170
     },
     {
@@ -4238,7 +4286,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Is a settlement agreement taxable in the UK?",
-      "words": 453,
+      "words": 483,
       "minimumWords": 170
     },
     {
@@ -4250,7 +4298,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How much compensation can I get from an Employment Tribunal?",
-      "words": 479,
+      "words": 509,
       "minimumWords": 170
     },
     {
@@ -4262,7 +4310,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What are Vento bands in discrimination claims?",
-      "words": 473,
+      "words": 503,
       "minimumWords": 170
     },
     {
@@ -4274,7 +4322,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is PILON (pay in lieu of notice)?",
-      "words": 485,
+      "words": 515,
       "minimumWords": 170
     },
     {
@@ -4286,7 +4334,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is garden leave in the UK?",
-      "words": 479,
+      "words": 509,
       "minimumWords": 170
     },
     {
@@ -4298,7 +4346,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can my employer change my employment contract without my consent?",
-      "words": 485,
+      "words": 515,
       "minimumWords": 170
     },
     {
@@ -4310,7 +4358,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is a zero-hours contract in the UK?",
-      "words": 481,
+      "words": 511,
       "minimumWords": 170
     },
     {
@@ -4322,7 +4370,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is gross misconduct in UK employment law?",
-      "words": 504,
+      "words": 534,
       "minimumWords": 170
     },
     {
@@ -4334,7 +4382,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is the Employment Tribunal in the UK?",
-      "words": 488,
+      "words": 518,
       "minimumWords": 170
     },
     {
@@ -4346,7 +4394,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is salary sacrifice in the UK?",
-      "words": 468,
+      "words": 498,
       "minimumWords": 170
     },
     {
@@ -4358,7 +4406,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is auto-enrolment pension in the UK?",
-      "words": 452,
+      "words": 482,
       "minimumWords": 170
     },
     {
@@ -4370,7 +4418,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is disability discrimination in the UK?",
-      "words": 506,
+      "words": 536,
       "minimumWords": 170
     },
     {
@@ -4382,7 +4430,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can my employer make deductions from my wages?",
-      "words": 475,
+      "words": 505,
       "minimumWords": 170
     },
     {
@@ -4394,7 +4442,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is a TUPE transfer?",
-      "words": 481,
+      "words": 511,
       "minimumWords": 170
     },
     {
@@ -4406,7 +4454,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can I claim unfair dismissal without 2 years' service?",
-      "words": 470,
+      "words": 500,
       "minimumWords": 170
     },
     {
@@ -4418,7 +4466,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Do I get paid for unused holidays when I leave a job?",
-      "words": 503,
+      "words": 533,
       "minimumWords": 170
     },
     {
@@ -4430,7 +4478,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is the National Living Wage in 2026?",
-      "words": 468,
+      "words": 498,
       "minimumWords": 170
     },
     {
@@ -4442,7 +4490,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is the Fair Labor Standards Act (FLSA)?",
-      "words": 494,
+      "words": 524,
       "minimumWords": 170
     },
     {
@@ -4454,7 +4502,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is the FMLA (Family and Medical Leave Act)?",
-      "words": 496,
+      "words": 526,
       "minimumWords": 170
     },
     {
@@ -4466,7 +4514,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can my employer fire me while I am on FMLA leave?",
-      "words": 483,
+      "words": 513,
       "minimumWords": 170
     },
     {
@@ -4478,7 +4526,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is the ADA and what disability rights do employees have?",
-      "words": 470,
+      "words": 500,
       "minimumWords": 170
     },
     {
@@ -4490,7 +4538,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is Title VII of the Civil Rights Act?",
-      "words": 493,
+      "words": 523,
       "minimumWords": 170
     },
     {
@@ -4502,7 +4550,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How do I file an EEOC complaint?",
-      "words": 491,
+      "words": 521,
       "minimumWords": 170
     },
     {
@@ -4514,7 +4562,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How does overtime law work in the US?",
-      "words": 453,
+      "words": 483,
       "minimumWords": 170
     },
     {
@@ -4526,7 +4574,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Are salaried employees exempt from overtime in the US?",
-      "words": 489,
+      "words": 519,
       "minimumWords": 170
     },
     {
@@ -4538,7 +4586,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What whistleblower protection do employees have in the US?",
-      "words": 493,
+      "words": 523,
       "minimumWords": 170
     },
     {
@@ -4550,7 +4598,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is a non-compete agreement in the US?",
-      "words": 473,
+      "words": 503,
       "minimumWords": 170
     },
     {
@@ -4562,7 +4610,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is COBRA health insurance?",
-      "words": 455,
+      "words": 485,
       "minimumWords": 170
     },
     {
@@ -4574,7 +4622,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is the federal minimum wage in the US in 2026?",
-      "words": 485,
+      "words": 515,
       "minimumWords": 170
     },
     {
@@ -4586,7 +4634,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can my employer monitor my work computer in the US?",
-      "words": 458,
+      "words": 488,
       "minimumWords": 170
     },
     {
@@ -4598,7 +4646,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is unfair dismissal in Australia?",
-      "words": 506,
+      "words": 536,
       "minimumWords": 170
     },
     {
@@ -4610,7 +4658,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How do I make an unfair dismissal claim in Australia?",
-      "words": 475,
+      "words": 505,
       "minimumWords": 170
     },
     {
@@ -4622,7 +4670,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is a General Protections claim in Australia?",
-      "words": 501,
+      "words": 531,
       "minimumWords": 170
     },
     {
@@ -4634,7 +4682,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is a casual employee in Australia?",
-      "words": 492,
+      "words": 522,
       "minimumWords": 170
     },
     {
@@ -4646,7 +4694,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is long service leave in Australia?",
-      "words": 472,
+      "words": 502,
       "minimumWords": 170
     },
     {
@@ -4658,7 +4706,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is the superannuation guarantee rate in 2026?",
-      "words": 482,
+      "words": 512,
       "minimumWords": 170
     },
     {
@@ -4670,7 +4718,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is government-funded parental leave in Australia?",
-      "words": 480,
+      "words": 511,
       "minimumWords": 170
     },
     {
@@ -4682,7 +4730,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is wrongful dismissal in Canada?",
-      "words": 502,
+      "words": 532,
       "minimumWords": 170
     },
     {
@@ -4694,7 +4742,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How much notice is required when terminating employment in Canada?",
-      "words": 503,
+      "words": 533,
       "minimumWords": 170
     },
     {
@@ -4706,7 +4754,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is constructive dismissal in Canada?",
-      "words": 478,
+      "words": 508,
       "minimumWords": 170
     },
     {
@@ -4718,7 +4766,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is Employment Insurance (EI) in Canada?",
-      "words": 479,
+      "words": 509,
       "minimumWords": 170
     },
     {
@@ -4730,7 +4778,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is a probation period in Canada?",
-      "words": 464,
+      "words": 494,
       "minimumWords": 170
     },
     {
@@ -4742,7 +4790,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How do I file a human rights complaint in Canada?",
-      "words": 465,
+      "words": 495,
       "minimumWords": 170
     },
     {
@@ -4754,7 +4802,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is a Record of Employment (ROE) in Canada?",
-      "words": 502,
+      "words": 532,
       "minimumWords": 170
     },
     {
@@ -4766,7 +4814,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "UK Redundancy Pay: The Complete Guide for 2026",
-      "words": 1227,
+      "words": 1257,
       "minimumWords": 220
     },
     {
@@ -4778,7 +4826,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "How to Negotiate Severance Pay in the UK: A Step-by-Step Guide",
-      "words": 1278,
+      "words": 1308,
       "minimumWords": 220
     },
     {
@@ -4790,7 +4838,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "US Final Paycheck Laws by State: Every Deadline in 2026",
-      "words": 1189,
+      "words": 1219,
       "minimumWords": 220
     },
     {
@@ -4802,7 +4850,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "UK Notice Period Rights: Notice, Garden Leave and PILON",
-      "words": 1222,
+      "words": 1252,
       "minimumWords": 220
     },
     {
@@ -4814,7 +4862,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Australia Fair Work Redundancy: NES Entitlements Explained for 2026",
-      "words": 1176,
+      "words": 1206,
       "minimumWords": 220
     },
     {
@@ -4826,7 +4874,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "UK Maternity Pay Rights 2026: SMP, OMP, and What You Are Entitled To",
-      "words": 1230,
+      "words": 1260,
       "minimumWords": 220
     },
     {
@@ -4838,7 +4886,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Constructive Dismissal UK: How to Prove It",
-      "words": 1495,
+      "words": 1525,
       "minimumWords": 220
     },
     {
@@ -4850,7 +4898,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Can My Employer Cut My Pay Without My Consent? UK Rights Explained",
-      "words": 1393,
+      "words": 1423,
       "minimumWords": 220
     },
     {
@@ -4862,7 +4910,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "UK Sick Pay Rights 2026: SSP Rules and Employer Duties",
-      "words": 1354,
+      "words": 1384,
       "minimumWords": 220
     },
     {
@@ -4874,7 +4922,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "US Overtime Law Explained: Who Qualifies and How Much You're Owed",
-      "words": 1379,
+      "words": 1409,
       "minimumWords": 220
     },
     {
@@ -4886,7 +4934,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "How to Read Your UK Tax Code — and What to Do If It's Wrong",
-      "words": 1530,
+      "words": 1560,
       "minimumWords": 220
     }
   ]

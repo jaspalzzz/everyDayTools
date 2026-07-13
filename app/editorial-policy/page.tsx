@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SITE, jsonLd } from "@/lib/seo";
 
 const url = `${SITE.url}/editorial-policy`;
-const DATE = "2026-06-27";
+const DATE = "2026-07-12";
 
 export const metadata: Metadata = {
   title: "Editorial Policy — MyPayRights Standards & Review Process",
@@ -165,6 +165,13 @@ export default function EditorialPolicyPage() {
                   <li key={step}>{step}</li>
                 ))}
               </ol>
+              <p>
+                Material rate, methodology, and legal-summary changes are published in the{" "}
+                <Link href="/updates" className="text-brand-600 underline-offset-2 hover:underline">
+                  public update log
+                </Link>
+                . Minor spelling and presentation changes are not logged.
+              </p>
             </section>
 
             <section>
