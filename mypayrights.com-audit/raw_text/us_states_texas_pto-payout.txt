@@ -1,0 +1,55 @@
+Texas PTO Payout Law 2026
+Unused vacation payout rules, final paycheck timing, and wage claim steps for Texas workers.
+State rule
+No state PTO payout requirement
+No statute requires payout; entirely policy-driven.
+For Texas workers, state law does not create a default vacation cash-out right. A payout generally comes from policy, contract, or company practice.
+PTO rule type
+No state PTO payout requirement
+If fired
+Within 6 calendar days of discharge
+If resigned
+Next scheduled payday
+What this means in practice
+When reviewing a PTO payout in Texas, separate the issue into accrual, policy, and payment timing. Each one needs its own document trail.
+In Texas, the strongest claim usually comes from the employer's own written policy. Save the handbook and paystub showing accrued PTO, then compare the policy language with your final paycheck.
+How to estimate the payout
+Use this formula: unused PTO hours x final hourly rate. For salaried employees, convert annual salary into an hourly or daily equivalent first. The result is gross pay before federal, state, and payroll tax withholding.
+Documents to save
+- Payroll or HR portal screenshot showing the accrued PTO balance
+- Employee handbook section or written PTO policy covering payout and forfeiture
+- Offer letter, contract, or separation agreement with vacation-pay terms
+- Messages from payroll or HR explaining the Texas payout decision
+- Last-day record showing whether the within 6 calendar days of discharge or next scheduled payday deadline applies
+- Texas agency URL or filing page: https://www.twc.texas.gov/businesses/when-be-paid
+- Texas final paystub showing whether unused PTO appeared as a wage line
+State-specific checkpoints
+In Texas, a final paycheck — including any PTO payout that is owed — is due within 6 calendar days of discharge when the employer ends the job and next scheduled payday when you resign. Confirm the current rule against the Texas labor agency before you file, since deadlines and payout rules can change between legislative sessions.
+Texas's timing rule is not one-size-fits-all, so the separation reason should be part of the wage-claim file.
+Texas sits in the U.S. Census South region, and 4 of the 8 South comparison states below share the same approach and the rest differ, so it is worth checking each state individually.
+Texas's regional comparison set is Virginia, Tennessee, West Virginia, South Carolina, Alabama, Oklahoma, Arkansas, and North Carolina. Virginia, Alabama, Oklahoma, and Arkansas match Texas's payout category, while Tennessee, West Virginia, South Carolina, and North Carolina use a different category.
+How regional states handle PTO payout
+How Texas compares with selected South states on unused vacation payout and final-pay timing. Follow a link for that state's full rules.
+| State | Rule detail | If fired | If resigned | 
+|---|---|---|---|
+| Texas (this page) | No state PTO payout requirement No statute requires payout; entirely policy-driven. | Within 6 calendar days of discharge | Next scheduled payday | 
+| Virginia | No state PTO payout requirement No state law requires payout of accrued unused vacation. | Next scheduled payday | Next scheduled payday | 
+| Tennessee | PTO payout depends on policy Payout is governed by the employer's established policy or contract. | Within 21 days or next regular payday (whichever is later) | Within 21 days or next regular payday (whichever is later) | 
+| West Virginia | PTO payout depends on policy Earned vacation is treated as wages, but the payout obligation follows the employer's policy terms. | Within 72 hours of separation | Within 72 hours of separation | 
+| South Carolina | PTO payout depends on policy No general mandate; payout is owed per the employer's written policy. | Within 48 hours or next scheduled payday (whichever is later) | Within 48 hours or next scheduled payday (whichever is later) | 
+| Alabama | No state PTO payout requirement No statute requires vacation payout; governed by employer policy or contract. | Next regular payday | Next regular payday | 
+| Oklahoma | No state PTO payout requirement No state law requires vacation payout at separation. | Next scheduled payday | Next scheduled payday | 
+| Arkansas | No state PTO payout requirement No statute requires vacation payout at separation. | Within 7 days of separation | Within 7 days of separation | 
+| North Carolina | PTO payout depends on policy Payout is required unless the employer has a clearly written forfeiture policy notifying employees. | Next scheduled payday | Next scheduled payday | 
+Calculate and compare
+Common questions
+Does Texas require PTO payout when I leave?
+For Texas workers, state law does not create a default vacation cash-out right. A payout generally comes from policy, contract, or company practice. No statute requires payout; entirely policy-driven.
+Where do I file a PTO payout claim in Texas?
+Start with the Texas labor agency: https://www.twc.texas.gov/businesses/when-be-paid. Include your final paystub, PTO balance, handbook policy, resignation or termination date, and any payroll messages about unused vacation.
+When should unused PTO be paid in Texas?
+The timing question in Texas follows final-pay rules once PTO is owed. That means within 6 calendar days of discharge for a firing and next scheduled payday for a voluntary quit.
+Can employers in Texas use a "use it or lose it" policy?
+Texas employers often have room to set forfeiture rules, but employees should check whether the handbook actually says unused vacation is lost at separation.
+How do I calculate unused PTO value in Texas?
+For a payout estimate in Texas, multiply the unused hours on your PTO ledger by your final regular hourly rate. Salaried workers can convert annual salary into an hourly or daily rate first.

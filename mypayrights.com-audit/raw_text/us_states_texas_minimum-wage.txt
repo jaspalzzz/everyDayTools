@@ -1,0 +1,102 @@
+Texas Minimum Wage 2026
+Current rate, tipped employee rules, and what to do if you are underpaid in Texas.
+Current minimum wage
+$7.25/hr (federal minimum)
+No state minimum wage higher than the federal rate has been passed in Texas.
+Federal vs state
+Federal rate applies ($7.25/hr)
+Last verified
+2025
+How to use the Texas rate
+The safest way to use this Texas page is to separate three questions: the statewide or federal floor, any local rate, and any tipped-worker credit. The rate shown here is $7.25/hr (federal minimum); Texas follows the federal $7.25/hr floor unless a local or occupational rule changes the answer. Regional comparisons with Alabama, Arkansas, Delaware help catch payroll policies copied from the wrong state.
+- Use the state labor agency link before filing so the claim goes to the right office.
+- For multi-state employers, verify the payroll profile was not copied from another state.
+- Confirm the work location and whether a city or county ordinance applies.
+- Check whether the employee is paid through a valid tipped-credit arrangement.
+Cross-state wage benchmark
+Multi-state employers often copy payroll settings from one jurisdiction to another. Use this benchmark to compare Texas's $7.25/hr (federal minimum) rate with the full state dataset before relying on a shared payroll template.
+| State | Region | Minimum wage | 
+|---|---|---|
+| Texas (this page) | South | $7.25/hr (federal minimum) | 
+| Kansas | Midwest | $7.25/hr (federal minimum) | 
+| Michigan | Midwest | $10.33/hr | 
+| Indiana | Midwest | $7.25/hr (federal minimum) | 
+| New Hampshire | Northeast | $7.25/hr (federal minimum) | 
+| Nevada | West | $12.00/hr | 
+| Minnesota | Midwest | $10.85/hr | 
+| Washington | West | $16.66/hr | 
+| Massachusetts | Northeast | $15.00/hr | 
+| Missouri | Midwest | $13.75/hr | 
+| Alaska | West | $11.73/hr | 
+| Louisiana | South | $7.25/hr (federal minimum) | 
+| New Jersey | Northeast | $15.49/hr | 
+| New Mexico | West | $12.00/hr | 
+| Virginia | South | $12.41/hr | 
+| Georgia | South | $7.25/hr (federal minimum) | 
+| Pennsylvania | Northeast | $7.25/hr (federal minimum) | 
+| South Dakota | Midwest | $11.20/hr | 
+| Illinois | Midwest | $15.00/hr | 
+| Connecticut | Northeast | $16.35/hr | 
+| North Carolina | South | $7.25/hr (federal minimum) | 
+| Mississippi | South | $7.25/hr (federal minimum) | 
+| Oklahoma | South | $7.25/hr (federal minimum) | 
+| Idaho | West | $7.25/hr (federal minimum) | 
+| Delaware | South | $15.00/hr | 
+| Arizona | West | $14.70/hr | 
+| Iowa | Midwest | $7.25/hr (federal minimum) | 
+| Kentucky | South | $7.25/hr (federal minimum) | 
+| Wisconsin | Midwest | $7.25/hr (federal minimum) | 
+| Florida | South | $14.00/hr | 
+| Utah | West | $7.25/hr (federal minimum) | 
+| Oregon | West | $14.70/hr (standard) | 
+| New York | Northeast | $16.50/hr (NYC/Nassau/Suffolk/Westchester); $15.50/hr (rest of state) | 
+| Montana | West | $10.30/hr | 
+| Arkansas | South | $11.00/hr | 
+| North Dakota | Midwest | $7.25/hr (federal minimum) | 
+| Rhode Island | Northeast | $15.00/hr | 
+| California | West | $16.50/hr | 
+| Wyoming | West | $7.25/hr (federal minimum) | 
+| Maine | Northeast | $14.65/hr | 
+| Nebraska | Midwest | $13.50/hr | 
+| Tennessee | South | $7.25/hr (federal minimum) | 
+| West Virginia | South | $8.75/hr | 
+| Hawaii | West | $14.00/hr | 
+| Alabama | South | $7.25/hr (federal minimum) | 
+| South Carolina | South | $7.25/hr (federal minimum) | 
+| Vermont | Northeast | $13.67/hr | 
+| Ohio | Midwest | $10.45/hr | 
+| Colorado | West | $14.81/hr | 
+| District of Columbia | South | $17.50/hr | 
+| Maryland | South | $15.00/hr | 
+Who is covered by the Texas minimum wage
+The Texas minimum wage covers most employees. Watch for these common exemptions:
+- •Some trainees, learners, or workers in narrowly defined statutory programs
+- •Family or domestic-service arrangements where a specific exemption applies
+- •Certain agricultural or farm workers (federal FLSA exemptions may apply)
+- •Tipped employees — a lower base rate may apply if tips close the gap
+Being paid below minimum wage?
+- 1. Calculate the shortfall: hours worked multiplied by the gap between the legal minimum and actual pay.
+- 2. Keep records: pay stubs, time records, schedules, text messages, and rate notices.
+- 3. Check whether a state, federal, tipped-credit, or local wage rule controls the claim.
+- 4. File with the state labor agency or the US DOL Wage and Hour Division when informal correction fails.
+Frequently asked questions
+What is the minimum wage in Texas in 2026?
+The minimum wage in Texas is $7.25/hr (federal minimum). Because Texas has no state minimum wage law of its own, the federal floor of $7.25/hr is what employers must pay.
+Does the federal minimum wage apply in Texas?
+That's right. Texas has never enacted a state minimum wage above the federal Fair Labor Standards Act floor, so the $7.25/hr federal rate is what applies. A future federal increase would take effect in Texas without any state legislative action.
+What is the minimum wage for tipped employees in Texas?
+Employers in Texas can apply a tip credit toward the minimum wage, meaning tipped staff can legally earn a lower direct wage as long as tips make up the rest. If they fall short, the employer owes the difference — the Texas Department of Labor lists the current rate.
+Are there local minimum wages higher than Texas's state rate?
+In a few places, yes. Select cities and counties in Texas have adopted their own minimum wage above the state rate, and employers there owe the highest of the federal, state, or local figure. Your local government or https://www.twc.texas.gov/businesses/when-be-paid can tell you if that applies to you.
+What can I do if my employer pays me less than minimum wage in Texas?
+If your employer pays below the minimum wage in Texas, you can: (1) file a wage complaint with the Texas Department of Labor; (2) file a federal complaint with the US Department of Labor Wage and Hour Division; or (3) bring a private civil lawsuit to recover unpaid wages. You may be entitled to back pay for up to 2–3 years plus additional damages. Retaliation for filing a wage complaint is illegal. Visit the Texas Department of Labor at https://www.twc.texas.gov/businesses/when-be-paid to start a claim.
+How Texas compares to nearby states
+Minimum wage varies across the South region. Texas's rate is $7.25/hr (federal minimum) — here is how neighbouring states compare.
+| State | Minimum wage | 
+|---|---|
+| Texas (this page) | $7.25/hr (federal minimum) | 
+| Alabama | $7.25/hr (federal minimum) | 
+| Arkansas | $11.00/hr | 
+| Delaware | $15.00/hr | 
+| District of Columbia | $17.50/hr | 
+| Florida | $14.00/hr |

@@ -1,0 +1,103 @@
+Wyoming Minimum Wage 2026
+What Wyoming pays as a minimum, the rules for tipped workers, and how to recover underpaid wages.
+Current minimum wage
+$7.25/hr (federal minimum)
+Wyoming relies on the federal minimum wage; no higher state rate is currently on the books.
+State minimum is $5.15/hr, but federal minimum of $7.25 applies to most employers
+Federal vs state
+Federal rate applies ($7.25/hr)
+Last verified
+2025
+How to use the Wyoming rate
+Wyoming should be read as a West wage page, not just a single hourly number. The current displayed rate is $7.25/hr (federal minimum); Wyoming follows the federal $7.25/hr floor unless a local or occupational rule changes the answer. Nearby comparison matters because employers with locations in Alaska, Arizona, California may run different payroll rules even when the jobs look similar.
+- Use the state labor agency link before filing so the claim goes to the right office.
+- For multi-state employers, verify the payroll profile was not copied from another state.
+- Confirm the work location and whether a city or county ordinance applies.
+- Check whether the employee is paid through a valid tipped-credit arrangement.
+Cross-state wage benchmark
+Multi-state employers often copy payroll settings from one jurisdiction to another. Use this benchmark to compare Wyoming's $7.25/hr (federal minimum) rate with the full state dataset before relying on a shared payroll template.
+| State | Region | Minimum wage | 
+|---|---|---|
+| Wyoming (this page) | West | $7.25/hr (federal minimum) | 
+| Connecticut | Northeast | $16.35/hr | 
+| Indiana | Midwest | $7.25/hr (federal minimum) | 
+| Kentucky | South | $7.25/hr (federal minimum) | 
+| Tennessee | South | $7.25/hr (federal minimum) | 
+| Nebraska | Midwest | $13.50/hr | 
+| Rhode Island | Northeast | $15.00/hr | 
+| Georgia | South | $7.25/hr (federal minimum) | 
+| Louisiana | South | $7.25/hr (federal minimum) | 
+| Nevada | West | $12.00/hr | 
+| Oklahoma | South | $7.25/hr (federal minimum) | 
+| California | West | $16.50/hr | 
+| Florida | South | $14.00/hr | 
+| Vermont | Northeast | $13.67/hr | 
+| Ohio | Midwest | $10.45/hr | 
+| District of Columbia | South | $17.50/hr | 
+| Washington | West | $16.66/hr | 
+| Alaska | West | $11.73/hr | 
+| Illinois | Midwest | $15.00/hr | 
+| Wisconsin | Midwest | $7.25/hr (federal minimum) | 
+| Maine | Northeast | $14.65/hr | 
+| Mississippi | South | $7.25/hr (federal minimum) | 
+| New Jersey | Northeast | $15.49/hr | 
+| Missouri | Midwest | $13.75/hr | 
+| New York | Northeast | $16.50/hr (NYC/Nassau/Suffolk/Westchester); $15.50/hr (rest of state) | 
+| South Carolina | South | $7.25/hr (federal minimum) | 
+| Colorado | West | $14.81/hr | 
+| Alabama | South | $7.25/hr (federal minimum) | 
+| West Virginia | South | $8.75/hr | 
+| Maryland | South | $15.00/hr | 
+| Minnesota | Midwest | $10.85/hr | 
+| Hawaii | West | $14.00/hr | 
+| New Mexico | West | $12.00/hr | 
+| Arizona | West | $14.70/hr | 
+| Montana | West | $10.30/hr | 
+| Pennsylvania | Northeast | $7.25/hr (federal minimum) | 
+| South Dakota | Midwest | $11.20/hr | 
+| Virginia | South | $12.41/hr | 
+| Iowa | Midwest | $7.25/hr (federal minimum) | 
+| Kansas | Midwest | $7.25/hr (federal minimum) | 
+| Idaho | West | $7.25/hr (federal minimum) | 
+| Michigan | Midwest | $10.33/hr | 
+| Delaware | South | $15.00/hr | 
+| New Hampshire | Northeast | $7.25/hr (federal minimum) | 
+| Utah | West | $7.25/hr (federal minimum) | 
+| Massachusetts | Northeast | $15.00/hr | 
+| North Carolina | South | $7.25/hr (federal minimum) | 
+| Oregon | West | $14.70/hr (standard) | 
+| North Dakota | Midwest | $7.25/hr (federal minimum) | 
+| Arkansas | South | $11.00/hr | 
+| Texas | South | $7.25/hr (federal minimum) | 
+Who is covered by the Wyoming minimum wage
+The Wyoming minimum wage covers most employees. Watch for these common exemptions:
+- •Some trainees, learners, or workers in narrowly defined statutory programs
+- •Family or domestic-service arrangements where a specific exemption applies
+- •Certain agricultural or farm workers (federal FLSA exemptions may apply)
+- •Tipped employees — a lower base rate may apply if tips close the gap
+Being paid below minimum wage?
+- 1. Check whether a state, federal, tipped-credit, or local wage rule controls the claim.
+- 2. File with the state labor agency or the US DOL Wage and Hour Division when informal correction fails.
+- 3. Ask whether back pay, liquidated damages, interest, or attorney-fee rules apply to the facts.
+- 4. Calculate the shortfall: hours worked multiplied by the gap between the legal minimum and actual pay.
+Frequently asked questions
+What is the minimum wage for tipped employees in Wyoming?
+A lower "tipped minimum wage" is permitted in Wyoming as long as tips bring an employee's total hourly pay up to the standard minimum wage — any shortfall is the employer's responsibility to cover. Wyoming's Department of Labor publishes the current tipped rate.
+Are there local minimum wages higher than Wyoming's state rate?
+In a few places, yes. Select cities and counties in Wyoming have adopted their own minimum wage above the state rate, and employers there owe the highest of the federal, state, or local figure. Your local government or https://wyomingworkforce.org/businesses/labor-standards/ can tell you if that applies to you.
+What can I do if my employer pays me less than minimum wage in Wyoming?
+Underpayment below Wyoming's minimum wage is actionable: file with the Wyoming Department of Labor, escalate to the federal Wage and Hour Division, or pursue a civil lawsuit. Depending on the circumstances you may recover 2–3 years of back pay plus damages, and retaliation for raising the issue is against the law. https://wyomingworkforce.org/businesses/labor-standards/ has the Wyoming claim process.
+What is the minimum wage in Wyoming in 2026?
+The minimum wage in Wyoming is $7.25/hr (federal minimum). State minimum is $5.15/hr, but federal minimum of $7.25 applies to most employers There's no Wyoming-specific minimum wage statute, which means the federal $7.25/hr rate is the number that actually governs pay in the state.
+Does the federal minimum wage apply in Wyoming?
+It does. Wyoming's legislature hasn't passed a state minimum wage above the federal Fair Labor Standards Act rate, so $7.25/hr is what employers are legally required to pay. Congress raising the federal rate would flow through to Wyoming automatically.
+How Wyoming compares to nearby states
+Minimum wage varies across the West region. Wyoming's rate is $7.25/hr (federal minimum) — here is how neighbouring states compare.
+| State | Minimum wage | 
+|---|---|
+| Wyoming (this page) | $7.25/hr (federal minimum) | 
+| California | $16.50/hr | 
+| Colorado | $14.81/hr | 
+| Hawaii | $14.00/hr | 
+| Alaska | $11.73/hr | 
+| Arizona | $14.70/hr |

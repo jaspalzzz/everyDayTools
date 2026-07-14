@@ -1,0 +1,92 @@
+Wyoming Final Paycheck Law 2026
+Your Wyoming final-pay deadline, the wages that must be included, and your options for a late paycheck.
+If you were terminated
+Within 5 business days
+If you resigned
+Within 5 business days
+How to audit a Wyoming final paycheck
+Wyoming separates final pay from the ordinary payroll cycle when the statute says so. The same deadline applies whether the worker was terminated or resigned: within 5 business days. The safest audit is to line up last day worked, separation type, earned wages, and PTO payout treatment, then compare against neighbouring rules in Alaska, Arizona, California only as context.
+- Final pay stub, direct-deposit timestamp, or mailed-check postmark.
+- Any written demand sent before filing a wage claim.
+- Last day worked and the date employment officially ended.
+- Whether the separation was a resignation, layoff, discharge, or mutual end date.
+Cross-state deadline benchmark
+Final-pay deadlines are not portable across state lines. This benchmark starts with states closest to Wyoming's termination and resignation timing, then broadens outward so payroll teams can spot where a shared process needs state-specific handling.
+| State | Region | If fired | If resigned | 
+|---|---|---|---|
+| Wyoming (this page) | West | Within 5 business days | Within 5 business days | 
+| Nevada | West | Within 3 days of termination | Next regular payday or within 7 days (whichever is sooner) | 
+| California | West | Immediately on the day of termination | Within 72 hours if no notice given; immediately if 72+ hours notice was provided | 
+| Washington | West | End of the established pay period | End of the established pay period | 
+| Alaska | West | Within 3 working days | Next regular payday or within 3 working days | 
+| Colorado | West | Immediately on the day of termination | Next scheduled payday (may be mailed within 14 days if requested) | 
+| Hawaii | West | Next business day after termination | Next regular payday | 
+| New Mexico | West | Within 5 days of termination | Within 10 days of resignation | 
+| Arizona | West | Within 7 business days or next payday (whichever is sooner) | Within 7 business days or next payday (whichever is sooner) | 
+| Montana | West | Next business day after separation | Next payday or within 10 days (whichever is earlier) | 
+| Idaho | West | Next scheduled payday or within 10 days (whichever is sooner) | Next scheduled payday or within 10 days (whichever is sooner) | 
+| Utah | West | Within 24 hours of a written demand | Next scheduled payday | 
+| Oregon | West | End of the next business day after termination | Last day of work if 48+ hours notice given; within 5 business days otherwise | 
+| Connecticut | Northeast | Next scheduled payday | Next scheduled payday | 
+| Indiana | Midwest | Next scheduled payday | Next scheduled payday | 
+| Kentucky | South | Next regular payday or within 14 days (whichever is later) | Next regular payday or within 14 days (whichever is later) | 
+| Tennessee | South | Within 21 days or next regular payday (whichever is later) | Within 21 days or next regular payday (whichever is later) | 
+| Nebraska | Midwest | Next scheduled payday | Next scheduled payday | 
+| Rhode Island | Northeast | Next scheduled payday | Next scheduled payday | 
+| Georgia | South | Next scheduled payday | Next scheduled payday | 
+| Louisiana | South | Within 15 days of separation | Within 15 days of separation | 
+| Oklahoma | South | Next scheduled payday | Next scheduled payday | 
+| Florida | South | Next scheduled payday | Next scheduled payday | 
+| Vermont | Northeast | Within 72 hours of separation | Within 72 hours of separation | 
+| Ohio | Midwest | Next scheduled payday | Next scheduled payday | 
+| District of Columbia | South | Next business day after separation | Next scheduled payday | 
+| Illinois | Midwest | Next scheduled payday | Next scheduled payday | 
+| Wisconsin | Midwest | Next scheduled payday | Next scheduled payday | 
+| Maine | Northeast | Next scheduled payday | Next scheduled payday | 
+| Mississippi | South | Next regular payday | Next regular payday | 
+| New Jersey | Northeast | Next scheduled payday | Next scheduled payday | 
+| Missouri | Midwest | Immediately if possible; otherwise next payday | Next scheduled payday | 
+| New York | Northeast | Next scheduled payday | Next scheduled payday | 
+| South Carolina | South | Within 48 hours or next scheduled payday (whichever is later) | Within 48 hours or next scheduled payday (whichever is later) | 
+| Alabama | South | Next regular payday | Next regular payday | 
+| West Virginia | South | Within 72 hours of separation | Within 72 hours of separation | 
+| Maryland | South | Next scheduled payday | Next scheduled payday | 
+| Minnesota | Midwest | Within 24 hours of a written demand | Next regular payday or within 20 days (whichever is sooner) | 
+| Pennsylvania | Northeast | Next scheduled payday | Next scheduled payday | 
+| South Dakota | Midwest | Next scheduled payday | Next scheduled payday | 
+| Virginia | South | Next scheduled payday | Next scheduled payday | 
+What must be included in your final paycheck
+A Wyoming final paycheck is only complete when it includes each of these:
+- ✓Earned bonus amounts that have vested under the written plan
+- ✓Accrued PTO or vacation only when the state rule or employer policy requires payout
+- ✓All earned wages through your last day (hourly or salary)
+- ✓Overtime pay owed for hours worked
+Whether accrued vacation or PTO must be included depends on Wyoming's PTO payout law. See Wyoming PTO payout rules →
+If your employer pays late
+- 1. Consider a civil lawsuit where penalties, interest, or attorney fees are available.
+- 2. Keep the final pay stub and payment timestamp with the demand letter.
+- 3. Document your last day worked and what you are owed.
+- 4. Confirm whether the deadline changed because you resigned rather than being terminated.
+Frequently asked questions
+What can I do if my employer is late with my final paycheck in Wyoming?
+When a Wyoming employer pays late, your route is a wage claim through the Wyoming Department of Labor (https://wyomingworkforce.org/businesses/labor-standards/), or a private lawsuit. Depending on the facts you may recover the wages plus penalties and legal costs. Document the timeline: separation date, sums owed, and all correspondence.
+Can my employer deduct money from my final paycheck in Wyoming?
+In Wyoming, a final paycheck can only be reduced by legally mandated amounts (tax, garnishment) or deductions you signed off on in writing. Docking pay to recover company property or an advance, absent that authorization or a court process, violates wage law.
+Does Wyoming have penalties for employers who pay the final paycheck late?
+Late final pay is penalized in Wyoming. Recovery can extend past the wages to waiting-time penalties, liquidated damages, or interest, based on the facts of your case. The state labor agency (https://wyomingworkforce.org/businesses/labor-standards/) investigates and can compel payment, or you can litigate.
+How long does my employer have to give me my final paycheck in Wyoming?
+How fast Wyoming requires your last check depends on the reason for separation: within 5 business days if the employer ended it, or within 5 business days if you resigned. Those are floors, not targets — sooner is fine, later is not.
+What must be included in my final paycheck in Wyoming?
+A lawful Wyoming final paycheck includes all wages through your last day worked, any overtime, and commissions/bonuses that have vested and can be calculated. Whether unused PTO is added depends on Wyoming's PTO payout law. Only legally authorized deductions (tax, garnishments) are permitted.
+How Wyoming compares to nearby states
+Final-paycheck deadlines vary across the West region. Wyoming requires within 5 business days after a termination and within 5 business days after a resignation — here is how neighbouring states set their deadlines.
+| State | If fired | If resigned | 
+|---|---|---|
+| Wyoming (this page) | Within 5 business days | Within 5 business days | 
+| California | Immediately on the day of termination | Within 72 hours if no notice given; immediately if 72+ hours notice was provided | 
+| Colorado | Immediately on the day of termination | Next scheduled payday (may be mailed within 14 days if requested) | 
+| Hawaii | Next business day after termination | Next regular payday | 
+| Alaska | Within 3 working days | Next regular payday or within 3 working days | 
+| Arizona | Within 7 business days or next payday (whichever is sooner) | Within 7 business days or next payday (whichever is sooner) | 
+Sources and review
+Publisher: My Pay Rights. Primary state source: Wyoming labor agency. Federal reference: U.S. Department of Labor state contacts. Report a correction.

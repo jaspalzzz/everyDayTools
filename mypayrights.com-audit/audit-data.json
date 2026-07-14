@@ -1,148 +1,182 @@
 {
   "summary": {
     "health_score": 84,
-    "business_type": "Content/utility site — free employment-law calculators (YMYL-adjacent, pre-monetization)",
+    "business_type": "Content/utility site — free employment-law calculators (YMYL-adjacent, pre-monetization), heavy programmatic SEO (~225 location pages)",
+    "audit_date": "2026-07-14",
+    "prior_audit_date": "2026-07-08",
+    "prior_health_score": 84,
     "top_findings": [
-      "No real Core Web Vitals field data available (CrUX/GSC/Lighthouse not accessible in this environment) — lab-only technical signals are strong but should be confirmed with real PageSpeed Insights runs",
-      "Zero raster images site-wide (fully SVG/CSS) — eliminates image-weight risk but forgoes image-search visibility entirely",
-      "Sitemap lastmod dates are inconsistent in granularity — some pages stamped per-real-edit, ~150+ US state pages share a single generic 2025-01-01 verifiedYear constant",
-      "AdSense was not yet live at audit time (correctly consent + readiness gated) — ads.txt and publisher ID are in place for when it goes live; re-confirmed live via network check that adsbygoogle.js is absent from the DOM both before and after accepting the cookie banner",
-      "Excellent international SEO: complete reciprocal hreflang set (en-GB/en-US/en-CA/en-AU/fr-CA/x-default) verified live on both homepage and the fr-CA hub",
-      "Strong content depth on programmatic pages — spot-checked CA vs TX minimum-wage pages have genuinely differentiated, state-specific content, not templated filler"
+      "CRITICAL structural flag: sitemap contains ~225 location-style pages (US state x4 variants, CA provinces, AU states) — 4.5x the quality-gate hard-stop threshold of 50. HOWEVER the content-quality spot-check independently PASSED: 51-95% unique content per pair, genuinely state-specific statutory data, not templated filler. The scale itself (not the content) is the risk — Google may read it as index bloat given 46% of the sitemap shares a placeholder lastmod date and several page types (pto-payout variants, situations pages) are only linked via the sitemap, not internal navigation.",
+      "CRITICAL: the new /uk/redundancy pillar page is entirely one-directional — none of its 16 linked spokes (calculators, guides, FAQs) link back to it. Fails the mandatory bidirectional pillar-link pattern and wastes the topical-authority value the pillar was built to create.",
+      "CRITICAL (SXO): two FAQ pages (/faq/what-is-overtime-law-us, /faq/what-is-tupe-transfer) are single 285-315 word paragraphs competing against SERPs dominated by long-form state-by-state tables and government/law-firm guides — and don't even link to the site's own better-suited calculator/state pages that would help them rank.",
+      "Real Google API data now available for the first time (Tier 1 credentials configured this session) — closed the prior audit's biggest data gap. Real Lighthouse/PSI confirms excellent lab CWV (LCP 0.5-1.7s, CLS <=0.012) across all templates. CrUX has no field data yet (expected — insufficient traffic volume, not a defect). New gap surfaced: the GSC service account has no access to the mypayrights.com property, blocking real indexation/search-performance data — a 2-minute fix (add as Full user in Search Console).",
+      "Real visual/rendered bug found (not visible from source review): floating trust badges overlap and hide the 'Basic pay' and 'Notice pay' values in the homepage hero result card at >=1024px (desktop/tablet only — not present on mobile).",
+      "Structural E-E-A-T gap carried forward and reconfirmed: no named, credentialed legal reviewer anywhere on the site for YMYL employment-law content across UK/US/CA/AU jurisdictions.",
+      "GEO/AI-citation readiness improved to 93/100 — llms.txt is now live and high quality (new since last audit), closing the prior audit's only AI-Search-Readiness gap.",
+      "Content-cluster internal linking score rose from 34 to 58/100 — the redundancy-pay compare/FAQ cannibalization risk flagged in June turned out to be a non-issue on inspection (well-differentiated by intent), but the new pillar page's one-directional linking (finding above) is an unresolved regression risk.",
+      "Backlink profile is effectively zero (site too new for Common Crawl inclusion) — expected for site age, not a defect; flagged with a prioritized digital-PR/citation-outreach plan given the site's real citation-worthy assets (50-state calculators)."
     ],
     "quick_wins": [
-      "Run a real PageSpeed Insights / Lighthouse pass once the site has real traffic (CrUX needs a traffic threshold) to replace lab estimates with field data",
-      "Add an XML image sitemap only if/when image content is introduced — not needed today given zero raster images",
-      "Differentiate sitemap lastmod granularity for the ~150 US state pages currently sharing one generic verifiedYear-based date",
-      "Consider adding FAQPage schema validation via Google's Rich Results Test on a sample of calculator pages to confirm eligibility for FAQ rich snippets"
+      "Add claude-seo@demoin-1057.iam.gserviceaccount.com as a Full user on the mypayrights.com Search Console property (~2 minutes) — unlocks real indexation status and search-performance data for every future audit.",
+      "Fix the desktop/tablet (>=1024px) trust-badge overlay that hides the homepage hero's Basic pay / Notice pay values — CSS z-index/positioning fix, no content change needed.",
+      "Add reciprocal links from /uk/redundancy's 16 spoke pages back to the pillar — mechanical internal-linking fix using the existing link matrix in findings/cluster.md.",
+      "Standardize 'My Pay Rights' branding — replace 14+ hardcoded 'MyPayRights' (no space) instances with the shared SITE.name constant already used elsewhere.",
+      "Add the `image` property to Article/BlogPosting JSON-LD using the opengraph-image route that already exists per-page — a one-line schema fix, no new asset needed.",
+      "Link /faq/what-is-overtime-law-us and /faq/what-is-tupe-transfer to their corresponding calculator/state pages — immediate internal-linking fix, no new content required for the link itself (though both pages also need depth added, see action plan)."
     ]
   },
   "categories": [
     {
       "name": "Technical SEO",
-      "score": 92,
+      "score": 91,
+      "weight": "22%",
       "what_works": [
-        "robots.txt correctly allows all major crawlers plus explicit AI crawler allowlisting (GPTBot, ClaudeBot, PerplexityBot, CCBot, Google-Extended) — strong AI-search/GEO posture",
-        "Single canonical host: www redirects to non-www in one hop (301), http upgrades to https correctly",
-        "Canonical tags present and self-referencing correctly on every page checked",
-        "No X-Robots-Tag noindex header anywhere; meta robots explicitly 'index, follow' on calculator pages",
-        "Real 404 status (not soft-404) confirmed on unknown paths",
-        "Strong security headers: HSTS (2yr, includeSubDomains, preload), CSP, X-Content-Type-Options: nosniff, X-Frame-Options: DENY, Permissions-Policy",
-        "358 URLs in sitemap.xml, single sitemap file (no need for a sitemap index at this scale)",
-        "Complete, verified hreflang implementation (6-way reciprocal set including x-default) on both homepage and fr-CA page"
+        "robots.txt permissive for all crawlers including AI bots (GPTBot, anthropic-ai, ClaudeBot, Google-Extended, PerplexityBot, CCBot), correctly declares sitemap",
+        "Sitemap grew 358 -> 411 URLs with zero duplicates; local build audit (audit-indexability.mjs / score-technical-seo.mjs) is 100/100 across all 411 routes",
+        "Security headers (CSP, HSTS preload, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy) fully consistent across every page type sampled, including the 404 page",
+        "Genuine 404s (not soft-404s) with correct no-store caching; clean single-hop redirects (www->apex, http->https, trailing-slash->canonical)",
+        "Zero JS-rendering dependency (fully SSR/SSG, is_spa:false everywhere); render-blocking resources improved from 1 stylesheet (Jul 8) to zero (CSS now fully inlined)",
+        "Complete, per-page-unique meta tags (description, full OG set, Twitter Cards); broad JSON-LD presence across all page types; hreflang correctly scoped to locale hubs only"
       ],
       "findings": [
-        {
-          "title": "No real Core Web Vitals field data",
-          "severity": "Medium",
-          "description": "This audit environment cannot run Lighthouse or query CrUX/PSI APIs. Lab signals (single render-blocking stylesheet, async-loaded JS chunks, zero raster images) suggest strong LCP/CLS potential, but this is unverified against real user data.",
-          "recommendation": "Run PageSpeed Insights (pagespeed.web.dev) against the live URL once real traffic exists for CrUX to populate; re-audit performance category with field data."
-        },
-        {
-          "title": "Sitemap lastmod granularity inconsistent across page types",
-          "severity": "Low",
-          "description": "Guide/blog/FAQ pages show real per-page dateModified values (e.g. 2026-06-27). ~150+ US state pages all share a single date derived from a generic verifiedYear constant (2025-01-01) rather than genuine per-edit tracking.",
-          "recommendation": "Not urgent — the underlying content is genuinely state-specific and not stale, this only affects the freshness signal's precision. Consider deriving lastmod from git history or a real per-page edit timestamp if state-page content starts changing independently."
-        }
+        {"title": "IndexNow protocol not implemented", "severity": "Medium", "description": "No IndexNow key file served, zero repo references to indexnow. Site adds new URLs frequently (53 in 6 days) without pinging Bing/Yandex/Naver on publish.", "recommendation": "Add a generated key file to public/ and a post-deploy step that POSTs new/changed URLs to api.indexnow.org/indexnow."},
+        {"title": "Sitemap lastmod is a placeholder date on ~46% of URLs", "severity": "Low", "description": "188/411 URLs (US state pages) carry a generic 2025-01-01 lastmod, unchanged since Jul 8 audit. Risks Google discounting lastmod as a signal site-wide.", "recommendation": "Wire US state page generator to a real content-verified date, or omit lastmod where no real date is tracked."},
+        {"title": "Case-sensitive routes 404 instead of normalizing", "severity": "Low", "description": "Mixed-case URLs (e.g. /Redundancy-Pay-Calculator) 404 instead of 301-redirecting to canonical casing on this static-export/Cloudflare Pages host.", "recommendation": "Add a Cloudflare _redirects rule or functions/ middleware to lowercase and 301 mismatched-case paths."},
+        {"title": "Mobile tap-target sizing only confirmed at source level", "severity": "Info", "description": "Viewport meta correct and unlocked on all sampled pages; actual rendered sizing is covered by the visual audit (see Visual/UX section).", "recommendation": "None from this category — see Visual findings."},
+        {"title": "Strong lab CWV source signals, cross-reference against real field data", "severity": "Info", "description": "Zero render-blocking CSS, async scripts, no raster images/@font-face on sampled pages.", "recommendation": "None; maintain current build pattern as pages are added."}
       ]
     },
     {
       "name": "Content Quality",
-      "score": 88,
+      "score": 74,
+      "weight": "23%",
       "what_works": [
-        "Spot-checked programmatic state pages (CA vs TX minimum wage) have genuinely different, state-specific figures and context — not templated filler with swapped placeholders",
-        "Every calculator page cites named primary/official sources (legislation.gov.uk, gov.uk, irs.gov, dol.gov, canada.ca, fairwork.gov.au style domains) directly beside the claim",
-        "Extensive same-session fact verification found and fixed several real stale/wrong figures (see Critical Issues) — remaining live figures have now been checked against primary sources",
-        "EditorialReview component correctly avoids asserting a review date it can't back up — omits the date claim entirely on pages without a real verifiedDate rather than showing vague reassurance text",
-        "Real named authorship (Jaspal Singh, Founder) consistent across About page, footer, and schema.org author/reviewedBy fields — not a fabricated 'editorial team'"
+        "Location-page quality gate: PASS — 51-95% unique content across every sampled state/province pair, genuinely differentiated statutory data (deadlines, DOL/agency links), not find-replaced boilerplate",
+        "A previously-documented HARD-STOP duplication defect (16-18% unique on federal-minimum-wage-tier states) was fixed across three prior iterations and confirmed still holding at the current, larger scale (411 vs 262 URLs) — quality improved, did not regress",
+        "Real, checkable source citations on every sampled page (named publisher, state labor agency link, federal DOL reference)",
+        "Location-page word counts comfortably clear the 500-600 floor for final-paycheck, minimum-wage, and pto-payout variants"
       ],
       "findings": [
-        {
-          "title": "No independent readability/reading-level scoring tool available in this environment",
-          "severity": "Info",
-          "description": "Could not run a Flesch-Kincaid or similar automated readability pass. Manual spot-reads of calculator FAQ copy suggest plain-English, appropriately scoped for a general consumer audience.",
-          "recommendation": "Low priority — content reads clearly in manual review. Revisit if a readability tool becomes available."
-        }
+        {"title": "Two of five sampled state hub pages fall below the word-count floor", "severity": "Low", "description": "Kansas (409 words) and Mississippi (406 words) sit below the 500-600 word floor for location pages, likely correlated with the 'federal-minimum, no-PTO-statute' state cluster.", "recommendation": "Add one genuinely state-specific content block (enforcement agency detail, recent legislative change) to hub pages in the shared-tier cluster."},
+        {"title": "No visible per-page 'last verified' date stamp on US state pages", "severity": "Medium", "description": "Unlike UK calculators ('Rates verified 6 April 2026'), no dated freshness badge was found in extracted text on US state pages — may be a genuine gap or an extraction artifact, not confirmed against raw HTML.", "recommendation": "Confirm via raw HTML inspection; add a dated freshness badge to US/CA/AU templates matching the UK pattern."},
+        {"title": "No named, credentialed legal reviewer", "severity": "High", "description": "Sole named author is a software engineer; no solicitor/attorney review on any page across UK/US/CA/AU YMYL content. Carried forward from the 27 June audit, likely still open.", "recommendation": "Engage a qualified employment-law professional per jurisdiction to review calculator logic and legal copy; display name, credential, review date. Highest-leverage E-E-A-T improvement available."},
+        {"title": "Cross-state comparison tables do a lot of the 'uniqueness' lifting", "severity": "Low", "description": "The 30-40 row 'Cross-state deadline benchmark' table is a re-sorted view of the same shared 51-state dataset on every page — legitimate but worth monitoring as the narrative-to-tabular ratio shifts.", "recommendation": "Continue periodic re-sampling of the most-similar state pairs, tracking narrative-to-tabular content ratio."},
+        {"title": "Other E-E-A-T items carried forward, not re-verified this session", "severity": "Info", "description": "Methodology/editorial-policy depth, privacy policy, compare/FAQ duplication were documented in the Jul 8 and Jun 27 audits but not re-fetched this session per audit scope.", "recommendation": "Re-verify on next pass, particularly the named-reviewer gap and freshness-badge question."}
       ]
     },
     {
       "name": "On-Page SEO",
-      "score": 90,
+      "score": 82,
+      "weight": "20%",
       "what_works": [
-        "Single H1 per page, logical H2 hierarchy observed on every page sampled (redundancy calculator, guides, state pages)",
-        "Title tags and meta descriptions are unique and specific per page, not templated boilerplate (verified across calculator, state, and guide page types)",
-        "Breadcrumb navigation present and marked up on tool pages",
-        "Internal linking is dense and relevant — Related tools/guides sections, footer category links, mega-menu, all cross-link real, live pages (verified extensively this session — several previously-broken internal links were found and fixed)"
+        "Every sampled route has a self-referential canonical, robots: index,follow, exactly one H1, and passing title/description length (100/100 on local build audit across all 411 routes)",
+        "Meta descriptions, full Open Graph set, and Twitter Cards verified real and per-page-unique (not placeholders) on multiple page types",
+        "Breadcrumbs present via BreadcrumbList schema on all deep page types"
       ],
-      "findings": []
+      "findings": [
+        {"title": "Two FAQ pages critically thin relative to their competing SERP", "severity": "Critical", "description": "/faq/what-is-overtime-law-us (285 words) and /faq/what-is-tupe-transfer (315 words) are single-paragraph answers competing against SERPs dominated by long-form state-by-state tables and government/law-firm guides.", "recommendation": "Expand both pages to genuine long-form depth matching what ranks, and add contextual links to the site's own calculator/state pages that address the same query."},
+        {"title": "Minimal in-content cross-linking to the site's own better-suited tools", "severity": "Medium", "description": "/tupe-wizard, /take-home-overtime-calculator, and /compare/* pages exist but aren't surfaced contextually from the FAQ pages that most need them.", "recommendation": "Add contextual in-body links from FAQ/guide pages to the relevant calculator or comparison tool."},
+        {"title": "Homepage hero result card: floating trust badges obscure key values at desktop widths", "severity": "High", "description": "Confirmed via rendered screenshot at 1024/1280/1366/1920px: trust badges overlap and hide the 'Basic pay' and 'Notice pay' fields in the sample result card. Not present on mobile.", "recommendation": "Fix z-index/positioning of the trust-badge row relative to the result card at >=1024px breakpoints."},
+        {"title": "Mobile cookie-consent banner overlaps hero search widget submit button", "severity": "Medium", "description": "On mobile, the consent banner obscures the primary CTA above the fold until dismissed.", "recommendation": "Reposition consent banner or reserve space so it doesn't overlap the primary interactive element."},
+        {"title": "Several mobile tap targets under the 44x44px guideline", "severity": "Medium", "description": "Hamburger menu (36x36), homepage quick-link pills (35px tall), consent-banner buttons (40px tall), footer privacy link (16px tall).", "recommendation": "Increase touch-target sizing to meet the 44x44px accessibility guideline across these elements."}
+      ]
     },
     {
       "name": "Schema / Structured Data",
-      "score": 85,
+      "score": 80,
+      "weight": "10%",
       "what_works": [
-        "Multiple JSON-LD blocks per page (BreadcrumbList, WebApplication, FAQPage confirmed present via source review)",
-        "Article/Guide schema includes both author (Person, real named founder) and reviewedBy (Organization) fields",
-        "WebApplication schema includes isAccessibleForFree: true and an offers block with correct currency-by-region logic"
+        "Broad JSON-LD coverage across every page type: WebSite/Organization (home), BreadcrumbList/WebApplication/FAQPage (calculators), Article/FAQPage (blog, compare, state pages)",
+        "FAQPage/QAPage correctly retained post-Google's May 2026 FAQ rich-result retirement — not stripped, since it retains real AI/LLM citation value",
+        "Local build validation (score-schema-seo.mjs) is 100/100 on parse validity and required-field checks"
       ],
       "findings": [
-        {
-          "title": "Schema validity not run through Google's Rich Results Test in this session",
-          "severity": "Low",
-          "description": "JSON-LD structure was reviewed in source and confirmed present on rendered pages, but not validated against Google's live Rich Results Test tool, which can catch subtle type/property errors static review misses.",
-          "recommendation": "Spot-check 3-5 representative page types (calculator, guide, FAQ, blog, state page) through search.google.com/test/rich-results before the next major schema change."
-        }
+        {"title": "Article/BlogPosting JSON-LD missing required `image` property", "severity": "High", "description": "Blog posts, FAQ-as-Article, and compare pages omit `image`, a Google-required Article property — traces to the site's deliberate zero-raster-image build.", "recommendation": "Reference the existing per-route opengraph-image endpoint (already live on calculator pages) in the Article schema's image field."},
+        {"title": "Inconsistent publisher entity name across templates", "severity": "Medium", "description": "'My Pay Rights' (via shared SITE.name constant) vs hardcoded 'MyPayRights' (no space) in 14+ templates (/faq/*, /compare/*, /guides/*, two /us/states/[state]/* templates). Weakens entity-resolution consistency for Google/AI.", "recommendation": "Replace hardcoded 'MyPayRights' strings with the shared SITE.name constant across all affected templates."},
+        {"title": "Article publisher objects omit `logo`", "severity": "Low", "description": "Google-recommended `logo` property is missing from publisher objects; the asset (logo-mark.svg) already exists and is used correctly elsewhere.", "recommendation": "Add the existing logo asset reference to the publisher object in Article schema."},
+        {"title": "FAQPage schema no longer earns Google SERP rich results (informational)", "severity": "Info", "description": "Per the May 7, 2026 full retirement, FAQPage schema has no remaining Google SERP benefit sitewide.", "recommendation": "Keep as-is — no removal, no QAPage conversion needed (editorial, not user-submitted Q&A); retained for AI/LLM citation value only."},
+        {"title": "Stale 2025 year reference embedded in a live schema-text block", "severity": "Low", "description": "A California state-page FAQPage answer contains a hardcoded '2025' reference despite dateModified being 2026-07-09 — AI engines may cite the schema text verbatim.", "recommendation": "Fix the hardcoded year reference in the affected FAQ answer text."}
       ]
     },
     {
       "name": "Performance (CWV)",
-      "score": 78,
+      "score": 90,
+      "weight": "10%",
       "what_works": [
-        "Zero raster images site-wide — no LCP risk from unoptimized images, no CLS risk from image loading",
-        "Single render-blocking stylesheet in <head>; all JS chunks load async",
-        "Static export (Next.js output: 'export') served from Cloudflare's edge — no server-side render latency"
+        "Real Google PageSpeed Insights v5 (Lighthouse) data collected for the first time this audit (Tier 1 API credentials now configured) — replaces prior audit's fully-inferred 78/100",
+        "Homepage, calculator page, and state page all score 100/100 Lighthouse Performance on mobile and desktop, LCP 0.5-1.7s, CLS <=0.012 — comfortably 'Good' band",
+        "Zero render-blocking resources; consistent with the site's zero-image, static-export architecture"
       ],
       "findings": [
-        {
-          "title": "No field data (CrUX) or lab data (Lighthouse) available to score this category directly",
-          "severity": "Medium",
-          "description": "Score above is inferred from structural/lab-adjacent signals only (resource loading pattern, response times observed via curl: 0.49s-1.82s across 3 samples, likely reflecting CDN cache state rather than app performance).",
-          "recommendation": "Run a real PageSpeed Insights test post-launch/at-traffic to replace this inferred score with real LCP/INP/CLS numbers."
-        }
+        {"title": "No CrUX field data available yet", "severity": "Medium", "description": "Both CrUX API and CrUX History API return 'insufficient Chrome traffic volume for eligibility' for the origin and all sampled URLs. Expected for a site at this traffic stage, not a defect.", "recommendation": "Re-check monthly as organic traffic grows; treat lab data as the best available proxy until then."},
+        {"title": "Homepage mobile LCP borderline (2.56s on one run)", "severity": "Medium", "description": "Right at the 2.5s Good/Needs-Improvement boundary while calculator (1.68s) and blog (1.69s) are comfortably under; desktop is fine everywhere.", "recommendation": "Identify and preload the homepage's actual LCP element; re-test with margin."},
+        {"title": "Accessibility regressions on calculator and state page templates", "severity": "Medium", "description": "Real Lighthouse audits fail color-contrast, heading-order, and link-in-text-block checks on /redundancy-pay-calculator and /us/states/california (scores 89-91 vs 100 on homepage); state page additionally fails a label/accessible-name mismatch on 'Switch country'.", "recommendation": "Fix contrast ratios, heading order, and link distinguishability on the calculator and state page templates (template-level fix propagates to all instances)."},
+        {"title": "Missing CSP Trusted Types and COOP headers", "severity": "Medium", "description": "Lighthouse flags no CSP Trusted Types directive and no Cross-Origin-Opener-Policy header as High-severity security diagnostics; current CSP also allows 'unsafe-inline' for script-src.", "recommendation": "Add COOP: same-origin and a Trusted-Types-enforcing CSP at the Cloudflare/edge config level."},
+        {"title": "GSC service account lacks access to the mypayrights.com property", "severity": "High", "description": "The authenticated service account has access to a different property (easyphoto.in) but not mypayrights.com — blocking real indexation status, URL Inspection, and search-performance (clicks/impressions/CTR/position) data.", "recommendation": "Add claude-seo@demoin-1057.iam.gserviceaccount.com as a Full user on the mypayrights.com Search Console property (~2 minutes), then re-run."}
       ]
     },
     {
       "name": "AI Search Readiness",
-      "score": 91,
+      "score": 93,
+      "weight": "10%",
       "what_works": [
-        "robots.txt explicitly allows GPTBot, ClaudeBot, PerplexityBot, CCBot, and Google-Extended — deliberate GEO/AI-citation posture, not accidental",
-        "Every calculator page structures content as: direct answer/estimate, named source, FAQ Q&A pairs — highly extractable format for AI Overviews/answer engines",
-        "FAQPage schema present, giving AI crawlers structured Q&A pairs directly",
-        "Source-adjacent citation pattern (source link placed immediately next to the specific claim it supports) mirrors what AI answer engines look for when selecting a citable passage"
+        "llms.txt is now live at https://mypayrights.com/llms.txt (new since Jul 8 audit) — unusually high quality: full page inventory, named sources per jurisdiction, dated statutory figures, explicit AI Citation Guidelines and Permissions sections. Closes the prior audit's only AI-Search-Readiness gap.",
+        "robots.txt explicitly allows GPTBot, anthropic-ai, ClaudeBot, Google-Extended, PerplexityBot, CCBot",
+        "All sampled pages fully server-rendered/static with FAQPage/Article/BreadcrumbList/WebApplication JSON-LD, named authorship, and source-adjacent citations present in raw HTML an AI crawler receives",
+        "FAQPage/QAPage schema correctly retained post-May-2026 Google FAQ retirement for its AI-citation value"
       ],
       "findings": [
-        {
-          "title": "No llms.txt file",
-          "severity": "Low",
-          "description": "llms.txt is an emerging, not-yet-standardized convention some sites use to guide AI crawlers to canonical content. Not having one is not a real deficiency today.",
-          "recommendation": "Optional. Low priority — monitor adoption before investing here."
-        }
+        {"title": "No independently-verified brand-mention signals", "severity": "Medium", "description": "A live web/social search for 'mypayrights.com' mentions (Wikipedia/Reddit/YouTube/LinkedIn) was not executed this session, leaving the strongest AI-citation predictor (YouTube mentions, ~0.737 correlation) unmeasured.", "recommendation": "Run a dedicated brand-mention sweep; consider a YouTube explainer video given the outsized correlation vs. domain-rating correlation (~0.266)."},
+        {"title": "Calculator pages have thin H2 sub-structure", "severity": "Low", "description": "/redundancy-pay-calculator has strong explanatory prose but isn't broken into question-phrased H2/H3 units the way FAQ pages are, limiting independently-citable passages.", "recommendation": "Restructure calculator explanatory text into question-phrased H2/H3 sections."},
+        {"title": "No RSL 1.0 licensing manifest alongside llms.txt", "severity": "Low", "description": "The prose Permissions section in llms.txt already substantively covers citation permissions; RSL is an emerging, not-yet-critical standard.", "recommendation": "Optional — add if/when RSL adoption becomes more standard."},
+        {"title": "Multi-modal content signal remains weak", "severity": "Low", "description": "Zero raster images, no video, no charts on any sampled page, capping the Multi-Modal AI-citation dimension regardless of text citability strength elsewhere. Unchanged from prior audit.", "recommendation": "Consider adding at least one chart/diagram type per major content template."}
       ]
     },
     {
       "name": "Images",
       "score": 95,
+      "weight": "5%",
       "what_works": [
-        "Zero raster <img> tags found across every page sampled (homepage, blog, guides, about) — site is built entirely with inline SVG and CSS",
-        "No missing-alt-text risk since there are no raster images to caption",
-        "OG/Twitter card images are dynamically generated (Next.js opengraph-image route) at correct 1200x630 dimensions with alt text set"
+        "Zero raster images site-wide (fully SVG/CSS/system-font) — eliminates image-weight and unsized-image CLS risk entirely, reconfirmed incidentally by both the technical and performance audits this pass"
       ],
       "findings": [
-        {
-          "title": "No opportunity for image-search traffic",
-          "severity": "Info",
-          "description": "The all-SVG approach is a deliberate, reasonable performance tradeoff, but it means the site captures zero Google Images search traffic, which can be a meaningful channel for some illustrative/explainer content.",
-          "recommendation": "Not a fix — a product decision. Worth revisiting only if image-search traffic becomes a stated growth goal."
-        }
+        {"title": "Zero raster images forgoes image-search visibility", "severity": "Low", "description": "Carried forward from the Jul 8 audit — an intentional architectural trade-off, not re-independently re-audited this pass (no dedicated image agent run).", "recommendation": "If image-search traffic becomes a priority, consider adding illustrative diagrams/charts for key calculator/guide pages (also benefits AI Search Readiness multi-modal signal)."}
+      ]
+    }
+  ],
+  "supplementary_analyses": [
+    {
+      "name": "Content Topic Clusters & Internal Linking",
+      "score": 58,
+      "note": "Not part of the 7-category weighted health score; reported separately per skill methodology. Up from 34/100 on 27 June 2026.",
+      "top_findings": [
+        {"title": "Pillar-to-spoke linking is one-directional", "severity": "Critical", "description": "/uk/redundancy fans out to 6 calculators, 4 guides, and 6 FAQs, but none of those spokes link back to the pillar — verified by direct link extraction on all 6 redundancy-topic page types.", "recommendation": "Add reciprocal links from every spoke page back to /uk/redundancy using the link matrix in findings/cluster.md."},
+        {"title": "Guide vs. blog cannibalization unresolved", "severity": "High", "description": "/guides/uk-redundancy-pay and /blog/uk-redundancy-pay-guide-2026 have near-identical titles/H1s/structure at comparable depth with no cross-link. Flagged in the June 27 audit, still unfixed.", "recommendation": "Cross-link the two pages and differentiate their angle/depth, or merge."},
+        {"title": "Compare and FAQ pages have no path to the pillar or specific guide", "severity": "High", "description": "They link generically to /guides or /faq hubs but never to /uk/redundancy, /guides/uk-redundancy-pay, or /situations/made-redundant-uk.", "recommendation": "Add specific contextual links, not just hub-level links."},
+        {"title": "Blog is the weakest-linked content format sitewide", "severity": "Medium", "description": "Only links to 2 calculators, nothing else.", "recommendation": "Add contextual links from blog posts to relevant calculators, guides, and FAQs."},
+        {"title": "Redundancy-page cannibalization concern was a non-issue on inspection", "severity": "Info", "description": "Each /compare/ page pairs redundancy against a genuinely distinct concept; FAQs each target a distinct single question. No real overlap found.", "recommendation": "None needed — false alarm from the prior audit's assumption, now verified via real link/content extraction."}
+      ]
+    },
+    {
+      "name": "Search Experience Optimization (SXO)",
+      "score": 56,
+      "note": "Not part of the 7-category weighted health score; reported separately per skill methodology.",
+      "top_findings": [
+        {"title": "Overtime FAQ ignores the site's own competing assets", "severity": "Critical", "description": "/faq/what-is-overtime-law-us is a 285-word single paragraph while the SERP is dominated by state-by-state comparison tables; doesn't link to the site's own take-home-overtime-calculator or /us/states/* daily-overtime data.", "recommendation": "Expand with state-by-state data and link to the site's own calculator/state pages."},
+        {"title": "TUPE FAQ critically under-depth for a definitional YMYL query", "severity": "High", "description": "/faq/what-is-tupe-transfer is 315 words vs long-form guides from Acas, CIPD, GOV.UK, and Wikipedia covering transfer types, ETO reasons, and consultation duties.", "recommendation": "Expand to match competing depth on transfer types, ETO reasons, and consultation duties."},
+        {"title": "E-E-A-T authority gap across all YMYL legal content", "severity": "High", "description": "All sampled pages cite a non-credentialed founder/editorial-team byline while direct SERP competitors are government agencies or named law firms with attorney credentials.", "recommendation": "Same as the Content Quality category's named-reviewer finding — highest-leverage fix, addresses both categories at once."},
+        {"title": "Zero images/visual aids on every page sampled", "severity": "Medium", "description": "No formula diagrams, flowcharts, or timelines anywhere in the 4-page sample.", "recommendation": "Add at least one visual aid type per major template (overlaps with the Images/AI-Search findings)."},
+        {"title": "Page-type alignment is a real strength, not a mismatch", "severity": "Info", "description": "Calculator (Tool) and state pages (Hybrid content+tool) are correctly aligned with what Google rewards for those query types — the gap is concentrated in the two thin FAQ pages and site-wide authority signals, not a fundamental architecture problem.", "recommendation": "None — reinforces continuing the current page-type strategy for calculators and state pages."}
+      ]
+    },
+    {
+      "name": "Backlink Profile",
+      "score": null,
+      "note": "Not part of the 7-category weighted health score. Scored as directional-floor/insufficient-data per the skill's own validation gate — site predates the latest Common Crawl snapshot, this is a timing artifact of site age, not a low-authority signal.",
+      "top_findings": [
+        {"title": "Zero referring domains detected (expected for site age)", "severity": "Info", "description": "mypayrights.com does not appear in the latest Common Crawl web graph at all (in_crawl: false) — the site's earliest content post-dates that crawl's collection window.", "recommendation": "Not a defect; re-check as the site accumulates crawl history."},
+        {"title": "Prioritized link-acquisition plan", "severity": "Info", "description": "Site has real citation-worthy assets: full 50-state + DC final-paycheck/minimum-wage/PTO coverage, UK/Canada/Australia jurisdiction coverage, ~30 free calculators.", "recommendation": "1) .gov/.edu/legal-aid citation outreach for state pages. 2) HARO-style journalist outreach tied to layoff news cycles. 3) HR/employment-law blog outreach for guides. 4) Comparison pages as citation bait. 5) Free-tool directory submissions."},
+        {"title": "Add Moz + Bing Webmaster API keys before next audit cycle", "severity": "Low", "description": "Currently Tier 0 (Common Crawl only) — no DA/PA or spam-score data available.", "recommendation": "Register free API keys so the next audit pass has real backlink signal once initial links exist."}
       ]
     }
   ],
@@ -152,38 +186,53 @@
         "name": "Phase 1: Critical Fixes",
         "timeframe": "Week 1",
         "items": [
-          "None outstanding — the critical-severity issues found across this session's broader audit work (stale tribunal compensation cap, stale Vento bands, wrong Class 4 NI rate, dead source links, AdSense consent-gate regression) have already been found and fixed in prior commits this session."
+          "Add claude-seo service account as a Full user on the mypayrights.com Search Console property (2 min) — unblocks real indexation/search-performance monitoring going forward",
+          "Fix desktop/tablet (>=1024px) trust-badge overlay hiding Basic pay / Notice pay values in the homepage hero result card",
+          "Add reciprocal links from all 16 /uk/redundancy spoke pages back to the pillar",
+          "Expand /faq/what-is-overtime-law-us and /faq/what-is-tupe-transfer to genuine long-form depth and link them to the site's own calculator/state pages",
+          "Explicitly review and justify (or reduce) the ~225 location-page footprint against the quality-gate hard-stop threshold — content quality independently passed, but document the decision given the scale"
         ]
       },
       {
         "name": "Phase 2: High-Impact Improvements",
         "timeframe": "Weeks 2-3",
         "items": [
-          "Run a real PageSpeed Insights / Lighthouse audit once traffic exists to replace lab-inferred performance scores with field data",
-          "Validate JSON-LD on 3-5 representative page types via Google's Rich Results Test"
+          "Engage a qualified employment-law professional per jurisdiction (UK/US/CA/AU) to review calculator logic and legal copy; display name, credential, review date",
+          "Fix inconsistent 'MyPayRights' vs 'My Pay Rights' entity naming across 14+ templates by using the shared SITE.name constant",
+          "Add `image` and `logo` properties to Article/BlogPosting JSON-LD using the existing opengraph-image endpoint and logo-mark.svg asset",
+          "Cross-link /guides/uk-redundancy-pay and /blog/uk-redundancy-pay-guide-2026 or differentiate/merge them to resolve cannibalization risk",
+          "Fix color-contrast, heading-order, and link-in-text-block accessibility issues on the calculator and state page templates (template-level fix propagates broadly)",
+          "Add COOP header and a Trusted-Types-enforcing CSP at the Cloudflare edge config level",
+          "Fix mobile consent-banner overlap of the hero search widget's submit button and increase under-sized tap targets to 44x44px"
         ]
       },
       {
         "name": "Phase 3: Content & Authority",
         "timeframe": "Month 2",
         "items": [
-          "Consider deriving US state page lastmod dates from real per-edit history rather than the shared generic verifiedYear constant",
-          "Continue the calculator-by-calculator source verification sweep for the ~15 calculators not yet individually re-checked against live official sources this session"
+          "Add a dated 'last verified' freshness badge to US/CA/AU state pages matching the existing UK calculator pattern",
+          "Add IndexNow protocol support (key file + post-deploy ping to Bing/Yandex/Naver)",
+          "Add a state-specific content block (enforcement agency detail, recent legislative change) to hub pages below the 500-600 word floor (Kansas, Mississippi, Wyoming)",
+          "Add contextual links from blog posts to relevant calculators/guides/FAQs (currently the weakest-linked content format)",
+          "Begin prioritized link-acquisition outreach: .gov/legal-aid citations for state pages, HARO-style journalist outreach, HR/employment-law blog outreach",
+          "Run a dedicated brand-mention sweep (YouTube, Reddit, Wikipedia, LinkedIn) — highest-correlation AI-citation signal currently unmeasured"
         ]
       },
       {
         "name": "Phase 4: Monitoring & Iteration",
         "timeframe": "Ongoing",
         "items": [
-          "Once AdSense goes fully live, re-verify the consent gate is still enforced after any future refactor (this was found broken and fixed once already this session)",
-          "Re-run this audit quarterly, or after any major template/schema change"
+          "Re-check CrUX field data monthly as organic traffic grows — currently no eligible data, expected for site's traffic stage",
+          "Fix case-sensitive route 404s with a lowercase-and-301 redirect rule",
+          "Fix the ~46% of sitemap URLs sharing a placeholder 2025-01-01 lastmod date",
+          "Register free Moz + Bing Webmaster API keys to unlock real backlink signal on the next audit",
+          "Periodically re-sample the most-similar state-page pairs to confirm the location-page content-uniqueness gate continues to pass as new pages are added"
         ]
       }
     ]
   },
   "artifacts": {
     "findings_dir": "findings/",
-    "screenshots_dir": "screenshots/",
-    "notes": "Desktop (1280px) and mobile (375px) above-the-fold screenshots of the homepage and a calculator page were captured and reviewed for this pass but are not persisted as PNG files -- this environment has no binary file-write path from the screenshot tool to disk. See findings/visual.md for the written findings from that review."
+    "screenshots_dir": "screenshots/"
   }
 }

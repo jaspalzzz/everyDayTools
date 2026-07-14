@@ -1,0 +1,92 @@
+Kansas Final Paycheck Law 2026
+Deadlines, what must be included, and how to claim if your Kansas employer pays late.
+If you were terminated
+Next regular payday
+If you resigned
+Next regular payday
+How to audit a Kansas final paycheck
+Kansas's final-paycheck rule is a timing rule first and a documentation issue second. The same deadline applies whether the worker was terminated or resigned: next regular payday. That makes the separation date, the reason employment ended, and the next regular payday especially important. Nearby states such as Illinois, Indiana, Iowa may use different triggers, so a regional payroll policy can be wrong for Kansas.
+- Last day worked and the date employment officially ended.
+- Whether the separation was a resignation, layoff, discharge, or mutual end date.
+- Final timesheet, overtime calculation, commission plan, and bonus terms.
+- Written PTO or vacation policy in force on the separation date.
+Cross-state deadline benchmark
+Final-pay deadlines are not portable across state lines. This benchmark starts with states closest to Kansas's termination and resignation timing, then broadens outward so payroll teams can spot where a shared process needs state-specific handling.
+| State | Region | If fired | If resigned | 
+|---|---|---|---|
+| Kansas (this page) | Midwest | Next regular payday | Next regular payday | 
+| Iowa | Midwest | Next regular payday | Next regular payday | 
+| Mississippi | South | Next regular payday | Next regular payday | 
+| Alabama | South | Next regular payday | Next regular payday | 
+| Hawaii | West | Next business day after termination | Next regular payday | 
+| South Dakota | Midwest | Next scheduled payday | Next scheduled payday | 
+| North Dakota | Midwest | Next payday (within 15 days) | Next payday (within 15 days) | 
+| Ohio | Midwest | Next scheduled payday | Next scheduled payday | 
+| Michigan | Midwest | Next scheduled payday | Next scheduled payday | 
+| Minnesota | Midwest | Within 24 hours of a written demand | Next regular payday or within 20 days (whichever is sooner) | 
+| Illinois | Midwest | Next scheduled payday | Next scheduled payday | 
+| Wisconsin | Midwest | Next scheduled payday | Next scheduled payday | 
+| Nebraska | Midwest | Next scheduled payday | Next scheduled payday | 
+| Indiana | Midwest | Next scheduled payday | Next scheduled payday | 
+| Missouri | Midwest | Immediately if possible; otherwise next payday | Next scheduled payday | 
+| Rhode Island | Northeast | Next scheduled payday | Next scheduled payday | 
+| West Virginia | South | Within 72 hours of separation | Within 72 hours of separation | 
+| District of Columbia | South | Next business day after separation | Next scheduled payday | 
+| Nevada | West | Within 3 days of termination | Next regular payday or within 7 days (whichever is sooner) | 
+| California | West | Immediately on the day of termination | Within 72 hours if no notice given; immediately if 72+ hours notice was provided | 
+| Tennessee | South | Within 21 days or next regular payday (whichever is later) | Within 21 days or next regular payday (whichever is later) | 
+| Arizona | West | Within 7 business days or next payday (whichever is sooner) | Within 7 business days or next payday (whichever is sooner) | 
+| New Hampshire | Northeast | Within 72 hours of separation | Next scheduled payday | 
+| Louisiana | South | Within 15 days of separation | Within 15 days of separation | 
+| New York | Northeast | Next scheduled payday | Next scheduled payday | 
+| New Jersey | Northeast | Next scheduled payday | Next scheduled payday | 
+| Virginia | South | Next scheduled payday | Next scheduled payday | 
+| Maine | Northeast | Next scheduled payday | Next scheduled payday | 
+| Arkansas | South | Within 7 days of separation | Within 7 days of separation | 
+| Alaska | West | Within 3 working days | Next regular payday or within 3 working days | 
+| Utah | West | Within 24 hours of a written demand | Next scheduled payday | 
+| Massachusetts | Northeast | Day of termination | Next scheduled payday | 
+| Oregon | West | End of the next business day after termination | Last day of work if 48+ hours notice given; within 5 business days otherwise | 
+| Kentucky | South | Next regular payday or within 14 days (whichever is later) | Next regular payday or within 14 days (whichever is later) | 
+| Maryland | South | Next scheduled payday | Next scheduled payday | 
+| Georgia | South | Next scheduled payday | Next scheduled payday | 
+| Wyoming | West | Within 5 business days | Within 5 business days | 
+| Montana | West | Next business day after separation | Next payday or within 10 days (whichever is earlier) | 
+| South Carolina | South | Within 48 hours or next scheduled payday (whichever is later) | Within 48 hours or next scheduled payday (whichever is later) | 
+| Pennsylvania | Northeast | Next scheduled payday | Next scheduled payday | 
+| Colorado | West | Immediately on the day of termination | Next scheduled payday (may be mailed within 14 days if requested) | 
+What must be included in your final paycheck
+Your Kansas employer must include all of the following in your final paycheck:
+- ✓All earned wages through your last day (hourly or salary)
+- ✓Overtime pay owed for hours worked
+- ✓Commission that has already been earned and is calculable
+- ✓Any unreimbursed business expenses (where contractually required)
+Whether accrued vacation or PTO must be included depends on Kansas's PTO payout law. See Kansas PTO payout rules →
+If your employer pays late
+- 1. Document your last day worked and what you are owed.
+- 2. Confirm whether the deadline changed because you resigned rather than being terminated.
+- 3. Send a written demand to your employer; email is usually enough to preserve a record.
+- 4. File a wage claim with the state labor agency if payment still does not arrive.
+Frequently asked questions
+How long does my employer have to give me my final paycheck in Kansas?
+In Kansas, the deadline depends on how your employment ended. If your employer terminated you, your final paycheck is due next regular payday. If you resigned voluntarily, it is due next regular payday. These are minimum legal deadlines — your employer can pay sooner, but not later.
+What must be included in my final paycheck in Kansas?
+Your final paycheck in Kansas must include all wages earned through your last day of work, including any overtime owed and any accrued but unpaid commissions or bonuses that are calculable at the time. Whether accrued PTO must be included depends on Kansas's PTO payout law — check the Kansas employment law page for specifics. Final paychecks cannot have unauthorized deductions.
+What can I do if my employer is late with my final paycheck in Kansas?
+Kansas gives you enforcement options if the deadline is missed: file with the Kansas Department of Labor (https://www.dol.ks.gov) or sue in civil court. Awards frequently add penalties and attorney fees to the unpaid wages. Preserve evidence — your final day, the outstanding amount, and written exchanges with the employer.
+Can my employer deduct money from my final paycheck in Kansas?
+Only if the law requires it or you agreed in writing. Kansas employers may deduct taxes and garnishments, but withholding final pay to recover property or a cash advance — without written authorization or court process — is a wage violation you can act on.
+Does Kansas have penalties for employers who pay the final paycheck late?
+Yes. Kansas provides remedies for employees whose final paycheck is late. Depending on the circumstances, you may be entitled to the unpaid wages plus waiting-time penalties, liquidated damages, or interest. The Kansas labor enforcement agency can investigate your complaint and order payment. You may also pursue a private civil claim in state court. Contact the Kansas Department of Labor at https://www.dol.ks.gov to file a claim.
+How Kansas compares to nearby states
+Final-paycheck deadlines vary across the Midwest region. Kansas requires next regular payday after a termination and next regular payday after a resignation — here is how neighbouring states set their deadlines.
+| State | If fired | If resigned | 
+|---|---|---|
+| Kansas (this page) | Next regular payday | Next regular payday | 
+| Illinois | Next scheduled payday | Next scheduled payday | 
+| Indiana | Next scheduled payday | Next scheduled payday | 
+| Iowa | Next regular payday | Next regular payday | 
+| Michigan | Next scheduled payday | Next scheduled payday | 
+| Minnesota | Within 24 hours of a written demand | Next regular payday or within 20 days (whichever is sooner) | 
+Sources and review
+Publisher: My Pay Rights. Primary state source: Kansas labor agency. Federal reference: U.S. Department of Labor state contacts. Report a correction.

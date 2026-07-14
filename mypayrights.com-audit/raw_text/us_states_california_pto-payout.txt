@@ -1,0 +1,55 @@
+California PTO Payout Law 2026
+Unused vacation payout rules, final paycheck timing, and wage claim steps for California workers.
+State rule
+PTO payout required
+Earned vacation is wages that vest and cannot be forfeited; use-it-or-lose-it is banned and payout is due at separation.
+California generally protects accrued vacation after it is earned, so an employer usually has to include that value in final wages.
+PTO rule type
+PTO payout required
+If fired
+Immediately on the day of termination
+If resigned
+Within 72 hours if no notice given; immediately if 72+ hours notice was provided
+What this means in practice
+When reviewing a PTO payout in California, separate the issue into accrual, policy, and payment timing. Each one needs its own document trail.
+When vested vacation is missing from a final paycheck in California, put the dispute in writing quickly. List the hours accrued, the final rate of pay, and the policy source before escalating through https://www.dir.ca.gov/dlse/.
+How to estimate the payout
+The cleanest calculation is accrued unused PTO multiplied by your final pay rate. Keep the paystub or HR screenshot that shows the balance used for the estimate.
+Documents to save
+- Messages from payroll or HR explaining the California payout decision
+- Last-day record showing whether the immediately on the day of termination or within 72 hours if no notice given; immediately if 72+ hours notice was provided deadline applies
+- California agency URL or filing page: https://www.dir.ca.gov/dlse/
+- California final paystub showing whether unused PTO appeared as a wage line
+- Payroll or HR portal screenshot showing the accrued PTO balance
+- Employee handbook section or written PTO policy covering payout and forfeiture
+- Offer letter, contract, or separation agreement with vacation-pay terms
+State-specific checkpoints
+In California, a final paycheck — including any PTO payout that is owed — is due immediately on the day of termination when the employer ends the job and within 72 hours if no notice given; immediately if 72+ hours notice was provided when you resign. Confirm the current rule against the California labor agency before you file, since deadlines and payout rules can change between legislative sessions.
+California gives terminated workers a faster final-pay checkpoint than workers who resign, so document who initiated the separation before judging whether the PTO cash-out was late.
+California sits in the U.S. Census West region, and 2 of the 8 West comparison states below share the same approach and the rest differ, so it is worth checking each state individually.
+California's regional comparison set is Colorado, Arizona, Hawaii, Alaska, Idaho, Wyoming, Montana, and Washington. Colorado and Montana match California's payout category, while Arizona, Hawaii, Alaska, Idaho, Wyoming, and Washington use a different category.
+How regional states handle PTO payout
+How California compares with selected West states on unused vacation payout and final-pay timing. Follow a link for that state's full rules.
+| State | Rule detail | If fired | If resigned | 
+|---|---|---|---|
+| California (this page) | PTO payout required Earned vacation is wages that vest and cannot be forfeited; use-it-or-lose-it is banned and payout is due at separation. | Immediately on the day of termination | Within 72 hours if no notice given; immediately if 72+ hours notice was provided | 
+| Colorado | PTO payout required Colorado treats earned vacation as wages; forfeiture of accrued vacation is prohibited. | Immediately on the day of termination | Next scheduled payday (may be mailed within 14 days if requested) | 
+| Arizona | No state PTO payout requirement No payout requirement; use-it-or-lose-it is permitted if disclosed. | Within 7 business days or next payday (whichever is sooner) | Within 7 business days or next payday (whichever is sooner) | 
+| Hawaii | No state PTO payout requirement No state law mandates vacation payout at termination. | Next business day after termination | Next regular payday | 
+| Alaska | No state PTO payout requirement No state law mandates payout of accrued unused vacation; policy controls. | Within 3 working days | Next regular payday or within 3 working days | 
+| Idaho | No state PTO payout requirement No payout requirement; policy or contract controls. | Next scheduled payday or within 10 days (whichever is sooner) | Next scheduled payday or within 10 days (whichever is sooner) | 
+| Wyoming | PTO payout depends on policy Accrued vacation must be paid unless a written forfeiture policy was provided and acknowledged. | Within 5 business days | Within 5 business days | 
+| Montana | PTO payout required Earned vacation is wages; use-it-or-lose-it is prohibited and accrued vacation must be paid at separation. | Next business day after separation | Next payday or within 10 days (whichever is earlier) | 
+| Washington | No state PTO payout requirement No statute requires payout; governed by employer policy. | End of the established pay period | End of the established pay period | 
+Calculate and compare
+Common questions
+Does California require PTO payout when I leave?
+California generally protects accrued vacation after it is earned, so an employer usually has to include that value in final wages. Earned vacation is wages that vest and cannot be forfeited; use-it-or-lose-it is banned and payout is due at separation.
+When should unused PTO be paid in California?
+The timing question in California follows final-pay rules once PTO is owed. That means immediately on the day of termination for a firing and within 72 hours if no notice given; immediately if 72+ hours notice was provided for a voluntary quit.
+Can employers in California use a "use it or lose it" policy?
+California is a higher-risk state for "use it or lose it" forfeiture because earned vacation is treated as wages. Employers may usually cap future accrual, but cannot simply erase already earned vacation.
+How do I calculate unused PTO value in California?
+For California, calculate the gross amount by converting the PTO balance into hours and multiplying by the final regular rate. Taxes and deductions come after that gross figure.
+Where do I file a PTO payout claim in California?
+Start with the California labor agency: https://www.dir.ca.gov/dlse/. Include your final paystub, PTO balance, handbook policy, resignation or termination date, and any payroll messages about unused vacation.

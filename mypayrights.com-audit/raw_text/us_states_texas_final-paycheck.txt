@@ -1,0 +1,94 @@
+Texas Final Paycheck Law 2026
+Deadlines, what must be included, and how to claim if your Texas employer pays late.
+If you were terminated
+Within 6 calendar days of discharge
+If you resigned
+Next scheduled payday
+Was your Texas final paycheck late?
+Enter your last day and payment date to estimate whether the paycheck missed theTexas deadline. This is a timing check only, not legal advice.
+How to audit a Texas final paycheck
+Texas's final-paycheck rule is a timing rule first and a documentation issue second. Terminations are due within 6 calendar days of discharge, while resignations are due next scheduled payday. That makes the separation date, the reason employment ended, and the next regular payday especially important. Nearby states such as Alabama, Arkansas, Delaware may use different triggers, so a regional payroll policy can be wrong for Texas.
+- Final pay stub, direct-deposit timestamp, or mailed-check postmark.
+- Any written demand sent before filing a wage claim.
+- Last day worked and the date employment officially ended.
+- Whether the separation was a resignation, layoff, discharge, or mutual end date.
+Cross-state deadline benchmark
+Final-pay deadlines are not portable across state lines. This benchmark starts with states closest to Texas's termination and resignation timing, then broadens outward so payroll teams can spot where a shared process needs state-specific handling.
+| State | Region | If fired | If resigned | 
+|---|---|---|---|
+| Texas (this page) | South | Within 6 calendar days of discharge | Next scheduled payday | 
+| Virginia | South | Next scheduled payday | Next scheduled payday | 
+| Georgia | South | Next scheduled payday | Next scheduled payday | 
+| North Carolina | South | Next scheduled payday | Next scheduled payday | 
+| Oklahoma | South | Next scheduled payday | Next scheduled payday | 
+| Delaware | South | Next scheduled payday | Next scheduled payday | 
+| Florida | South | Next scheduled payday | Next scheduled payday | 
+| District of Columbia | South | Next business day after separation | Next scheduled payday | 
+| Maryland | South | Next scheduled payday | Next scheduled payday | 
+| Michigan | Midwest | Next scheduled payday | Next scheduled payday | 
+| Indiana | Midwest | Next scheduled payday | Next scheduled payday | 
+| New Hampshire | Northeast | Within 72 hours of separation | Next scheduled payday | 
+| Massachusetts | Northeast | Day of termination | Next scheduled payday | 
+| Missouri | Midwest | Immediately if possible; otherwise next payday | Next scheduled payday | 
+| New Jersey | Northeast | Next scheduled payday | Next scheduled payday | 
+| Pennsylvania | Northeast | Next scheduled payday | Next scheduled payday | 
+| South Dakota | Midwest | Next scheduled payday | Next scheduled payday | 
+| Illinois | Midwest | Next scheduled payday | Next scheduled payday | 
+| Connecticut | Northeast | Next scheduled payday | Next scheduled payday | 
+| Wisconsin | Midwest | Next scheduled payday | Next scheduled payday | 
+| Utah | West | Within 24 hours of a written demand | Next scheduled payday | 
+| New York | Northeast | Next scheduled payday | Next scheduled payday | 
+| Rhode Island | Northeast | Next scheduled payday | Next scheduled payday | 
+| Maine | Northeast | Next scheduled payday | Next scheduled payday | 
+| Nebraska | Midwest | Next scheduled payday | Next scheduled payday | 
+| Ohio | Midwest | Next scheduled payday | Next scheduled payday | 
+| Louisiana | South | Within 15 days of separation | Within 15 days of separation | 
+| Mississippi | South | Next regular payday | Next regular payday | 
+| Kentucky | South | Next regular payday or within 14 days (whichever is later) | Next regular payday or within 14 days (whichever is later) | 
+| Arkansas | South | Within 7 days of separation | Within 7 days of separation | 
+| Tennessee | South | Within 21 days or next regular payday (whichever is later) | Within 21 days or next regular payday (whichever is later) | 
+| West Virginia | South | Within 72 hours of separation | Within 72 hours of separation | 
+| Alabama | South | Next regular payday | Next regular payday | 
+| South Carolina | South | Within 48 hours or next scheduled payday (whichever is later) | Within 48 hours or next scheduled payday (whichever is later) | 
+| Kansas | Midwest | Next regular payday | Next regular payday | 
+| Nevada | West | Within 3 days of termination | Next regular payday or within 7 days (whichever is sooner) | 
+| Minnesota | Midwest | Within 24 hours of a written demand | Next regular payday or within 20 days (whichever is sooner) | 
+| Washington | West | End of the established pay period | End of the established pay period | 
+| Alaska | West | Within 3 working days | Next regular payday or within 3 working days | 
+| New Mexico | West | Within 5 days of termination | Within 10 days of resignation | 
+| Idaho | West | Next scheduled payday or within 10 days (whichever is sooner) | Next scheduled payday or within 10 days (whichever is sooner) | 
+What must be included in your final paycheck
+A Texas final paycheck is only complete when it includes each of these:
+- ✓Earned bonus amounts that have vested under the written plan
+- ✓Accrued PTO or vacation only when the state rule or employer policy requires payout
+- ✓All earned wages through your last day (hourly or salary)
+- ✓Overtime pay owed for hours worked
+Whether accrued vacation or PTO must be included depends on Texas's PTO payout law. See Texas PTO payout rules →
+If your employer pays late
+- 1. Consider a civil lawsuit where penalties, interest, or attorney fees are available.
+- 2. Keep the final pay stub and payment timestamp with the demand letter.
+- 3. Document your last day worked and what you are owed.
+- 4. Confirm whether the deadline changed because you resigned rather than being terminated.
+Frequently asked questions
+How long does my employer have to give me my final paycheck in Texas?
+In Texas, the deadline depends on how your employment ended. If your employer terminated you, your final paycheck is due within 6 calendar days of discharge. If you resigned voluntarily, it is due next scheduled payday. These are minimum legal deadlines — your employer can pay sooner, but not later.
+What must be included in my final paycheck in Texas?
+A lawful Texas final paycheck includes all wages through your last day worked, any overtime, and commissions/bonuses that have vested and can be calculated. Whether unused PTO is added depends on Texas's PTO payout law. Only legally authorized deductions (tax, garnishments) are permitted.
+What can I do if my employer is late with my final paycheck in Texas?
+Missed the deadline in Texas? File a wage claim with the Texas Department of Labor at https://www.twc.texas.gov/businesses/when-be-paid, and consider a civil claim as well. Many cases recover unpaid wages plus penalties (and sometimes fees). Save documentation of your last day, what you were owed, and all employer communications.
+Can my employer deduct money from my final paycheck in Texas?
+In Texas, a final paycheck can only be reduced by legally mandated amounts (tax, garnishment) or deductions you signed off on in writing. Docking pay to recover company property or an advance, absent that authorization or a court process, violates wage law.
+Does Texas have penalties for employers who pay the final paycheck late?
+Yes — late final pay carries remedies in Texas. You may recover the wages plus waiting-time penalties, liquidated damages, or interest, depending on the facts. The Texas labor agency can investigate and order payment, and you can also sue in state court. Start a claim at https://www.twc.texas.gov/businesses/when-be-paid.
+How Texas compares to nearby states
+Final-paycheck deadlines vary across the South region. Texas requires within 6 calendar days of discharge after a termination and next scheduled payday after a resignation — here is how neighbouring states set their deadlines.
+| State | If fired | If resigned | 
+|---|---|---|
+| Texas (this page) | Within 6 calendar days of discharge | Next scheduled payday | 
+| Alabama | Next regular payday | Next regular payday | 
+| Arkansas | Within 7 days of separation | Within 7 days of separation | 
+| Delaware | Next scheduled payday | Next scheduled payday | 
+| District of Columbia | Next business day after separation | Next scheduled payday | 
+| Florida | Next scheduled payday | Next scheduled payday | 
+Sources and review
+Publisher: My Pay Rights. Primary state source: Texas labor agency. Federal reference: U.S. Department of Labor state contacts. Report a correction.

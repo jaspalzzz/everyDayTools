@@ -1,0 +1,94 @@
+California Final Paycheck Law 2026
+Deadlines, what must be included, and how to claim if your California employer pays late.
+If you were terminated
+Immediately on the day of termination
+If you resigned
+Within 72 hours if no notice given; immediately if 72+ hours notice was provided
+Was your California final paycheck late?
+Enter your last day and payment date to estimate whether the paycheck missed theCalifornia deadline. This is a timing check only, not legal advice.
+How to audit a California final paycheck
+California's final-paycheck rule is a timing rule first and a documentation issue second. Terminations are due immediately on the day of termination, while resignations are due within 72 hours if no notice given; immediately if 72+ hours notice was provided. That makes the separation date, the reason employment ended, and the next regular payday especially important. Nearby states such as Alaska, Arizona, Colorado may use different triggers, so a regional payroll policy can be wrong for California.
+- Final pay stub, direct-deposit timestamp, or mailed-check postmark.
+- Any written demand sent before filing a wage claim.
+- Last day worked and the date employment officially ended.
+- Whether the separation was a resignation, layoff, discharge, or mutual end date.
+Cross-state deadline benchmark
+Final-pay deadlines are not portable across state lines. This benchmark starts with states closest to California's termination and resignation timing, then broadens outward so payroll teams can spot where a shared process needs state-specific handling.
+| State | Region | If fired | If resigned | 
+|---|---|---|---|
+| California (this page) | West | Immediately on the day of termination | Within 72 hours if no notice given; immediately if 72+ hours notice was provided | 
+| Colorado | West | Immediately on the day of termination | Next scheduled payday (may be mailed within 14 days if requested) | 
+| Washington | West | End of the established pay period | End of the established pay period | 
+| Oregon | West | End of the next business day after termination | Last day of work if 48+ hours notice given; within 5 business days otherwise | 
+| Wyoming | West | Within 5 business days | Within 5 business days | 
+| Montana | West | Next business day after separation | Next payday or within 10 days (whichever is earlier) | 
+| New Mexico | West | Within 5 days of termination | Within 10 days of resignation | 
+| Idaho | West | Next scheduled payday or within 10 days (whichever is sooner) | Next scheduled payday or within 10 days (whichever is sooner) | 
+| Arizona | West | Within 7 business days or next payday (whichever is sooner) | Within 7 business days or next payday (whichever is sooner) | 
+| Hawaii | West | Next business day after termination | Next regular payday | 
+| Nevada | West | Within 3 days of termination | Next regular payday or within 7 days (whichever is sooner) | 
+| Alaska | West | Within 3 working days | Next regular payday or within 3 working days | 
+| Utah | West | Within 24 hours of a written demand | Next scheduled payday | 
+| Louisiana | South | Within 15 days of separation | Within 15 days of separation | 
+| Ohio | Midwest | Next scheduled payday | Next scheduled payday | 
+| Nebraska | Midwest | Next scheduled payday | Next scheduled payday | 
+| New York | Northeast | Next scheduled payday | Next scheduled payday | 
+| Indiana | Midwest | Next scheduled payday | Next scheduled payday | 
+| Minnesota | Midwest | Within 24 hours of a written demand | Next regular payday or within 20 days (whichever is sooner) | 
+| Arkansas | South | Within 7 days of separation | Within 7 days of separation | 
+| South Carolina | South | Within 48 hours or next scheduled payday (whichever is later) | Within 48 hours or next scheduled payday (whichever is later) | 
+| North Carolina | South | Next scheduled payday | Next scheduled payday | 
+| Missouri | Midwest | Immediately if possible; otherwise next payday | Next scheduled payday | 
+| Illinois | Midwest | Next scheduled payday | Next scheduled payday | 
+| Virginia | South | Next scheduled payday | Next scheduled payday | 
+| Michigan | Midwest | Next scheduled payday | Next scheduled payday | 
+| Maine | Northeast | Next scheduled payday | Next scheduled payday | 
+| Connecticut | Northeast | Next scheduled payday | Next scheduled payday | 
+| Rhode Island | Northeast | Next scheduled payday | Next scheduled payday | 
+| Tennessee | South | Within 21 days or next regular payday (whichever is later) | Within 21 days or next regular payday (whichever is later) | 
+| Florida | South | Next scheduled payday | Next scheduled payday | 
+| Kentucky | South | Next regular payday or within 14 days (whichever is later) | Next regular payday or within 14 days (whichever is later) | 
+| Texas | South | Within 6 calendar days of discharge | Next scheduled payday | 
+| Georgia | South | Next scheduled payday | Next scheduled payday | 
+| Maryland | South | Next scheduled payday | Next scheduled payday | 
+| Delaware | South | Next scheduled payday | Next scheduled payday | 
+| New Jersey | Northeast | Next scheduled payday | Next scheduled payday | 
+| District of Columbia | South | Next business day after separation | Next scheduled payday | 
+| North Dakota | Midwest | Next payday (within 15 days) | Next payday (within 15 days) | 
+| New Hampshire | Northeast | Within 72 hours of separation | Next scheduled payday | 
+| West Virginia | South | Within 72 hours of separation | Within 72 hours of separation | 
+What must be included in your final paycheck
+A California final paycheck is only complete when it includes each of these:
+- ✓Earned bonus amounts that have vested under the written plan
+- ✓Accrued PTO or vacation only when the state rule or employer policy requires payout
+- ✓All earned wages through your last day (hourly or salary)
+- ✓Overtime pay owed for hours worked
+Whether accrued vacation or PTO must be included depends on California's PTO payout law. See California PTO payout rules →
+If your employer pays late
+- 1. Consider a civil lawsuit where penalties, interest, or attorney fees are available.
+- 2. Keep the final pay stub and payment timestamp with the demand letter.
+- 3. Document your last day worked and what you are owed.
+- 4. Confirm whether the deadline changed because you resigned rather than being terminated.
+Frequently asked questions
+How long does my employer have to give me my final paycheck in California?
+In California, the deadline depends on how your employment ended. If your employer terminated you, your final paycheck is due immediately on the day of termination. If you resigned voluntarily, it is due within 72 hours if no notice given; immediately if 72+ hours notice was provided. These are minimum legal deadlines — your employer can pay sooner, but not later.
+What must be included in my final paycheck in California?
+A lawful California final paycheck includes all wages through your last day worked, any overtime, and commissions/bonuses that have vested and can be calculated. Whether unused PTO is added depends on California's PTO payout law. Only legally authorized deductions (tax, garnishments) are permitted.
+What can I do if my employer is late with my final paycheck in California?
+If your employer misses the final paycheck deadline in California, you can file a wage claim with the California Department of Labor (https://www.dir.ca.gov/dlse/). You may also have the right to file a civil lawsuit. Many states allow you to recover the unpaid wages plus penalties and attorney fees. Document everything: your last day, what you were owed, and all communications with your employer.
+Can my employer deduct money from my final paycheck in California?
+In California, a final paycheck can only be reduced by legally mandated amounts (tax, garnishment) or deductions you signed off on in writing. Docking pay to recover company property or an advance, absent that authorization or a court process, violates wage law.
+Does California have penalties for employers who pay the final paycheck late?
+There are remedies in California for a late final paycheck. Depending on circumstances you may claim penalties, liquidated damages, or interest on top of the unpaid wages. The California Department of Labor (https://www.dir.ca.gov/dlse/) can investigate and order payment, and you retain the right to sue.
+How California compares to nearby states
+Final-paycheck deadlines vary across the West region. California requires immediately on the day of termination after a termination and within 72 hours if no notice given; immediately if 72+ hours notice was provided after a resignation — here is how neighbouring states set their deadlines.
+| State | If fired | If resigned | 
+|---|---|---|
+| California (this page) | Immediately on the day of termination | Within 72 hours if no notice given; immediately if 72+ hours notice was provided | 
+| Alaska | Within 3 working days | Next regular payday or within 3 working days | 
+| Arizona | Within 7 business days or next payday (whichever is sooner) | Within 7 business days or next payday (whichever is sooner) | 
+| Colorado | Immediately on the day of termination | Next scheduled payday (may be mailed within 14 days if requested) | 
+| Hawaii | Next business day after termination | Next regular payday | 
+| Idaho | Next scheduled payday or within 10 days (whichever is sooner) | Next scheduled payday or within 10 days (whichever is sooner) | 
+Sources and review
+Publisher: My Pay Rights. Primary state source: California labor agency. Federal reference: U.S. Department of Labor state contacts. Report a correction.
