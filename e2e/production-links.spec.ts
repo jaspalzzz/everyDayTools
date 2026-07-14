@@ -23,6 +23,7 @@ function isSkippableHref(href: string) {
 }
 
 test("catalogue cross-references point at existing content", () => {
+  const standaloneInteractiveRoutes = new Set(["tupe-wizard"]);
   const toolSlugs = new Set(TOOLS.map((tool) => tool.slug));
   const guideSlugs = new Set(GUIDES.map((guide) => guide.slug));
   const faqSlugs = new Set(FAQS.map((faq) => faq.slug));
@@ -50,7 +51,9 @@ test("catalogue cross-references point at existing content", () => {
     for (const related of faq.related) {
       if (!faqSlugs.has(related)) failures.push(`FAQ ${faq.slug} related -> missing FAQ ${related}`);
     }
-    if (faq.relatedTool && !getTool(faq.relatedTool)) failures.push(`FAQ ${faq.slug} relatedTool -> missing tool ${faq.relatedTool}`);
+    if (faq.relatedTool && !getTool(faq.relatedTool) && !standaloneInteractiveRoutes.has(faq.relatedTool)) {
+      failures.push(`FAQ ${faq.slug} relatedTool -> missing tool ${faq.relatedTool}`);
+    }
     if (faq.relatedGuide && !guideSlugs.has(faq.relatedGuide)) failures.push(`FAQ ${faq.slug} relatedGuide -> missing guide ${faq.relatedGuide}`);
   }
 

@@ -3,9 +3,9 @@ import Link from "next/link";
 import { SITE, jsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "About MyPayRights — Law-Backed Employment Pay Calculators",
+  title: `About ${SITE.name} — Law-Backed Employment Pay Calculators`,
   description:
-    "MyPayRights builds employment pay calculators backed by primary government sources for the UK, US, Canada, and Australia. Statutory rates, verified annually.",
+    `${SITE.name} builds employment pay calculators backed by primary government sources for the UK, US, Canada, and Australia. Statutory rates, verified annually.`,
   alternates: { canonical: `${SITE.url}/about` },
 };
 
@@ -106,7 +106,7 @@ export default function AboutPage() {
             </h1>
 
             <p style={{ maxWidth: 760, margin: 0, color: "#25384c", fontSize: 18, lineHeight: 1.62 }}>
-              MyPayRights creates country-aware calculators and guides for employment pay
+              {SITE.name} creates country-aware calculators and guides for employment pay
               questions: redundancy, notice, final wages, overtime, holiday pay, sick pay and
               parental leave.{" "}
               <strong style={{ color: "#16324f", fontWeight: 850 }}>
@@ -119,7 +119,7 @@ export default function AboutPage() {
           <aside
             className="hidden lg:block"
             style={{ border: "1px solid #E4DECF", borderRadius: 10, background: "#fff", boxShadow: "0 18px 44px rgba(16,32,51,.10)", overflow: "hidden" }}
-            aria-label="MyPayRights operating standards"
+            aria-label={`${SITE.name} operating standards`}
           >
             <header style={{ padding: "18px 20px", borderBottom: "1px solid #EAE5D8", background: "#FBF9F3" }}>
               <h2 style={{ margin: "0 0 4px", color: "#102033", fontSize: 18, fontWeight: 850 }}>Operating standard</h2>
@@ -182,7 +182,7 @@ export default function AboutPage() {
                 statutory rates, contractual terms and timing.
               </p>
               <p style={{ margin: 0, color: "#25384c", fontSize: 16, lineHeight: 1.72 }}>
-                MyPayRights turns those questions into focused calculators and plain-English guides so a
+                {SITE.name} turns those questions into focused calculators and plain-English guides so a
                 person can understand the likely range before speaking to HR, payroll, ACAS, a lawyer, or
                 a government agency.
               </p>
@@ -192,7 +192,7 @@ export default function AboutPage() {
             <section style={{ paddingBottom: 30, marginBottom: 30, borderBottom: "1px solid #EAE5D8" }}>
               <h2 style={{ margin: "0 0 12px", color: "#102033", fontSize: 28, lineHeight: 1.15, fontWeight: 850 }}>Who built this</h2>
               <p style={{ margin: "0 0 15px", color: "#25384c", fontSize: 16, lineHeight: 1.72 }}>
-                MyPayRights was founded by Jaspal Singh, a software engineer focused on making employment
+                {SITE.name} was founded by Jaspal Singh, a software engineer focused on making employment
                 pay rules easier for ordinary workers and small employers to understand.
               </p>
               <p style={{ margin: 0, color: "#25384c", fontSize: 16, lineHeight: 1.72 }}>

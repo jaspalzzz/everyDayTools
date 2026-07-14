@@ -35,7 +35,8 @@ export default function UKAdoptionPayGuide() {
     description: metadata.description,
     url, datePublished: DATE, dateModified: DATE,
     author: FOUNDER_PERSON,
-    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    image: `${SITE.url}/opengraph-image`,
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mark.svg` } },
   };
   const faqSchema = {
     "@context": "https://schema.org",

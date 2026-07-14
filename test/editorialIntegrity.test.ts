@@ -16,6 +16,7 @@ describe("editorial integrity safeguards", () => {
       url: `${SITE.url}/test`,
       datePublished: "2026-01-01",
       dateModified: "2026-01-01",
+      image: `${SITE.url}/opengraph-image`,
     });
     expect(schema).not.toHaveProperty("reviewedBy");
   });

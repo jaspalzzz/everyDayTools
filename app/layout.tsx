@@ -89,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <SiteHeader />
-        <main>{children}</main>
+        <main id="page-content">{children}</main>
         <SiteFooter />
         <ConsentBanner />
       </body>

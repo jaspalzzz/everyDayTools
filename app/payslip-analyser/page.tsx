@@ -71,7 +71,7 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(webApp)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(faqs))} />
 
-      <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+<div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
         <nav className="mb-6 flex items-center gap-1 text-sm text-ink-faint">
           <Link href="/" className="hover:text-brand-600">Home</Link>
           <span>/</span>
@@ -130,7 +130,7 @@ export default function Page() {
             Redundancy pay calculator
           </Link>
         </section>
-      </main>
+      </div>
     </>
   );
 }

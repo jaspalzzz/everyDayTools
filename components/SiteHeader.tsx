@@ -46,6 +46,7 @@ const COUNTRY_LINKS = [
 
 const MOBILE_MAIN_LINKS = [
   { label: "All calculators", sub: "Search and browse every tool", href: "/#all-calculators", icon: "ti-calculator" },
+  { label: "Redundancy pay", sub: "Estimate statutory redundancy entitlement", href: "/redundancy-pay-calculator", icon: "ti-briefcase" },
   { label: "Guides", sub: "Practical pay-rights guidance", href: "/guides", icon: "ti-file-text" },
   { label: "Methodology", sub: "Sources, assumptions and reviews", href: "/methodology", icon: "ti-shield-check" },
 ] as const;
@@ -157,9 +158,7 @@ export function SiteHeader() {
           {/* Logo */}
           <Link href="/" className="inline-flex shrink-0 items-center whitespace-nowrap" style={{ gap: 10 }} onClick={() => setOpen(false)}>
             <LogoMark />
-            <span style={{ fontWeight: 800, fontSize: 17 }}>
-              <span style={{ color: "#102033" }}>MyPay</span><span style={{ color: "#1E4E8C" }}>Rights</span>
-            </span>
+            <span style={{ color: "#102033", fontWeight: 800, fontSize: 17 }}>{SITE.name}</span>
           </Link>
 
           {/* Desktop nav */}
@@ -392,7 +391,7 @@ export function SiteHeader() {
               <button
                 type="button"
                 aria-expanded={menu === "region"}
-                aria-label="Switch country"
+                aria-label="Switch country: UK"
                 onClick={() => showMenu("region")}
                 style={{
                   height: 38, border: "1px solid var(--color-control-border)", borderRadius: 8,
@@ -403,7 +402,7 @@ export function SiteHeader() {
                   borderColor: menu === "region" ? "#A6C2E0" : "var(--color-control-border)",
                 }}
               >
-                UK
+                Switch country: UK
                 <Chevron open={menu === "region"} />
               </button>
 
@@ -556,7 +555,7 @@ export function SiteHeader() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-md text-ink-soft transition-colors hover:bg-surface-muted hover:text-ink lg:hidden"
+            className="flex h-[44px] w-[44px] items-center justify-center rounded-md text-ink-soft transition-colors hover:bg-surface-muted hover:text-ink lg:hidden"
           >
             <TablerIcon name={open ? "ti-x" : "ti-menu-2"} size={20} aria-hidden="true" />
           </button>

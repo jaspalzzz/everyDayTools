@@ -68,7 +68,7 @@ export default function UsFinalPaycheckDatasetPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(dataset)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
-      <main className="mx-auto max-w-[1180px] px-5 py-12">
+<div className="mx-auto max-w-[1180px] px-5 py-12">
         <nav aria-label="Breadcrumb" className="mb-6 text-xs text-ink-soft">
           <Link href="/" className="hover:text-ink">Home</Link><span className="mx-1.5">/</span><span>Research</span>
         </nav>
@@ -119,7 +119,7 @@ export default function UsFinalPaycheckDatasetPage() {
             </tbody>
           </table>
         </div>
-      </main>
+      </div>
     </>
   );
 }

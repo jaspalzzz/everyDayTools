@@ -194,6 +194,12 @@ export interface PillarLink {
  * their spoke calculators now link up to them.
  */
 export const PILLAR_FOR_TOOL: Record<string, PillarLink> = {
+  "redundancy-pay-calculator": { href: "/uk/redundancy", label: "UK redundancy rights guide" },
+  "settlement-agreement-calculator": { href: "/uk/redundancy", label: "UK redundancy rights guide" },
+  "tribunal-compensation-calculator": { href: "/uk/redundancy", label: "UK redundancy rights guide" },
+  "notice-period-calculator": { href: "/uk/redundancy", label: "UK redundancy rights guide" },
+  "garden-leave-calculator": { href: "/uk/redundancy", label: "UK redundancy rights guide" },
+  "employer-redundancy-cost-calculator": { href: "/uk/redundancy", label: "UK redundancy rights guide" },
   "maternity-pay-calculator": { href: "/uk/maternity-leave", label: "UK maternity leave & pay" },
   "paternity-pay-calculator": { href: "/uk/maternity-leave", label: "UK family leave & pay" },
   "adoption-pay-calculator": { href: "/uk/maternity-leave", label: "UK family leave & pay" },

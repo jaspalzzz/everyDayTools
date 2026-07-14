@@ -50,6 +50,14 @@ h1, h2, h3, .font-display {
   text-underline-offset: 2px;
 }
 
+/* Inline links must remain identifiable without relying on colour alone. */
+main p > a,
+main li > a,
+footer p > a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 :focus-visible {
   outline: 2px solid #1E4E8C;
   outline-offset: 2px;

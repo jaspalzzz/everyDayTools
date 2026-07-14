@@ -2,10 +2,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
+import { PillarBacklink } from "@/components/PillarBacklink";
 import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { FAQS, getFaq } from "@/data/faqs";
 
 type Props = { params: Promise<{ slug: string }> };
+
+const REDUNDANCY_PILLAR_FAQS = new Set([
+  "can-employer-refuse-redundancy-pay",
+  "is-redundancy-pay-tax-free",
+  "what-is-the-redundancy-pay-cap",
+  "can-i-be-made-redundant-on-sick-leave-uk",
+  "can-i-be-made-redundant-while-on-maternity-leave",
+  "do-i-get-notice-pay-if-made-redundant",
+  "what-is-unfair-redundancy-selection",
+  "can-i-be-made-redundant-and-rehired",
+]);
 
 export function generateStaticParams() {
   return FAQS.map((f) => ({ slug: f.slug }));
@@ -64,9 +76,10 @@ export default async function FaqPage({ params }: Props) {
     url,
     datePublished: f.datePublished,
     dateModified: f.dateModified,
+    image: `${SITE.url}/opengraph-image`,
     author: FOUNDER_PERSON,
     reviewedBy: EDITORIAL_REVIEW,
-    publisher: { "@type": "Organization", name: "MyPayRights", url: SITE.url },
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mark.svg` } },
     mainEntityOfPage: url,
   };
 
@@ -106,7 +119,24 @@ export default async function FaqPage({ params }: Props) {
             ))}
           </div>
 
+          {f.contextualLinks && f.contextualLinks.length > 0 && (
+            <aside className="mt-6 rounded-xl border border-surface-line bg-surface-muted p-4" aria-label="State-specific overtime information">
+              <p className="text-sm font-semibold text-ink">State-specific detail</p>
+              <ul className="mt-2 grid gap-2 text-sm">
+                {f.contextualLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="font-medium text-brand-700 underline underline-offset-2">
+                      {link.label} →
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          )}
+
           <EditorialReview lastReviewed={f.dateModified} className="mt-8" />
+
+          {REDUNDANCY_PILLAR_FAQS.has(f.slug) && <PillarBacklink className="mt-6" />}
 
           {/* CTAs */}
           {(f.relatedTool || f.relatedGuide) && (

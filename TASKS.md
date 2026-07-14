@@ -10,6 +10,12 @@ self-contained: what, where (file paths), how, and acceptance criteria. Read
 > text-level e2e checks. Search Console/CrUX access and commissioning a genuine
 > independent legal reviewer remain external operational tasks; no credentials or
 > review claims should be invented.
+>
+> **Status — 14 July 2026:** TIER 3 added from a full parallel-subagent SEO audit
+> (score 84/100 — see `mypayrights.com-audit/FULL-AUDIT-REPORT.md` and
+> `ACTION-PLAN.md`). Every T3 task below was cross-checked against the actual
+> source before being written — two subagent findings were corrected during that
+> check (see T3.3 and T3.7 notes) rather than copied verbatim.
 
 ---
 
@@ -215,6 +221,238 @@ note text (current "confirm with your state labor office" caveat stays until cer
 
 ---
 
+## TIER 3 — SEO audit remediation (2026-07-14)
+
+Source: `mypayrights.com-audit/FULL-AUDIT-REPORT.md` + `ACTION-PLAN.md` (11-agent
+parallel audit, health score 84/100). Only code-actionable items are listed here —
+GSC property access and commissioning a real legal reviewer are external/business
+tasks already tracked as caveats elsewhere in this file, not Codex tasks.
+
+### T3.1 — Fix hero result card: floating trust badges hide pay values at ≥1024px
+- **Status:** Complete — the badges now occupy their own non-overlapping desktop row, with browser coverage at 1024/1280/1366/1920px.
+- **File:** `components/home/HeroResultCard.tsx`.
+- **Bug:** the three absolutely-positioned "floating note" badges (`top: 58/142,
+  right: 0/-22` and `bottom: 82, right: 0`) overlap the centered estimate `<article>`
+  card at desktop/tablet widths — confirmed by rendered screenshot at
+  1024/1280/1366/1920px, hiding the "Basic pay" and "Notice pay" line items. Not
+  present on mobile (badges aren't rendered below `lg:`). Invisible from source
+  review alone — only caught by rendered screenshots.
+- **Do:** reposition the three floating notes (adjust `top`/`right`/`bottom` offsets
+  or the card's `max-width`) so none of them overlap the `<article>` card's content
+  area at any width from 1024px up to 1920px.
+- **Accept:** screenshot the homepage at 1024/1280/1366/1920px — "Basic pay",
+  "Notice pay", "Holiday pay", and "Other payments" values must be fully visible and
+  unobstructed at every width. No horizontal-overflow regression at 320/375px.
+
+### T3.2 — Add reciprocal links from the `/uk/redundancy` pillar's spokes back to it
+- **Status:** Complete — all 16 calculator, guide and FAQ spokes render a contextual link back to the pillar, enforced by E2E coverage.
+- **File:** `app/uk/redundancy/page.tsx` links out to tool/guide/FAQ spokes (see
+  `href={`/${tool.slug}`}`, `href={`/guides/${g.slug}`}`, `href={`/faq/${f.slug}`}`)
+  but none of those 16 spoke pages link back — verified by direct link extraction,
+  zero of the 6 sampled redundancy-topic page types contained a link to
+  `/uk/redundancy`.
+- **Do:** add a small "Part of our UK Redundancy guide" (or similar) contextual link
+  back to `/uk/redundancy` on each spoke page it links to: the relevant calculator
+  page(s), `app/guides/uk-redundancy-pay/page.tsx`, and the relevant FAQ entries in
+  `data/faqs.ts` (render as a link near the related-tool block in
+  `app/faq/[slug]/page.tsx` if the FAQ's topic matches redundancy). Use the exact
+  spoke list already enumerated in `mypayrights.com-audit/findings/cluster.md`.
+- **Accept:** re-crawling each of the 16 spoke pages shows a link to `/uk/redundancy`.
+
+### T3.3 — Add real content depth + a related-tool link to the TUPE FAQ; verify the overtime FAQ
+- **Status:** Complete — both FAQs have expanded primary-source-based copy, tool CTAs and relevant contextual links.
+- **File:** `data/faqs.ts` — entries `what-is-tupe-transfer` and
+  `what-is-overtime-law-us`.
+- **Correction to audit finding:** the SXO subagent reported the overtime FAQ
+  doesn't link to the site's own calculator — **this is already false in the
+  current code**: `what-is-overtime-law-us` already has
+  `relatedTool: "take-home-overtime-calculator"` set and `app/faq/[slug]/page.tsx`
+  (~line 112-118) already renders it as a link. Don't re-add it. The real gap on
+  that page is just competitive depth (3 short paragraphs vs. the state-by-state
+  comparison tables that dominate its SERP) and no link to per-state overtime
+  specifics.
+- **Do (TUPE):** `what-is-tupe-transfer` has **no** `relatedTool` field — add
+  `relatedTool: "tupe-wizard"` (or the closest matching tool slug) and expand its
+  `answer` array with genuine depth on transfer types, ETO reasons, and consultation
+  duties (currently 315 words vs. long-form competitors like Acas/CIPD/GOV.UK).
+- **Do (overtime):** expand the `answer` array with state-by-state daily-overtime
+  detail (the third paragraph currently only names CA/AK/NV/Puerto Rico) and add a
+  contextual link to a relevant `/us/states/{state}` page where the overtime rule
+  differs from the federal floor.
+- **Accept:** both FAQ pages render a related-tool link; word count and structural
+  depth for both approaches what's currently ranking for their target query.
+
+### T3.4 — Standardize brand entity name to `SITE.name` across ~19 files
+- **Status:** Complete — app/component copy and schema use the shared spaced brand name; the literal audit grep is clean.
+- **Files (hardcoded `"MyPayRights"` with no space — grep for the literal string to
+  find exact lines):** `components/SiteFooter.tsx`, `app/faq/page.tsx`,
+  `app/faq/[slug]/page.tsx`, `app/about/page.tsx`, `app/methodology/page.tsx`,
+  `app/editorial-policy/page.tsx`, `app/compare/page.tsx`, `app/compare/[slug]/page.tsx`,
+  `app/us/states/[state]/minimum-wage/page.tsx`,
+  `app/us/states/[state]/final-paycheck/page.tsx`, and 9 `app/guides/*/page.tsx`
+  files (uk-settlement-agreement, uk-redundancy-pay, us-pto-payout-laws-by-state,
+  uk-take-home-pay, uk-maternity-pay, uk-pilon, uk-constructive-dismissal, uk-tupe,
+  uk-unfair-dismissal, uk-notice-period-law).
+- **Do:** replace every hardcoded `"MyPayRights"` string with `${SITE.name}` (import
+  `SITE` from `@/lib/seo` where not already imported) so the entity name is
+  consistently "My Pay Rights" everywhere, matching the `SITE.name` constant already
+  used in `lib/seo.ts` and `lib/pdf.ts`. Leave copyright-line legal text intact
+  otherwise (`components/SiteFooter.tsx:86`).
+- **Accept:** `grep -rn "MyPayRights" app/ components/` (excluding legitimate
+  standalone brand-as-one-word contexts you deliberately decide to keep, e.g. a
+  domain-name reference) returns zero unintended matches after the fix; `npm run
+  build` succeeds.
+
+### T3.5 — Add `image` + `logo` to Article/BlogPosting JSON-LD
+- **Status:** Complete — Article schema includes an image and publisher logo at every helper/manual call site; the built schema audit scores 100/100.
+- **File:** `lib/seo.ts` — `articleSchema()` (~line 234) and `guideSchema()`
+  (~line 261) both emit `"@type": "Article"` but neither includes the
+  Google-required `image` property, and neither's `publisher` object includes
+  `logo` (the `homepageSchemas()` function already has the correct pattern at
+  ~line 150-152: `logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mark.svg` }`).
+- **Do:** add an `image` param to both functions (each blog/guide page already has a
+  per-route `opengraph-image` — e.g. `app/blog/[slug]/opengraph-image.tsx` if it
+  exists, else reuse the root `app/opengraph-image.tsx` pattern used by
+  `app/redundancy-pay-calculator/opengraph-image.tsx` etc.) and pass
+  `${SITE.url}/<route>/opengraph-image` from each call site. Add the same `logo`
+  object used in `homepageSchemas()` to both functions' `publisher` field.
+- **Accept:** re-run `node scripts/score-schema-seo.mjs` (currently 100/100 on its
+  narrower checks — this task adds fields it doesn't check for, so also spot-check
+  a built blog/guide page's JSON-LD via Google's Rich Results Test) and confirm
+  `image` and `publisher.logo` are present on Article schema.
+
+### T3.6 — Fix stale 2025 year reference in a live California FAQ schema answer
+- **Status:** Complete — generated California final-paycheck FAQ schema contains no stale 2025 reference, covered by E2E assertion.
+- **File:** likely `data/usStates.ts` (California entry) or the FAQ text sourced
+  from it, rendered into `app/us/states/[state]/final-paycheck/page.tsx`'s FAQPage
+  schema — the audit found a hardcoded "2025" in the California final-paycheck
+  FAQ answer despite `dateModified: 2026-07-09`.
+- **Do:** grep the California entry and any shared FAQ-answer template strings for
+  a literal "2025" that should read "2026", and fix it (or, if it's meant to be a
+  historical reference, leave it and note why in a code comment).
+- **Accept:** the live FAQPage answer text for California's final-paycheck page no
+  longer contains a stale year contradicting its `dateModified`.
+
+### T3.7 — Fix the sitemap's placeholder `lastmod` for ~46% of US state pages
+- **Status:** Complete — all US state route groups prefer honest `lastContentUpdate` values and retain the documented verified-year fallback.
+- **File:** `app/sitemap.ts` (~line 67) and `data/usStates.ts`.
+- **Root cause (verified in source, not guessed):** `app/sitemap.ts` line 67 emits
+  `lastModified: `${s.verifiedYear}-01-01`` unconditionally for one route group,
+  while an equivalent nearby line (34) already does the right thing —
+  `s.lastContentUpdate ?? `${s.verifiedYear}-01-01`` — falling back only when no
+  real date is set. Every US state in `data/usStates.ts` has `verifiedYear: 2025`
+  (a shared annual-rate-check marker, not a per-page edit date) and only a handful
+  (e.g. California, `lastContentUpdate: "2026-07-09"`) have the optional
+  `lastContentUpdate` override populated. This is a real, pre-existing design gap
+  (the field's own doc comment at `data/usStates.ts` ~line 48 already anticipates
+  this), not a code bug to "fix" so much as a fallback to correct and data to
+  backfill.
+- **Do:** change `app/sitemap.ts` line 67 to use the same
+  `s.lastContentUpdate ?? `${s.verifiedYear}-01-01`` fallback pattern as line 34, for
+  consistency. Then, as real per-state content edits happen going forward, populate
+  `lastContentUpdate` on each `data/usStates.ts` entry (don't backfill fake dates for
+  states that haven't actually been touched — an honest shared fallback beats a
+  fabricated per-state date).
+- **Accept:** `app/sitemap.ts` line 67 matches line 34's fallback pattern; the
+  built sitemap's US-state-page `lastmod` values reflect `lastContentUpdate` for any
+  state that has one set.
+
+### T3.8 — Cross-link the redundancy guide and blog post (cannibalization)
+- **Status:** Complete — the pages link reciprocally and now have distinct evergreen-guide versus annual-changes search intent.
+- **Files:** `app/guides/uk-redundancy-pay/page.tsx` and the
+  `uk-redundancy-pay-guide-2026` entry in `data/blogPosts.ts` (rendered via
+  `app/blog/[slug]/page.tsx`) — near-identical titles/H1s/structure at comparable
+  depth with zero cross-link in either direction, flagged in the 27 June 2026 audit
+  and still unfixed.
+- **Do:** add a contextual link from the guide page to the blog post (e.g. "see
+  also: how to negotiate severance pay" or a "further reading" block) and vice
+  versa, and differentiate their angle in the visible copy if they currently read
+  as duplicates (guide = definitional/how-to, blog = news/practical-negotiation
+  angle, or similar split) — don't just link two interchangeable pages together.
+- **Accept:** both pages link to each other; a fresh read of both confirms distinct
+  angles, not just distinct URLs.
+
+### T3.9 — Case-insensitive route redirect
+- **Status:** Complete — middleware combines lowercase-path and www-to-apex normalization in one query-preserving 301.
+- **File:** `functions/_middleware.ts` (currently only handles `www` → apex).
+- **Do:** extend the `onRequest` handler to lowercase `url.pathname` and 301-redirect
+  when it differs from the incoming path, before/alongside the existing www check.
+- **Accept:** `https://mypayrights.com/Redundancy-Pay-Calculator` 301s to
+  `/redundancy-pay-calculator` instead of 404ing.
+
+### T3.10 — IndexNow protocol support
+- **Status:** Implementation complete — the generated key is verified in `out/` and the deploy-gated sitemap-diff submitter is wired to `postbuild`; an HTTP 200 submission must wait until the key file is live on the production deployment.
+- **New files:** a key file in `public/` (filename = key value, per IndexNow spec)
+  and a small script or `functions/` hook that POSTs new/changed URLs to
+  `api.indexnow.org/indexnow` on deploy (diff against the previous build's
+  `app/sitemap.ts` output, or the previous git-tracked sitemap).
+- **Do:** generate a key, add `public/<key>.txt`, and wire a post-`next build` step
+  (matches the existing static-export + Cloudflare Pages deploy pipeline) that
+  submits changed URLs. Single shared key works across Bing/Yandex/Naver.
+- **Accept:** a manual IndexNow submission for a test URL is accepted (200) by
+  `api.indexnow.org`; the key file is reachable at the expected path in `out/`.
+
+### T3.11 — Add COOP header and tighten CSP (drop `'unsafe-inline'` for scripts)
+- **Status:** Implementation complete — COOP, nonce-based script policy, strict-dynamic and Trusted Types directives are in place and regression-tested; live AdSense/Lighthouse validation remains a post-deploy check.
+- **File:** `public/_headers` — current CSP allows `script-src 'self' 'unsafe-inline'
+  ...` and there is no `Cross-Origin-Opener-Policy` header.
+- **Do:** add `Cross-Origin-Opener-Policy: same-origin` to the global `/*` header
+  block. Replace `'unsafe-inline'` in `script-src` with nonces or hashes for the
+  inline scripts actually in use (check what `experimental.inlineCss` and any
+  inline `<script>` tags require) — coordinate carefully with the AdSense domains
+  already allowlisted so ads still render once live.
+- **Accept:** Lighthouse Best Practices no longer flags missing COOP or a
+  Trusted-Types-bypassable CSP; AdSense test render (or the existing pre-AdSense
+  consent-gated state) is unaffected.
+
+### T3.12 — Fix template-level accessibility regressions on calculator/state pages
+- **Status:** Complete — contrast, heading order, inline-link affordance, landmark structure and country-control naming are fixed and browser-tested on both templates.
+- **Files:** calculator page template(s) (e.g. `components/ToolLayout.tsx` or the
+  specific calculator component) and `app/us/states/[state]/page.tsx` (or shared
+  state-page layout).
+- **Bugs (real Lighthouse audit, not lab-inferred):** color-contrast failures,
+  non-sequential heading order, links distinguishable by color alone
+  (`link-in-text-block`), and on the state page specifically a
+  `label-content-name-mismatch` on the "Switch country" control (visible label
+  doesn't match its accessible name).
+- **Do:** fix contrast ratios to meet WCAG AA, correct heading nesting (no skipped
+  levels), add a visible non-color indicator (underline) to inline links, and give
+  the "Switch country" button an `aria-label` matching its visible text (or vice
+  versa).
+- **Accept:** re-run Lighthouse accessibility audit on both templates — score
+  should return to 100 (matching the homepage) from the current 89-91.
+
+### T3.13 — Mobile consent banner overlap + under-sized tap targets
+- **Status:** Complete — the first-paint CTA remains unobstructed at 375×812 and the listed interactive targets measure at least 44px.
+- **Files:** the cookie-consent banner component and `components/SiteHeader.tsx`
+  (hamburger menu) plus homepage quick-link pills and `components/SiteFooter.tsx`
+  (privacy link).
+- **Bugs:** on mobile, the consent banner overlaps the hero search widget's submit
+  button on first paint; hamburger menu is 36×36 (needs 44×44), homepage quick-link
+  pills are 35px tall, consent-banner Reject/Accept buttons are 40px tall, footer
+  "Privacy policy" link is 16px tall.
+- **Do:** reposition the consent banner so it doesn't overlap the primary CTA above
+  the fold; increase all listed tap targets to at least 44×44px (padding, not just
+  visual size, since the tap target itself must be that size).
+- **Accept:** re-screenshot mobile (375×812) — submit button unobstructed on first
+  paint; all listed elements measure ≥44×44px.
+
+### T3.14 — Add a state-specific content block to hub pages below the word-count floor
+- **Status:** Complete — Kansas, Mississippi and Wyoming have sourced state-specific enforcement narratives, clear 500 rendered words and retain the uniqueness floor.
+- **Files:** `data/usStates.ts` entries for Kansas (409 words rendered), Mississippi
+  (406 words), and check Wyoming (456 words) — these are in the "federal-minimum,
+  no-PTO-statute" cluster likely to have the thinnest per-state narrative text.
+- **Do:** add one genuinely state-specific content block per affected state (named
+  state enforcement agency detail, a recent legislative change, or similar) —
+  **not** more of the shared cross-state comparison table, which the audit
+  specifically flagged as already doing most of the "uniqueness" lifting.
+- **Accept:** re-run the `difflib`-based uniqueness spot-check from
+  `mypayrights.com-audit/findings/content.md`'s methodology on the affected states —
+  word count clears 500 and unique-content percentage stays ≥60% (not just padded
+  with more shared tabular data).
+
+---
+
 ## Suggested execution order
 
 T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
@@ -222,6 +460,11 @@ T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
 → T2.1 → T2.2              (highest-value product gaps)
 → T2.6 / T2.7              (deepen the moat)
 → T2.8 → T2.9              (content + monetize)
-→ T2.3 / T2.4 / T2.5       (breadth, ongoing)
+→ T3.1 → T3.2 → T3.3       (real bugs + broken linking, highest SEO/UX payoff)
+→ T3.4 → T3.5 → T3.6 → T3.7 (schema/entity/sitemap hygiene, low effort)
+→ T3.8 → T3.9 → T3.10      (structure + crawl-discovery)
+→ T3.11 → T3.12 → T3.13    (headers, accessibility, mobile UX)
+→ T3.14                    (content depth, ongoing)
+→ T2.3 / T2.4 / T2.5       (breadth, ongoing — lower priority than TIER 3 fixes)
 
 Ship in small batches; keep the gate green; one focused PR per task or tight group.

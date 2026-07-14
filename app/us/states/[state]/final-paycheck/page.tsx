@@ -252,7 +252,7 @@ export default async function Page({ params }: Props) {
     dateModified: reviewedDate,
     author: FOUNDER_PERSON,
     reviewedBy: EDITORIAL_REVIEW,
-    publisher: { "@type": "Organization", name: "MyPayRights", url: SITE.url },
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mark.svg` } },
   };
 
   return (
@@ -261,7 +261,7 @@ export default async function Page({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(article)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(faqs))} />
 
-      <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+<div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
         {/* Breadcrumb */}
         <nav className="mb-6 flex flex-wrap items-center gap-1 text-sm text-ink-faint">
           <Link href="/" className="hover:text-brand-600">Home</Link>
@@ -508,7 +508,7 @@ export default async function Page({ params }: Props) {
             ← Back to {s.name} employment law
           </Link>
         </div>
-      </main>
+      </div>
     </>
   );
 }

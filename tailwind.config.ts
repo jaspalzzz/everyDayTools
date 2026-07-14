@@ -12,7 +12,7 @@ const config: Config = {
         ink: {
           DEFAULT: "#102033",
           soft: "#52616F",
-          faint: "#8A9BA8",
+          faint: "#607080",
         },
         brand: {
           50:  "#EAF0F8",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CountryFlag } from "@/components/CountryFlag";
+import { PillarBacklink } from "@/components/PillarBacklink";
 import { SITE, jsonLd } from "@/lib/seo";
 
 const SLUG = "uk-settlement-agreement";
@@ -57,8 +58,9 @@ export default function UKSettlementAgreementGuide() {
     url,
     datePublished: DATE,
     dateModified: DATE,
-    author: { "@type": "Person", name: "Jaspal Singh", jobTitle: "Founder, MyPayRights" },
-    publisher: { "@type": "Organization", name: "MyPayRights", url: SITE.url },
+    image: `${SITE.url}/opengraph-image`,
+    author: { "@type": "Person", name: "Jaspal Singh", jobTitle: `Founder, ${SITE.name}` },
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mark.svg` } },
     mainEntityOfPage: url,
   };
 
@@ -98,6 +100,7 @@ export default function UKSettlementAgreementGuide() {
         </nav>
 
         <article className="max-w-2xl">
+          <PillarBacklink className="mb-6" />
           <header className="mb-8">
             <p className="text-xs font-medium uppercase tracking-widest text-brand-600">
               🇬🇧 UK · Employment Rights · Updated {DATE}

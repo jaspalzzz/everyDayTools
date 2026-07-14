@@ -3,19 +3,20 @@ import Link from "next/link";
 export default function UkRedundancyPayGuide2026() {
   return (
     <>
-      <h2>What is statutory redundancy pay?</h2>
+      <h2>What changed for statutory redundancy pay in 2026/27?</h2>
       <p>
-        Statutory redundancy pay is a lump-sum payment your employer is legally required to make when
-        they dismiss you by reason of redundancy, and you have at least 2 years of continuous employment.
-        It is a right set by the <strong>Employment Rights Act 1996 (s.135–s.154)</strong> and cannot be
-        contracted out of — even if your employment contract says otherwise.
+        The main annual change from 6 April 2026 is the statutory weekly-pay cap: it is now
+        <strong> £751</strong>. Because the formula can count at most 20 years at the 1.5 multiplier,
+        the maximum statutory payment is now <strong>£22,530</strong>. These figures matter most to
+        workers whose actual weekly pay exceeds the cap; lower-paid workers still use their actual
+        normal weekly pay.
       </p>
       <p>
-        The amount is calculated using a fixed formula based on three things: your <strong>age</strong>,
-        your <strong>length of continuous service</strong> (capped at 20 years), and your{" "}
-        <strong>weekly pay</strong> (capped at £751 from 6 April 2026). The maximum statutory payment is
-        therefore £22,530. Many employers pay more (enhanced redundancy pay) — the statutory amount is
-        the legal minimum, not the target.
+        The core rules did not change: employees generally still need two years&apos; continuous service;
+        only 20 years count; years worked under 22, from 22 to 40, and from 41 onward use the 0.5,
+        1 and 1.5 multipliers. The £30,000 tax exemption for qualifying termination payments also
+        remains separate from taxable notice pay. For a full explanation of those durable rules, use
+        the linked evergreen guide rather than treating this annual update as a substitute.
       </p>
 
       <h2>Who qualifies for redundancy pay?</h2>

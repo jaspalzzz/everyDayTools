@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CountryFlag } from "@/components/CountryFlag";
+import { PillarBacklink } from "@/components/PillarBacklink";
 import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 const SLUG = "uk-notice-period-law";
@@ -59,8 +60,9 @@ export default function UKNoticePeriodGuide() {
     url,
     datePublished: DATE,
     dateModified: DATE,
-    author: { "@type": "Person", name: "Jaspal Singh", jobTitle: "Founder, MyPayRights" },
-    publisher: { "@type": "Organization", name: "MyPayRights", url: SITE.url },
+    image: `${SITE.url}/opengraph-image`,
+    author: { "@type": "Person", name: "Jaspal Singh", jobTitle: `Founder, ${SITE.name}` },
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mark.svg` } },
     mainEntityOfPage: url,
   };
 
@@ -100,6 +102,7 @@ export default function UKNoticePeriodGuide() {
         </nav>
 
         <article className="max-w-2xl">
+          <PillarBacklink className="mb-6" />
           <div className="mb-8">
             <div className="mb-3 flex items-center gap-2">
               <CountryFlag country={COUNTRY} size={18} />

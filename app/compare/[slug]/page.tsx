@@ -52,7 +52,7 @@ export default async function ComparisonPage({ params }: Props) {
     dateModified: c.dateModified,
     author: FOUNDER_PERSON,
     reviewedBy: EDITORIAL_REVIEW,
-    publisher: { "@type": "Organization", name: "MyPayRights", url: SITE.url },
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mark.svg` } },
     mainEntityOfPage: url,
   };
 

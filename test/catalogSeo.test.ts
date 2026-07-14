@@ -38,6 +38,10 @@ describe("tool catalogue SEO rules", () => {
   it("keeps FAQ relationship slugs resolvable", () => {
     const faqSlugs = new Set(FAQS.map((faq) => faq.slug));
     const toolSlugs = new Set(TOOLS.map((tool) => tool.slug));
+    // Interactive routes that intentionally sit outside the calculator engine
+    // catalogue (they do not implement CalcResult/PDF and must not inflate the
+    // registered calculator count).
+    const standaloneInteractiveRoutes = new Set(["tupe-wizard"]);
     const guideSlugs = new Set(GUIDES.map((guide) => guide.slug));
 
     for (const faq of FAQS) {
@@ -46,7 +50,10 @@ describe("tool catalogue SEO rules", () => {
       }
 
       if (faq.relatedTool) {
-        expect(toolSlugs.has(faq.relatedTool), `${faq.slug} related tool ${faq.relatedTool}`).toBe(true);
+        expect(
+          toolSlugs.has(faq.relatedTool) || standaloneInteractiveRoutes.has(faq.relatedTool),
+          `${faq.slug} related tool ${faq.relatedTool}`,
+        ).toBe(true);
       }
 
       if (faq.relatedGuide) {

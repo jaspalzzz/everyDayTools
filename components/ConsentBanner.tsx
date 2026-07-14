@@ -41,9 +41,9 @@ export function ConsentBanner() {
       aria-label="Cookie consent"
       style={{
         position: "fixed",
-        left: 16,
-        right: 16,
-        bottom: 16,
+        left: 12,
+        right: 12,
+        bottom: 12,
         zIndex: 80,
         maxWidth: 760,
         margin: "0 auto",
@@ -51,14 +51,14 @@ export function ConsentBanner() {
         borderRadius: 10,
         background: "#fff",
         boxShadow: "0 18px 44px rgba(16,32,51,.16)",
-        padding: 16,
+        padding: 14,
       }}
     >
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
         <p style={{ margin: 0, color: "#25384c", fontSize: 13, lineHeight: 1.55 }}>
           My Pay Rights uses essential cookies for the site to work. Analytics and, if advertising
           is enabled, Google ad cookies load only after you accept.{" "}
-          <Link href="/privacy" style={{ color: "#163C6B", fontWeight: 850 }}>
+          <Link href="/privacy" style={{ color: "#163C6B", fontWeight: 850, textDecoration: "underline", textUnderlineOffset: 2 }}>
             Privacy policy
           </Link>
         </p>
@@ -67,7 +67,8 @@ export function ConsentBanner() {
             type="button"
             onClick={() => save("rejected")}
             style={{
-              minHeight: 40,
+              minHeight: 44,
+              minWidth: 72,
               border: "1px solid #E4DECF",
               borderRadius: 8,
               background: "#fff",
@@ -83,7 +84,8 @@ export function ConsentBanner() {
             type="button"
             onClick={() => save("accepted")}
             style={{
-              minHeight: 40,
+              minHeight: 44,
+              minWidth: 72,
               border: "none",
               borderRadius: 8,
               background: "#1E4E8C",

@@ -36,7 +36,7 @@ export default function UKLeavingJobPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(webPage)} />
-      <main className="mx-auto max-w-content px-5 py-10">
+<div className="mx-auto max-w-content px-5 py-10">
         <nav aria-label="Breadcrumb" className="mb-6 text-xs text-ink-faint">
           <Link href="/" className="hover:text-ink-soft">Home</Link>
           <span className="mx-1.5">/</span>
@@ -86,7 +86,7 @@ export default function UKLeavingJobPage() {
             </p>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

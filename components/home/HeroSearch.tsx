@@ -209,7 +209,7 @@ export function HeroSearch() {
               setQuery(q.label);
               openSearchResult(q.label);
             }}
-            className="rounded-full border px-2.5 py-[7px] text-[12px] font-bold text-ink-soft transition-colors hover:border-brand-300 hover:text-ink"
+            className="min-h-[44px] rounded-full border px-3 py-2 text-[12px] font-bold text-ink-soft transition-colors hover:border-brand-300 hover:text-ink"
             style={{ borderColor: "#E4DECF", background: "#FBF9F3" }}
           >
             {q.label}

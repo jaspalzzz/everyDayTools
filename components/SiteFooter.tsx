@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE } from "@/lib/seo";
 
 export function SiteFooter() {
   return (
@@ -20,9 +21,7 @@ export function SiteFooter() {
                 <path d="M59 66l6 6 12-14" fill="none" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
               </g>
             </svg>
-            <span style={{ fontWeight: 800, fontSize: 16 }}>
-              <span style={{ color: "#102033" }}>MyPay</span><span style={{ color: "#1E4E8C" }}>Rights</span>
-            </span>
+            <span style={{ color: "#102033", fontWeight: 800, fontSize: 16 }}>{SITE.name}</span>
           </Link>
           <p className="mt-2.5 max-w-[330px] text-[13px] leading-relaxed" style={{ color: "#52616f" }}>
             Source-led employment pay calculators for the UK, US, Canada and Australia. Built to show assumptions, review dates and correction paths.
@@ -31,9 +30,9 @@ export function SiteFooter() {
 
         {/* Leaving a job */}
         <div>
-          <h4 className="mb-3 text-[13px] font-bold uppercase tracking-[.06em]" style={{ color: "#16324f" }}>
+          <h2 className="mb-3 text-[13px] font-bold uppercase tracking-[.06em]" style={{ color: "#16324f" }}>
             Leaving a job
-          </h4>
+          </h2>
           <Link href="/redundancy-pay-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Redundancy pay</Link>
           <Link href="/notice-period-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Notice pay</Link>
           <Link href="/final-paycheck-deadline-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Final paycheck</Link>
@@ -42,9 +41,9 @@ export function SiteFooter() {
 
         {/* Pay & tax */}
         <div>
-          <h4 className="mb-3 text-[13px] font-bold uppercase tracking-[.06em]" style={{ color: "#16324f" }}>
+          <h2 className="mb-3 text-[13px] font-bold uppercase tracking-[.06em]" style={{ color: "#16324f" }}>
             Pay &amp; tax
-          </h4>
+          </h2>
           <Link href="/take-home-pay-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Take-home pay</Link>
           <Link href="/take-home-overtime-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Overtime pay</Link>
           <Link href="/pay-rise-calculator" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Pay rise</Link>
@@ -53,9 +52,9 @@ export function SiteFooter() {
 
         {/* Countries */}
         <div>
-          <h4 className="mb-3 text-[13px] font-bold uppercase tracking-[.06em]" style={{ color: "#16324f" }}>
+          <h2 className="mb-3 text-[13px] font-bold uppercase tracking-[.06em]" style={{ color: "#16324f" }}>
             Countries
-          </h4>
+          </h2>
           <Link href="/uk" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>United Kingdom</Link>
           <Link href="/us" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>United States</Link>
           <Link href="/ca" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Canada</Link>
@@ -64,9 +63,9 @@ export function SiteFooter() {
 
         {/* Company */}
         <div>
-          <h4 className="mb-3 text-[13px] font-bold uppercase tracking-[.06em]" style={{ color: "#16324f" }}>
+          <h2 className="mb-3 text-[13px] font-bold uppercase tracking-[.06em]" style={{ color: "#16324f" }}>
             Company
-          </h4>
+          </h2>
           <Link href="/about" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>About</Link>
           <Link href="/methodology" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Methodology</Link>
           <Link href="/editorial-policy" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Editorial policy</Link>
@@ -74,7 +73,7 @@ export function SiteFooter() {
           <Link href="/research/us-final-paycheck-laws" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>US law dataset</Link>
           <Link href="/contact" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Contact</Link>
           <Link href="/contact" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Corrections</Link>
-          <Link href="/privacy" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Privacy</Link>
+          <Link href="/privacy" className="flex items-center py-2 text-[13px] font-semibold underline underline-offset-2" style={{ color: "#52616f", minHeight: 44 }}>Privacy policy</Link>
           <Link href="/terms" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Terms</Link>
           <Link href="/disclaimer" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Disclaimer</Link>
         </div>
@@ -83,7 +82,7 @@ export function SiteFooter() {
       {/* Bottom note */}
       <div className="border-t" style={{ borderColor: "#EAE5D8" }}>
         <p className="mx-auto max-w-[1180px] px-6 py-4 text-[12px]" style={{ color: "#52616f" }}>
-          © 2026 MyPayRights. All figures are educational estimates and are not legal or financial advice.{" "}
+          © 2026 {SITE.name}. All figures are educational estimates and are not legal or financial advice.{" "}
           Figures are reviewed against official sources, labelled with assumptions and corrected through the published correction path.{" "}
           <Link href="/methodology" className="underline-offset-2 hover:underline">Methodology</Link>
           {" · "}

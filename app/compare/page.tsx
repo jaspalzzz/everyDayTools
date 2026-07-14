@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Side-by-side comparisons of employment law concepts: PILON vs garden leave, unfair vs wrongful dismissal, redundancy vs dismissal, and more.",
   alternates: { canonical: url },
   openGraph: {
-    title: "Employment Law Comparisons | MyPayRights",
+    title: `Employment Law Comparisons | ${SITE.name}`,
     description:
       "Side-by-side guides to the UK and US employment law distinctions that matter most when you're losing your job or disputing a dismissal.",
     url,

@@ -5,6 +5,7 @@
  */
 
 import Link from "next/link";
+import { SITE } from "@/lib/seo";
 
 export type AffiliateContext =
   | "redundancy-uk"
@@ -199,7 +200,7 @@ export function AffiliateCta({ context, heading, className = "" }: AffiliateCtaP
         ))}
       </div>
       <p className="mt-3 text-xs text-ink-faint">
-        MyPayRights earns a small referral fee from some paid links above, at no cost to you.
+        {SITE.name} earns a small referral fee from some paid links above, at no cost to you.
         Free resources are never commercially influenced.
       </p>
     </aside>

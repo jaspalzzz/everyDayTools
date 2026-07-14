@@ -14,6 +14,8 @@ export interface FaqPageMeta {
   /** Optional guide slug for secondary CTA */
   relatedGuide?: string;
   relatedGuideName?: string;
+  /** Contextual routes that add jurisdiction-specific detail beyond this answer. */
+  contextualLinks?: Array<{ href: string; label: string }>;
   datePublished: string;
   dateModified: string;
 }
@@ -704,14 +706,19 @@ export const FAQS: FaqPageMeta[] = [
     question: "What is a TUPE transfer?",
     shortAnswer: "TUPE (Transfer of Undertakings — Protection of Employment) protects your employment rights when the business or service you work for changes hands. Your contract transfers automatically on identical terms, and dismissal connected to the transfer is automatically unfair.",
     answer: [
-      "TUPE (Transfer of Undertakings (Protection of Employment) Regulations 2006, as amended) automatically transfers employees from the old employer to the new employer when a business or relevant service changes hands. Your existing terms and conditions — including salary, hours, holiday entitlement, seniority, and continuity of employment — transfer unchanged. The new employer cannot unilaterally change your terms because of the transfer.",
-      "TUPE applies in two scenarios: a business transfer (where an economic entity retains its identity after the transfer, typically a company sale or asset purchase) and a service provision change (where a contract to provide services is awarded to a new contractor, or where the service is brought back in-house). The Regulations apply even if only part of a business transfers.",
-      "Dismissal of an employee because of a TUPE transfer — whether by the old or new employer — is automatically unfair (no qualifying service period required). However, the new employer can make changes to terms or dismiss employees where there is an 'economic, technical, or organisational reason entailing changes in the workforce' (an ETO reason) — though this must be genuine and requires a separate fair procedure.",
+      "TUPE is the Transfer of Undertakings (Protection of Employment) Regulations 2006. When it applies, employees assigned to the transferring business or service move automatically from the old employer to the new one. Their continuity date stays the same and their contractual rights and liabilities move with them, including salary, working hours, holiday entitlement and relevant collective agreements. A transfer is not a lawful reason by itself to wipe away existing terms.",
+      "There are two main transfer types. A business transfer happens where an economic entity moves to a new employer and keeps its identity — relevant signs include the transfer of staff, premises, equipment, customers, work in progress or goodwill, and whether activities remain the same or similar. A share sale usually does not trigger TUPE because the employing company remains the same. TUPE can apply to a whole business or only the identifiable part that is changing hands.",
+      "A service provision change covers outsourcing, insourcing and retendering. For this route, there normally needs to be an organised grouping of employees whose principal purpose is carrying out the relevant activities for the same client, and the work after the change must remain fundamentally the same. A grouping can be one person, but TUPE will not normally apply to a goods-only contract, a single event or a genuinely short-term task. Whether a particular worker is assigned to the grouping is a fact-sensitive question.",
+      "An employer may defend a transfer-related dismissal or agreed contract change by showing an economic, technical or organisational reason that entails a change in the workforce — usually called an ETO reason. Economic reasons can include an essential cost-saving need; technical reasons may involve new equipment or processes; organisational reasons can include a genuine restructuring. Naming an ETO reason is not enough: it must be the real main reason and involve a workforce change, and the employer must still follow the ordinary fair dismissal, redundancy or contract-change process.",
+      "Both the old and new employer have information and consultation duties before the transfer. Affected employees or their recognised union or elected representatives must be told that the transfer is happening, when and why, its legal, economic and social implications, and any proposed measures such as redundancies, location changes, pay-date changes or new working patterns. Consultation must be genuine where measures are proposed. For transfers completing from 1 July 2024, direct consultation is permitted where the employer has fewer than 50 employees or fewer than 10 employees are transferring, provided no representatives already exist; otherwise representative rules apply.",
+      "If an employer fails to inform or consult properly, an employment tribunal can make a protective award. If you object to transferring, your employment normally ends on the transfer date and this is generally treated like a resignation, so redundancy or unfair-dismissal rights may be lost. Because coverage, assignment, ETO reasoning and remedies depend closely on the facts, ask for the transfer information in writing and seek advice from ACAS, a union or an employment specialist before objecting or signing new terms.",
     ],
     country: "UK",
     related: ["does-tupe-protect-redundancy-rights", "can-employer-change-terms-after-tupe", "what-is-constructive-dismissal-uk"],
+    relatedTool: "tupe-wizard",
+    relatedToolName: "TUPE transfer wizard",
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-14",
   },
   {
     slug: "can-i-claim-unfair-dismissal-after-2-years",
@@ -856,14 +863,21 @@ export const FAQS: FaqPageMeta[] = [
     answer: [
       "Under the Fair Labor Standards Act (FLSA), covered non-exempt employees must be paid at least 1.5 times their regular rate of pay for all hours worked over 40 in a single workweek. The workweek is a fixed recurring period of 7 consecutive days — employers choose when it starts but cannot change it to avoid overtime obligations.",
       "The regular rate includes all remuneration — base pay, shift differentials, production bonuses, and non-discretionary bonuses — divided by total hours worked. Purely discretionary bonuses are excluded. Comp time (time off instead of overtime pay) is generally not permitted in the private sector.",
-      "Some states have stronger overtime rules: California requires daily overtime (1.5× after 8 hours in a day, double time after 12 hours, and double time for the 7th consecutive day). Alaska, Nevada, and Puerto Rico also have daily overtime rules. Federal law sets the minimum floor — state law applies where it is more protective.",
+      "State law can add daily thresholds to the federal weekly rule. California generally requires 1.5× after 8 hours in a workday and double time after 12, with separate seventh-consecutive-day rules. Alaska generally requires overtime after 8 hours in a day or 40 in a week. Nevada's daily rule generally applies after 8 hours in a rolling 24-hour period to employees earning less than 1.5 times the state minimum wage, subject to exceptions such as an agreed four-day, 10-hour schedule. Colorado generally requires overtime after 12 hours in a workday or 12 consecutive hours as well as after 40 in a week. Puerto Rico has its own daily regime, while other states add occupation-specific rules — for example in some manufacturing or healthcare settings. Always apply whichever valid federal, state or local rule gives the worker more protection.",
+      "Exempt status is separate from being paid a salary. The executive, administrative and professional exemptions generally require both qualifying duties and the applicable salary basis; job titles alone do not decide it. Other exemptions and special calculations cover outside sales, certain computer employees, hospitals, public agencies and some commissioned retail work. Employers must also count short rest breaks and work performed before or after a scheduled shift when that time is compensable.",
+      "If your state has a daily rule, calculate daily overtime first and then the weekly entitlement without counting the same hour twice. Keep the employer's stated workweek, daily time records, bonus records and pay stubs. A worker can raise unpaid federal overtime with the U.S. Department of Labor Wage and Hour Division or pursue an available state claim; limitation periods and remedies vary, so verify the current state rule before relying on an estimate.",
     ],
     country: "US",
     related: ["what-is-the-flsa", "are-salaried-employees-exempt-from-overtime-us"],
     relatedTool: "take-home-overtime-calculator",
     relatedToolName: "Overtime pay calculator",
+    contextualLinks: [
+      { href: "/us/states/california", label: "California pay and employment-law overview" },
+      { href: "/us/states/nevada", label: "Nevada pay and employment-law overview" },
+      { href: "/us/overtime", label: "US overtime rules hub" },
+    ],
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-14",
   },
   {
     slug: "are-salaried-employees-exempt-from-overtime-us",

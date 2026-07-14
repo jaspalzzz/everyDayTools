@@ -79,7 +79,7 @@ export function ToolLayout({
         <div className="mx-auto" style={{ maxWidth: 1180, padding: "46px 24px 34px" }}>
 
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" style={{ color: "#7a8794", fontSize: 13, fontWeight: 700, marginBottom: 24 }}>
+          <nav aria-label="Breadcrumb" style={{ color: "#607080", fontSize: 13, fontWeight: 700, marginBottom: 24 }}>
             <Link href="/" style={{ color: "inherit" }}>Home</Link>
             <span style={{ margin: "0 6px" }}>/</span>
             <Link href="/#all-calculators" style={{ color: "inherit" }}>{CATEGORY_META[tool.category].label}</Link>
@@ -108,7 +108,7 @@ export function ToolLayout({
           <h1
             style={{
               maxWidth: 760, margin: "12px 0 12px", color: "#102033",
-              fontSize: "clamp(38px,4.8vw,58px)", lineHeight: 1.03,
+              fontSize: "clamp(34px,4.8vw,58px)", lineHeight: 1.03,
               fontWeight: 800,
             }}
           >
@@ -144,7 +144,7 @@ export function ToolLayout({
       </section>
 
       {/* ── Main content ─────────────────────────────────────────────── */}
-      <main style={{ maxWidth: 1180, margin: "0 auto", padding: "40px 24px 76px" }}>
+      <div style={{ maxWidth: 1180, margin: "0 auto", padding: "40px 24px 76px" }}>
 
         {/* Calculator: form (left) + result panel (right) — grid managed inside each calculator component */}
         <section aria-label={`${tool.shortName} calculator`}>
@@ -357,7 +357,7 @@ export function ToolLayout({
                 </span>
               </div>
             ))}
-            <p style={{ margin: "12px 0 0", color: "#7a8794", fontSize: 11, lineHeight: 1.6 }}>
+            <p style={{ margin: "12px 0 0", color: "#607080", fontSize: 11, lineHeight: 1.6 }}>
               All statutory figures are sourced directly from official government legislation and guidance.{" "}
               <Link href="/methodology" style={{ color: "#1E4E8C" }}>See our methodology →</Link>
             </p>
@@ -488,7 +488,7 @@ export function ToolLayout({
           Statutory rates are based on {verifiedLabel ? `figures verified ${verifiedLabel}` : "current published rates"} from {source.label}.{" "}
           <Link href="/disclaimer" style={{ color: "#b7791f", fontWeight: 700 }}>Read the full disclaimer →</Link>
         </div>
-      </main>
+      </div>
     </>
   );
 }

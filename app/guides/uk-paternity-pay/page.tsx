@@ -33,7 +33,8 @@ export default function UKPaternityPayGuide() {
     datePublished: DATE,
     dateModified: DATE,
     author: FOUNDER_PERSON,
-    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    image: `${SITE.url}/opengraph-image`,
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mark.svg` } },
     mainEntityOfPage: url,
   };
 

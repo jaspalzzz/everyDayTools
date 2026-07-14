@@ -17,6 +17,13 @@ export const SITE = {
   legalEmail: "legal@mypayrights.com",
 } as const;
 
+export const SITE_PUBLISHER = {
+  "@type": "Organization",
+  name: SITE.name,
+  url: SITE.url,
+  logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mark.svg` },
+} as const;
+
 /**
  * Real brand/social profile URLs for Organization.sameAs (Phase 5, off-page:
  * entity/authority signals). Empty by default -- sameAs is only emitted once
@@ -237,6 +244,7 @@ export function articleSchema(params: {
   url: string;
   datePublished: string;
   dateModified: string;
+  image: string;
   keywords?: string;
 }) {
   return {
@@ -247,9 +255,10 @@ export function articleSchema(params: {
     url: params.url,
     datePublished: params.datePublished,
     dateModified: params.dateModified,
+    image: params.image,
     author: FOUNDER_PERSON,
     ...(LEGAL_REVIEWER ? { reviewedBy: LEGAL_REVIEWER } : {}),
-    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    publisher: SITE_PUBLISHER,
     ...(params.keywords ? { keywords: params.keywords } : {}),
   };
 }
@@ -264,6 +273,7 @@ export function guideSchema(params: {
   url: string;
   datePublished: string;
   dateModified: string;
+  image: string;
   legalTopic: string;
 }) {
   return {
@@ -274,9 +284,10 @@ export function guideSchema(params: {
     url: params.url,
     datePublished: params.datePublished,
     dateModified: params.dateModified,
+    image: params.image,
     author: FOUNDER_PERSON,
     ...(LEGAL_REVIEWER ? { reviewedBy: LEGAL_REVIEWER } : {}),
-    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    publisher: SITE_PUBLISHER,
     about: { "@type": "Thing", name: params.legalTopic },
   };
 }

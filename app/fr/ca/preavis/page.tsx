@@ -57,7 +57,7 @@ export default function PreavisPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(faqs))} />
 
-      <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6" lang="fr">
+<div className="mx-auto max-w-3xl px-4 py-10 sm:px-6" lang="fr">
         <nav className="mb-6 flex flex-wrap items-center gap-1 text-sm text-ink-faint">
           <Link href="/" className="hover:text-brand-600">Accueil</Link>
           <span>/</span>
@@ -132,7 +132,7 @@ export default function PreavisPage() {
           <Link href="/fr" className="text-sm text-brand-600 hover:underline">← Retour aux calculateurs</Link>
           <Link href="/notice-period-calculator" className="text-sm text-ink-soft hover:text-brand-600">English version →</Link>
         </div>
-      </main>
+      </div>
     </>
   );
 }

@@ -23,7 +23,7 @@ describe("SiteHeader mobile navigation", () => {
     expect(within(menu).getByText("Canada").closest("a")?.getAttribute("href")).toBe("/ca");
     expect(within(menu).getByText("Australia").closest("a")?.getAttribute("href")).toBe("/au");
     expect(within(menu).queryByText("IR35 / 1099 vs W-2")).toBeNull();
-    expect(links).toHaveLength(10);
+    expect(links).toHaveLength(11);
     expect(document.body.style.overflow).toBe("hidden");
 
     fireEvent.keyDown(document, { key: "Escape" });

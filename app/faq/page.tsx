@@ -6,12 +6,12 @@ import { FAQS } from "@/data/faqs";
 const url = `${SITE.url}/faq`;
 
 export const metadata: Metadata = {
-  title: "Employment Law FAQ — Quick Answers to Common Questions | MyPayRights",
+  title: `Employment Law FAQ — Quick Answers to Common Questions | ${SITE.name}`,
   description:
     "Plain-English answers to common employment law questions for UK, US, Canada and Australia workers: redundancy, notice periods, TUPE, PTO payout, and more.",
   alternates: { canonical: url },
   openGraph: {
-    title: "Employment Law FAQ | MyPayRights",
+    title: `Employment Law FAQ | ${SITE.name}`,
     description:
       "Answers to the most common employment law questions for UK, US, Canada and Australia workers — redundancy, dismissal, TUPE, PTO, and more.",
     url,

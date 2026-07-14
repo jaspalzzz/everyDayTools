@@ -7,12 +7,12 @@ const url = `${SITE.url}/methodology`;
 export const metadata: Metadata = {
   title: "Data Methodology — How We Source & Verify Employment Law Rates",
   description:
-    "How MyPayRights sources statutory rates, reviews updates, verifies official sources, and handles correction reports.",
+    `How ${SITE.name} sources statutory rates, reviews updates, verifies official sources, and handles correction reports.`,
   alternates: { canonical: url },
   openGraph: {
     title: "Data Methodology — How We Source & Verify Employment Law Rates",
     description:
-      "Primary sources, update cycle, verification process, and correction policy for every employment law figure on MyPayRights.",
+      `Primary sources, update cycle, verification process, and correction policy for every employment law figure on ${SITE.name}.`,
     url,
   },
 };
@@ -21,7 +21,7 @@ export default function MethodologyPage() {
   const webPage = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Data Methodology — MyPayRights",
+    name: `Data Methodology — ${SITE.name}`,
     url,
     description: metadata.description as string,
     isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
@@ -29,7 +29,7 @@ export default function MethodologyPage() {
     author: {
       "@type": "Person",
       name: "Jaspal Singh",
-      jobTitle: "Founder, MyPayRights",
+      jobTitle: `Founder, ${SITE.name}`,
     },
   };
 
@@ -50,7 +50,7 @@ export default function MethodologyPage() {
               Data methodology
             </h1>
             <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-              Every calculation on MyPayRights is built on statutory figures sourced directly from
+              Every calculation on {SITE.name} is built on statutory figures sourced directly from
               official government publications. This page documents exactly where each figure comes
               from, who checks it, and how quickly errors are corrected.
             </p>
@@ -231,7 +231,7 @@ export default function MethodologyPage() {
             <section>
               <h2>Not legal or financial advice</h2>
               <p>
-                MyPayRights calculators provide general information and estimates only. They are not
+                {SITE.name} calculators provide general information and estimates only. They are not
                 legal advice, tax advice, or financial advice. Employment situations involve facts
                 and circumstances a calculator cannot assess — contract terms, continuous employment
                 disputes, TUPE transfers, collective agreements, and more.

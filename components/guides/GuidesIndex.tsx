@@ -327,7 +327,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
       </div>
 
       {/* ── Main ── */}
-      <main style={{ maxWidth: 1180, margin: "0 auto", padding: "44px 24px 74px" }}>
+      <div style={{ maxWidth: 1180, margin: "0 auto", padding: "44px 24px 74px" }}>
 
         {/* Topic strip */}
         <nav
@@ -516,7 +516,7 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
             </section>
           </aside>
         </div>
-      </main>
+      </div>
     </>
   );
 }

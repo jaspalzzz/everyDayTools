@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { BLOG_POSTS, getBlogPost, BLOG_CATEGORIES } from "@/data/blogPosts";
 import { getTool } from "@/data/tools";
 import { EditorialReview } from "@/components/EditorialReview";
-import { EDITORIAL_REVIEW, SITE, FOUNDER_PERSON, clampMetaDescription, jsonLd } from "@/lib/seo";
+import { PillarBacklink } from "@/components/PillarBacklink";
+import { SITE, articleSchema as buildArticleSchema, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -56,19 +57,15 @@ export default async function BlogPostPage({ params }: Props) {
 
   const relatedToolMetas = post.relatedTools.map((s) => getTool(s)).filter(Boolean);
 
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
+  const articleSchema = buildArticleSchema({
     headline: post.title,
     description: post.description,
     url,
     datePublished: post.datePublished,
     dateModified: post.dateModified,
-    author: FOUNDER_PERSON,
-    reviewedBy: EDITORIAL_REVIEW,
-    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    image: `${SITE.url}/opengraph-image`,
     keywords: post.tags.join(", "),
-  };
+  });
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -142,6 +139,18 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         <EditorialReview lastReviewed={post.dateModified} className="mb-8" />
+
+        {post.slug === "uk-redundancy-pay-guide-2026" && (
+          <div className="mb-8 grid gap-3">
+            <PillarBacklink />
+            <aside className="rounded-lg border border-surface-line bg-white px-4 py-3 text-sm text-ink-soft">
+              This post covers the annual rate changes. For the durable eligibility rules, worked examples and dispute steps, read the{" "}
+              <Link href="/guides/uk-redundancy-pay" className="font-semibold text-brand-700 underline underline-offset-2">
+                complete UK redundancy pay guide
+              </Link>.
+            </aside>
+          </div>
+        )}
 
         {/* Article content */}
         {Content ? (

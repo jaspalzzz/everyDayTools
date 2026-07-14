@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CountryFlag } from "@/components/CountryFlag";
+import { PillarBacklink } from "@/components/PillarBacklink";
 import { SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 
 const SLUG = "uk-redundancy-pay";
@@ -59,8 +60,9 @@ export default function UKRedundancyPayGuide() {
     url,
     datePublished: DATE,
     dateModified: DATE,
-    author: { "@type": "Person", name: "Jaspal Singh", jobTitle: "Founder, MyPayRights" },
-    publisher: { "@type": "Organization", name: "MyPayRights", url: SITE.url },
+    image: `${SITE.url}/opengraph-image`,
+    author: { "@type": "Person", name: "Jaspal Singh", jobTitle: `Founder, ${SITE.name}` },
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mark.svg` } },
     mainEntityOfPage: url,
   };
 
@@ -101,6 +103,7 @@ export default function UKRedundancyPayGuide() {
         </nav>
 
         <article className="max-w-2xl">
+          <PillarBacklink className="mb-6" />
           {/* Header */}
           <div className="mb-8">
             <div className="mb-3 flex items-center gap-2">
@@ -137,6 +140,14 @@ export default function UKRedundancyPayGuide() {
               Open redundancy pay calculator →
             </Link>
           </div>
+
+          <aside className="mb-8 rounded-xl border border-surface-line bg-surface-muted px-5 py-4 text-sm text-ink-soft">
+            Looking specifically for this year&apos;s rate movement? Read the{" "}
+            <Link href="/blog/uk-redundancy-pay-guide-2026" className="font-semibold text-brand-700 underline underline-offset-2">
+              2026/27 redundancy-pay changes update
+            </Link>{" "}
+            for the new cap, maximum award and what stayed unchanged.
+          </aside>
 
           {/* Body */}
           <div className="prose-tool flex flex-col gap-6 text-sm leading-relaxed text-ink-soft">

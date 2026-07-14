@@ -68,7 +68,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Main ── */}
-      <main style={{ maxWidth: 1180, margin: "0 auto", padding: "54px 24px 76px" }}>
+<div style={{ maxWidth: 1180, margin: "0 auto", padding: "54px 24px 76px" }}>
         <OperatingStandard />
 
         {/* Start with what happened */}
@@ -87,7 +87,7 @@ export default function HomePage() {
         {/* Guides */}
         <GuidesResources />
 
-      </main>
+      </div>
     </>
   );
 }

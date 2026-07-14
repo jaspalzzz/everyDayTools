@@ -6,14 +6,14 @@ const url = `${SITE.url}/editorial-policy`;
 const DATE = "2026-07-12";
 
 export const metadata: Metadata = {
-  title: "Editorial Policy — MyPayRights Standards & Review Process",
+  title: `Editorial Policy — ${SITE.name} Standards & Review Process`,
   description:
-    "MyPayRights editorial standards: how content is written, reviewed against official sources, kept independent of commercial influence, and corrected when wrong.",
+    `${SITE.name} editorial standards: how content is written, reviewed against official sources, kept independent of commercial influence, and corrected when wrong.`,
   alternates: { canonical: url },
   openGraph: {
-    title: "Editorial Policy — MyPayRights Standards & Review Process",
+    title: `Editorial Policy — ${SITE.name} Standards & Review Process`,
     description:
-      "Editorial independence, accuracy standards, correction process, and commercial separation policy for MyPayRights employment calculators and guides.",
+      `Editorial independence, accuracy standards, correction process, and commercial separation policy for ${SITE.name} employment calculators and guides.`,
     url,
   },
 };
@@ -22,7 +22,7 @@ export default function EditorialPolicyPage() {
   const webPage = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Editorial Policy — MyPayRights",
+    name: `Editorial Policy — ${SITE.name}`,
     description: metadata.description,
     url,
     dateModified: DATE,
@@ -48,7 +48,7 @@ export default function EditorialPolicyPage() {
             </h1>
             <p className="mt-2 text-xs text-ink-faint">Last updated: {DATE}</p>
             <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-              MyPayRights is an employment rights information service. We publish calculators and
+              {SITE.name} is an employment rights information service. We publish calculators and
               guides that affect people&apos;s income and legal rights. This policy sets out the
               standards we hold ourselves to for accuracy, independence, and corrections.
             </p>
@@ -59,7 +59,7 @@ export default function EditorialPolicyPage() {
             <section>
               <h2>Editorial independence</h2>
               <p>
-                MyPayRights&apos;s editorial content — calculators, guides, legal summaries, and
+                {SITE.name}&apos;s editorial content — calculators, guides, legal summaries, and
                 statutory rate tables — is produced and maintained independently of any commercial
                 relationship. Specifically:
               </p>
@@ -78,7 +78,7 @@ export default function EditorialPolicyPage() {
             <section>
               <h2>Accuracy standards</h2>
               <p>
-                Every statutory figure published on MyPayRights must meet the following standards
+                Every statutory figure published on {SITE.name} must meet the following standards
                 before publication:
               </p>
               <ul>
@@ -102,7 +102,7 @@ export default function EditorialPolicyPage() {
             <section>
               <h2>Scope of content</h2>
               <p>
-                MyPayRights publishes:
+                {SITE.name} publishes:
               </p>
               <ul>
                 {[
@@ -114,7 +114,7 @@ export default function EditorialPolicyPage() {
                 ))}
               </ul>
               <p>
-                MyPayRights does not publish:
+                {SITE.name} does not publish:
               </p>
               <ul>
                 {[
@@ -177,7 +177,7 @@ export default function EditorialPolicyPage() {
             <section>
               <h2>Who produces this content</h2>
               <p>
-                MyPayRights was founded by <strong>Jaspal Singh</strong>, a software engineer with a
+                {SITE.name} was founded by <strong>Jaspal Singh</strong>, a software engineer with a
                 background in building employment and HR tools. All calculator logic and legal
                 summaries are reviewed by Jaspal before publication.
               </p>
@@ -197,7 +197,7 @@ export default function EditorialPolicyPage() {
             <section>
               <h2>Complaints</h2>
               <p>
-                If you believe content on MyPayRights is inaccurate, misleading, or otherwise
+                If you believe content on {SITE.name} is inaccurate, misleading, or otherwise
                 fails to meet the standards described in this policy, contact us at{" "}
                 <a href={`mailto:${SITE.contactEmail}`} className="text-brand-600 underline-offset-2 hover:underline">
                   {SITE.contactEmail}

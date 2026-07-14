@@ -65,7 +65,7 @@ export default function UpdatesPage() {
           dateModified: UPDATES[0].date,
         }))}
       />
-      <main className="mx-auto max-w-content px-5 py-12">
+<div className="mx-auto max-w-content px-5 py-12">
         <nav aria-label="Breadcrumb" className="mb-6 text-xs text-ink-soft">
           <Link href="/" className="hover:text-ink">Home</Link>
           <span className="mx-1.5">/</span>
@@ -97,7 +97,7 @@ export default function UpdatesPage() {
           Found a possible error? Read our <Link href="/editorial-policy" className="font-semibold text-brand-600 hover:underline">editorial policy</Link>{" "}
           or <Link href="/contact" className="font-semibold text-brand-600 hover:underline">send a correction</Link>.
         </aside>
-      </main>
+      </div>
     </>
   );
 }

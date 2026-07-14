@@ -34,18 +34,18 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "uk-redundancy-pay-guide-2026",
-    title: "UK Redundancy Pay: The Complete Guide for 2026",
+    title: "UK Redundancy Pay 2026/27: What Changed This Year",
     description:
-      "Everything you need to know about statutory redundancy pay in the UK — who qualifies, how it is calculated, tax treatment, and what to do if your employer refuses to pay.",
+      "The 2026/27 UK redundancy-pay update: the new £751 weekly cap, the £22,530 maximum, what stayed unchanged, and what workers should check now.",
     excerpt:
-      "Made redundant and not sure what you are owed? This guide covers every aspect of UK statutory redundancy pay — from the 2-year qualifying period to the £22,530 cap — in plain English.",
+      "A focused annual update on the 2026/27 statutory limits and their practical effect, with links to the evergreen rules guide and calculator.",
     quickAnswer:
-      "If you have at least 2 years' continuous service and were genuinely made redundant, you are legally entitled to statutory redundancy pay — calculated by your age, years of service (up to 20), and weekly pay capped at £751 (2026/27). The maximum is £22,530.",
+      "From 6 April 2026, the weekly-pay cap used for statutory redundancy calculations is £751 and the maximum statutory award is £22,530. The age multipliers, 20-year service cap, 2-year qualifying period and £30,000 termination-payment tax threshold are unchanged.",
     region: "UK",
     category: "redundancy",
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
-    readingTimeMinutes: 9,
+    dateModified: "2026-07-14",
+    readingTimeMinutes: 7,
     tags: ["redundancy", "statutory redundancy pay", "employment rights", "UK"],
     relatedTools: ["redundancy-pay-calculator", "notice-period-calculator"],
   },

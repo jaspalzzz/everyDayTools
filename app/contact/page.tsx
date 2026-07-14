@@ -111,7 +111,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <main style={{ maxWidth: 1180, margin: "0 auto", padding: "44px 24px 74px" }}>
+<div style={{ maxWidth: 1180, margin: "0 auto", padding: "44px 24px 74px" }}>
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_330px] gap-8 items-start">
           <div>
             <section className="grid grid-cols-1 sm:grid-cols-2 gap-4" aria-label="Contact options">
@@ -231,7 +231,7 @@ export default function ContactPage() {
             </section>
           </aside>
         </div>
-      </main>
+      </div>
     </>
   );
 }
