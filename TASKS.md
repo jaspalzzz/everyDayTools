@@ -16,6 +16,13 @@ self-contained: what, where (file paths), how, and acceptance criteria. Read
 > `ACTION-PLAN.md`). Every T3 task below was cross-checked against the actual
 > source before being written — two subagent findings were corrected during that
 > check (see T3.3 and T3.7 notes) rather than copied verbatim.
+>
+> **Status — 14 July 2026 (later):** TIER 4 added from a dedicated hreflang/
+> international-SEO audit (see `HREFLANG-ANALYSIS.md`). All four tasks trace to
+> confirmed source-level root causes, not just symptoms — T4.3 in particular
+> was re-verified by reading full page content before writing it up, since the
+> first-pass read looked like a copy-paste bug and turned out to be a real but
+> incompletely-declared Québec-law nuance instead.
 
 ---
 
@@ -453,6 +460,98 @@ tasks already tracked as caveats elsewhere in this file, not Codex tasks.
 
 ---
 
+## TIER 4 — Hreflang / international SEO fixes (2026-07-14)
+
+Source: `HREFLANG-ANALYSIS.md` (dedicated hreflang audit of the 9 pages that carry
+an active hreflang relationship: homepage, 4 country hubs, `/fr` hub, 3 `/fr/ca/*`
+deep pages). All four root causes were confirmed by reading the actual source,
+not inferred from the rendered output alone.
+
+### T4.1 — Add the missing `"en"` return tag on all 5 non-home locale pages
+- **Status:** Complete — all five locale hubs return the homepage `en` annotation alongside their existing regional and `x-default` alternates.
+- **Files:** `app/uk/page.tsx`, `app/us/page.tsx`, `app/ca/page.tsx`,
+  `app/au/page.tsx`, `app/fr/page.tsx`.
+- **Bug:** the homepage declares itself under two codes — `en` and `x-default` —
+  both pointing to `SITE.url`. None of the 5 other locale pages include an `"en"`
+  key in their own `alternates.languages` object (each currently lists
+  `en-GB`/`en-US`/`en-CA`/`en-AU`/`x-default` as appropriate, but never `en`).
+  Per Google's hreflang rules, a language-code relationship must be mutually
+  declared on both ends — right now only `x-default` is reciprocated, not `en`
+  specifically, so Google may disregard the `en` annotation for the homepage.
+- **Do:** add `"en": SITE.url` to the `languages` object in each of the 5 files
+  listed above (one line per file).
+- **Accept:** re-fetch each of the 5 pages and confirm `"en"` now appears in
+  their hreflang set pointing to the homepage, alongside the existing entries.
+
+### T4.2 — Add a `languages` parameter to the shared `toolMetadata()` helper
+- **Status:** Complete — `toolMetadata()` accepts optional locale equivalents without changing existing callers that omit them.
+- **File:** `lib/seo.ts` — `toolMetadata()`.
+- **Bug:** this helper is used by all ~35 calculator pages and has no parameter
+  for declaring `alternates.languages` at all (`{ title, seoTitle?, description,
+  url, slug }` is the full current signature). This makes it structurally
+  impossible for any page using this helper to declare a hreflang return tag
+  without first changing the helper — the immediate symptom is that
+  `/notice-period-calculator`, `/pto-payout-calculator`, and
+  `/severance-pay-calculator` (the English counterparts to the 3 `/fr/ca/*`
+  pages) currently have zero hreflang tags of any kind.
+- **Do:** add an optional `languages?: Record<string, string>` parameter to
+  `toolMetadata()`'s params type, and merge it into the returned metadata's
+  `alternates` object when present: `alternates: { canonical: params.url,
+  ...(params.languages ? { languages: params.languages } : {}) }`.
+- **Accept:** `toolMetadata()` accepts the new optional param without breaking
+  any of its ~35 existing call sites (all of which omit it); `npm run typecheck`
+  and `npm run build` stay green.
+
+### T4.3 — Wire the 3 English↔French calculator pairs together via T4.2's new param
+- **Status:** Complete — notice/preavis, PTO/paie-de-vacances and severance/indemnite-de-depart are reciprocal one-to-one pairs with no conflicting English target.
+- **Files:** `app/notice-period-calculator/page.tsx`,
+  `app/pto-payout-calculator/page.tsx`, `app/severance-pay-calculator/page.tsx`.
+- **Depends on:** T4.2 (needs the `languages` param to exist first).
+- **Context:** `/fr/ca/preavis` and `/fr/ca/indemnite-de-depart` **both**
+  currently declare themselves as the `fr-CA` equivalent of the same English
+  page, `/notice-period-calculator` — this is a real, conflicting hreflang claim
+  Google's own guidance flags as a reason to disregard the annotation. Reading
+  the full content of `/fr/ca/indemnite-de-depart` confirmed this isn't a
+  copy-paste bug: under Québec's *Loi sur les normes du travail*, "indemnité de
+  départ" (lump-sum payout) and "préavis" (working notice) are two forms of the
+  same statutory entitlement, and the page's own FAQ explains the distinction.
+  But the page also visibly links to `/severance-pay-calculator` as an equally
+  relevant English tool ("Severance pay estimator (EN)"), which currently has
+  **no** hreflang relationship declared anywhere on the site.
+- **Do:** add `languages: { "fr-CA": "https://mypayrights.com/fr/ca/preavis" }`
+  to `notice-period-calculator`'s metadata, `languages: { "fr-CA":
+  "https://mypayrights.com/fr/ca/paie-de-vacances" }` to
+  `pto-payout-calculator`'s, and `languages: { "fr-CA":
+  "https://mypayrights.com/fr/ca/indemnite-de-depart" }` to
+  `severance-pay-calculator`'s — giving every one of the 3 French pages exactly
+  one clean, non-conflicting English pairing declared from both directions.
+- **Accept:** each of the 3 English pages' hreflang set now includes its `fr-CA`
+  counterpart; no two French pages claim the same English URL via hreflang.
+
+### T4.4 — Add French-language (or at least Québec Loi 25-aware) legal content reachable from the `/fr/ca/*` pages
+- **Status:** Complete — `/fr/informations-legales` provides a French-Canadian privacy, terms and disclaimer summary naming Loi 25, linked from the shared footer and included in the sitemap.
+- **File:** `components/SiteFooter.tsx` (renders unlocalized on every page,
+  including all `/fr` and `/fr/ca/*` pages) and the target legal pages
+  (`app/privacy/page.tsx`, `app/terms/page.tsx`, `app/disclaimer/page.tsx`).
+- **Gap:** French-speaking Québec visitors currently have no French-language
+  privacy/terms/disclaimer content, and no reference anywhere to Québec's own
+  data-protection law (*Loi 25* — distinct from GDPR/CNIL, which a generic
+  Francophone template would incorrectly suggest for this jurisdiction). Notable
+  contrast: the calculator pages themselves already correctly cite Québec-specific
+  authorities (CNESST) rather than a generic or French-national body, so the
+  team clearly knows to localize substantively — this is a gap in the shared
+  footer/legal layer specifically, not a pattern to relearn.
+- **Do (minimum viable fix):** add a short French-language disclaimer/privacy
+  summary block reachable from the `/fr/ca/*` pages (doesn't need a full parallel
+  legal-page tree) that references *Loi 25* by name. If a fuller fix is wanted,
+  build real `/fr/confidentialite`, `/fr/conditions`, `/fr/avertissement` pages
+  and link them from the footer only when the active locale is `fr-CA`.
+- **Accept:** at least one French-language legal/privacy reference is reachable
+  within one click from every `/fr/ca/*` page; it names *Loi 25* specifically,
+  not a generic or non-Québec legal framework.
+
+---
+
 ## Suggested execution order
 
 T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
@@ -465,6 +564,8 @@ T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
 → T3.8 → T3.9 → T3.10      (structure + crawl-discovery)
 → T3.11 → T3.12 → T3.13    (headers, accessibility, mobile UX)
 → T3.14                    (content depth, ongoing)
-→ T2.3 / T2.4 / T2.5       (breadth, ongoing — lower priority than TIER 3 fixes)
+→ T4.1 → T4.2 → T4.3       (hreflang return-tag fixes — T4.3 depends on T4.2)
+→ T4.4                     (French legal-page localization)
+→ T2.3 / T2.4 / T2.5       (breadth, ongoing — lower priority than TIER 3/4 fixes)
 
 Ship in small batches; keep the gate green; one focused PR per task or tight group.

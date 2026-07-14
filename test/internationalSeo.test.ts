@@ -6,6 +6,12 @@ import { metadata as caMetadata } from "@/app/ca/page";
 import { metadata as auMetadata } from "@/app/au/page";
 import { metadata as frMetadata } from "@/app/fr/page";
 import { metadata as frNoticeMetadata } from "@/app/fr/ca/preavis/page";
+import { metadata as frPtoMetadata } from "@/app/fr/ca/paie-de-vacances/page";
+import { metadata as frSeveranceMetadata } from "@/app/fr/ca/indemnite-de-depart/page";
+import { metadata as noticeMetadata } from "@/app/notice-period-calculator/page";
+import { metadata as ptoMetadata } from "@/app/pto-payout-calculator/page";
+import { metadata as severanceMetadata } from "@/app/severance-pay-calculator/page";
+import { metadata as frenchLegalMetadata } from "@/app/fr/informations-legales/page";
 import { SITE } from "@/lib/seo";
 
 function languages(metadata: typeof rootMetadata) {
@@ -31,6 +37,12 @@ describe("international SEO mappings", () => {
     expect(languages(auMetadata)).toMatchObject({ "en-AU": `${SITE.url}/au` });
   });
 
+  it("returns every non-home locale page to the homepage en annotation", () => {
+    for (const metadata of [ukMetadata, usMetadata, caMetadata, auMetadata, frMetadata]) {
+      expect(languages(metadata)).toMatchObject({ en: SITE.url });
+    }
+  });
+
   it("keeps Canadian English/French equivalents reciprocal", () => {
     expect(languages(frMetadata)).toMatchObject({
       "fr-CA": `${SITE.url}/fr`,
@@ -39,6 +51,29 @@ describe("international SEO mappings", () => {
     expect(languages(frNoticeMetadata)).toMatchObject({
       "fr-CA": `${SITE.url}/fr/ca/preavis`,
       "en-CA": `${SITE.url}/notice-period-calculator`,
+    });
+
+    const pairs = [
+      [noticeMetadata, frNoticeMetadata, "/notice-period-calculator", "/fr/ca/preavis"],
+      [ptoMetadata, frPtoMetadata, "/pto-payout-calculator", "/fr/ca/paie-de-vacances"],
+      [severanceMetadata, frSeveranceMetadata, "/severance-pay-calculator", "/fr/ca/indemnite-de-depart"],
+    ] as const;
+
+    for (const [english, french, englishPath, frenchPath] of pairs) {
+      expect(languages(english)).toEqual({ "fr-CA": `${SITE.url}${frenchPath}` });
+      expect(languages(french)).toEqual({
+        "fr-CA": `${SITE.url}${frenchPath}`,
+        "en-CA": `${SITE.url}${englishPath}`,
+      });
+    }
+
+    const englishTargets = pairs.map(([, french]) => languages(french)?.["en-CA"]);
+    expect(new Set(englishTargets).size).toBe(englishTargets.length);
+  });
+
+  it("marks the Quebec legal summary as French Canadian", () => {
+    expect(languages(frenchLegalMetadata)).toEqual({
+      "fr-CA": `${SITE.url}/fr/informations-legales`,
     });
   });
 });

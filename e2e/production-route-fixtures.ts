@@ -19,6 +19,7 @@ const STATIC_ROUTES = [
   "/editorial-policy",
   "/faq",
   "/fr",
+  "/fr/informations-legales",
   "/fr/ca/indemnite-de-depart",
   "/fr/ca/paie-de-vacances",
   "/fr/ca/preavis",

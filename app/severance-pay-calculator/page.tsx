@@ -8,7 +8,13 @@ import type { FaqItem } from "@/lib/types";
 const tool = getTool("severance-pay-calculator")!;
 const url = `${SITE.url}/${tool.slug}`;
 
-export const metadata = toolMetadata({ title: tool.name, description: tool.description, url, slug: tool.slug });
+export const metadata = toolMetadata({
+  title: tool.name,
+  description: tool.description,
+  url,
+  slug: tool.slug,
+  languages: { "fr-CA": `${SITE.url}/fr/ca/indemnite-de-depart` },
+});
 
 const faqs: FaqItem[] = [
   {

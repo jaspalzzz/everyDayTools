@@ -205,13 +205,18 @@ export function toolMetadata(params: {
   url: string;
   /** Slug used to build the per-page OG image path. */
   slug: string;
+  /** Optional locale equivalents for pages with a genuine translated counterpart. */
+  languages?: Record<string, string>;
 }): Metadata {
   const displayTitle = params.seoTitle ?? params.title;
   const ogImageUrl = `/${params.slug}/opengraph-image`;
   return {
     title: displayTitle,
     description: clampMetaDescription(params.description),
-    alternates: { canonical: params.url },
+    alternates: {
+      canonical: params.url,
+      ...(params.languages ? { languages: params.languages } : {}),
+    },
     openGraph: {
       title: displayTitle,
       description: clampMetaDescription(params.description),

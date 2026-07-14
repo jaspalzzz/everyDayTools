@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: url,
     languages: {
       "fr-CA": url,
-      "en-CA": `${SITE.url}/notice-period-calculator`,
+      "en-CA": `${SITE.url}/severance-pay-calculator`,
     },
   },
   openGraph: { title: "Calculateur d'indemnité de départ — Québec 2026", url },

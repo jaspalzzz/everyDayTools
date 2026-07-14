@@ -74,6 +74,7 @@ export function SiteFooter() {
           <Link href="/contact" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Contact</Link>
           <Link href="/contact" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Corrections</Link>
           <Link href="/privacy" className="flex items-center py-2 text-[13px] font-semibold underline underline-offset-2" style={{ color: "#52616f", minHeight: 44 }}>Privacy policy</Link>
+          <Link href="/fr/informations-legales" lang="fr-CA" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Confidentialité Québec (Loi 25)</Link>
           <Link href="/terms" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Terms</Link>
           <Link href="/disclaimer" className="block py-2 text-[13px] font-semibold" style={{ color: "#52616f" }}>Disclaimer</Link>
         </div>

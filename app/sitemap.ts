@@ -97,6 +97,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/situations/workplace-discrimination-uk`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/situations/us-wrongful-termination`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/fr`, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/fr/informations-legales`, lastModified: "2026-07-14" },
     { url: `${SITE.url}/fr/ca/indemnite-de-depart`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/fr/ca/preavis`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/fr/ca/paie-de-vacances`, lastModified: RATES_UPDATED },

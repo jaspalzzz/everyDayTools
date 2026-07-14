@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: url,
     languages: {
+      en: SITE.url,
       "fr-CA": url,
       "en-CA": `${SITE.url}/ca`,
       "en-GB": `${SITE.url}/uk`,
