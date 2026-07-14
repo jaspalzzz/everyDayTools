@@ -16,6 +16,7 @@ self-contained: what, where (file paths), how, and acceptance criteria. Read
 > `ACTION-PLAN.md`). Every T3 task below was cross-checked against the actual
 > source before being written — two subagent findings were corrected during that
 > check (see T3.3 and T3.7 notes) rather than copied verbatim.
+> **Complete** as of commit `2c59c9e` ("Complete Tier 3 SEO remediation").
 >
 > **Status — 14 July 2026 (later):** TIER 4 added from a dedicated hreflang/
 > international-SEO audit (see `HREFLANG-ANALYSIS.md`). All four tasks trace to
@@ -23,6 +24,30 @@ self-contained: what, where (file paths), how, and acceptance criteria. Read
 > was re-verified by reading full page content before writing it up, since the
 > first-pass read looked like a copy-paste bug and turned out to be a real but
 > incompletely-declared Québec-law nuance instead.
+> **Complete** as of commit `d92b055` ("Add Tier 4 international SEO fixes") —
+> independently re-verified: all 4 diffs match their task's acceptance criteria,
+> `npm run typecheck` clean, `npm run test` 213/213 passed (including the new
+> `test/internationalSeo.test.ts`), `npm run build` succeeded (412 sitemap
+> routes, `/fr/informations-legales` present with correct `fr-CA` self-ref and
+> live "Loi 25" content), `node scripts/audit-indexability.mjs` /
+> `score-technical-seo.mjs` / `score-schema-seo.mjs` all clean, and the focused
+> `e2e/hreflang.spec.ts` 4/4 passed. One follow-up worth tracking, not a
+> blocker: T4.3's fix resolves the *conflicting-claim* problem cleanly (each
+> French page now has exactly one, unique English hreflang partner — verified
+> by both the new unit test and e2e spec), but does so by pairing
+> `/fr/ca/indemnite-de-depart` with `/severance-pay-calculator` by name/branding
+> rather than by content — that French page's visible body content is still the
+> Québec notice-in-lieu statutory table (same as `/fr/ca/preavis`), while
+> `/severance-pay-calculator`'s English FAQ content (negotiability, waiving the
+> right to sue) reflects a US-style severance concept that doesn't really apply
+> under the LNT framework. Worth a content pass later, not urgent — hreflang
+> correctness (no duplicate claims) is what T4.3's acceptance criteria actually
+> required, and that's genuinely fixed. Also note: the new footer link
+> ("Confidentialité Québec (Loi 25)") renders globally on every page, not only
+> on `/fr*` routes — harmless, just slightly imprecise; fine to leave as-is.
+> These two commits are **committed locally but not yet pushed** (`HEAD` is 2
+> commits ahead of `origin/main`) — that's a GitHub-auth/push question, not an
+> implementation gap.
 
 ---
 
