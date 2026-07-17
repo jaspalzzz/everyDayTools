@@ -643,6 +643,43 @@ five were the genuine remaining gaps, found in the same pass.
 
 ---
 
+## TIER 6 — US state PTO crawl-discovery fix (2026-07-18)
+
+Source: Google Search Console URL Inspection sampling on 18 July 2026. Of 21
+zero-impression US state URLs inspected, 20 were reported as "Discovered —
+currently not indexed" or unknown to Google; the sample skewed heavily toward
+the state-specific `/pto-payout` variant.
+
+### T6.1 — Link every US state hub to its own PTO-payout deep dive
+- **Status:** Complete locally — all 51 rendered state hubs now link to their own
+  `/us/states/{state}/pto-payout` page alongside the existing final-paycheck and
+  minimum-wage deep dives.
+- **What:** the state hub's "Deep dives" section exposed only two of the three
+  state-specific child pages. The separate PTO calculator CTA linked to the
+  generic `/pto-payout-calculator`, so it did not pass hub-level internal-link
+  equity to the state's own PTO page.
+- **Where:** `app/us/states/[state]/page.tsx`, "Deep dives" section.
+- **How:** add a third `Link` card using the existing card pattern, with a
+  state-specific `/us/states/${s.slug}/pto-payout` target and a substantive PTO
+  description covering payout rules, policy exceptions, final-pay timing and
+  wage-claim steps. The parallel CA and AU templates were checked: they expose
+  only one jurisdiction route per province/state and have no jurisdiction child
+  route families to orphan, so no equivalent change is required there.
+- **Accept:** `npm run test`, `npm run typecheck`, `npm run build` and the full
+  static-export `npm run e2e` suite pass;
+  `node scripts/audit-indexability.mjs` reports no blocking issue;
+  `node scripts/score-technical-seo.mjs` remains 100/100; all 51 built hub HTML
+  files contain their matching PTO deep-dive link; and all 51 hubs have no
+  horizontal overflow at 320px or 375px.
+- **Deployment note:** do not enable or manually invoke IndexNow for this task.
+  The existing `scripts/submit-indexnow.mjs` postbuild hook remains controlled by
+  `INDEXNOW_SUBMIT` and should pick up changed URLs on the next real deployment.
+- **Follow-up (3–4 weeks after deployment and recrawl):** re-run GSC URL
+  Inspection against the same 21 sampled URLs and record how many moved from
+  "Discovered — currently not indexed" / unknown into Google's indexed set.
+
+---
+
 ## Suggested execution order
 
 T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
@@ -658,6 +695,7 @@ T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
 → T4.1 → T4.2 → T4.3       (hreflang return-tag fixes — T4.3 depends on T4.2)
 → T4.4                     (French legal-page localization)
 → T5.1 → T5.2 → T5.3 → T5.4 → T5.5  (all complete — see TIER 5)
+→ T6.1                     (complete locally; GSC re-check 3–4 weeks after deploy)
 → T2.3 / T2.4 / T2.5       (breadth, ongoing — lower priority than TIER 3/4/5 fixes)
 
 Ship in small batches; keep the gate green; one focused PR per task or tight group.

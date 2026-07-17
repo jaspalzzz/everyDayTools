@@ -340,7 +340,7 @@ export default async function StatePage({ params }: Props) {
         {/* Sub-page deep dives */}
         <section className="mb-10">
           <h2 className="mb-3 text-sm font-semibold text-ink">Deep dives</h2>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-3">
             <Link
               href={`/us/states/${s.slug}/final-paycheck`}
               className="group rounded-xl border border-surface-line p-4 transition-colors hover:border-brand-600 hover:bg-brand-50"
@@ -361,6 +361,17 @@ export default async function StatePage({ params }: Props) {
               </p>
               <p className="mt-1 text-sm text-ink-soft">
                 Current rate, tipped employee rules, and how to report violations.
+              </p>
+            </Link>
+            <Link
+              href={`/us/states/${s.slug}/pto-payout`}
+              className="group rounded-xl border border-surface-line p-4 transition-colors hover:border-brand-600 hover:bg-brand-50"
+            >
+              <p className="font-semibold text-ink group-hover:text-brand-700">
+                {s.name} PTO payout law →
+              </p>
+              <p className="mt-1 text-sm text-ink-soft">
+                Unused vacation payout rules, policy exceptions, final-pay timing, and wage claim steps.
               </p>
             </Link>
           </div>

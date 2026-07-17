@@ -100,7 +100,7 @@ test.describe("Tier 3 cluster and schema fixes", () => {
 
     await page.goto("/blog/uk-redundancy-pay-guide-2026");
     await expect(page.getByRole("heading", { level: 1 })).toContainText("What Changed");
-    await expect(page.locator('a[href="/guides/uk-redundancy-pay"]')).toBeVisible();
+    await expect(page.getByRole("link", { name: "complete UK redundancy pay guide", exact: true })).toBeVisible();
     await expect(page.locator('a[href="/uk/redundancy"]')).toBeVisible();
   });
 
