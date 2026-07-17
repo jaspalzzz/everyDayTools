@@ -292,6 +292,30 @@ export default async function StatePage({ params }: Props) {
           </section>
         )}
 
+        {s.stateSpecificDetail && (
+          <section
+            aria-labelledby="state-specific-detail-heading"
+            className="mb-10 rounded-xl border border-surface-line bg-surface-muted p-5"
+          >
+            <h2 id="state-specific-detail-heading" className="mb-3 text-base font-semibold text-ink">
+              {s.stateSpecificDetail.heading}
+            </h2>
+            <p className="text-sm leading-relaxed text-ink-soft">{s.stateSpecificDetail.body}</p>
+            <p className="mt-3 text-xs text-ink-faint">
+              Source:{" "}
+              <a
+                href={s.stateSpecificDetail.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-brand-600 underline-offset-2 hover:underline"
+              >
+                {s.stateSpecificDetail.sourceLabel}
+              </a>{" "}
+              (guidance reviewed {s.stateSpecificDetail.sourceReviewed}).
+            </p>
+          </section>
+        )}
+
         {/* Calculator CTA */}
         <section aria-labelledby="calc-heading" className="mb-10">
           <h2 id="calc-heading" className="mb-3 text-sm font-semibold text-ink">

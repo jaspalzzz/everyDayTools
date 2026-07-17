@@ -283,8 +283,14 @@ export default async function Page({ params }: Props) {
         <EditorialReview
           lastReviewed={reviewedDate}
           sourceLabel={`${s.name} labor agency`}
-          className="mb-8"
+          className="mb-3"
         />
+        <p className="mb-8 text-sm text-ink-faint">
+          Data verified {s.verifiedYear} from the{" "}
+          <a className="font-medium text-brand-600 hover:underline" href={s.dolUrl} rel="noopener noreferrer" target="_blank">
+            {s.name} labor agency
+          </a>.
+        </p>
 
         {/* Key deadlines */}
         <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">

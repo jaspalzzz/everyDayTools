@@ -398,7 +398,7 @@ export default async function Page({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(article)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(faqs))} />
 
-<div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+<div className="mx-auto max-w-3xl overflow-x-hidden px-4 py-10 sm:px-6">
         <nav className="mb-6 flex flex-wrap items-center gap-1 text-sm text-ink-faint">
           <Link href="/" className="hover:text-brand-600">Home</Link>
           <span>/</span>
@@ -419,8 +419,14 @@ export default async function Page({ params }: Props) {
         <EditorialReview
           lastReviewed={reviewedDate}
           sourceLabel={`${s.name} labor agency`}
-          className="mb-8"
+          className="mb-3"
         />
+        <p className="mb-8 text-sm text-ink-faint">
+          Data verified {s.verifiedYear} from the{" "}
+          <a className="font-medium text-brand-600 hover:underline" href={s.dolUrl} rel="noopener noreferrer" target="_blank">
+            {s.name} labor agency
+          </a>.
+        </p>
 
         <section className="mb-8 rounded-xl border border-surface-line bg-white p-5 shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-600">State rule</p>

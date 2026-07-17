@@ -131,6 +131,22 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         )}
 
+        <aside aria-labelledby="contextual-links-heading" className="mb-8 rounded-xl border border-brand-100 bg-brand-50 p-5">
+          <h2 id="contextual-links-heading" className="text-sm font-bold text-ink">
+            Use this article with
+          </h2>
+          <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+            {post.contextualLinks.map((item) => (
+              <li key={item.href} className="min-w-0 rounded-lg border border-brand-100 bg-white p-3">
+                <Link href={item.href} className="font-semibold text-brand-700 hover:underline">
+                  {item.label} →
+                </Link>
+                <p className="mt-1 text-xs leading-relaxed text-ink-soft">{item.description}</p>
+              </li>
+            ))}
+          </ul>
+        </aside>
+
         {/* Legal disclaimer */}
         <div className="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900">
           <strong>For information only.</strong> This article is not legal advice. For advice on your specific situation, consult a qualified employment solicitor or contact{" "}

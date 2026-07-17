@@ -29,6 +29,12 @@ export interface BlogPost {
   readingTimeMinutes: number;
   tags: string[];
   relatedTools: string[];
+  /** In-article next steps tailored to this post's subject, never generic hubs. */
+  contextualLinks: Array<{
+    href: string;
+    label: string;
+    description: string;
+  }>;
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -44,10 +50,15 @@ export const BLOG_POSTS: BlogPost[] = [
     region: "UK",
     category: "redundancy",
     datePublished: "2026-06-27",
-    dateModified: "2026-07-14",
+    dateModified: "2026-07-17",
     readingTimeMinutes: 7,
     tags: ["redundancy", "statutory redundancy pay", "employment rights", "UK"],
     relatedTools: ["redundancy-pay-calculator", "notice-period-calculator"],
+    contextualLinks: [
+      { href: "/redundancy-pay-calculator", label: "Calculate statutory redundancy pay", description: "Apply the 2026/27 weekly cap to your age, service and weekly pay." },
+      { href: "/guides/uk-redundancy-pay", label: "Read the complete redundancy guide", description: "Check eligibility, worked examples, tax treatment and dispute steps." },
+      { href: "/faq/what-is-the-redundancy-pay-cap", label: "Understand the weekly-pay cap", description: "See how the statutory cap limits the pay used in the calculation." },
+    ],
   },
   {
     slug: "how-to-negotiate-severance-pay-uk",
@@ -61,10 +72,15 @@ export const BLOG_POSTS: BlogPost[] = [
     region: "UK",
     category: "redundancy",
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-17",
     readingTimeMinutes: 8,
     tags: ["severance pay", "settlement agreement", "redundancy negotiation", "UK"],
     relatedTools: ["redundancy-pay-calculator", "severance-pay-calculator"],
+    contextualLinks: [
+      { href: "/settlement-agreement-calculator", label: "Estimate a settlement range", description: "Model notice pay, statutory entitlements and a negotiated ex gratia amount." },
+      { href: "/guides/uk-settlement-agreement", label: "Review settlement agreement rights", description: "Understand independent advice, tax treatment and common clauses before negotiating." },
+      { href: "/faq/how-much-is-a-settlement-agreement-worth", label: "What might an agreement be worth?", description: "Compare the practical factors that influence an employer's offer." },
+    ],
   },
   {
     slug: "us-final-paycheck-laws-by-state",
@@ -78,10 +94,15 @@ export const BLOG_POSTS: BlogPost[] = [
     region: "US",
     category: "pay-rights",
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-17",
     readingTimeMinutes: 7,
     tags: ["final paycheck", "wages", "state employment law", "US"],
     relatedTools: ["final-paycheck-deadline-calculator", "pto-payout-calculator"],
+    contextualLinks: [
+      { href: "/final-paycheck-deadline-calculator", label: "Check your final-pay deadline", description: "Select your state and how the job ended to find the applicable deadline." },
+      { href: "/pto-payout-calculator", label: "Check unused PTO payout rules", description: "See whether state law or the employer's written policy controls unused leave." },
+      { href: "/research/us-final-paycheck-laws", label: "Explore the sourced state-law dataset", description: "Compare every state's rule and follow the underlying agency sources." },
+    ],
   },
   {
     slug: "uk-notice-period-rights-explained",
@@ -95,10 +116,15 @@ export const BLOG_POSTS: BlogPost[] = [
     region: "UK",
     category: "leaving-job",
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-17",
     readingTimeMinutes: 7,
     tags: ["notice period", "PILON", "garden leave", "UK employment law"],
     relatedTools: ["notice-period-calculator", "garden-leave-calculator"],
+    contextualLinks: [
+      { href: "/notice-period-calculator", label: "Calculate statutory notice", description: "Turn complete years of service into the UK statutory minimum notice period." },
+      { href: "/garden-leave-calculator", label: "Estimate garden-leave pay", description: "Work through salary and benefits owed while you remain employed away from work." },
+      { href: "/guides/uk-notice-period-law", label: "Read the notice-period law guide", description: "Compare contractual notice, statutory notice and pay in lieu." },
+    ],
   },
   {
     slug: "australia-fair-work-redundancy-explained",
@@ -112,10 +138,14 @@ export const BLOG_POSTS: BlogPost[] = [
     region: "AU",
     category: "redundancy",
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-17",
     readingTimeMinutes: 8,
     tags: ["redundancy pay", "NES", "Fair Work Act", "Australia"],
     relatedTools: ["au-redundancy-pay-calculator", "au-notice-period-calculator"],
+    contextualLinks: [
+      { href: "/au-redundancy-pay-calculator", label: "Calculate NES redundancy pay", description: "Estimate the number of redundancy weeks from continuous service." },
+      { href: "/au-notice-period-calculator", label: "Check Australian notice entitlement", description: "Calculate the NES minimum notice period separately from redundancy pay." },
+    ],
   },
   {
     slug: "uk-maternity-pay-rights-2026",
@@ -129,10 +159,15 @@ export const BLOG_POSTS: BlogPost[] = [
     region: "UK",
     category: "parental-leave",
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-17",
     readingTimeMinutes: 8,
     tags: ["maternity pay", "SMP", "maternity leave", "UK employment law"],
     relatedTools: ["maternity-pay-calculator", "shared-parental-leave-calculator"],
+    contextualLinks: [
+      { href: "/maternity-pay-calculator", label: "Calculate maternity pay", description: "Estimate the 90% period and the remaining statutory-rate weeks." },
+      { href: "/shared-parental-leave-calculator", label: "Plan shared parental leave", description: "Compare how leave and pay could be divided between eligible parents." },
+      { href: "/guides/uk-maternity-pay", label: "Read the maternity pay guide", description: "Check qualifying dates, earnings tests and employer notice requirements." },
+    ],
   },
   {
     slug: "constructive-dismissal-uk-guide",
@@ -146,10 +181,15 @@ export const BLOG_POSTS: BlogPost[] = [
     region: "UK",
     category: "workplace-rights",
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-17",
     readingTimeMinutes: 9,
     tags: ["constructive dismissal", "unfair dismissal", "Employment Tribunal", "UK employment law"],
     relatedTools: ["notice-period-calculator"],
+    contextualLinks: [
+      { href: "/tribunal-compensation-calculator", label: "Estimate tribunal compensation", description: "Model a basic award and potential compensatory award using your circumstances." },
+      { href: "/guides/uk-constructive-dismissal", label: "Build a constructive-dismissal checklist", description: "Review fundamental breach, resignation timing, evidence and ACAS steps." },
+      { href: "/faq/what-is-constructive-dismissal-uk", label: "Check what counts as constructive dismissal", description: "Use the focused FAQ before deciding whether the legal test may fit." },
+    ],
   },
   {
     slug: "can-employer-cut-my-pay-uk",
@@ -163,10 +203,15 @@ export const BLOG_POSTS: BlogPost[] = [
     region: "UK",
     category: "pay-rights",
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-17",
     readingTimeMinutes: 7,
     tags: ["pay cut", "unlawful deduction", "wages", "UK employment law", "breach of contract"],
     relatedTools: ["take-home-pay-calculator", "payslip-analyser"],
+    contextualLinks: [
+      { href: "/take-home-pay-calculator", label: "Model the effect of a pay cut", description: "Compare estimated take-home pay before and after a proposed salary change." },
+      { href: "/payslip-analyser", label: "Check deductions on a payslip", description: "Review gross pay, tax, National Insurance and other deductions line by line." },
+      { href: "/faq/can-employer-cut-my-pay", label: "Review the pay-cut FAQ", description: "Check consent, contractual-change and unlawful-deduction principles." },
+    ],
   },
   {
     slug: "uk-sick-pay-rights-2026",
@@ -180,10 +225,15 @@ export const BLOG_POSTS: BlogPost[] = [
     region: "UK",
     category: "pay-rights",
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-17",
     readingTimeMinutes: 8,
     tags: ["sick pay", "SSP", "statutory sick pay", "sick leave", "UK employment law"],
     relatedTools: ["statutory-sick-pay-calculator"],
+    contextualLinks: [
+      { href: "/statutory-sick-pay-calculator", label: "Calculate Statutory Sick Pay", description: "Estimate qualifying days, weekly amounts and the total statutory payment." },
+      { href: "/guides/uk-sick-pay", label: "Read the UK sick-pay guide", description: "Check eligibility, evidence, employer duties and what happens when SSP ends." },
+      { href: "/faq/how-is-sick-pay-calculated-uk", label: "See how sick pay is calculated", description: "Work through the calculation rules in a focused question-and-answer format." },
+    ],
   },
   {
     slug: "us-overtime-law-explained",
@@ -197,10 +247,15 @@ export const BLOG_POSTS: BlogPost[] = [
     region: "US",
     category: "pay-rights",
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-17",
     readingTimeMinutes: 9,
     tags: ["overtime", "FLSA", "wage theft", "US employment law", "exempt vs non-exempt"],
     relatedTools: ["take-home-overtime-calculator"],
+    contextualLinks: [
+      { href: "/take-home-overtime-calculator", label: "Calculate overtime take-home pay", description: "Compare gross overtime earnings with estimated deductions and net pay." },
+      { href: "/faq/what-is-overtime-law-us", label: "Review the federal overtime rule", description: "Check the 40-hour threshold, regular-rate calculation and common exclusions." },
+      { href: "/faq/are-salaried-employees-exempt-from-overtime-us", label: "Check salaried-worker exemptions", description: "Separate salary basis from the duties tests that determine exemption." },
+    ],
   },
   {
     slug: "uk-tax-code-explained-2026",
@@ -214,10 +269,15 @@ export const BLOG_POSTS: BlogPost[] = [
     region: "UK",
     category: "tax",
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-17",
     readingTimeMinutes: 7,
     tags: ["tax code", "PAYE", "income tax", "HMRC", "tax refund", "UK"],
     relatedTools: ["take-home-pay-calculator", "payslip-analyser"],
+    contextualLinks: [
+      { href: "/take-home-pay-calculator", label: "Estimate pay under your tax code", description: "Compare take-home pay after entering salary, tax and National Insurance details." },
+      { href: "/payslip-analyser", label: "Read your PAYE deductions", description: "Break down the tax-code and deduction lines shown on a payslip." },
+      { href: "/guides/uk-take-home-pay", label: "Understand UK take-home pay", description: "Follow how PAYE tax, National Insurance and allowances interact." },
+    ],
   },
 ];
 

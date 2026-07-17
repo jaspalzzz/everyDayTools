@@ -3,7 +3,9 @@ import { describe, expect, it, vi } from "vitest";
 import sitemap from "@/app/sitemap";
 import { BLOG_POSTS } from "@/data/blogPosts";
 import { FAQS } from "@/data/faqs";
+import { GUIDES } from "@/data/guides";
 import { PILLAR_FOR_TOOL } from "@/data/relatedContent";
+import { TOOLS } from "@/data/tools";
 import { getUsState } from "@/data/usStates";
 import { SITE, articleSchema, guideSchema } from "@/lib/seo";
 import { onRequest } from "@/functions/_middleware";
@@ -57,20 +59,42 @@ describe("Tier 3 SEO remediation contracts", () => {
     const post = BLOG_POSTS.find((item) => item.slug === "uk-redundancy-pay-guide-2026")!;
     expect(post.title).toContain("What Changed");
     expect(post.title).not.toContain("Complete Guide");
-    expect(post.dateModified).toBe("2026-07-14");
+    expect(post.dateModified).toBe("2026-07-17");
   });
 
-  it("uses honest state-specific sitemap dates and substantive local context", () => {
+  it("uses honest state-specific sitemap dates and sourced local enforcement detail", () => {
     const entries = sitemap();
     for (const slug of ["kansas", "mississippi", "wyoming"] as const) {
       const state = getUsState(slug)!;
-      expect(state.lastContentUpdate).toBe("2026-07-14");
+      expect(state.lastContentUpdate).toBe("2026-07-17");
       expect(state.localContext?.split(/\s+/).length).toBeGreaterThan(100);
+      expect(state.stateSpecificDetail?.body.split(/\s+/).length).toBeGreaterThan(80);
+      expect(state.stateSpecificDetail?.sourceUrl).toMatch(/^https:\/\//);
+      expect(state.stateSpecificDetail?.sourceReviewed).toBe("17 July 2026");
       expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/${slug}`)?.lastModified)
         .toBe(state.lastContentUpdate);
     }
     expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/california/final-paycheck`)?.lastModified)
       .toBe("2026-07-09");
+  });
+
+  it("gives every blog post contextual links to specific calculators, guides, or FAQs", () => {
+    const knownTargets = new Set([
+      ...TOOLS.map((tool) => `/${tool.slug}`),
+      ...GUIDES.map((guide) => `/guides/${guide.slug}`),
+      ...FAQS.map((faq) => `/faq/${faq.slug}`),
+      "/research/us-final-paycheck-laws",
+    ]);
+
+    expect(BLOG_POSTS).toHaveLength(11);
+    for (const post of BLOG_POSTS) {
+      expect(post.contextualLinks.length, `${post.slug} contextual link count`).toBeGreaterThanOrEqual(2);
+      expect(new Set(post.contextualLinks.map((link) => link.href)).size).toBe(post.contextualLinks.length);
+      for (const link of post.contextualLinks) {
+        expect(knownTargets.has(link.href), `${post.slug}: unknown target ${link.href}`).toBe(true);
+        expect(link.description.trim().length, `${post.slug}: thin description`).toBeGreaterThan(30);
+      }
+    }
   });
 
   it("ships an IndexNow key and a script-src policy without unsafe-inline", () => {
