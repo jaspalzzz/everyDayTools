@@ -86,3 +86,19 @@ footer p > a {
   top: 0;
   outline: none;
 }
+
+/*
+ * Reserves space for the fixed-position ConsentBanner so it never overlaps
+ * page content (e.g. the homepage hero's search widget) on first paint.
+ * Toggled on <body> by ConsentBanner itself, only while it's showing.
+ * Mobile figure covers the banner's 2-row wrap (text + button row stacked);
+ * desktop's single-row layout needs less clearance.
+ */
+.has-consent-banner {
+  padding-bottom: 132px;
+}
+@media (min-width: 640px) {
+  .has-consent-banner {
+    padding-bottom: 84px;
+  }
+}

@@ -1,4 +1,5 @@
 import { ToolLayout } from "@/components/ToolLayout";
+import { PillarBacklink } from "@/components/PillarBacklink";
 import { RedundancyCalculator } from "@/components/calculators/RedundancyCalculator";
 import { REDUNDANCY_SOURCE } from "@/lib/calculators/redundancy";
 import { getTool } from "@/data/tools";
@@ -58,6 +59,7 @@ export default function Page() {
         faqs={faqs}
         contentBlock={
           <>
+            <PillarBacklink className="mb-6" />
             <h2>What you must pay when making someone redundant</h2>
             <p>
               When you make an employee redundant with 2 or more years' continuous service, you are

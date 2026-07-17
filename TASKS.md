@@ -48,6 +48,16 @@ self-contained: what, where (file paths), how, and acceptance criteria. Read
 > These two commits are **committed locally but not yet pushed** (`HEAD` is 2
 > commits ahead of `origin/main`) — that's a GitHub-auth/push question, not an
 > implementation gap.
+>
+> **Status — 17 July 2026:** TIER 5 added and implemented in the same pass, from
+> a fresh audit re-check that found most of TIER 3/4 was already fixed in code
+> (just undeployed) — only a handful of genuine gaps remained. All five below
+> are done: `npm run typecheck` clean, `npm run test` 213/213 passed, `npm run
+> build` succeeded, and the visual/UX fixes (T5.4, T5.5) were confirmed in a
+> live browser check, not just by reading source (consent banner no longer
+> overlaps the hero CTA at 375px; dismissing it correctly collapses the
+> reserved space; quick-link pills measure correctly). Still committed locally,
+> still not pushed — same GitHub-auth blocker as TIER 3/4.
 
 ---
 
@@ -577,6 +587,62 @@ not inferred from the rendered output alone.
 
 ---
 
+## TIER 5 — Follow-ups found during a 17 July re-check (all complete)
+
+A fresh audit re-verified TIER 3/4 against live source rather than trusting
+either the commit message or the audit's own live-site read. Most of TIER 3/4
+turned out to already be fixed in code (undeployed, not unfinished) — these
+five were the genuine remaining gaps, found in the same pass.
+
+### T5.1 — `PillarBacklink` was missing from the 6 redundancy calculator spokes
+- **Status:** Complete. `components/PillarBacklink.tsx` was already wired into
+  the 4 redundancy guides, the FAQ set, and the 2026 blog post (T3.2) but not
+  into any of the 6 calculator pages that are also spokes of the
+  `/uk/redundancy` pillar.
+- **Files:** `app/redundancy-pay-calculator/page.tsx`,
+  `app/notice-period-calculator/page.tsx`, `app/garden-leave-calculator/page.tsx`,
+  `app/settlement-agreement-calculator/page.tsx`,
+  `app/tribunal-compensation-calculator/page.tsx`,
+  `app/employer-redundancy-cost-calculator/page.tsx`.
+- **Accept:** all 6 now render `<PillarBacklink />` at the top of their
+  `contentBlock` — confirmed via build output and a live browser check.
+
+### T5.2 — AU states sitemap entries had no `lastContentUpdate` fallback
+- **Status:** Complete. `app/sitemap.ts`'s US and CA route groups already used
+  `s.lastContentUpdate ?? \`${s.verifiedYear}-01-01\``; the AU block was the
+  one location-page group still using the bare `verifiedYear` pattern — out of
+  T3.7's original scope (which only targeted US states), found while
+  confirming T3.7 was actually done.
+- **Files:** `data/auStates.ts` (added the optional `lastContentUpdate?: string`
+  field, matching `usStates.ts`'s field of the same name), `app/sitemap.ts`.
+- **Accept:** all three location-page route groups (US/CA/AU) use the same
+  fallback pattern. No dates were backfilled — the field stays empty until a
+  state's content genuinely changes, per the existing convention.
+
+### T5.3 — Static-asset caching gap (performance audit finding)
+- **Status:** Complete. Content-hashed `/_next/static/*` files were relying on
+  Cloudflare Pages' default ~4h caching instead of long-lived immutable caching
+  appropriate for files whose name changes whenever their content does.
+- **File:** `public/_headers` — added a `/_next/static/*` block with
+  `Cache-Control: public, max-age=31536000, immutable`.
+
+### T5.4 — Mobile consent banner overlapped the hero CTA
+- **Status:** Complete. The banner is `position: fixed`, so it never affected
+  document flow — nothing reserved space for it, so it could sit on top of
+  the homepage hero's search-submit button on first paint at narrow widths.
+- **Files:** `components/ConsentBanner.tsx` (toggles a `has-consent-banner`
+  class on `<body>` only while showing), `app/globals.css` (the class reserves
+  matching bottom padding, more on mobile where the banner wraps to 2 rows).
+- **Accept:** confirmed live at 375×812 — the hero's submit button is fully
+  visible above the banner, and dismissing it correctly collapses the padding.
+
+### T5.5 — Quick-link pill tap targets
+- **Status:** Already fixed — no work needed. `components/home/HeroSearch.tsx`
+  already had `min-h-[44px]` on the quick-link pills (part of the same
+  undeployed commit as everything else in TIER 3). Confirmed live.
+
+---
+
 ## Suggested execution order
 
 T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
@@ -591,6 +657,7 @@ T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
 → T3.14                    (content depth, ongoing)
 → T4.1 → T4.2 → T4.3       (hreflang return-tag fixes — T4.3 depends on T4.2)
 → T4.4                     (French legal-page localization)
-→ T2.3 / T2.4 / T2.5       (breadth, ongoing — lower priority than TIER 3/4 fixes)
+→ T5.1 → T5.2 → T5.3 → T5.4 → T5.5  (all complete — see TIER 5)
+→ T2.3 / T2.4 / T2.5       (breadth, ongoing — lower priority than TIER 3/4/5 fixes)
 
 Ship in small batches; keep the gate green; one focused PR per task or tight group.

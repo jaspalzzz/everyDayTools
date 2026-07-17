@@ -64,7 +64,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const auStateEntries: MetadataRoute.Sitemap = AU_STATES.map((s) => ({
     url: `${SITE.url}/au/states/${s.slug}`,
-    lastModified: `${s.verifiedYear}-01-01`,
+    lastModified: s.lastContentUpdate ?? `${s.verifiedYear}-01-01`,
   }));
 
   const blogEntries: MetadataRoute.Sitemap = BLOG_POSTS.map((p) => ({

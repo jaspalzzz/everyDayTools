@@ -1,4 +1,5 @@
 import { ToolLayout, type LearnMoreMeta } from "@/components/ToolLayout";
+import { PillarBacklink } from "@/components/PillarBacklink";
 import { NoticePeriodCalculator } from "@/components/calculators/NoticePeriodCalculator";
 import { NOTICE_SOURCE } from "@/lib/calculators/noticePeriod";
 import { getTool } from "@/data/tools";
@@ -79,6 +80,7 @@ export default function Page() {
         }}
         contentBlock={
           <>
+            <PillarBacklink className="mb-6" />
             <h2>Statutory vs contractual notice</h2>
             <p>
               Your notice period is whichever is greater: the <strong>statutory minimum</strong>{" "}

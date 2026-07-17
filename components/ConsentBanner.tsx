@@ -28,6 +28,16 @@ export function ConsentBanner() {
     if (stored === "accepted" || stored === "rejected") setChoice(stored);
   }, []);
 
+  // The banner is `position: fixed`, so it never affects document flow --
+  // without this, it can visually sit on top of whatever's at the bottom of
+  // the viewport on first paint (e.g. the homepage hero's search widget).
+  // Reserve matching space on <body> only while the banner is actually shown.
+  useEffect(() => {
+    if (choice) return;
+    document.body.classList.add("has-consent-banner");
+    return () => document.body.classList.remove("has-consent-banner");
+  }, [choice]);
+
   const save = (value: ConsentValue) => {
     window.localStorage.setItem(CONSENT_KEY, value);
     setChoice(value);

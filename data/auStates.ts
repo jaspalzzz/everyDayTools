@@ -38,6 +38,14 @@ export interface AuStateData {
   employmentAuthorityUrl: string;
   /** Year data was last verified */
   verifiedYear: number;
+  /**
+   * ISO date this specific state/territory record's page content last
+   * genuinely changed -- mirrors `usStates.ts`'s field of the same name.
+   * Only set on records that actually changed; falls back to
+   * `${verifiedYear}-01-01` in the sitemap for every other entry rather
+   * than fabricating per-state precision that doesn't exist.
+   */
+  lastContentUpdate?: string;
 }
 
 export const AU_STATES: AuStateData[] = [

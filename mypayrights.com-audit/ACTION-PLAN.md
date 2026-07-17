@@ -4,6 +4,22 @@
 
 Each item below carries: the observation it rests on, what it depends on/unblocks, how you'd know it failed, and a leading indicator to monitor.
 
+> **Status — 17 July 2026:** A source-level re-check (not just trusting commit
+> messages) confirmed the following are now done in code, still pending only
+> a `git push` + deploy: **1.2** (hero badge), **1.3** (pillar backlinks — now
+> including the 6 calculator spokes, not just guides/FAQs/blog), **1.4** (FAQ
+> depth for overtime + TUPE), **2.2** (entity naming), **2.3** (schema
+> image/logo), **2.4** (guide/blog cross-link), **2.5** (accessibility),
+> **2.6** (COOP/CSP), **2.7** (consent-banner overlap + all 4 tap targets —
+> confirmed live in a browser at 375px, not just read from source), and
+> **3.2** (IndexNow). See `TASKS.md` TIER 3/4/5 for the verified detail.
+> Genuinely still open: **1.1** (GSC access — external, needs Search Console
+> admin), **1.5** (a documentation/business decision, not code), **3.1**
+> (freshness badge — done on 2 of 4 US templates, missing on
+> final-paycheck/pto-payout specifically), **3.3** (3 state pages still below
+> the word floor), **3.4** (blog internal links), **3.5/3.6** (backlink/brand
+> outreach — external, unstarted).
+
 ---
 
 ## Phase 1: Critical Fixes (Week 1)

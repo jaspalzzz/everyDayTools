@@ -1,4 +1,5 @@
 import { ToolLayout, type LearnMoreMeta } from "@/components/ToolLayout";
+import { PillarBacklink } from "@/components/PillarBacklink";
 import { RedundancyCalculator } from "@/components/calculators/RedundancyCalculator";
 import { REDUNDANCY_SOURCE } from "@/lib/calculators/redundancy";
 import { getTool } from "@/data/tools";
@@ -78,6 +79,7 @@ export default function Page() {
         }}
         contentBlock={
           <>
+            <PillarBacklink className="mb-6" />
             <h2>How this redundancy calculator works</h2>
             <p>
               If you are made redundant in the UK and have at least two years&apos; continuous

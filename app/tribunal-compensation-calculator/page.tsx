@@ -1,4 +1,5 @@
 import { ToolLayout, type LearnMoreMeta } from "@/components/ToolLayout";
+import { PillarBacklink } from "@/components/PillarBacklink";
 import { TribunalCalculator } from "@/components/calculators/TribunalCalculator";
 import { TRIBUNAL_SOURCE } from "@/lib/calculators/tribunalCompensation";
 import { getTool } from "@/data/tools";
@@ -65,6 +66,7 @@ export default function Page() {
         }}
         contentBlock={
           <>
+            <PillarBacklink className="mb-6" />
             <h2>How Employment Tribunal compensation works</h2>
             <p>
               Employment Tribunal compensation for unfair dismissal comes in two parts. The{" "}

@@ -1,4 +1,5 @@
 import { ToolLayout, type LearnMoreMeta } from "@/components/ToolLayout";
+import { PillarBacklink } from "@/components/PillarBacklink";
 import { SettlementCalculator } from "@/components/calculators/SettlementCalculator";
 import { SETTLEMENT_SOURCE } from "@/lib/calculators/settlementAgreement";
 import { getTool } from "@/data/tools";
@@ -67,6 +68,7 @@ export default function Page() {
         }}
         contentBlock={
           <>
+            <PillarBacklink className="mb-6" />
             <h2>How settlement agreement values are calculated</h2>
             <p>
               A settlement agreement is not a fixed formula — it is a negotiated outcome. But every

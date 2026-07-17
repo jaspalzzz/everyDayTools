@@ -1,4 +1,5 @@
 import { ToolLayout } from "@/components/ToolLayout";
+import { PillarBacklink } from "@/components/PillarBacklink";
 import { GardenLeaveCalculator } from "@/components/calculators/GardenLeaveCalculator";
 import { GARDEN_LEAVE_SOURCE } from "@/lib/calculators/gardenLeave";
 import { getTool } from "@/data/tools";
@@ -64,6 +65,7 @@ export default function Page() {
         faqs={faqs}
         contentBlock={
           <>
+            <PillarBacklink className="mb-6" />
             <h2>How garden leave pay works</h2>
             <p>
               Garden leave is a notice-period arrangement where your employer keeps you on the
