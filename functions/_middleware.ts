@@ -49,8 +49,6 @@ export async function onRequest(context: {
       "base-uri 'self'",
       "form-action 'self'",
       "frame-ancestors 'none'",
-      "require-trusted-types-for 'script'",
-      "trusted-types * 'allow-duplicates'",
     ].join("; "),
   );
 
