@@ -239,7 +239,7 @@ export function BrowseByCategory() {
             id={`directory-panel-${tab.id}`}
             aria-labelledby={`directory-tab-${tab.id}`}
             hidden={active !== tab.id}
-            className="grid grid-cols-1 md:grid-cols-[230px_1fr] gap-6"
+            className={active === tab.id ? "grid grid-cols-1 md:grid-cols-[230px_1fr] gap-6" : "hidden"}
             style={{ padding: 22 }}
           >
             <div>

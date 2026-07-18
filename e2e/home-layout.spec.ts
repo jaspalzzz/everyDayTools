@@ -54,6 +54,25 @@ test.describe("homepage guide cards", () => {
 });
 
 test.describe("homepage hero search directory tabs", () => {
+  test("topic tabs display only the selected calculator panel", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto("/");
+
+    const directory = page.locator("section[aria-labelledby='directory-title']");
+    const leavingPanel = directory.locator("#directory-panel-leaving-job");
+    const payPanel = directory.locator("#directory-panel-pay-tax");
+
+    await expect(leavingPanel).toBeVisible();
+    await expect(payPanel).toBeHidden();
+
+    await directory.getByRole("button", { name: "Pay & tax", exact: true }).click();
+
+    await expect(directory.getByRole("button", { name: "Pay & tax", exact: true })).toHaveAttribute("aria-pressed", "true");
+    await expect(leavingPanel).toBeHidden();
+    await expect(payPanel).toBeVisible();
+    await expect(payPanel.getByRole("link", { name: /Payslip analyser/i })).toBeVisible();
+  });
+
   test("typed exact calculator searches open the calculator page directly", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto("/");
