@@ -119,6 +119,26 @@ export default async function FaqPage({ params }: Props) {
             ))}
           </div>
 
+          {f.sourceLinks && f.sourceLinks.length > 0 && (
+            <section className="mt-7 rounded-xl border border-surface-line bg-white p-4" aria-labelledby="faq-sources-heading">
+              <h2 id="faq-sources-heading" className="text-sm font-semibold text-ink">Official sources</h2>
+              <ul className="mt-2 grid gap-2 text-sm">
+                {f.sourceLinks.map((source) => (
+                  <li key={source.href}>
+                    <a
+                      href={source.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-brand-700 underline underline-offset-2"
+                    >
+                      {source.label} ↗
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {f.contextualLinks && f.contextualLinks.length > 0 && (
             <aside className="mt-6 rounded-xl border border-surface-line bg-surface-muted p-4" aria-label="State-specific overtime information">
               <p className="text-sm font-semibold text-ink">State-specific detail</p>

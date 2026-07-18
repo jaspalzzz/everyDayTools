@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-18T06:29:33.908Z",
+  "checkedAt": "2026-07-18T07:27:42.292Z",
   "siteUrl": "https://mypayrights.com",
   "sitemapRoutes": 416,
   "failures": [],
@@ -14,7 +14,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Know what your employer owes you.",
-      "words": 1342,
+      "words": 1363,
       "minimumWords": 180
     },
     {
@@ -26,7 +26,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "United Kingdom",
-      "words": 1117,
+      "words": 1124,
       "minimumWords": 150
     },
     {
@@ -50,7 +50,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Canada",
-      "words": 731,
+      "words": 733,
       "minimumWords": 150
     },
     {
@@ -98,7 +98,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Frequently asked questions",
-      "words": 3384,
+      "words": 3372,
       "minimumWords": 150
     },
     {
@@ -518,7 +518,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "News that helps people understand pay rights.",
-      "words": 839,
+      "words": 837,
       "minimumWords": 150
     },
     {
@@ -650,7 +650,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "UK Redundancy Rights 2026",
-      "words": 1008,
+      "words": 1012,
       "minimumWords": 180
     },
     {
@@ -686,7 +686,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "UK leaving a job pay checklist",
-      "words": 458,
+      "words": 462,
       "minimumWords": 180
     },
     {
@@ -812,25 +812,25 @@
     {
       "route": "/settlement-agreement-calculator",
       "htmlPath": "out/settlement-agreement-calculator.html",
-      "title": "UK Settlement Agreement Calculator 2026 | Free Estimate",
-      "descriptionLength": 120,
+      "title": "Settlement & Compromise Agreement Calculator UK 2026",
+      "descriptionLength": 143,
       "canonical": "https://mypayrights.com/settlement-agreement-calculator",
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Settlement agreement calculator",
-      "words": 1606,
+      "words": 1595,
       "minimumWords": 180
     },
     {
       "route": "/tribunal-compensation-calculator",
       "htmlPath": "out/tribunal-compensation-calculator.html",
-      "title": "UK Employment Tribunal Compensation Calculator 2026 | Free",
-      "descriptionLength": 147,
+      "title": "Unfair Dismissal & Tribunal Compensation Calculator UK",
+      "descriptionLength": 150,
       "canonical": "https://mypayrights.com/tribunal-compensation-calculator",
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Employment tribunal compensation calculator",
-      "words": 1538,
+      "words": 1551,
       "minimumWords": 180
     },
     {
@@ -872,13 +872,13 @@
     {
       "route": "/notice-period-calculator",
       "htmlPath": "out/notice-period-calculator.html",
-      "title": "Notice period calculator",
-      "descriptionLength": 130,
+      "title": "UK Notice Period Calculator 2026 | Statutory & Contractual",
+      "descriptionLength": 150,
       "canonical": "https://mypayrights.com/notice-period-calculator",
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Notice period calculator",
-      "words": 1260,
+      "words": 1410,
       "minimumWords": 180
     },
     {
@@ -4448,13 +4448,13 @@
     {
       "route": "/faq/what-is-salary-sacrifice-uk",
       "htmlPath": "out/faq/what-is-salary-sacrifice-uk.html",
-      "title": "What is salary sacrifice in the UK?",
-      "descriptionLength": 153,
+      "title": "How does salary sacrifice (salary exchange) work in the UK?",
+      "descriptionLength": 144,
       "canonical": "https://mypayrights.com/faq/what-is-salary-sacrifice-uk",
       "robots": "index, follow",
       "jsonLdCount": 3,
-      "h1": "What is salary sacrifice in the UK?",
-      "words": 507,
+      "h1": "How does salary sacrifice (salary exchange) work in the UK?",
+      "words": 616,
       "minimumWords": 170
     },
     {
@@ -4466,7 +4466,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "What is auto-enrolment pension in the UK?",
-      "words": 491,
+      "words": 494,
       "minimumWords": 170
     },
     {
@@ -4490,7 +4490,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Can my employer make deductions from my wages?",
-      "words": 514,
+      "words": 517,
       "minimumWords": 170
     },
     {
@@ -4874,7 +4874,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "UK Redundancy Pay 2026/27: What Changed This Year",
-      "words": 1362,
+      "words": 1363,
       "minimumWords": 220
     },
     {
@@ -4910,7 +4910,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "UK Notice Period Rights: Notice, Garden Leave and PILON",
-      "words": 1310,
+      "words": 1311,
       "minimumWords": 220
     },
     {
@@ -4946,7 +4946,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Constructive Dismissal UK: How to Prove It",
-      "words": 1583,
+      "words": 1584,
       "minimumWords": 220
     },
     {
@@ -4976,13 +4976,13 @@
     {
       "route": "/blog/us-overtime-law-explained",
       "htmlPath": "out/blog/us-overtime-law-explained.html",
-      "title": "US Overtime Law Explained: Who Qualifies and How Much You're Owed",
-      "descriptionLength": 157,
+      "title": "US Overtime Law 2026: FLSA Rules, Eligibility and Pay",
+      "descriptionLength": 152,
       "canonical": "https://mypayrights.com/blog/us-overtime-law-explained",
       "robots": "index, follow",
       "jsonLdCount": 2,
-      "h1": "US Overtime Law Explained: Who Qualifies and How Much You're Owed",
-      "words": 1463,
+      "h1": "US Overtime Law 2026: FLSA Rules, Eligibility and Pay",
+      "words": 1461,
       "minimumWords": 220
     },
     {

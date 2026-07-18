@@ -2,6 +2,7 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { cleanup, render } from "@testing-library/react";
 import { BrowseByCategory } from "@/components/home/BrowseByCategory";
+import { GuidesResources } from "@/components/home/GuidesResources";
 import { GuidesIndex } from "@/components/guides/GuidesIndex";
 import { GUIDES } from "@/data/guides";
 
@@ -49,6 +50,19 @@ describe("crawlable contextual directories", () => {
     for (const guide of GUIDES) {
       expect(links.has(`/guides/${guide.slug}`), `missing guide link ${guide.slug}`).toBe(true);
       expect(links.has(`/${guide.relatedTool}`), `missing calculator link ${guide.relatedTool}`).toBe(true);
+    }
+  });
+
+  it("links the homepage's search-demand cards to one clear page per intent", () => {
+    const { container } = render(<GuidesResources />);
+    const links = hrefs(container);
+    for (const href of [
+      "/guides/uk-notice-period-law",
+      "/guides/uk-settlement-agreement",
+      "/guides/uk-unfair-dismissal",
+      "/faq/what-is-salary-sacrifice-uk",
+    ]) {
+      expect(links.has(href), `missing demand-led homepage link ${href}`).toBe(true);
     }
   });
 });

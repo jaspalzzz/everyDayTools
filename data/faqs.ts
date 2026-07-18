@@ -16,6 +16,8 @@ export interface FaqPageMeta {
   relatedGuideName?: string;
   /** Contextual routes that add jurisdiction-specific detail beyond this answer. */
   contextualLinks?: Array<{ href: string; label: string }>;
+  /** Primary sources shown beside answers with current statutory or tax figures. */
+  sourceLinks?: Array<{ href: string; label: string }>;
   datePublished: string;
   dateModified: string;
 }
@@ -641,19 +643,25 @@ export const FAQS: FaqPageMeta[] = [
   },
   {
     slug: "what-is-salary-sacrifice-uk",
-    question: "What is salary sacrifice in the UK?",
-    shortAnswer: "Salary sacrifice is an arrangement where you give up part of your salary in exchange for a non-cash benefit — usually pension contributions, childcare vouchers, or a cycle-to-work scheme. You save income tax and NI on the sacrificed amount.",
+    question: "How does salary sacrifice (salary exchange) work in the UK?",
+    shortAnswer: "Salary sacrifice, or salary exchange, reduces cash pay for a pension contribution or other benefit. Tax and NI treatment depends on the benefit.",
     answer: [
-      "Salary sacrifice (also called salary exchange) is a contractual arrangement between employer and employee where you agree to reduce your gross salary in exchange for a non-cash benefit of equivalent value. Common salary sacrifice benefits include: additional employer pension contributions, a company car, childcare vouchers (legacy scheme), cycle-to-work equipment, and ultra-low emission vehicles.",
-      "The tax advantage is significant: because your gross salary is reduced before tax, you pay less income tax and employee National Insurance. Your employer also saves employer NI (13.8%) on the sacrificed amount, which they often pass on as an enhanced pension contribution. For a basic-rate taxpayer, salary sacrificing £100 into a pension costs only around £68 in take-home pay because of the tax savings.",
-      "Salary sacrifice does reduce your pensionable pay and statutory reference pay for things like SMP, SSP, and redundancy calculations. It also reduces your income for mortgage affordability checks. You should receive a written amendment to your employment contract confirming the arrangement.",
+      "Salary sacrifice (or salary exchange) changes your employment contract: you give up the right to part of your future cash salary and your employer provides a benefit instead. Workplace pension contributions are the most common example. Cycle-to-work equipment and qualifying low-emission cars can also retain favourable treatment, while many other benefits are taxed under optional-remuneration rules.",
+      "For a qualifying pension arrangement in 2026/27, the sacrificed amount is paid as an employer pension contribution rather than cash earnings. An employee paying the standard main rates may avoid 20% basic-rate Income Tax and 8% employee National Insurance on that slice of pay; the standard employer National Insurance rate is 15%. A £100 pension sacrifice can therefore reduce take-home pay by roughly £72 for someone wholly within those bands, before student-loan, benefits or other payroll interactions. An employer decides whether to share any of its own saving.",
+      "Your reduced contractual cash pay can affect statutory maternity, paternity and sick pay, life cover, mortgage affordability and other salary-linked benefits. A salary sacrifice must not reduce cash earnings below the applicable National Minimum Wage. Ask whether your employer uses a notional pre-sacrifice salary for pensionable pay and workplace benefits.",
+      "From 6 April 2029, the National Insurance exemption for pension contributions made through salary sacrifice is scheduled to be capped at £2,000 a year. Contributions above the cap will attract employee and employer National Insurance, although their Income Tax treatment remains unchanged. That future reform does not apply to the 2026/27 figures above.",
     ],
     country: "UK",
     related: ["what-is-auto-enrolment-pension-uk", "can-employer-deduct-wages-uk", "what-is-minimum-wage-uk-2026"],
     relatedTool: "take-home-pay-calculator",
     relatedToolName: "Take-home pay calculator",
+    sourceLinks: [
+      { href: "https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye", label: "HMRC — Salary sacrifice for employers" },
+      { href: "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2026-to-2027", label: "HMRC — 2026/27 tax and National Insurance rates" },
+      { href: "https://www.gov.uk/government/publications/changes-to-salary-sacrifice-for-pensions-from-april-2029", label: "HM Treasury — Pension salary sacrifice changes from April 2029" },
+    ],
     datePublished: "2026-06-27",
-    dateModified: "2026-06-27",
+    dateModified: "2026-07-18",
   },
   {
     slug: "what-is-auto-enrolment-pension-uk",

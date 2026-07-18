@@ -69,14 +69,14 @@ export default function Page() {
         contentBlock={
           <>
             <PillarBacklink className="mb-6" />
-            <h2>How settlement agreement values are calculated</h2>
+            <h2>Settlement and compromise agreement values</h2>
             <p>
-              A settlement agreement is not a fixed formula — it is a negotiated outcome. But every
-              settlement has a <strong>statutory floor</strong>: the legal minimum your employer must
-              pay regardless of whether you sign anything. That floor includes your statutory
-              redundancy pay (if you are being made redundant and have 2+ years&apos; service) and
-              your notice pay (PILON — pay in lieu of notice for your statutory minimum notice
-              period). These figures are non-negotiable; the rest is.
+              A settlement agreement — formerly called a <strong>compromise agreement</strong> — is
+              not a fixed formula. It is a negotiated employment settlement. But every calculation
+              starts with a <strong>statutory floor</strong>: the legal minimum your employer must pay
+              regardless of whether you sign anything. That floor includes statutory redundancy pay
+              (if you qualify) and notice pay, including PILON. These figures are non-negotiable; the
+              additional compensation is not.
             </p>
             <p>
               The <strong>ex gratia payment</strong> is the negotiated element — compensation for

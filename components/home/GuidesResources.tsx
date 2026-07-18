@@ -106,28 +106,36 @@ function SketchGlobe() {
 
 const GUIDES = [
   {
-    badge: "UK guide",
-    title: "What should be in your final paycheck?",
-    desc: "Understand wages, notice pay, holiday pay and deductions after leaving work.",
-    href: "/guides/uk-pilon",
+    badge: "Notice period",
+    title: "One month or four weeks' notice?",
+    desc: "Work out the UK statutory minimum and understand when your contractual notice gives you more.",
+    href: "/guides/uk-notice-period-law",
     Illustration: SketchPayslip,
     bg: "#e8f2fb",
   },
   {
-    badge: "Workplace pay",
-    title: "When unpaid wages become a legal issue",
-    desc: "How to identify missing pay, gather evidence and raise the problem clearly.",
-    href: "/guides/uk-take-home-pay",
+    badge: "Settlement rights",
+    title: "Settlement and compromise agreements",
+    desc: "Understand statutory entitlements, negotiated compensation, tax treatment and independent advice.",
+    href: "/guides/uk-settlement-agreement",
     Illustration: SketchScales,
     bg: "#fef6e8",
   },
   {
-    badge: "Notice pay",
-    title: "Notice period rights by country",
-    desc: "Compare how notice periods, dismissal and final pay timing differ by location.",
-    href: "/guides/uk-notice-period-law",
+    badge: "Tribunal claims",
+    title: "Unfair dismissal compensation",
+    desc: "See how basic and compensatory awards work, the claim deadline and the role of ACAS.",
+    href: "/guides/uk-unfair-dismissal",
     Illustration: SketchGlobe,
     bg: "#e8f4ef",
+  },
+  {
+    badge: "Pay & tax",
+    title: "Salary sacrifice and salary exchange",
+    desc: "Check how pension salary sacrifice affects take-home pay, National Insurance and salary-linked benefits.",
+    href: "/faq/what-is-salary-sacrifice-uk",
+    Illustration: SketchPayslip,
+    bg: "#eef2fb",
   },
 ] as const;
 
@@ -148,7 +156,7 @@ export function GuidesResources() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:gap-6">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 lg:gap-6">
         {GUIDES.map((g) => (
           <article key={g.title} style={{ border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", overflow: "hidden" }}>
             {/* Sketch illustration area */}

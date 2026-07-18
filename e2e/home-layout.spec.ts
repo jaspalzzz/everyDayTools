@@ -19,18 +19,18 @@ test.describe("homepage guide cards", () => {
     await page.goto("/");
 
     const cards = page.locator("section[aria-labelledby='guides-title'] article");
-    await expect(cards).toHaveCount(3);
+    await expect(cards).toHaveCount(4);
 
-    const first = await cards.nth(0).boundingBox();
-    const second = await cards.nth(1).boundingBox();
-    const third = await cards.nth(2).boundingBox();
+    const boxes = await Promise.all(
+      Array.from({ length: 4 }, (_, index) => cards.nth(index).boundingBox()),
+    );
+    expect(boxes.every(Boolean)).toBe(true);
 
-    expect(first).not.toBeNull();
-    expect(second).not.toBeNull();
-    expect(third).not.toBeNull();
-
-    expect(second!.x - (first!.x + first!.width)).toBeGreaterThanOrEqual(20);
-    expect(third!.x - (second!.x + second!.width)).toBeGreaterThanOrEqual(20);
+    for (let index = 1; index < boxes.length; index += 1) {
+      const previous = boxes[index - 1]!;
+      const current = boxes[index]!;
+      expect(current.x - (previous.x + previous.width)).toBeGreaterThanOrEqual(20);
+    }
   });
 
   test("keep visible gaps on mobile", async ({ page }) => {
@@ -38,18 +38,18 @@ test.describe("homepage guide cards", () => {
     await page.goto("/");
 
     const cards = page.locator("section[aria-labelledby='guides-title'] article");
-    await expect(cards).toHaveCount(3);
+    await expect(cards).toHaveCount(4);
 
-    const first = await cards.nth(0).boundingBox();
-    const second = await cards.nth(1).boundingBox();
-    const third = await cards.nth(2).boundingBox();
+    const boxes = await Promise.all(
+      Array.from({ length: 4 }, (_, index) => cards.nth(index).boundingBox()),
+    );
+    expect(boxes.every(Boolean)).toBe(true);
 
-    expect(first).not.toBeNull();
-    expect(second).not.toBeNull();
-    expect(third).not.toBeNull();
-
-    expect(second!.y - (first!.y + first!.height)).toBeGreaterThanOrEqual(16);
-    expect(third!.y - (second!.y + second!.height)).toBeGreaterThanOrEqual(16);
+    for (let index = 1; index < boxes.length; index += 1) {
+      const previous = boxes[index - 1]!;
+      const current = boxes[index]!;
+      expect(current.y - (previous.y + previous.height)).toBeGreaterThanOrEqual(16);
+    }
   });
 });
 

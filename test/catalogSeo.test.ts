@@ -59,6 +59,11 @@ describe("tool catalogue SEO rules", () => {
       if (faq.relatedGuide) {
         expect(guideSlugs.has(faq.relatedGuide), `${faq.slug} related guide ${faq.relatedGuide}`).toBe(true);
       }
+
+      for (const source of faq.sourceLinks ?? []) {
+        expect(source.href, `${faq.slug} source must use HTTPS`).toMatch(/^https:\/\//);
+        expect(source.label.trim().length, `${faq.slug} source label missing`).toBeGreaterThan(8);
+      }
     }
   });
 

@@ -11,6 +11,7 @@ const url = `${SITE.url}/${tool.slug}`;
 
 export const metadata = toolMetadata({
   title: tool.name,
+  seoTitle: tool.seoTitle,
   description: tool.description,
   url,
   slug: tool.slug,
@@ -47,6 +48,11 @@ const faqs: FaqItem[] = [
     question: "Can I leave before my notice period ends?",
     answer:
       "Only by agreement with your employer. Leaving early without consent can be a breach of contract, though in practice many employers will agree to a shorter notice or waive the remainder. Get any agreement in writing.",
+  },
+  {
+    question: "Is one month's notice the same as four weeks' notice?",
+    answer:
+      "No. One calendar month normally runs from a date in one month to the corresponding date in the next, while four weeks is exactly 28 days. The difference can change your final employment date and pay, so use the wording in your contract rather than assuming the two periods are interchangeable.",
   },
 ];
 
@@ -101,6 +107,14 @@ export default function Page() {
               early with <strong>payment in lieu of notice</strong>. All three keep you paid for the
               full period; the difference is whether you attend work and when your employment
               formally ends, which can affect your continuous-service date for other entitlements.
+            </p>
+            <h2>One month&apos;s notice or four weeks&apos; notice?</h2>
+            <p>
+              These phrases are often treated as if they mean the same thing, but they do not. Four
+              weeks is exactly 28 days; one calendar month ends on the corresponding date in the next
+              month and can therefore last 28, 29, 30 or 31 days. If your contract says one month,
+              keep that calendar wording when agreeing your leaving date. If it gives a number of
+              weeks, enter that number above and compare it with the statutory minimum.
             </p>
             <p>
               Knowing your correct notice matters whether you are resigning or being let go — it

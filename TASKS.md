@@ -805,6 +805,71 @@ discovery and factual freshness; they do not promise that Google will index a UR
 
 ---
 
+## TIER 9 — Search-demand alignment from live GSC queries (2026-07-18)
+
+Source: the authenticated Search Console Performance report for 25 June–16 July
+2026. The site recorded 4,284 impressions, 9 clicks, 0.2% CTR and average position
+55.8. This tier uses the query-to-page mapping actually selected by Google; it does
+not treat generic keyword-volume estimates as evidence that every phrase deserves a
+new URL.
+
+### T9.1 — Align the three strongest calculator clusters without keyword stuffing
+- **Status:** Complete locally — notice period, settlement/compromise agreement and
+  unfair-dismissal/tribunal compensation each have one focused landing page.
+- **What:** GSC associated `/notice-period-calculator` with one-month/four-week UK
+  notice queries, `/settlement-agreement-calculator` with settlement and compromise
+  agreement calculators, and `/tribunal-compensation-calculator` with unfair
+  dismissal basic/compensatory award searches.
+- **Where:** `data/tools.ts` and the three calculator page content blocks.
+- **How:** refine each title and description around its demonstrated intent; answer
+  the one-month-versus-four-weeks distinction visibly; use the historical
+  “compromise agreement” name in context; and name the basic and compensatory unfair
+  dismissal awards. Keep one canonical URL per calculator intent.
+- **Accept:** SEO titles remain at or below 60 characters, descriptions at or below
+  155, statutory content stays source-led, and metadata regression tests lock the
+  one-page-per-intent mapping.
+
+### T9.2 — Strengthen the existing salary-sacrifice URL instead of creating a rival
+- **Status:** Complete locally — the existing FAQ covers salary sacrifice and salary
+  exchange with current 2026/27 NI treatment, conditional examples, downsides,
+  official sources and the scheduled April 2029 reform.
+- **What:** broad salary-sacrifice queries were already landing on
+  `/faq/what-is-salary-sacrifice-uk`; its old 13.8% employer-NI and £68-per-£100
+  example were stale. A new article or calculator would initially compete with the
+  URL Google already recognises.
+- **Where:** `data/faqs.ts`, `app/faq/[slug]/page.tsx`.
+- **How:** update the wording and figures, add visible HMRC/HM Treasury sources and
+  expose both common names naturally. Link the FAQ from the homepage's guide cards.
+- **Accept:** the page states 8% standard employee NI and 15% standard employer NI
+  for 2026/27 with appropriate conditions; it distinguishes the 2029 change; all
+  sources use official `gov.uk` URLs; no separate salary-sacrifice URL is created.
+
+### T9.3 — Refresh the high-impression US overtime article
+- **Status:** Complete locally — the page targets US overtime law, FLSA rules and
+  eligibility with the current $684/week federal EAP threshold.
+- **What:** `/blog/us-overtime-law-explained` was the highest-impression visible page
+  in GSC, but its article contained both the vacated $1,128 threshold and the restored
+  $684 threshold, creating an avoidable contradiction.
+- **Where:** `data/blogPosts.ts`,
+  `app/blog/[slug]/content/us-overtime-law-explained.tsx`.
+- **How:** give the article a concise 2026 search title, remove the vacated figure
+  from the current-rule explanation, qualify the exemption test correctly, and link
+  the relevant Department of Labor salary-level and overtime fact sheets.
+- **Accept:** no current-rule copy claims $1,128/$58,656; the visible article and
+  direct answer use $684/$35,568 and explain that duties tests still apply.
+
+### T9.4 — Re-measure, then decide whether new calculators are justified
+- **Status:** Pending operational follow-up.
+- **What/How:** after deployment and 28 days of GSC data, compare impressions, CTR
+  and average position for the mapped pages. Build a dedicated salary-sacrifice or
+  unfair-dismissal tool only if the query mix and user intent justify functionality
+  the existing pages cannot satisfy; do not create near-duplicate keyword pages.
+- **Accept:** record query, landing page, impressions, clicks, CTR and position for
+  both periods; turn persistent gaps into distinct product tasks rather than copy
+  variants.
+
+---
+
 ## Suggested execution order
 
 T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
@@ -824,6 +889,8 @@ T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
 → T7.1 → T7.2              (code complete; dashboard approval/CMP remain operational)
 → T8.1 → T8.2 → T8.3       (code complete; raw discovery + schema + CT freshness)
 → T8.4                     (operational GSC re-check 3–4 weeks after deployment)
+→ T9.1 → T9.2 → T9.3       (code complete; GSC-led on-page intent alignment)
+→ T9.4                     (28-day GSC comparison before creating new keyword URLs)
 → T2.3 / T2.4 / T2.5       (breadth, ongoing — lower priority than TIER 3/4/5 fixes)
 
 Ship in small batches; keep the gate green; one focused PR per task or tight group.

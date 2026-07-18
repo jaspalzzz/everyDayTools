@@ -67,13 +67,14 @@ export default function Page() {
         contentBlock={
           <>
             <PillarBacklink className="mb-6" />
-            <h2>How Employment Tribunal compensation works</h2>
+            <h2>Unfair dismissal compensation: basic and compensatory awards</h2>
             <p>
-              Employment Tribunal compensation for unfair dismissal comes in two parts. The{" "}
+              An unfair dismissal compensation calculation normally starts with two parts. The{" "}
               <strong>basic award</strong> is calculated on the same formula as statutory redundancy
               pay — years of service, weekly pay capped at £751, and an age multiplier — and is
               awarded regardless of financial loss. It compensates for the loss of the job itself,
-              not the loss of earnings.
+              not lost earnings. This is why it is sometimes described as the unfair dismissal
+              basic award.
             </p>
             <p>
               The <strong>compensatory award</strong> is the larger element for most claimants. It

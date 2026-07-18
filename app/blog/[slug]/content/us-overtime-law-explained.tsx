@@ -45,15 +45,18 @@ export default function Content() {
 
       <h3>Salary threshold</h3>
       <p>
-        Since January 2025, the minimum salary for the executive, administrative, and professional
-        exemptions is <strong>$1,128/week ($58,656/year)</strong>. Workers paid below this threshold
-        are entitled to overtime regardless of their job duties.
+        In 2026, the federal salary threshold for most executive, administrative, and professional
+        exemptions is <strong>$684/week ($35,568/year)</strong>. The US Department of Labor restored
+        the applicable 2019 regulatory text in May 2026 after the 2024 rule was vacated. A worker
+        below this threshold generally cannot qualify for these white-collar exemptions, even if
+        their job title sounds managerial.
       </p>
       <p>
-        Note: In November 2024, a federal court vacated the DOL&apos;s July 2024 rule that raised the
-        threshold to $844/week; as of 2026, the pre-July 2024 threshold of $684/week applies under the
-        reinstated 2019 rule. Check the DOL website for the most current figure as this is subject to
-        ongoing litigation.
+        Check the{" "}
+        <a href="https://www.dol.gov/agencies/whd/overtime/salary-levels" target="_blank" rel="noopener noreferrer">
+          Department of Labor salary-level guidance
+        </a>{" "}
+        before relying on the figure, because federal rulemaking or litigation can change it.
       </p>
 
       <h3>Duties test</h3>
@@ -112,6 +115,13 @@ export default function Content() {
       <p>
         For salaried non-exempt employees, divide the weekly salary by the number of hours it is intended
         to cover (typically 40) to get the regular rate, then apply the 1.5× multiplier.
+      </p>
+      <p>
+        The Department of Labor&apos;s{" "}
+        <a href="https://www.dol.gov/agencies/whd/fact-sheets/23-flsa-overtime-pay" target="_blank" rel="noopener noreferrer">
+          FLSA overtime fact sheet
+        </a>{" "}
+        explains which payments form part of the regular rate and how overtime premiums must be paid.
       </p>
 
       <h2>State overtime laws</h2>

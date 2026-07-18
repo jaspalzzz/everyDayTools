@@ -238,16 +238,16 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "us-overtime-law-explained",
     quickAnswer:
-      "Under the FLSA, non-exempt employees must be paid at least 1.5× their regular rate for every hour over 40 in a workweek. Salaried employees earning under $684/week ($35,568/year) are non-exempt by default. The key exception is the duties test: executive, administrative, and professional employees who primarily perform exempt duties may be exempt regardless of salary.",
-    title: "US Overtime Law Explained: Who Qualifies and How Much You're Owed",
+      "Under the FLSA, covered non-exempt employees must receive at least 1.5× their regular rate for hours over 40 in a workweek. In 2026, most executive, administrative and professional exemptions require at least $684 per week ($35,568 per year) plus the relevant duties test.",
+    title: "US Overtime Law 2026: FLSA Rules, Eligibility and Pay",
     description:
-      "The Fair Labor Standards Act requires time-and-a-half for hours over 40 per week — but exemptions are wide and complex. This guide explains who qualifies, how to calculate overtime, and what to do if you're not being paid correctly.",
+      "Federal overtime law under the FLSA: who gets time-and-a-half after 40 hours, the current $684 salary threshold, state rules and unpaid-overtime claims.",
     excerpt:
       "Most US workers are entitled to overtime pay at 1.5× their regular rate. Here is how to tell if you qualify, how overtime is calculated, and how to recover unpaid overtime.",
     region: "US",
     category: "pay-rights",
     datePublished: "2026-06-27",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-18",
     readingTimeMinutes: 9,
     tags: ["overtime", "FLSA", "wage theft", "US employment law", "exempt vs non-exempt"],
     relatedTools: ["take-home-overtime-calculator"],
