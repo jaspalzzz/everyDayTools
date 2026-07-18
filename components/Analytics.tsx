@@ -6,10 +6,9 @@ import { hasAnalyticsConsent } from "./ConsentBanner";
 /**
  * Consent-gated Google Analytics 4.
  *
- * Mirrors AdSenseScript exactly: the GA loader is injected only after the
- * visitor accepts cookies (same ConsentBanner choice + `mpr-consent-change`
- * event), so no analytics cookies are set for visitors who reject or have not
- * chosen yet -- required for GDPR / UK-PECR on a UK-facing site.
+ * The GA loader is injected only after the visitor accepts optional analytics
+ * through the site's own banner. Advertising consent is handled separately by
+ * a Google-certified CMP when AdSense is enabled.
  *
  * Inert until NEXT_PUBLIC_GA_ID is set, so a build without a measurement ID
  * ships nothing. Unlike AdSense (a single external script), GA needs an init

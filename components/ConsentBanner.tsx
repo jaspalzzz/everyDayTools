@@ -3,29 +3,32 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const CONSENT_KEY = "mpr_cookie_consent";
+export const ANALYTICS_CONSENT_KEY = "mpr_cookie_consent";
 
 type ConsentValue = "accepted" | "rejected";
 
-export function hasAdvertisingConsent() {
+export function hasAnalyticsConsent() {
   if (typeof window === "undefined") return false;
-  return window.localStorage.getItem(CONSENT_KEY) === "accepted";
+  return window.localStorage.getItem(ANALYTICS_CONSENT_KEY) === "accepted";
 }
 
-/**
- * Analytics shares the single site-wide consent choice with advertising:
- * "Accept" opts into both analytics and ad cookies, "Reject" into neither.
- * Exposed under its own name so the analytics gate reads semantically, even
- * though it maps to the same stored flag.
- */
-export const hasAnalyticsConsent = hasAdvertisingConsent;
+export function resetAnalyticsConsent() {
+  if (typeof window === "undefined") return;
+  window.localStorage.removeItem(ANALYTICS_CONSENT_KEY);
+  window.dispatchEvent(new Event("mpr-consent-reset"));
+  window.dispatchEvent(new CustomEvent("mpr-consent-change", { detail: null }));
+}
 
 export function ConsentBanner() {
   const [choice, setChoice] = useState<ConsentValue | null>(null);
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(CONSENT_KEY);
+    const stored = window.localStorage.getItem(ANALYTICS_CONSENT_KEY);
     if (stored === "accepted" || stored === "rejected") setChoice(stored);
+
+    const reset = () => setChoice(null);
+    window.addEventListener("mpr-consent-reset", reset);
+    return () => window.removeEventListener("mpr-consent-reset", reset);
   }, []);
 
   // The banner is `position: fixed`, so it never affects document flow --
@@ -39,7 +42,7 @@ export function ConsentBanner() {
   }, [choice]);
 
   const save = (value: ConsentValue) => {
-    window.localStorage.setItem(CONSENT_KEY, value);
+    window.localStorage.setItem(ANALYTICS_CONSENT_KEY, value);
     setChoice(value);
     window.dispatchEvent(new CustomEvent("mpr-consent-change", { detail: value }));
   };
@@ -66,8 +69,8 @@ export function ConsentBanner() {
     >
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
         <p style={{ margin: 0, color: "#25384c", fontSize: 13, lineHeight: 1.55 }}>
-          My Pay Rights uses essential cookies for the site to work. Analytics and, if advertising
-          is enabled, Google ad cookies load only after you accept.{" "}
+          Allow optional analytics? We remember your choice locally. If ads are enabled,
+          Google&apos;s separate privacy message manages ad consent.{" "}
           <Link href="/privacy" style={{ color: "#163C6B", fontWeight: 850, textDecoration: "underline", textUnderlineOffset: 2 }}>
             Privacy policy
           </Link>

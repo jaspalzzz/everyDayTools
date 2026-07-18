@@ -98,6 +98,7 @@ NEXT_PUBLIC_SITE_URL=https://mypayrights.com
 GOOGLE_SITE_VERIFICATION=google-site-verification-token
 NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-8825078307302402
 NEXT_PUBLIC_ADSENSE_READY=false
+NEXT_PUBLIC_ADSENSE_CMP_READY=false
 # Optional; all four are required before independent-review claims are shown
 NEXT_PUBLIC_LEGAL_REVIEWER_NAME=
 NEXT_PUBLIC_LEGAL_REVIEWER_CREDENTIAL=
@@ -108,8 +109,12 @@ NEXT_PUBLIC_LEGAL_REVIEWER_JURISDICTIONS=
 This drives metadata, sitemap, robots, canonical URLs, and structured data. If unset, it falls
 back to `https://mypayrights.com`. Search Console verification metadata is emitted when
 `GOOGLE_SITE_VERIFICATION` is set. The AdSense account meta tag is emitted when
-`NEXT_PUBLIC_ADSENSE_CLIENT` is set, and the client script remains off until
-`NEXT_PUBLIC_ADSENSE_READY=true`.
+`NEXT_PUBLIC_ADSENSE_CLIENT` is set, so Google can verify the application while ad serving stays
+off. The runtime script and ad units remain disabled until both
+`NEXT_PUBLIC_ADSENSE_READY=true` (account/site approved) and
+`NEXT_PUBLIC_ADSENSE_CMP_READY=true` (a Google-certified CMP is published for the site). Configure
+Google's European regulations message under AdSense → Privacy & messaging before enabling either
+flag in a production build.
 
 **Edge headers** — `public/_headers` is copied to the output root and applied by Cloudflare Pages:
 security headers (CSP, HSTS, `X-Frame-Options`, `nosniff`) on every route, plus a `Content-Type:
@@ -141,10 +146,11 @@ changes. Key constants to refresh:
   verification meta tag.
 - `NEXT_PUBLIC_ADSENSE_CLIENT` adds the site-level AdSense publisher meta tag. If unset, the
   production publisher ID `ca-pub-8825078307302402` is used.
-- `NEXT_PUBLIC_ADSENSE_READY=true` enables the AdSense runtime script after consent.
-- `NEXT_PUBLIC_GA_ID` (e.g. `G-XXXXXXXXXX`) enables consent-gated Google Analytics 4. GA loads
-  only after the visitor accepts cookies (same `ConsentBanner` choice as AdSense); if unset, no
-  analytics ships. Set it in Cloudflare Pages Production/Preview to start collecting a baseline.
+- `NEXT_PUBLIC_ADSENSE_READY=true` confirms that the account and site are approved.
+- `NEXT_PUBLIC_ADSENSE_CMP_READY=true` confirms that a Google-certified consent message is
+  published. Both AdSense flags must be true before the runtime script or units render.
+- `NEXT_PUBLIC_GA_ID` (e.g. `G-XXXXXXXXXX`) enables consent-gated Google Analytics 4. Analytics
+  uses the site's separate first-party choice; if unset, no analytics ships.
 - `NEXT_PUBLIC_SOCIAL_PROFILES` (comma-separated URLs) populates `Organization.sameAs` in the
   homepage JSON-LD. Empty by default — set it only to genuine brand/social profiles (never a
   placeholder), as an invalid `sameAs` is worse than none.

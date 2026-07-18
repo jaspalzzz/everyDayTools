@@ -63,6 +63,12 @@ npm run audit:indexability
 
 - `NEXT_PUBLIC_SITE_URL` points at the final production domain.
 - Google Search Console verification token is set before launch.
-- `public/ads.txt` is replaced with the real publisher line after AdSense approval.
+- `public/ads.txt` contains the live publisher line and returns HTTP 200 at `/ads.txt`.
 - `NEXT_PUBLIC_ADSENSE_CLIENT` is configured only with the approved publisher ID.
-- AdSense is enabled only after consent flow and policy review are complete.
+- A Google-certified CMP is published from AdSense **Privacy & messaging** for European
+  regulations before ad serving is enabled; configure applicable US state messages as needed.
+- `NEXT_PUBLIC_ADSENSE_READY` and `NEXT_PUBLIC_ADSENSE_CMP_READY` stay false during application
+  review. Set both to `true` only after the site is approved and the certified CMP is live.
+- The publisher meta tag remains present during review even while the AdSense runtime is disabled.
+- After enabling, verify the Google privacy message, its footer revocation link, one manual ad unit,
+  and browser console/CSP behavior on production without clicking a live ad.

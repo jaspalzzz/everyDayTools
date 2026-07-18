@@ -680,6 +680,57 @@ the state-specific `/pto-payout` variant.
 
 ---
 
+## TIER 7 — AdSense application and safe-activation readiness (2026-07-18)
+
+Source: post-application review against Google AdSense's current connection,
+privacy-disclosure, consent-management and ad-placement requirements. This task
+does not claim or influence Google's approval decision; it makes the site
+verifiable during review and prevents an unsafe ad-serving configuration later.
+
+### T7.1 — Verify publisher ownership and separate review from ad serving
+- **Status:** Code complete locally; AdSense dashboard approval and CMP publication
+  remain account-owner actions.
+- **What:** keep the publisher identity visible to Google's review crawler without
+  loading ad code prematurely, and require an explicit certified-CMP confirmation
+  before ads can be activated.
+- **Where:** `lib/adsense.ts`, `app/layout.tsx`, `public/ads.txt`,
+  `components/AdSenseScript.tsx`, `components/AdSlot.tsx`, deployment documentation
+  and AdSense regression tests.
+- **How:** preserve the site-wide `google-adsense-account` meta tag and matching
+  `ads.txt` record at all times. Gate the runtime script and units behind both
+  `NEXT_PUBLIC_ADSENSE_READY=true` and `NEXT_PUBLIC_ADSENSE_CMP_READY=true`; treat
+  the first flag as approval confirmation and the second as confirmation that a
+  Google-certified CMP has been published from AdSense Privacy & messaging. Remove
+  pre-approval empty ad placeholders and queue manual units using AdSense's
+  supported asynchronous-loader pattern.
+- **Accept:** live `/` and `/ads.txt` return HTTP 200 with publisher
+  `ca-pub-8825078307302402` / `pub-8825078307302402`; disabled builds contain the
+  verification metadata but no AdSense runtime or empty ad boxes; tests prove that
+  neither one of the two activation flags can enable ads by itself.
+
+### T7.2 — Make privacy disclosures and consent controls AdSense-compatible
+- **Status:** Code complete locally; publish the Google European regulations message
+  in the AdSense dashboard before setting either activation flag.
+- **What:** the first-party banner previously described and gated advertising even
+  though it was not a Google-certified IAB TCF CMP. The privacy policy also
+  contradicted the implementation by saying the site used no local storage.
+- **Where:** `components/ConsentBanner.tsx`,
+  `components/PrivacyChoicesButton.tsx`, `components/SiteFooter.tsx`,
+  `app/privacy/page.tsx`, `functions/_middleware.ts` and `public/_headers`.
+- **How:** scope the first-party choice to optional analytics; let Google's certified
+  message manage advertising consent; add a persistent "Privacy and cookie settings"
+  control that resets analytics consent and invokes Google's revocation flow when
+  available; accurately disclose calculator-input handling, hosting logs, analytics,
+  Google advertising cookies, prior-visit personalisation and opt-out choices; allow
+  the Google consent-message origin through both CSP paths.
+- **Accept:** the privacy policy includes Google's required advertising-cookie and
+  personalised-ad choices; the footer control is keyboard accessible and at least
+  44px high; the Google CMP can load before an ad-consent decision; `npm run test`,
+  `npm run typecheck`, `npm run build` and changed-page 320px/375px overflow checks
+  pass.
+
+---
+
 ## Suggested execution order
 
 T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
@@ -696,6 +747,7 @@ T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
 → T4.4                     (French legal-page localization)
 → T5.1 → T5.2 → T5.3 → T5.4 → T5.5  (all complete — see TIER 5)
 → T6.1                     (complete locally; GSC re-check 3–4 weeks after deploy)
+→ T7.1 → T7.2              (code complete; dashboard approval/CMP remain operational)
 → T2.3 / T2.4 / T2.5       (breadth, ongoing — lower priority than TIER 3/4/5 fixes)
 
 Ship in small batches; keep the gate green; one focused PR per task or tight group.
