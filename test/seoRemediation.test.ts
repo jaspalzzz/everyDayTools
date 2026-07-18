@@ -7,10 +7,16 @@ import { GUIDES } from "@/data/guides";
 import { PILLAR_FOR_TOOL } from "@/data/relatedContent";
 import { TOOLS } from "@/data/tools";
 import { getUsState } from "@/data/usStates";
-import { SITE, articleSchema, guideSchema } from "@/lib/seo";
+import { SITE, articleSchema, guideSchema, homepageSchemas } from "@/lib/seo";
 import { onRequest } from "@/functions/_middleware";
 
 describe("Tier 3 SEO remediation contracts", () => {
+  it("does not advertise a site-search URL that the homepage cannot serve", () => {
+    const [website] = homepageSchemas();
+    expect(website).not.toHaveProperty("potentialAction");
+    expect(JSON.stringify(website)).not.toContain("search_term_string");
+  });
+
   it("emits Article images and a publisher logo", () => {
     const common = {
       headline: "Test article",
@@ -76,6 +82,20 @@ describe("Tier 3 SEO remediation contracts", () => {
     }
     expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/california/final-paycheck`)?.lastModified)
       .toBe("2026-07-09");
+
+    const connecticut = getUsState("connecticut")!;
+    expect(connecticut.minimumWage).toBe("$16.94/hr");
+    expect(connecticut.minimumWageNote).toContain("1 January 2026");
+    expect(connecticut.dolUrl).toContain("portal.ct.gov/dol/divisions/wage-and-workplace-standards");
+    expect(connecticut.verifiedYear).toBe(2026);
+    expect(connecticut.lastContentUpdate).toBe("2026-07-18");
+    for (const path of ["", "/final-paycheck", "/minimum-wage", "/pto-payout"]) {
+      expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/connecticut${path}`)?.lastModified)
+        .toBe("2026-07-18");
+    }
+
+    expect(entries.find((entry) => entry.url === SITE.url)?.lastModified).toBe("2026-07-18");
+    expect(entries.find((entry) => entry.url === `${SITE.url}/guides`)?.lastModified).toBe("2026-07-18");
   });
 
   it("gives every blog post contextual links to specific calculators, guides, or FAQs", () => {

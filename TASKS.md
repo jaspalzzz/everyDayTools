@@ -224,6 +224,12 @@ Three tools, same full pattern each:
 - **Accept:** at least the 5 hero tools assert their computed figure inside the PDF.
 
 ### T2.8 — Content cluster (guides)
+- **Status:** Complete — the four required cluster topics now have dedicated guide
+  routes, the catalogue contains 19 source-reviewed guides, and UK/US/Canada/
+  Australia each have visible guide coverage. The shared guide shell enforces
+  Article + FAQ schema, dated official sources, correction paths, and calculator
+  CTAs; regression coverage checks the required routes, country representation,
+  sitemap entries, and calculator links.
 - **New:** `app/guides/<slug>/page.tsx` (or MDX). Articles, each **linking directly
   into the relevant calculator**:
   - "What to do if your final paycheck is late"
@@ -731,6 +737,74 @@ verifiable during review and prevents an unsafe ad-serving configuration later.
 
 ---
 
+## TIER 8 — GSC crawl-discovery and freshness remediation (2026-07-18)
+
+Source: the three Google Search Console Page Indexing exports downloaded on
+18 July 2026, the visible GSC canonical/crawled-not-indexed reports, and a
+source/rendered-HTML review of the affected page families. The fixes improve
+discovery and factual freshness; they do not promise that Google will index a URL.
+
+### T8.1 — Put priority calculators and guides in crawlable contextual directories
+- **Status:** Complete locally — all 16 priority calculator URLs from the exports
+  are linked in the homepage's initial HTML, and every guide is linked from the
+  guides index with its matching calculator.
+- **What:** tab-selected content was useful to visitors after hydration but did not
+  give every priority URL a dependable discovery path in the raw response. The
+  weakest-discovered guide group had the same problem on `/guides`.
+- **Where:** `components/home/BrowseByCategory.tsx`,
+  `components/guides/GuidesIndex.tsx`, `test/crawlDiscovery.test.tsx`.
+- **How:** server-render every calculator topic panel and hide only the inactive
+  panels; add contextual cards for the missing high-priority tools; add a collapsed,
+  expandable complete guide directory whose links and matching calculator paths are
+  present in the initial HTML. Preserve working tab/search interactions and avoid
+  duplicate visible search results.
+- **Accept:** a raw fetch of the built homepage contains all 16 priority calculator
+  paths; a raw fetch of `/guides` contains all guide paths; component contracts lock
+  both sets; homepage/guide search browser tests pass; neither page overflows at
+  320px or 375px.
+
+### T8.2 — Remove the synthetic homepage search URL from structured data
+- **Status:** Complete locally — the WebSite schema no longer emits a SearchAction
+  containing `/?q={search_term_string}`.
+- **What:** GSC listed the literal search-template URL as an alternate canonical.
+  It is not a standalone indexable search-results page and should not be advertised
+  as one in schema. Existing bookmarked `?q=` interactions remain usable for people.
+- **Where:** `lib/seo.ts`, `components/home/HeroSearch.tsx`,
+  `test/seoRemediation.test.ts`.
+- **How:** remove only the unsupported `potentialAction`; retain valid WebSite and
+  Organization schema and the client-side finder behavior.
+- **Accept:** built homepage HTML contains no `search_term_string` or SearchAction;
+  schema and technical SEO scores remain 100/100.
+
+### T8.3 — Correct Connecticut's 2026 minimum wage and publish truthful freshness
+- **Status:** Complete locally — Connecticut now shows $16.94/hour, effective
+  1 January 2026, with the Connecticut Department of Labor source and a genuine
+  18 July 2026 content-update date.
+- **What:** the crawled Connecticut minimum-wage URL exposed a stale 2025 figure.
+  Independently of indexing, a statutory figure must be current, sourced and dated.
+- **Where:** `data/usStates.ts`, `app/sitemap.ts`,
+  `test/seoRemediation.test.ts`.
+- **How:** update the figure, effective-date note, official Wage and Workplace
+  Standards URL and verified year; let the existing state-route sitemap mapping use
+  `lastContentUpdate`; update `/` and `/guides` lastmod only because their discovery
+  content genuinely changed.
+- **Accept:** all four Connecticut state URLs use `2026-07-18` in the sitemap; raw
+  minimum-wage HTML contains `$16.94`, the effective date and official source; no
+  untouched route receives a fabricated freshness date.
+
+### T8.4 — Re-check coverage only after deployment and recrawl
+- **Status:** Pending operational follow-up — no deploy, manual indexing request or
+  IndexNow submission is part of this code session.
+- **What/How:** after the changes ship, allow Google 3–4 weeks to recrawl, then
+  compare the same GSC URL sets and record indexed/discovered/crawled-not-indexed
+  movements. Treat the `www` pay-rise alternate as correct only if URL Inspection
+  continues to show the non-`www` canonical selected by Google.
+- **Accept:** the follow-up records inspected URL, declared canonical, Google-selected
+  canonical, crawl date and indexing state; only persistent source-level problems
+  produce a new code task.
+
+---
+
 ## Suggested execution order
 
 T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
@@ -748,6 +822,8 @@ T0.1 → T0.2 → T0.3 → T0.4  (clear launch-blockers, can ship)
 → T5.1 → T5.2 → T5.3 → T5.4 → T5.5  (all complete — see TIER 5)
 → T6.1                     (complete locally; GSC re-check 3–4 weeks after deploy)
 → T7.1 → T7.2              (code complete; dashboard approval/CMP remain operational)
+→ T8.1 → T8.2 → T8.3       (code complete; raw discovery + schema + CT freshness)
+→ T8.4                     (operational GSC re-check 3–4 weeks after deployment)
 → T2.3 / T2.4 / T2.5       (breadth, ongoing — lower priority than TIER 3/4/5 fixes)
 
 Ship in small batches; keep the gate green; one focused PR per task or tight group.

@@ -20,6 +20,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Official source review completed 1 July 2026 after the 2026/27 UK rate change.
   const RATES_UPDATED = "2026-07-01";
+  // Significant crawl-discovery edits: homepage calculator links and the
+  // complete guide directory were added to the initial HTML on this date.
+  const DISCOVERY_LINKS_UPDATED = "2026-07-18";
 
   const toolEntries: MetadataRoute.Sitemap = TOOLS.map((tool) => ({
     url: `${SITE.url}/${tool.slug}`,
@@ -78,12 +81,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   return [
-    { url: SITE.url, lastModified: RATES_UPDATED },
+    { url: SITE.url, lastModified: DISCOVERY_LINKS_UPDATED },
     { url: `${SITE.url}/uk`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/us`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/ca`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/au`, lastModified: RATES_UPDATED },
-    { url: `${SITE.url}/guides`, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/guides`, lastModified: DISCOVERY_LINKS_UPDATED },
     { url: `${SITE.url}/compare`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/faq`, lastModified: RATES_UPDATED },
     ...guideEntries,

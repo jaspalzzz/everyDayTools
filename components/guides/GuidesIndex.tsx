@@ -4,6 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import Link from "next/link";
 import type { GuideMeta } from "@/data/guides";
+import { getTool } from "@/data/tools";
 import { HeroSketchScene } from "@/components/HeroSketchScene";
 
 const TABS = [
@@ -516,6 +517,44 @@ export function GuidesIndex({ guides }: { guides: GuideMeta[] }) {
             </section>
           </aside>
         </div>
+
+        <details style={{ marginTop: 48, borderTop: "1px solid #E4DECF", paddingTop: 32 }}>
+          <summary
+            id="complete-guide-directory"
+            className="cursor-pointer rounded-md text-2xl font-extrabold leading-tight text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600"
+          >
+            Complete guide directory
+          </summary>
+          <p style={{ maxWidth: 720, margin: "8px 0 0", color: "#52616f", fontSize: 14, lineHeight: 1.6 }}>
+            Browse every source-reviewed guide directly, with the calculator that applies its rules to your figures.
+          </p>
+          <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {guides.map((guide) => {
+              const tool = getTool(guide.relatedTool);
+              return (
+                <article key={guide.slug} className="min-w-0 rounded-lg border border-surface-line bg-white p-4">
+                  <span className="text-[10px] font-bold uppercase tracking-wide text-ink-faint">
+                    {guide.country} · {guide.category}
+                  </span>
+                  <Link
+                    href={`/guides/${guide.slug}`}
+                    className="mt-2 block break-words text-sm font-semibold leading-snug text-brand-700 underline decoration-brand-200 underline-offset-2 hover:decoration-brand-600"
+                  >
+                    {guide.title}
+                  </Link>
+                  {tool && (
+                    <Link
+                      href={`/${tool.slug}`}
+                      className="mt-3 inline-flex min-h-[44px] items-center text-xs font-semibold text-ink-soft underline decoration-surface-line underline-offset-2 hover:text-brand-700"
+                    >
+                      Use the {tool.shortName.toLowerCase()} calculator →
+                    </Link>
+                  )}
+                </article>
+              );
+            })}
+          </div>
+        </details>
       </div>
     </>
   );

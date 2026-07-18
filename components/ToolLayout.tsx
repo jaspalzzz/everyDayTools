@@ -215,7 +215,7 @@ export function ToolLayout({
           <section
             aria-labelledby="next-steps-heading"
             className="grid grid-cols-1 lg:grid-cols-2 gap-4"
-            style={{ marginBottom: 28 }}
+            style={{ marginTop: 28, marginBottom: 28 }}
           >
             <div style={ACTION_BOX_STYLE}>
               <h2 id="next-steps-heading" style={ACTION_BOX_TITLE_STYLE}>Employer email template</h2>
@@ -244,6 +244,7 @@ export function ToolLayout({
         <section
           aria-labelledby="methodology-heading"
           style={{
+            marginTop: 28,
             border: "1px solid #E4DECF", borderRadius: 10,
             background: "#fff", boxShadow: "0 10px 24px rgba(16,32,51,.05)", padding: 22,
           }}

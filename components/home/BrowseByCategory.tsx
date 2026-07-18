@@ -128,6 +128,10 @@ const COMPACT_TOOLS: Record<TabId, { icon: string; title: string; desc: string; 
     { icon: "N", title: "Notice pay calculator", desc: "What notice pay may be owed after dismissal.", href: "/notice-period-calculator" },
     { icon: "G", title: "Garden leave calculator", desc: "Estimate pay owed during garden leave.", href: "/garden-leave-calculator" },
     { icon: "F", title: "Final paycheck deadline calculator", desc: "Find when your final wage payment should be made.", href: "/final-paycheck-deadline-calculator" },
+    { icon: "V", title: "Severance pay estimator", desc: "Separate statutory entitlements from a negotiable severance offer.", href: "/severance-pay-calculator" },
+    { icon: "C", title: "Employer redundancy cost", desc: "Estimate redundancy, notice and accrued-holiday costs for a UK employer.", href: "/employer-redundancy-cost-calculator" },
+    { icon: "E", title: "Employer notice pay", desc: "Calculate statutory notice pay or the cost of garden leave.", href: "/employer-notice-pay-calculator" },
+    { icon: "T", title: "TUPE transfer checker", desc: "Check whether TUPE protections may apply when an employer or service changes.", href: "/tupe-wizard" },
   ],
   "pay-tax": [
     { icon: "U", title: "Payslip analyser", desc: "Check your payslip for missing wages and deductions.", href: "/payslip-analyser" },
@@ -152,6 +156,8 @@ const COMPACT_TOOLS: Record<TabId, { icon: string; title: string; desc: string; 
     { icon: "P", title: "PTO payout calculator", desc: "Estimate unused paid time off after leaving.", href: "/pto-payout-calculator" },
     { icon: "B", title: "Bonus tax calculator", desc: "Estimate tax on a bonus or one-off payment.", href: "/bonus-tax-calculator" },
     { icon: "I", title: "IR35 calculator", desc: "Check IR35 status and contractor take-home.", href: "/ir35-calculator" },
+    { icon: "A", title: "Australia annual leave calculator", desc: "Calculate accrued NES annual leave and termination payout.", href: "/au-annual-leave-calculator" },
+    { icon: "N", title: "New York PTO payout calculator", desc: "Check a New York unused-vacation balance against the employer policy rule.", href: "/us/new-york/pto-payout-calculator" },
   ],
   "hours": [
     { icon: "O", title: "Overtime pay calculator", desc: "Check overtime rates and unpaid overtime.", href: "/take-home-overtime-calculator" },
@@ -182,8 +188,6 @@ const DIRECTORY_NOTE: Record<TabId, { title: string; body: string }> = {
 
 export function BrowseByCategory() {
   const [active, setActive] = useState<TabId>("leaving-job");
-  const tools = COMPACT_TOOLS[active];
-  const note = DIRECTORY_NOTE[active];
 
   useEffect(() => {
     function handleDirectoryTab(event: Event) {
@@ -201,11 +205,14 @@ export function BrowseByCategory() {
       style={{ marginTop: 58, border: "1px solid #E4DECF", borderRadius: 8, background: "#fff", overflow: "hidden" }}
     >
       {/* Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 bg-[#FBF9F3] border-b border-surface-line">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 bg-[#FBF9F3] border-b border-surface-line" aria-label="Calculator topics">
         {TABS.map((tab) => (
           <button
             key={tab.id}
+            id={`directory-tab-${tab.id}`}
             type="button"
+            aria-pressed={active === tab.id}
+            aria-controls={`directory-panel-${tab.id}`}
             onClick={() => setActive(tab.id)}
             style={{
               minHeight: 66, display: "grid", placeItems: "center",
@@ -221,38 +228,53 @@ export function BrowseByCategory() {
         ))}
       </div>
 
-      {/* Directory content */}
-      <div className="grid grid-cols-1 md:grid-cols-[230px_1fr] gap-6" style={{ padding: 22 }}>
-        {/* Left: title + note */}
-        <div>
-          <h2 id="directory-title" style={{ margin: "0 0 16px", fontSize: 22, color: "#102033" }}>
-            Calculator directory
-          </h2>
-          <div style={{ borderRadius: 8, background: "#fff4df", border: "1px solid #f1d9aa", padding: 15, color: "#5d461d", fontSize: 13 }}>
-            <strong style={{ display: "block", color: "#3c2c0d", fontSize: 15, marginBottom: 4 }}>{note.title}</strong>
-            {note.body}
-          </div>
-        </div>
+      {/* Keep every topic panel in the initial HTML so search crawlers can
+          discover the same contextual links that visitors reveal with a tab. */}
+      {TABS.map((tab) => {
+        const tools = COMPACT_TOOLS[tab.id];
+        const note = DIRECTORY_NOTE[tab.id];
+        return (
+          <div
+            key={tab.id}
+            id={`directory-panel-${tab.id}`}
+            aria-labelledby={`directory-tab-${tab.id}`}
+            hidden={active !== tab.id}
+            className="grid grid-cols-1 md:grid-cols-[230px_1fr] gap-6"
+            style={{ padding: 22 }}
+          >
+            <div>
+              <h2
+                id={tab.id === "leaving-job" ? "directory-title" : undefined}
+                style={{ margin: "0 0 16px", fontSize: 22, color: "#102033" }}
+              >
+                Calculator directory
+              </h2>
+              <div style={{ borderRadius: 8, background: "#fff4df", border: "1px solid #f1d9aa", padding: 15, color: "#5d461d", fontSize: 13 }}>
+                <strong style={{ display: "block", color: "#3c2c0d", fontSize: 15, marginBottom: 4 }}>{note.title}</strong>
+                {note.body}
+              </div>
+            </div>
 
-        {/* Right: compact tool grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-          {tools.map((tool) => (
-            <Link
-              key={tool.href + tool.title}
-              href={tool.href}
-              style={{ minHeight: 78, border: "1px solid #EAE5D8", borderRadius: 8, background: "#FBF9F3", padding: 13, display: "grid", gridTemplateColumns: "34px 1fr", gap: 12, alignItems: "start", textDecoration: "none" }}
-            >
-              <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#EAF0F8", color: "#1E4E8C", fontWeight: 900, fontSize: 14 }}>
-                {tool.icon}
-              </span>
-              <span>
-                <strong style={{ display: "block", color: "#102033", fontSize: 14, lineHeight: 1.25 }}>{tool.title}</strong>
-                <span style={{ display: "block", marginTop: 3, color: "#52616f", fontSize: 12 }}>{tool.desc}</span>
-              </span>
-            </Link>
-          ))}
-        </div>
-      </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {tools.map((tool) => (
+                <Link
+                  key={tool.href + tool.title}
+                  href={tool.href}
+                  style={{ minHeight: 78, border: "1px solid #EAE5D8", borderRadius: 8, background: "#FBF9F3", padding: 13, display: "grid", gridTemplateColumns: "34px 1fr", gap: 12, alignItems: "start", textDecoration: "none" }}
+                >
+                  <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 8, background: "#EAF0F8", color: "#1E4E8C", fontWeight: 900, fontSize: 14 }}>
+                    {tool.icon}
+                  </span>
+                  <span>
+                    <strong style={{ display: "block", color: "#102033", fontSize: 14, lineHeight: 1.25 }}>{tool.title}</strong>
+                    <span style={{ display: "block", marginTop: 3, color: "#52616f", fontSize: 12 }}>{tool.desc}</span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </section>
   );
 }

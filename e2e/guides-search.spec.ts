@@ -45,3 +45,39 @@ test("guides search understands common notice-pay wording", async ({ page }) => 
   await expect(page.getByRole("button", { name: /Leaving a job/i })).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByRole("link", { name: /UK Notice Period Law/i })).toBeVisible();
 });
+
+test("country filters surface substantive Canada and Australia guides", async ({ page }) => {
+  await page.goto("/guides");
+
+  const country = page.getByRole("combobox", { name: "Country" });
+  await country.selectOption("CA");
+  await expect(page.getByRole("link", { name: /Ontario Termination and Severance Pay Guide/i })).toBeVisible();
+
+  await country.selectOption("AU");
+  await expect(page.getByRole("link", { name: /Australia Redundancy Pay and Final Entitlements Guide/i })).toBeVisible();
+});
+
+test("new guide pages stay within 320px and 375px viewports", async ({ page }) => {
+  const routes = [
+    "/guides/us-final-paycheck-late",
+    "/guides/uk-severance-vs-redundancy",
+    "/guides/ca-ontario-termination-severance-pay",
+    "/guides/au-redundancy-final-entitlements",
+  ];
+
+  for (const width of [320, 375]) {
+    await page.setViewportSize({ width, height: 900 });
+
+    for (const route of routes) {
+      await page.goto(route);
+      const dimensions = await page.evaluate(() => ({
+        clientWidth: document.documentElement.clientWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+        bodyScrollWidth: document.body.scrollWidth,
+      }));
+
+      expect(dimensions.scrollWidth, `${route} document overflow at ${width}px`).toBeLessThanOrEqual(width);
+      expect(dimensions.bodyScrollWidth, `${route} body overflow at ${width}px`).toBeLessThanOrEqual(width);
+    }
+  }
+});

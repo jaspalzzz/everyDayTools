@@ -158,13 +158,13 @@ export default function UkMaternityPayRights2026() {
       <div className="mt-6 flex flex-wrap gap-3">
         <Link
           href="/maternity-pay-calculator"
-          className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
+          className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white no-underline hover:bg-brand-700"
         >
           Calculate your maternity pay
         </Link>
         <Link
           href="/shared-parental-leave-calculator"
-          className="rounded-lg border border-surface-line px-4 py-2 text-sm font-medium text-ink-soft hover:border-brand-600 hover:text-brand-600"
+          className="rounded-lg border border-surface-line px-4 py-2 text-sm font-medium text-ink-soft no-underline hover:border-brand-600 hover:text-brand-600"
         >
           Shared parental leave calculator
         </Link>

@@ -116,13 +116,13 @@ export default function UkNoticePeriodRightsExplained() {
       <div className="my-6 flex gap-3 flex-wrap">
         <Link
           href="/notice-period-calculator"
-          className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
+          className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white no-underline hover:bg-brand-700"
         >
           Calculate your notice period
         </Link>
         <Link
           href="/garden-leave-calculator"
-          className="rounded-lg border border-surface-line px-4 py-2 text-sm font-medium text-ink-soft hover:border-brand-600 hover:text-brand-600"
+          className="rounded-lg border border-surface-line px-4 py-2 text-sm font-medium text-ink-soft no-underline hover:border-brand-600 hover:text-brand-600"
         >
           Garden leave pay calculator
         </Link>

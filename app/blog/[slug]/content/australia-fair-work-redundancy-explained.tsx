@@ -156,13 +156,13 @@ export default function AustraliaFairWorkRedundancyExplained() {
       <div className="mt-6 flex flex-wrap gap-3">
         <Link
           href="/au-redundancy-pay-calculator"
-          className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
+          className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white no-underline hover:bg-brand-700"
         >
           Calculate your redundancy pay
         </Link>
         <Link
           href="/au-notice-period-calculator"
-          className="rounded-lg border border-surface-line px-4 py-2 text-sm font-medium text-ink-soft hover:border-brand-600 hover:text-brand-600"
+          className="rounded-lg border border-surface-line px-4 py-2 text-sm font-medium text-ink-soft no-underline hover:border-brand-600 hover:text-brand-600"
         >
           Notice period calculator
         </Link>

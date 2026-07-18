@@ -48,6 +48,50 @@ export const GUIDES: GuideMeta[] = [
     category: "Leaving a Job",
   },
   {
+    slug: "us-final-paycheck-late",
+    title: "Final Paycheck Late? What US Workers Can Do in 2026",
+    description:
+      "A state-aware action plan for a missing or late final paycheck: identify the deadline, preserve payroll evidence, send a written demand, and choose the correct labor agency.",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    country: "US",
+    relatedTool: "final-paycheck-deadline-calculator",
+    category: "Leaving a Job",
+  },
+  {
+    slug: "uk-severance-vs-redundancy",
+    title: "Severance Pay vs Redundancy Pay: UK Guide 2026/27",
+    description:
+      "Separate statutory redundancy pay from notice pay, enhanced severance, holiday pay and settlement compensation before checking or negotiating an exit package.",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    country: "UK",
+    relatedTool: "severance-pay-calculator",
+    category: "Leaving a Job",
+  },
+  {
+    slug: "ca-ontario-termination-severance-pay",
+    title: "Ontario Termination and Severance Pay Guide 2026",
+    description:
+      "Understand Ontario ESA termination notice, pay in lieu and the separate severance-pay test, including the five-year threshold, employer-size test and 26-week cap.",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    country: "CA",
+    relatedTool: "severance-pay-calculator",
+    category: "Leaving a Job",
+  },
+  {
+    slug: "au-redundancy-final-entitlements",
+    title: "Australia Redundancy Pay and Final Entitlements Guide 2026",
+    description:
+      "Check NES redundancy pay, notice, unused leave and other final entitlements under the Fair Work Act, including the small-business exemption and award exceptions.",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    country: "AU",
+    relatedTool: "au-redundancy-pay-calculator",
+    category: "Leaving a Job",
+  },
+  {
     slug: "uk-take-home-pay",
     title: "How to Calculate UK Take-Home Pay 2026/27",
     description:

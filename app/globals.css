@@ -44,7 +44,9 @@ h1, h2, h3, .font-display {
   color: #52616F;
 }
 
-.prose-tool a {
+/* Keep prose defaults low-specificity so explicit CTA utilities (for example
+   text-white) can override them without needing !important. */
+:where(.prose-tool) a {
   color: #1E4E8C;
   text-decoration: underline;
   text-underline-offset: 2px;

@@ -78,13 +78,9 @@ function directCalculatorHrefForSearch(searchText: string) {
 }
 
 /**
- * Reads ?q= on mount and runs it through the same search logic as a manual
- * submit. This is what makes the homepage WebSite/SearchAction schema
- * (potentialAction targeting /?q={search_term_string}) actually functional
- * rather than a claimed capability the site doesn't implement -- if Google
- * renders a sitelinks search box from that schema, this makes it work.
- * Isolated in its own component because useSearchParams() requires a
- * Suspense boundary in a static export.
+ * Preserves useful searches from bookmarked or shared `?q=` URLs. This is
+ * isolated because useSearchParams() requires a Suspense boundary in a
+ * static export; the site no longer advertises query URLs in structured data.
  */
 function QueryParamSync({
   onQuery,

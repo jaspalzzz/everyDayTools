@@ -140,11 +140,14 @@ const RAW: UsStateData[] = [
     code: "CT",
     region: "Northeast",
     name: "Connecticut",
-    minimumWage: "$16.35/hr",
+    minimumWage: "$16.94/hr",
+    minimumWageNote:
+      "Effective 1 January 2026; Connecticut indexes the statewide rate annually to the federal Employment Cost Index",
     finalPaycheckTerminated: "Next scheduled payday",
     finalPaycheckResigned: "Next scheduled payday",
-    dolUrl: "https://portal.ct.gov/dol",
-    verifiedYear: 2025,
+    dolUrl: "https://portal.ct.gov/dol/divisions/wage-and-workplace-standards",
+    verifiedYear: 2026,
+    lastContentUpdate: "2026-07-18",
   },
   {
     slug: "delaware",
