@@ -35,6 +35,14 @@ export async function onRequest(context: {
   headers.delete("content-length");
   headers.delete("content-encoding");
   headers.delete("etag");
+  // Own the HTML edge-cache TTL explicitly. Without this the platform default
+  // (observed: s-maxage=604800, i.e. 7 days) kept deleted/updated pages alive
+  // at the edge for a week. A short shared-cache window lets content changes and
+  // route deletions propagate within minutes while still offloading most traffic
+  // from the origin. Browsers always revalidate (max-age=0); the per-request CSP
+  // nonce also rotates each time the edge copy expires. /_next/static/* is
+  // content-hashed and keeps its long immutable cache via public/_headers.
+  headers.set("Cache-Control", "public, max-age=0, s-maxage=600, must-revalidate");
   headers.set(
     "Content-Security-Policy",
     [

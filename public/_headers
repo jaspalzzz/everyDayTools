@@ -2,7 +2,13 @@
 # Docs: https://developers.cloudflare.com/pages/configuration/headers/
 
 # Security headers on every response.
+# Cache-Control: short shared-cache window so content changes, sitemap updates
+# and route deletions propagate within minutes instead of lingering at the edge
+# for the platform-default 7 days. HTML responses set the same value from the
+# Function (functions/_middleware.ts); content-hashed assets under
+# /_next/static/* override this with a long immutable cache below.
 /*
+  Cache-Control: public, max-age=0, s-maxage=600, must-revalidate
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Cross-Origin-Opener-Policy: same-origin

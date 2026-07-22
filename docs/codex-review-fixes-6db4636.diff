@@ -1,0 +1,2095 @@
+commit 6db4636162a2b1633a7822634c484eb4ed51881a
+Author: Atvantiq <Atvantiq@gmail.com>
+Date:   Wed Jul 22 16:58:12 2026 +0530
+
+    Address codex review: Wyoming law fix, hubs-only, static-server 404
+    
+    [P1] Wyoming final paycheck was "within 5 business days" for both
+    termination and resignation — incorrect. W.S. 27-4-104(a) requires the
+    next regular payday in both cases (verified against Wyoming DWS guidance).
+    This was live, indexable, incorrect YMYL data.
+    
+    [P1] Publish only the three curated state hubs; delete the minimum-wage,
+    final-paycheck and pto-payout child routes. Those rendered mostly template
+    variants (60-77% cross-state vocabulary overlap) without the hub's sourced
+    local analysis, so they read as thin/scaled content. A child route may
+    return only with its own separately sourced, route-specific content.
+    Sitemap 203 -> 194; only the 3 state hubs remain jurisdiction pages.
+    
+    [P2] serve_static_export.py now sends a real HTTP 404 for missing paths
+    (previously served 404.html with a 200 status, a soft-404), matching the
+    production static host so the "gated routes 404" e2e assertions hold here too.
+    
+    Maintenance guard: the sitemap and CA/AU directory grids auto-link a record
+    once it passes the gate, but those routes are deleted. Added explicit
+    restore-the-route comments; the contentQuality test already fails loudly if
+    a CA/AU record becomes indexable without its route.
+    
+    Verified: 242 unit tests, tsc, production build (exactly 3 hub pages emitted,
+    no child routes), 0 broken internal links across 195 pages, static server
+    returns 404 for missing paths, seo-remediation e2e 14/14 under the static
+    config, and no 320px overflow / clipped-interactive on the modified hub.
+
+diff --git a/app/au/page.tsx b/app/au/page.tsx
+index d06e729..6288041 100644
+--- a/app/au/page.tsx
++++ b/app/au/page.tsx
+@@ -42,9 +42,11 @@ const AU_TOOLS: CountryTool[] = TOOLS.filter((t) => t.region.includes("AU")).map
+ }));
+ 
+ function AUStatesGrid() {
+-  // Only states with a manually reviewed, sourced page are linked. Until a
+-  // state clears that gate its page 404s, so it must not appear here. When none
+-  // qualify, the section is omitted entirely rather than showing dead links.
++  // Only states with a manually reviewed, sourced page are linked. When none
++  // qualify, the section is omitted rather than showing dead links.
++  // MAINTENANCE: the /au/states/[state] route is currently deleted; restore
++  // app/au/states/[state]/page.tsx before curating a state, or a qualifying
++  // record links here to a 404.
+   const states = AU_STATES.filter(isIndexableAuState);
+   if (states.length === 0) return null;
+   return (
+diff --git a/app/ca/page.tsx b/app/ca/page.tsx
+index bf501f1..65e5a58 100644
+--- a/app/ca/page.tsx
++++ b/app/ca/page.tsx
+@@ -42,9 +42,11 @@ const CA_TOOLS: CountryTool[] = TOOLS.filter((t) => t.region.includes("CA")).map
+ }));
+ 
+ function CAProvincesGrid() {
+-  // Only provinces with a manually reviewed, sourced page are linked. Until a
+-  // province clears that gate its page 404s, so it must not appear here. When
+-  // none qualify, the section is omitted entirely rather than showing dead links.
++  // Only provinces with a manually reviewed, sourced page are linked. When none
++  // qualify, the section is omitted rather than showing dead links.
++  // MAINTENANCE: the /ca/provinces/[province] route is currently deleted; restore
++  // app/ca/provinces/[province]/page.tsx before curating a province, or a
++  // qualifying record links here to a 404.
+   const provinces = CA_PROVINCES.filter(isIndexableCaProvince);
+   if (provinces.length === 0) return null;
+   return (
+diff --git a/app/research/us-final-paycheck-laws/page.tsx b/app/research/us-final-paycheck-laws/page.tsx
+index 8e91275..fb7d627 100644
+--- a/app/research/us-final-paycheck-laws/page.tsx
++++ b/app/research/us-final-paycheck-laws/page.tsx
+@@ -109,7 +109,7 @@ export default function UsFinalPaycheckDatasetPage() {
+                 <tr key={state.code} className="border-t border-surface-line align-top">
+                   <th scope="row" className="px-4 py-3 font-bold text-ink">
+                     {isIndexableUsState(state) ? (
+-                      <Link href={`/us/states/${state.slug}/final-paycheck`} className="text-brand-700 hover:underline">{state.name}</Link>
++                      <Link href={`/us/states/${state.slug}`} className="text-brand-700 hover:underline">{state.name}</Link>
+                     ) : (
+                       state.name
+                     )}
+diff --git a/app/sitemap.ts b/app/sitemap.ts
+index f91e87e..b68d8d7 100644
+--- a/app/sitemap.ts
++++ b/app/sitemap.ts
+@@ -37,34 +37,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
+   // State pages remain browsable from /us, but only manually curated,
+   // current-year records belong in search inventory. Template wording
+   // variation alone is not a sufficient quality signal for AdSense or Search.
++  // Only the curated state *hub* is published. The minimum-wage / final-paycheck
++  // / pto-payout child routes were removed because they rendered mostly template
++  // variants without the hub's sourced local analysis; a child route may return
++  // only once it has its own separately sourced, route-specific content.
+   const stateEntries: MetadataRoute.Sitemap = US_STATES
+     .filter(isIndexableUsState)
+-    .flatMap((s) => {
+-      // Reflects the actual last edit to this state's page content where known
+-      // (e.g. a state that got a genuinely new localContext paragraph), rather
+-      // than a single blanket date shared across all 51 states regardless of
+-      // whether anything about that specific page actually changed.
+-      const lastModified = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
+-      return [
+-        {
+-          url: `${SITE.url}/us/states/${s.slug}`,
+-          lastModified,
+-        },
+-        {
+-          url: `${SITE.url}/us/states/${s.slug}/final-paycheck`,
+-          lastModified,
+-        },
+-        {
+-          url: `${SITE.url}/us/states/${s.slug}/minimum-wage`,
+-          lastModified,
+-        },
+-        {
+-          url: `${SITE.url}/us/states/${s.slug}/pto-payout`,
+-          lastModified,
+-        },
+-      ];
+-    });
++    .map((s) => ({
++      url: `${SITE.url}/us/states/${s.slug}`,
++      lastModified: s.lastContentUpdate ?? `${s.verifiedYear}-01-01`,
++    }));
+ 
++  // MAINTENANCE: the /ca/provinces/[province] route was deleted (no province is
++  // curated yet). This filter yields nothing today, but if you curate a province
++  // so it passes isIndexableCaProvince, you MUST first restore the route file
++  // (app/ca/provinces/[province]/page.tsx) or this emits a sitemap URL that 404s.
++  // The contentQuality test asserts every province is currently non-indexable,
++  // so it fails loudly the moment one qualifies without the route.
+   const provinceEntries: MetadataRoute.Sitemap = CA_PROVINCES
+     .filter(isIndexableCaProvince)
+     .map((p) => ({
+@@ -77,6 +66,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
+     lastModified: f.dateModified,
+   }));
+ 
++  // MAINTENANCE: the /au/states/[state] route was deleted (no state is curated
++  // yet). Same contract as provinceEntries above — restore the route file
++  // (app/au/states/[state]/page.tsx) before any state can pass isIndexableAuState,
++  // or this emits a sitemap URL that 404s.
+   const auStateEntries: MetadataRoute.Sitemap = AU_STATES
+     .filter(isIndexableAuState)
+     .map((s) => ({
+diff --git a/app/us/final-paycheck/page.tsx b/app/us/final-paycheck/page.tsx
+index b657e51..f5497b2 100644
+--- a/app/us/final-paycheck/page.tsx
++++ b/app/us/final-paycheck/page.tsx
+@@ -73,12 +73,12 @@ export default function USFinalPaycheckHub() {
+ 
+         {US_STATES.some(isIndexableUsState) && (
+           <section className="mb-10" aria-labelledby="state-list-heading">
+-            <h2 id="state-list-heading" className="mb-4 text-xl font-bold text-ink">State final paycheck pages</h2>
++            <h2 id="state-list-heading" className="mb-4 text-xl font-bold text-ink">State pay-rights pages</h2>
+             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+               {US_STATES.filter(isIndexableUsState).map((state) => (
+                 <Link
+                   key={state.slug}
+-                  href={`/us/states/${state.slug}/final-paycheck`}
++                  href={`/us/states/${state.slug}`}
+                   className="rounded-lg border border-surface-line bg-white px-3 py-2 text-sm font-medium text-ink hover:bg-surface-muted"
+                 >
+                   {state.name}
+diff --git a/app/us/states/[state]/final-paycheck/page.tsx b/app/us/states/[state]/final-paycheck/page.tsx
+deleted file mode 100644
+index ca056a4..0000000
+--- a/app/us/states/[state]/final-paycheck/page.tsx
++++ /dev/null
+@@ -1,527 +0,0 @@
+-import type { Metadata } from "next";
+-import Link from "next/link";
+-import { notFound } from "next/navigation";
+-import { EditorialReview } from "@/components/EditorialReview";
+-import { US_STATES, getUsState, getNearbyStates, type UsStateWithPto } from "@/data/usStates";
+-import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
+-import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
+-import { isIndexableUsState, statePageRobots } from "@/lib/contentQuality";
+-import type { FaqItem } from "@/lib/types";
+-import { FinalPaycheckLateChecker } from "@/components/calculators/FinalPaycheckLateChecker";
+-
+-type Props = { params: Promise<{ state: string }> };
+-
+-const ALL_SLUGS = US_STATES.map((s) => s.slug);
+-
+-// Rank-based phrasing variants so states that share the same final-pay timing
+-// values (many are "next regular payday") don't render near-identical pages.
+-// Each field uses a different variant count so two states colliding on one
+-// answer won't collide on all of them. See lib/textVariants.ts.
+-const FP_DEADLINE_ANSWERS = [
+-  (s: UsStateWithPto) => `In ${s.name}, the deadline depends on how your employment ended. If your employer terminated you, your final paycheck is due ${s.finalPaycheckTerminated.toLowerCase()}. If you resigned voluntarily, it is due ${s.finalPaycheckResigned.toLowerCase()}. These are minimum legal deadlines — your employer can pay sooner, but not later.`,
+-  (s: UsStateWithPto) => `${s.name} sets the final-pay deadline by how you left. A firing means the check is due ${s.finalPaycheckTerminated.toLowerCase()}; quitting voluntarily means ${s.finalPaycheckResigned.toLowerCase()}. Employers may pay earlier, but paying later breaks the deadline.`,
+-  (s: UsStateWithPto) => `How fast ${s.name} requires your last check depends on the reason for separation: ${s.finalPaycheckTerminated.toLowerCase()} if the employer ended it, or ${s.finalPaycheckResigned.toLowerCase()} if you resigned. Those are floors, not targets — sooner is fine, later is not.`,
+-  (s: UsStateWithPto) => `Two deadlines apply in ${s.name}. Terminated employees must be paid ${s.finalPaycheckTerminated.toLowerCase()}; employees who resign are owed their final wages ${s.finalPaycheckResigned.toLowerCase()}. An employer that pays after these dates is in breach.`,
+-  (s: UsStateWithPto) => `${s.name} law ties the timing to the circumstances. If you were let go, the final paycheck is due ${s.finalPaycheckTerminated.toLowerCase()}. If you quit, it is due ${s.finalPaycheckResigned.toLowerCase()}. These are the latest lawful dates — nothing stops an employer paying you sooner.`,
+-] as const;
+-
+-const FP_INCLUDED_ANSWERS = [
+-  (s: UsStateWithPto) => `Your final paycheck in ${s.name} must include all wages earned through your last day of work, including any overtime owed and any accrued but unpaid commissions or bonuses that are calculable at the time. Whether accrued PTO must be included depends on ${s.name}'s PTO payout law — check the ${s.name} employment law page for specifics. Final paychecks cannot have unauthorized deductions.`,
+-  (s: UsStateWithPto) => `In ${s.name}, the final check has to cover every wage you earned up to your last day: regular pay, overtime, and any commission or bonus that is already earned and calculable. Accrued PTO is separate — whether it must be paid out turns on ${s.name}'s PTO payout rules. No unauthorized deductions are allowed.`,
+-  (s: UsStateWithPto) => `${s.name} requires the final paycheck to reflect all earned wages through your last day — hourly or salary, plus owed overtime and any calculable earned commission. Unused PTO depends on ${s.name}'s separate payout law; see the state employment page. Deductions you didn't authorize are unlawful.`,
+-  (s: UsStateWithPto) => `Everything you earned through your last day belongs in the ${s.name} final paycheck: base wages, overtime, and earned, calculable commissions or bonuses. Accrued vacation is governed by ${s.name}'s PTO payout law, not the final-pay rule itself. The employer cannot slip in unauthorized deductions.`,
+-  (s: UsStateWithPto) => `A lawful ${s.name} final paycheck includes all wages through your last day worked, any overtime, and commissions/bonuses that have vested and can be calculated. Whether unused PTO is added depends on ${s.name}'s PTO payout law. Only legally authorized deductions (tax, garnishments) are permitted.`,
+-  (s: UsStateWithPto) => `The ${s.name} final paycheck should capture your full earned pay to the last day, overtime hours, and any commission or bonus that has already been earned and is quantifiable. Accrued vacation follows ${s.name}'s PTO payout law separately, and no deduction you didn't authorize in writing is lawful.`,
+-] as const;
+-
+-const FP_LATE_ANSWERS = [
+-  (s: UsStateWithPto) => `If your employer misses the final paycheck deadline in ${s.name}, you can file a wage claim with the ${s.name} Department of Labor (${s.dolUrl}). You may also have the right to file a civil lawsuit. Many states allow you to recover the unpaid wages plus penalties and attorney fees. Document everything: your last day, what you were owed, and all communications with your employer.`,
+-  (s: UsStateWithPto) => `A late final paycheck in ${s.name} is a wage-law violation. Start by filing a claim with the ${s.name} Department of Labor at ${s.dolUrl}; a civil suit is also an option. Recovery often includes the unpaid wages plus penalties and sometimes attorney fees. Keep records of your last day, the amount owed, and every message with your employer.`,
+-  (s: UsStateWithPto) => `When a ${s.name} employer pays late, your route is a wage claim through the ${s.name} Department of Labor (${s.dolUrl}), or a private lawsuit. Depending on the facts you may recover the wages plus penalties and legal costs. Document the timeline: separation date, sums owed, and all correspondence.`,
+-  (s: UsStateWithPto) => `${s.name} gives you enforcement options if the deadline is missed: file with the ${s.name} Department of Labor (${s.dolUrl}) or sue in civil court. Awards frequently add penalties and attorney fees to the unpaid wages. Preserve evidence — your final day, the outstanding amount, and written exchanges with the employer.`,
+-  (s: UsStateWithPto) => `Missed the deadline in ${s.name}? File a wage claim with the ${s.name} Department of Labor at ${s.dolUrl}, and consider a civil claim as well. Many cases recover unpaid wages plus penalties (and sometimes fees). Save documentation of your last day, what you were owed, and all employer communications.`,
+-  (s: UsStateWithPto) => `The remedy for a late check in ${s.name} starts at the ${s.name} Department of Labor (${s.dolUrl}), with a civil lawsuit available too. Expect to potentially recover the wages, penalties, and in some cases attorney fees. Hold onto records of your separation date, the amount due, and every employer message.`,
+-  (s: UsStateWithPto) => `If ${s.name} pay arrives late, pursue it through the state Department of Labor at ${s.dolUrl} or in court. Recoverable amounts often go beyond the wages to include penalties and fees. Build a paper trail: last day worked, sums owed, and all correspondence with the employer.`,
+-] as const;
+-
+-const FP_DEDUCTION_ANSWERS = [
+-  (s: UsStateWithPto) => `Unauthorized deductions from a final paycheck are generally illegal. In ${s.name}, an employer may only deduct amounts specifically authorized by law (taxes, garnishments) or expressly agreed to in writing by the employee. Attempting to withhold a final paycheck to recover property — a laptop, uniforms, a cash advance — without proper authorization or court process is a wage violation.`,
+-  (s: UsStateWithPto) => `Generally no — ${s.name} only allows deductions the law requires (taxes, court-ordered garnishments) or ones you agreed to in writing. Holding back your final check to claw back a laptop, uniform, or cash advance without written authorization or a court order is an unlawful deduction.`,
+-  (s: UsStateWithPto) => `In ${s.name}, a final paycheck can only be reduced by legally mandated amounts (tax, garnishment) or deductions you signed off on in writing. Docking pay to recover company property or an advance, absent that authorization or a court process, violates wage law.`,
+-  (s: UsStateWithPto) => `${s.name} treats most unauthorized deductions as illegal. Permitted ones are statutory (taxes, garnishments) or expressly agreed in writing. An employer can't withhold your final wages to recover equipment, uniforms, or a loan without your written consent or a court order.`,
+-  (s: UsStateWithPto) => `Only if the law requires it or you agreed in writing. ${s.name} employers may deduct taxes and garnishments, but withholding final pay to recover property or a cash advance — without written authorization or court process — is a wage violation you can act on.`,
+-  (s: UsStateWithPto) => `Deductions from a ${s.name} final paycheck are tightly limited to statutory ones (tax, garnishment) and anything you authorized in writing. Recovering the cost of a laptop, uniform, or advance by docking the check, without that consent or a court order, is unlawful.`,
+-  (s: UsStateWithPto) => `Not without authority. ${s.name} permits only legally required deductions or those you agreed to in writing. An employer that trims your final wages to recover property or a loan — lacking written consent or court process — has made an unlawful deduction.`,
+-  (s: UsStateWithPto) => `${s.name} law is narrow here: taxes, garnishments, and written-agreed amounts only. Using your final paycheck to offset unreturned equipment or a cash advance, absent written authorization or a court order, crosses into an illegal deduction.`,
+-] as const;
+-
+-const FP_PENALTY_ANSWERS = [
+-  (s: UsStateWithPto) => `Yes. ${s.name} provides remedies for employees whose final paycheck is late. Depending on the circumstances, you may be entitled to the unpaid wages plus waiting-time penalties, liquidated damages, or interest. The ${s.name} labor enforcement agency can investigate your complaint and order payment. You may also pursue a private civil claim in state court. Contact the ${s.name} Department of Labor at ${s.dolUrl} to file a claim.`,
+-  (s: UsStateWithPto) => `Yes — late final pay carries remedies in ${s.name}. You may recover the wages plus waiting-time penalties, liquidated damages, or interest, depending on the facts. The ${s.name} labor agency can investigate and order payment, and you can also sue in state court. Start a claim at ${s.dolUrl}.`,
+-  (s: UsStateWithPto) => `${s.name} does provide penalties for late final paychecks. Beyond the unpaid wages, you may be owed waiting-time penalties, liquidated damages, or interest. The state labor enforcement agency can order payment, or you can bring a private civil claim. File through the ${s.name} Department of Labor at ${s.dolUrl}.`,
+-  (s: UsStateWithPto) => `Yes. Employees in ${s.name} whose final check is late may recover more than the wages themselves — waiting-time penalties, liquidated damages, or interest can apply. The ${s.name} labor agency investigates and can order payment; a civil suit is also available. Begin at ${s.dolUrl}.`,
+-  (s: UsStateWithPto) => `There are remedies in ${s.name} for a late final paycheck. Depending on circumstances you may claim penalties, liquidated damages, or interest on top of the unpaid wages. The ${s.name} Department of Labor (${s.dolUrl}) can investigate and order payment, and you retain the right to sue.`,
+-  (s: UsStateWithPto) => `Yes — ${s.name} backs the deadline with consequences. A late final paycheck can expose the employer to waiting-time penalties, liquidated damages, or interest beyond the wages themselves. The ${s.name} labor agency can order payment; ${s.dolUrl} is where a claim begins.`,
+-  (s: UsStateWithPto) => `${s.name} attaches real remedies to late final pay. On top of the unpaid amount you may be owed penalties, liquidated damages, or interest depending on the circumstances. File with the ${s.name} Department of Labor at ${s.dolUrl}, and a civil claim remains open to you.`,
+-  (s: UsStateWithPto) => `Late final pay is penalized in ${s.name}. Recovery can extend past the wages to waiting-time penalties, liquidated damages, or interest, based on the facts of your case. The state labor agency (${s.dolUrl}) investigates and can compel payment, or you can litigate.`,
+-  (s: UsStateWithPto) => `Yes. The ${s.name} deadline has teeth: employees can seek penalties, liquidated damages, or interest in addition to the unpaid wages when pay is late. Lodge a complaint with the ${s.name} Department of Labor at ${s.dolUrl}, or bring your own suit in state court.`,
+-] as const;
+-
+-const FP_INTRO = [
+-  (s: UsStateWithPto) => `Deadlines, what must be included, and how to claim if your ${s.name} employer pays late.`,
+-  (s: UsStateWithPto) => `When your last check is due in ${s.name}, what it has to contain, and what to do if it's late.`,
+-  (s: UsStateWithPto) => `Your ${s.name} final-pay deadline, the wages that must be included, and your options for a late paycheck.`,
+-  (s: UsStateWithPto) => `How final pay works in ${s.name}: timing by separation type, required contents, and enforcement if it's late.`,
+-  (s: UsStateWithPto) => `The ${s.name} rules on final-paycheck timing, what belongs in it, and how to recover late wages.`,
+-] as const;
+-
+-const FP_INCLUDED_LEAD = [
+-  (s: UsStateWithPto) => `Your ${s.name} employer must include all of the following in your final paycheck:`,
+-  (s: UsStateWithPto) => `Under ${s.name} law, a complete final paycheck has to cover each of these:`,
+-  (s: UsStateWithPto) => `In ${s.name}, a lawful final paycheck should account for all of the following:`,
+-  (s: UsStateWithPto) => `These items must appear in a ${s.name} final paycheck:`,
+-  (s: UsStateWithPto) => `A ${s.name} final paycheck is only complete when it includes each of these:`,
+-  (s: UsStateWithPto) => `For a final paycheck to be lawful in ${s.name}, it needs to include all of the following:`,
+-] as const;
+-
+-const FP_CONTEXT = [
+-  (s: UsStateWithPto, nearby: string, deadlineShape: string) =>
+-    `${s.name}'s final-paycheck rule is a timing rule first and a documentation issue second. ${deadlineShape}. That makes the separation date, the reason employment ended, and the next regular payday especially important. Nearby states such as ${nearby} may use different triggers, so a regional payroll policy can be wrong for ${s.name}.`,
+-  (s: UsStateWithPto, nearby: string, deadlineShape: string) =>
+-    `For ${s.name}, do not read the final-pay rule as a generic "next payroll" promise. ${deadlineShape}. Workers should preserve the termination or resignation notice, the final timesheet, and any PTO policy before comparing the result with states like ${nearby}.`,
+-  (s: UsStateWithPto, nearby: string, deadlineShape: string) =>
+-    `${s.name} separates final pay from the ordinary payroll cycle when the statute says so. ${deadlineShape}. The safest audit is to line up last day worked, separation type, earned wages, and PTO payout treatment, then compare against neighbouring rules in ${nearby} only as context.`,
+-  (s: UsStateWithPto, nearby: string, deadlineShape: string) =>
+-    `A late-check claim in ${s.name} usually turns on a few concrete facts rather than broad fairness: when work ended, who initiated the separation, and when payment actually arrived. ${deadlineShape}. Employers operating across ${nearby} should verify the ${s.name} deadline separately.`,
+-  (s: UsStateWithPto, nearby: string, deadlineShape: string) =>
+-    `${s.name}'s rule should be checked before the final payroll is run, not after a complaint arrives. ${deadlineShape}. The regional comparison with ${nearby} is useful because similar states often set different deadlines for resignations and terminations.`,
+-] as const;
+-
+-const FP_EVIDENCE_CHECKLIST = [
+-  "Last day worked and the date employment officially ended.",
+-  "Whether the separation was a resignation, layoff, discharge, or mutual end date.",
+-  "Final timesheet, overtime calculation, commission plan, and bonus terms.",
+-  "Written PTO or vacation policy in force on the separation date.",
+-  "Final pay stub, direct-deposit timestamp, or mailed-check postmark.",
+-  "Any written demand sent before filing a wage claim.",
+-] as const;
+-
+-const FP_INCLUDED_ITEMS = [
+-  "All earned wages through your last day (hourly or salary)",
+-  "Overtime pay owed for hours worked",
+-  "Commission that has already been earned and is calculable",
+-  "Any unreimbursed business expenses (where contractually required)",
+-  "Earned bonus amounts that have vested under the written plan",
+-  "Accrued PTO or vacation only when the state rule or employer policy requires payout",
+-] as const;
+-
+-const FP_LATE_STEPS = [
+-  "Document your last day worked and what you are owed.",
+-  "Confirm whether the deadline changed because you resigned rather than being terminated.",
+-  "Send a written demand to your employer; email is usually enough to preserve a record.",
+-  "File a wage claim with the state labor agency if payment still does not arrive.",
+-  "Consider a civil lawsuit where penalties, interest, or attorney fees are available.",
+-  "Keep the final pay stub and payment timestamp with the demand letter.",
+-] as const;
+-
+-function rotateItems<T>(items: readonly T[], offset: number): T[] {
+-  if (items.length === 0) return [];
+-  const start = offset % items.length;
+-  return [...items.slice(start), ...items.slice(0, start)];
+-}
+-
+-function variantKey(slug: string, rank: number) {
+-  return slug.split("").reduce((sum, char, index) => sum + char.charCodeAt(0) * (index + 3), rank * 37);
+-}
+-
+-function pairKey(currentSlug: string, candidateSlug: string) {
+-  let hash = 2166136261;
+-  for (const char of `${currentSlug}:${candidateSlug}`) {
+-    hash ^= char.charCodeAt(0);
+-    hash = Math.imul(hash, 16777619);
+-  }
+-  return hash >>> 0;
+-}
+-
+-function deadlineScore(current: UsStateWithPto, candidate: UsStateWithPto) {
+-  let score = 0;
+-  if (candidate.finalPaycheckTerminated !== current.finalPaycheckTerminated) score += 4;
+-  if (candidate.finalPaycheckResigned !== current.finalPaycheckResigned) score += 4;
+-  if (candidate.region !== current.region) score += 1;
+-  return score;
+-}
+-
+-function benchmarkStatesFor(current: UsStateWithPto) {
+-  return US_STATES.filter((state) => state.slug !== current.slug)
+-    .sort((a, b) => {
+-      const gap = deadlineScore(current, a) - deadlineScore(current, b);
+-      if (gap !== 0) return gap;
+-      return pairKey(current.slug, a.slug) - pairKey(current.slug, b.slug);
+-    })
+-    .slice(0, 40);
+-}
+-
+-export async function generateStaticParams() {
+-  // Emit only manually reviewed, current-year records; template-varied states
+-  // stay out of the static export and 404. See lib/contentQuality.ts.
+-  return US_STATES.filter(isIndexableUsState).map((s) => ({ state: s.slug }));
+-}
+-
+-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+-  const { state: slug } = await params;
+-  const s = getUsState(slug);
+-  if (!s) return {};
+-
+-  const title = `${s.name} Final Paycheck Law 2026`;
+-  const description = `${s.name} final paycheck deadlines: terminated employees must be paid ${s.finalPaycheckTerminated.toLowerCase()}, resigned employees by ${s.finalPaycheckResigned.toLowerCase()}. What's included, penalties, and how to claim.`;
+-  const url = `${SITE.url}/us/states/${s.slug}/final-paycheck`;
+-
+-  return {
+-    title,
+-    description: clampMetaDescription(description),
+-    alternates: { canonical: url },
+-    openGraph: { title, description: clampMetaDescription(description), url },
+-    robots: statePageRobots(s),
+-  };
+-}
+-
+-function generateFaqs(s: UsStateWithPto): FaqItem[] {
+-  const rank = clusterRank(ALL_SLUGS, s.slug);
+-  const variantRank = variantKey(s.slug, rank);
+-  return rotateItems([
+-    {
+-      question: `How long does my employer have to give me my final paycheck in ${s.name}?`,
+-      answer: pickVariantByPosition(variantRank, FP_DEADLINE_ANSWERS)(s),
+-    },
+-    {
+-      question: `What must be included in my final paycheck in ${s.name}?`,
+-      answer: pickVariantByPosition(variantRank, FP_INCLUDED_ANSWERS)(s),
+-    },
+-    {
+-      question: `What can I do if my employer is late with my final paycheck in ${s.name}?`,
+-      answer: pickVariantByPosition(variantRank, FP_LATE_ANSWERS)(s),
+-    },
+-    {
+-      question: `Can my employer deduct money from my final paycheck in ${s.name}?`,
+-      answer: pickVariantByPosition(variantRank, FP_DEDUCTION_ANSWERS)(s),
+-    },
+-    {
+-      question: `Does ${s.name} have penalties for employers who pay the final paycheck late?`,
+-      answer: pickVariantByPosition(variantRank, FP_PENALTY_ANSWERS)(s),
+-    },
+-  ], variantRank);
+-}
+-
+-export default async function Page({ params }: Props) {
+-  const { state: slug } = await params;
+-  const s = getUsState(slug);
+-  if (!s || !isIndexableUsState(s)) notFound();
+-
+-  const url = `${SITE.url}/us/states/${s.slug}/final-paycheck`;
+-  const faqs = generateFaqs(s);
+-  const hasStateCalculator = s.code === "CA" || s.code === "TX";
+-  const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
+-  const rank = clusterRank(ALL_SLUGS, s.slug);
+-  const variantRank = variantKey(s.slug, rank);
+-  const nearbyStates = getNearbyStates(s.slug).filter(isIndexableUsState);
+-  const nearbyLabel = nearbyStates.slice(0, 3).map((n) => n.name).join(", ") || "nearby states";
+-  const sameDeadline = s.finalPaycheckTerminated === s.finalPaycheckResigned;
+-  const deadlineShape = sameDeadline
+-    ? `The same deadline applies whether the worker was terminated or resigned: ${s.finalPaycheckTerminated.toLowerCase()}`
+-    : `Terminations are due ${s.finalPaycheckTerminated.toLowerCase()}, while resignations are due ${s.finalPaycheckResigned.toLowerCase()}`;
+-  const evidenceChecklist = rotateItems(FP_EVIDENCE_CHECKLIST, variantRank).slice(0, 4);
+-  const includedItems = rotateItems(FP_INCLUDED_ITEMS, variantRank).slice(0, 4);
+-  const lateSteps = rotateItems(FP_LATE_STEPS, variantRank).slice(0, 4);
+-  const comparisonStates = rotateItems(nearbyStates, variantRank);
+-  // Only link to states that are actually published; the rest 404.
+-  const benchmarkStates = benchmarkStatesFor(s).filter(isIndexableUsState);
+-
+-  const breadcrumb = {
+-    "@context": "https://schema.org",
+-    "@type": "BreadcrumbList",
+-    itemListElement: [
+-      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+-      { "@type": "ListItem", position: 2, name: "US Employment Law", item: `${SITE.url}/us` },
+-      { "@type": "ListItem", position: 3, name: `${s.name} Employment Law`, item: `${SITE.url}/us/states/${s.slug}` },
+-      { "@type": "ListItem", position: 4, name: "Final Paycheck Law", item: url },
+-    ],
+-  };
+-
+-  const article = {
+-    "@context": "https://schema.org",
+-    "@type": "Article",
+-    headline: `${s.name} Final Paycheck Law 2026`,
+-    description: `Final paycheck deadlines and rules in ${s.name}.`,
+-    url,
+-    datePublished: "2026-01-01",
+-    dateModified: reviewedDate,
+-    author: FOUNDER_PERSON,
+-    reviewedBy: EDITORIAL_REVIEW,
+-    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mark.svg` } },
+-  };
+-
+-  return (
+-    <>
+-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
+-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(article)} />
+-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(faqs))} />
+-
+-<div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+-        {/* Breadcrumb */}
+-        <nav className="mb-6 flex flex-wrap items-center gap-1 text-sm text-ink-faint">
+-          <Link href="/" className="hover:text-brand-600">Home</Link>
+-          <span>/</span>
+-          <Link href="/us" className="hover:text-brand-600">US</Link>
+-          <span>/</span>
+-          <Link href={`/us/states/${s.slug}`} className="hover:text-brand-600">{s.name}</Link>
+-          <span>/</span>
+-          <span className="text-ink-soft">Final Paycheck</span>
+-        </nav>
+-
+-        <h1 className="mb-2 text-3xl font-bold tracking-tight text-ink">
+-          {s.name} Final Paycheck Law 2026
+-        </h1>
+-        <p className="mb-8 text-ink-soft">
+-          {pickVariantByPosition(variantRank, FP_INTRO)(s)}
+-        </p>
+-
+-        <EditorialReview
+-          lastReviewed={reviewedDate}
+-          sourceLabel={`${s.name} labor agency`}
+-          className="mb-3"
+-        />
+-        <p className="mb-8 text-sm text-ink-faint">
+-          Data verified {s.verifiedYear} from the{" "}
+-          <a className="font-medium text-brand-600 hover:underline" href={s.dolUrl} rel="noopener noreferrer" target="_blank">
+-            {s.name} labor agency
+-          </a>.
+-        </p>
+-
+-        {/* Key deadlines */}
+-        <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+-          <div className="rounded-xl border border-surface-line bg-surface-muted p-5">
+-            <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-ink-faint">If you were terminated</p>
+-            <p className="text-xl font-bold text-ink">{s.finalPaycheckTerminated}</p>
+-          </div>
+-          <div className="rounded-xl border border-surface-line bg-surface-muted p-5">
+-            <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-ink-faint">If you resigned</p>
+-            <p className="text-xl font-bold text-ink">{s.finalPaycheckResigned}</p>
+-          </div>
+-        </div>
+-
+-        {hasStateCalculator && (
+-          <section className="mb-8">
+-            <h2 className="mb-3 text-xl font-bold text-ink">
+-              Was your {s.name} final paycheck late?
+-            </h2>
+-            <p className="mb-4 text-sm leading-relaxed text-ink-soft">
+-              Enter your last day and payment date to estimate whether the paycheck missed the
+-              {s.name} deadline. This is a timing check only, not legal advice.
+-            </p>
+-            <FinalPaycheckLateChecker presetStateCode={s.code} />
+-          </section>
+-        )}
+-
+-        <section className="mb-8 rounded-xl border border-surface-line bg-white p-5">
+-          <h2 className="mb-2 text-xl font-bold text-ink">How to audit a {s.name} final paycheck</h2>
+-          <p className="text-sm leading-relaxed text-ink-soft">
+-            {pickVariantByPosition(variantRank, FP_CONTEXT)(s, nearbyLabel, deadlineShape)}
+-          </p>
+-          <ul className="mt-4 grid gap-2 text-sm text-ink-soft sm:grid-cols-2">
+-            {evidenceChecklist.map((item) => (
+-              <li key={item} className="rounded-lg border border-surface-line bg-surface-muted px-3 py-2">
+-                {item}
+-              </li>
+-            ))}
+-          </ul>
+-        </section>
+-
+-        {benchmarkStates.length > 0 && (
+-        <section className="mb-8">
+-          <h2 className="mb-3 text-xl font-bold text-ink">Cross-state deadline benchmark</h2>
+-          <p className="mb-4 text-sm leading-relaxed text-ink-soft">
+-            Final-pay deadlines are not portable across state lines. This benchmark compares
+-            {" "}{s.name}&apos;s termination and resignation timing with other reviewed states so payroll
+-            teams can spot where a shared process needs state-specific handling.
+-          </p>
+-          <div className="overflow-x-auto rounded-xl border border-surface-line">
+-            <table className="w-full min-w-[42rem] text-left text-sm">
+-              <thead>
+-                <tr className="border-b border-surface-line bg-surface-muted text-xs uppercase tracking-wide text-ink-faint">
+-                  <th scope="col" className="px-4 py-2 font-semibold">State</th>
+-                  <th scope="col" className="px-4 py-2 font-semibold">Region</th>
+-                  <th scope="col" className="px-4 py-2 font-semibold">If fired</th>
+-                  <th scope="col" className="px-4 py-2 font-semibold">If resigned</th>
+-                </tr>
+-              </thead>
+-              <tbody>
+-                <tr className="border-b border-surface-line bg-brand-50">
+-                  <th scope="row" className="px-4 py-2 font-semibold text-ink">{s.name} (this page)</th>
+-                  <td className="px-4 py-2 text-ink-soft">{s.region}</td>
+-                  <td className="px-4 py-2 text-ink-soft">{s.finalPaycheckTerminated}</td>
+-                  <td className="px-4 py-2 text-ink-soft">{s.finalPaycheckResigned}</td>
+-                </tr>
+-                {benchmarkStates.map((state) => (
+-                  <tr key={state.slug} className="border-b border-surface-line last:border-0">
+-                    <th scope="row" className="px-4 py-2 font-medium">
+-                      <Link href={`/us/states/${state.slug}/final-paycheck`} className="text-brand-600 hover:underline">
+-                        {state.name}
+-                      </Link>
+-                    </th>
+-                    <td className="px-4 py-2 text-ink-soft">{state.region}</td>
+-                    <td className="px-4 py-2 text-ink-soft">{state.finalPaycheckTerminated}</td>
+-                    <td className="px-4 py-2 text-ink-soft">{state.finalPaycheckResigned}</td>
+-                  </tr>
+-                ))}
+-              </tbody>
+-            </table>
+-          </div>
+-        </section>
+-        )}
+-
+-        {/* What must be included */}
+-        <section className="mb-8">
+-          <h2 className="mb-3 text-xl font-bold text-ink">What must be included in your final paycheck</h2>
+-          <p className="mb-3 text-ink-soft">
+-            {pickVariantByPosition(variantRank, FP_INCLUDED_LEAD)(s)}
+-          </p>
+-          <ul className="space-y-2 text-ink-soft">
+-            {includedItems.map((item) => (
+-              <li key={item} className="flex items-start gap-2">
+-                <span className="mt-0.5 text-brand-600">✓</span>
+-                <span>{item}</span>
+-              </li>
+-            ))}
+-          </ul>
+-          <p className="mt-3 text-sm text-ink-faint">
+-            Whether accrued vacation or PTO must be included depends on {s.name}&apos;s PTO payout law.{" "}
+-            <Link href={`/us/states/${s.slug}`} className="text-brand-600 hover:underline">
+-              See {s.name} PTO payout rules →
+-            </Link>
+-          </p>
+-        </section>
+-
+-        {/* How to file a claim */}
+-        <section className="mb-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+-          <h2 className="mb-2 text-lg font-bold text-amber-900">If your employer pays late</h2>
+-          <ol className="space-y-2 text-sm text-amber-900">
+-            {lateSteps.map((item, index) => (
+-              <li key={item}><strong>{index + 1}.</strong> {item}</li>
+-            ))}
+-          </ol>
+-          <a
+-            href={s.dolUrl}
+-            target="_blank"
+-            rel="noopener noreferrer"
+-            className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"
+-          >
+-            {s.name} Department of Labor →
+-          </a>
+-        </section>
+-
+-        {/* Tools CTA */}
+-        <section className="mb-8 flex flex-wrap gap-3">
+-          <Link
+-            href="/final-paycheck-deadline-calculator"
+-            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
+-          >
+-            Final paycheck deadline calculator
+-          </Link>
+-          <Link
+-            href="/pto-payout-calculator"
+-            className="rounded-lg border border-surface-line px-4 py-2 text-sm font-medium text-ink-soft hover:border-brand-600 hover:text-brand-600"
+-          >
+-            PTO payout calculator
+-          </Link>
+-        </section>
+-
+-        {/* FAQ */}
+-        <section>
+-          <h2 className="mb-4 text-xl font-bold text-ink">Frequently asked questions</h2>
+-          <div className="space-y-3">
+-            {faqs.map((faq) => (
+-              <details key={faq.question} className="group rounded-xl border border-surface-line">
+-                <summary className="flex cursor-pointer items-center justify-between gap-4 px-4 py-3 font-medium text-ink">
+-                  {faq.question}
+-                  <svg className="h-4 w-4 shrink-0 text-ink-faint transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="M6 9l6 6 6-6" /></svg>
+-                </summary>
+-                <p className="border-t border-surface-line px-4 py-3 text-sm text-ink-soft">{faq.answer}</p>
+-              </details>
+-            ))}
+-          </div>
+-        </section>
+-
+-        {/* Nearby states */}
+-        {nearbyStates.length > 0 && (
+-          <section className="mt-8">
+-            <h2 className="mb-3 text-sm font-semibold text-ink">
+-              How {s.name} compares to nearby states
+-            </h2>
+-            <p className="mb-4 text-sm text-ink-soft">
+-              Final-paycheck deadlines vary across the {s.region} region. {s.name} requires{" "}
+-              {s.finalPaycheckTerminated.toLowerCase()} after a termination and{" "}
+-              {s.finalPaycheckResigned.toLowerCase()} after a resignation — here is how neighbouring
+-              states set their deadlines.
+-            </p>
+-            <div className="overflow-x-auto">
+-              <table className="w-full min-w-[30rem] border-collapse text-left text-sm">
+-                <thead>
+-                  <tr className="border-b border-surface-line text-xs uppercase tracking-wide text-ink-faint">
+-                    <th scope="col" className="py-2 pr-4 font-semibold">State</th>
+-                    <th scope="col" className="py-2 pr-4 font-semibold">If fired</th>
+-                    <th scope="col" className="py-2 font-semibold">If resigned</th>
+-                  </tr>
+-                </thead>
+-                <tbody>
+-                  <tr className="border-b border-surface-line bg-surface-muted/40">
+-                    <th scope="row" className="py-2 pr-4 font-semibold text-ink">{s.name} (this page)</th>
+-                    <td className="py-2 pr-4 text-ink-soft">{s.finalPaycheckTerminated}</td>
+-                    <td className="py-2 text-ink-soft">{s.finalPaycheckResigned}</td>
+-                  </tr>
+-                  {comparisonStates.map((n) => (
+-                    <tr key={n.slug} className="border-b border-surface-line last:border-0">
+-                      <th scope="row" className="py-2 pr-4 font-medium">
+-                        <Link href={`/us/states/${n.slug}/final-paycheck`} className="text-brand-600 hover:underline">
+-                          {n.name}
+-                        </Link>
+-                      </th>
+-                      <td className="py-2 pr-4 text-ink-soft">{n.finalPaycheckTerminated}</td>
+-                      <td className="py-2 text-ink-soft">{n.finalPaycheckResigned}</td>
+-                    </tr>
+-                  ))}
+-                </tbody>
+-              </table>
+-            </div>
+-          </section>
+-        )}
+-
+-        <section className="mt-8 rounded-xl border border-surface-line bg-surface-muted p-5 text-sm leading-relaxed text-ink-soft">
+-          <h2 className="mb-2 text-base font-bold text-ink">Sources and review</h2>
+-          <p>
+-            Publisher: My Pay Rights.
+-            Primary state source:{" "}
+-            <a href={s.dolUrl} target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">
+-              {s.name} labor agency
+-            </a>
+-            . Federal reference:{" "}
+-            <a href="https://www.dol.gov/agencies/whd/state/contacts" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">
+-              U.S. Department of Labor state contacts
+-            </a>
+-            .{" "}
+-            <Link href="/contact" className="text-brand-600 hover:underline">
+-              Report a correction
+-            </Link>
+-            .
+-          </p>
+-        </section>
+-
+-        {/* Back link */}
+-        <div className="mt-8">
+-          <Link href={`/us/states/${s.slug}`} className="text-sm text-brand-600 hover:underline">
+-            ← Back to {s.name} employment law
+-          </Link>
+-        </div>
+-      </div>
+-    </>
+-  );
+-}
+diff --git a/app/us/states/[state]/minimum-wage/page.tsx b/app/us/states/[state]/minimum-wage/page.tsx
+deleted file mode 100644
+index 09dfb13..0000000
+--- a/app/us/states/[state]/minimum-wage/page.tsx
++++ /dev/null
+@@ -1,521 +0,0 @@
+-import type { Metadata } from "next";
+-import Link from "next/link";
+-import { notFound } from "next/navigation";
+-import { EditorialReview } from "@/components/EditorialReview";
+-import { US_STATES, getUsState, getNearbyStates } from "@/data/usStates";
+-import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
+-import { isIndexableUsState, statePageRobots } from "@/lib/contentQuality";
+-import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
+-import type { FaqItem } from "@/lib/types";
+-
+-type Props = { params: Promise<{ state: string }> };
+-
+-export async function generateStaticParams() {
+-  // Emit only manually reviewed, current-year records; template-varied states
+-  // stay out of the static export and 404. See lib/contentQuality.ts.
+-  return US_STATES.filter(isIndexableUsState).map((s) => ({ state: s.slug }));
+-}
+-
+-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+-  const { state: slug } = await params;
+-  const s = getUsState(slug);
+-  if (!s) return {};
+-
+-  const title = `${s.name} Minimum Wage 2026 — Current Rate & Rules`;
+-  const description = `${s.name} minimum wage is ${s.minimumWage} in 2026.${s.minimumWageNote ? ` ${s.minimumWageNote}` : ""} Learn about tipped employee rates, scheduled increases, and how to report violations.`;
+-  const url = `${SITE.url}/us/states/${s.slug}/minimum-wage`;
+-
+-  return {
+-    title,
+-    description: clampMetaDescription(description),
+-    alternates: { canonical: url },
+-    openGraph: { title, description: clampMetaDescription(description), url },
+-    robots: statePageRobots(s),
+-  };
+-}
+-
+-const FEDERAL_RATE_CLAUSES = [
+-  (name: string) => `${name} has not set a state minimum wage above the federal rate, so the federal minimum wage of $7.25/hr applies.`,
+-  (name: string) => `Because ${name} has no state minimum wage law of its own, the federal floor of $7.25/hr is what employers must pay.`,
+-  (name: string) => `${name} defers to federal law here — with no separate state minimum wage on the books, the $7.25/hr federal rate is the legal minimum.`,
+-  (name: string) => `There's no ${name}-specific minimum wage statute, which means the federal $7.25/hr rate is the number that actually governs pay in the state.`,
+-  (name: string) => `${name} lawmakers have not set a state wage floor above the federal one, so employers here follow the federal $7.25/hr minimum by default.`,
+-  (name: string) => `Absent a state minimum wage law of its own, ${name} falls back to the federal rate — currently $7.25/hr.`,
+-] as const;
+-
+-const IS_FEDERAL_ANSWERS = [
+-  (name: string) => `Yes. ${name} does not have a state minimum wage law that exceeds the federal rate. The federal minimum wage of $7.25/hr (set by the Fair Labor Standards Act) therefore applies. If the federal minimum wage is ever raised by Congress, that new rate would automatically apply in ${name}.`,
+-  (name: string) => `Yes — ${name} is one of the states that has not enacted its own minimum wage above the federal Fair Labor Standards Act rate, so $7.25/hr is the legal floor. A future increase to the federal rate would apply automatically in ${name} without any separate state action needed.`,
+-  (name: string) => `Yes. Unlike states that have set their own higher minimum wage, ${name} relies entirely on the federal rate of $7.25/hr under the Fair Labor Standards Act. Any change to that federal figure — up or down — would take effect in ${name} immediately, since there is no state-level floor to fall back on.`,
+-  (name: string) => `It does. ${name}'s legislature hasn't passed a state minimum wage above the federal Fair Labor Standards Act rate, so $7.25/hr is what employers are legally required to pay. Congress raising the federal rate would flow through to ${name} automatically.`,
+-  (name: string) => `Correct — ${name} has no wage floor of its own beyond what federal law sets. The Fair Labor Standards Act's $7.25/hr rate is therefore the legal minimum in ${name}, and it would only change if Congress amends the federal rate.`,
+-  (name: string) => `Yes, by default. With no state-level minimum wage statute on the books in ${name}, the federal Fair Labor Standards Act rate of $7.25/hr controls — and stays that way unless ${name} passes its own law or Congress moves the federal number.`,
+-  (name: string) => `That's right. ${name} has never enacted a state minimum wage above the federal Fair Labor Standards Act floor, so the $7.25/hr federal rate is what applies. A future federal increase would take effect in ${name} without any state legislative action.`,
+-] as const;
+-
+-const TIPPED_WAGE_ANSWERS = [
+-  (name: string, dolUrl: string) => `Tipped employees in ${name} may be paid a lower "tipped minimum wage" under federal or state law, provided tips bring total hourly earnings up to the full minimum wage. If tips do not make up the difference, the employer must pay the shortfall. The specific tipped credit rules in ${name} are set by state law — check the ${name} Department of Labor for the current tipped rate.`,
+-  (name: string, dolUrl: string) => `${name} allows employers to pay tipped workers a reduced cash wage, so long as tips close the gap to the full minimum wage — if they don't, the employer has to make up the difference. Exact tipped-credit figures vary by state law, so confirm the current ${name} rate at ${dolUrl}.`,
+-  (name: string, dolUrl: string) => `A lower "tipped minimum wage" is permitted in ${name} as long as tips bring an employee's total hourly pay up to the standard minimum wage — any shortfall is the employer's responsibility to cover. ${name}'s Department of Labor publishes the current tipped rate.`,
+-  (name: string, dolUrl: string) => `${name} lets employers pay a reduced base rate to tipped staff, provided the combination of tips and base pay reaches the full minimum wage — the employer must cover any gap. Check ${dolUrl} for the exact tipped-wage figure currently in effect.`,
+-  (name: string, dolUrl: string) => `Employers in ${name} can apply a tip credit toward the minimum wage, meaning tipped staff can legally earn a lower direct wage as long as tips make up the rest. If they fall short, the employer owes the difference — the ${name} Department of Labor lists the current rate.`,
+-  (name: string, dolUrl: string) => `${name} permits a reduced tipped minimum wage on the condition that tips bring total pay up to the regular minimum — otherwise the employer must top it off. The specific tip-credit amount is set by ${name} law; see ${dolUrl} for the current figure.`,
+-  (name: string, dolUrl: string) => `A sub-minimum tipped wage is legal in ${name} as long as tips push total hourly earnings to at least the full minimum wage; the employer covers any shortfall. ${name}'s Department of Labor keeps the current tipped rate posted at ${dolUrl}.`,
+-] as const;
+-
+-const LOCAL_WAGE_ANSWERS = [
+-  (name: string, dolUrl: string) => `Some cities and counties in ${name} may have enacted local minimum wages higher than the state rate. Where a local ordinance applies, employers must pay the highest of federal, state, or local rates. Check with your local city or county government, or ${dolUrl}, for any applicable local minimum wage that may apply to your job.`,
+-  (name: string, dolUrl: string) => `Certain municipalities within ${name} set their own minimum wage above the statewide figure. When that happens, employers owe whichever rate is highest — federal, state, or local. Your city or county government, or ${dolUrl}, can confirm whether a local ordinance covers your job.`,
+-  (name: string, dolUrl: string) => `Yes, in some cases — a handful of ${name} cities and counties have passed local minimum wage ordinances that exceed the state rate, and employers there must pay the highest applicable rate. Check with your local government or ${dolUrl} to see if one covers your workplace.`,
+-  (name: string, dolUrl: string) => `Possibly — some ${name} localities set a higher minimum wage than the state floor, and where one applies, employers must pay whichever rate is highest among federal, state, and local. Confirm with your city or county, or via ${dolUrl}, whether an ordinance applies to your workplace.`,
+-  (name: string, dolUrl: string) => `In a few places, yes. Select cities and counties in ${name} have adopted their own minimum wage above the state rate, and employers there owe the highest of the federal, state, or local figure. Your local government or ${dolUrl} can tell you if that applies to you.`,
+-  (name: string, dolUrl: string) => `It depends on where in ${name} you work — some municipalities have set a local minimum wage above the statewide rate, and employers must pay the highest rate that applies. Check with your city or county government, or ${dolUrl}, to see if a local ordinance is in effect.`,
+-] as const;
+-
+-const UNDERPAID_ANSWERS = [
+-  (name: string, dolUrl: string) => `If your employer pays below the minimum wage in ${name}, you can: (1) file a wage complaint with the ${name} Department of Labor; (2) file a federal complaint with the US Department of Labor Wage and Hour Division; or (3) bring a private civil lawsuit to recover unpaid wages. You may be entitled to back pay for up to 2–3 years plus additional damages. Retaliation for filing a wage complaint is illegal. Visit the ${name} Department of Labor at ${dolUrl} to start a claim.`,
+-  (name: string, dolUrl: string) => `Being paid under the minimum wage in ${name} gives you a few paths: a wage complaint with the ${name} Department of Labor, a federal complaint with the US DOL's Wage and Hour Division, or a private civil suit. Back pay can often be recovered going back 2–3 years, plus additional damages in some cases — and it's illegal for your employer to retaliate for filing. Start a claim at ${dolUrl}.`,
+-  (name: string, dolUrl: string) => `Underpayment below ${name}'s minimum wage is actionable: file with the ${name} Department of Labor, escalate to the federal Wage and Hour Division, or pursue a civil lawsuit. Depending on the circumstances you may recover 2–3 years of back pay plus damages, and retaliation for raising the issue is against the law. ${dolUrl} has the ${name} claim process.`,
+-  (name: string, dolUrl: string) => `If you're being paid below minimum wage in ${name}, your options include a state wage complaint, a federal complaint to the DOL Wage and Hour Division, or a civil lawsuit for back pay — sometimes going back 2–3 years, plus damages. Your employer cannot legally retaliate against you for filing. Start at ${dolUrl}.`,
+-  (name: string, dolUrl: string) => `Pay under ${name}'s minimum wage can be pursued through a ${name} Department of Labor complaint, the federal Wage and Hour Division, or a private lawsuit. Recoverable back pay typically covers 2–3 years, sometimes with added damages, and retaliation for complaining is illegal. File at ${dolUrl}.`,
+-] as const;
+-
+-// Body-prose variants (different lengths from the FAQ arrays) so the intro and
+-// "who is covered" lead — otherwise identical across all 51 states — vary.
+-const MW_INTRO = [
+-  (name: string) => `Current rate, tipped employee rules, and what to do if you are underpaid in ${name}.`,
+-  (name: string) => `The ${name} minimum wage, how tipped pay works, and your options if you're paid less than the law allows.`,
+-  (name: string) => `What ${name} pays as a minimum, the rules for tipped workers, and how to recover underpaid wages.`,
+-  (name: string) => `${name}'s minimum wage rate, tipped-employee treatment, and the steps to take if you've been underpaid.`,
+-  (name: string) => `A rundown of the ${name} minimum wage, tipped-wage rules, and what to do about pay below the legal floor.`,
+-] as const;
+-
+-const MW_COVERED_LEAD = [
+-  (name: string) => `The minimum wage applies to most employees in ${name}. Common exemptions include:`,
+-  (name: string) => `Most workers in ${name} are covered by the minimum wage, but several categories are commonly exempt:`,
+-  (name: string) => `In ${name}, the minimum wage reaches the large majority of employees. The usual exceptions are:`,
+-  (name: string) => `Coverage in ${name} is broad — most employees qualify — though these groups are often exempt:`,
+-  (name: string) => `The ${name} minimum wage covers most employees. Watch for these common exemptions:`,
+-  (name: string) => `Nearly all ${name} employees are entitled to the minimum wage, with a handful of common carve-outs:`,
+-] as const;
+-
+-// Federal-tier states ($7.25, no higher state rate) share this card note.
+-// Non-federal states (their own rate above $7.25) shared this single answer.
+-const MW_NONFEDERAL_ANSWERS = [
+-  (name: string, wage: string) => `The federal minimum wage of $7.25/hr applies nationwide, but ${name}'s state minimum wage of ${wage} is higher — and the higher rate must be paid. Under the Fair Labor Standards Act, when a state rate exceeds the federal rate, the state rate controls.`,
+-  (name: string, wage: string) => `${name} pays above the federal floor. The federal rate is $7.25/hr, but ${name}'s ${wage} state minimum is higher, so that is what employers must pay — the FLSA gives you whichever rate is greater.`,
+-  (name: string, wage: string) => `Yes, but it isn't the operative figure. The federal minimum is $7.25/hr; ${name} sets a higher state minimum of ${wage}, and under the FLSA the higher of the two applies — so ${name} workers get ${wage}.`,
+-  (name: string, wage: string) => `The $7.25/hr federal rate is the national floor, but ${name} has legislated a higher state minimum of ${wage}. Because the FLSA requires the greater of federal or state, ${name}'s ${wage} rate governs.`,
+-  (name: string, wage: string) => `Federal law sets $7.25/hr, yet ${name}'s own minimum of ${wage} exceeds it. When a state rate beats the federal one, the FLSA makes the state rate controlling — so ${wage} is what applies in ${name}.`,
+-  (name: string, wage: string) => `The federal minimum ($7.25/hr) technically applies everywhere, but it's overridden in ${name} by the state's higher ${wage} minimum. The FLSA's greater-of rule means ${name} employers must pay ${wage}.`,
+-] as const;
+-
+-const MW_FEDERAL_CARD = [
+-  (name: string) => `${name} uses the federal minimum wage — no higher state rate has been enacted.`,
+-  (name: string) => `${name} has not set a state minimum above the federal floor, so the federal rate applies.`,
+-  (name: string) => `No state minimum wage higher than the federal rate has been passed in ${name}.`,
+-  (name: string) => `${name} defers to the federal minimum wage — the state has not legislated a higher figure.`,
+-  (name: string) => `Because ${name} has no state rate above the federal minimum, the federal figure governs.`,
+-  (name: string) => `${name} relies on the federal minimum wage; no higher state rate is currently on the books.`,
+-  (name: string) => `There is no ${name} state minimum above the federal rate, which is what applies here.`,
+-] as const;
+-
+-const MW_CONTEXT = [
+-  (name: string, region: string, rate: string, nearby: string, gap: string) =>
+-    `${name} should be read as a ${region} wage page, not just a single hourly number. The current displayed rate is ${rate}; ${gap}. Nearby comparison matters because employers with locations in ${nearby} may run different payroll rules even when the jobs look similar.`,
+-  (name: string, region: string, rate: string, nearby: string, gap: string) =>
+-    `For ${name}, the practical question is which wage floor controls the actual workplace. The page rate is ${rate}, and ${gap}. In the ${region} region, compare that with ${nearby} before assuming a multi-state employer uses one uniform rate.`,
+-  (name: string, region: string, rate: string, nearby: string, gap: string) =>
+-    `${name}'s wage rule sits inside a wider ${region} market. Use ${rate} as the baseline for covered work in the state, then check local ordinances, tipped-credit treatment, and neighbouring-state rules in ${nearby}; ${gap}.`,
+-  (name: string, region: string, rate: string, nearby: string, gap: string) =>
+-    `The safest way to use this ${name} page is to separate three questions: the statewide or federal floor, any local rate, and any tipped-worker credit. The rate shown here is ${rate}; ${gap}. Regional comparisons with ${nearby} help catch payroll policies copied from the wrong state.`,
+-  (name: string, region: string, rate: string, nearby: string, gap: string) =>
+-    `${name} employers should not treat minimum wage as a generic national setting. This page tracks ${rate} for ${name}, while ${nearby} may impose different amounts or timing. ${gap}, so the controlling rule depends on the worker's location and coverage.`,
+-] as const;
+-
+-const MW_ACTION_CHECKLIST = [
+-  "Confirm the work location and whether a city or county ordinance applies.",
+-  "Check whether the employee is paid through a valid tipped-credit arrangement.",
+-  "Compare gross hourly pay before overtime premiums against the controlling minimum.",
+-  "Keep pay stubs, time records, schedules, and written rate-change notices together.",
+-  "Use the state labor agency link before filing so the claim goes to the right office.",
+-  "For multi-state employers, verify the payroll profile was not copied from another state.",
+-] as const;
+-
+-const MW_COVERAGE_ITEMS = [
+-  "Certain agricultural or farm workers (federal FLSA exemptions may apply)",
+-  "Tipped employees — a lower base rate may apply if tips close the gap",
+-  "Student workers at certain educational institutions (may qualify for a subminimum rate)",
+-  "Independent contractors — minimum wage laws do not apply to genuine contractors",
+-  "Some trainees, learners, or workers in narrowly defined statutory programs",
+-  "Family or domestic-service arrangements where a specific exemption applies",
+-] as const;
+-
+-const MW_REPORT_STEPS = [
+-  "Calculate the shortfall: hours worked multiplied by the gap between the legal minimum and actual pay.",
+-  "Keep records: pay stubs, time records, schedules, text messages, and rate notices.",
+-  "Check whether a state, federal, tipped-credit, or local wage rule controls the claim.",
+-  "File with the state labor agency or the US DOL Wage and Hour Division when informal correction fails.",
+-  "Ask whether back pay, liquidated damages, interest, or attorney-fee rules apply to the facts.",
+-] as const;
+-
+-function parseDollarAmount(value: string): number | null {
+-  const match = value.match(/\$([\d.]+)/);
+-  return match ? Number(match[1]) : null;
+-}
+-
+-function rotateItems<T>(items: readonly T[], offset: number): T[] {
+-  if (items.length === 0) return [];
+-  const start = offset % items.length;
+-  return [...items.slice(start), ...items.slice(0, start)];
+-}
+-
+-function variantKey(slug: string, rank: number) {
+-  return slug.split("").reduce((sum, char, index) => sum + char.charCodeAt(0) * (index + 3), rank * 37);
+-}
+-
+-function pairKey(currentSlug: string, candidateSlug: string) {
+-  let hash = 2166136261;
+-  for (const char of `${currentSlug}:${candidateSlug}`) {
+-    hash ^= char.charCodeAt(0);
+-    hash = Math.imul(hash, 16777619);
+-  }
+-  return hash >>> 0;
+-}
+-
+-function benchmarkStatesFor(current: (typeof US_STATES)[number]) {
+-  return US_STATES.filter((state) => state.slug !== current.slug)
+-    .sort((a, b) => pairKey(current.slug, a.slug) - pairKey(current.slug, b.slug))
+-    .slice(0, 50);
+-}
+-
+-function generateFaqs(s: ReturnType<typeof getUsState> & object): FaqItem[] {
+-  const isFederal = s.minimumWage.includes("federal minimum");
+-  // Rank within the federal-tier cluster (~20 states), not a hash of the
+-  // slug -- see lib/textVariants.ts for why position-based beats hashing
+-  // when many records share the same categorical value.
+-  const federalTierSlugs = US_STATES.filter((st) => st.minimumWage.includes("federal minimum")).map((st) => st.slug);
+-  const federalRank = clusterRank(federalTierSlugs, s.slug);
+-  const federalVariantRank = variantKey(s.slug, federalRank);
+-  const federalClause = pickVariantByPosition(federalVariantRank, FEDERAL_RATE_CLAUSES)(s.name);
+-  const isFederalAnswer = pickVariantByPosition(federalVariantRank, IS_FEDERAL_ANSWERS)(s.name);
+-
+-  const globalRank = clusterRank(US_STATES.map((st) => st.slug), s.slug);
+-  const variantRank = variantKey(s.slug, globalRank);
+-
+-  return rotateItems([
+-    {
+-      question: `What is the minimum wage in ${s.name} in 2026?`,
+-      answer: `The minimum wage in ${s.name} is ${s.minimumWage}.${s.minimumWageNote ? ` ${s.minimumWageNote}` : ""} ${isFederal ? federalClause : ""}`,
+-    },
+-    {
+-      question: `Does the federal minimum wage apply in ${s.name}?`,
+-      answer: isFederal
+-        ? isFederalAnswer
+-        : pickVariantByPosition(variantRank, MW_NONFEDERAL_ANSWERS)(s.name, s.minimumWage),
+-    },
+-    {
+-      question: `What is the minimum wage for tipped employees in ${s.name}?`,
+-      answer: pickVariantByPosition(variantRank, TIPPED_WAGE_ANSWERS)(s.name, s.dolUrl),
+-    },
+-    {
+-      question: `Are there local minimum wages higher than ${s.name}'s state rate?`,
+-      answer: pickVariantByPosition(variantRank, LOCAL_WAGE_ANSWERS)(s.name, s.dolUrl),
+-    },
+-    {
+-      question: `What can I do if my employer pays me less than minimum wage in ${s.name}?`,
+-      answer: pickVariantByPosition(variantRank, UNDERPAID_ANSWERS)(s.name, s.dolUrl),
+-    },
+-  ], variantRank);
+-}
+-
+-export default async function Page({ params }: Props) {
+-  const { state: slug } = await params;
+-  const s = getUsState(slug);
+-  if (!s || !isIndexableUsState(s)) notFound();
+-
+-  const url = `${SITE.url}/us/states/${s.slug}/minimum-wage`;
+-  const faqs = generateFaqs(s);
+-  const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
+-  const nearbyStates = getNearbyStates(s.slug).filter(isIndexableUsState);
+-  const globalRank = clusterRank(US_STATES.map((st) => st.slug), s.slug);
+-  const federalRank = clusterRank(
+-    US_STATES.filter((st) => st.minimumWage.includes("federal minimum")).map((st) => st.slug),
+-    s.slug,
+-  );
+-  const variantRank = variantKey(s.slug, globalRank);
+-
+-  const isFederal = s.minimumWage.includes("federal minimum");
+-  const wageAmount = isFederal ? 7.25 : parseDollarAmount(s.minimumWage);
+-  const gapText =
+-    wageAmount && wageAmount > 7.25
+-      ? `${s.name} is $${(wageAmount - 7.25).toFixed(2)}/hr above the federal floor`
+-      : `${s.name} follows the federal $7.25/hr floor unless a local or occupational rule changes the answer`;
+-  const nearbyLabel = nearbyStates.slice(0, 3).map((n) => n.name).join(", ") || "nearby states";
+-  const actionChecklist = rotateItems(MW_ACTION_CHECKLIST, variantRank).slice(0, 4);
+-  const coverageItems = rotateItems(MW_COVERAGE_ITEMS, variantRank).slice(0, 4);
+-  const reportSteps = rotateItems(MW_REPORT_STEPS, variantRank).slice(0, 4);
+-  const comparisonStates = rotateItems(nearbyStates, variantRank);
+-  // Only link to states that are actually published; the rest 404.
+-  const benchmarkStates = benchmarkStatesFor(s).filter(isIndexableUsState);
+-
+-  const breadcrumb = {
+-    "@context": "https://schema.org",
+-    "@type": "BreadcrumbList",
+-    itemListElement: [
+-      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+-      { "@type": "ListItem", position: 2, name: "US Employment Law", item: `${SITE.url}/us` },
+-      { "@type": "ListItem", position: 3, name: `${s.name} Employment Law`, item: `${SITE.url}/us/states/${s.slug}` },
+-      { "@type": "ListItem", position: 4, name: "Minimum Wage", item: url },
+-    ],
+-  };
+-
+-  const article = {
+-    "@context": "https://schema.org",
+-    "@type": "Article",
+-    headline: `${s.name} Minimum Wage 2026`,
+-    description: `Current minimum wage in ${s.name} and rules for 2026.`,
+-    url,
+-    datePublished: "2026-01-01",
+-    dateModified: reviewedDate,
+-    author: FOUNDER_PERSON,
+-    reviewedBy: EDITORIAL_REVIEW,
+-    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mark.svg` } },
+-  };
+-
+-  return (
+-    <>
+-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
+-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(article)} />
+-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(faqs))} />
+-
+-<div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+-        {/* Breadcrumb */}
+-        <nav className="mb-6 flex flex-wrap items-center gap-1 text-sm text-ink-faint">
+-          <Link href="/" className="hover:text-brand-600">Home</Link>
+-          <span>/</span>
+-          <Link href="/us" className="hover:text-brand-600">US</Link>
+-          <span>/</span>
+-          <Link href={`/us/states/${s.slug}`} className="hover:text-brand-600">{s.name}</Link>
+-          <span>/</span>
+-          <span className="text-ink-soft">Minimum Wage</span>
+-        </nav>
+-
+-        <h1 className="mb-2 text-3xl font-bold tracking-tight text-ink">
+-          {s.name} Minimum Wage 2026
+-        </h1>
+-        <p className="mb-8 text-ink-soft">
+-          {pickVariantByPosition(variantRank, MW_INTRO)(s.name)}
+-        </p>
+-
+-        <EditorialReview
+-          lastReviewed={reviewedDate}
+-          sourceLabel={`${s.name} labor agency`}
+-          className="mb-8"
+-        />
+-
+-        {/* Current rate card */}
+-        <div className="mb-8 rounded-xl border border-brand-100 bg-brand-50 p-6">
+-          <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-brand-600">Current minimum wage</p>
+-          <p className="break-words text-3xl font-bold leading-tight text-ink sm:text-4xl" style={{ overflowWrap: "anywhere" }}>
+-            {s.minimumWage}
+-          </p>
+-          {isFederal && (
+-            <p className="mt-2 text-sm text-ink-soft">
+-              {pickVariantByPosition(federalRank, MW_FEDERAL_CARD)(s.name)}
+-            </p>
+-          )}
+-          {s.minimumWageNote && (
+-            <p className="mt-2 text-sm text-ink-soft">{s.minimumWageNote}</p>
+-          )}
+-        </div>
+-
+-        {/* Quick facts grid */}
+-        <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+-          <div className="rounded-xl border border-surface-line bg-surface-muted p-5">
+-            <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-ink-faint">Federal vs state</p>
+-            <p className="break-words font-semibold text-ink" style={{ overflowWrap: "anywhere" }}>
+-              {isFederal ? "Federal rate applies ($7.25/hr)" : `State rate applies (${s.minimumWage})`}
+-            </p>
+-          </div>
+-          <div className="rounded-xl border border-surface-line bg-surface-muted p-5">
+-            <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-ink-faint">Last verified</p>
+-            <p className="font-semibold text-ink">{s.verifiedYear}</p>
+-          </div>
+-        </div>
+-
+-        <section className="mb-8 rounded-xl border border-surface-line bg-white p-5">
+-          <h2 className="mb-2 text-xl font-bold text-ink">How to use the {s.name} rate</h2>
+-          <p className="text-sm leading-relaxed text-ink-soft">
+-            {pickVariantByPosition(globalRank, MW_CONTEXT)(
+-              s.name,
+-              s.region,
+-              s.minimumWage,
+-              nearbyLabel,
+-              gapText,
+-            )}
+-          </p>
+-          <ul className="mt-4 grid gap-2 text-sm text-ink-soft sm:grid-cols-2">
+-            {actionChecklist.map((item) => (
+-              <li key={item} className="rounded-lg border border-surface-line bg-surface-muted px-3 py-2">
+-                {item}
+-              </li>
+-            ))}
+-          </ul>
+-        </section>
+-
+-        {benchmarkStates.length > 0 && (
+-        <section className="mb-8">
+-          <h2 className="mb-3 text-xl font-bold text-ink">Cross-state wage benchmark</h2>
+-          <p className="mb-4 text-sm leading-relaxed text-ink-soft">
+-            Multi-state employers often copy payroll settings from one jurisdiction to another.
+-            Use this benchmark to compare {s.name}&apos;s {s.minimumWage} rate with other reviewed
+-            states before relying on a shared payroll template.
+-          </p>
+-          <div className="overflow-x-auto rounded-xl border border-surface-line">
+-            <table className="w-full min-w-[34rem] text-left text-sm">
+-              <thead>
+-                <tr className="border-b border-surface-line bg-surface-muted text-xs uppercase tracking-wide text-ink-faint">
+-                  <th scope="col" className="px-4 py-2 font-semibold">State</th>
+-                  <th scope="col" className="px-4 py-2 font-semibold">Region</th>
+-                  <th scope="col" className="px-4 py-2 font-semibold">Minimum wage</th>
+-                </tr>
+-              </thead>
+-              <tbody>
+-                <tr className="border-b border-surface-line bg-brand-50">
+-                  <th scope="row" className="px-4 py-2 font-semibold text-ink">{s.name} (this page)</th>
+-                  <td className="px-4 py-2 text-ink-soft">{s.region}</td>
+-                  <td className="px-4 py-2 text-ink-soft">{s.minimumWage}</td>
+-                </tr>
+-                {benchmarkStates.map((state) => (
+-                  <tr key={state.slug} className="border-b border-surface-line last:border-0">
+-                    <th scope="row" className="px-4 py-2 font-medium">
+-                      <Link href={`/us/states/${state.slug}/minimum-wage`} className="text-brand-600 hover:underline">
+-                        {state.name}
+-                      </Link>
+-                    </th>
+-                    <td className="px-4 py-2 text-ink-soft">{state.region}</td>
+-                    <td className="px-4 py-2 text-ink-soft">{state.minimumWage}</td>
+-                  </tr>
+-                ))}
+-              </tbody>
+-            </table>
+-          </div>
+-        </section>
+-        )}
+-
+-        {/* Who is covered */}
+-        <section className="mb-8">
+-          <h2 className="mb-3 text-xl font-bold text-ink">Who is covered by the {s.name} minimum wage</h2>
+-          <p className="mb-3 text-ink-soft">
+-            {pickVariantByPosition(variantRank, MW_COVERED_LEAD)(s.name)}
+-          </p>
+-          <ul className="space-y-2 text-ink-soft">
+-            {coverageItems.map((item) => (
+-              <li key={item} className="flex items-start gap-2 text-sm">
+-                <span className="mt-0.5 text-ink-faint">•</span>
+-                <span>{item}</span>
+-              </li>
+-            ))}
+-          </ul>
+-        </section>
+-
+-        {/* How to report */}
+-        <section className="mb-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+-          <h2 className="mb-2 text-lg font-bold text-amber-900">Being paid below minimum wage?</h2>
+-          <ol className="space-y-2 text-sm text-amber-900">
+-            {reportSteps.map((item, index) => (
+-              <li key={item}><strong>{index + 1}.</strong> {item}</li>
+-            ))}
+-          </ol>
+-          <a
+-            href={s.dolUrl}
+-            target="_blank"
+-            rel="noopener noreferrer"
+-            className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"
+-          >
+-            {s.name} Department of Labor →
+-          </a>
+-        </section>
+-
+-        {/* Tools CTA */}
+-        <section className="mb-8 flex flex-wrap gap-3">
+-          <Link
+-            href="/take-home-overtime-calculator"
+-            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
+-          >
+-            Overtime pay calculator
+-          </Link>
+-          <Link
+-            href="/take-home-pay-calculator"
+-            className="rounded-lg border border-surface-line px-4 py-2 text-sm font-medium text-ink-soft hover:border-brand-600 hover:text-brand-600"
+-          >
+-            Take-home pay calculator
+-          </Link>
+-        </section>
+-
+-        {/* FAQ */}
+-        <section>
+-          <h2 className="mb-4 text-xl font-bold text-ink">Frequently asked questions</h2>
+-          <div className="space-y-3">
+-            {faqs.map((faq) => (
+-              <details key={faq.question} className="group rounded-xl border border-surface-line">
+-                <summary className="flex cursor-pointer items-center justify-between gap-4 px-4 py-3 font-medium text-ink">
+-                  {faq.question}
+-                  <svg className="h-4 w-4 shrink-0 text-ink-faint transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="M6 9l6 6 6-6" /></svg>
+-                </summary>
+-                <p className="break-words border-t border-surface-line px-4 py-3 text-sm text-ink-soft">{faq.answer}</p>
+-              </details>
+-            ))}
+-          </div>
+-        </section>
+-
+-        {/* Nearby states */}
+-        {nearbyStates.length > 0 && (
+-          <section className="mt-8">
+-            <h2 className="mb-3 text-sm font-semibold text-ink">
+-              How {s.name} compares to nearby states
+-            </h2>
+-            <p className="mb-4 text-sm text-ink-soft">
+-              Minimum wage varies across the {s.region} region. {s.name}&apos;s rate is {s.minimumWage} —
+-              here is how neighbouring states compare.
+-            </p>
+-            <div className="overflow-x-auto">
+-              <table className="w-full min-w-[24rem] border-collapse text-left text-sm">
+-                <thead>
+-                  <tr className="border-b border-surface-line text-xs uppercase tracking-wide text-ink-faint">
+-                    <th scope="col" className="py-2 pr-4 font-semibold">State</th>
+-                    <th scope="col" className="py-2 font-semibold">Minimum wage</th>
+-                  </tr>
+-                </thead>
+-                <tbody>
+-                  <tr className="border-b border-surface-line bg-surface-muted/40">
+-                    <th scope="row" className="py-2 pr-4 font-semibold text-ink">{s.name} (this page)</th>
+-                    <td className="py-2 text-ink-soft">{s.minimumWage}</td>
+-                  </tr>
+-                  {comparisonStates.map((n) => (
+-                    <tr key={n.slug} className="border-b border-surface-line last:border-0">
+-                      <th scope="row" className="py-2 pr-4 font-medium">
+-                        <Link href={`/us/states/${n.slug}/minimum-wage`} className="text-brand-600 hover:underline">
+-                          {n.name}
+-                        </Link>
+-                      </th>
+-                      <td className="py-2 text-ink-soft">{n.minimumWage}</td>
+-                    </tr>
+-                  ))}
+-                </tbody>
+-              </table>
+-            </div>
+-          </section>
+-        )}
+-
+-        {/* Back link */}
+-        <div className="mt-8">
+-          <Link href={`/us/states/${s.slug}`} className="text-sm text-brand-600 hover:underline">
+-            ← Back to {s.name} employment law
+-          </Link>
+-        </div>
+-      </div>
+-    </>
+-  );
+-}
+diff --git a/app/us/states/[state]/page.tsx b/app/us/states/[state]/page.tsx
+index 686bcca..72ecad9 100644
+--- a/app/us/states/[state]/page.tsx
++++ b/app/us/states/[state]/page.tsx
+@@ -344,46 +344,6 @@ export default async function StatePage({ params }: Props) {
+           </div>
+         </section>
+ 
+-        {/* Sub-page deep dives */}
+-        <section className="mb-10">
+-          <h2 className="mb-3 text-sm font-semibold text-ink">Deep dives</h2>
+-          <div className="grid gap-3 sm:grid-cols-3">
+-            <Link
+-              href={`/us/states/${s.slug}/final-paycheck`}
+-              className="group rounded-xl border border-surface-line p-4 transition-colors hover:border-brand-600 hover:bg-brand-50"
+-            >
+-              <p className="font-semibold text-ink group-hover:text-brand-700">
+-                {s.name} final paycheck law →
+-              </p>
+-              <p className="mt-1 text-sm text-ink-soft">
+-                Deadlines if fired or resigned, what must be included, and penalties.
+-              </p>
+-            </Link>
+-            <Link
+-              href={`/us/states/${s.slug}/minimum-wage`}
+-              className="group rounded-xl border border-surface-line p-4 transition-colors hover:border-brand-600 hover:bg-brand-50"
+-            >
+-              <p className="font-semibold text-ink group-hover:text-brand-700">
+-                {s.name} minimum wage →
+-              </p>
+-              <p className="mt-1 text-sm text-ink-soft">
+-                Current rate, tipped employee rules, and how to report violations.
+-              </p>
+-            </Link>
+-            <Link
+-              href={`/us/states/${s.slug}/pto-payout`}
+-              className="group rounded-xl border border-surface-line p-4 transition-colors hover:border-brand-600 hover:bg-brand-50"
+-            >
+-              <p className="font-semibold text-ink group-hover:text-brand-700">
+-                {s.name} PTO payout law →
+-              </p>
+-              <p className="mt-1 text-sm text-ink-soft">
+-                Unused vacation payout rules, policy exceptions, final-pay timing, and wage claim steps.
+-              </p>
+-            </Link>
+-          </div>
+-        </section>
+-
+         {/* FAQs */}
+         <section aria-labelledby="faq-heading" className="mb-10">
+           <h2 id="faq-heading" className="mb-5 text-base font-semibold text-ink">
+diff --git a/app/us/states/[state]/pto-payout/page.tsx b/app/us/states/[state]/pto-payout/page.tsx
+deleted file mode 100644
+index 59f40a4..0000000
+--- a/app/us/states/[state]/pto-payout/page.tsx
++++ /dev/null
+@@ -1,584 +0,0 @@
+-import type { Metadata } from "next";
+-import Link from "next/link";
+-import { notFound } from "next/navigation";
+-import { EditorialReview } from "@/components/EditorialReview";
+-import { US_STATES, getUsState, type UsStateWithPto } from "@/data/usStates";
+-import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
+-import { isIndexableUsState, statePageRobots } from "@/lib/contentQuality";
+-import {
+-  EDITORIAL_REVIEW,
+-  FOUNDER_PERSON,
+-  SITE,
+-  clampMetaDescription,
+-  faqSchema,
+-  jsonLd,
+-} from "@/lib/seo";
+-import type { FaqItem } from "@/lib/types";
+-
+-type Props = { params: Promise<{ state: string }> };
+-
+-const RULE_LABEL = {
+-  required: "PTO payout required",
+-  conditional: "PTO payout depends on policy",
+-  "no-requirement": "No state PTO payout requirement",
+-} as const;
+-
+-type PtoRule = keyof typeof RULE_LABEL;
+-
+-const RULE_SUMMARY_VARIANTS = {
+-  required: [
+-    (name: string) => `${name} treats earned vacation as wages, so accrued unused vacation generally has to be paid when employment ends.`,
+-    (name: string) => `In ${name}, accrued vacation is treated like earned pay. Once the time has vested, the unused balance is generally due at separation.`,
+-    (name: string) => `${name} puts earned vacation in the wage category, which makes forfeiture risky and usually requires cash-out of accrued unused time.`,
+-    (name: string) => `For ${name} workers, earned vacation is not just a discretionary benefit after it accrues. It is generally payable as wages when the job ends.`,
+-    (name: string) => `${name} generally protects accrued vacation after it is earned, so an employer usually has to include that value in final wages.`,
+-    (name: string) => `Vacation that has already accrued in ${name} is generally treated as earned compensation, making a final cash-out the default expectation.`,
+-  ],
+-  conditional: [
+-    (name: string) => `${name} usually looks first to the employer's written PTO or vacation policy. A clear forfeiture policy can change the result.`,
+-    (name: string) => `There is no simple automatic answer in ${name}: the handbook, offer letter, or contract normally determines whether unused PTO must be cashed out.`,
+-    (name: string) => `For ${name} employees, payout often turns on what the employer promised in writing and whether any forfeiture language was clearly communicated.`,
+-    (name: string) => `${name} treats PTO payout as a policy-driven issue in many cases, so the exact wording of the employer's vacation rules matters.`,
+-    (name: string) => `In ${name}, a payout can be enforceable when the employer's written policy or agreement promises it, but a valid forfeiture rule may limit the claim.`,
+-  ],
+-  "no-requirement": [
+-    (name: string) => `${name} does not require unused vacation payout by statute. The employer's written policy or employment contract controls.`,
+-    (name: string) => `There is no ${name} state mandate forcing employers to cash out unused vacation. What matters most is the written PTO policy.`,
+-    (name: string) => `${name} leaves PTO cash-out mostly to employer policy, so a handbook or contract promise is usually the source of any payout right.`,
+-    (name: string) => `In ${name}, unused PTO is not automatically payable just because employment ends. The claim usually depends on what the employer put in writing.`,
+-    (name: string) => `${name} has no standalone vacation-payout requirement, which means the final answer usually comes from the employer's own policy language.`,
+-    (name: string) => `For ${name} workers, state law does not create a default vacation cash-out right. A payout generally comes from policy, contract, or company practice.`,
+-    (name: string) => `${name} does not impose a broad PTO payout rule at separation. Check the handbook before assuming the unused balance will be paid.`,
+-  ],
+-} as const;
+-
+-const PAYOUT_ACTION_VARIANTS = {
+-  required: [
+-    (s: UsStateWithPto) => `If your employer refuses to pay accrued vacation in ${s.name}, treat it as an unpaid wage issue. Ask payroll for the final PTO balance in writing, then file a wage claim with the state labor agency if the payment is missing from your final paycheck.`,
+-    (s: UsStateWithPto) => `For a missing ${s.name} vacation payout, start with a written request for the accrued balance and the policy payroll used. If the final check still omits it, the next step is usually a wage claim through ${s.dolUrl}.`,
+-    (s: UsStateWithPto) => `A denied payout in ${s.name} should be documented like any other wage shortfall: save the PTO ledger, final paystub, and handbook, then contact the state labor agency if payroll will not correct it.`,
+-    (s: UsStateWithPto) => `If the final paycheck does not include vested vacation in ${s.name}, ask HR to identify the legal basis for nonpayment. Keep the response and use the ${s.name} labor agency process if the balance remains unpaid.`,
+-    (s: UsStateWithPto) => `When vested vacation is missing from a final paycheck in ${s.name}, put the dispute in writing quickly. List the hours accrued, the final rate of pay, and the policy source before escalating through ${s.dolUrl}.`,
+-    (s: UsStateWithPto) => `For ${s.name}, the practical move is to make payroll confirm the accrued vacation balance and payment date. If they refuse, preserve the records and use the state wage-claim channel.`,
+-  ],
+-  conditional: [
+-    (s: UsStateWithPto) => `In ${s.name}, start with the written PTO policy, offer letter, handbook, and any separation agreement. If those documents promise payout or do not clearly allow forfeiture, you may still have a wage claim.`,
+-    (s: UsStateWithPto) => `For ${s.name} workers, the first document to read is the employer's vacation policy. If it promises payout, or if the forfeiture language is unclear, preserve the policy and raise the issue with payroll in writing.`,
+-    (s: UsStateWithPto) => `In ${s.name}, a payout dispute is usually won or lost on the paperwork. Compare the handbook, offer letter, and final paystub, then contact ${s.dolUrl} if the employer ignores a promised cash-out.`,
+-    (s: UsStateWithPto) => `If your employer says no payout is owed in ${s.name}, ask for the exact policy clause they are relying on. A vague or late-disclosed forfeiture rule may leave room for a wage claim.`,
+-    (s: UsStateWithPto) => `When ${s.name} policy language points toward payout, send a concise written demand with the accrued hours, final rate, and last day worked before escalating to the state labor agency.`,
+-  ],
+-  "no-requirement": [
+-    (s: UsStateWithPto) => `In ${s.name}, the strongest claim usually comes from the employer's own written policy. Save the handbook and paystub showing accrued PTO, then compare the policy language with your final paycheck.`,
+-    (s: UsStateWithPto) => `Because ${s.name} has no default payout mandate, focus on proof that the company promised a cash-out. Keep the handbook, PTO balance, and any messages from HR or payroll.`,
+-    (s: UsStateWithPto) => `For ${s.name} employees, a missing payout is usually a policy-enforcement question. If the handbook says unused vacation is paid, ask payroll to apply that policy to the final check.`,
+-    (s: UsStateWithPto) => `Do not rely on a general state-law payout right in ${s.name}. Instead, collect the written PTO terms and check whether the employer followed its own final-pay process.`,
+-    (s: UsStateWithPto) => `If the employer's policy in ${s.name} promises payout, the issue can still matter even without a state mandate. Document the promise, the accrued balance, and the final paycheck amount.`,
+-    (s: UsStateWithPto) => `A PTO claim in ${s.name} needs company-specific evidence: policy text, accrual records, and any payroll confirmation that unused vacation would be paid.`,
+-    (s: UsStateWithPto) => `For ${s.name}, challenge the decision by pointing to the employer's own written rule rather than a statewide payout mandate. The useful evidence is the handbook, PTO ledger, and final-pay calculation.`,
+-  ],
+-} as const;
+-
+-const TIMING_ANSWERS = [
+-  (s: UsStateWithPto) => `If PTO payout is owed in ${s.name}, it should be included with your final wages. Employees fired by the employer must be paid ${s.finalPaycheckTerminated.toLowerCase()}; employees who resign must be paid ${s.finalPaycheckResigned.toLowerCase()}.`,
+-  (s: UsStateWithPto) => `When unused PTO is payable in ${s.name}, treat it as part of final wages. The final-pay deadline is ${s.finalPaycheckTerminated.toLowerCase()} after a termination and ${s.finalPaycheckResigned.toLowerCase()} after a resignation.`,
+-  (s: UsStateWithPto) => `A PTO cash-out that is legally or contractually owed in ${s.name} should not be delayed beyond the final-paycheck deadline: ${s.finalPaycheckTerminated.toLowerCase()} if fired, or ${s.finalPaycheckResigned.toLowerCase()} if you quit.`,
+-  (s: UsStateWithPto) => `For ${s.name}, use the final-paycheck timing as the payout checkpoint. Terminated workers are due final wages ${s.finalPaycheckTerminated.toLowerCase()}; resigning workers are due them ${s.finalPaycheckResigned.toLowerCase()}.`,
+-  (s: UsStateWithPto) => `If your unused PTO must be paid in ${s.name}, it normally belongs in the same final wage payment: ${s.finalPaycheckTerminated.toLowerCase()} for an employer-initiated separation and ${s.finalPaycheckResigned.toLowerCase()} for a resignation.`,
+-  (s: UsStateWithPto) => `When ${s.name} law or policy requires PTO payout, use the state's final-pay schedule as the timing guide: ${s.finalPaycheckTerminated.toLowerCase()} after termination and ${s.finalPaycheckResigned.toLowerCase()} after resignation.`,
+-  (s: UsStateWithPto) => `The timing question in ${s.name} follows final-pay rules once PTO is owed. That means ${s.finalPaycheckTerminated.toLowerCase()} for a firing and ${s.finalPaycheckResigned.toLowerCase()} for a voluntary quit.`,
+-] as const;
+-
+-const USE_IT_OR_LOSE_IT_ANSWERS = {
+-  required: [
+-    (name: string) => `${name} is a higher-risk state for "use it or lose it" forfeiture because earned vacation is treated as wages. Employers may usually cap future accrual, but cannot simply erase already earned vacation.`,
+-    (name: string) => `A blanket "use it or lose it" forfeiture rule is risky in ${name} once vacation has been earned. Employers can often manage future accrual, but wiping out vested time is a different issue.`,
+-    (name: string) => `In ${name}, earned vacation is generally protected as wages, so a policy that cancels accrued time at separation can create a wage problem.`,
+-    (name: string) => `${name} employers should be careful with forfeiture language. Caps on future accrual may be allowed, but already earned vacation generally cannot be treated as worthless.`,
+-    (name: string) => `For ${name} workers, use-it-or-lose-it language is most vulnerable when it tries to erase vacation that has already vested as wages.`,
+-    (name: string) => `An employer in ${name} may be able to limit future accrual, but a policy that wipes out earned vacation at the end of employment is a different and riskier question.`,
+-  ],
+-  conditional: [
+-    (name: string) => `${name} may allow "use it or lose it" or forfeiture language if the policy is clear and communicated in advance. The exact result depends on the written policy and any contract terms.`,
+-    (name: string) => `A forfeiture rule can matter in ${name}, but only if employees were clearly told how it works. Read the policy for payout, notice, and separation-specific language.`,
+-    (name: string) => `In ${name}, "use it or lose it" usually comes down to policy wording. A clear, advance-written rule is much stronger for the employer than an after-the-fact explanation.`,
+-    (name: string) => `${name} does not treat every forfeiture clause the same way. The safest read comes from the written handbook, any contract terms, and how the policy was communicated.`,
+-    (name: string) => `For ${name} workers, the key question is whether the employer clearly reserved the right to forfeit unused vacation before the dispute arose.`,
+-  ],
+-  "no-requirement": [
+-    (name: string) => `${name} may allow "use it or lose it" or forfeiture language if the policy is clear and communicated in advance. The exact result depends on the written policy and any contract terms.`,
+-    (name: string) => `In ${name}, a use-it-or-lose-it policy is more likely to control because there is no broad state payout mandate. Still, the employer should follow the policy it gave employees.`,
+-    (name: string) => `${name} employers often have room to set forfeiture rules, but employees should check whether the handbook actually says unused vacation is lost at separation.`,
+-    (name: string) => `A clear forfeiture policy can defeat many PTO payout claims in ${name}. If the policy is silent or promises cash-out, the answer may be different.`,
+-    (name: string) => `For ${name}, the practical question is not whether state law requires payout by default, but whether the employer's own policy allowed unused time to expire.`,
+-    (name: string) => `Use-it-or-lose-it language can be effective in ${name} when it is written and communicated. If the rule was never disclosed, save that fact with your payroll records.`,
+-    (name: string) => `In ${name}, forfeiture language should be judged against the actual policy employees received. A late explanation from payroll is weaker than a clear written rule.`,
+-  ],
+-} as const;
+-
+-const CALCULATION_ANSWERS = [
+-  (name: string) => `Multiply unused PTO hours by your final hourly rate. For salaried employees, convert salary to a daily or hourly equivalent, then multiply by accrued unused PTO. PTO payout is gross wages before tax withholding.`,
+-  (name: string) => `For a payout estimate in ${name}, multiply the unused hours on your PTO ledger by your final regular hourly rate. Salaried workers can convert annual salary into an hourly or daily rate first.`,
+-  (name: string) => `Use the same basic math in ${name}: unused vacation hours times the final pay rate. The result is a gross wage figure before federal, state, and payroll withholding.`,
+-  (name: string) => `To estimate unpaid PTO in ${name}, start with the accrued balance shown on your paystub or HR portal, then multiply by your final hourly equivalent.`,
+-  (name: string) => `A practical ${name} estimate is accrued unused PTO x final hourly rate. If your employer tracks days instead of hours, convert the days into work hours before multiplying.`,
+-  (name: string) => `For ${name}, calculate the gross amount by converting the PTO balance into hours and multiplying by the final regular rate. Taxes and deductions come after that gross figure.`,
+-  (name: string) => `For a final-pay dispute in ${name}, write down the PTO balance, the rate used by payroll, and the gross amount you expected before comparing it with the final check.`,
+-] as const;
+-
+-const PRACTICE_INTRO_VARIANTS = [
+-  (name: string) => `PTO payout disputes in ${name} usually turn on three facts: whether vacation has already been earned, what the written PTO policy says about forfeiture, and whether the final paycheck included all wages due by the state deadline.`,
+-  (name: string) => `In ${name}, the practical analysis starts with the accrued balance, then moves to the handbook language, and finally to whether the final paycheck met the state timing rule.`,
+-  (name: string) => `Most ${name} vacation payout disputes come down to proof: the PTO ledger, the written policy, and the final paystub showing what was actually paid.`,
+-  (name: string) => `For ${name} workers, the important question is not just whether PTO exists, but whether it vested, whether forfeiture was clearly allowed, and whether payroll handled it on time.`,
+-  (name: string) => `A PTO claim in ${name} is strongest when the records line up: accrued time, a policy promising payout, and a final paycheck that left the balance out.`,
+-  (name: string) => `When reviewing a PTO payout in ${name}, separate the issue into accrual, policy, and payment timing. Each one needs its own document trail.`,
+-  (name: string) => `The cleanest way to review a payout issue in ${name} is to match three documents: the PTO balance, the written policy, and the final wage statement.`,
+-] as const;
+-
+-const ESTIMATE_COPY_VARIANTS = [
+-  (name: string) => <>Use this formula: <strong>unused PTO hours x final hourly rate</strong>. For salaried employees, convert annual salary into an hourly or daily equivalent first. The result is gross pay before federal, state, and payroll tax withholding.</>,
+-  (name: string) => <>For a quick {name} estimate, multiply <strong>unused PTO hours x final hourly rate</strong>. If you are salaried, convert the salary to an hourly equivalent before applying the PTO balance.</>,
+-  () => <>Start with the PTO balance shown by payroll, then multiply it by your final regular rate. That gives the gross payout before taxes, withholdings, or other lawful deductions.</>,
+-  () => <>If your employer tracks PTO in days, convert those days to hours first. Then multiply by the final hourly rate to estimate the gross vacation payout.</>,
+-  () => <>The cleanest calculation is accrued unused PTO multiplied by your final pay rate. Keep the paystub or HR screenshot that shows the balance used for the estimate.</>,
+-  () => <>Use gross pay for the first pass: PTO hours times the final hourly equivalent. Tax withholding comes later and does not erase the wage obligation.</>,
+-  () => <>For the first estimate, ignore tax withholding and calculate the gross wage value only. Compare that number with the PTO line, if any, on the final paystub.</>,
+-] as const;
+-
+-const CLAIM_ANSWERS = [
+-  (s: UsStateWithPto) => `Start with the ${s.name} labor agency: ${s.dolUrl}. Include your final paystub, PTO balance, handbook policy, resignation or termination date, and any payroll messages about unused vacation.`,
+-  (s: UsStateWithPto) => `For ${s.name}, begin with the state labor agency at ${s.dolUrl}. Send the PTO policy, accrued balance, final paycheck, and any written explanation from payroll.`,
+-  (s: UsStateWithPto) => `Use ${s.dolUrl} as the official ${s.name} starting point. A strong claim package includes the handbook, offer letter, PTO ledger, final paystub, and last-day documentation.`,
+-  (s: UsStateWithPto) => `The ${s.name} labor agency can confirm the wage-claim route: ${s.dolUrl}. Keep the final check, PTO balance, separation notice, and HR messages together before filing.`,
+-  (s: UsStateWithPto) => `If payroll will not correct the issue in ${s.name}, check the agency process at ${s.dolUrl}. Attach documents showing what PTO accrued and why the policy required payout.`,
+-  (s: UsStateWithPto) => `For a PTO dispute in ${s.name}, collect the policy and payroll records first, then use ${s.dolUrl} to find the state complaint process or contact point.`,
+-  (s: UsStateWithPto) => `Before filing in ${s.name}, organize the handbook, PTO ledger, and final paystub. The official agency starting point is ${s.dolUrl}.`,
+-] as const;
+-
+-function pickPtoVariant<T>(position: number, variants: readonly [T, ...T[]], offset = 0): T {
+-  const adjusted = position + offset;
+-  return pickVariantByPosition(adjusted + (Math.floor(adjusted / variants.length) * 4), variants);
+-}
+-
+-function formatList(items: string[]): string {
+-  if (items.length <= 1) return items[0] ?? "";
+-  if (items.length === 2) return `${items[0]} and ${items[1]}`;
+-  return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
+-}
+-
+-function sentenceVerb(count: number, singular: string, plural: string): string {
+-  return count === 1 ? singular : plural;
+-}
+-
+-function getPtoComparisonStates(s: UsStateWithPto, limit = 8): UsStateWithPto[] {
+-  const regionStates = US_STATES.filter((state) => state.region === s.region).sort((a, b) => a.name.localeCompare(b.name));
+-  const currentIndex = regionStates.findIndex((state) => state.slug === s.slug);
+-  if (currentIndex === -1) return [];
+-
+-  const picked: UsStateWithPto[] = [];
+-  for (let distance = 1; picked.length < limit && distance < regionStates.length; distance += 1) {
+-    const candidates = [
+-      regionStates[(currentIndex + distance) % regionStates.length],
+-      regionStates[(currentIndex - distance + regionStates.length) % regionStates.length],
+-    ].filter((candidate): candidate is UsStateWithPto => Boolean(candidate));
+-
+-    for (const candidate of candidates) {
+-      if (candidate.slug !== s.slug && !picked.some((state) => state.slug === candidate.slug)) {
+-        picked.push(candidate);
+-        if (picked.length === limit) break;
+-      }
+-    }
+-  }
+-
+-  return picked;
+-}
+-
+-const REGION_LABEL: Record<UsStateWithPto["region"], string> = {
+-  Northeast: "Northeast",
+-  Midwest: "Midwest",
+-  South: "South",
+-  West: "West",
+-};
+-
+-export function generateStaticParams() {
+-  // Emit only manually reviewed, current-year records; template-varied states
+-  // stay out of the static export and 404. See lib/contentQuality.ts.
+-  return US_STATES.filter(isIndexableUsState).map((s) => ({ state: s.slug }));
+-}
+-
+-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+-  const { state: slug } = await params;
+-  const s = getUsState(slug);
+-  if (!s) return {};
+-
+-  const title = `${s.name} PTO Payout Law 2026`;
+-  const description = `${RULE_LABEL[s.pto.rule]} in ${s.name}. ${s.pto.note} Check unused vacation pay, final paycheck timing, and wage claim steps.`;
+-  const url = `${SITE.url}/us/states/${s.slug}/pto-payout`;
+-
+-  return {
+-    title,
+-    description: clampMetaDescription(description),
+-    alternates: { canonical: url },
+-    openGraph: { title, description: clampMetaDescription(description), url },
+-    robots: statePageRobots(s),
+-  };
+-}
+-
+-function ptoVariantContext(s: UsStateWithPto) {
+-  const ruleSlugs = US_STATES.filter((state) => state.pto.rule === s.pto.rule).map((state) => state.slug);
+-  const ruleRank = clusterRank(ruleSlugs, s.slug);
+-  const globalRank = clusterRank(US_STATES.map((state) => state.slug), s.slug);
+-  const blendedRank = globalRank + (ruleRank * 3);
+-
+-  return {
+-    globalRank,
+-    ruleSummary: pickPtoVariant(blendedRank, RULE_SUMMARY_VARIANTS[s.pto.rule])(s.name),
+-    payoutAction: pickPtoVariant(blendedRank, PAYOUT_ACTION_VARIANTS[s.pto.rule], 2)(s),
+-    useItOrLoseItAnswer: pickPtoVariant(blendedRank, USE_IT_OR_LOSE_IT_ANSWERS[s.pto.rule], 4)(s.name),
+-    practiceIntro: pickPtoVariant(globalRank, PRACTICE_INTRO_VARIANTS, 1)(s.name),
+-    estimateCopy: pickPtoVariant(globalRank, ESTIMATE_COPY_VARIANTS, 3)(s.name),
+-  };
+-}
+-
+-const SAME_DEADLINE_TIMING_VARIANTS = [
+-  (s: UsStateWithPto) => `${s.name} uses the same stated final-pay deadline for firings and resignations, so the timing review is straightforward once you know whether unused PTO was actually owed.`,
+-  (s: UsStateWithPto) => `Because the firing and resignation deadlines match in ${s.name}, focus first on whether the PTO balance was payable, then compare the final check with that shared deadline.`,
+-  (s: UsStateWithPto) => `For ${s.name}, the separation type does not change the stated final-pay deadline. The harder question is usually whether the policy made unused vacation payable at all.`,
+-  (s: UsStateWithPto) => `${s.name}'s final-pay timing is symmetrical for fired and resigning workers, which makes the PTO dispute mainly a rule-and-records question.`,
+-  (s: UsStateWithPto) => `In ${s.name}, the same final-pay checkpoint applies on both sides of separation. Save the PTO ledger and final paystub so the owed amount can be checked against that date.`,
+-  (s: UsStateWithPto) => `When ${s.name} uses one deadline for both kinds of separation, late-payment analysis is simpler: confirm the PTO right, then confirm whether it appeared in the final wage payment.`,
+-  (s: UsStateWithPto) => `${s.name} does not create a different timing track for quitting versus being fired on this page's data, so the policy language and final wage statement carry more weight.`,
+-] as const;
+-
+-const SPLIT_DEADLINE_TIMING_VARIANTS = [
+-  (s: UsStateWithPto) => `${s.name} separates the final-pay timing for firings and resignations, which makes the last-day record important when you compare the PTO balance with the final check.`,
+-  (s: UsStateWithPto) => `In ${s.name}, the final-pay deadline changes with the type of separation. Keep the termination notice or resignation message with the PTO records.`,
+-  (s: UsStateWithPto) => `For ${s.name}, identify whether the employer ended the job or the worker resigned before deciding which final-pay deadline controls the PTO cash-out.`,
+-  (s: UsStateWithPto) => `${s.name}'s timing rule is not one-size-fits-all, so the separation reason should be part of the wage-claim file.`,
+-] as const;
+-
+-const FAST_TERMINATION_TIMING_VARIANTS = [
+-  (s: UsStateWithPto) => `${s.name} gives terminated workers a faster final-pay checkpoint than workers who resign, so document who initiated the separation before judging whether the PTO cash-out was late.`,
+-  (s: UsStateWithPto) => `A firing can trigger a tighter final-pay clock in ${s.name}. If PTO is owed, keep the termination date and final check date together.`,
+-  (s: UsStateWithPto) => `For ${s.name}, employer-initiated separations need extra timing attention because the final-pay deadline can arrive quickly after termination.`,
+-  (s: UsStateWithPto) => `${s.name}'s termination deadline is the pressure point for many PTO disputes. The resignation deadline may be different, so do not mix the two timelines.`,
+-] as const;
+-
+-function timingProfile(s: UsStateWithPto, position: number): string {
+-  const firedDeadline = s.finalPaycheckTerminated.toLowerCase();
+-  const resignedDeadline = s.finalPaycheckResigned.toLowerCase();
+-
+-  if (firedDeadline === resignedDeadline) {
+-    return pickPtoVariant(position, SAME_DEADLINE_TIMING_VARIANTS)(s);
+-  }
+-
+-  if (firedDeadline.includes("immediately") || firedDeadline.includes("business day") || firedDeadline.includes("3")) {
+-    return pickPtoVariant(position, FAST_TERMINATION_TIMING_VARIANTS)(s);
+-  }
+-
+-  return pickPtoVariant(position, SPLIT_DEADLINE_TIMING_VARIANTS)(s);
+-}
+-
+-function regionalRuleSummary(s: UsStateWithPto, comparisonStates: UsStateWithPto[]): string {
+-  if (comparisonStates.length === 0) return "";
+-
+-  const sameRule = comparisonStates.filter((state) => state.pto.rule === s.pto.rule);
+-  const differentRule = comparisonStates.filter((state) => state.pto.rule !== s.pto.rule);
+-  const comparisonNames = formatList(comparisonStates.map((state) => state.name));
+-  const sameRuleNames = formatList(sameRule.map((state) => state.name));
+-  const differentRuleNames = formatList(differentRule.map((state) => state.name));
+-
+-  if (sameRule.length === comparisonStates.length) {
+-    return `${s.name}'s regional comparison set is ${comparisonNames}. Each listed state uses the same broad PTO payout category, so the useful distinction is the final-pay deadline rather than the payout rule label.`;
+-  }
+-
+-  if (sameRule.length === 0) {
+-    return `${s.name}'s regional comparison set is ${comparisonNames}. ${differentRuleNames} ${sentenceVerb(differentRule.length, "uses", "use")} a different PTO payout category, so workers crossing state lines should not assume the same handbook language produces the same result.`;
+-  }
+-
+-  return `${s.name}'s regional comparison set is ${comparisonNames}. ${sameRuleNames} ${sentenceVerb(sameRule.length, "matches", "match")} ${s.name}'s payout category, while ${differentRuleNames} ${sentenceVerb(differentRule.length, "uses", "use")} a different category.`;
+-}
+-
+-function rotateItems<T>(items: T[], position: number): T[] {
+-  if (items.length === 0) return items;
+-  const start = position % items.length;
+-  return [...items.slice(start), ...items.slice(0, start)];
+-}
+-
+-function documentChecklist(s: UsStateWithPto, position: number): string[] {
+-  return rotateItems([
+-    `${s.name} final paystub showing whether unused PTO appeared as a wage line`,
+-    "Payroll or HR portal screenshot showing the accrued PTO balance",
+-    "Employee handbook section or written PTO policy covering payout and forfeiture",
+-    "Offer letter, contract, or separation agreement with vacation-pay terms",
+-    `Messages from payroll or HR explaining the ${s.name} payout decision`,
+-    `Last-day record showing whether the ${s.finalPaycheckTerminated.toLowerCase()} or ${s.finalPaycheckResigned.toLowerCase()} deadline applies`,
+-    `${s.name} agency URL or filing page: ${s.dolUrl}`,
+-  ], position);
+-}
+-
+-function generateFaqs(s: UsStateWithPto): FaqItem[] {
+-  const stateName = s.name;
+-  const policy = s.pto;
+-  const variants = ptoVariantContext(s);
+-  const leadQuestion = {
+-    question: `Does ${stateName} require PTO payout when I leave?`,
+-    answer: `${variants.ruleSummary} ${policy.note}`,
+-  };
+-  const secondaryQuestions = rotateItems([
+-    {
+-      question: `When should unused PTO be paid in ${stateName}?`,
+-      answer: pickPtoVariant(variants.globalRank, TIMING_ANSWERS, 2)(s),
+-    },
+-    {
+-      question: `Can employers in ${stateName} use a "use it or lose it" policy?`,
+-      answer: variants.useItOrLoseItAnswer,
+-    },
+-    {
+-      question: `How do I calculate unused PTO value in ${stateName}?`,
+-      answer: pickPtoVariant(variants.globalRank, CALCULATION_ANSWERS, 4)(stateName),
+-    },
+-    {
+-      question: `Where do I file a PTO payout claim in ${stateName}?`,
+-      answer: pickPtoVariant(variants.globalRank, CLAIM_ANSWERS, 6)(s),
+-    },
+-  ], variants.globalRank);
+-
+-  return [leadQuestion, ...secondaryQuestions];
+-}
+-
+-export default async function Page({ params }: Props) {
+-  const { state: slug } = await params;
+-  const s = getUsState(slug);
+-  if (!s || !isIndexableUsState(s)) notFound();
+-
+-  const url = `${SITE.url}/us/states/${s.slug}/pto-payout`;
+-  const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
+-  const comparisonStates = getPtoComparisonStates(s).filter(isIndexableUsState);
+-  const faqs = generateFaqs(s);
+-  const policy = s.pto;
+-  const variants = ptoVariantContext(s);
+-  const documentsToSave = documentChecklist(s, variants.globalRank);
+-  const sameRuleComparison = comparisonStates.filter((state) => state.pto.rule === s.pto.rule).length;
+-  const comparisonSummary = regionalRuleSummary(s, comparisonStates);
+-  const regionalPattern =
+-    comparisonStates.length === 0
+-      ? ""
+-      : sameRuleComparison === comparisonStates.length
+-        ? `all ${comparisonStates.length} of the ${REGION_LABEL[s.region]} comparison states listed below take the same approach, so the regional pattern is consistent`
+-        : sameRuleComparison === 0
+-          ? `none of the ${REGION_LABEL[s.region]} comparison states below follow the same approach, so regional rules differ sharply`
+-          : `${sameRuleComparison} of the ${comparisonStates.length} ${REGION_LABEL[s.region]} comparison states below ${sentenceVerb(sameRuleComparison, "shares", "share")} the same approach and the rest differ, so it is worth checking each state individually`;
+-
+-  const breadcrumb = {
+-    "@context": "https://schema.org",
+-    "@type": "BreadcrumbList",
+-    itemListElement: [
+-      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+-      { "@type": "ListItem", position: 2, name: "US Employment Law", item: `${SITE.url}/us` },
+-      { "@type": "ListItem", position: 3, name: `${s.name} Employment Law`, item: `${SITE.url}/us/states/${s.slug}` },
+-      { "@type": "ListItem", position: 4, name: "PTO Payout", item: url },
+-    ],
+-  };
+-
+-  const article = {
+-    "@context": "https://schema.org",
+-    "@type": "Article",
+-    headline: `${s.name} PTO Payout Law 2026`,
+-    description: `${RULE_LABEL[policy.rule]} in ${s.name}. ${policy.note}`,
+-    url,
+-    datePublished: "2026-01-01",
+-    dateModified: reviewedDate,
+-    author: FOUNDER_PERSON,
+-    reviewedBy: EDITORIAL_REVIEW,
+-    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+-    mainEntityOfPage: url,
+-  };
+-
+-  return (
+-    <>
+-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
+-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(article)} />
+-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(faqs))} />
+-
+-<div className="mx-auto max-w-3xl overflow-x-hidden px-4 py-10 sm:px-6">
+-        <nav className="mb-6 flex flex-wrap items-center gap-1 text-sm text-ink-faint">
+-          <Link href="/" className="hover:text-brand-600">Home</Link>
+-          <span>/</span>
+-          <Link href="/us" className="hover:text-brand-600">US</Link>
+-          <span>/</span>
+-          <Link href={`/us/states/${s.slug}`} className="hover:text-brand-600">{s.name}</Link>
+-          <span>/</span>
+-          <span className="text-ink-soft">PTO Payout</span>
+-        </nav>
+-
+-        <h1 className="mb-2 text-3xl font-bold tracking-tight text-ink">
+-          {s.name} PTO Payout Law 2026
+-        </h1>
+-        <p className="mb-8 text-ink-soft">
+-          Unused vacation payout rules, final paycheck timing, and wage claim steps for {s.name} workers.
+-        </p>
+-
+-        <EditorialReview
+-          lastReviewed={reviewedDate}
+-          sourceLabel={`${s.name} labor agency`}
+-          className="mb-3"
+-        />
+-        <p className="mb-8 text-sm text-ink-faint">
+-          Data verified {s.verifiedYear} from the{" "}
+-          <a className="font-medium text-brand-600 hover:underline" href={s.dolUrl} rel="noopener noreferrer" target="_blank">
+-            {s.name} labor agency
+-          </a>.
+-        </p>
+-
+-        <section className="mb-8 rounded-xl border border-surface-line bg-white p-5 shadow-sm">
+-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-600">State rule</p>
+-          <h2 className="mt-1 text-xl font-semibold text-ink">{RULE_LABEL[policy.rule]}</h2>
+-          <p className="mt-3 text-sm leading-relaxed text-ink-soft">{policy.note}</p>
+-          <p className="mt-3 text-sm leading-relaxed text-ink-soft">{variants.ruleSummary}</p>
+-        </section>
+-
+-        <section className="mb-8 grid gap-3 sm:grid-cols-3">
+-          <div className="rounded-lg border border-surface-line bg-surface-muted p-4">
+-            <p className="text-xs text-ink-faint">PTO rule type</p>
+-            <p className="mt-1 text-sm font-semibold text-ink">{RULE_LABEL[policy.rule]}</p>
+-          </div>
+-          <div className="rounded-lg border border-surface-line bg-surface-muted p-4">
+-            <p className="text-xs text-ink-faint">If fired</p>
+-            <p className="mt-1 text-sm font-semibold text-ink">{s.finalPaycheckTerminated}</p>
+-          </div>
+-          <div className="rounded-lg border border-surface-line bg-surface-muted p-4">
+-            <p className="text-xs text-ink-faint">If resigned</p>
+-            <p className="mt-1 text-sm font-semibold text-ink">{s.finalPaycheckResigned}</p>
+-          </div>
+-        </section>
+-
+-        <section className="prose-tool mb-10 max-w-none text-sm leading-relaxed text-ink-soft">
+-          <h2 className="text-base font-semibold text-ink">What this means in practice</h2>
+-          <p>{variants.practiceIntro}</p>
+-          <p>{variants.payoutAction}</p>
+-
+-          <h2 className="mt-6 text-base font-semibold text-ink">How to estimate the payout</h2>
+-          <p>{variants.estimateCopy}</p>
+-
+-          <h2 className="mt-6 text-base font-semibold text-ink">Documents to save</h2>
+-          <ul className="mt-2 flex flex-col gap-1.5 pl-4">
+-            {documentsToSave.map((item) => (
+-              <li key={item} className="list-disc">{item}</li>
+-            ))}
+-          </ul>
+-
+-          <h2 className="mt-6 text-base font-semibold text-ink">State-specific checkpoints</h2>
+-          <p>
+-            In {s.name}, a final paycheck — including any PTO payout that is owed — is due{" "}
+-            {s.finalPaycheckTerminated.toLowerCase()} when the employer ends the job and{" "}
+-            {s.finalPaycheckResigned.toLowerCase()} when you resign. Confirm the current rule against the{" "}
+-            <a href={s.dolUrl} target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">
+-              {s.name} labor agency
+-            </a>{" "}
+-            before you file, since deadlines and payout rules can change between legislative sessions.
+-          </p>
+-          <p>{timingProfile(s, variants.globalRank)}</p>
+-          {regionalPattern && (
+-            <p>
+-              {s.name} sits in the U.S. Census {REGION_LABEL[s.region]} region, and {regionalPattern}.
+-            </p>
+-          )}
+-          {comparisonSummary && <p>{comparisonSummary}</p>}
+-        </section>
+-
+-        {comparisonStates.length > 0 && (
+-          <section className="mb-10" aria-labelledby="comparison-heading">
+-            <h2 id="comparison-heading" className="mb-2 text-base font-semibold text-ink">
+-              How regional states handle PTO payout
+-            </h2>
+-            <p className="mb-4 text-sm leading-relaxed text-ink-soft">
+-              How {s.name} compares with selected {REGION_LABEL[s.region]} states on unused vacation payout and final-pay timing.
+-              Follow a link for that state&apos;s full rules.
+-            </p>
+-            <div className="overflow-x-auto">
+-              <table className="w-full min-w-[44rem] border-collapse text-left text-sm">
+-                <thead>
+-                  <tr className="border-b border-surface-line text-xs uppercase tracking-wide text-ink-faint">
+-                    <th scope="col" className="py-2 pr-4 font-semibold">State</th>
+-                    <th scope="col" className="py-2 pr-4 font-semibold">Rule detail</th>
+-                    <th scope="col" className="py-2 pr-4 font-semibold">If fired</th>
+-                    <th scope="col" className="py-2 font-semibold">If resigned</th>
+-                  </tr>
+-                </thead>
+-                <tbody>
+-                  <tr className="border-b border-surface-line bg-surface-muted/40">
+-                    <th scope="row" className="py-2 pr-4 font-semibold text-ink">{s.name} (this page)</th>
+-                    <td className="py-2 pr-4 text-ink-soft">
+-                      <p className="font-medium text-ink">{RULE_LABEL[s.pto.rule]}</p>
+-                      <p className="mt-1 text-xs leading-relaxed">{s.pto.note}</p>
+-                    </td>
+-                    <td className="py-2 pr-4 text-ink-soft">{s.finalPaycheckTerminated}</td>
+-                    <td className="py-2 text-ink-soft">{s.finalPaycheckResigned}</td>
+-                  </tr>
+-                  {comparisonStates.map((nearby) => (
+-                    <tr key={nearby.slug} className="border-b border-surface-line last:border-0">
+-                      <th scope="row" className="py-2 pr-4 font-medium">
+-                        <Link href={`/us/states/${nearby.slug}/pto-payout`} className="text-brand-600 hover:underline">
+-                          {nearby.name}
+-                        </Link>
+-                      </th>
+-                      <td className="py-2 pr-4 text-ink-soft">
+-                        <p className="font-medium text-ink">{RULE_LABEL[nearby.pto.rule]}</p>
+-                        <p className="mt-1 text-xs leading-relaxed">{nearby.pto.note}</p>
+-                      </td>
+-                      <td className="py-2 pr-4 text-ink-soft">{nearby.finalPaycheckTerminated}</td>
+-                      <td className="py-2 text-ink-soft">{nearby.finalPaycheckResigned}</td>
+-                    </tr>
+-                  ))}
+-                </tbody>
+-              </table>
+-            </div>
+-          </section>
+-        )}
+-
+-        <section className="mb-10 rounded-xl border border-brand-100 bg-brand-50 p-5">
+-          <h2 className="text-base font-semibold text-ink">Calculate and compare</h2>
+-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+-            <Link href="/pto-payout-calculator" className="rounded-lg border border-surface-line bg-white p-4 hover:bg-surface-muted">
+-              <p className="text-sm font-semibold text-ink">PTO payout calculator</p>
+-              <p className="mt-1 text-xs text-ink-soft">Estimate unused vacation value before tax.</p>
+-            </Link>
+-            <Link href={`/us/states/${s.slug}/final-paycheck`} className="rounded-lg border border-surface-line bg-white p-4 hover:bg-surface-muted">
+-              <p className="text-sm font-semibold text-ink">{s.name} final paycheck law</p>
+-              <p className="mt-1 text-xs text-ink-soft">Check the deadline and late-payment remedies.</p>
+-            </Link>
+-          </div>
+-        </section>
+-
+-        <section className="mb-10" aria-labelledby="faq-heading">
+-          <h2 id="faq-heading" className="mb-4 text-base font-semibold text-ink">Common questions</h2>
+-          <div className="flex flex-col gap-3">
+-            {faqs.map((faq) => (
+-              <details key={faq.question} className="rounded-lg border border-surface-line bg-white p-4">
+-                <summary className="cursor-pointer text-sm font-semibold text-ink">{faq.question}</summary>
+-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{faq.answer}</p>
+-              </details>
+-            ))}
+-          </div>
+-        </section>
+-
+-        <div className="border-t border-surface-line pt-6 text-xs text-ink-faint">
+-          Sources:{" "}
+-          <a href={s.dolUrl} target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">
+-            {s.name} labor agency
+-          </a>
+-          {" · "}
+-          <a href="https://www.dol.gov/agencies/whd/state/contacts" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">
+-            U.S. Department of Labor state labor offices
+-          </a>
+-          {" · "}
+-          <Link href="/guides/us-pto-payout-laws-by-state" className="text-brand-600 hover:underline">
+-            US PTO payout guide
+-          </Link>
+-        </div>
+-      </div>
+-    </>
+-  );
+-}
+diff --git a/data/usStates.ts b/data/usStates.ts
+index dced5e7..83f48f2 100644
+--- a/data/usStates.ts
++++ b/data/usStates.ts
+@@ -669,8 +669,8 @@ const RAW: UsStateData[] = [
+     name: "Wyoming",
+     minimumWage: "$7.25/hr (federal minimum)",
+     minimumWageNote: "State minimum is $5.15/hr, but federal minimum of $7.25 applies to most employers",
+-    finalPaycheckTerminated: "Within 5 business days",
+-    finalPaycheckResigned: "Within 5 business days",
++    finalPaycheckTerminated: "Next regular payday",
++    finalPaycheckResigned: "Next regular payday",
+     dolUrl: "https://wyomingworkforce.org/businesses/labor-standards/",
+     verifiedYear: 2026,
+     localContext:
+diff --git a/e2e/production-route-fixtures.ts b/e2e/production-route-fixtures.ts
+index 562cb5a..4bb0622 100644
+--- a/e2e/production-route-fixtures.ts
++++ b/e2e/production-route-fixtures.ts
+@@ -52,13 +52,10 @@ export const PRODUCTION_ROUTES = Array.from(new Set([
+   ...FAQS.map((faq) => `/faq/${faq.slug}`),
+   ...COMPARISONS.map((comparison) => `/compare/${comparison.slug}`),
+   // Only gate-passing jurisdiction records are emitted; the rest 404 and must
+-  // not be asserted as live routes. See lib/contentQuality.ts.
++  // not be asserted as live routes. Only the state hub is published — the
++  // minimum-wage/final-paycheck/pto-payout child routes were removed. See
++  // lib/contentQuality.ts.
+   ...AU_STATES.filter(isIndexableAuState).map((state) => `/au/states/${state.slug}`),
+   ...CA_PROVINCES.filter(isIndexableCaProvince).map((province) => `/ca/provinces/${province.slug}`),
+-  ...US_STATES.filter(isIndexableUsState).flatMap((state) => [
+-    `/us/states/${state.slug}`,
+-    `/us/states/${state.slug}/final-paycheck`,
+-    `/us/states/${state.slug}/minimum-wage`,
+-    `/us/states/${state.slug}/pto-payout`,
+-  ]),
++  ...US_STATES.filter(isIndexableUsState).map((state) => `/us/states/${state.slug}`),
+ ])).sort();
+diff --git a/e2e/responsive-audit.spec.ts b/e2e/responsive-audit.spec.ts
+index 808a55e..f6594e8 100644
+--- a/e2e/responsive-audit.spec.ts
++++ b/e2e/responsive-audit.spec.ts
+@@ -51,15 +51,11 @@ const ROUTES = Array.from(new Set([
+   ...BLOG_POSTS.map((post) => `/blog/${post.slug}`),
+   ...FAQS.slice(0, 15).map((faq) => `/faq/${faq.slug}`),
+   ...COMPARISONS.map((comparison) => `/compare/${comparison.slug}`),
+-  // Only gate-passing jurisdiction records are emitted; the rest 404. Audit
+-  // whichever qualify (currently none) so this stays correct as they requalify.
++  // Only gate-passing jurisdiction records are emitted; the rest 404. Only the
++  // state hub is published (child routes removed). Audit whichever qualify.
+   ...AU_STATES.filter(isIndexableAuState).map((state) => `/au/states/${state.slug}`),
+   ...CA_PROVINCES.filter(isIndexableCaProvince).map((province) => `/ca/provinces/${province.slug}`),
+-  ...US_STATES.filter(isIndexableUsState).flatMap((state) => [
+-    `/us/states/${state.slug}`,
+-    `/us/states/${state.slug}/final-paycheck`,
+-    `/us/states/${state.slug}/minimum-wage`,
+-  ]),
++  ...US_STATES.filter(isIndexableUsState).map((state) => `/us/states/${state.slug}`),
+ ])).sort();
+ 
+ const VIEWPORTS = [
+diff --git a/scripts/serve_static_export.py b/scripts/serve_static_export.py
+index 06fe14a..57210ae 100644
+--- a/scripts/serve_static_export.py
++++ b/scripts/serve_static_export.py
+@@ -11,8 +11,9 @@ OUT_DIR = ROOT / "out"
+ 
+ 
+ class StaticExportHandler(SimpleHTTPRequestHandler):
+-    def translate_path(self, request_path):
+-        parsed = urlparse(request_path)
++    def _resolve_existing(self):
++        """Return the on-disk file for the request, or None if it does not exist."""
++        parsed = urlparse(self.path)
+         decoded = unquote(parsed.path).rstrip("/") or "/"
+         relative = "index.html" if decoded == "/" else decoded.lstrip("/")
+ 
+@@ -22,13 +23,34 @@ class StaticExportHandler(SimpleHTTPRequestHandler):
+             OUT_DIR / relative / "index.html",
+         ]
+ 
++        out_root = OUT_DIR.resolve()
+         for candidate in candidates:
+             resolved = candidate.resolve()
+-            if OUT_DIR.resolve() in resolved.parents or resolved == OUT_DIR.resolve():
+-                if resolved.is_file():
+-                    return str(resolved)
++            if (out_root in resolved.parents or resolved == out_root) and resolved.is_file():
++                return resolved
++        return None
++
++    def translate_path(self, request_path):
++        resolved = self._resolve_existing()
++        return str(resolved) if resolved else str(OUT_DIR / "404.html")
+ 
+-        return str(OUT_DIR / "404.html")
++    def send_head(self):
++        # A missing path must return a real HTTP 404 (serving 404.html with a 200
++        # status is a soft-404). This mirrors the production static host, so the
++        # "gated routes 404" e2e assertions hold under this server too.
++        if self._resolve_existing() is None:
++            fallback = OUT_DIR / "404.html"
++            try:
++                stream = open(fallback, "rb")
++            except OSError:
++                self.send_error(404, "Not Found")
++                return None
++            self.send_response(404)
++            self.send_header("Content-Type", "text/html; charset=utf-8")
++            self.send_header("Content-Length", str(os.fstat(stream.fileno()).st_size))
++            self.end_headers()
++            return stream
++        return super().send_head()
+ 
+     def log_message(self, format, *args):
+         if os.environ.get("STATIC_EXPORT_LOGS") == "1":
+diff --git a/test/contentQuality.test.ts b/test/contentQuality.test.ts
+index 704e8ce..0c68963 100644
+--- a/test/contentQuality.test.ts
++++ b/test/contentQuality.test.ts
+@@ -4,18 +4,6 @@ import {
+   generateMetadata as stateHubMetadata,
+   generateStaticParams as stateHubParams,
+ } from "@/app/us/states/[state]/page";
+-import {
+-  generateMetadata as finalPayMetadata,
+-  generateStaticParams as finalPayParams,
+-} from "@/app/us/states/[state]/final-paycheck/page";
+-import {
+-  generateMetadata as minimumWageMetadata,
+-  generateStaticParams as minimumWageParams,
+-} from "@/app/us/states/[state]/minimum-wage/page";
+-import {
+-  generateMetadata as ptoPayoutMetadata,
+-  generateStaticParams as ptoPayoutParams,
+-} from "@/app/us/states/[state]/pto-payout/page";
+ import { US_STATES, getUsState } from "@/data/usStates";
+ import { CA_PROVINCES, getCaProvince } from "@/data/caProvinces";
+ import { AU_STATES, getAuState } from "@/data/auStates";
+@@ -45,49 +33,42 @@ describe("AdSense and Search content-quality gate", () => {
+     expect(isIndexableUsState(california)).toBe(false);
+   });
+ 
+-  it("only builds US state pages that pass the quality gate (rest 404)", async () => {
+-    // The static export emits a page only for params returned here. Gated,
+-    // template-varied records must be absent from the build so neither Search
+-    // nor an AdSense reviewer can reach thin, programmatically generated pages.
++  it("only builds the curated state hubs (child routes removed, rest 404)", async () => {
++    // The static export emits a page only for params returned here. Only the
++    // state *hub* is published; the minimum-wage/final-paycheck/pto-payout child
++    // routes were removed because they rendered mostly template variants without
++    // the hub's sourced local analysis.
+     const indexable = US_STATES.filter(isIndexableUsState).map((s) => s.slug).sort();
+     // The three manually curated, source-reviewed states are the qualifying set.
+     expect(indexable).toEqual(["kansas", "mississippi", "wyoming"]);
+ 
+-    for (const params of [stateHubParams, finalPayParams, minimumWageParams, ptoPayoutParams]) {
+-      const emitted = (await params()).map((p) => p.state).sort();
+-      expect(emitted).toEqual(indexable);
+-      expect(emitted.every((slug) => isIndexableUsState(getUsState(slug)!))).toBe(true);
+-    }
++    const emitted = (await stateHubParams()).map((p) => p.state).sort();
++    expect(emitted).toEqual(indexable);
++    expect(emitted.every((slug) => isIndexableUsState(getUsState(slug)!))).toBe(true);
+   });
+ 
+-  it("keeps every unqualified state route family out of the sitemap", () => {
++  it("publishes only the curated state hub URL, never a child route", () => {
+     const urls = new Set(sitemap().map((entry) => entry.url));
+ 
+     for (const state of US_STATES) {
+-      const present = isIndexableUsState(state);
+-      for (const suffix of ["", "/final-paycheck", "/minimum-wage", "/pto-payout"]) {
++      // Hub is in the sitemap iff the record passes the gate.
++      expect(urls.has(`${SITE.url}/us/states/${state.slug}`), state.slug)
++        .toBe(isIndexableUsState(state));
++      // Child routes no longer exist, so they must never appear for any state.
++      for (const suffix of ["/final-paycheck", "/minimum-wage", "/pto-payout"]) {
+         expect(urls.has(`${SITE.url}/us/states/${state.slug}${suffix}`), `${state.slug}${suffix}`)
+-          .toBe(present);
++          .toBe(false);
+       }
+     }
+   });
+ 
+-  it("emits noindex,follow on every unqualified state page template", async () => {
+-    const params = Promise.resolve({ state: "connecticut" });
+-    const metadata = await Promise.all([
+-      stateHubMetadata({ params }),
+-      finalPayMetadata({ params }),
+-      minimumWageMetadata({ params }),
+-      ptoPayoutMetadata({ params }),
+-    ]);
+-
+-    for (const value of metadata) {
+-      expect(value.robots).toMatchObject({
+-        index: false,
+-        follow: true,
+-        googleBot: { index: false, follow: true },
+-      });
+-    }
++  it("emits noindex,follow on an unqualified state hub", async () => {
++    const metadata = await stateHubMetadata({ params: Promise.resolve({ state: "connecticut" }) });
++    expect(metadata.robots).toMatchObject({
++      index: false,
++      follow: true,
++      googleBot: { index: false, follow: true },
++    });
+   });
+ 
+   it("indexes a current, sourced, substantively curated record", () => {
+diff --git a/test/seoRemediation.test.ts b/test/seoRemediation.test.ts
+index cb4896f..785c2e1 100644
+--- a/test/seoRemediation.test.ts
++++ b/test/seoRemediation.test.ts
+@@ -82,9 +82,11 @@ describe("Tier 3 SEO remediation contracts", () => {
+       expect(state.stateSpecificDetail?.body.split(/\s+/).length).toBeGreaterThan(80);
+       expect(state.stateSpecificDetail?.sourceUrl).toMatch(/^https:\/\//);
+       expect(state.stateSpecificDetail?.sourceReviewed).toBe("17 July 2026");
+-      for (const path of ["", "/final-paycheck", "/minimum-wage", "/pto-payout"]) {
++      // Only the sourced hub is published; child routes were removed.
++      expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/${slug}`), slug).toBeDefined();
++      for (const path of ["/final-paycheck", "/minimum-wage", "/pto-payout"]) {
+         expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/${slug}${path}`), `${slug}${path}`)
+-          .toBeDefined();
++          .toBeUndefined();
+       }
+     }
+     // A thin, template-varied state stays out of every route family.
