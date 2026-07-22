@@ -262,7 +262,7 @@ const RAW: UsStateData[] = [
     finalPaycheckTerminated: "Next regular payday",
     finalPaycheckResigned: "Next regular payday",
     dolUrl: "https://www.dol.ks.gov",
-    verifiedYear: 2025,
+    verifiedYear: 2026,
     localContext:
       "Kansas has a state-run wage-claim process even though most covered workers rely on the federal $7.25 minimum-wage floor. The Kansas Department of Labor's Office of Employment Standards accepts claims under the Kansas Wage Payment Law, K.S.A. 44-313 et seq., for earned wages or benefits that were not paid. After a complete claim is filed, a labor conciliator sends it to the employer and the employer must provide a written response; unresolved cases can proceed to an administrative hearing, followed by review by the Secretary of Labor. That process is materially different from states that send nearly every private wage dispute to the federal Wage and Hour Division. Kansas also has a state overtime rule after 46 hours for employees outside federal FLSA coverage, so workers should first confirm which law covers their employer rather than assuming the state threshold replaces the federal 40-hour rule.",
     stateSpecificDetail: {
@@ -361,7 +361,7 @@ const RAW: UsStateData[] = [
     finalPaycheckTerminated: "Next regular payday",
     finalPaycheckResigned: "Next regular payday",
     dolUrl: "https://mdes.ms.gov",
-    verifiedYear: 2025,
+    verifiedYear: 2026,
     localContext:
       "Mississippi does not operate a general state wage-and-hour enforcement system comparable to California's DLSE or Kansas's Employment Standards office. The Mississippi Department of Employment Security explains that many wage, overtime, child-labor and family-leave questions are enforced by federal agencies rather than MDES; for Fair Labor Standards Act issues it directs workers to the U.S. Department of Labor's Wage and Hour Division. MDES publishes that referral in its Employment Issues guidance rather than offering an MDES wage-claim form. MDES itself principally administers unemployment insurance, workforce services and labor-market information. That division of responsibility matters in practice: a Mississippi worker with an unpaid-minimum-wage or overtime complaint should not assume an unemployment office can decide the wage claim. Preserve time records, pay stubs and the employer's written PTO policy, then confirm the correct federal or civil enforcement route for the particular dispute. The absence of a state PTO-payout mandate does not cancel a clear contractual promise in an employer policy.",
     stateSpecificDetail: {
@@ -672,7 +672,7 @@ const RAW: UsStateData[] = [
     finalPaycheckTerminated: "Within 5 business days",
     finalPaycheckResigned: "Within 5 business days",
     dolUrl: "https://wyomingworkforce.org/businesses/labor-standards/",
-    verifiedYear: 2025,
+    verifiedYear: 2026,
     localContext:
       "Wyoming assigns unpaid-wage enforcement to the Labor Standards program within the Department of Workforce Services. Its administrative rules provide for a signed written or electronic claim alleging wages owed under Wyoming wage statutes. Labor Standards serves the claim on the employer, and the employer generally has 10 days from the agency letter to answer; the program can investigate and order payment where liability is established. The rules define compensation broadly enough to include pay, salary, bonuses and commissions, while fringe-benefit disputes can turn on the employer's agreement or policy. This gives Wyoming workers a specific state claim route even though the federal minimum wage applies to most employment and the state does not impose a blanket PTO cash-out rule. For a final-pay dispute, keep the separation notice, final timesheet, commission terms and written vacation policy so the agency can distinguish earned compensation from a benefit the policy never promised to pay.",
     stateSpecificDetail: {

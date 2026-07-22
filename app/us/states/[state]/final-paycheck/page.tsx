@@ -5,7 +5,7 @@ import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState, getNearbyStates, type UsStateWithPto } from "@/data/usStates";
 import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
-import { statePageRobots } from "@/lib/contentQuality";
+import { isIndexableUsState, statePageRobots } from "@/lib/contentQuality";
 import type { FaqItem } from "@/lib/types";
 import { FinalPaycheckLateChecker } from "@/components/calculators/FinalPaycheckLateChecker";
 
@@ -162,7 +162,9 @@ function benchmarkStatesFor(current: UsStateWithPto) {
 }
 
 export async function generateStaticParams() {
-  return US_STATES.map((s) => ({ state: s.slug }));
+  // Emit only manually reviewed, current-year records; template-varied states
+  // stay out of the static export and 404. See lib/contentQuality.ts.
+  return US_STATES.filter(isIndexableUsState).map((s) => ({ state: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -213,7 +215,7 @@ function generateFaqs(s: UsStateWithPto): FaqItem[] {
 export default async function Page({ params }: Props) {
   const { state: slug } = await params;
   const s = getUsState(slug);
-  if (!s) notFound();
+  if (!s || !isIndexableUsState(s)) notFound();
 
   const url = `${SITE.url}/us/states/${s.slug}/final-paycheck`;
   const faqs = generateFaqs(s);
@@ -221,7 +223,7 @@ export default async function Page({ params }: Props) {
   const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
   const rank = clusterRank(ALL_SLUGS, s.slug);
   const variantRank = variantKey(s.slug, rank);
-  const nearbyStates = getNearbyStates(s.slug);
+  const nearbyStates = getNearbyStates(s.slug).filter(isIndexableUsState);
   const nearbyLabel = nearbyStates.slice(0, 3).map((n) => n.name).join(", ") || "nearby states";
   const sameDeadline = s.finalPaycheckTerminated === s.finalPaycheckResigned;
   const deadlineShape = sameDeadline
@@ -231,7 +233,8 @@ export default async function Page({ params }: Props) {
   const includedItems = rotateItems(FP_INCLUDED_ITEMS, variantRank).slice(0, 4);
   const lateSteps = rotateItems(FP_LATE_STEPS, variantRank).slice(0, 4);
   const comparisonStates = rotateItems(nearbyStates, variantRank);
-  const benchmarkStates = benchmarkStatesFor(s);
+  // Only link to states that are actually published; the rest 404.
+  const benchmarkStates = benchmarkStatesFor(s).filter(isIndexableUsState);
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -333,11 +336,12 @@ export default async function Page({ params }: Props) {
           </ul>
         </section>
 
+        {benchmarkStates.length > 0 && (
         <section className="mb-8">
           <h2 className="mb-3 text-xl font-bold text-ink">Cross-state deadline benchmark</h2>
           <p className="mb-4 text-sm leading-relaxed text-ink-soft">
-            Final-pay deadlines are not portable across state lines. This benchmark starts with states
-            closest to {s.name}&apos;s termination and resignation timing, then broadens outward so payroll
+            Final-pay deadlines are not portable across state lines. This benchmark compares
+            {" "}{s.name}&apos;s termination and resignation timing with other reviewed states so payroll
             teams can spot where a shared process needs state-specific handling.
           </p>
           <div className="overflow-x-auto rounded-xl border border-surface-line">
@@ -373,6 +377,7 @@ export default async function Page({ params }: Props) {
             </table>
           </div>
         </section>
+        )}
 
         {/* What must be included */}
         <section className="mb-8">

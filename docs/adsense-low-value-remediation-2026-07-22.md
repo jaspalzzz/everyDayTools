@@ -122,3 +122,49 @@ analysis with an attached primary source and review date. Once the structured
 record passes its `isIndexable*` gate, its route becomes eligible for the
 sitemap automatically. Do not add more wording variants merely to pass a
 similarity threshold.
+
+## Addendum — 22 July 2026 (route-level gating)
+
+The original remediation kept the 225 generated jurisdiction pages **live but
+`noindex`**, out of the sitemap, and reachable from the country directories.
+That removes them from Search, but an AdSense *human* review browses the live
+site, so a reviewer could still click `/us` → a state → a templated sub-page.
+`noindex` is invisible to that review. This pass closes the loophole at the
+route level.
+
+Changes:
+
+1. **Gate generation, not just indexing.** Every jurisdiction route now emits a
+   page only for records that pass `isIndexable*`. `generateStaticParams` filters
+   to those records, and each page component calls `notFound()` as a guard.
+   Non-qualifying URLs are absent from the static export, so a static host
+   returns a real 404 (the file does not exist) instead of a thin page.
+2. **Three genuinely curated US states published.** `kansas`, `mississippi` and
+   `wyoming` already carried 100+ word local analysis and 80+ word
+   primary-source detail blocks reviewed 2026-07-17; only a stale
+   `verifiedYear: 2025` (inconsistent with that review date) held them back.
+   Corrected to `2026`, so they publish as three high-value pages. The other 48
+   US states 404 until individually re-reviewed.
+3. **CA province and AU state dynamic routes removed entirely.** No province or
+   state has a curated `editorialDetail` yet, and `output: export` cannot emit a
+   dynamic route with zero paths. Rather than ship thin pages, the
+   `/ca/provinces/[province]` and `/au/states/[state]` routes were deleted, so
+   every such URL 404s. Data and templates remain in git; recreate the route
+   when the first record is genuinely curated.
+4. **Directories de-pointed from gated pages.** `/us` renders the 50-state grid
+   as a non-linked PTO-status reference and links only the curated states; the
+   `/ca` and `/au` province/state grids are hidden until a record qualifies. The
+   research dataset, `/us/final-paycheck`, in-template nearby/benchmark tables,
+   the Ontario guide exit link, and two FAQ contextual links were all updated so
+   nothing links to a 404.
+5. **Stale "2025" copy fixed** on the US state hub template.
+
+Result: sitemap **191 → 203** (12 curated state URLs added); every reachable
+jurisdiction page is manually curated; all other jurisdiction URLs 404.
+
+Verified: 242/242 unit tests, `tsc --noEmit`, production build, indexability
+audit (203 routes), programmatic/technical/schema SEO 100/100, **zero broken
+internal links across all 204 exported pages**, no 320/375px overflow on the
+changed pages, and the e2e SEO-remediation suite. The ad runtime remains limited
+to substantive calculator routes; keep `NEXT_PUBLIC_ADSENSE_READY` /
+`NEXT_PUBLIC_ADSENSE_CMP_READY` false until review passes.

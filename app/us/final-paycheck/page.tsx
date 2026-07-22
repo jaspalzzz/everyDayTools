@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FinalPaycheckLateChecker } from "@/components/calculators/FinalPaycheckLateChecker";
 import { US_STATES } from "@/data/usStates";
+import { isIndexableUsState } from "@/lib/contentQuality";
 import { SITE, jsonLd } from "@/lib/seo";
 
 const url = `${SITE.url}/us/final-paycheck`;
@@ -70,20 +71,22 @@ export default function USFinalPaycheckHub() {
           ))}
         </section>
 
-        <section className="mb-10" aria-labelledby="state-list-heading">
-          <h2 id="state-list-heading" className="mb-4 text-xl font-bold text-ink">State final paycheck pages</h2>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-            {US_STATES.map((state) => (
-              <Link
-                key={state.slug}
-                href={`/us/states/${state.slug}/final-paycheck`}
-                className="rounded-lg border border-surface-line bg-white px-3 py-2 text-sm font-medium text-ink hover:bg-surface-muted"
-              >
-                {state.name}
-              </Link>
-            ))}
-          </div>
-        </section>
+        {US_STATES.some(isIndexableUsState) && (
+          <section className="mb-10" aria-labelledby="state-list-heading">
+            <h2 id="state-list-heading" className="mb-4 text-xl font-bold text-ink">State final paycheck pages</h2>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+              {US_STATES.filter(isIndexableUsState).map((state) => (
+                <Link
+                  key={state.slug}
+                  href={`/us/states/${state.slug}/final-paycheck`}
+                  className="rounded-lg border border-surface-line bg-white px-3 py-2 text-sm font-medium text-ink hover:bg-surface-muted"
+                >
+                  {state.name}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-900">
           <h2 className="mb-2 text-base font-bold">Before you file a wage claim</h2>

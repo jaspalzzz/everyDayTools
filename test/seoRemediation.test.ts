@@ -57,7 +57,9 @@ describe("Tier 3 SEO remediation contracts", () => {
     expect(tupe.relatedTool).toBe("tupe-wizard");
     expect(tupe.answer.join(" ").split(/\s+/).length).toBeGreaterThan(450);
     expect(overtime.relatedTool).toBe("take-home-overtime-calculator");
-    expect(overtime.contextualLinks?.some((link) => link.href === "/us/states/california")).toBe(true);
+    expect(overtime.contextualLinks?.some((link) => link.href === "/us/overtime")).toBe(true);
+    // Contextual links must never point at a gated (404) jurisdiction page.
+    expect(overtime.contextualLinks?.some((link) => link.href.startsWith("/us/states/"))).toBe(false);
     expect(overtime.answer.join(" ").split(/\s+/).length).toBeGreaterThan(300);
   });
 
@@ -68,17 +70,24 @@ describe("Tier 3 SEO remediation contracts", () => {
     expect(post.dateModified).toBe("2026-07-17");
   });
 
-  it("keeps state-specific source evidence without publishing incomplete records in the sitemap", () => {
+  it("publishes fully curated state records and holds incomplete ones out of the sitemap", () => {
     const entries = sitemap();
+    // The three curated states carry current-year, sourced local analysis, so
+    // all four of each state's route variants belong in search inventory.
     for (const slug of ["kansas", "mississippi", "wyoming"] as const) {
       const state = getUsState(slug)!;
+      expect(state.verifiedYear).toBeGreaterThanOrEqual(2026);
       expect(state.lastContentUpdate).toBe("2026-07-17");
       expect(state.localContext?.split(/\s+/).length).toBeGreaterThan(100);
       expect(state.stateSpecificDetail?.body.split(/\s+/).length).toBeGreaterThan(80);
       expect(state.stateSpecificDetail?.sourceUrl).toMatch(/^https:\/\//);
       expect(state.stateSpecificDetail?.sourceReviewed).toBe("17 July 2026");
-      expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/${slug}`)).toBeUndefined();
+      for (const path of ["", "/final-paycheck", "/minimum-wage", "/pto-payout"]) {
+        expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/${slug}${path}`), `${slug}${path}`)
+          .toBeDefined();
+      }
     }
+    // A thin, template-varied state stays out of every route family.
     expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/california/final-paycheck`))
       .toBeUndefined();
 

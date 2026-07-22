@@ -880,9 +880,8 @@ export const FAQS: FaqPageMeta[] = [
     relatedTool: "take-home-overtime-calculator",
     relatedToolName: "Overtime pay calculator",
     contextualLinks: [
-      { href: "/us/states/california", label: "California pay and employment-law overview" },
-      { href: "/us/states/nevada", label: "Nevada pay and employment-law overview" },
       { href: "/us/overtime", label: "US overtime rules hub" },
+      { href: "/take-home-overtime-calculator", label: "Overtime pay calculator" },
     ],
     datePublished: "2026-06-27",
     dateModified: "2026-07-14",

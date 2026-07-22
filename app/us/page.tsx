@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TOOLS } from "@/data/tools";
 import { US_STATES } from "@/data/usStates";
+import { isIndexableUsState } from "@/lib/contentQuality";
 import { SITE, jsonLd } from "@/lib/seo";
 import { CountryPage } from "@/components/country/CountryPage";
 import type { CountryTool } from "@/components/country/CountryPage";
@@ -67,33 +68,40 @@ function USStatesGrid() {
 
       <section aria-labelledby="us-states-heading">
         <h2 id="us-states-heading" style={{ margin: "0 0 5px", color: "#102033", fontSize: 22, fontWeight: 850 }}>
-          Browse by state
+          PTO payout status by state
         </h2>
       <p style={{ margin: "0 0 14px", color: "#52616f", fontSize: 14 }}>
-        PTO payout law, final paycheck deadlines &amp; minimum wage — all 50 states + DC
+        Whether unused vacation must be paid out when you leave — all 50 states + DC. In-depth
+        state guides link through as each state is individually reviewed against current sources.
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-        {US_STATES.map((s) => (
-          <Link
-            key={s.slug}
-            href={`/us/states/${s.slug}`}
-            style={{
-              display: "flex", alignItems: "center", gap: 6,
-              border: "1px solid #EAE5D8", borderRadius: 8,
-              background: "#fff", padding: "9px 10px",
-              textDecoration: "none",
-            }}
-          >
-            <span
-              style={{
-                width: 8, height: 8, flexShrink: 0, borderRadius: "50%",
-                background: s.pto.rule === "required" ? "#10b981" : s.pto.rule === "conditional" ? "#f59e0b" : "#d1d5db",
-              }}
-            />
-            <span style={{ fontSize: 12, fontWeight: 700, color: "#102033", flex: 1, minWidth: 0 }}>{s.name}</span>
-            <span className="hidden min-[400px]:inline" style={{ fontSize: 11, fontWeight: 900, color: "#52616f" }}>{s.code}</span>
-          </Link>
-        ))}
+        {US_STATES.map((s) => {
+          const cellStyle = {
+            display: "flex" as const, alignItems: "center" as const, gap: 6,
+            border: "1px solid #EAE5D8", borderRadius: 8,
+            background: "#fff", padding: "9px 10px",
+            textDecoration: "none" as const,
+          };
+          const inner = (
+            <>
+              <span
+                style={{
+                  width: 8, height: 8, flexShrink: 0, borderRadius: "50%",
+                  background: s.pto.rule === "required" ? "#10b981" : s.pto.rule === "conditional" ? "#f59e0b" : "#d1d5db",
+                }}
+              />
+              <span style={{ fontSize: 12, fontWeight: 700, color: "#102033", flex: 1, minWidth: 0 }}>{s.name}</span>
+              <span className="hidden min-[400px]:inline" style={{ fontSize: 11, fontWeight: 900, color: "#52616f" }}>{s.code}</span>
+            </>
+          );
+          // Only states with a manually reviewed, current-year page link through.
+          // The rest render as an at-a-glance status reference (no thin pages exposed).
+          return isIndexableUsState(s) ? (
+            <Link key={s.slug} href={`/us/states/${s.slug}`} style={cellStyle}>{inner}</Link>
+          ) : (
+            <div key={s.slug} style={cellStyle}>{inner}</div>
+          );
+        })}
       </div>
       <p style={{ marginTop: 12, color: "#52616f", fontSize: 12, display: "flex", gap: 16, flexWrap: "wrap" }}>
         <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>

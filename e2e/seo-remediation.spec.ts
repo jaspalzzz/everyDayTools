@@ -91,7 +91,9 @@ test.describe("Tier 3 cluster and schema fixes", () => {
 
     await page.goto("/faq/what-is-overtime-law-us");
     await expect(page.locator('a[href="/take-home-overtime-calculator"]').first()).toBeVisible();
-    await expect(page.locator('a[href="/us/states/california"]')).toBeVisible();
+    await expect(page.locator('a[href="/us/overtime"]').first()).toBeVisible();
+    // Gated per-state pages must never be linked from FAQ content.
+    await expect(page.locator('a[href="/us/states/california"]')).toHaveCount(0);
   });
 
   test("blog and guide have reciprocal, differentiated redundancy links", async ({ page }) => {
@@ -117,18 +119,20 @@ test.describe("Tier 3 cluster and schema fixes", () => {
     });
   }
 
-  test("California final-paycheck FAQ schema has no stale 2025 answer", async ({ page }) => {
-    await page.goto("/us/states/california/final-paycheck");
-    const faq = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) =>
-      scripts.map((script) => JSON.parse(script.textContent ?? "{}"))
-        .find((value) => value["@type"] === "FAQPage"),
-    );
-    expect(JSON.stringify(faq.mainEntity)).not.toContain("2025");
+  test("deleted jurisdiction routes 404 (not served as content)", async ({ page }) => {
+    // No CA province or AU state is curated yet, so those dynamic routes were
+    // removed entirely and every such URL must 404. (Ungated US state params are
+    // covered at the unit level by the generateStaticParams + sitemap tests;
+    // their dev-server behaviour under output:export is not a reliable signal.)
+    for (const route of ["/ca/provinces/ontario", "/au/states/new-south-wales"]) {
+      const response = await page.goto(route);
+      expect(response?.status(), `${route} status`).toBe(404);
+    }
   });
 });
 
 test.describe("Tier 3 accessibility and state depth", () => {
-  for (const route of ["/redundancy-pay-calculator", "/us/states/california"]) {
+  for (const route of ["/redundancy-pay-calculator", "/faq/what-is-overtime-law-us"]) {
     test(`${route} keeps one main landmark, sequential headings and underlined inline links`, async ({ page }) => {
       await page.setViewportSize({ width: 1280, height: 900 });
       await page.goto(route);
@@ -151,15 +155,7 @@ test.describe("Tier 3 accessibility and state depth", () => {
 
   test("country switcher accessible name matches its visible label", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 900 });
-    await page.goto("/us/states/california");
+    await page.goto("/us");
     await expect(page.getByRole("button", { name: "Switch country: UK", exact: true })).toHaveText("Switch country: UK");
   });
-
-  for (const state of ["kansas", "mississippi", "wyoming"]) {
-    test(`${state} state hub clears 500 rendered words`, async ({ page }) => {
-      await page.goto(`/us/states/${state}`);
-      const words = await page.locator("main").innerText().then((text) => text.trim().split(/\s+/).length);
-      expect(words).toBeGreaterThan(500);
-    });
-  }
 });

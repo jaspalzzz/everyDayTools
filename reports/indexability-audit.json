@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-07-22T08:02:15.102Z",
+  "checkedAt": "2026-07-22T10:05:27.835Z",
   "siteUrl": "https://mypayrights.com",
-  "sitemapRoutes": 191,
+  "sitemapRoutes": 203,
   "failures": [],
   "warnings": [],
   "results": [
@@ -38,7 +38,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "United States",
-      "words": 899,
+      "words": 917,
       "minimumWords": 150
     },
     {
@@ -50,7 +50,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Canada",
-      "words": 733,
+      "words": 686,
       "minimumWords": 150
     },
     {
@@ -62,7 +62,7 @@
       "robots": "index, follow",
       "jsonLdCount": 2,
       "h1": "Australia",
-      "words": 616,
+      "words": 576,
       "minimumWords": 150
     },
     {
@@ -170,7 +170,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "Ontario Termination and Severance Pay Guide 2026",
-      "words": 1322,
+      "words": 1318,
       "minimumWords": 220
     },
     {
@@ -722,7 +722,7 @@
       "robots": "index, follow",
       "jsonLdCount": 1,
       "h1": "US final paycheck laws and late-paycheck checker",
-      "words": 542,
+      "words": 482,
       "minimumWords": 180
     },
     {
@@ -1155,6 +1155,150 @@
       "jsonLdCount": 3,
       "h1": "Payslip deduction analyser",
       "words": 1099,
+      "minimumWords": 180
+    },
+    {
+      "route": "/us/states/kansas",
+      "htmlPath": "out/us/states/kansas.html",
+      "title": "Kansas PTO Payout Law & Final Paycheck Rules 2026",
+      "descriptionLength": 156,
+      "canonical": "https://mypayrights.com/us/states/kansas",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Kansas<!-- --> PTO payout law & pay rights",
+      "words": 1009,
+      "minimumWords": 180
+    },
+    {
+      "route": "/us/states/kansas/final-paycheck",
+      "htmlPath": "out/us/states/kansas/final-paycheck.html",
+      "title": "Kansas Final Paycheck Law 2026",
+      "descriptionLength": 150,
+      "canonical": "https://mypayrights.com/us/states/kansas/final-paycheck",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Kansas<!-- --> Final Paycheck Law 2026",
+      "words": 958,
+      "minimumWords": 180
+    },
+    {
+      "route": "/us/states/kansas/minimum-wage",
+      "htmlPath": "out/us/states/kansas/minimum-wage.html",
+      "title": "Kansas Minimum Wage 2026 — Current Rate & Rules",
+      "descriptionLength": 144,
+      "canonical": "https://mypayrights.com/us/states/kansas/minimum-wage",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Kansas<!-- --> Minimum Wage 2026",
+      "words": 927,
+      "minimumWords": 180
+    },
+    {
+      "route": "/us/states/kansas/pto-payout",
+      "htmlPath": "out/us/states/kansas/pto-payout.html",
+      "title": "Kansas PTO Payout Law 2026",
+      "descriptionLength": 148,
+      "canonical": "https://mypayrights.com/us/states/kansas/pto-payout",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Kansas<!-- --> PTO Payout Law 2026",
+      "words": 766,
+      "minimumWords": 180
+    },
+    {
+      "route": "/us/states/mississippi",
+      "htmlPath": "out/us/states/mississippi.html",
+      "title": "Mississippi PTO Payout Law & Final Paycheck Rules 2026",
+      "descriptionLength": 152,
+      "canonical": "https://mypayrights.com/us/states/mississippi",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Mississippi<!-- --> PTO payout law & pay rights",
+      "words": 1022,
+      "minimumWords": 180
+    },
+    {
+      "route": "/us/states/mississippi/final-paycheck",
+      "htmlPath": "out/us/states/mississippi/final-paycheck.html",
+      "title": "Mississippi Final Paycheck Law 2026",
+      "descriptionLength": 155,
+      "canonical": "https://mypayrights.com/us/states/mississippi/final-paycheck",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Mississippi<!-- --> Final Paycheck Law 2026",
+      "words": 900,
+      "minimumWords": 180
+    },
+    {
+      "route": "/us/states/mississippi/minimum-wage",
+      "htmlPath": "out/us/states/mississippi/minimum-wage.html",
+      "title": "Mississippi Minimum Wage 2026 — Current Rate & Rules",
+      "descriptionLength": 149,
+      "canonical": "https://mypayrights.com/us/states/mississippi/minimum-wage",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Mississippi<!-- --> Minimum Wage 2026",
+      "words": 909,
+      "minimumWords": 180
+    },
+    {
+      "route": "/us/states/mississippi/pto-payout",
+      "htmlPath": "out/us/states/mississippi/pto-payout.html",
+      "title": "Mississippi PTO Payout Law 2026",
+      "descriptionLength": 158,
+      "canonical": "https://mypayrights.com/us/states/mississippi/pto-payout",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Mississippi<!-- --> PTO Payout Law 2026",
+      "words": 784,
+      "minimumWords": 180
+    },
+    {
+      "route": "/us/states/wyoming",
+      "htmlPath": "out/us/states/wyoming.html",
+      "title": "Wyoming PTO Payout Law & Final Paycheck Rules 2026",
+      "descriptionLength": 156,
+      "canonical": "https://mypayrights.com/us/states/wyoming",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Wyoming<!-- --> PTO payout law & pay rights",
+      "words": 1074,
+      "minimumWords": 180
+    },
+    {
+      "route": "/us/states/wyoming/final-paycheck",
+      "htmlPath": "out/us/states/wyoming/final-paycheck.html",
+      "title": "Wyoming Final Paycheck Law 2026",
+      "descriptionLength": 157,
+      "canonical": "https://mypayrights.com/us/states/wyoming/final-paycheck",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Wyoming<!-- --> Final Paycheck Law 2026",
+      "words": 905,
+      "minimumWords": 180
+    },
+    {
+      "route": "/us/states/wyoming/minimum-wage",
+      "htmlPath": "out/us/states/wyoming/minimum-wage.html",
+      "title": "Wyoming Minimum Wage 2026 — Current Rate & Rules",
+      "descriptionLength": 156,
+      "canonical": "https://mypayrights.com/us/states/wyoming/minimum-wage",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Wyoming<!-- --> Minimum Wage 2026",
+      "words": 926,
+      "minimumWords": 180
+    },
+    {
+      "route": "/us/states/wyoming/pto-payout",
+      "htmlPath": "out/us/states/wyoming/pto-payout.html",
+      "title": "Wyoming PTO Payout Law 2026",
+      "descriptionLength": 152,
+      "canonical": "https://mypayrights.com/us/states/wyoming/pto-payout",
+      "robots": "index, follow",
+      "jsonLdCount": 3,
+      "h1": "Wyoming<!-- --> PTO Payout Law 2026",
+      "words": 824,
       "minimumWords": 180
     },
     {
@@ -1922,7 +2066,7 @@
       "robots": "index, follow",
       "jsonLdCount": 3,
       "h1": "How does overtime law work in the US?",
-      "words": 736,
+      "words": 729,
       "minimumWords": 170
     },
     {

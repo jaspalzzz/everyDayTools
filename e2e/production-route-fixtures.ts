@@ -6,6 +6,7 @@ import { FAQS } from "../data/faqs";
 import { GUIDES } from "../data/guides";
 import { TOOLS } from "../data/tools";
 import { US_STATES } from "../data/usStates";
+import { isIndexableAuState, isIndexableCaProvince, isIndexableUsState } from "../lib/contentQuality";
 
 const STATIC_ROUTES = [
   "/",
@@ -50,9 +51,14 @@ export const PRODUCTION_ROUTES = Array.from(new Set([
   ...BLOG_POSTS.map((post) => `/blog/${post.slug}`),
   ...FAQS.map((faq) => `/faq/${faq.slug}`),
   ...COMPARISONS.map((comparison) => `/compare/${comparison.slug}`),
-  ...AU_STATES.map((state) => `/au/states/${state.slug}`),
-  ...CA_PROVINCES.map((province) => `/ca/provinces/${province.slug}`),
-  ...US_STATES.map((state) => `/us/states/${state.slug}`),
-  ...US_STATES.map((state) => `/us/states/${state.slug}/final-paycheck`),
-  ...US_STATES.map((state) => `/us/states/${state.slug}/minimum-wage`),
+  // Only gate-passing jurisdiction records are emitted; the rest 404 and must
+  // not be asserted as live routes. See lib/contentQuality.ts.
+  ...AU_STATES.filter(isIndexableAuState).map((state) => `/au/states/${state.slug}`),
+  ...CA_PROVINCES.filter(isIndexableCaProvince).map((province) => `/ca/provinces/${province.slug}`),
+  ...US_STATES.filter(isIndexableUsState).flatMap((state) => [
+    `/us/states/${state.slug}`,
+    `/us/states/${state.slug}/final-paycheck`,
+    `/us/states/${state.slug}/minimum-wage`,
+    `/us/states/${state.slug}/pto-payout`,
+  ]),
 ])).sort();

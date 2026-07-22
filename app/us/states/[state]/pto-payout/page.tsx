@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState, type UsStateWithPto } from "@/data/usStates";
 import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
-import { statePageRobots } from "@/lib/contentQuality";
+import { isIndexableUsState, statePageRobots } from "@/lib/contentQuality";
 import {
   EDITORIAL_REVIEW,
   FOUNDER_PERSON,
@@ -202,7 +202,9 @@ const REGION_LABEL: Record<UsStateWithPto["region"], string> = {
 };
 
 export function generateStaticParams() {
-  return US_STATES.map((s) => ({ state: s.slug }));
+  // Emit only manually reviewed, current-year records; template-varied states
+  // stay out of the static export and 404. See lib/contentQuality.ts.
+  return US_STATES.filter(isIndexableUsState).map((s) => ({ state: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -349,11 +351,11 @@ function generateFaqs(s: UsStateWithPto): FaqItem[] {
 export default async function Page({ params }: Props) {
   const { state: slug } = await params;
   const s = getUsState(slug);
-  if (!s) notFound();
+  if (!s || !isIndexableUsState(s)) notFound();
 
   const url = `${SITE.url}/us/states/${s.slug}/pto-payout`;
   const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
-  const comparisonStates = getPtoComparisonStates(s);
+  const comparisonStates = getPtoComparisonStates(s).filter(isIndexableUsState);
   const faqs = generateFaqs(s);
   const policy = s.pto;
   const variants = ptoVariantContext(s);

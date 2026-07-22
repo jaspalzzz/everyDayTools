@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TOOLS } from "@/data/tools";
 import { AU_STATES } from "@/data/auStates";
+import { isIndexableAuState } from "@/lib/contentQuality";
 import { SITE, jsonLd } from "@/lib/seo";
 import { CountryPage } from "@/components/country/CountryPage";
 import type { CountryTool } from "@/components/country/CountryPage";
@@ -41,7 +42,10 @@ const AU_TOOLS: CountryTool[] = TOOLS.filter((t) => t.region.includes("AU")).map
 }));
 
 function AUStatesGrid() {
-  const states = Array.isArray(AU_STATES) ? AU_STATES : [];
+  // Only states with a manually reviewed, sourced page are linked. Until a
+  // state clears that gate its page 404s, so it must not appear here. When none
+  // qualify, the section is omitted entirely rather than showing dead links.
+  const states = AU_STATES.filter(isIndexableAuState);
   if (states.length === 0) return null;
   return (
     <section aria-labelledby="au-states-heading">
@@ -52,7 +56,7 @@ function AUStatesGrid() {
         Fair Work applies nationally — state tools and workers&apos; comp rules vary by jurisdiction
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-        {states.map((s: { slug: string; name: string; code: string }) => (
+        {states.map((s) => (
           <Link
             key={s.slug}
             href={`/au/states/${s.slug}`}

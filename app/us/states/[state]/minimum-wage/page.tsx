@@ -4,14 +4,16 @@ import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState, getNearbyStates } from "@/data/usStates";
 import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
-import { statePageRobots } from "@/lib/contentQuality";
+import { isIndexableUsState, statePageRobots } from "@/lib/contentQuality";
 import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
 type Props = { params: Promise<{ state: string }> };
 
 export async function generateStaticParams() {
-  return US_STATES.map((s) => ({ state: s.slug }));
+  // Emit only manually reviewed, current-year records; template-varied states
+  // stay out of the static export and 404. See lib/contentQuality.ts.
+  return US_STATES.filter(isIndexableUsState).map((s) => ({ state: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -230,12 +232,12 @@ function generateFaqs(s: ReturnType<typeof getUsState> & object): FaqItem[] {
 export default async function Page({ params }: Props) {
   const { state: slug } = await params;
   const s = getUsState(slug);
-  if (!s) notFound();
+  if (!s || !isIndexableUsState(s)) notFound();
 
   const url = `${SITE.url}/us/states/${s.slug}/minimum-wage`;
   const faqs = generateFaqs(s);
   const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
-  const nearbyStates = getNearbyStates(s.slug);
+  const nearbyStates = getNearbyStates(s.slug).filter(isIndexableUsState);
   const globalRank = clusterRank(US_STATES.map((st) => st.slug), s.slug);
   const federalRank = clusterRank(
     US_STATES.filter((st) => st.minimumWage.includes("federal minimum")).map((st) => st.slug),
@@ -254,7 +256,8 @@ export default async function Page({ params }: Props) {
   const coverageItems = rotateItems(MW_COVERAGE_ITEMS, variantRank).slice(0, 4);
   const reportSteps = rotateItems(MW_REPORT_STEPS, variantRank).slice(0, 4);
   const comparisonStates = rotateItems(nearbyStates, variantRank);
-  const benchmarkStates = benchmarkStatesFor(s);
+  // Only link to states that are actually published; the rest 404.
+  const benchmarkStates = benchmarkStatesFor(s).filter(isIndexableUsState);
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -361,12 +364,13 @@ export default async function Page({ params }: Props) {
           </ul>
         </section>
 
+        {benchmarkStates.length > 0 && (
         <section className="mb-8">
           <h2 className="mb-3 text-xl font-bold text-ink">Cross-state wage benchmark</h2>
           <p className="mb-4 text-sm leading-relaxed text-ink-soft">
             Multi-state employers often copy payroll settings from one jurisdiction to another.
-            Use this benchmark to compare {s.name}&apos;s {s.minimumWage} rate with the full state
-            dataset before relying on a shared payroll template.
+            Use this benchmark to compare {s.name}&apos;s {s.minimumWage} rate with other reviewed
+            states before relying on a shared payroll template.
           </p>
           <div className="overflow-x-auto rounded-xl border border-surface-line">
             <table className="w-full min-w-[34rem] text-left text-sm">
@@ -398,6 +402,7 @@ export default async function Page({ params }: Props) {
             </table>
           </div>
         </section>
+        )}
 
         {/* Who is covered */}
         <section className="mb-8">

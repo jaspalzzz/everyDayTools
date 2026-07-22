@@ -75,7 +75,6 @@ export default function OntarioTerminationSeveranceGuide() {
         },
       ]}
       relatedLinks={[
-        { label: "Ontario province employment hub", href: "/ca/provinces/ontario" },
         { label: "French notice information", href: "/fr/ca/preavis" },
       ]}
       faqs={faqs}

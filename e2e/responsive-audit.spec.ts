@@ -7,6 +7,7 @@ import { FAQS } from "../data/faqs";
 import { GUIDES } from "../data/guides";
 import { TOOLS } from "../data/tools";
 import { US_STATES } from "../data/usStates";
+import { isIndexableAuState, isIndexableCaProvince, isIndexableUsState } from "../lib/contentQuality";
 
 const STATIC_ROUTES = [
   "/",
@@ -50,17 +51,15 @@ const ROUTES = Array.from(new Set([
   ...BLOG_POSTS.map((post) => `/blog/${post.slug}`),
   ...FAQS.slice(0, 15).map((faq) => `/faq/${faq.slug}`),
   ...COMPARISONS.map((comparison) => `/compare/${comparison.slug}`),
-  ...AU_STATES.map((state) => `/au/states/${state.slug}`),
-  ...CA_PROVINCES.map((province) => `/ca/provinces/${province.slug}`),
-  ...US_STATES
-    .filter((state) => ["california", "new-york", "texas", "florida", "illinois"].includes(state.slug))
-    .map((state) => `/us/states/${state.slug}`),
-  ...US_STATES
-    .filter((state) => ["california", "new-york", "texas", "florida", "illinois"].includes(state.slug))
-    .map((state) => `/us/states/${state.slug}/final-paycheck`),
-  ...US_STATES
-    .filter((state) => ["california", "new-york", "texas", "florida", "illinois"].includes(state.slug))
-    .map((state) => `/us/states/${state.slug}/minimum-wage`),
+  // Only gate-passing jurisdiction records are emitted; the rest 404. Audit
+  // whichever qualify (currently none) so this stays correct as they requalify.
+  ...AU_STATES.filter(isIndexableAuState).map((state) => `/au/states/${state.slug}`),
+  ...CA_PROVINCES.filter(isIndexableCaProvince).map((province) => `/ca/provinces/${province.slug}`),
+  ...US_STATES.filter(isIndexableUsState).flatMap((state) => [
+    `/us/states/${state.slug}`,
+    `/us/states/${state.slug}/final-paycheck`,
+    `/us/states/${state.slug}/minimum-wage`,
+  ]),
 ])).sort();
 
 const VIEWPORTS = [

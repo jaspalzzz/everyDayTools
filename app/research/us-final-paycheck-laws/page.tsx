@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { US_STATES } from "@/data/usStates";
+import { isIndexableUsState } from "@/lib/contentQuality";
 import { SITE, jsonLd } from "@/lib/seo";
 
 const url = `${SITE.url}/research/us-final-paycheck-laws`;
@@ -107,7 +108,11 @@ export default function UsFinalPaycheckDatasetPage() {
               {US_STATES.map((state) => (
                 <tr key={state.code} className="border-t border-surface-line align-top">
                   <th scope="row" className="px-4 py-3 font-bold text-ink">
-                    <Link href={`/us/states/${state.slug}/final-paycheck`} className="text-brand-700 hover:underline">{state.name}</Link>
+                    {isIndexableUsState(state) ? (
+                      <Link href={`/us/states/${state.slug}/final-paycheck`} className="text-brand-700 hover:underline">{state.name}</Link>
+                    ) : (
+                      state.name
+                    )}
                   </th>
                   <td className="px-4 py-3 text-ink-soft">{state.finalPaycheckTerminated}</td>
                   <td className="px-4 py-3 text-ink-soft">{state.finalPaycheckResigned}</td>

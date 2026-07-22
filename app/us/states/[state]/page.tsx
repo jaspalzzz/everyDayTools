@@ -4,14 +4,19 @@ import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState, getNearbyStates, type UsStateWithPto } from "@/data/usStates";
 import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
-import { statePageRobots } from "@/lib/contentQuality";
+import { isIndexableUsState, statePageRobots } from "@/lib/contentQuality";
 import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
 type Props = { params: Promise<{ state: string }> };
 
 export async function generateStaticParams() {
-  return US_STATES.map((s) => ({ state: s.slug }));
+  // Only manually reviewed, current-year state records are emitted as pages.
+  // Template-varied records stay out of the build entirely (they 404 in the
+  // static export) so neither Search nor an AdSense reviewer can reach thin,
+  // programmatically generated content. A record becomes eligible again the
+  // moment it passes the shared quality gate — see lib/contentQuality.ts.
+  return US_STATES.filter(isIndexableUsState).map((s) => ({ state: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -157,7 +162,7 @@ function generateFaqs(s: UsStateWithPto): FaqItem[] {
       answer: pickVariantByPosition(globalRank, FINAL_PAYCHECK_ANSWERS)(s),
     },
     {
-      question: `What is the minimum wage in ${s.name} in 2025?`,
+      question: `What is the minimum wage in ${s.name} in 2026?`,
       answer: pickVariantByPosition(globalRank, MIN_WAGE_ANSWERS)(s),
     },
     {
@@ -176,13 +181,13 @@ function generateFaqs(s: UsStateWithPto): FaqItem[] {
 export default async function StatePage({ params }: Props) {
   const { state: slug } = await params;
   const s = getUsState(slug);
-  if (!s) notFound();
+  if (!s || !isIndexableUsState(s)) notFound();
 
   const url = `${SITE.url}/us/states/${s.slug}`;
   const rule = RULE_CONFIG[s.pto.rule];
   const faqs = generateFaqs(s);
   const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
-  const nearbyStates = getNearbyStates(s.slug);
+  const nearbyStates = getNearbyStates(s.slug).filter(isIndexableUsState);
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -238,7 +243,7 @@ export default async function StatePage({ params }: Props) {
           </h1>
           <p className="mt-3 text-sm leading-relaxed text-ink-soft">
             Everything you need to know about {s.name}&apos;s PTO payout rules, final paycheck
-            deadlines, and minimum wage — accurate to 2025 state legislation.
+            deadlines, and minimum wage — accurate to 2026 state legislation.
           </p>
         </div>
 
@@ -269,7 +274,7 @@ export default async function StatePage({ params }: Props) {
           </h2>
           <div className="grid gap-3 sm:grid-cols-3">
             <StatCard
-              label="Minimum wage (2025)"
+              label="Minimum wage (2026)"
               value={s.minimumWage}
               note={s.minimumWageNote}
             />

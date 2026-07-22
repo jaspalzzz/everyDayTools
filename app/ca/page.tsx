@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TOOLS } from "@/data/tools";
 import { CA_PROVINCES } from "@/data/caProvinces";
+import { isIndexableCaProvince } from "@/lib/contentQuality";
 import { SITE, jsonLd } from "@/lib/seo";
 import { CountryPage } from "@/components/country/CountryPage";
 import type { CountryTool } from "@/components/country/CountryPage";
@@ -41,7 +42,10 @@ const CA_TOOLS: CountryTool[] = TOOLS.filter((t) => t.region.includes("CA")).map
 }));
 
 function CAProvincesGrid() {
-  const provinces = Array.isArray(CA_PROVINCES) ? CA_PROVINCES : [];
+  // Only provinces with a manually reviewed, sourced page are linked. Until a
+  // province clears that gate its page 404s, so it must not appear here. When
+  // none qualify, the section is omitted entirely rather than showing dead links.
+  const provinces = CA_PROVINCES.filter(isIndexableCaProvince);
   if (provinces.length === 0) return null;
   return (
     <section aria-labelledby="ca-provinces-heading">
@@ -52,7 +56,7 @@ function CAProvincesGrid() {
         Employment standards, minimum wage and notice rules by province and territory
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-        {provinces.map((p: { slug: string; name: string; code: string }) => (
+        {provinces.map((p) => (
           <Link
             key={p.slug}
             href={`/ca/provinces/${p.slug}`}
