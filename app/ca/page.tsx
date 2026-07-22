@@ -42,9 +42,11 @@ const CA_TOOLS: CountryTool[] = TOOLS.filter((t) => t.region.includes("CA")).map
 }));
 
 function CAProvincesGrid() {
-  // Only provinces with a manually reviewed, sourced page are linked. Until a
-  // province clears that gate its page 404s, so it must not appear here. When
-  // none qualify, the section is omitted entirely rather than showing dead links.
+  // Only provinces with a manually reviewed, sourced page are linked. When none
+  // qualify, the section is omitted rather than showing dead links.
+  // MAINTENANCE: the /ca/provinces/[province] route is currently deleted; restore
+  // app/ca/provinces/[province]/page.tsx before curating a province, or a
+  // qualifying record links here to a 404.
   const provinces = CA_PROVINCES.filter(isIndexableCaProvince);
   if (provinces.length === 0) return null;
   return (

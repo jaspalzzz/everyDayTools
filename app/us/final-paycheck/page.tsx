@@ -73,12 +73,12 @@ export default function USFinalPaycheckHub() {
 
         {US_STATES.some(isIndexableUsState) && (
           <section className="mb-10" aria-labelledby="state-list-heading">
-            <h2 id="state-list-heading" className="mb-4 text-xl font-bold text-ink">State final paycheck pages</h2>
+            <h2 id="state-list-heading" className="mb-4 text-xl font-bold text-ink">State pay-rights pages</h2>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
               {US_STATES.filter(isIndexableUsState).map((state) => (
                 <Link
                   key={state.slug}
-                  href={`/us/states/${state.slug}/final-paycheck`}
+                  href={`/us/states/${state.slug}`}
                   className="rounded-lg border border-surface-line bg-white px-3 py-2 text-sm font-medium text-ink hover:bg-surface-muted"
                 >
                   {state.name}

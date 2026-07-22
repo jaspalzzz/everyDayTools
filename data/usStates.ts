@@ -669,8 +669,8 @@ const RAW: UsStateData[] = [
     name: "Wyoming",
     minimumWage: "$7.25/hr (federal minimum)",
     minimumWageNote: "State minimum is $5.15/hr, but federal minimum of $7.25 applies to most employers",
-    finalPaycheckTerminated: "Within 5 business days",
-    finalPaycheckResigned: "Within 5 business days",
+    finalPaycheckTerminated: "Next regular payday",
+    finalPaycheckResigned: "Next regular payday",
     dolUrl: "https://wyomingworkforce.org/businesses/labor-standards/",
     verifiedYear: 2026,
     localContext:

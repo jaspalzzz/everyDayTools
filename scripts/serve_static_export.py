@@ -11,8 +11,9 @@ OUT_DIR = ROOT / "out"
 
 
 class StaticExportHandler(SimpleHTTPRequestHandler):
-    def translate_path(self, request_path):
-        parsed = urlparse(request_path)
+    def _resolve_existing(self):
+        """Return the on-disk file for the request, or None if it does not exist."""
+        parsed = urlparse(self.path)
         decoded = unquote(parsed.path).rstrip("/") or "/"
         relative = "index.html" if decoded == "/" else decoded.lstrip("/")
 
@@ -22,13 +23,34 @@ class StaticExportHandler(SimpleHTTPRequestHandler):
             OUT_DIR / relative / "index.html",
         ]
 
+        out_root = OUT_DIR.resolve()
         for candidate in candidates:
             resolved = candidate.resolve()
-            if OUT_DIR.resolve() in resolved.parents or resolved == OUT_DIR.resolve():
-                if resolved.is_file():
-                    return str(resolved)
+            if (out_root in resolved.parents or resolved == out_root) and resolved.is_file():
+                return resolved
+        return None
 
-        return str(OUT_DIR / "404.html")
+    def translate_path(self, request_path):
+        resolved = self._resolve_existing()
+        return str(resolved) if resolved else str(OUT_DIR / "404.html")
+
+    def send_head(self):
+        # A missing path must return a real HTTP 404 (serving 404.html with a 200
+        # status is a soft-404). This mirrors the production static host, so the
+        # "gated routes 404" e2e assertions hold under this server too.
+        if self._resolve_existing() is None:
+            fallback = OUT_DIR / "404.html"
+            try:
+                stream = open(fallback, "rb")
+            except OSError:
+                self.send_error(404, "Not Found")
+                return None
+            self.send_response(404)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(os.fstat(stream.fileno()).st_size))
+            self.end_headers()
+            return stream
+        return super().send_head()
 
     def log_message(self, format, *args):
         if os.environ.get("STATIC_EXPORT_LOGS") == "1":

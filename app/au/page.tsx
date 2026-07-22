@@ -42,9 +42,11 @@ const AU_TOOLS: CountryTool[] = TOOLS.filter((t) => t.region.includes("AU")).map
 }));
 
 function AUStatesGrid() {
-  // Only states with a manually reviewed, sourced page are linked. Until a
-  // state clears that gate its page 404s, so it must not appear here. When none
-  // qualify, the section is omitted entirely rather than showing dead links.
+  // Only states with a manually reviewed, sourced page are linked. When none
+  // qualify, the section is omitted rather than showing dead links.
+  // MAINTENANCE: the /au/states/[state] route is currently deleted; restore
+  // app/au/states/[state]/page.tsx before curating a state, or a qualifying
+  // record links here to a 404.
   const states = AU_STATES.filter(isIndexableAuState);
   if (states.length === 0) return null;
   return (

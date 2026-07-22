@@ -52,13 +52,10 @@ export const PRODUCTION_ROUTES = Array.from(new Set([
   ...FAQS.map((faq) => `/faq/${faq.slug}`),
   ...COMPARISONS.map((comparison) => `/compare/${comparison.slug}`),
   // Only gate-passing jurisdiction records are emitted; the rest 404 and must
-  // not be asserted as live routes. See lib/contentQuality.ts.
+  // not be asserted as live routes. Only the state hub is published — the
+  // minimum-wage/final-paycheck/pto-payout child routes were removed. See
+  // lib/contentQuality.ts.
   ...AU_STATES.filter(isIndexableAuState).map((state) => `/au/states/${state.slug}`),
   ...CA_PROVINCES.filter(isIndexableCaProvince).map((province) => `/ca/provinces/${province.slug}`),
-  ...US_STATES.filter(isIndexableUsState).flatMap((state) => [
-    `/us/states/${state.slug}`,
-    `/us/states/${state.slug}/final-paycheck`,
-    `/us/states/${state.slug}/minimum-wage`,
-    `/us/states/${state.slug}/pto-payout`,
-  ]),
+  ...US_STATES.filter(isIndexableUsState).map((state) => `/us/states/${state.slug}`),
 ])).sort();

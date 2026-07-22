@@ -51,15 +51,11 @@ const ROUTES = Array.from(new Set([
   ...BLOG_POSTS.map((post) => `/blog/${post.slug}`),
   ...FAQS.slice(0, 15).map((faq) => `/faq/${faq.slug}`),
   ...COMPARISONS.map((comparison) => `/compare/${comparison.slug}`),
-  // Only gate-passing jurisdiction records are emitted; the rest 404. Audit
-  // whichever qualify (currently none) so this stays correct as they requalify.
+  // Only gate-passing jurisdiction records are emitted; the rest 404. Only the
+  // state hub is published (child routes removed). Audit whichever qualify.
   ...AU_STATES.filter(isIndexableAuState).map((state) => `/au/states/${state.slug}`),
   ...CA_PROVINCES.filter(isIndexableCaProvince).map((province) => `/ca/provinces/${province.slug}`),
-  ...US_STATES.filter(isIndexableUsState).flatMap((state) => [
-    `/us/states/${state.slug}`,
-    `/us/states/${state.slug}/final-paycheck`,
-    `/us/states/${state.slug}/minimum-wage`,
-  ]),
+  ...US_STATES.filter(isIndexableUsState).map((state) => `/us/states/${state.slug}`),
 ])).sort();
 
 const VIEWPORTS = [

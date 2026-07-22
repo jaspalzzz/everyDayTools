@@ -4,18 +4,6 @@ import {
   generateMetadata as stateHubMetadata,
   generateStaticParams as stateHubParams,
 } from "@/app/us/states/[state]/page";
-import {
-  generateMetadata as finalPayMetadata,
-  generateStaticParams as finalPayParams,
-} from "@/app/us/states/[state]/final-paycheck/page";
-import {
-  generateMetadata as minimumWageMetadata,
-  generateStaticParams as minimumWageParams,
-} from "@/app/us/states/[state]/minimum-wage/page";
-import {
-  generateMetadata as ptoPayoutMetadata,
-  generateStaticParams as ptoPayoutParams,
-} from "@/app/us/states/[state]/pto-payout/page";
 import { US_STATES, getUsState } from "@/data/usStates";
 import { CA_PROVINCES, getCaProvince } from "@/data/caProvinces";
 import { AU_STATES, getAuState } from "@/data/auStates";
@@ -45,49 +33,42 @@ describe("AdSense and Search content-quality gate", () => {
     expect(isIndexableUsState(california)).toBe(false);
   });
 
-  it("only builds US state pages that pass the quality gate (rest 404)", async () => {
-    // The static export emits a page only for params returned here. Gated,
-    // template-varied records must be absent from the build so neither Search
-    // nor an AdSense reviewer can reach thin, programmatically generated pages.
+  it("only builds the curated state hubs (child routes removed, rest 404)", async () => {
+    // The static export emits a page only for params returned here. Only the
+    // state *hub* is published; the minimum-wage/final-paycheck/pto-payout child
+    // routes were removed because they rendered mostly template variants without
+    // the hub's sourced local analysis.
     const indexable = US_STATES.filter(isIndexableUsState).map((s) => s.slug).sort();
     // The three manually curated, source-reviewed states are the qualifying set.
     expect(indexable).toEqual(["kansas", "mississippi", "wyoming"]);
 
-    for (const params of [stateHubParams, finalPayParams, minimumWageParams, ptoPayoutParams]) {
-      const emitted = (await params()).map((p) => p.state).sort();
-      expect(emitted).toEqual(indexable);
-      expect(emitted.every((slug) => isIndexableUsState(getUsState(slug)!))).toBe(true);
-    }
+    const emitted = (await stateHubParams()).map((p) => p.state).sort();
+    expect(emitted).toEqual(indexable);
+    expect(emitted.every((slug) => isIndexableUsState(getUsState(slug)!))).toBe(true);
   });
 
-  it("keeps every unqualified state route family out of the sitemap", () => {
+  it("publishes only the curated state hub URL, never a child route", () => {
     const urls = new Set(sitemap().map((entry) => entry.url));
 
     for (const state of US_STATES) {
-      const present = isIndexableUsState(state);
-      for (const suffix of ["", "/final-paycheck", "/minimum-wage", "/pto-payout"]) {
+      // Hub is in the sitemap iff the record passes the gate.
+      expect(urls.has(`${SITE.url}/us/states/${state.slug}`), state.slug)
+        .toBe(isIndexableUsState(state));
+      // Child routes no longer exist, so they must never appear for any state.
+      for (const suffix of ["/final-paycheck", "/minimum-wage", "/pto-payout"]) {
         expect(urls.has(`${SITE.url}/us/states/${state.slug}${suffix}`), `${state.slug}${suffix}`)
-          .toBe(present);
+          .toBe(false);
       }
     }
   });
 
-  it("emits noindex,follow on every unqualified state page template", async () => {
-    const params = Promise.resolve({ state: "connecticut" });
-    const metadata = await Promise.all([
-      stateHubMetadata({ params }),
-      finalPayMetadata({ params }),
-      minimumWageMetadata({ params }),
-      ptoPayoutMetadata({ params }),
-    ]);
-
-    for (const value of metadata) {
-      expect(value.robots).toMatchObject({
-        index: false,
-        follow: true,
-        googleBot: { index: false, follow: true },
-      });
-    }
+  it("emits noindex,follow on an unqualified state hub", async () => {
+    const metadata = await stateHubMetadata({ params: Promise.resolve({ state: "connecticut" }) });
+    expect(metadata.robots).toMatchObject({
+      index: false,
+      follow: true,
+      googleBot: { index: false, follow: true },
+    });
   });
 
   it("indexes a current, sourced, substantively curated record", () => {

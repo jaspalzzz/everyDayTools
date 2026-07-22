@@ -82,9 +82,11 @@ describe("Tier 3 SEO remediation contracts", () => {
       expect(state.stateSpecificDetail?.body.split(/\s+/).length).toBeGreaterThan(80);
       expect(state.stateSpecificDetail?.sourceUrl).toMatch(/^https:\/\//);
       expect(state.stateSpecificDetail?.sourceReviewed).toBe("17 July 2026");
-      for (const path of ["", "/final-paycheck", "/minimum-wage", "/pto-payout"]) {
+      // Only the sourced hub is published; child routes were removed.
+      expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/${slug}`), slug).toBeDefined();
+      for (const path of ["/final-paycheck", "/minimum-wage", "/pto-payout"]) {
         expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/${slug}${path}`), `${slug}${path}`)
-          .toBeDefined();
+          .toBeUndefined();
       }
     }
     // A thin, template-varied state stays out of every route family.

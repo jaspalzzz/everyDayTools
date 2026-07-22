@@ -37,34 +37,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // State pages remain browsable from /us, but only manually curated,
   // current-year records belong in search inventory. Template wording
   // variation alone is not a sufficient quality signal for AdSense or Search.
+  // Only the curated state *hub* is published. The minimum-wage / final-paycheck
+  // / pto-payout child routes were removed because they rendered mostly template
+  // variants without the hub's sourced local analysis; a child route may return
+  // only once it has its own separately sourced, route-specific content.
   const stateEntries: MetadataRoute.Sitemap = US_STATES
     .filter(isIndexableUsState)
-    .flatMap((s) => {
-      // Reflects the actual last edit to this state's page content where known
-      // (e.g. a state that got a genuinely new localContext paragraph), rather
-      // than a single blanket date shared across all 51 states regardless of
-      // whether anything about that specific page actually changed.
-      const lastModified = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
-      return [
-        {
-          url: `${SITE.url}/us/states/${s.slug}`,
-          lastModified,
-        },
-        {
-          url: `${SITE.url}/us/states/${s.slug}/final-paycheck`,
-          lastModified,
-        },
-        {
-          url: `${SITE.url}/us/states/${s.slug}/minimum-wage`,
-          lastModified,
-        },
-        {
-          url: `${SITE.url}/us/states/${s.slug}/pto-payout`,
-          lastModified,
-        },
-      ];
-    });
+    .map((s) => ({
+      url: `${SITE.url}/us/states/${s.slug}`,
+      lastModified: s.lastContentUpdate ?? `${s.verifiedYear}-01-01`,
+    }));
 
+  // MAINTENANCE: the /ca/provinces/[province] route was deleted (no province is
+  // curated yet). This filter yields nothing today, but if you curate a province
+  // so it passes isIndexableCaProvince, you MUST first restore the route file
+  // (app/ca/provinces/[province]/page.tsx) or this emits a sitemap URL that 404s.
+  // The contentQuality test asserts every province is currently non-indexable,
+  // so it fails loudly the moment one qualifies without the route.
   const provinceEntries: MetadataRoute.Sitemap = CA_PROVINCES
     .filter(isIndexableCaProvince)
     .map((p) => ({
@@ -77,6 +66,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: f.dateModified,
   }));
 
+  // MAINTENANCE: the /au/states/[state] route was deleted (no state is curated
+  // yet). Same contract as provinceEntries above — restore the route file
+  // (app/au/states/[state]/page.tsx) before any state can pass isIndexableAuState,
+  // or this emits a sitemap URL that 404s.
   const auStateEntries: MetadataRoute.Sitemap = AU_STATES
     .filter(isIndexableAuState)
     .map((s) => ({

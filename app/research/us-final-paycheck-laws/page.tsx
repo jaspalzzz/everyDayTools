@@ -109,7 +109,7 @@ export default function UsFinalPaycheckDatasetPage() {
                 <tr key={state.code} className="border-t border-surface-line align-top">
                   <th scope="row" className="px-4 py-3 font-bold text-ink">
                     {isIndexableUsState(state) ? (
-                      <Link href={`/us/states/${state.slug}/final-paycheck`} className="text-brand-700 hover:underline">{state.name}</Link>
+                      <Link href={`/us/states/${state.slug}`} className="text-brand-700 hover:underline">{state.name}</Link>
                     ) : (
                       state.name
                     )}
