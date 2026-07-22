@@ -8,6 +8,11 @@ import { COMPARISONS } from "@/data/comparisons";
 import { FAQS } from "@/data/faqs";
 import { BLOG_POSTS } from "@/data/blogPosts";
 import { SITE } from "@/lib/seo";
+import {
+  isIndexableAuState,
+  isIndexableCaProvince,
+  isIndexableUsState,
+} from "@/lib/contentQuality";
 
 // Generated once at build time for the static export.
 export const dynamic = "force-static";
@@ -29,46 +34,55 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: RATES_UPDATED,
   }));
 
-  const stateEntries: MetadataRoute.Sitemap = US_STATES.flatMap((s) => {
-    // Reflects the actual last edit to this state's page content where known
-    // (e.g. a state that got a genuinely new localContext paragraph), rather
-    // than a single blanket date shared across all 51 states regardless of
-    // whether anything about that specific page actually changed.
-    const lastModified = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
-    return [
-      {
-        url: `${SITE.url}/us/states/${s.slug}`,
-        lastModified,
-      },
-      {
-        url: `${SITE.url}/us/states/${s.slug}/final-paycheck`,
-        lastModified,
-      },
-      {
-        url: `${SITE.url}/us/states/${s.slug}/minimum-wage`,
-        lastModified,
-      },
-      {
-        url: `${SITE.url}/us/states/${s.slug}/pto-payout`,
-        lastModified,
-      },
-    ];
-  });
+  // State pages remain browsable from /us, but only manually curated,
+  // current-year records belong in search inventory. Template wording
+  // variation alone is not a sufficient quality signal for AdSense or Search.
+  const stateEntries: MetadataRoute.Sitemap = US_STATES
+    .filter(isIndexableUsState)
+    .flatMap((s) => {
+      // Reflects the actual last edit to this state's page content where known
+      // (e.g. a state that got a genuinely new localContext paragraph), rather
+      // than a single blanket date shared across all 51 states regardless of
+      // whether anything about that specific page actually changed.
+      const lastModified = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
+      return [
+        {
+          url: `${SITE.url}/us/states/${s.slug}`,
+          lastModified,
+        },
+        {
+          url: `${SITE.url}/us/states/${s.slug}/final-paycheck`,
+          lastModified,
+        },
+        {
+          url: `${SITE.url}/us/states/${s.slug}/minimum-wage`,
+          lastModified,
+        },
+        {
+          url: `${SITE.url}/us/states/${s.slug}/pto-payout`,
+          lastModified,
+        },
+      ];
+    });
 
-  const provinceEntries: MetadataRoute.Sitemap = CA_PROVINCES.map((p) => ({
-    url: `${SITE.url}/ca/provinces/${p.slug}`,
-    lastModified: p.lastContentUpdate ?? `${p.verifiedYear}-01-01`,
-  }));
+  const provinceEntries: MetadataRoute.Sitemap = CA_PROVINCES
+    .filter(isIndexableCaProvince)
+    .map((p) => ({
+      url: `${SITE.url}/ca/provinces/${p.slug}`,
+      lastModified: p.lastContentUpdate ?? `${p.verifiedYear}-01-01`,
+    }));
 
   const faqEntries: MetadataRoute.Sitemap = FAQS.map((f) => ({
     url: `${SITE.url}/faq/${f.slug}`,
     lastModified: f.dateModified,
   }));
 
-  const auStateEntries: MetadataRoute.Sitemap = AU_STATES.map((s) => ({
-    url: `${SITE.url}/au/states/${s.slug}`,
-    lastModified: s.lastContentUpdate ?? `${s.verifiedYear}-01-01`,
-  }));
+  const auStateEntries: MetadataRoute.Sitemap = AU_STATES
+    .filter(isIndexableAuState)
+    .map((s) => ({
+      url: `${SITE.url}/au/states/${s.slug}`,
+      lastModified: s.lastContentUpdate ?? `${s.verifiedYear}-01-01`,
+    }));
 
   const blogEntries: MetadataRoute.Sitemap = BLOG_POSTS.map((p) => ({
     url: `${SITE.url}/blog/${p.slug}`,
@@ -111,7 +125,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/updates`, lastModified: "2026-07-12" },
     { url: `${SITE.url}/about`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/contact`, lastModified: RATES_UPDATED },
-    { url: `${SITE.url}/privacy`, lastModified: RATES_UPDATED },
+    { url: `${SITE.url}/privacy`, lastModified: "2026-07-22" },
     { url: `${SITE.url}/terms`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/disclaimer`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/press`, lastModified: RATES_UPDATED },

@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { ADSENSE_RUNTIME_ENABLED } from "@/lib/adsense";
 
 export const ANALYTICS_CONSENT_KEY = "mpr_cookie_consent";
 
 type ConsentValue = "accepted" | "rejected";
 
 export function hasAnalyticsConsent() {
-  if (typeof window === "undefined") return false;
+  if (typeof window === "undefined" || ADSENSE_RUNTIME_ENABLED) return false;
   return window.localStorage.getItem(ANALYTICS_CONSENT_KEY) === "accepted";
 }
 
@@ -23,6 +24,7 @@ export function ConsentBanner() {
   const [choice, setChoice] = useState<ConsentValue | null>(null);
 
   useEffect(() => {
+    if (ADSENSE_RUNTIME_ENABLED) return;
     const stored = window.localStorage.getItem(ANALYTICS_CONSENT_KEY);
     if (stored === "accepted" || stored === "rejected") setChoice(stored);
 
@@ -36,7 +38,7 @@ export function ConsentBanner() {
   // the viewport on first paint (e.g. the homepage hero's search widget).
   // Reserve matching space on <body> only while the banner is actually shown.
   useEffect(() => {
-    if (choice) return;
+    if (ADSENSE_RUNTIME_ENABLED || choice) return;
     document.body.classList.add("has-consent-banner");
     return () => document.body.classList.remove("has-consent-banner");
   }, [choice]);
@@ -47,7 +49,7 @@ export function ConsentBanner() {
     window.dispatchEvent(new CustomEvent("mpr-consent-change", { detail: value }));
   };
 
-  if (choice) return null;
+  if (ADSENSE_RUNTIME_ENABLED || choice) return null;
 
   return (
     <section

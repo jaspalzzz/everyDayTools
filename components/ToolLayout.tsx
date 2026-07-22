@@ -209,8 +209,6 @@ export function ToolLayout({
         )}
 
         {/* Ad slot 1 — below tool */}
-        <AdSlot slot="2957844781" format="rectangle" className="my-8 max-w-sm" />
-
         {showExitKit && (
           <section
             aria-labelledby="next-steps-heading"

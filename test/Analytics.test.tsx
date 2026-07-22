@@ -16,9 +16,11 @@ import { cleanup, render } from "@testing-library/react";
 const CONSENT_KEY = "mpr_cookie_consent";
 const GA_SELECTOR = 'script[src*="googletagmanager"]';
 
-async function loadAnalytics(gaId: string) {
+async function loadAnalytics(gaId: string, adsenseReady = false, cmpReady = false) {
   vi.resetModules();
   vi.stubEnv("NEXT_PUBLIC_GA_ID", gaId);
+  vi.stubEnv("NEXT_PUBLIC_ADSENSE_READY", adsenseReady ? "true" : "");
+  vi.stubEnv("NEXT_PUBLIC_ADSENSE_CMP_READY", cmpReady ? "true" : "");
   const mod = await import("@/components/Analytics");
   return mod.Analytics;
 }
@@ -66,6 +68,13 @@ describe("Analytics consent + configuration gate", () => {
   it("does not add GA on a fresh mount after consent was revoked", async () => {
     window.localStorage.setItem(CONSENT_KEY, "rejected");
     const Analytics = await loadAnalytics("G-TEST123");
+    render(<Analytics />);
+    expect(document.querySelector(GA_SELECTOR)).toBeNull();
+  });
+
+  it("stays disabled when the certified advertising CMP is active", async () => {
+    window.localStorage.setItem(CONSENT_KEY, "accepted");
+    const Analytics = await loadAnalytics("G-TEST123", true, true);
     render(<Analytics />);
     expect(document.querySelector(GA_SELECTOR)).toBeNull();
   });

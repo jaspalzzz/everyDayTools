@@ -6,6 +6,7 @@ import { AU_STATES, getAuState, type AuStateData } from "@/data/auStates";
 import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
 import type { FaqItem } from "@/lib/types";
+import { isIndexableAuState, jurisdictionPageRobots } from "@/lib/contentQuality";
 
 type Props = { params: Promise<{ state: string }> };
 
@@ -124,6 +125,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description: clampMetaDescription(description),
+    robots: jurisdictionPageRobots(isIndexableAuState(s)),
     alternates: { canonical: url },
     openGraph: { title, description: clampMetaDescription(description), url },
   };
@@ -165,7 +167,7 @@ export default async function Page({ params }: Props) {
 
   const url = `${SITE.url}/au/states/${s.slug}`;
   const faqs = generateFaqs(s);
-  const reviewedDate = `${s.verifiedYear}-01-01`;
+  const reviewedDate = s.lastContentUpdate ?? `${s.verifiedYear}-01-01`;
   const rank = clusterRank(AU_ALL_SLUGS, s.slug);
   const reviewPoints = rotateItems(AU_REVIEW_POINTS, rank).slice(0, 4);
 
@@ -225,6 +227,27 @@ export default async function Page({ params }: Props) {
           sourceLabel={s.lslLegislation}
           className="mb-8"
         />
+
+        {s.editorialDetail && (
+          <section className="mb-8 rounded-xl border border-surface-line bg-white p-5">
+            <h2 className="text-xl font-bold text-ink">{s.editorialDetail.heading}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+              {s.editorialDetail.body}
+            </p>
+            <p className="mt-3 text-xs text-ink-faint">
+              Source: {" "}
+              <a
+                href={s.editorialDetail.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-600 hover:underline"
+              >
+                {s.editorialDetail.sourceLabel}
+              </a>
+              {" · reviewed "}{s.editorialDetail.sourceReviewed}
+            </p>
+          </section>
+        )}
 
         {/* Key stats grid */}
         <section className="mb-8">

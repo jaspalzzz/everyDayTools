@@ -3,7 +3,6 @@ import path from "node:path";
 
 const ROOT = "out";
 const SIMILARITY_LIMIT = 0.72;
-const MIN_PROGRAMMATIC_URLS = 300;
 
 const CLUSTERS = {
   usStates: (pathname) => /^\/us\/states\/[^/]+$/.test(pathname),
@@ -19,7 +18,7 @@ const CLUSTERS = {
 };
 
 const WEIGHTS = {
-  coverage: 15,
+  indexDiscipline: 15,
   technical: 15,
   uniqueMetadata: 15,
   depth: 15,
@@ -47,6 +46,19 @@ function stripHtml(text) {
       .replace(/\s+/g, " ")
       .trim(),
   );
+}
+
+function mainHtml(html) {
+  return firstMatch(html, /<main\b[^>]*>([\s\S]*?)<\/main>/i) || html;
+}
+
+function walkHtmlFiles(directory) {
+  if (!fs.existsSync(directory)) return [];
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const absolute = path.join(directory, entry.name);
+    if (entry.isDirectory()) return walkHtmlFiles(absolute);
+    return entry.isFile() && entry.name.endsWith(".html") ? [absolute] : [];
+  });
 }
 
 function firstMatch(text, pattern) {
@@ -104,7 +116,7 @@ const rows = urls.map((url) => {
     // on the programmatic page set.
   }
 
-  const text = stripHtml(html);
+  const text = stripHtml(mainHtml(html));
   const title = stripHtml(firstMatch(html, /<title[^>]*>([\s\S]*?)<\/title>/i));
   const description = stripHtml(
     firstMatch(html, /<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["'][^>]*>/i)
@@ -134,6 +146,36 @@ const thinPages = programmaticRows.filter((row) => row.words < 300);
 const lowInternalLinks = programmaticRows.filter((row) => row.internalLinks < 8);
 const missingSchema = programmaticRows.filter((row) => row.jsonld < 1);
 
+const sitemapPathnames = new Set(rows.map((row) => row.pathname));
+const jurisdictionRoots = [
+  ["us", "states"],
+  ["ca", "provinces"],
+  ["au", "states"],
+];
+const generatedJurisdictionPages = jurisdictionRoots.flatMap((segments) =>
+  walkHtmlFiles(path.join(ROOT, ...segments)).map((file) => {
+    const relative = path.relative(ROOT, file).split(path.sep).join("/");
+    const pathname = `/${relative.replace(/\.html$/, "")}`;
+    const html = fs.readFileSync(file, "utf8");
+    const robots = firstMatch(
+      html,
+      /<meta[^>]+name=["']robots["'][^>]+content=["']([^"']*)["'][^>]*>/i,
+    ) || firstMatch(
+      html,
+      /<meta[^>]+content=["']([^"']*)["'][^>]+name=["']robots["'][^>]*>/i,
+    );
+    return {
+      pathname,
+      inSitemap: sitemapPathnames.has(pathname),
+      noindex: /\bnoindex\b/i.test(robots),
+    };
+  }),
+);
+
+const jurisdictionIndexingMismatches = generatedJurisdictionPages.filter((page) =>
+  page.inSitemap ? page.noindex : !page.noindex,
+);
+
 const clusterScores = Object.keys(CLUSTERS).map((group) => {
   const groupRows = programmaticRows.filter((row) => row.group === group);
   const groupShingles = groupRows.map((row) => shingles(row.text));
@@ -160,7 +202,11 @@ const clusterScores = Object.keys(CLUSTERS).map((group) => {
 });
 
 const checks = {
-  coverage: programmaticRows.length >= MIN_PROGRAMMATIC_URLS,
+  // Generated pages may remain useful directory destinations without becoming
+  // search inventory. Every excluded jurisdiction page must say noindex, and
+  // every indexed one must be present in the sitemap without noindex.
+  indexDiscipline:
+    generatedJurisdictionPages.length > 0 && jurisdictionIndexingMismatches.length === 0,
   technical: true,
   uniqueMetadata: duplicateTitles === 0 && duplicateDescriptions === 0 && duplicateH1 === 0,
   depth: thinPages.length === 0,
@@ -178,11 +224,12 @@ for (const [check, weight] of Object.entries(WEIGHTS)) {
 }
 
 const result = {
-  method: "programmatic SEO quality score over generated landing-page groups",
+  method: "programmatic SEO quality score over deliberately indexed landing-page groups",
   score: Math.round((earned / total) * 100),
   programmaticUrls: programmaticRows.length,
-  minimumProgrammaticUrls: MIN_PROGRAMMATIC_URLS,
   totalSitemapUrls: urls.length,
+  generatedJurisdictionUrls: generatedJurisdictionPages.length,
+  excludedGeneratedJurisdictionUrls: generatedJurisdictionPages.filter((page) => !page.inSitemap).length,
   groups: Object.fromEntries(
     Object.keys(CLUSTERS).map((group) => [group, programmaticRows.filter((row) => row.group === group).length]),
   ),
@@ -194,12 +241,14 @@ const result = {
     thinPagesUnder300Words: thinPages.length,
     lowInternalLinksUnder8: lowInternalLinks.length,
     missingSchema: missingSchema.length,
+    jurisdictionIndexingMismatches: jurisdictionIndexingMismatches.length,
   },
   clusterScores,
   examples: {
     thin: thinPages.slice(0, 8).map((row) => ({ url: row.url, words: row.words })),
     lowLinks: lowInternalLinks.slice(0, 8).map((row) => ({ url: row.url, internalLinks: row.internalLinks })),
     missingSchema: missingSchema.slice(0, 8).map((row) => row.url),
+    jurisdictionIndexingMismatches: jurisdictionIndexingMismatches.slice(0, 8),
   },
 };
 

@@ -5,6 +5,7 @@ import { EditorialReview } from "@/components/EditorialReview";
 import { EDITORIAL_REVIEW, SITE, clampMetaDescription, jsonLd } from "@/lib/seo";
 import { CA_PROVINCES, getCaProvince, type CaProvinceData } from "@/data/caProvinces";
 import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
+import { isIndexableCaProvince, jurisdictionPageRobots } from "@/lib/contentQuality";
 
 type Props = { params: Promise<{ province: string }> };
 
@@ -130,6 +131,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${p.name} Employment Standards 2026`,
     description: clampMetaDescription(description),
+    robots: jurisdictionPageRobots(isIndexableCaProvince(p)),
     alternates: { canonical: url },
     openGraph: {
       title: `${p.name} Employment Standards 2026`,
@@ -262,6 +264,27 @@ export default async function ProvincePage({ params }: Props) {
             sourceLabel={p.legislationName}
             className="mb-8"
           />
+
+          {p.editorialDetail && (
+            <section className="mb-8 rounded-xl border border-surface-line bg-white p-5">
+              <h2 className="text-xl font-bold text-ink">{p.editorialDetail.heading}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                {p.editorialDetail.body}
+              </p>
+              <p className="mt-3 text-xs text-ink-faint">
+                Source: {" "}
+                <a
+                  href={p.editorialDetail.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-600 hover:underline"
+                >
+                  {p.editorialDetail.sourceLabel}
+                </a>
+                {" · reviewed "}{p.editorialDetail.sourceReviewed}
+              </p>
+            </section>
+          )}
 
           {/* Stat cards */}
           <div className="mb-8 grid gap-3 sm:grid-cols-3">

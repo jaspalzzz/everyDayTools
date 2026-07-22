@@ -114,7 +114,10 @@ off. The runtime script and ad units remain disabled until both
 `NEXT_PUBLIC_ADSENSE_READY=true` (account/site approved) and
 `NEXT_PUBLIC_ADSENSE_CMP_READY=true` (a Google-certified CMP is published for the site). Configure
 Google's European regulations message under AdSense → Privacy & messaging before enabling either
-flag in a production build.
+flag in a production build. When both flags are enabled, the advertising runtime is restricted to
+substantive calculator routes and the separate first-party analytics loader/banner is disabled to
+avoid overlapping consent systems. Keep Auto ads disabled; `ToolLayout` contains the single
+intentional manual placement.
 
 **Edge headers** — `public/_headers` is copied to the output root and applied by Cloudflare Pages:
 security headers (CSP, HSTS, `X-Frame-Options`, `nosniff`) on every route, plus a `Content-Type:
@@ -149,8 +152,9 @@ changes. Key constants to refresh:
 - `NEXT_PUBLIC_ADSENSE_READY=true` confirms that the account and site are approved.
 - `NEXT_PUBLIC_ADSENSE_CMP_READY=true` confirms that a Google-certified consent message is
   published. Both AdSense flags must be true before the runtime script or units render.
-- `NEXT_PUBLIC_GA_ID` (e.g. `G-XXXXXXXXXX`) enables consent-gated Google Analytics 4. Analytics
-  uses the site's separate first-party choice; if unset, no analytics ships.
+- `NEXT_PUBLIC_GA_ID` (e.g. `G-XXXXXXXXXX`) enables consent-gated Google Analytics 4 while AdSense
+  mode is off. When both AdSense/CMP flags are true, the separate analytics path is disabled; if
+  the GA ID is unset, no analytics ships in any mode.
 - `NEXT_PUBLIC_SOCIAL_PROFILES` (comma-separated URLs) populates `Organization.sameAs` in the
   homepage JSON-LD. Empty by default — set it only to genuine brand/social profiles (never a
   placeholder), as an invalid `sameAs` is worse than none.

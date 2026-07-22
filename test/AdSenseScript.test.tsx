@@ -2,6 +2,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { cleanup, render } from "@testing-library/react";
 
+const navigation = vi.hoisted(() => ({ pathname: "/redundancy-pay-calculator" }));
+vi.mock("next/navigation", () => ({ usePathname: () => navigation.pathname }));
+
 /**
  * Regression guard for the AdSense approval + certified-CMP gate. The
  * publisher meta tag and ads.txt remain available for account review, but
@@ -31,6 +34,7 @@ describe("AdSenseScript approval + CMP gate", () => {
     // src, outside RTL's container -- cleanup() alone won't remove them, so
     // each test would otherwise see scripts left over from a previous one.
     document.querySelectorAll('script[src*="adsbygoogle"]').forEach((el) => el.remove());
+    navigation.pathname = "/redundancy-pay-calculator";
   });
 
   it("does not render when AdSense approval has not been confirmed", async () => {
@@ -51,4 +55,13 @@ describe("AdSenseScript approval + CMP gate", () => {
     expect(document.querySelector('script[src*="adsbygoogle"]')).not.toBeNull();
   });
 
+  it("does not load on non-calculator, trust, legal, or generated pages", async () => {
+    const AdSenseScript = await loadAdSenseScript(true, true);
+    for (const pathname of ["/", "/privacy", "/about", "/us/states/california", "/404"]) {
+      navigation.pathname = pathname;
+      const view = render(<AdSenseScript />);
+      expect(document.querySelector('script[src*="adsbygoogle"]'), pathname).toBeNull();
+      view.unmount();
+    }
+  });
 });

@@ -14,7 +14,7 @@ const schema = webPageSchema({
   name: "Privacy Policy",
   description,
   url,
-  dateModified: "2026-07-18",
+  dateModified: "2026-07-22",
 });
 
 export default function PrivacyPage() {
@@ -22,7 +22,7 @@ export default function PrivacyPage() {
     <article className="prose-tool mx-auto max-w-2xl px-5 py-10 text-sm leading-relaxed text-ink-soft">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(schema)} />
       <h1 className="text-2xl font-medium tracking-tight text-ink">Privacy Policy</h1>
-      <p className="mt-2 text-xs text-ink-faint">Last updated: 18 July 2026</p>
+      <p className="mt-2 text-xs text-ink-faint">Last updated: 22 July 2026</p>
 
       <p className="mt-4">
         This page explains how {SITE.name} handles calculator inputs, preference storage,
@@ -65,6 +65,12 @@ export default function PrivacyPage() {
         address, browser and device details, referrer, pages visited and approximate location. We
         do not send calculator input values to analytics.
       </p>
+      <p>
+        When the Google-certified advertising consent message is active, our separate Google
+        Analytics loader and analytics banner are disabled unless and until analytics is integrated
+        into that same consent system. This avoids overlapping privacy prompts or loading analytics
+        from an older locally stored choice before the current advertising choices are resolved.
+      </p>
 
       <h2>4. Advertising</h2>
       <p>
@@ -95,6 +101,15 @@ export default function PrivacyPage() {
           Google&apos;s advertising technologies information
         </a>{" "}
         and{" "}
+        <a
+          href="https://policies.google.com/technologies/partner-sites"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-brand-600 hover:underline"
+        >
+          how Google uses information from sites or apps that use its services
+        </a>
+        , as well as{" "}
         <a
           href="https://policies.google.com/privacy"
           target="_blank"

@@ -20,6 +20,17 @@ export interface CaProvinceData {
    * badge otherwise. Same pattern as UsStateData.lastContentUpdate.
    */
   lastContentUpdate?: string;
+  /**
+   * Manually written province-specific analysis backed by a primary source.
+   * Required by the content-quality gate before this page may be indexed.
+   */
+  editorialDetail?: {
+    heading: string;
+    body: string;
+    sourceLabel: string;
+    sourceUrl: string;
+    sourceReviewed: string;
+  };
 }
 
 export const CA_PROVINCES: CaProvinceData[] = [

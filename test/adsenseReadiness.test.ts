@@ -1,7 +1,11 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { metadata } from "@/app/layout";
-import { ADSENSE_CLIENT, ADSENSE_PUBLISHER_ID } from "@/lib/adsense";
+import {
+  ADSENSE_CLIENT,
+  ADSENSE_PUBLISHER_ID,
+  isAdSenseEligiblePathname,
+} from "@/lib/adsense";
 
 describe("AdSense application readiness", () => {
   it("keeps the publisher identity consistent in metadata and ads.txt", () => {
@@ -33,5 +37,23 @@ describe("AdSense application readiness", () => {
     expect(privacy).toContain("Third-party vendors, including");
     expect(privacy).toContain("prior visits to this site or other");
     expect(privacy).toContain("https://myadcenter.google.com/");
+    expect(privacy).toContain("https://policies.google.com/technologies/partner-sites");
+  });
+
+  it("limits monetisation to calculators and one deliberate manual placement", () => {
+    expect(isAdSenseEligiblePathname("/redundancy-pay-calculator")).toBe(true);
+    expect(isAdSenseEligiblePathname("/redundancy-pay-calculator/")).toBe(true);
+    for (const pathname of ["/", "/privacy", "/about", "/ca/provinces/ontario", "/404"]) {
+      expect(isAdSenseEligiblePathname(pathname), pathname).toBe(false);
+    }
+
+    const toolLayout = readFileSync("components/ToolLayout.tsx", "utf8");
+    expect(toolLayout.match(/<AdSlot\b/g)).toHaveLength(1);
+  });
+
+  it("explicitly allows Google's advertising crawlers", () => {
+    const robots = readFileSync("app/robots.ts", "utf8");
+    expect(robots).toContain('userAgent: "Mediapartners-Google"');
+    expect(robots).toContain('userAgent: "Google-Display-Ads-Bot"');
   });
 });

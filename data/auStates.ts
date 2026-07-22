@@ -46,6 +46,17 @@ export interface AuStateData {
    * than fabricating per-state precision that doesn't exist.
    */
   lastContentUpdate?: string;
+  /**
+   * Manually written state-specific analysis backed by a primary source.
+   * Required by the content-quality gate before this page may be indexed.
+   */
+  editorialDetail?: {
+    heading: string;
+    body: string;
+    sourceLabel: string;
+    sourceUrl: string;
+    sourceReviewed: string;
+  };
 }
 
 export const AU_STATES: AuStateData[] = [

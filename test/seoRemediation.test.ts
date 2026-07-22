@@ -68,7 +68,7 @@ describe("Tier 3 SEO remediation contracts", () => {
     expect(post.dateModified).toBe("2026-07-17");
   });
 
-  it("uses honest state-specific sitemap dates and sourced local enforcement detail", () => {
+  it("keeps state-specific source evidence without publishing incomplete records in the sitemap", () => {
     const entries = sitemap();
     for (const slug of ["kansas", "mississippi", "wyoming"] as const) {
       const state = getUsState(slug)!;
@@ -77,11 +77,10 @@ describe("Tier 3 SEO remediation contracts", () => {
       expect(state.stateSpecificDetail?.body.split(/\s+/).length).toBeGreaterThan(80);
       expect(state.stateSpecificDetail?.sourceUrl).toMatch(/^https:\/\//);
       expect(state.stateSpecificDetail?.sourceReviewed).toBe("17 July 2026");
-      expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/${slug}`)?.lastModified)
-        .toBe(state.lastContentUpdate);
+      expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/${slug}`)).toBeUndefined();
     }
-    expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/california/final-paycheck`)?.lastModified)
-      .toBe("2026-07-09");
+    expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/california/final-paycheck`))
+      .toBeUndefined();
 
     const connecticut = getUsState("connecticut")!;
     expect(connecticut.minimumWage).toBe("$16.94/hr");
@@ -90,8 +89,8 @@ describe("Tier 3 SEO remediation contracts", () => {
     expect(connecticut.verifiedYear).toBe(2026);
     expect(connecticut.lastContentUpdate).toBe("2026-07-18");
     for (const path of ["", "/final-paycheck", "/minimum-wage", "/pto-payout"]) {
-      expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/connecticut${path}`)?.lastModified)
-        .toBe("2026-07-18");
+      expect(entries.find((entry) => entry.url === `${SITE.url}/us/states/connecticut${path}`))
+        .toBeUndefined();
     }
 
     expect(entries.find((entry) => entry.url === SITE.url)?.lastModified).toBe("2026-07-18");

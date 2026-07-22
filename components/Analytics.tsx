@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { hasAnalyticsConsent } from "./ConsentBanner";
+import { ADSENSE_RUNTIME_ENABLED } from "@/lib/adsense";
 
 /**
  * Consent-gated Google Analytics 4.
  *
  * The GA loader is injected only after the visitor accepts optional analytics
- * through the site's own banner. Advertising consent is handled separately by
- * a Google-certified CMP when AdSense is enabled.
+ * through the site's own banner. When the Google-certified advertising CMP is
+ * active, this separate analytics path is disabled entirely so an older local
+ * choice cannot bypass the current consent flow or create two consent prompts.
  *
  * Inert until NEXT_PUBLIC_GA_ID is set, so a build without a measurement ID
  * ships nothing. Unlike AdSense (a single external script), GA needs an init
@@ -29,7 +31,7 @@ export function Analytics() {
   const [allowed, setAllowed] = useState(false);
 
   useEffect(() => {
-    if (!GA_ID) return;
+    if (!GA_ID || ADSENSE_RUNTIME_ENABLED) return;
     const sync = () => setAllowed(hasAnalyticsConsent());
     sync();
     window.addEventListener("mpr-consent-change", sync);
@@ -37,7 +39,7 @@ export function Analytics() {
   }, []);
 
   useEffect(() => {
-    if (!GA_ID || !allowed) return;
+    if (!GA_ID || ADSENSE_RUNTIME_ENABLED || !allowed) return;
     window.dataLayer = window.dataLayer || [];
     window.gtag = function gtag() {
       // GA expects the raw arguments object pushed onto the dataLayer queue.
@@ -48,7 +50,7 @@ export function Analytics() {
     window.gtag("config", GA_ID, { anonymize_ip: true });
   }, [allowed]);
 
-  if (!GA_ID || !allowed) return null;
+  if (!GA_ID || ADSENSE_RUNTIME_ENABLED || !allowed) return null;
 
   return <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />;
 }

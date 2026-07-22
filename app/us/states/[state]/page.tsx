@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { EditorialReview } from "@/components/EditorialReview";
 import { US_STATES, getUsState, getNearbyStates, type UsStateWithPto } from "@/data/usStates";
 import { clusterRank, pickVariantByPosition } from "@/lib/textVariants";
+import { statePageRobots } from "@/lib/contentQuality";
 import { EDITORIAL_REVIEW, FOUNDER_PERSON, SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
 
@@ -27,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: clampMetaDescription(description),
     alternates: { canonical: url },
     openGraph: { title, description: clampMetaDescription(description), url },
+    robots: statePageRobots(s),
   };
 }
 
