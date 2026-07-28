@@ -15,7 +15,15 @@ export default function Content() {
       </p>
       <p>
         In addition to breach of contract, an unlawful pay cut may also constitute an
-        <strong> unlawful deduction from wages</strong> under the Employment Rights Act 1996 (ERA 1996 s.13).
+        <strong> unlawful deduction from wages</strong> under{" "}
+        <a
+          href="https://www.legislation.gov.uk/ukpga/1996/18/part/II"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Part II of the Employment Rights Act 1996
+        </a>{" "}
+        (ERA 1996 s.13).
         This provision prohibits any deduction from wages that is not authorised by: (a) a statutory
         provision (e.g., income tax, NI, student loan repayments); (b) a relevant provision in the
         written employment contract that the worker was given a copy of before the deduction was made;
@@ -72,7 +80,16 @@ export default function Content() {
       </p>
       <p>
         The time limit for unlawful deduction claims is <strong>3 months from the date of the deduction</strong>,
-        but you can claim for a &quot;series of deductions&quot; going back as far as 2 years.
+        but you can claim for a &quot;series of deductions&quot; going back as far as 2 years. Acas
+        sets out the steps to take first in its guidance on{" "}
+        <a
+          href="https://www.acas.org.uk/if-your-wages-are-not-paid"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          wages that are not paid
+        </a>
+        .
       </p>
 
       <h3>Option 2: Raise a formal grievance</h3>
@@ -96,7 +113,15 @@ export default function Content() {
         The ERA 1996 definition of wages is broad. It covers: basic salary, overtime, commission,
         holiday pay, sick pay (including SSP), bonuses where they are contractually guaranteed, and
         most other payments connected to employment. It does not cover: loans, advances, or
-        genuinely discretionary payments.
+        genuinely discretionary payments. GOV.UK summarises the rules on{" "}
+        <a
+          href="https://www.gov.uk/understanding-your-pay/deductions-from-your-pay"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          deductions from your pay
+        </a>
+        .
       </p>
       <p>
         If your employer is paying you less than your contract says, the difference is an unlawful

@@ -32,7 +32,15 @@ export default function UsFinalPaycheckLawsByState() {
 
       <h2>The federal baseline: FLSA</h2>
       <p>
-        The Fair Labor Standards Act (FLSA) requires that wages be paid on the established payday
+        The{" "}
+        <a
+          href="https://www.dol.gov/agencies/whd/flsa"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Fair Labor Standards Act (FLSA)
+        </a>{" "}
+        requires that wages be paid on the established payday
         for the pay period — but it does not set a specific final paycheck deadline for departing
         employees. That gap is filled by state law, which is almost always stricter and more
         employee-friendly than the federal minimum.
@@ -102,7 +110,16 @@ export default function UsFinalPaycheckLawsByState() {
 
       <h2>Penalties for late final paychecks</h2>
       <p>
-        Most states provide penalties if your employer misses the final paycheck deadline:
+        Most states provide penalties if your employer misses the final paycheck deadline. The
+        Department of Labor maintains a{" "}
+        <a
+          href="https://www.dol.gov/agencies/whd/state/payday"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          state-by-state payday requirements table
+        </a>{" "}
+        you can check against your own state:
       </p>
       <ul>
         <li>
@@ -136,7 +153,15 @@ export default function UsFinalPaycheckLawsByState() {
         </li>
         <li>
           <strong>File a state wage claim:</strong> Contact your state's Department of Labor. Most
-          allow online filing. There is typically no cost and no attorney required.
+          allow online filing — the federal DOL maintains a{" "}
+          <a
+            href="https://www.dol.gov/agencies/whd/state/contacts"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            directory of state labor offices
+          </a>
+          . There is typically no cost and no attorney required.
         </li>
         <li>
           <strong>Consider a private lawsuit:</strong> If the wage claim process is slow or your

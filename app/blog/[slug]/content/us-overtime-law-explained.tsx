@@ -12,7 +12,24 @@ export default function Content() {
       <p>
         The <strong>Fair Labor Standards Act (FLSA)</strong> is the federal law governing overtime.
         It requires covered employers to pay <strong>time-and-a-half (1.5×)</strong> the regular rate
-        of pay for every hour worked over <strong>40 hours in a single workweek</strong>.
+        of pay for every hour worked over <strong>40 hours in a single workweek</strong> — the
+        obligation sits in{" "}
+        <a
+          href="https://www.govinfo.gov/content/pkg/USCODE-2024-title29/html/USCODE-2024-title29-chap8-sec207.htm"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          29 U.S.C. §207
+        </a>
+        , and the Department of Labor summarises it in its{" "}
+        <a
+          href="https://www.dol.gov/agencies/whd/overtime"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          overtime pay guidance
+        </a>
+        .
       </p>
       <p>
         Key points about how the FLSA works:

@@ -12,7 +12,23 @@ export default function Content() {
       <p>
         Constructive dismissal occurs when your employer commits a fundamental breach of your employment
         contract, making your position so untenable that you have no reasonable option but to resign.
-        Despite the fact that you formally resigned, the Employment Rights Act 1996 treats it as a dismissal.
+        Despite the fact that you formally resigned,{" "}
+        <a
+          href="https://www.legislation.gov.uk/ukpga/1996/18/section/95"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          s.95(1)(c) of the Employment Rights Act 1996
+        </a>{" "}
+        treats it as a dismissal, and Acas sets out the same test in its{" "}
+        <a
+          href="https://www.acas.org.uk/dismissals/constructive-dismissal"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          constructive dismissal guidance
+        </a>
+        .
         The key legal concept is the implied contractual term of <strong>mutual trust and confidence</strong> —
         your employer must not, without reasonable and proper cause, conduct themselves in a manner calculated
         or likely to destroy or seriously damage that trust.
@@ -72,7 +88,17 @@ export default function Content() {
         the underlying reason for the constructive dismissal also involves:
       </p>
       <ul>
-        <li>A protected characteristic under the Equality Act 2010 (e.g., sex, race, disability, pregnancy)</li>
+        <li>
+          A protected characteristic under the{" "}
+          <a
+            href="https://www.legislation.gov.uk/ukpga/2010/15/contents"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Equality Act 2010
+          </a>{" "}
+          (e.g., sex, race, disability, pregnancy)
+        </li>
         <li>Whistleblowing (making a protected disclosure under ERA 1996 s.47B)</li>
         <li>Trade union activities</li>
         <li>Asserting a statutory right</li>

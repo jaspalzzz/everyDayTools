@@ -12,10 +12,21 @@ export default function UkMaternityPayRights2026() {
       <h2>What is Statutory Maternity Pay?</h2>
       <p>
         Statutory Maternity Pay (SMP) is the minimum amount your employer must pay you during
-        maternity leave, set by the Maternity and Parental Leave etc. Regulations 1999 and the
-        Social Security Contributions and Benefits Act 1992. It covers up to <strong>39 weeks</strong>{" "}
-        of maternity leave, though you are entitled to take up to 52 weeks of maternity leave in
-        total (the final 13 weeks are unpaid if you have used your full SMP entitlement).
+        maternity leave, set by the Maternity and Parental Leave etc. Regulations 1999 and{" "}
+        <a
+          href="https://www.legislation.gov.uk/ukpga/1992/4/part/XII"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Part XII of the Social Security Contributions and Benefits Act 1992
+        </a>
+        . It covers up to <strong>39 weeks</strong> of maternity leave, though you are entitled to take
+        up to 52 weeks of maternity leave in total (the final 13 weeks are unpaid if you have used your
+        full SMP entitlement). The current rates and qualifying rules are published on{" "}
+        <a href="https://www.gov.uk/maternity-pay-leave" target="_blank" rel="noopener noreferrer">
+          GOV.UK
+        </a>
+        .
       </p>
 
       <h2>SMP rates for 2026/27</h2>
@@ -152,7 +163,16 @@ export default function UkMaternityPayRights2026() {
         If you and your partner want to share the remaining leave after the first 2 weeks of
         maternity leave, Shared Parental Leave allows you to split up to 50 weeks of leave (and
         up to 37 weeks of Statutory Shared Parental Pay) between you. SPL can be taken in blocks,
-        and both parents can be on leave simultaneously.
+        and both parents can be on leave simultaneously. The eligibility rules and notice
+        requirements are set out in{" "}
+        <a
+          href="https://www.gov.uk/shared-parental-leave-and-pay"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GOV.UK&apos;s Shared Parental Leave and Pay guidance
+        </a>
+        .
       </p>
 
       <div className="mt-6 flex flex-wrap gap-3">

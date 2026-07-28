@@ -19,9 +19,25 @@ export default function AustraliaFairWorkRedundancyExplained() {
       <h2>What is redundancy pay under the Fair Work Act?</h2>
       <p>
         Redundancy pay in Australia is governed by the <strong>National Employment Standards (NES)</strong>,
-        specifically Division 11 of Part 2-2 of the Fair Work Act 2009 (Cth). It is a lump-sum payment
-        your employer must make when your position is made redundant and you meet the eligibility
-        requirements. It is separate from, and in addition to, your notice of termination.
+        specifically Division 11 of Part 2-2 of the{" "}
+        <a
+          href="https://www.legislation.gov.au/C2009A00028/latest/text"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Fair Work Act 2009 (Cth)
+        </a>
+        , with the entitlement itself in s.119. It is a lump-sum payment your employer must make when
+        your position is made redundant and you meet the eligibility requirements. It is separate from,
+        and in addition to, your notice of termination. The Fair Work Ombudsman&apos;s{" "}
+        <a
+          href="https://www.fairwork.gov.au/ending-employment/redundancy/redundancy-pay-and-entitlements"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          redundancy pay and entitlements guidance
+        </a>{" "}
+        sets out the same service table.
       </p>
 
       <h2>Who qualifies for redundancy pay?</h2>
@@ -149,8 +165,16 @@ export default function AustraliaFairWorkRedundancyExplained() {
       <p>
         The NES sets the minimum redundancy pay. Your modern award or enterprise agreement may
         provide a more generous scale — always check the instrument that covers your employment.
-        The Pay and Conditions Tool (PACT) on the Fair Work Ombudsman website can identify which
-        modern award applies to your role and the redundancy provisions it contains.
+        The{" "}
+        <a
+          href="https://calculate.fairwork.gov.au/FindYourAward"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Pay and Conditions Tool (PACT)
+        </a>{" "}
+        on the Fair Work Ombudsman website can identify which modern award applies to your role and
+        the redundancy provisions it contains.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-3">

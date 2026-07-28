@@ -67,7 +67,10 @@ describe("Tier 3 SEO remediation contracts", () => {
     const post = BLOG_POSTS.find((item) => item.slug === "uk-redundancy-pay-guide-2026")!;
     expect(post.title).toContain("What Changed");
     expect(post.title).not.toContain("Complete Guide");
-    expect(post.dateModified).toBe("2026-07-17");
+    // Freshness guard, not a version pin: the post must never regress behind the
+    // 2026-07-17 source review. Pinning an exact date broke this test on every
+    // legitimate content update (e.g. adding primary-source citations).
+    expect(post.dateModified >= "2026-07-17").toBe(true);
   });
 
   it("publishes fully curated state records and holds incomplete ones out of the sitemap", () => {

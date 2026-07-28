@@ -13,7 +13,19 @@ export default function Content() {
         Statutory Sick Pay (SSP) is a minimum payment your employer must make when you are too ill
         to work. For 2026/27, the rate is <strong>£123.25 per week</strong> (or 80% of your average
         weekly earnings if that is lower). SSP is paid by your employer through payroll — it is not
-        a benefit you claim from DWP (unlike the old system before 2014).
+        a benefit you claim from DWP (unlike the old system before 2014). The scheme is set out in{" "}
+        <a
+          href="https://www.legislation.gov.uk/ukpga/1992/4/part/XI"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Part XI of the Social Security Contributions and Benefits Act 1992
+        </a>
+        , and the current rate is published on{" "}
+        <a href="https://www.gov.uk/statutory-sick-pay" target="_blank" rel="noopener noreferrer">
+          GOV.UK
+        </a>
+        .
       </p>
       <p>
         SSP is subject to income tax and National Insurance in the same way as regular earnings.
@@ -23,8 +35,24 @@ export default function Content() {
 
       <h2>What changed in April 2026?</h2>
       <p>
-        The <strong>Employment Rights Act 2025</strong> made two significant changes to SSP, both
-        effective from <strong>6 April 2026</strong>:
+        The{" "}
+        <a
+          href="https://www.legislation.gov.uk/ukpga/2025/15"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <strong>Employment Rights Act 2025</strong>
+        </a>{" "}
+        made two significant changes to SSP, both effective from <strong>6 April 2026</strong>. Acas
+        summarises the post-change eligibility position in its{" "}
+        <a
+          href="https://www.acas.org.uk/checking-sick-pay/statutory-sick-pay-ssp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Statutory Sick Pay guidance
+        </a>
+        :
       </p>
       <ul>
         <li>
@@ -126,8 +154,24 @@ export default function Content() {
         </li>
         <li>
           <strong>Bring an Employment Tribunal claim</strong> for unlawful deduction from wages (SSP
-          is &quot;wages&quot; for ERA 1996 purposes). The time limit is 3 months from the date of
-          the deduction, after ACAS early conciliation.
+          is &quot;wages&quot; for{" "}
+          <a
+            href="https://www.legislation.gov.uk/ukpga/1996/18/part/II"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Part II ERA 1996
+          </a>{" "}
+          purposes). The time limit is 3 months from the date of the deduction, after Acas early
+          conciliation — Acas explains the process for{" "}
+          <a
+            href="https://www.acas.org.uk/if-your-wages-are-not-paid"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            chasing unpaid wages
+          </a>
+          .
         </li>
       </ol>
 

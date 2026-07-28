@@ -14,7 +14,20 @@ export default function Content() {
         A tax code is a combination of numbers and letters that tells your employer how much of your
         income is free from income tax (your tax-free personal allowance) and at what rate to tax
         the rest. HMRC issues tax codes directly to employers — you receive a copy on a P2 &quot;Tax
-        Code Notice&quot; or on your payslip.
+        Code Notice&quot; or on your payslip. HMRC publishes the full list of codes and what each
+        letter means in its{" "}
+        <a href="https://www.gov.uk/tax-codes" target="_blank" rel="noopener noreferrer">
+          tax codes guidance
+        </a>
+        , and the current allowances in its{" "}
+        <a
+          href="https://www.gov.uk/government/publications/rates-and-allowances-income-tax"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          rates and allowances tables
+        </a>
+        .
       </p>
       <p>
         The most common tax code for most workers in the 2026/27 tax year is <strong>1257L</strong>.
@@ -119,8 +132,15 @@ export default function Content() {
       <h2>How to correct your tax code</h2>
       <ol>
         <li>
-          <strong>Log in to your Personal Tax Account</strong> at gov.uk/personal-tax-account. Review
-          your tax code and check whether the adjustments HMRC has made make sense.
+          <strong>Log in to your{" "}
+          <a
+            href="https://www.gov.uk/personal-tax-account"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Personal Tax Account
+          </a></strong>
+          . Review your tax code and check whether the adjustments HMRC has made make sense.
         </li>
         <li>
           <strong>Contact HMRC directly</strong>: Call 0300 200 3300 (Mon–Fri) or use the HMRC app.

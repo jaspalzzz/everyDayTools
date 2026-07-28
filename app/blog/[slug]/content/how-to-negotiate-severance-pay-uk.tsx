@@ -82,7 +82,24 @@ export default function HowToNegotiateSeverancePayUk() {
       <h2>The settlement agreement</h2>
       <p>
         A settlement agreement (formerly a compromise agreement) is a legally binding contract in which
-        you agree not to bring employment tribunal claims in exchange for a financial payment. Key points:
+        you agree not to bring employment tribunal claims in exchange for a financial payment. The
+        statutory conditions that make one valid are in{" "}
+        <a
+          href="https://www.legislation.gov.uk/ukpga/1996/18/section/203"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          s.203 of the Employment Rights Act 1996
+        </a>
+        , and Acas publishes a{" "}
+        <a
+          href="https://www.acas.org.uk/settlement-agreements"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          practical guide to settlement agreements
+        </a>
+        . Key points:
       </p>
       <ul>
         <li>
@@ -96,7 +113,24 @@ export default function HowToNegotiateSeverancePayUk() {
         </li>
         <li>
           The first £30,000 of a settlement agreement payment (excluding notice pay) is free of
-          income tax. Payments above £30,000 are taxable as income.
+          income tax under{" "}
+          <a
+            href="https://www.legislation.gov.uk/ukpga/2003/1/section/403"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            s.403 ITEPA 2003
+          </a>
+          . Payments above £30,000 are taxable as income, and HMRC explains how termination payments
+          are treated in{" "}
+          <a
+            href="https://www.gov.uk/hmrc-internal-manuals/employment-income-manual/eim12800"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            EIM12800
+          </a>
+          .
         </li>
         <li>
           The agreement can include non-financial terms: agreed reference wording, confidentiality

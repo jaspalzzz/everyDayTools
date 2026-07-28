@@ -9,7 +9,15 @@ export default function UkRedundancyPayGuide2026() {
         <strong> £751</strong>. Because the formula can count at most 20 years at the 1.5 multiplier,
         the maximum statutory payment is now <strong>£22,530</strong>. These figures matter most to
         workers whose actual weekly pay exceeds the cap; lower-paid workers still use their actual
-        normal weekly pay.
+        normal weekly pay. Check the current cap against{" "}
+        <a
+          href="https://www.gov.uk/redundancy-your-rights/redundancy-pay"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GOV.UK&apos;s statutory redundancy pay guidance
+        </a>{" "}
+        before relying on it, because the figure is reviewed every April.
       </p>
       <p>
         The core rules did not change: employees generally still need two years&apos; continuous service;
@@ -20,7 +28,17 @@ export default function UkRedundancyPayGuide2026() {
       </p>
 
       <h2>Who qualifies for redundancy pay?</h2>
-      <p>To receive statutory redundancy pay in the UK, you must:</p>
+      <p>
+        The entitlement and its conditions sit in{" "}
+        <a
+          href="https://www.legislation.gov.uk/ukpga/1996/18/part/XI"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Part XI of the Employment Rights Act 1996
+        </a>
+        . To receive statutory redundancy pay in the UK, you must:
+      </p>
       <ul>
         <li>Be an <strong>employee</strong> (not a worker or self-employed contractor)</li>
         <li>Have at least <strong>2 years of continuous employment</strong> with the same employer</li>
@@ -69,7 +87,24 @@ export default function UkRedundancyPayGuide2026() {
       <p>
         Importantly, <strong>notice pay is excluded</strong> from the £30,000 exemption. Pay in lieu
         of notice (PILON) is always fully taxable as earnings and subject to income tax and National
-        Insurance, regardless of whether it is contractual or non-contractual.
+        Insurance, regardless of whether it is contractual or non-contractual. HMRC&apos;s{" "}
+        <a
+          href="https://www.gov.uk/hmrc-internal-manuals/employment-income-manual/eim13876"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Employment Income Manual (EIM13876)
+        </a>{" "}
+        confirms post-employment notice pay &ldquo;does not benefit from the £30,000 threshold in
+        section 403 ITEPA 2003&rdquo;, and the exemption itself sits in{" "}
+        <a
+          href="https://www.legislation.gov.uk/ukpga/2003/1/section/403"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          s.403 ITEPA 2003
+        </a>
+        .
       </p>
 
       <h2>What if your employer refuses to pay?</h2>
@@ -84,11 +119,22 @@ export default function UkRedundancyPayGuide2026() {
         <li>
           <strong>Insolvency Service (National Insurance Fund):</strong> If your employer is insolvent,
           you can apply directly to the government to pay your statutory redundancy entitlement via the
-          Redundant Employees Lump Sum Payments Scheme.
+          Redundant Employees Lump Sum Payments Scheme —{" "}
+          <a
+            href="https://www.gov.uk/your-rights-if-your-employer-is-insolvent"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GOV.UK sets out what you can claim
+          </a>
+          .
         </li>
         <li>
-          <strong>ACAS early conciliation:</strong> Before filing a tribunal claim, you must contact
-          ACAS to attempt early conciliation — this is mandatory and often resolves disputes faster
+          <strong>ACAS early conciliation:</strong> Before filing a tribunal claim, you must contact{" "}
+          <a href="https://www.acas.org.uk/redundancy" target="_blank" rel="noopener noreferrer">
+            Acas
+          </a>{" "}
+          to attempt early conciliation — this is mandatory and often resolves disputes faster
           than formal proceedings.
         </li>
       </ul>

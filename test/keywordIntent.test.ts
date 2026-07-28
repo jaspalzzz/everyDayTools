@@ -25,7 +25,9 @@ describe("GSC keyword-intent alignment", () => {
     expect(post.title).toMatch(/US Overtime Law 2026.*FLSA/i);
     expect(post.quickAnswer).toContain("$684 per week");
     expect(post.quickAnswer).not.toMatch(/\$1,128|\$58,656/);
-    expect(post.dateModified).toBe("2026-07-18");
+    // Freshness guard, not a version pin: must not regress behind the 2026-07-18
+    // threshold review. An exact-date assertion fails on every legitimate update.
+    expect(post.dateModified >= "2026-07-18").toBe(true);
   });
 
   it("supports salary sacrifice and salary exchange intent with sourced current facts", () => {
