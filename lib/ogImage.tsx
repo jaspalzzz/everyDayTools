@@ -30,6 +30,7 @@ function regionLabel(region: string): string {
   if (region === "UK") return "UK";
   if (region === "US") return "US";
   if (region === "AU") return "AU";
+  if (region === "CA") return "Canada";
   if (region === "UK/CA") return "UK + CA";
   return "Multi-region";
 }
@@ -83,6 +84,123 @@ export function homepageOgCard() {
           Redundancy · PTO payout · Notice · Severance · Overtime — and more.
           Live results. Instant PDF. No signup.
         </p>
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "6px",
+            background: "#0C447C",
+          }}
+        />
+      </div>
+    ),
+    { ...OG_SIZE },
+  );
+}
+
+/** Per-article OG card for blog posts. Shows the headline and a region badge. */
+export function articleOgCard(params: {
+  title: string;
+  excerpt: string;
+  region: string;
+}) {
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          background: "#ffffff",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          justifyContent: "space-between",
+          padding: "64px 80px",
+          fontFamily: "system-ui, sans-serif",
+        }}
+      >
+        {/* Top: logo + site name + region badge */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+            {LOGO_MARK}
+            <span style={{ fontSize: "22px", fontWeight: 600, color: "#374151" }}>
+              My Pay Rights
+            </span>
+          </div>
+          <span
+            style={{
+              fontSize: "18px",
+              color: "#0C447C",
+              background: "#EFF6FF",
+              padding: "6px 16px",
+              borderRadius: "100px",
+              fontWeight: 500,
+            }}
+          >
+            {regionLabel(params.region)}
+          </span>
+        </div>
+
+        {/* Middle: headline */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px",
+            flex: 1,
+            justifyContent: "center",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "56px",
+              fontWeight: 700,
+              color: "#111827",
+              lineHeight: 1.12,
+              margin: 0,
+              maxWidth: "960px",
+            }}
+          >
+            {params.title}
+          </h1>
+          <p
+            style={{
+              fontSize: "24px",
+              color: "#6b7280",
+              margin: 0,
+              maxWidth: "860px",
+              lineHeight: 1.45,
+            }}
+          >
+            {params.excerpt}
+          </p>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "24px",
+            color: "#9ca3af",
+            fontSize: "18px",
+          }}
+        >
+          <span>Employment law explained</span>
+          <span>·</span>
+          <span>Law-backed</span>
+          <span>·</span>
+          <span>Free calculators</span>
+        </div>
+
         <div
           style={{
             position: "absolute",

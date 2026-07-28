@@ -19,6 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {};
 
   const url = `${SITE.url}/blog/${post.slug}`;
+  // Declaring openGraph here replaces any inherited image, so the per-post OG
+  // route must be named explicitly on both openGraph and twitter — the same
+  // pattern lib/seo.ts uses for tool pages. Without it the post ships
+  // twitter:card=summary_large_image with no image at all.
+  const ogImageUrl = `/blog/${post.slug}/opengraph-image`;
   return {
     title: post.title,
     description: clampMetaDescription(post.description),
@@ -30,6 +35,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: post.datePublished,
       modifiedTime: post.dateModified,
+      images: [{ url: ogImageUrl, width: 1200, height: 630 }],
+    },
+    twitter: {
+      title: post.title,
+      description: clampMetaDescription(post.description),
+      images: [ogImageUrl],
     },
   };
 }
