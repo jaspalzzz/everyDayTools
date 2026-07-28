@@ -5,13 +5,28 @@ export default function UkNoticePeriodRightsExplained() {
     <>
       <h2>Statutory minimum vs contractual notice</h2>
       <p>
-        In the UK, notice periods are governed by two sources: <strong>statute</strong> (the Employment
-        Rights Act 1996 s.86) and your <strong>employment contract</strong>. You are always entitled to
-        whichever is <em>greater</em>.
+        In the UK, notice periods are governed by two sources: <strong>statute</strong> (the{" "}
+        <a
+          href="https://www.legislation.gov.uk/ukpga/1996/18/section/86"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Employment Rights Act 1996 s.86
+        </a>
+        ) and your <strong>employment contract</strong>. You are always entitled to whichever is{" "}
+        <em>greater</em>.
       </p>
       <p>
         The statutory minimum notice an employer must give you depends on your length of continuous
-        service:
+        service. GOV.UK sets out the same three bands in its{" "}
+        <a
+          href="https://www.gov.uk/redundancy-your-rights/notice-periods"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          notice periods guidance
+        </a>
+        :
       </p>
       <ul>
         <li>1 month to 2 years service: <strong>1 week</strong></li>
@@ -30,7 +45,12 @@ export default function UkNoticePeriodRightsExplained() {
         The law only requires an employee to give <strong>1 week's notice</strong> after 1 month of
         service (ERA 1996 s.86(2)) — regardless of how long they have worked there. In practice, most
         employment contracts specify a longer notice period for the employee (typically 1–3 months for
-        salaried roles). If your contract requires more, you are legally bound by it.
+        salaried roles). If your contract requires more, you are legally bound by it. Acas sets out how
+        contractual and statutory notice interact in its{" "}
+        <a href="https://www.acas.org.uk/notice-periods" target="_blank" rel="noopener noreferrer">
+          notice periods guidance
+        </a>
+        .
       </p>
       <p>
         If you resign without giving the required notice, your employer may withhold pay for the
@@ -49,7 +69,17 @@ export default function UkNoticePeriodRightsExplained() {
       <p>
         Since 6 April 2018, <strong>all PILON is fully taxable as earnings</strong> — income tax and NI
         apply at source. There is no longer any distinction between contractual and non-contractual PILON
-        for tax purposes. PILON does not benefit from the £30,000 termination payment exemption.
+        for tax purposes. HMRC&apos;s{" "}
+        <a
+          href="https://www.gov.uk/hmrc-internal-manuals/employment-income-manual/eim13876"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Employment Income Manual (EIM13876)
+        </a>{" "}
+        states that post-employment notice pay &ldquo;is chargeable to income tax as general earnings and
+        does not benefit from the £30,000 threshold in section 403 ITEPA 2003&rdquo; — so PILON does not
+        get the £30,000 termination-payment exemption.
       </p>
 
       <div className="my-6 rounded-xl border border-brand-100 bg-brand-50 p-5">
@@ -96,7 +126,12 @@ export default function UkNoticePeriodRightsExplained() {
         Summary dismissal (firing someone on the spot without notice) is only lawful where the employee
         has committed <strong>gross misconduct</strong> — a serious breach of contract that justifies
         immediate termination. Examples include theft, fraud, violence, or a serious safety breach.
-        If there is no genuine gross misconduct, summary dismissal is wrongful.
+        If there is no genuine gross misconduct, summary dismissal is wrongful. Acas explains the
+        procedural standard an employer is expected to follow in its{" "}
+        <a href="https://www.acas.org.uk/dismissals" target="_blank" rel="noopener noreferrer">
+          guidance on dismissals
+        </a>
+        .
       </p>
 
       <h2>Notice periods and restrictive covenants</h2>

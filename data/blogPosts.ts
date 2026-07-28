@@ -116,7 +116,7 @@ export const BLOG_POSTS: BlogPost[] = [
     region: "UK",
     category: "leaving-job",
     datePublished: "2026-06-27",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-28",
     readingTimeMinutes: 7,
     tags: ["notice period", "PILON", "garden leave", "UK employment law"],
     relatedTools: ["notice-period-calculator", "garden-leave-calculator"],
