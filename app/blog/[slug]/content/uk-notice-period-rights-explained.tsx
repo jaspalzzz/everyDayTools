@@ -3,6 +3,14 @@ import Link from "next/link";
 export default function UkNoticePeriodRightsExplained() {
   return (
     <>
+      <p>
+        Most notice disputes are not about the arithmetic — they are about what happens when an
+        employer cuts the notice short, walks someone out the same day, or tries to enforce a
+        non-compete afterwards. This article covers those situations. For how notice itself is
+        calculated, start with the{" "}
+        <Link href="/guides/uk-notice-period-law">UK notice period law guide</Link>.
+      </p>
+
       <h2>Statutory minimum vs contractual notice</h2>
       <p>
         In the UK, notice periods are governed by two sources: <strong>statute</strong> (the{" "}

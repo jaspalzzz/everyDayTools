@@ -16,6 +16,18 @@ export default function AustraliaFairWorkRedundancyExplained() {
 
   return (
     <>
+      <p>
+        The NES pay scale is the easy part. What catches people out is discovering they fall into one
+        of the carve-outs — a small business employer, an excluded category of employee, or a
+        dismissal their employer labelled redundancy without it being a genuine one. That is what this
+        article covers. For the full entitlement picture including notice and other final payments,
+        see the{" "}
+        <Link href="/guides/au-redundancy-final-entitlements">
+          Australian redundancy and final entitlements guide
+        </Link>
+        .
+      </p>
+
       <h2>What is redundancy pay under the Fair Work Act?</h2>
       <p>
         Redundancy pay in Australia is governed by the <strong>National Employment Standards (NES)</strong>,

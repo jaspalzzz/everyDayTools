@@ -1,11 +1,15 @@
+import Link from "next/link";
+
 export default function Content() {
   return (
     <div className="prose-content">
       <p>
-        Statutory Sick Pay (SSP) is one of the most widely misunderstood employment rights in the UK.
-        Many workers don&apos;t know when it starts, how long it lasts, or what to do when their
-        employer refuses to pay it. This guide covers everything for 2026, including the major rule
-        changes that came into force on 6 April 2026.
+        Statutory Sick Pay is a floor, not a full replacement for wages — and it is only worth
+        anything if your employer actually pays it. This article covers what sits around SSP: the
+        earnings cap that can reduce it, contractual schemes that pay more, how to enforce it when an
+        employer refuses, and where dismissal during long-term sickness crosses into unlawful. For
+        eligibility, the April 2026 rule changes and the 28-week limit, start with the{" "}
+        <Link href="/guides/uk-sick-pay">UK sick pay guide</Link>.
       </p>
 
       <h2>The basics: what is SSP?</h2>

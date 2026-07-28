@@ -106,11 +106,11 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "uk-notice-period-rights-explained",
-    title: "UK Notice Period Rights: Notice, Garden Leave and PILON",
+    title: "When Notice Goes Wrong: Wrongful Dismissal, Garden Leave and Restrictive Covenants",
     description:
-      "Confused about notice periods? This guide explains the statutory minimum, what happens if your contract gives more, garden leave, pay in lieu of notice, and wrongful dismissal.",
+      "What happens when an employer cuts your notice short: when summary dismissal is wrongful, how garden leave affects your non-compete, and what a wrongful dismissal claim is worth.",
     excerpt:
-      "Notice periods in the UK are governed by statute, your contract, and what is reasonable. Here is how they work — and what your employer must pay you if they let you go early.",
+      "The evergreen guide covers how notice is calculated. This piece covers what happens when it goes wrong — short notice, summary dismissal, and how garden leave interacts with restrictive covenants.",
     quickAnswer:
       "UK statutory minimum notice is one week per complete year of service, up to 12 weeks (Employment Rights Act 1996 s.86). Your contract may give more — and if it does, that higher figure applies. If your employer lets you go without notice they must pay you PILON (pay in lieu of notice), which is fully taxable as earnings.",
     region: "UK",
@@ -130,11 +130,11 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "australia-fair-work-redundancy-explained",
     quickAnswer:
       "Under Australia's Fair Work Act 2009, redundancy pay ranges from 4 weeks (1 year of service) to 16 weeks (9+ years) at your base rate of pay. Small business employers (fewer than 15 employees) are exempt. The redundancy must be 'genuine' — your role must truly be redundant, not just used as cover for dismissal.",
-    title: "Australia Fair Work Redundancy: NES Entitlements Explained for 2026",
+    title: "Who Misses Out on Australian Redundancy Pay",
     description:
-      "How redundancy pay works under the National Employment Standards (NES) in Australia — who qualifies, the scale based on years of service, small business exemption, and what 'genuine redundancy' means.",
+      "The exclusions that stop Fair Work redundancy pay: the small business exemption, casual and short-service employees, and when a dismissal fails the 'genuine redundancy' test.",
     excerpt:
-      "Under Australia's Fair Work Act, redundancy pay ranges from 4 to 16 weeks depending on your years of service. This guide explains when you qualify, how much you get, and what 'genuine redundancy' requires.",
+      "Most Australian redundancy explainers cover the NES pay scale. This one covers the carve-outs — small business employers, excluded employees, and dismissals that are not genuine redundancies.",
     region: "AU",
     category: "redundancy",
     datePublished: "2026-06-27",
@@ -145,6 +145,7 @@ export const BLOG_POSTS: BlogPost[] = [
     contextualLinks: [
       { href: "/au-redundancy-pay-calculator", label: "Calculate NES redundancy pay", description: "Estimate the number of redundancy weeks from continuous service." },
       { href: "/au-notice-period-calculator", label: "Check Australian notice entitlement", description: "Calculate the NES minimum notice period separately from redundancy pay." },
+      { href: "/guides/au-redundancy-final-entitlements", label: "Read the full Australian redundancy guide", description: "The evergreen reference for the NES pay scale, notice and all final entitlements." },
     ],
   },
   {
@@ -216,12 +217,12 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "uk-sick-pay-rights-2026",
     quickAnswer:
-      "Statutory Sick Pay (SSP) is £123.25 per week (2026/27) and is paid from day one of illness — the three waiting days were abolished by the Employment Rights Act 2025 with effect from April 2026. SSP is paid for up to 28 weeks. You qualify if you earn at least £129/week. Your contract may provide more generous enhanced sick pay.",
-    title: "UK Sick Pay Rights 2026: SSP Rules and Employer Duties",
+      "Statutory Sick Pay (SSP) is £123.25 per week (2026/27) and is paid from day one of illness — the three waiting days were abolished by the Employment Rights Act 2025 with effect from April 2026. The same Act removed the Lower Earnings Limit, so there is no longer a minimum weekly earnings threshold to qualify. SSP is paid for up to 28 weeks, and your contract may provide more generous enhanced sick pay.",
+    title: "When Sick Pay Falls Short: Enhanced Schemes, Unpaid SSP and Dismissal",
     description:
-      "Statutory Sick Pay is £123.25/week from day 4 of illness — but many workers don't know when it starts, how long it lasts, or what to do when it runs out. This guide covers all of it.",
+      "SSP is the floor, not the ceiling. How occupational sick pay works, what to do when an employer refuses to pay, and when dismissal during long-term sickness becomes unlawful.",
     excerpt:
-      "Everything UK workers need to know about Statutory Sick Pay in 2026: eligibility, waiting days, the 28-week maximum, enhanced sick pay, and what happens when SSP ends.",
+      "The evergreen guide covers eligibility and the 28-week limit. This piece covers the gaps: the 80%-of-earnings cap, enhanced contractual schemes, enforcing unpaid SSP, and dismissal while off sick.",
     region: "UK",
     category: "pay-rights",
     datePublished: "2026-06-27",
