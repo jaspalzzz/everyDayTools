@@ -140,6 +140,18 @@ export default function UsFinalPaycheckLawsByState() {
           wages plus interest, and in many cases attorney fees.
         </li>
       </ul>
+      <p className="text-xs text-ink-faint">
+        Penalty rules are set by state statute and change more often than the federal baseline.
+        Confirm the current position for your state with its labour agency — the DOL keeps a{" "}
+        <a
+          href="https://www.dol.gov/agencies/whd/state/contacts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          directory of state labor offices
+        </a>{" "}
+        — before relying on any figure quoted here.
+      </p>
 
       <h2>What to do if your employer is late</h2>
       <ol>

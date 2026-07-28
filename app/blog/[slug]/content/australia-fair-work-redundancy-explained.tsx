@@ -113,11 +113,22 @@ export default function AustraliaFairWorkRedundancyExplained() {
 
       <h2>Small business exemption</h2>
       <p>
-        If your employer has fewer than 15 employees (a "small business employer" under the Fair Work
-        Act), they are <strong>exempt from paying NES redundancy pay</strong>. This is a significant
-        carve-out — around 96% of Australian businesses are small businesses by this definition.
-        However, small business employees are still entitled to notice of termination and any
-        entitlements under their modern award or enterprise agreement.
+        If your employer has fewer than 15 employees (a &quot;small business employer&quot; under the
+        Fair Work Act), they are <strong>exempt from paying NES redundancy pay</strong>. This is a
+        significant carve-out: the{" "}
+        <a
+          href="https://www.asbfeo.gov.au/small-business-data-portal/number-small-businesses-australia"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Australian Small Business and Family Enterprise Ombudsman reports
+        </a>{" "}
+        that 97.3% of Australian businesses were small businesses in June 2025. Note that figure uses
+        the ABS statistical definition of fewer than <em>20</em> employees, which is broader than the
+        Fair Work Act&apos;s fewer-than-15 threshold — so the share of businesses actually covered by
+        this exemption is somewhat lower, though still the large majority. However, small business
+        employees are still entitled to notice of termination and any entitlements under their modern
+        award or enterprise agreement.
       </p>
       <p>
         If your employer has grown beyond 15 employees recently, or if they have associated entities,
@@ -127,17 +138,38 @@ export default function AustraliaFairWorkRedundancyExplained() {
 
       <h2>Is redundancy pay taxable in Australia?</h2>
       <p>
-        Genuine redundancy payments receive favourable tax treatment in Australia. For the 2025–26
-        income year, the <strong>tax-free component</strong> of a genuine redundancy payment is:
+        Genuine redundancy payments receive favourable tax treatment in Australia. The{" "}
+        <strong>tax-free component</strong> is worked out with a two-part formula:
       </p>
       <ul>
-        <li>Base amount: <strong>$11,985</strong></li>
-        <li>Plus <strong>$5,994</strong> for each complete year of service</li>
+        <li>A fixed <strong>base amount</strong></li>
+        <li>Plus a <strong>service amount</strong> for each complete year of service</li>
       </ul>
       <p>
-        The tax-free amount is indexed annually by the ATO. Amounts above the tax-free threshold
-        are taxed at a concessional rate (32% including Medicare levy, or your marginal rate if
-        lower). Seek advice from an accountant on your specific situation, particularly if your
+        Both amounts are indexed every 1 July in line with average weekly ordinary time earnings, so
+        they change each income year and only complete years of service count. Check the figures for
+        your income year against the ATO&apos;s{" "}
+        <a
+          href="https://www.ato.gov.au/individuals-and-families/jobs-and-employment-types/working-as-an-employee/leaving-your-job/genuine-redundancy-payments"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          genuine redundancy payments guidance
+        </a>{" "}
+        rather than relying on a figure quoted elsewhere — including here.
+      </p>
+      <p>
+        Amounts above the tax-free threshold are taxed at a concessional rate (32% including Medicare
+        levy, or your marginal rate if lower); the ATO sets out how the components of an employment
+        termination payment are taxed in{" "}
+        <a
+          href="https://www.ato.gov.au/individuals-and-families/jobs-and-employment-types/working-as-an-employee/leaving-your-job/how-etp-components-are-taxed"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          how ETP components are taxed
+        </a>
+        . Seek advice from an accountant on your specific situation, particularly if your
         total termination payment is large.
       </p>
 

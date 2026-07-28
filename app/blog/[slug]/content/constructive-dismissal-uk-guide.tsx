@@ -125,7 +125,16 @@ export default function Content() {
       <p>
         The correct approach is: <strong>protest in writing → raise grievance → await outcome →
         resign if unresolved</strong>. Do not resign immediately without going through the grievance
-        process, as this can reduce compensation by up to 25%.
+        process: a tribunal can adjust an award by up to 25% where a party unreasonably fails to
+        follow the{" "}
+        <a
+          href="https://www.acas.org.uk/acas-code-of-practice-on-disciplinary-and-grievance-procedures"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Acas Code of Practice on disciplinary and grievance procedures
+        </a>
+        .
       </p>
 
       <h2>How to build your constructive dismissal case</h2>

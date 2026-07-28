@@ -48,7 +48,25 @@ export default function Content() {
 
       <h2>Decoding the letter suffixes</h2>
       <p>
-        The letter in your tax code carries specific meaning:
+        The letter in your tax code carries specific meaning. The basic, higher and additional rates
+        quoted below are the current{" "}
+        <a
+          href="https://www.gov.uk/income-tax-rates"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GOV.UK income tax rates and bands
+        </a>{" "}
+        (England, Wales and Northern Ireland — Scotland sets its own bands), and the transfer amount
+        for codes M and N is set by{" "}
+        <a
+          href="https://www.gov.uk/marriage-allowance"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Marriage Allowance
+        </a>
+        :
       </p>
       <ul>
         <li><strong>L</strong>: Standard personal allowance. The most common code.</li>
@@ -56,7 +74,13 @@ export default function Content() {
         <li><strong>N</strong>: You have transferred 10% of your personal allowance to your spouse or civil partner.</li>
         <li><strong>T</strong>: HMRC needs to review your code and is making adjustments — often seen with higher earners.</li>
         <li><strong>0T</strong>: Zero personal allowance — either you have used it all up, or you are on an emergency code. Tax is deducted from all income.</li>
-        <li><strong>BR</strong>: All income taxed at the basic rate (20%). Used for second jobs or where there is no personal allowance to allocate here.</li>
+        <li>
+          <strong>BR</strong>: All income taxed at the basic rate (20%) — see{" "}
+          <a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener noreferrer">
+            GOV.UK income tax rates and bands
+          </a>
+          . Used for second jobs or where there is no personal allowance to allocate here.
+        </li>
         <li><strong>D0</strong>: All income taxed at the higher rate (40%). Used for second jobs or pension income.</li>
         <li><strong>D1</strong>: All income taxed at the additional rate (45%). Rare.</li>
         <li><strong>NT</strong>: No tax to be deducted. Used for some special situations.</li>
@@ -64,6 +88,27 @@ export default function Content() {
         <li><strong>W1 / M1</strong>: Emergency code (week 1 or month 1 basis). Tax is calculated each period on its own rather than cumulatively. You may be overpaying or underpaying.</li>
         <li><strong>X</strong>: Emergency basis — similar to W1/M1.</li>
       </ul>
+      <p className="text-xs text-ink-faint">
+        The basic, higher and additional rates above, and the Marriage Allowance transfer
+        proportion, are the figures published in{" "}
+        <a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener noreferrer">
+          GOV.UK&apos;s income tax rates and bands
+        </a>{" "}
+        and{" "}
+        <a href="https://www.gov.uk/marriage-allowance" target="_blank" rel="noopener noreferrer">
+          Marriage Allowance guidance
+        </a>
+        . Scotland sets its own income tax bands, so Scottish taxpayers (S-prefixed codes) should
+        check the{" "}
+        <a
+          href="https://www.gov.uk/scottish-income-tax"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Scottish rates
+        </a>
+        .
+      </p>
 
       <h2>The emergency tax code problem</h2>
       <p>

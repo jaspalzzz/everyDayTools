@@ -54,7 +54,12 @@ export default function UkMaternityPayRights2026() {
         </table>
       </div>
       <p className="text-xs text-ink-faint">
-        The flat-rate SMP (£194.32/week for 2026/27) is reviewed each April by the government.
+        The 90% first-six-weeks rule and the flat-rate SMP (£194.32/week for 2026/27) are both set out
+        in{" "}
+        <a href="https://www.gov.uk/maternity-pay-leave/pay" target="_blank" rel="noopener noreferrer">
+          GOV.UK&apos;s maternity pay guidance
+        </a>
+        , and the flat rate is reviewed each April by the government.
         Your employer pays SMP through payroll and recovers most of it from HMRC. SMP is taxable as income.
       </p>
 

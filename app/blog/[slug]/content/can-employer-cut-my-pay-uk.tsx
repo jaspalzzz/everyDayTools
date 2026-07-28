@@ -96,8 +96,16 @@ export default function Content() {
       <p>
         Raise a formal written grievance with your employer citing the breach and requesting the correct
         pay. This often leads to the dispute being resolved internally. If your employer rejects it,
-        you preserve the right to claim increased compensation at Tribunal (up to 25% uplift if the
-        employer fails to follow the ACAS Code).
+        you preserve the right to claim increased compensation at Tribunal — an award can be
+        increased by up to 25% where an employer unreasonably fails to follow the{" "}
+        <a
+          href="https://www.acas.org.uk/acas-code-of-practice-on-disciplinary-and-grievance-procedures"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Acas Code of Practice
+        </a>
+        .
       </p>
 
       <h3>Option 3: Resign and claim constructive dismissal</h3>
