@@ -4,7 +4,7 @@ import sitemap from "@/app/sitemap";
 import { BLOG_POSTS } from "@/data/blogPosts";
 import { FAQS } from "@/data/faqs";
 import { GUIDES } from "@/data/guides";
-import { PILLAR_FOR_TOOL } from "@/data/relatedContent";
+import { PILLAR_FOR_TOOL, blogPostInboundCoverage, blogPostsForTool } from "@/data/relatedContent";
 import { TOOLS } from "@/data/tools";
 import { getUsState } from "@/data/usStates";
 import { SITE, articleSchema, guideSchema, homepageSchemas } from "@/lib/seo";
@@ -124,6 +124,34 @@ describe("Tier 3 SEO remediation contracts", () => {
         expect(knownTargets.has(link.href), `${post.slug}: unknown target ${link.href}`).toBe(true);
         expect(link.description.trim().length, `${post.slug}: thin description`).toBeGreaterThan(30);
       }
+    }
+  });
+
+  it("surfaces every blog post from at least one calculator so none stay orphaned", () => {
+    // The reverse of the contextual-link contract above. Posts previously had no
+    // inbound link except the /blog index, so no authority or crawl path reached
+    // them. blogPostsForTool() is the derived inverse of BLOG_POSTS.relatedTools;
+    // this asserts the derivation actually covers every post at the limit
+    // ToolLayout renders, and that each post names a real tool.
+    const toolSlugs = new Set(TOOLS.map((tool) => tool.slug));
+    for (const post of BLOG_POSTS) {
+      expect(post.relatedTools.length, `${post.slug} declares no related tool`).toBeGreaterThan(0);
+      for (const slug of post.relatedTools) {
+        expect(toolSlugs.has(slug), `${post.slug}: unknown tool ${slug}`).toBe(true);
+      }
+    }
+
+    expect(blogPostInboundCoverage()).toEqual([]);
+
+    // Narrowly-linked posts must win the slice: a post naming a single tool has
+    // exactly one chance to appear, so it has to outrank posts that surface
+    // elsewhere too.
+    const soleToolPosts = BLOG_POSTS.filter((post) => post.relatedTools.length === 1);
+    for (const post of soleToolPosts) {
+      const [onlyTool] = post.relatedTools;
+      if (!onlyTool) continue;
+      const surfaced = blogPostsForTool(onlyTool).map((p) => p.slug);
+      expect(surfaced, `${post.slug} dropped from its only tool`).toContain(post.slug);
     }
   });
 

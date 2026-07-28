@@ -29,9 +29,9 @@ heuristic, not a calibrated probability of ranking.
 | Posts scoring 70–89 (good) | 0 |
 | Posts scoring 50–69 (needs work) | 11 |
 | Posts scoring <50 (poor) | 0 |
-| **Orphan pages** (no inbound link except /blog index) | **9** |
+| **Orphan pages** (no inbound link except /blog index) | **0** (was 9 — fixed) |
 | Posts with zero external authority links in body | 10 |
-| Posts missing og:image | 11 |
+| Posts missing og:image | 0 (was 11 — fixed) |
 | Cannibalization clusters | 5 |
 | Stale content (>180d) | 0 |
 
@@ -56,9 +56,9 @@ heuristic, not a calibrated probability of ranking.
 | # | Action | Scope | Impact | Effort |
 |---|---|---|---|---|
 | 1 | **Add external authority links** to primary sources (legislation.gov.uk, gov.uk, ACAS, DOL, Fair Work) — 10/11 posts have **zero** | 10 posts | High (YMYL E-E-A-T) | Moderate |
-| 2 | **Fix orphan pages** — add contextual links from the matching guide/FAQ/calculator into each post | 9 posts | High (crawl + authority flow) | Light |
+| 2 | ~~Fix orphan pages~~ — **DONE**: `blogPostsForTool()` derived inverse surfaces every post from its calculators (0 orphans) | 9 posts | High (crawl + authority flow) | Light |
 | 3 | **Source the statistics** — 34 statistics detected on one post alone with 0 inline citations | All | High (YMYL trust) | Moderate |
-| 4 | **Add `og:image`** to blog (and guides) metadata — currently declares `twitter:card=summary_large_image` with no OG image | All + guides | Medium (social CTR) | Light |
+| 4 | ~~Add `og:image`~~ — **DONE** for blog: per-post `opengraph-image.tsx` + explicit `images` on openGraph/twitter. Guides still lack one | Blog done; guides open | Medium (social CTR) | Light |
 | 5 | **Resolve topic overlap** with existing guides/FAQ/situations | 5 clusters | Medium (cannibalization) | Moderate |
 | 6 | **Deepen thin posts** — 662–1,103 words vs. competitive depth for these queries | 4 shortest | Medium | Heavy |
 
@@ -126,3 +126,14 @@ page. No refresh action required this cycle.
 - SEO category is the top scorer (19–21/25) — titles, headings and meta are solid.
 - Freshness discipline is genuinely good (all reviewed within 11 days).
 - Blog URLs are all in the sitemap and return HTTP 200.
+
+## Fixes applied after this audit (2026-07-28)
+
+| Item | Commit | Verification |
+|---|---|---|
+| Per-post OG images for all 11 posts | `1f659de` | 11 PNGs at 1200x630; `og:image` == `twitter:image` on every post; longest-title card checked for overflow |
+| Orphan pages 9 -> 0 | this commit | `blogPostsForTool()` derived inverse rendered in `ToolLayout`; rebuild confirms every post has >=1 real inbound link; regression test asserts coverage stays complete |
+
+Remaining top items: **external authority links** (10/11 posts have none) and
+**sourcing the statistics** — both feed E-E-A-T and AI citability, and both are
+content edits rather than code changes.

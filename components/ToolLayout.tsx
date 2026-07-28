@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { AdSlot } from "./AdSlot";
 import { EditorialReview } from "./EditorialReview";
 import { relatedTools, CATEGORY_META, type ToolMeta } from "@/data/tools";
-import { situationsForTool, guidesForTool, comparesForTool, pillarForTool } from "@/data/relatedContent";
+import { situationsForTool, guidesForTool, comparesForTool, pillarForTool, blogPostsForTool } from "@/data/relatedContent";
 import type { FaqItem, SourceRef } from "@/lib/types";
 import { LEGAL_SOURCES } from "@/data/legalSources";
 import { SITE } from "@/lib/seo";
@@ -53,6 +53,7 @@ export function ToolLayout({
   const derivedGuides = guidesForTool(tool.slug).filter((g) => g.slug !== learnMore?.guideSlug).slice(0, 2);
   const compares = comparesForTool(tool.slug);
   const pillar = pillarForTool(tool.slug);
+  const articles = blogPostsForTool(tool.slug);
 
   const verifiedLabel = verifiedDate
     ? new Date(verifiedDate).toLocaleDateString("en-GB", {
@@ -406,7 +407,7 @@ export function ToolLayout({
         </section>
 
         {/* ── Related tools ────────────────────────────────────────────── */}
-        {(related.length > 0 || situations.length > 0 || derivedGuides.length > 0 || compares.length > 0 || pillar || (learnMore && (learnMore.guideSlug || learnMore.faqs.length > 0))) && (
+        {(related.length > 0 || situations.length > 0 || derivedGuides.length > 0 || compares.length > 0 || articles.length > 0 || pillar || (learnMore && (learnMore.guideSlug || learnMore.faqs.length > 0))) && (
           <section
             aria-labelledby="related-heading"
             style={{
@@ -464,6 +465,17 @@ export function ToolLayout({
                   <strong style={{ color: "#102033" }}>{c.label}</strong>
                   <span style={{ display: "block", marginTop: 2, fontWeight: 600, color: "#5c7189", fontSize: 12 }}>
                     {c.summary}
+                  </span>
+                </span>
+                <span style={{ color: "#1E4E8C" }}>→</span>
+              </Link>
+            ))}
+            {articles.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`} style={RELATED_ROW_STYLE}>
+                <span>
+                  <strong style={{ color: "#102033" }}>{post.title}</strong>
+                  <span style={{ display: "block", marginTop: 2, fontWeight: 600, color: "#5c7189", fontSize: 12 }}>
+                    {post.excerpt}
                   </span>
                 </span>
                 <span style={{ color: "#1E4E8C" }}>→</span>

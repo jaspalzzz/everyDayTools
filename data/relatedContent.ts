@@ -1,6 +1,7 @@
 import { getTool, type ToolMeta } from "./tools";
 import { GUIDES, type GuideMeta } from "./guides";
 import { COMPARISONS } from "./comparisons";
+import { BLOG_POSTS, type BlogPost } from "./blogPosts";
 
 /**
  * Central "situation" cross-linking map.
@@ -209,4 +210,40 @@ export const PILLAR_FOR_TOOL: Record<string, PillarLink> = {
 
 export function pillarForTool(toolSlug: string): PillarLink | undefined {
   return PILLAR_FOR_TOOL[toolSlug];
+}
+
+/**
+ * Blog articles whose `relatedTools` include this calculator. Same derived-inverse
+ * approach as `guidesForTool`: the blog already declares which tools it relates
+ * to, so the reverse direction is computed rather than authored and the two can
+ * never drift apart.
+ *
+ * Before this existed, 9 of 11 posts were contextually orphaned -- reachable only
+ * from the /blog index, so no authority or crawl path flowed into them.
+ *
+ * Candidates are ordered by how many tools the post declares, fewest first. A post
+ * that names only one calculator has exactly one chance to be surfaced, so it must
+ * outrank a post that will also appear elsewhere; without this, a `limit` slice
+ * could silently strand such a post. `blogPostInboundCoverage()` is the guard, and
+ * a regression test asserts it stays empty.
+ */
+export function blogPostsForTool(toolSlug: string, limit = 2): BlogPost[] {
+  return BLOG_POSTS
+    .filter((post) => post.relatedTools.includes(toolSlug))
+    .slice()
+    .sort((a, b) => a.relatedTools.length - b.relatedTools.length)
+    .slice(0, limit);
+}
+
+/**
+ * Blog posts that no calculator surfaces -- i.e. still contextually orphaned.
+ * Should always be empty; a regression test fails loudly if a new post is added
+ * without usable `relatedTools`, or if a `limit` change strands one.
+ */
+export function blogPostInboundCoverage(limit = 2): string[] {
+  const linked = new Set<string>();
+  for (const tool of new Set(BLOG_POSTS.flatMap((post) => post.relatedTools))) {
+    for (const post of blogPostsForTool(tool, limit)) linked.add(post.slug);
+  }
+  return BLOG_POSTS.filter((post) => !linked.has(post.slug)).map((post) => post.slug);
 }
