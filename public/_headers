@@ -23,6 +23,10 @@
   Cache-Control: public, max-age=0, s-maxage=600, must-revalidate
 /robots.txt
   Cache-Control: public, max-age=0, s-maxage=600, must-revalidate
+# Search-engine ownership verification. Short-cached so re-verification with a
+# new token is never blocked by a stale edge copy.
+/BingSiteAuth.xml
+  Cache-Control: public, max-age=0, s-maxage=600, must-revalidate
 
 # The OG/Twitter images are emitted without a file extension, so Cloudflare
 # would serve them as octet-stream. Force image/png so social scrapers accept them.
