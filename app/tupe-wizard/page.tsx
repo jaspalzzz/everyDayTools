@@ -3,6 +3,7 @@ import Link from "next/link";
 import { TupeWizard } from "./TupeWizard";
 import { AffiliateCta } from "@/components/AffiliateCta";
 import { SITE, jsonLd } from "@/lib/seo";
+import { ToolAnalytics } from "@/components/ToolAnalytics";
 
 const title = "Does TUPE Apply to Me? Free UK TUPE Checker 2026";
 const description =
@@ -41,6 +42,7 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(webApp)} />
+      <ToolAnalytics toolSlug="tupe-wizard" toolRegion="UK" toolCategory="workplace-rights" />
 
 <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6">
         <nav className="mb-6 flex items-center gap-1 text-sm text-ink-faint">
@@ -57,7 +59,9 @@ export default function Page() {
           Employment) Regulations 2006 apply to your situation — and what your rights are.
         </p>
 
-        <TupeWizard />
+        <div data-calculator-inputs="tupe-wizard">
+          <TupeWizard />
+        </div>
 
         {/* Explainer */}
         <section className="mt-10 space-y-4 text-sm text-ink-soft">

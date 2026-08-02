@@ -4,6 +4,7 @@ import { FinalPaycheckLateChecker } from "@/components/calculators/FinalPaycheck
 import { US_STATES } from "@/data/usStates";
 import { isIndexableUsState } from "@/lib/contentQuality";
 import { SITE, jsonLd } from "@/lib/seo";
+import { ToolAnalytics } from "@/components/ToolAnalytics";
 
 const url = `${SITE.url}/us/final-paycheck`;
 
@@ -33,6 +34,7 @@ export default function USFinalPaycheckHub() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(webPage)} />
+      <ToolAnalytics toolSlug="us-final-paycheck-late-checker" toolRegion="US" toolCategory="leaving-job" />
 
 <div className="mx-auto max-w-content px-5 py-10">
         <nav aria-label="Breadcrumb" className="mb-6 text-xs text-ink-faint">
@@ -59,7 +61,9 @@ export default function USFinalPaycheckHub() {
           <h2 id="late-checker-heading" className="mb-4 text-xl font-bold text-ink">
             Was my final paycheck late?
           </h2>
-          <FinalPaycheckLateChecker />
+          <div data-calculator-inputs="us-final-paycheck-late-checker">
+            <FinalPaycheckLateChecker />
+          </div>
         </section>
 
         <section className="mb-10 grid gap-3 sm:grid-cols-3" aria-label="Final paycheck tools">

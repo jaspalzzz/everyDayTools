@@ -202,7 +202,7 @@ export function TupeWizard() {
   if (done) {
     const verdict = getVerdict(answers);
     return (
-      <div>
+      <div data-calculator-result-valid="true">
         <VerdictPanel verdict={verdict} answers={answers} />
         <button onClick={reset} className="mt-4 text-sm text-brand-600 hover:underline">
           ← Start again
@@ -212,7 +212,7 @@ export function TupeWizard() {
   }
 
   return (
-    <div className="rounded-xl border border-surface-line bg-white p-6 shadow-sm">
+    <div data-calculator-click-start className="rounded-xl border border-surface-line bg-white p-6 shadow-sm">
       <ProgressBar step={step} />
 
       {step === 1 && (

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, render, waitFor } from "@testing-library/react";
 
 /**
  * Regression guard for the Google Analytics consent gate. Mirrors the
@@ -70,6 +70,20 @@ describe("Analytics consent + configuration gate", () => {
     const Analytics = await loadAnalytics("G-TEST123");
     render(<Analytics />);
     expect(document.querySelector(GA_SELECTOR)).toBeNull();
+  });
+
+  it("stops event collection when consent is revoked in the current page", async () => {
+    window.localStorage.setItem(CONSENT_KEY, "accepted");
+    const Analytics = await loadAnalytics("G-TEST123");
+    render(<Analytics />);
+
+    await waitFor(() => expect(window.gtag).toBeTypeOf("function"));
+    window.localStorage.setItem(CONSENT_KEY, "rejected");
+    window.dispatchEvent(new CustomEvent("mpr-consent-change", { detail: "rejected" }));
+
+    await waitFor(() =>
+      expect((window as unknown as Record<string, unknown>)["ga-disable-G-TEST123"]).toBe(true),
+    );
   });
 
   it("stays disabled when the certified advertising CMP is active", async () => {

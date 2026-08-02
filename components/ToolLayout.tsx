@@ -7,6 +7,7 @@ import { situationsForTool, guidesForTool, comparesForTool, pillarForTool, blogP
 import type { FaqItem, SourceRef } from "@/lib/types";
 import { LEGAL_SOURCES } from "@/data/legalSources";
 import { SITE } from "@/lib/seo";
+import { ToolAnalytics } from "./ToolAnalytics";
 
 export interface LearnMoreMeta {
   guideSlug?: string;
@@ -69,6 +70,11 @@ export function ToolLayout({
 
   return (
     <>
+      <ToolAnalytics
+        toolSlug={tool.slug}
+        toolRegion={tool.region}
+        toolCategory={tool.category}
+      />
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section
         style={{
@@ -148,7 +154,10 @@ export function ToolLayout({
       <div style={{ maxWidth: 1180, margin: "0 auto", padding: "40px 24px 76px" }}>
 
         {/* Calculator: form (left) + result panel (right) — grid managed inside each calculator component */}
-        <section aria-label={`${tool.shortName} calculator`}>
+        <section
+          aria-label={`${tool.shortName} calculator`}
+          data-calculator-inputs={tool.slug}
+        >
           {calculator}
         </section>
 
@@ -348,6 +357,7 @@ export function ToolLayout({
                   href={src.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-calculator-source={tool.slug}
                   style={{ color: "#1E4E8C", fontWeight: 700, fontSize: 13 }}
                 >
                   {src.label}

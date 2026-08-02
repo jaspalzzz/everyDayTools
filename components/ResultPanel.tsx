@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { CalcResult } from "@/lib/types";
 import type { LetterMeta, PdfDocumentType } from "@/lib/pdf";
 import { generateLetter } from "@/lib/pdf";
+import { announceToolAction } from "@/lib/analytics";
 
 export function ResultPanel({
   result,
@@ -23,6 +24,7 @@ export function ResultPanel({
   const handleShare = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
+      announceToolAction("calculator_share");
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -38,6 +40,7 @@ export function ResultPanel({
         documentType,
         personalization: { personName, employerName, referenceDate },
       });
+      announceToolAction("calculator_pdf_download");
     } catch {
       setError(true);
     } finally {
@@ -48,6 +51,7 @@ export function ResultPanel({
   return (
     <div
       data-testid="result-panel"
+      data-calculator-result-valid={result.valid ? "true" : "false"}
       style={{
         border: "1px solid #E4DECF",
         borderRadius: 10,

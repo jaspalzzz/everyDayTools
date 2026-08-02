@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { hasAnalyticsConsent } from "./ConsentBanner";
 import { ADSENSE_RUNTIME_ENABLED } from "@/lib/adsense";
+import { ANALYTICS_READY_EVENT } from "@/lib/analytics";
 
 /**
  * Consent-gated Google Analytics 4.
@@ -39,15 +40,21 @@ export function Analytics() {
   }, []);
 
   useEffect(() => {
-    if (!GA_ID || ADSENSE_RUNTIME_ENABLED || !allowed) return;
+    if (!GA_ID || ADSENSE_RUNTIME_ENABLED) return;
+    const disableKey = `ga-disable-${GA_ID}`;
+    (window as unknown as Record<string, unknown>)[disableKey] = !allowed;
+    if (!allowed) return;
+
     window.dataLayer = window.dataLayer || [];
     window.gtag = function gtag() {
       // GA expects the raw arguments object pushed onto the dataLayer queue.
       // eslint-disable-next-line prefer-rest-params
       window.dataLayer.push(arguments);
     };
+    (window as unknown as Record<string, unknown>)[disableKey] = false;
     window.gtag("js", new Date());
     window.gtag("config", GA_ID, { anonymize_ip: true });
+    window.dispatchEvent(new Event(ANALYTICS_READY_EVENT));
   }, [allowed]);
 
   if (!GA_ID || ADSENSE_RUNTIME_ENABLED || !allowed) return null;

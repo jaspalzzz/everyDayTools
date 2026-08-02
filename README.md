@@ -154,7 +154,10 @@ changes. Key constants to refresh:
   published. Both AdSense flags must be true before the runtime script or units render.
 - `NEXT_PUBLIC_GA_ID` (e.g. `G-XXXXXXXXXX`) enables consent-gated Google Analytics 4 while AdSense
   mode is off. When both AdSense/CMP flags are true, the separate analytics path is disabled; if
-  the GA ID is unset, no analytics ships in any mode.
+  the GA ID is unset, no analytics ships in any mode. In addition to page views, calculator pages
+  emit `calculator_view`, `calculator_start`, `calculator_result`, `calculator_pdf_download`,
+  `calculator_share`, and `calculator_source_click`. Events include only the tool slug, region and
+  category — never entered values, calculated amounts or PDF personalisation.
 - `NEXT_PUBLIC_SOCIAL_PROFILES` (comma-separated URLs) populates `Organization.sameAs` in the
   homepage JSON-LD. Empty by default — set it only to genuine brand/social profiles (never a
   placeholder), as an invalid `sameAs` is worse than none.

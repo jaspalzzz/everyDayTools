@@ -111,7 +111,10 @@ export function PayslipAnalyser() {
   return (
     <div className="space-y-8">
       {/* Inputs */}
-      <div className="rounded-xl border border-surface-line bg-white p-6 shadow-sm">
+      <div
+        data-calculator-form
+        className="rounded-xl border border-surface-line bg-white p-6 shadow-sm"
+      >
         <h2 className="mb-5 text-base font-bold text-ink">Enter your payslip details</h2>
 
         <div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -245,7 +248,7 @@ export function PayslipAnalyser() {
               <div className="border-t border-surface-line px-4 py-3 text-sm text-ink-soft leading-relaxed">
                 <p>{d.explanation}</p>
                 {d.guideUrl && (
-                  <a href={d.guideUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-brand-600 hover:underline text-xs">
+                  <a href={d.guideUrl} target="_blank" rel="noopener noreferrer" data-calculator-source="payslip-analyser" className="mt-2 inline-block text-brand-600 hover:underline text-xs">
                     Official guidance →
                   </a>
                 )}
@@ -257,7 +260,7 @@ export function PayslipAnalyser() {
 
       <p className="text-xs text-ink-faint border-t border-surface-line pt-4">
         This tool provides general explanations of common UK payslip deductions. It does not account for all edge cases or sector-specific rules. For specific payroll queries, contact your payroll team or{" "}
-        <a href="https://www.acas.org.uk" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">ACAS</a>.
+        <a href="https://www.acas.org.uk" target="_blank" rel="noopener noreferrer" data-calculator-source="payslip-analyser" className="text-brand-600 hover:underline">ACAS</a>.
       </p>
     </div>
   );

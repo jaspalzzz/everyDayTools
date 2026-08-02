@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PayslipAnalyser } from "@/components/calculators/PayslipAnalyser";
 import { SITE, clampMetaDescription, jsonLd, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/types";
+import { ToolAnalytics } from "@/components/ToolAnalytics";
 
 const title = "UK Payslip Deduction Analyser — What Do Each Deduction Mean?";
 const description =
@@ -70,6 +71,7 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(webApp)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(faqs))} />
+      <ToolAnalytics toolSlug="payslip-analyser" toolRegion="UK" toolCategory="pay-tax" />
 
 <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
         <nav className="mb-6 flex items-center gap-1 text-sm text-ink-faint">
@@ -86,7 +88,9 @@ export default function Page() {
           an automatic check that your gross minus deductions equals your take-home pay.
         </p>
 
-        <PayslipAnalyser />
+        <div data-calculator-inputs="payslip-analyser">
+          <PayslipAnalyser />
+        </div>
 
         <section className="mt-12 space-y-4 text-sm text-ink-soft border-t border-surface-line pt-8">
           <h2 className="text-base font-bold text-ink">Understanding your payslip</h2>

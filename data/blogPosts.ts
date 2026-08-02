@@ -196,15 +196,15 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "can-employer-cut-my-pay-uk",
     quickAnswer:
       "No — your employer cannot unilaterally reduce your pay. Your salary is a contractual term; changing it requires your consent. A pay cut without agreement is both a breach of contract and, if deducted from wages already owed, an unlawful deduction under the Employment Rights Act 1996 s.13. You can reject the change, claim breach of contract, or — if serious enough — resign and claim constructive dismissal.",
-    title: "Can My Employer Cut My Pay Without My Consent? UK Rights Explained",
+    title: "Can an Employer Cut Your Pay Without Telling You? UK Law",
     description:
-      "Unilaterally cutting your pay is a breach of contract — and may be an unlawful deduction from wages. This guide explains what your employer can and cannot do, and how to respond.",
+      "Find out when a UK employer can cut your pay, whether they must tell you, and how to challenge an unauthorised reduction or unlawful wage deduction.",
     excerpt:
       "Your employer cannot simply cut your pay. Here is what the law says about unlawful deductions, the right to refuse, and how to bring a claim if they do it anyway.",
     region: "UK",
     category: "pay-rights",
     datePublished: "2026-06-27",
-    dateModified: "2026-07-28",
+    dateModified: "2026-08-02",
     readingTimeMinutes: 7,
     tags: ["pay cut", "unlawful deduction", "wages", "UK employment law", "breach of contract"],
     relatedTools: ["take-home-pay-calculator", "payslip-analyser"],

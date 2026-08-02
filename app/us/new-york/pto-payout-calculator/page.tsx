@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PtoPayoutCalculator } from "@/components/calculators/PtoPayoutCalculator";
 import { SITE, jsonLd } from "@/lib/seo";
+import { ToolAnalytics } from "@/components/ToolAnalytics";
 
 const url = `${SITE.url}/us/new-york/pto-payout-calculator`;
 
@@ -39,6 +40,7 @@ export default function NewYorkPtoPayoutPage() {
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         })}
       />
+      <ToolAnalytics toolSlug="new-york-pto-payout-calculator" toolRegion="US" toolCategory="leaving-job" />
 <div className="mx-auto max-w-content px-5 py-10">
         <nav aria-label="Breadcrumb" className="mb-6 text-xs text-ink-faint">
           <Link href="/" className="hover:text-ink-soft">Home</Link>
@@ -57,7 +59,9 @@ export default function NewYorkPtoPayoutPage() {
             to estimate the gross value, then compare it with your written policy.
           </p>
         </div>
-        <PtoPayoutCalculator presetStateCode="NY" />
+        <div data-calculator-inputs="new-york-pto-payout-calculator">
+          <PtoPayoutCalculator presetStateCode="NY" />
+        </div>
         <section className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-900">
           <h2 className="mb-2 text-base font-bold">New York policy check</h2>
           <p>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FinalPaycheckLateChecker } from "@/components/calculators/FinalPaycheckLateChecker";
 import { SITE, jsonLd } from "@/lib/seo";
+import { ToolAnalytics } from "@/components/ToolAnalytics";
 
 const url = `${SITE.url}/us/final-paycheck/was-my-final-paycheck-late`;
 
@@ -28,6 +29,7 @@ export default function LatePaycheckPage() {
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         })}
       />
+      <ToolAnalytics toolSlug="was-my-final-paycheck-late" toolRegion="US" toolCategory="leaving-job" />
 <div className="mx-auto max-w-content px-5 py-10">
         <nav aria-label="Breadcrumb" className="mb-6 text-xs text-ink-faint">
           <Link href="/" className="hover:text-ink-soft">Home</Link>
@@ -45,7 +47,9 @@ export default function LatePaycheckPage() {
             final paycheck missed the legal deadline.
           </p>
         </div>
-        <FinalPaycheckLateChecker />
+        <div data-calculator-inputs="was-my-final-paycheck-late">
+          <FinalPaycheckLateChecker />
+        </div>
 
         <section className="mt-8 grid gap-4 sm:grid-cols-3" aria-label="What to prepare">
           <article className="rounded-xl border border-surface-line bg-white p-4">

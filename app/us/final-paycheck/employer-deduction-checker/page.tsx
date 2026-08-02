@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { EmployerDeductionChecker } from "@/components/calculators/EmployerDeductionChecker";
 import { SITE, jsonLd } from "@/lib/seo";
+import { ToolAnalytics } from "@/components/ToolAnalytics";
 
 const url = `${SITE.url}/us/final-paycheck/employer-deduction-checker`;
 
@@ -28,6 +29,7 @@ export default function DeductionCheckerPage() {
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         })}
       />
+      <ToolAnalytics toolSlug="employer-deduction-checker" toolRegion="US" toolCategory="pay-tax" />
 <div className="mx-auto max-w-content px-5 py-10">
         <nav aria-label="Breadcrumb" className="mb-6 text-xs text-ink-faint">
           <Link href="/" className="hover:text-ink-soft">Home</Link>
@@ -46,7 +48,9 @@ export default function DeductionCheckerPage() {
             final paycheck or file a wage claim.
           </p>
         </div>
-        <EmployerDeductionChecker />
+        <div data-calculator-inputs="employer-deduction-checker">
+          <EmployerDeductionChecker />
+        </div>
 
         <section className="mt-8 grid gap-4 sm:grid-cols-3" aria-label="Common deduction categories">
           <article className="rounded-xl border border-surface-line bg-white p-4">

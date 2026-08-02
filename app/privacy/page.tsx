@@ -14,7 +14,7 @@ const schema = webPageSchema({
   name: "Privacy Policy",
   description,
   url,
-  dateModified: "2026-07-22",
+  dateModified: "2026-08-02",
 });
 
 export default function PrivacyPage() {
@@ -22,7 +22,7 @@ export default function PrivacyPage() {
     <article className="prose-tool mx-auto max-w-2xl px-5 py-10 text-sm leading-relaxed text-ink-soft">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(schema)} />
       <h1 className="text-2xl font-medium tracking-tight text-ink">Privacy Policy</h1>
-      <p className="mt-2 text-xs text-ink-faint">Last updated: 22 July 2026</p>
+      <p className="mt-2 text-xs text-ink-faint">Last updated: 2 August 2026</p>
 
       <p className="mt-4">
         This page explains how {SITE.name} handles calculator inputs, preference storage,
@@ -60,10 +60,14 @@ export default function PrivacyPage() {
       <h2>3. Analytics</h2>
       <p>
         We may use Google Analytics to understand which pages are visited, how visitors arrive and
-        whether the site is working well. It is optional and loads only after you allow analytics.
+        whether the site is working well. With your permission, we also record non-sensitive event
+        types such as a calculator being started, a result being displayed, a PDF being created, a
+        result being shared or an official source being opened. It is optional and loads only after
+        you allow analytics.
         Google may process technical information such as your truncated or otherwise handled IP
         address, browser and device details, referrer, pages visited and approximate location. We
-        do not send calculator input values to analytics.
+        do not send calculator input values, result amounts, names, employer details or dates to
+        analytics. Calculator events contain only the tool slug, region and category.
       </p>
       <p>
         When the Google-certified advertising consent message is active, our separate Google
