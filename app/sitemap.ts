@@ -122,7 +122,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/terms`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/disclaimer`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/press`, lastModified: RATES_UPDATED },
-    { url: `${SITE.url}/research/us-final-paycheck-laws`, lastModified: "2026-07-12" },
+    { url: `${SITE.url}/research/us-final-paycheck-laws`, lastModified: "2026-08-02" },
     // Pillar pages
     { url: `${SITE.url}/uk/redundancy`, lastModified: RATES_UPDATED },
     { url: `${SITE.url}/uk/maternity-leave`, lastModified: RATES_UPDATED },

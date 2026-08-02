@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-08-02T11:41:15.480Z",
+  "source": "data/backlink-monitor.csv",
+  "snapshotCount": 1,
+  "latest": {
+    "date": "2026-08-02",
+    "gsc_external_links": 0,
+    "referring_domains": 0,
+    "referral_sessions": null,
+    "research_sessions": null,
+    "outreach_sent": 0,
+    "replies": 0,
+    "links_won": 0,
+    "lost_links": 0,
+    "notes": "Baseline before dataset outreach; verify on the same collection day each month"
+  },
+  "previous": null,
+  "change": {
+    "gsc_external_links": null,
+    "referring_domains": null,
+    "referral_sessions": null,
+    "research_sessions": null,
+    "outreach_sent": null,
+    "replies": null,
+    "links_won": null,
+    "lost_links": null
+  },
+  "campaignTotals": {
+    "outreach_sent": 0,
+    "replies": 0,
+    "links_won": 0,
+    "lost_links": 0
+  },
+  "rates": {
+    "replyRate": 0,
+    "linkWinRate": 0
+  },
+  "checks": {
+    "duplicateDates": false,
+    "invalidNumericValues": false,
+    "latestSnapshotOlderThan45Days": false
+  }
+}

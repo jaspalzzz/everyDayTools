@@ -46,7 +46,8 @@ export default function PressPage() {
           <p className="mt-3 text-sm leading-relaxed text-ink-soft">
             My Pay Rights is a free employment law reference and pay calculator platform for workers
             in the UK, United States, Australia, and Canada. All content is written against primary
-            legislation and verified each April when statutory rates change.
+            legislation or official agency guidance and reviewed on the relevant jurisdiction&apos;s
+            rate-change cycle.
           </p>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
             Our <Link href="/research/us-final-paycheck-laws" className="font-semibold text-brand-600 hover:underline">US final paycheck law dataset</Link>{" "}
@@ -82,6 +83,32 @@ export default function PressPage() {
             </div>
           </section>
 
+          <section className="mt-10">
+            <h2 className="text-base font-semibold text-ink">Ready-to-cite data</h2>
+            <div className="mt-3 rounded-xl border border-surface-line bg-white p-5">
+              <h3 className="text-sm font-bold text-ink">US final paycheck deadlines — 50 states + DC</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+                A source-linked comparison of the summarized deadline after termination and resignation,
+                with an analysis of where separation type changes the answer.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+                <Link href="/research/us-final-paycheck-laws" className="text-brand-600 hover:underline">
+                  Interactive table and findings
+                </Link>
+                <a href="/research/us-final-paycheck-laws.csv" download className="text-brand-600 hover:underline">
+                  Download permanent CSV
+                </a>
+                <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener noreferrer" className="text-brand-600 hover:underline">
+                  CC BY 4.0 reuse terms
+                </a>
+              </div>
+              <p className="mt-4 text-xs leading-relaxed text-ink-faint">
+                Suggested credit: My Pay Rights, “US Final Paycheck Law Dataset — All 50 States + DC,”
+                compiled 12 July 2026. Please link to the interactive table when quoting findings.
+              </p>
+            </div>
+          </section>
+
           {/* About */}
           <section className="mt-10">
             <h2 className="text-base font-semibold text-ink">About My Pay Rights</h2>
@@ -94,7 +121,7 @@ export default function PressPage() {
                 primary legislation and reviewed on each jurisdiction&apos;s annual rate-change cycle.
               </p>
               <p>
-                The platform covers 31 calculators across four jurisdictions, 15 in-depth guides,
+                The platform covers 30+ calculators across four jurisdictions, in-depth guides,
                 and 78+ FAQ pages. Calculators produce live, interactive results with a downloadable
                 PDF summary — no sign-up required.
               </p>
