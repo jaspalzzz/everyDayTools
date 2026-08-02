@@ -182,6 +182,32 @@ describe("Cloudflare edge middleware", () => {
     expect(next).not.toHaveBeenCalled();
   });
 
+  it("never lowercases a request for a file, so case-sensitive assets still resolve", async () => {
+    // /BingSiteAuth.xml is the Bing Webmaster Tools verification file and is
+    // served by exact name. Lowercasing it produced a 301 to /bingsiteauth.xml,
+    // which 404s -- silently breaking site verification. Page routes have no
+    // extension, so only extension-less paths get case-canonicalised.
+    const next = vi.fn(async () => new Response("verification file"));
+    const passthrough = await onRequest({
+      request: new Request("https://mypayrights.com/BingSiteAuth.xml"),
+      next,
+    });
+    expect(passthrough.status).not.toBe(301);
+    expect(next).toHaveBeenCalled();
+
+    // A www request for the same file still gets the host canonicalised, but
+    // the filename case must survive the redirect.
+    const hostOnly = vi.fn(async () => new Response("unused"));
+    const redirected = await onRequest({
+      request: new Request("https://www.mypayrights.com/BingSiteAuth.xml"),
+      next: hostOnly,
+    });
+    expect(redirected.status).toBe(301);
+    expect(redirected.headers.get("location")).toBe(
+      "https://mypayrights.com/BingSiteAuth.xml",
+    );
+  });
+
   it("nonces inline scripts and sends a matching strict CSP", async () => {
     const response = await onRequest({
       request: new Request("https://mypayrights.com/test"),

@@ -10,8 +10,15 @@ export async function onRequest(context: {
     shouldRedirect = true;
   }
 
+  // Canonicalise mixed-case *routes* to lowercase, but never rewrite a request
+  // for a file. Static assets are served by exact name, so lowercasing a
+  // capitalised filename redirects to a path that does not exist -- which is
+  // what happened to /BingSiteAuth.xml, the Bing Webmaster Tools verification
+  // file, before this guard. Page routes on this site have no extension, so
+  // keying on "has a file extension" separates the two cleanly.
+  const hasFileExtension = /\.[a-z0-9]+$/i.test(url.pathname);
   const lowercasePath = url.pathname.toLowerCase();
-  if (lowercasePath !== url.pathname) {
+  if (!hasFileExtension && lowercasePath !== url.pathname) {
     url.pathname = lowercasePath;
     shouldRedirect = true;
   }
